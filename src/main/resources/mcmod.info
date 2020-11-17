@@ -1,0 +1,15 @@
+[
+{
+	"modid": "pst",
+	"name": "postman",
+	"description": "a client for 1.12.2 anarchy servers.",
+	"version": "0.113-test1",
+	"mcversion": "1.12.2",
+	"url": "https://discord.gg/Jd8EmEuhb5",
+	"authorList": ["SrgantMooMoo"],
+	"credits": "thank u to everyone in the discord, and a few things in this are skidded from both gamesense and kami, so yea thx. ",
+	"logoFile": "postmancircle.png",
+	"screenshots": [],
+	"dependencies": []
+}
+]

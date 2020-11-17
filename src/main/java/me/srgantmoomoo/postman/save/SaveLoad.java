@@ -1,0 +1,123 @@
+package me.srgantmoomoo.postman.save;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.module.Category;
+import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.module.ModuleManager;
+import me.srgantmoomoo.postman.settings.BooleanSetting;
+import me.srgantmoomoo.postman.settings.NumberSetting;
+import me.srgantmoomoo.postman.settings.Setting;
+import me.srgantmoomoo.postman.settings.SettingsManager;
+import net.minecraft.client.Minecraft;
+
+/*
+ * Written by @SrgantMooMoo on 11/17/20 with inspiration taken from @SebSb.
+ */
+
+public class SaveLoad {
+
+	private File dir;
+	private File dataFile;
+	int currentTab;
+	
+	public SaveLoad() {
+		dir = new File(Minecraft.getMinecraft().gameDir, "postman");
+		if(!dir.exists()) {
+			dir.mkdir();
+		}
+		dataFile = new File(dir, "config.txt");
+		if(!dataFile.exists()) {
+			try {
+				dataFile.createNewFile();
+			} catch (IOException e) {e.printStackTrace();}
+		}
+		
+		this.load();
+	}
+	
+	public void save() {
+		ArrayList<String> toSave = new ArrayList<String>();
+		
+		for(Module mod : ModuleManager.modules) {
+			if(!mod.getName().equals("tabGui"))
+			toSave.add("MOD:" + mod.getName() + ":" + mod.isToggled() + ":" + mod.getKey());
+		}
+		
+		for(Module mod : ModuleManager.modules) {
+		for(Setting setting : mod.settings) {
+			
+			//if(setting instanceof BooleanSetting) {
+				//BooleanSetting bool = (BooleanSetting) setting;
+				//toSave.add("SET:" + setting.name + ":" + bool.isEnabled());
+				//}
+			
+			if(setting instanceof NumberSetting) {
+				NumberSetting sett = (NumberSetting) setting;
+				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + sett.getValue());
+			}
+			}
+		} 
+		
+		try {
+			PrintWriter pw = new PrintWriter(this.dataFile);
+			for(String str : toSave) {
+				pw.println(str);
+			}
+			pw.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void load() {
+		ArrayList<String> lines = new ArrayList<String>();
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(this.dataFile));
+			String line = reader.readLine();
+			while(line != null) {
+				lines.add(line);
+				line = reader.readLine();
+			}
+			reader.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		
+		for(String s : lines) {
+			String[] args = s.split(":");
+			if(s.toLowerCase().startsWith("mod:")) {
+				Module m = Main.moduleManager.getModule(args[1]);
+				if(m != null) {
+					m.setToggled(Boolean.parseBoolean(args[2]));
+					m.setKey(Integer.parseInt(args[3]));
+				}
+			}else if(s.toLowerCase().startsWith("set:")) {
+				Module m = Main.moduleManager.getModule(args[1]);
+				if(m != null) {
+					Setting setting = Main.instance.settingsManager.getSettingByName(m, args[2]);
+						if(setting != null) {
+						//if(setting instanceof BooleanSetting) {
+							//((BooleanSetting)setting).setEnabled(Boolean.parseBoolean(args[3]));
+						//}
+							
+						if(setting instanceof NumberSetting) {
+							NumberSetting sett = (NumberSetting) setting;
+							sett.setValue(Double.parseDouble(args[3]));
+						}
+						
+						}
+					}
+				}
+			}
+		}
+}
