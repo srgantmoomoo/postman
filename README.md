@@ -5,6 +5,9 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 
 this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.5, and is coded in 100% java.
 
+join the postman discord - https://discord.gg/Jd8EmEuhb5
+check out the postman website - sikenotyet
+
 thank you,
 
 -SrgantMooMoo
