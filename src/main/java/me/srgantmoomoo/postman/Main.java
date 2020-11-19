@@ -38,7 +38,7 @@ public class Main {
 	public static ArrayList<Module> modules;
 	
 	public static ModuleManager moduleManager;
-	public SettingsManager settingsManager;
+	public static SettingsManager settingsManager;
 	public static SaveLoad saveLoad;
 	public static TabGui tabGui;
 	public EventProcessor eventProcessor;
@@ -65,20 +65,30 @@ public class Main {
 	
 	@EventHandler
 	public void init (FMLInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(instance);
+		MinecraftForge.EVENT_BUS.register(this);
+		log.info("minecraft forge initialized.");
+		
 		eventProcessor = new EventProcessor();
 		eventProcessor.init();
+		log.info("event system initialized.");
 		
 		notification = new Notification(null, null, null, 0);
+		log.info("notification system initialized.");
 		
 		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
+		log.info("user interface initialized.");
 		
 		moduleManager = new ModuleManager();
+		log.info("module system initialized.");
 		
 		settingsManager = new SettingsManager();
+		log.info("settings system initialized.");
 		
 		saveLoad = new SaveLoad();
+		log.info("configs initialized.");
+		
+		log.info("postman initialization finished");
 	
 	}
 	

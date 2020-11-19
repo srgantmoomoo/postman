@@ -9,6 +9,7 @@ import me.srgantmoomoo.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.settings.KeybindSetting;
 import me.srgantmoomoo.postman.settings.Setting;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
 /*
@@ -17,6 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public abstract class Module {
 	
+	protected static final Minecraft mc = Minecraft.getMinecraft();
 	public static ArrayList<Module> modules;
 	
 	public String name, description;
@@ -41,7 +43,9 @@ public abstract class Module {
 	
 	public void onUpdate(){}
 	
-	protected void enable(){ }
+	public void onRender(){}
+	
+	protected void enable(){}
 
 	protected void disable(){}
 	

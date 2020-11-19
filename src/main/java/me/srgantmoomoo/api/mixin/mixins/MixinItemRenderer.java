@@ -3,7 +3,6 @@ package me.srgantmoomoo.api.mixin.mixins;
 import me.srgantmoomoo.api.event.events.TransformSideFirstPersonEvent;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.ModuleManager;
-import me.srgantmoomoo.postman.module.modules.render.LowOffHand;
 import me.srgantmoomoo.postman.module.modules.render.ViewModel;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.item.ItemStack;
@@ -27,7 +26,7 @@ public class MixinItemRenderer{
 	public void transformEatFirstPerson(float p_187454_1_, EnumHandSide hand, ItemStack stack, CallbackInfo ci){
 		TransformSideFirstPersonEvent event = new TransformSideFirstPersonEvent(hand);
 		Main.EVENT_BUS.post(event);
-		if (ModuleManager.isModuleEnabled("ViewModel") && ((ViewModel)ModuleManager.getModuleByName("ViewModel")).cancelEating.isEnabled()){
+		if (ModuleManager.isModuleEnabled("ViewModel") && ((ViewModel)ModuleManager.getModuleByName("ViewModel")).cancelEating.getValue()){
 			ci.cancel();
 		}
 	}
@@ -36,12 +35,5 @@ public class MixinItemRenderer{
 	public void transformFirstPerson(EnumHandSide hand, float p_187453_2_, CallbackInfo ci){
 		TransformSideFirstPersonEvent event = new TransformSideFirstPersonEvent(hand);
 		Main.EVENT_BUS.post(event);
-	}
-	
-	@Inject(method = "lowOffHand", at = @At("HEAD"), cancellable = true)
-	public void renderOverlays(float partialTicks, CallbackInfo ci){
-		if (ModuleManager.isModuleEnabled("lowOffHand") && ((LowOffHand)ModuleManager.getModuleByName("lowOffHand")).isToggled()){
-			ci.cancel();
-		}
 	}
 }

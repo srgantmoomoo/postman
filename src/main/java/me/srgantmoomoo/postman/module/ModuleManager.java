@@ -53,7 +53,6 @@ import me.srgantmoomoo.postman.module.modules.render.Tracers;
 import me.srgantmoomoo.postman.module.modules.render.ViewModel;
 import me.srgantmoomoo.postman.module.modules.render.Weather;
 import me.srgantmoomoo.postman.module.modules.render.Xray;
-import me.srgantmoomoo.postman.settings.Setting;
 import me.srgantmoomoo.postman.ui.TabGui;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
@@ -176,6 +175,10 @@ public class ModuleManager {
 	
 	public static void onUpdate() {
 		modules.stream().filter(Module::isToggled).forEach(Module::onUpdate);
+	}
+	
+	public static void onRender() {
+		modules.stream().filter(Module::isToggled).forEach(Module::onRender);
 	}
 	
 	public static void onWorldRender(RenderWorldLastEvent event) {

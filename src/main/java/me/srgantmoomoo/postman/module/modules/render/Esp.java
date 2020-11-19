@@ -6,9 +6,11 @@ import me.srgantmoomoo.api.event.events.RenderEvent;
 import me.srgantmoomoo.api.util.Wrapper;
 import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.api.util.render.JTessellator;
+import me.srgantmoomoo.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.settings.BooleanSetting;
+import me.srgantmoomoo.postman.settings.ModeSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -30,9 +32,11 @@ import net.minecraft.tileentity.TileEntityEnderChest;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.tileentity.TileEntityShulkerBox;
+import net.minecraft.util.math.BlockPos;
 
 /*
- * Written by @SrgantMooMoo on 11/17/20
+ * Written by @SrgantMooMoo on 11/17/20.
+ * Enhanced by @SrgantMooMoo on 11/19/20.
  */
 
 public class Esp extends Module {
@@ -40,7 +44,7 @@ public class Esp extends Module {
 	public BooleanSetting mob = new BooleanSetting("mob", false);
 	public BooleanSetting entityy = new BooleanSetting("entity", false);
 	public BooleanSetting item = new BooleanSetting("item", true);
-	public BooleanSetting storage = new BooleanSetting("storage", true);
+	public ModeSetting storage = new ModeSetting("storage", "box", "box", "outline", "off");
 	public NumberSetting range = new NumberSetting("range", 100, 10, 260, 10);
 	public NumberSetting pRed = new NumberSetting("pRed", 0, 0, 250, 10);
 	public NumberSetting pGreen = new NumberSetting("pGreen", 121, 0, 250, 10);
@@ -56,9 +60,11 @@ public class Esp extends Module {
     JColor mobColor;
     JColor mainIntColor;
     JColor containerColor;
+    JColor containerBox;
     int opacityGradient;
 
     public void onWorldRender(RenderEvent event){
+    	
         mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
             defineEntityColors(entity);
             if (player.isEnabled() && entity instanceof EntityPlayer){
@@ -78,10 +84,11 @@ public class Esp extends Module {
                 }
             }
         });
-        if (storage.isEnabled()) {
+        
+        if (storage.getMode().equals("outline")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
-                    containerColor = new JColor(255, 140, 0, opacityGradient);
+                    containerColor = new JColor(255, 255, 0, opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
                 if (tileEntity instanceof TileEntityEnderChest){
@@ -98,7 +105,44 @@ public class Esp extends Module {
                 }
             });
         }
+        
+        if (storage.getMode().equals("box")) {
+            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+                if (tileEntity instanceof TileEntityChest){
+                    containerColor = new JColor(255, 255, 0, opacityGradient);
+                    containerBox = new JColor(255, 255, 0, 50);
+                    JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
+                    drawStorageBox(tileEntity.getPos(),1, containerBox);
+                }
+                if (tileEntity instanceof TileEntityEnderChest){
+                    containerColor = new JColor(180, 70, 200, opacityGradient);
+                    containerBox = new JColor(255, 70, 200, 50);
+                    JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
+                    drawStorageBox(tileEntity.getPos(),1, containerBox);
+                }
+                if (tileEntity instanceof TileEntityShulkerBox){
+                    containerColor = new JColor(255, 182, 193, opacityGradient);
+                    containerBox = new JColor(255, 182, 193, 50);
+                    JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
+                    drawBox(tileEntity.getPos(),1, containerBox);
+                }
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
+                    containerColor = new JColor(150, 150, 150, opacityGradient);
+                    containerBox = new JColor(150, 150, 150, 50);
+                    JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
+                    drawBox(tileEntity.getPos(),1, containerBox);
+                }
+            });
+        }
     }
+    
+    private void drawStorageBox(BlockPos blockPos, int width, JColor color) {
+		JTessellator.drawStorageBox(blockPos, 0.88, color, GeometryMasks.Quad.ALL);
+    }
+    
+    private void drawBox(BlockPos blockPos, int width, JColor color) {
+		JTessellator.drawBox(blockPos, 1, color, GeometryMasks.Quad.ALL);
+   }
 
     public void onDisable(){
     }

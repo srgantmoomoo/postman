@@ -1,11 +1,10 @@
-/*package me.srgantmoomoo.postman.module.modules.player;
+package me.srgantmoomoo.postman.module.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.api.event.events.EventClientTick;
 import me.srgantmoomoo.api.event.events.EventNetworkPostPacketEvent;
 import me.srgantmoomoo.api.event.events.EventPlayerUpdateMoveState;
-import me.srgantmoomoo.api.util.PlayerUtil;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.zero.alpine.listener.EventHandler;
@@ -147,4 +146,3 @@ import net.minecraft.util.math.BlockPos;
 	        }
 	    });
 }
-*/

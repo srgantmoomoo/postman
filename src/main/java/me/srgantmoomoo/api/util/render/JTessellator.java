@@ -80,6 +80,63 @@ public class JTessellator {
 		}
 		tessellator.draw();
 	}
+	
+	public static void drawStorageBox(BlockPos blockPos, double height, JColor color, int sides) {
+		drawStorageBox(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 1, height, 1, color, sides);
+	}
+
+	public static void drawStorageBox(AxisAlignedBB bb, boolean check,  double height, JColor color, int sides) {
+		if (check){
+			drawStorageBox(bb.minX,bb.minY,bb.minZ,bb.maxX-bb.minX, bb.maxY-bb.minY,bb.maxZ-bb.minZ,color,sides);
+		}
+		else {
+			drawStorageBox(bb.minX,bb.minY,bb.minZ,bb.maxX-bb.minX, height,bb.maxZ-bb.minZ,color,sides);
+		}
+	}
+
+	public static void drawStorageBox(double x, double y, double z, double w, double h, double d, JColor color, int sides) {
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder bufferbuilder = tessellator.getBuffer();
+		color.glColor();
+		bufferbuilder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
+		if ((sides & GeometryMasks.Quad.DOWN) != 0) {
+			vertex(x+w - 0.06,y,z + 0.06,  bufferbuilder);
+			vertex(x+w - 0.06,y,z+d - 0.06,bufferbuilder);
+			vertex(x + 0.06,  y,z+d - 0.06,bufferbuilder);
+			vertex(x + 0.06,  y,z + 0.06,  bufferbuilder);
+		}
+		if ((sides & GeometryMasks.Quad.UP) != 0) {
+			vertex(x+w - 0.06,y+h,z + 0.06,  bufferbuilder);
+			vertex(x + 0.06,  y+h,z + 0.06,  bufferbuilder);
+			vertex(x + 0.06,  y+h,z+d - 0.06,bufferbuilder);
+			vertex(x+w - 0.06,y+h,z+d - 0.06,bufferbuilder);
+		}
+		if ((sides & GeometryMasks.Quad.NORTH) != 0) {
+			vertex(x+w - 0.06,y,  z + 0.06,bufferbuilder);
+			vertex(x + 0.06,  y,  z + 0.06,bufferbuilder);
+			vertex(x + 0.06,  y+h,z + 0.06,bufferbuilder);
+			vertex(x+w - 0.06,y+h,z + 0.06,bufferbuilder);
+		}
+		if ((sides & GeometryMasks.Quad.SOUTH) != 0) {
+			vertex(x + 0.06,  y,  z+d - 0.06,bufferbuilder);
+			vertex(x+w - 0.06,y,  z+d - 0.06,bufferbuilder);
+			vertex(x+w - 0.06,y+h,z+d - 0.06,bufferbuilder);
+			vertex(x + 0.06,  y+h,z+d - 0.06,bufferbuilder);
+		}
+		if ((sides & GeometryMasks.Quad.WEST) != 0) {
+			vertex(x + 0.06,y,  z + 0.06,  bufferbuilder);
+			vertex(x + 0.06,y,  z+d - 0.06,bufferbuilder);
+			vertex(x + 0.06,y+h,z+d - 0.06,bufferbuilder);
+			vertex(x + 0.06,y+h,z + 0.06,  bufferbuilder);
+		}
+		if ((sides & GeometryMasks.Quad.EAST) != 0) {
+			vertex(x+w - 0.06,y,  z+d - 0.06,bufferbuilder);
+			vertex(x+w - 0.06,y,  z + 0.06,  bufferbuilder);
+			vertex(x+w - 0.06,y+h,z + 0.06,  bufferbuilder);
+			vertex(x+w - 0.06,y+h,z+d - 0.06,bufferbuilder);
+		}
+		tessellator.draw();
+	}
 
 	public static void drawBoundingBox (BlockPos bp, double height, float width, JColor color) {
 		drawBoundingBox(getBoundingBox(bp,1, height,1),width,color);
