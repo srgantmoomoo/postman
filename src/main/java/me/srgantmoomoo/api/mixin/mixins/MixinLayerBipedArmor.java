@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.module.ModuleManager;
 import net.minecraft.client.model.ModelBiped;
@@ -34,4 +34,4 @@ public class MixinLayerBipedArmor{
 			}
 		}
 	}
-}
+}*/

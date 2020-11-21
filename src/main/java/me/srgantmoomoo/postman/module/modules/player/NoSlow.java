@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.module.modules.player;
+/*package me.srgantmoomoo.postman.module.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
@@ -145,4 +145,4 @@ import net.minecraft.util.math.BlockPos;
 	                    mc.player.connection.sendPacket(new CPacketPlayerDigging(Action.ABORT_DESTROY_BLOCK, PlayerUtil.GetLocalPlayerPosFloored(), EnumFacing.DOWN));
 	        }
 	    });
-}
+}*/

@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.module.ModuleManager;
 import net.minecraft.client.Minecraft;
@@ -25,3 +25,4 @@ public abstract class MixinMovementInputFromOptions extends MovementInput{
 		return keyBinding.isKeyDown();
 	}
 }
+*/

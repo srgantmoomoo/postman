@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.api.event.events.TransformSideFirstPersonEvent;
 import me.srgantmoomoo.postman.Main;
@@ -37,3 +37,4 @@ public class MixinItemRenderer{
 		Main.EVENT_BUS.post(event);
 	}
 }
+*/

@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.module.modules.player.NoPush;
@@ -21,3 +21,4 @@ public class MixinEntity{
 	}
 }
 
+*/

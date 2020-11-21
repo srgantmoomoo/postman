@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.api.event.events.PlayerMoveEvent;
@@ -24,4 +24,4 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer{
 		}
 		super.move(type, moveEvent.x, moveEvent.y, moveEvent.z);
 	}
-}
+}*/

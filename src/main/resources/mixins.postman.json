@@ -4,6 +4,7 @@
 "package": "me.srgantmoomoo.api.mixin.mixins",
 "refmap": "mixins.postman.refmap.json",
 "mixins": [
-	"MixinItemRenderer"
+	"MixinItemRenderer",
+	"MixinsGuiScreen"
 ]
 }

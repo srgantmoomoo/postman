@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.ModuleManager;
@@ -39,3 +39,4 @@ public class MixinMinecraft{
 		return this.playerController.getIsHittingBlock();
 	}
 }
+*/

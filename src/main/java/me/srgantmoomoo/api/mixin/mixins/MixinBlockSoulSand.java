@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.module.modules.player.NoSlow;
@@ -20,4 +20,4 @@ public class MixinBlockSoulSand{
 		if (ModuleManager.isModuleEnabled("noSlow") && ((NoSlow)ModuleManager.getModuleByName("noSlow")).noSlow.getValue())
 			info.cancel();
 	}
-}
+}*/

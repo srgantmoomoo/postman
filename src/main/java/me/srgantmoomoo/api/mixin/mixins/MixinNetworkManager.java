@@ -1,9 +1,8 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.ModuleManager;
-import me.srgantmoomoo.postman.module.modules.misc.NoKick;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -62,4 +61,4 @@ public class MixinNetworkManager{
 		if (p_exceptionCaught_2_ instanceof IOException && ModuleManager.isModuleEnabled("NoKick") && ((NoKick)ModuleManager.getModuleByName("NoKick")).noPacketKick.getValue()) info.cancel();
 	}
 }
-
+*/

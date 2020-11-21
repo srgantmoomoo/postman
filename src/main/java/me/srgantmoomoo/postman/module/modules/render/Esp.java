@@ -44,7 +44,7 @@ public class Esp extends Module {
 	public BooleanSetting mob = new BooleanSetting("mob", false);
 	public BooleanSetting entityy = new BooleanSetting("entity", false);
 	public BooleanSetting item = new BooleanSetting("item", true);
-	public ModeSetting storage = new ModeSetting("storage", "box", "box", "outline", "off");
+	public ModeSetting storage = new ModeSetting("storage", "fill", "fill", "outline", "off");
 	public NumberSetting range = new NumberSetting("range", 100, 10, 260, 10);
 	public NumberSetting pRed = new NumberSetting("pRed", 0, 0, 250, 10);
 	public NumberSetting pGreen = new NumberSetting("pGreen", 121, 0, 250, 10);
@@ -106,7 +106,7 @@ public class Esp extends Module {
             });
         }
         
-        if (storage.getMode().equals("box")) {
+        if (storage.getMode().equals("fill")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(255, 255, 0, opacityGradient);

@@ -54,6 +54,7 @@ import me.srgantmoomoo.postman.module.modules.render.ViewModel;
 import me.srgantmoomoo.postman.module.modules.render.Weather;
 import me.srgantmoomoo.postman.module.modules.render.Xray;
 import me.srgantmoomoo.postman.ui.TabGui;
+import me.srgantmoomoo.postman.ui.clickgui.ClickGuiModule;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 
@@ -168,6 +169,7 @@ public class ModuleManager {
 		//ModuleManager.modules.add(new LightHud());	
 		//ModuleManager.modules.add(new DarkHud());
 		ModuleManager.modules.add(new DiscordRichPresence());
+		ModuleManager.modules.add(new ClickGuiModule());	
 	 	ModuleManager.modules.add(new TabGui());	
 		
 		

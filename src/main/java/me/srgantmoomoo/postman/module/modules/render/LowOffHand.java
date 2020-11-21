@@ -2,7 +2,6 @@ package me.srgantmoomoo.postman.module.modules.render;
 
 import org.lwjgl.input.Keyboard;
 
-import me.srgantmoomoo.api.mixin.mixins.MixinItemRenderer;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.settings.NumberSetting;
@@ -21,7 +20,7 @@ import net.minecraft.client.renderer.ItemRenderer;
 			this.addSettings(lowness);
 		}
 		
-		MixinItemRenderer itemRenderer;
+		//MixinItemRenderer itemRenderer;
 		
 		@Override
 		public void onUpdate(){
