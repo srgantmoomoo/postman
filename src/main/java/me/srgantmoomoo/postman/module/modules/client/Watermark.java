@@ -30,7 +30,7 @@ public class Watermark extends Module {
 	if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
 		if(on) {
 		fr.drawStringWithShadow(Refrence.NAME, (float) (1 + xaxis.getValue()), (float) (2 + yaxis.getValue()), 0xffffffff);
-		fr.drawStringWithShadow(Refrence.VERSION, (float) (42 + xaxis.getValue()), (float) (2 + yaxis.getValue()), 0xff79c2ec);
+		fr.drawStringWithShadow(Refrence.VERSION, (float) (41 + xaxis.getValue()), (float) (2 + yaxis.getValue()), 0xff79c2ec);
 			}
 		}
 	}

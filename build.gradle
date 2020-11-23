@@ -33,6 +33,7 @@ minecraft {
 	version = project.forgeVersion
 	runDir = 'run'
 	mappings = project.mcpVersion
+	coreMod = 'me.srgantmoomoo.postman.Main'
 	makeObfSourceJar = false
 }
 
@@ -106,6 +107,7 @@ shadowJar {
 
 mixin {
 	defaultObfuscationEnv searge
+	add sourceSets.main, 'mixins.postman.refmap.json'
 }
 
 reobf {
@@ -118,10 +120,13 @@ reobf {
 jar {
 	manifest {
 		attributes(
+				'MixinConfigs': 'mixins.postman.json',
 				'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
 				'TweakOrder': 0,
 				'FMLCorePluginContainsFMLMod': 'true',
+				'FMLCorePlugin': 'me.srgantmoomoo.postman.Main',
 				'ForceLoadAsMod': 'true',
+				'FMLAT': 'postman_at.cfg'
 		)
 	}
 }

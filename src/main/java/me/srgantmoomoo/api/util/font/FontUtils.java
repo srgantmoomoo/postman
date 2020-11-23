@@ -13,13 +13,12 @@ public class FontUtils {
 	}
 
 	public static int getStringWidth(boolean customFont, String str){
-		if (customFont) return GameSenseMod.fontRenderer.getStringWidth(str);
+		if (customFont) return Main.fontRenderer.getStringWidth(str);
 		else return mc.fontRenderer.getStringWidth(str);
 	}
 
 	public static int getFontHeight(boolean customFont){
-		if (customFont) return GameSenseMod.fontRenderer.getHeight();
+		if (customFont) return Main.fontRenderer.getHeight();
 		else return mc.fontRenderer.FONT_HEIGHT;
 	}
-}
-*/
+}*/

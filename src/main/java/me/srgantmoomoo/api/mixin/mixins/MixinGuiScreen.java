@@ -30,7 +30,7 @@ public class MixinGuiScreen {
 	@Inject(method = "renderToolTip", at = @At("HEAD"), cancellable = true)
 	public void renderToolTip(ItemStack stack, int x, int y, CallbackInfo info){
 		resource = new ResourceLocation("textures/gui/container/shulker_box.png");
-		if (ModuleManager.isModuleEnabled("Peek") && stack.getItem() instanceof ItemShulkerBox){
+		if (ModuleManager.isModuleEnabled("peek") && stack.getItem() instanceof ItemShulkerBox){
 			NBTTagCompound tagCompound = stack.getTagCompound();
 			if (tagCompound != null && tagCompound.hasKey("BlockEntityTag", 10)){
 				NBTTagCompound blockEntityTag = tagCompound.getCompoundTag("BlockEntityTag");
