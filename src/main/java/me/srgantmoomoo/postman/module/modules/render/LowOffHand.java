@@ -16,11 +16,12 @@ import net.minecraft.client.renderer.ItemRenderer;
 		public NumberSetting lowness = new NumberSetting("lowness", 0, 0, 1, 0.1);
 		
 		public LowOffHand() {
-			super ("lowOffHand", "lowers offhand", Keyboard.KEY_NONE, Category.RENDER);
+			super ("lowOffHand*", "lowers offhand", Keyboard.KEY_NONE, Category.RENDER);
 			this.addSettings(lowness);
 		}
 		
-		//MixinItemRenderer itemRenderer;
+		ItemRenderer itemRenderer = mc.entityRenderer.itemRenderer;
+
 		
 		@Override
 		public void onUpdate(){

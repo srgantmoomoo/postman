@@ -5,5 +5,7 @@
 "refmap": "mixins.postman.refmap.json",
 "mixins": [
 	"MixinGuiScreen",
+	"MixinMovementInputFromOptions",
+	"MixinEntityRenderer"
 ]
 }

@@ -24,7 +24,7 @@ import me.srgantmoomoo.postman.module.modules.player.AutoTotem;
 import me.srgantmoomoo.postman.module.modules.player.ChatBot;
 import me.srgantmoomoo.postman.module.modules.player.ChatWatermark;
 import me.srgantmoomoo.postman.module.modules.player.ChestStealer;
-//import me.srgantmoomoo.postman.module.modules.player.InventoryMove;
+import me.srgantmoomoo.postman.module.modules.player.InventoryMove;
 import me.srgantmoomoo.postman.module.modules.player.Jesus;
 import me.srgantmoomoo.postman.module.modules.player.NoPush;
 //import me.srgantmoomoo.postman.module.modules.player.NoSlow;
@@ -138,7 +138,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new FullBright());	
 		ModuleManager.modules.add(new HoleEsp());
 		ModuleManager.modules.add(new HoleTp());
-		//ModuleManager.modules.add(new InventoryMove());	
+		ModuleManager.modules.add(new InventoryMove());	
 		ModuleManager.modules.add(new Jesus());	
 		ModuleManager.modules.add(new LogOutSpot());
 		ModuleManager.modules.add(new LowOffHand());
