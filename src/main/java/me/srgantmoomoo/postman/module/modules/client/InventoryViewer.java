@@ -26,6 +26,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  */
 
 public class InventoryViewer extends Module {
+	boolean on;
 	public ModeSetting mode = new ModeSetting("mode", "normal", "normal", "compact", "none");
 	public NumberSetting xaxis = new NumberSetting("x-axis", 0, -1000, 1000, 10);
 	public NumberSetting yaxis = new NumberSetting("y-axis", 0, -1000, 1000, 10);
@@ -40,6 +41,7 @@ public class InventoryViewer extends Module {
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent event) {
 		ScaledResolution sr = new ScaledResolution(mc);
+		if(on) {
 		
 		if (event.getType() == RenderGameOverlayEvent.ElementType.HELMET) {
 			mc.renderEngine.bindTexture(inventorylogo);
@@ -47,6 +49,7 @@ public class InventoryViewer extends Module {
 			Gui.drawScaledCustomSizeModalRect((int) (sr.getScaledWidth() - 106 + xaxis.getValue()), (int) (2 + yaxis.getValue()), 50, 0, 50, 50, 50, 50, 50, 50);
 			}else if(mode.getMode().equals("compact")) {
 				Gui.drawScaledCustomSizeModalRect((int) (sr.getScaledWidth() - 102 + xaxis.getValue()), (int) (1 + yaxis.getValue()), 50, 0, 50, 50, 50, 50, 50, 50);
+			}
 			}
 		}
 	
@@ -57,7 +60,8 @@ public class InventoryViewer extends Module {
 	
 	public void drawInventory(int x, int y) {
 		ScaledResolution sr = new ScaledResolution(mc);
-
+		if(on) {
+		
 		if(mode.getMode().equals("normal")) {
 			GlStateManager.enableAlpha();
 			Gui.drawRect((int) (sr.getScaledWidth() - 163 + (float) xaxis.getValue()), (int) (1 + yaxis.getValue()), (int) (sr.getScaledWidth() - 1 + xaxis.getValue()), (int) (55 + yaxis.getValue()), 0x4079c2ec); // 0x2fffc3b1
@@ -87,6 +91,17 @@ public class InventoryViewer extends Module {
 				RenderHelper.disableStandardItemLighting();
 			}
 		}
+	}
+	}
+	
+	public void onEnable() {
+		super.onEnable();
+			on = true;
+	}
+	
+	public void onDisable() {
+		super.onDisable();
+			on = false;
 	}
 
 }

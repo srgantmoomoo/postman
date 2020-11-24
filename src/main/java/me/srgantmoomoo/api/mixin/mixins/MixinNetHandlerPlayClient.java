@@ -1,4 +1,4 @@
-package me.srgantmoomoo.api.mixin.mixins;
+/*package me.srgantmoomoo.api.mixin.mixins;
 
 import com.google.common.collect.Maps;
 import net.minecraft.client.Minecraft;
@@ -42,3 +42,4 @@ public abstract class MixinNetHandlerPlayClient{
 		} catch(Exception e){}
 	}
 }
+*/

@@ -3,6 +3,7 @@ package me.srgantmoomoo.api.mixin.mixins;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -51,11 +52,9 @@ public class MixinGuiScreen {
 					this.itemRender.zLevel = 300.0F;
 
 					//renders shulker gui
-					Minecraft.getMinecraft().renderEngine.bindTexture(resource);
-					GlStateManager.color(1, 1, 1, 1);
-					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect(x1, y1, 7, 5, 162, 66);
+					Gui.drawRect(x1, y1, x1 + 162, y1 + 66, 0xffffffff);
 					//renders name
-					fontRenderer.drawString(stack.getDisplayName(), x +6 , y - 28, Color.DARK_GRAY.getRGB());
+					fontRenderer.drawString(stack.getDisplayName(), x + 6 , y - 28, Color.DARK_GRAY.getRGB());
 					GlStateManager.enableBlend();
 					GlStateManager.enableAlpha();
 					GlStateManager.enableTexture2D();

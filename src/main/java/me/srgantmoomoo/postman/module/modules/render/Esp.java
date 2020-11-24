@@ -36,23 +36,23 @@ import net.minecraft.util.math.BlockPos;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
- * Enhanced by @SrgantMooMoo on 11/19/20.
  */
 
 public class Esp extends Module {
-	public BooleanSetting player = new BooleanSetting("player", true);
-	public BooleanSetting mob = new BooleanSetting("mob", false);
-	public BooleanSetting entityy = new BooleanSetting("entity", false);
-	public BooleanSetting item = new BooleanSetting("item", true);
+	public BooleanSetting chams = new BooleanSetting("chams", false);
+	public ModeSetting player = new ModeSetting("player", "box", "box", "outline", "off");
 	public ModeSetting storage = new ModeSetting("storage", "fill", "fill", "outline", "off");
+	public BooleanSetting mob = new BooleanSetting("mob", false);
+	public BooleanSetting item = new BooleanSetting("item", true);
 	public NumberSetting range = new NumberSetting("range", 100, 10, 260, 10);
+	public NumberSetting lineWidth = new NumberSetting("lineWidth", 3, 0, 10, 1);
 	public NumberSetting pRed = new NumberSetting("pRed", 0, 0, 250, 10);
 	public NumberSetting pGreen = new NumberSetting("pGreen", 121, 0, 250, 10);
 	public NumberSetting pBlue = new NumberSetting("pBlue", 194, 0, 250, 10);
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(player, storage, mob, entityy, item, range, pRed, pGreen, pBlue);
+		this.addSettings(chams, player, storage, mob, item, range, pRed, pGreen, pBlue, lineWidth);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
@@ -67,21 +67,16 @@ public class Esp extends Module {
     	
         mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
             defineEntityColors(entity);
-            if (player.isEnabled() && entity instanceof EntityPlayer){
-            	JTessellator.playerEsp(entity.getEntityBoundingBox(), 4, playerColor);
+            if (player.getMode().equals("box") && entity instanceof EntityPlayer){
+            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerColor);
             }
-            if (mob.isEnabled()){
+            if (mob.isEnabled() && player.getMode().equals("box")){
                 if (entity instanceof EntityCreature || entity instanceof EntitySlime){
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mobColor);
                 }
             }
             if (item.isEnabled() && entity instanceof EntityItem){
             	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
-            }
-            if (entityy.isEnabled()){
-                if (entity instanceof EntityEnderPearl || entity instanceof EntityXPOrb || entity instanceof EntityExpBottle || entity instanceof EntityEnderCrystal){
-                	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
-                }
             }
         });
         

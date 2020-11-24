@@ -6,6 +6,8 @@
 "mixins": [
 	"MixinGuiScreen",
 	"MixinMovementInputFromOptions",
+	"MixinRendererLivingEntity",
+	"MixinRenderer",
 	"MixinEntityRenderer"
 ]
 }
