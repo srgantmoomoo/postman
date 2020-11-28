@@ -3,6 +3,7 @@ package me.srgantmoomoo.api.event;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.client.event.PlayerSPPushOutOfBlocksEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -32,6 +33,10 @@ public class EventProcessor {
 		if (event.isCanceled()) return;
 		ModuleManager.onWorldRender(event);
 	}
+	
+	@SubscribeEvent
+	public void onPlayerPush(PlayerSPPushOutOfBlocksEvent event) {
+		Main.EVENT_BUS.post(event);}
 
 	public void init() {
 		Main.EVENT_BUS.subscribe(this);

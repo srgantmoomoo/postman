@@ -169,7 +169,7 @@ public class ModuleManager {
 		//ModuleManager.modules.add(new LightHud());	
 		//ModuleManager.modules.add(new DarkHud());
 		ModuleManager.modules.add(new DiscordRichPresence());
-		ModuleManager.modules.add(new ClickGuiModule());	
+		ModuleManager.modules.add(new ClickGuiModule());
 	 	ModuleManager.modules.add(new TabGui());	
 		
 		

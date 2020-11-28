@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.api.event.events.PacketEvent;
 import me.srgantmoomoo.api.event.events.PlayerMoveEvent;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.zero.alpine.listener.EventHandler;
@@ -24,13 +25,9 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class Freecam extends Module {
 	
-	public boolean on;
-	
 	public Freecam() {
 		super ("freecam", "gives an out of body expirience 0_0", Keyboard.KEY_NONE, Category.RENDER);
 	}
-	
-	private Minecraft mc = Minecraft.getMinecraft();
 
 	private double posX, posY, posZ;
 	private float pitch, yaw;
@@ -41,8 +38,8 @@ public class Freecam extends Module {
 	private Entity ridingEntity;
 
 	@Override
-	protected void enable() {
-		MinecraftForge.EVENT_BUS.register(this);
+	public void onEnable() {
+		Main.EVENT_BUS.subscribe(this);
 		if (mc.player != null) {
 			isRidingEntity = mc.player.getRidingEntity() != null;
 
@@ -69,8 +66,8 @@ public class Freecam extends Module {
 	}
 
 	@Override
-	protected void disable() {
-		MinecraftForge.EVENT_BUS.unregister(this);
+	public void onDisable() {
+		Main.EVENT_BUS.unsubscribe(this);
 		EntityPlayer localPlayer = mc.player;
 		if (localPlayer != null) {
 			mc.player.setPositionAndRotation(posX, posY, posZ, yaw, pitch);
