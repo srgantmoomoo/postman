@@ -14,13 +14,14 @@ import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.settings.BooleanSetting;
+import me.srgantmoomoo.postman.settings.ModeSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
 import me.srgantmoomoo.postman.settings.Setting;
 import me.srgantmoomoo.postman.settings.SettingsManager;
 import net.minecraft.client.Minecraft;
 
 /*
- * Written by @SrgantMooMoo on 11/17/20 with inspiration taken from @SebSb.
+ * Written by @SrgantMooMoo on 11/30/20 with inspiration taken from @SebSb.
  */
 
 public class SaveLoad {
@@ -55,14 +56,19 @@ public class SaveLoad {
 		for(Module mod : ModuleManager.modules) {
 		for(Setting setting : mod.settings) {
 			
-			//if(setting instanceof BooleanSetting) {
-				//BooleanSetting bool = (BooleanSetting) setting;
-				//toSave.add("SET:" + setting.name + ":" + bool.isEnabled());
-				//}
+			if(setting instanceof BooleanSetting) {
+				BooleanSetting bool = (BooleanSetting) setting;
+				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + bool.isEnabled());
+				}
 			
 			if(setting instanceof NumberSetting) {
-				NumberSetting sett = (NumberSetting) setting;
-				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + sett.getValue());
+				NumberSetting numb = (NumberSetting) setting;
+				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + numb.getValue());
+			}
+			
+			if(setting instanceof ModeSetting) {
+				ModeSetting mode = (ModeSetting) setting;
+				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
 			}
 			}
 		} 
@@ -104,20 +110,20 @@ public class SaveLoad {
 			}else if(s.toLowerCase().startsWith("set:")) {
 				Module m = Main.moduleManager.getModule(args[1]);
 				if(m != null) {
-					Setting setting = Main.instance.settingsManager.getSettingByName(m, args[2]);
-						if(setting != null) {
-						//if(setting instanceof BooleanSetting) {
-							//((BooleanSetting)setting).setEnabled(Boolean.parseBoolean(args[3]));
-						//}
-							
+					Setting setting = Main.settingsManager.getSettingByName(args[2]);
+					if(setting != null) {
+						if(setting instanceof BooleanSetting) {
+						((BooleanSetting)setting).setEnabled(Boolean.parseBoolean(args[3]));
+					}
 						if(setting instanceof NumberSetting) {
-							NumberSetting sett = (NumberSetting) setting;
-							sett.setValue(Double.parseDouble(args[3]));
-						}
-						
+						((NumberSetting)setting).setValue(Double.parseDouble(args[3]));
+					}
+						if(setting instanceof ModeSetting) {
+						((ModeSetting)setting).setMode(args[3]);
 						}
 					}
 				}
 			}
 		}
+	}
 }

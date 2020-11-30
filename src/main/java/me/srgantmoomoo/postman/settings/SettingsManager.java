@@ -39,10 +39,10 @@ public class SettingsManager {
 		return out;
 	}
 	
-	public Setting getSettingByName(Module mod, String name) {
+	public Setting getSettingByName(String name) {
 		for (Module m : ModuleManager.modules) {
 		for(Setting set : m.settings){
-			if(set.name.equalsIgnoreCase(name) && m.getName().equals(mod)) {
+			if(set.name.equalsIgnoreCase(name)) {
 				return set;
 			}
 			}
