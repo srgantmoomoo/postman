@@ -72,14 +72,12 @@ public class Esp extends Module {
     		      return; 
     		    float viewerYaw = (mc.getRenderManager()).playerViewY;
     		 mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).forEach(e -> {
-    		          JTessellator.prepareGL();
+    		          JTessellator.prepare();
     		          GlStateManager.pushMatrix();
     		          Vec3d pos = Surround.getInterpolatedPos(e, mc.getRenderPartialTicks());
     		          GlStateManager.translate(pos.x - (mc.getRenderManager()).renderPosX, pos.y - (mc.getRenderManager()).renderPosY, pos.z - (mc.getRenderManager()).renderPosZ);
     		          GlStateManager.glNormal3f(0.0F, 1.0F, 0.0F);
     		          GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
-    		          GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
-    		          GL11.glLineWidth(3.0F);
     		          
     		          GL11.glEnable(2848);
     		          if (e instanceof net.minecraft.entity.player.EntityPlayer) {
@@ -112,7 +110,7 @@ public class Esp extends Module {
     		              GL11.glEnd();
 
     		       } 
- 		          JTessellator.releaseGL();
+ 		          JTessellator.release();
  		          GlStateManager.popMatrix();
  		        });
          

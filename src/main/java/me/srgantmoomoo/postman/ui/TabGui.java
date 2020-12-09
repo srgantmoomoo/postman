@@ -111,8 +111,8 @@ public class TabGui extends Module {
 				if(count == category.moduleIndex && m.expanded) {
 					
 					if(!m.settings.isEmpty()) {
-						Gui.drawRect(sr.getScaledWidth() - 140, 59, sr.getScaledWidth() - 213, 59 + m.settings.size() * 14, 0x20000000);
-						Gui.drawRect(sr.getScaledWidth() - 140, 60 + m.index * 14 - 1, sr.getScaledWidth() - 213, 62 + m.index * 14 + 11, m.settings.get(m.index).focused ? 0xff79b0ec : 0xff79c2ec);
+						Gui.drawRect(sr.getScaledWidth() - 140, 59, sr.getScaledWidth() - 226, 59 + m.settings.size() * 14, 0x20000000);
+						Gui.drawRect(sr.getScaledWidth() - 140, 60 + m.index * 14 - 1, sr.getScaledWidth() - 226, 62 + m.index * 14 + 11, m.settings.get(m.index).focused ? 0xff79b0ec : 0xff79c2ec);
 					}
 					
 					int index = 0;
@@ -120,25 +120,25 @@ public class TabGui extends Module {
 						
 						if(setting instanceof BooleanSetting) {
 							BooleanSetting bool = (BooleanSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + (bool.isEnabled() ? "on" : "off"), sr.getScaledWidth() - 210, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + (bool.isEnabled() ? "on" : "off"), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
 						}
 						
 						if(setting instanceof NumberSetting) {
 							NumberSetting number = (NumberSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + number.getValue(), sr.getScaledWidth() - 210, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + number.getValue(), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
 						}
 						
 						if(setting instanceof ModeSetting) {
 							ModeSetting mode = (ModeSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + mode.getMode(), sr.getScaledWidth() - 210, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + mode.getMode(), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
 						}
 						
 						if(setting instanceof KeybindSetting) {
 							KeybindSetting keyBind = (KeybindSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + Keyboard.getKeyName(keyBind.code), sr.getScaledWidth() - 210, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + Keyboard.getKeyName(keyBind.code), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
 						}
 						
-						fr.drawStringWithShadow(setting.name, sr.getScaledWidth() - 210, 62 + index * 14, 0xffffffff);
+						fr.drawStringWithShadow(setting.name, sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
 						index++;
 					}
 				}
