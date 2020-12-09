@@ -172,7 +172,6 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ClickGuiModule());
 	 	ModuleManager.modules.add(new TabGui());	
 		
-		
 	}
 	
 	public static void onUpdate() {

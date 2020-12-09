@@ -18,12 +18,14 @@ import net.minecraft.util.math.BlockPos;
 //Credit 086 for Kami base Tessellator, heavily rewrote/modified by lukflug and others
 
 /*
- * modified by SrgantMooMoo on November 2nd, 2020
+ * Originally credited to 086 from Kami base Tessalator, heavily rewritten by lukflug and other
+ * Including bits from Osiris by finz0 
+ * modified and rewritten by SrgantMooMoo on November 2nd, 2020
  */
 
 public class JTessellator {
 	private static final Minecraft mc = Wrapper.getMinecraft();
-
+	
 	public static void drawBox(BlockPos blockPos, double height, JColor color, int sides) {
 		drawBox(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 1, height, 1, color, sides);
 	}
@@ -359,6 +361,30 @@ public class JTessellator {
 		double y=bp.getY();
 		double z=bp.getZ();
 		return new AxisAlignedBB(x,y,z,x+width,y+height,z+depth);
+	}
+	
+	 public static void prepareGL() {
+		GL11.glBlendFunc(770, 771);
+		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		GlStateManager.glLineWidth(1.5F);
+		GlStateManager.disableTexture2D();
+		GlStateManager.depthMask(false);
+		GlStateManager.enableBlend();
+		GlStateManager.disableDepth();
+		GlStateManager.disableLighting();
+		GlStateManager.disableCull();
+		GlStateManager.enableAlpha();
+		GlStateManager.color(1.0F, 1.0F, 1.0F);
+	}
+		 
+	public static void releaseGL() {
+		GlStateManager.enableCull();
+		GlStateManager.depthMask(true);
+		GlStateManager.enableTexture2D();
+		GlStateManager.enableBlend();
+		GlStateManager.enableDepth();
+		GlStateManager.color(1.0F, 1.0F, 1.0F);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	public static void prepare() {

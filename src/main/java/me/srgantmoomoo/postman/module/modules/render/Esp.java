@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.module.modules.render;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 import me.srgantmoomoo.api.event.events.RenderEvent;
 import me.srgantmoomoo.api.util.Wrapper;
@@ -9,17 +10,15 @@ import me.srgantmoomoo.api.util.render.JTessellator;
 import me.srgantmoomoo.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.module.modules.pvp.Surround;
 import me.srgantmoomoo.postman.settings.BooleanSetting;
 import me.srgantmoomoo.postman.settings.ModeSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.item.EntityEnderCrystal;
-import net.minecraft.entity.item.EntityEnderPearl;
-import net.minecraft.entity.item.EntityExpBottle;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -33,26 +32,28 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.tileentity.TileEntityShulkerBox;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
+ * Took a lot of Osiris by finz0 for the 2dEsp, probably gonna modify a few more things to make it look a little cooler :/
  */
 
 public class Esp extends Module {
 	public BooleanSetting chams = new BooleanSetting("chams", false);
-	public ModeSetting player = new ModeSetting("player", "box", "box", "outline", "off");
+	public ModeSetting mode = new ModeSetting("mode", "box", "box", "outline", "2dEsp", "off");
 	public ModeSetting storage = new ModeSetting("storage", "fill", "fill", "outline", "off");
 	public BooleanSetting mob = new BooleanSetting("mob", false);
 	public BooleanSetting item = new BooleanSetting("item", true);
 	public NumberSetting range = new NumberSetting("range", 100, 10, 260, 10);
 	public NumberSetting lineWidth = new NumberSetting("lineWidth", 3, 0, 10, 1);
-	public NumberSetting pRed = new NumberSetting("pRed", 0, 0, 250, 10);
-	public NumberSetting pGreen = new NumberSetting("pGreen", 121, 0, 250, 10);
-	public NumberSetting pBlue = new NumberSetting("pBlue", 194, 0, 250, 10);
+	public NumberSetting pRed = new NumberSetting("plyrRed", 0, 0, 250, 10);
+	public NumberSetting pGreen = new NumberSetting("plyrGreen", 121, 0, 250, 10);
+	public NumberSetting pBlue = new NumberSetting("plyrBlue", 194, 0, 250, 10);
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(chams, player, storage, mob, item, range, pRed, pGreen, pBlue, lineWidth);
+		this.addSettings(mode, chams, storage, mob, item, range, lineWidth, pRed, pGreen, pBlue);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
@@ -65,13 +66,64 @@ public class Esp extends Module {
 
     public void onWorldRender(RenderEvent event){
     	
+    	//add mobs and items too 2dEsp
+    	  if(mode.getMode().equals("2dEsp")) {
+         	 if ((mc.getRenderManager()).options == null)
+    		      return; 
+    		    float viewerYaw = (mc.getRenderManager()).playerViewY;
+    		 mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).forEach(e -> {
+    		          JTessellator.prepareGL();
+    		          GlStateManager.pushMatrix();
+    		          Vec3d pos = Surround.getInterpolatedPos(e, mc.getRenderPartialTicks());
+    		          GlStateManager.translate(pos.x - (mc.getRenderManager()).renderPosX, pos.y - (mc.getRenderManager()).renderPosY, pos.z - (mc.getRenderManager()).renderPosZ);
+    		          GlStateManager.glNormal3f(0.0F, 1.0F, 0.0F);
+    		          GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
+    		          GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
+    		          GL11.glLineWidth(3.0F);
+    		          
+    		          GL11.glEnable(2848);
+    		          if (e instanceof net.minecraft.entity.player.EntityPlayer) {
+    		        	    playerColor = new JColor((int) pRed.getValue(), (int) pGreen.getValue(), (int) pBlue.getValue());
+    		        	    GlStateManager.glLineWidth((float) lineWidth.getValue());
+    		        	 playerColor.glColor();
+    		              GL11.glBegin(2);
+    		              GL11.glVertex2d(-e.width, 0.0D);
+    		              GL11.glVertex2d(-e.width, (e.height / 4.0F));
+    		              GL11.glVertex2d(-e.width, 0.0D);
+    		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), 0.0D);
+    		              GL11.glEnd();
+    		              GL11.glBegin(2);
+    		              GL11.glVertex2d(-e.width, e.height);
+    		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), e.height);
+    		              GL11.glVertex2d(-e.width, e.height);
+    		              GL11.glVertex2d(-e.width, (e.height / 2.5F * 2.0F));
+    		              GL11.glEnd();
+    		              GL11.glBegin(2);
+    		              GL11.glVertex2d(e.width, e.height);
+    		              GL11.glVertex2d((e.width / 4.0F * 2.0F), e.height);
+    		              GL11.glVertex2d(e.width, e.height);
+    		              GL11.glVertex2d(e.width, (e.height / 2.5F * 2.0F));
+    		              GL11.glEnd();
+    		              GL11.glBegin(2);
+    		              GL11.glVertex2d(e.width, 0.0D);
+    		              GL11.glVertex2d((e.width / 4.0F * 2.0F), 0.0D);
+    		              GL11.glVertex2d(e.width, 0.0D);
+    		              GL11.glVertex2d(e.width, (e.height / 4.0F));
+    		              GL11.glEnd();
+
+    		       } 
+ 		          JTessellator.releaseGL();
+ 		          GlStateManager.popMatrix();
+ 		        });
+         
+     }
         mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
             defineEntityColors(entity);
-            if (player.getMode().equals("box") && entity instanceof EntityPlayer){
+            if (mode.getMode().equals("box") && entity instanceof EntityPlayer) {
             	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerColor);
             }
-            if (mob.isEnabled() && player.getMode().equals("box")){
-                if (entity instanceof EntityCreature || entity instanceof EntitySlime){
+            if (mob.isEnabled() && mode.getMode().equals("box")){
+                if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mobColor);
                 }
             }
