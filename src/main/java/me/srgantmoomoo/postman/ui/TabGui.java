@@ -99,14 +99,14 @@ public class TabGui extends Module {
 		int count = 0;
 		if (modules.size() == 0)
 			return;
+		Gui.drawRect(sr.getScaledWidth() - 139, 59, sr.getScaledWidth() - 61, 59 + modules.size() * 14 , 0x20000000);
+		Gui.drawRect(sr.getScaledWidth() - 61, 60 + category.moduleIndex * 14 - 1, sr.getScaledWidth() - 139, 62 + category.moduleIndex * 14 + 11, 0xff79c2ec);
 		
-			Gui.drawRect(sr.getScaledWidth() - 139, 59, sr.getScaledWidth() - 61, 59 + modules.size() * 14 , 0x20000000);
-		
-			Gui.drawRect(sr.getScaledWidth() - 61, 60 + category.moduleIndex * 14 - 1, sr.getScaledWidth() - 139, 62 + category.moduleIndex * 14 + 11, 0xff79c2ec);
-			
 			count = 0;
 			for(Module m : modules) {
+				if (!m.getName().equals("Esp2dHelper")) {
 				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 14, 0xffffffff);
+				}
 				
 				if(count == category.moduleIndex && m.expanded) {
 					
@@ -149,10 +149,12 @@ public class TabGui extends Module {
 				
 				} */
 				
-				if(m.toggled) 
+				if(!m.getName().equals("Esp2dHelper") && m.toggled) 
 					Gui.drawRect(sr.getScaledWidth() - 139, 60 + count * 14, sr.getScaledWidth() - 138, 72 + count * 14, 0xffffffff);
+				if (!m.getName().equals("Esp2dHelper")) {
 				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 14, 0xffffffff);
 				count++;
+				}
 			}
 			
 			//description
@@ -253,19 +255,12 @@ public class TabGui extends Module {
 						category.moduleIndex++;
 				}
 			}else {
-				if(category.name.equals("Anarchy.bar")) {
-					if(currentTab >= Category.values().length - 1) {
-						currentTab = 0;
-						}else
-							currentTab = 0;
-				}else {
 					if(tab) {
 				if(currentTab >= Category.values().length - 1) {
 					currentTab = 0;
 					}else
 						currentTab++;
 					}
-				}
 			}
 		}
 		
@@ -308,7 +303,7 @@ public class TabGui extends Module {
 				if(expanded && modules.size() !=0) {
 					Module module = modules.get(category.moduleIndex);
 					
-					if(!module.getName().equals("tabGui")) {
+					if(!module.getName().equals("tabGui") && !module.getName().equals("Esp2dHelper")) {
 					if(!module.expanded && !module.settings.isEmpty()) 
 						module.expanded = true;
 					}
@@ -340,7 +335,7 @@ public class TabGui extends Module {
 			if(tab) {
 				if(expanded && modules.size() !=0) {
 					Module module = modules.get(category.moduleIndex);
-						if(!module.getName().equals("tabGui")) {
+						if(!module.getName().equals("tabGui") && !module.getName().equals("Esp2dHelper")) {
 							if(!module.expanded && !module.settings.isEmpty())
 							module.toggle();
 						}

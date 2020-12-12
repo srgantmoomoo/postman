@@ -16,8 +16,8 @@ public class Hey extends Module {
 	public BooleanSetting hey = new BooleanSetting("hey", true);
 	public BooleanSetting coords = new BooleanSetting("coords", true);
 	public BooleanSetting right = new BooleanSetting("right", false);
-	public NumberSetting xaxis = new NumberSetting("x-axis", 80, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("y-axis", 100, -1000, 1000, 10);
+	public NumberSetting xaxis = new NumberSetting("xaxis", 80, -1000, 1000, 10);
+	public NumberSetting yaxis = new NumberSetting("yaxis", 100, -1000, 1000, 10);
 	public boolean on;
 	
 	public Hey() {

@@ -8,6 +8,7 @@
 	"MixinMovementInputFromOptions",
 	"MixinRendererLivingEntity",
 	"MixinRenderer",
-	"MixinEntityRenderer"
+	"MixinEntityRenderer",
+	"MixinGuiMainMenu"
 ]
 }

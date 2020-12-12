@@ -15,8 +15,8 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Info extends Module {
-	public NumberSetting xaxis = new NumberSetting("x-axis", 0, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("y-axis", 0, -1000, 1000, 10);
+	public NumberSetting xaxis = new NumberSetting("xaxis", 0, -1000, 1000, 10);
+	public NumberSetting yaxis = new NumberSetting("yaxis", 0, -1000, 1000, 10);
 	public boolean on;
 	
 	public Info() {

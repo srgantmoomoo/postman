@@ -18,8 +18,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ArrayListt extends Module {
 	public ModeSetting sort = new ModeSetting("sort", "left", "left", "right");
-	public NumberSetting xaxis = new NumberSetting("x-axis", 0, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("y-axis", 70, -1000, 1000, 10);
+	public NumberSetting xaxis = new NumberSetting("xaxis", 0, -1000, 1000, 10);
+	public NumberSetting yaxis = new NumberSetting("yaxis", 70, -1000, 1000, 10);
 	public BooleanSetting right = new BooleanSetting("right", false);
 	public boolean on;
 	//default, min, max, increments.
@@ -39,14 +39,18 @@ public class ArrayListt extends Module {
 				int y = 1;
 				final int[] counter = { 1 };
 				for (Module mod : Main.moduleManager.getModuleList()) {
-					if (!mod.getName().equalsIgnoreCase("watermark") && !mod.getName().equalsIgnoreCase("armorHud")
+					if (!mod.getName().equalsIgnoreCase("watermark") 
+							&& !mod.getName().equalsIgnoreCase("armorHud")
 							&& !mod.getName().equalsIgnoreCase("hey!")
 							&& !mod.getName().equalsIgnoreCase("tabGui")
 							&& !mod.getName().equalsIgnoreCase("info")
-							&& !mod.getName().equalsIgnoreCase("inventoryViewer")
+							&& !mod.getName().equalsIgnoreCase("inventory")
 							&& !mod.getName().equalsIgnoreCase("postman")
 							&& !mod.getName().equalsIgnoreCase("keyStrokes")
-							&& !mod.getName().equalsIgnoreCase("arrayList") && mod.isToggled()) {
+							&& !mod.getName().equalsIgnoreCase("arrayList")
+							&& !mod.getName().equalsIgnoreCase("discordRp")
+							&& !mod.getName().equalsIgnoreCase("Esp2dHelper") 
+							&& mod.isToggled()) {
 						if(right.isEnabled()) {
 						fr.drawStringWithShadow(mod.getName() + "<", sr.getScaledWidth() - fr.getStringWidth(">" + mod.getName()) - (float) xaxis.getValue(), y + (float) yaxis.getValue(), rainbow(counter[0] * -300));
 						}else

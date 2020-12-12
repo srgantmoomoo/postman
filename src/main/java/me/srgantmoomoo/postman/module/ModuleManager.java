@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.srgantmoomoo.api.event.events.RenderEvent;
+import me.srgantmoomoo.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.module.modules.client.ArmorHud;
 import me.srgantmoomoo.postman.module.modules.client.ArrayListt;
@@ -171,6 +172,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new DiscordRichPresence());
 		ModuleManager.modules.add(new ClickGuiModule());
 	 	ModuleManager.modules.add(new TabGui());	
+		ModuleManager.modules.add(new Esp2dHelper());	
 		
 	}
 	
@@ -223,8 +225,10 @@ public class ModuleManager {
 		List<Module> modules = new ArrayList<Module>();
 		
 		for(Module m : ModuleManager.modules) {
+			if(!m.getName().equals("Esp2dHelper")) {
 			if(m.getCateogory() == c)
 				modules.add(m);
+		}
 		}
 		return modules;
 	}

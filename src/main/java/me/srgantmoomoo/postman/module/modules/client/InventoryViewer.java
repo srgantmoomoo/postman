@@ -28,8 +28,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class InventoryViewer extends Module {
 	boolean on;
 	public ModeSetting mode = new ModeSetting("mode", "normal", "normal", "compact", "none");
-	public NumberSetting xaxis = new NumberSetting("x-axis", 0, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("y-axis", 0, -1000, 1000, 10);
+	public NumberSetting xaxis = new NumberSetting("xaxis", 0, -1000, 1000, 10);
+	public NumberSetting yaxis = new NumberSetting("yaxis", 0, -1000, 1000, 10);
 	
 	public InventoryViewer() {
 		super ("inventory", "draws line to entitys and/or sotrage", Keyboard.KEY_NONE, Category.CLIENT);

@@ -41,7 +41,7 @@ import net.minecraft.util.math.Vec3d;
 
 public class Esp extends Module {
 	public BooleanSetting chams = new BooleanSetting("chams", false);
-	public ModeSetting mode = new ModeSetting("mode", "box", "box", "outline", "2dEsp", "off");
+	public ModeSetting entityMode = new ModeSetting("entity", "box", "box", "outline", "2dEsp", "off");
 	public ModeSetting storage = new ModeSetting("storage", "fill", "fill", "outline", "off");
 	public BooleanSetting mob = new BooleanSetting("mob", false);
 	public BooleanSetting item = new BooleanSetting("item", true);
@@ -53,7 +53,7 @@ public class Esp extends Module {
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(mode, chams, storage, mob, item, range, lineWidth, pRed, pGreen, pBlue);
+		this.addSettings(entityMode, storage, chams, mob, item, range, lineWidth, pRed, pGreen, pBlue);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
@@ -64,63 +64,63 @@ public class Esp extends Module {
     JColor containerBox;
     int opacityGradient;
 
-    public void onWorldRender(RenderEvent event){
+    public void onWorldRender(RenderEvent event) {
     	
     	//add mobs and items too 2dEsp
-    	  if(mode.getMode().equals("2dEsp")) {
-         	 if ((mc.getRenderManager()).options == null)
-    		      return; 
-    		    float viewerYaw = (mc.getRenderManager()).playerViewY;
-    		 mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).forEach(e -> {
-    		          JTessellator.prepare();
-    		          GlStateManager.pushMatrix();
-    		          Vec3d pos = Surround.getInterpolatedPos(e, mc.getRenderPartialTicks());
-    		          GlStateManager.translate(pos.x - (mc.getRenderManager()).renderPosX, pos.y - (mc.getRenderManager()).renderPosY, pos.z - (mc.getRenderManager()).renderPosZ);
-    		          GlStateManager.glNormal3f(0.0F, 1.0F, 0.0F);
-    		          GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
-    		          
-    		          GL11.glEnable(2848);
-    		          if (e instanceof net.minecraft.entity.player.EntityPlayer) {
-    		        	    playerColor = new JColor((int) pRed.getValue(), (int) pGreen.getValue(), (int) pBlue.getValue());
-    		        	    GlStateManager.glLineWidth((float) lineWidth.getValue());
-    		        	 playerColor.glColor();
-    		              GL11.glBegin(2);
-    		              GL11.glVertex2d(-e.width, 0.0D);
-    		              GL11.glVertex2d(-e.width, (e.height / 4.0F));
-    		              GL11.glVertex2d(-e.width, 0.0D);
-    		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), 0.0D);
-    		              GL11.glEnd();
-    		              GL11.glBegin(2);
-    		              GL11.glVertex2d(-e.width, e.height);
-    		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), e.height);
-    		              GL11.glVertex2d(-e.width, e.height);
-    		              GL11.glVertex2d(-e.width, (e.height / 2.5F * 2.0F));
-    		              GL11.glEnd();
-    		              GL11.glBegin(2);
-    		              GL11.glVertex2d(e.width, e.height);
-    		              GL11.glVertex2d((e.width / 4.0F * 2.0F), e.height);
-    		              GL11.glVertex2d(e.width, e.height);
-    		              GL11.glVertex2d(e.width, (e.height / 2.5F * 2.0F));
-    		              GL11.glEnd();
-    		              GL11.glBegin(2);
-    		              GL11.glVertex2d(e.width, 0.0D);
-    		              GL11.glVertex2d((e.width / 4.0F * 2.0F), 0.0D);
-    		              GL11.glVertex2d(e.width, 0.0D);
-    		              GL11.glVertex2d(e.width, (e.height / 4.0F));
-    		              GL11.glEnd();
+  	 /* if(entityMode.getMode().equals("2dEsp")) {
+       	 if ((mc.getRenderManager()).options == null)
+  		      return; 
+  		    float viewerYaw = (mc.getRenderManager()).playerViewY;
+  		 mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).forEach(e -> {
+  		          JTessellator.prepare();
+  		          GlStateManager.pushMatrix();
+  		          Vec3d pos = Surround.getInterpolatedPos(e, mc.getRenderPartialTicks());
+  		          GlStateManager.translate(pos.x - (mc.getRenderManager()).renderPosX, pos.y - (mc.getRenderManager()).renderPosY, pos.z - (mc.getRenderManager()).renderPosZ);
+  		          GlStateManager.glNormal3f(0.0F, 1.0F, 0.0F);
+  		          GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
+  		          
+  		          GL11.glEnable(2848);
+  		          if (e instanceof net.minecraft.entity.player.EntityPlayer) {
+  		        	    playerColor = new JColor((int) pRed.getValue(), (int) pGreen.getValue(), (int) pBlue.getValue(), opacityGradient);
+  		        	    GlStateManager.glLineWidth((float) lineWidth.getValue());
+  		        	 playerColor.glColor();
+  		              GL11.glBegin(2);
+  		              GL11.glVertex2d(-e.width, 0.0D);
+  		              GL11.glVertex2d(-e.width, (e.height / 4.0F));
+  		              GL11.glVertex2d(-e.width, 0.0D);
+  		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), 0.0D);
+  		              GL11.glEnd();
+  		              GL11.glBegin(2);
+  		              GL11.glVertex2d(-e.width, e.height);
+  		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), e.height);
+  		              GL11.glVertex2d(-e.width, e.height);
+  		              GL11.glVertex2d(-e.width, (e.height / 2.5F * 2.0F));
+  		              GL11.glEnd();
+  		              GL11.glBegin(2);
+  		              GL11.glVertex2d(e.width, e.height);
+  		              GL11.glVertex2d((e.width / 4.0F * 2.0F), e.height);
+  		              GL11.glVertex2d(e.width, e.height);
+  		              GL11.glVertex2d(e.width, (e.height / 2.5F * 2.0F));
+  		              GL11.glEnd();
+  		              GL11.glBegin(2);
+  		              GL11.glVertex2d(e.width, 0.0D);
+  		              GL11.glVertex2d((e.width / 4.0F * 2.0F), 0.0D);
+  		              GL11.glVertex2d(e.width, 0.0D);
+  		              GL11.glVertex2d(e.width, (e.height / 4.0F));
+  		              GL11.glEnd();
 
-    		       } 
- 		          JTessellator.release();
- 		          GlStateManager.popMatrix();
- 		        });
-         
-     }
+  		       } 
+  		          JTessellator.release();
+  		          GlStateManager.popMatrix();
+  		        });
+   } */
+    	
         mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
             defineEntityColors(entity);
-            if (mode.getMode().equals("box") && entity instanceof EntityPlayer) {
+            if (entityMode.getMode().equals("box") && entity instanceof EntityPlayer) {
             	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerColor);
             }
-            if (mob.isEnabled() && mode.getMode().equals("box")){
+            if (mob.isEnabled() && entityMode.getMode().equals("box")){
                 if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mobColor);
                 }

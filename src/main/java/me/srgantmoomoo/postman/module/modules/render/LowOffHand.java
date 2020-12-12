@@ -25,7 +25,7 @@ import net.minecraft.client.renderer.ItemRenderer;
 		
 		@Override
 		public void onUpdate(){
-			//itemRenderer.equippedProgressMainHand = (float) lowness.getValue();
+			itemRenderer.equippedProgressOffHand = (float) lowness.getValue();
 		}
 	
 }
