@@ -36,7 +36,6 @@ import net.minecraft.util.math.Vec3d;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
- * Took a lot of Osiris by finz0 for the 2dEsp, probably gonna modify a few more things to make it look a little cooler :/
  */
 
 public class Esp extends Module {
@@ -53,7 +52,7 @@ public class Esp extends Module {
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(entityMode, storage, chams, mob, item, range, lineWidth, pRed, pGreen, pBlue);
+		this.addSettings(entityMode, mob, item, storage, chams, range, lineWidth, pRed, pGreen, pBlue);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
@@ -66,66 +65,17 @@ public class Esp extends Module {
 
     public void onWorldRender(RenderEvent event) {
     	
-    	//add mobs and items too 2dEsp
-  	 /* if(entityMode.getMode().equals("2dEsp")) {
-       	 if ((mc.getRenderManager()).options == null)
-  		      return; 
-  		    float viewerYaw = (mc.getRenderManager()).playerViewY;
-  		 mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).forEach(e -> {
-  		          JTessellator.prepare();
-  		          GlStateManager.pushMatrix();
-  		          Vec3d pos = Surround.getInterpolatedPos(e, mc.getRenderPartialTicks());
-  		          GlStateManager.translate(pos.x - (mc.getRenderManager()).renderPosX, pos.y - (mc.getRenderManager()).renderPosY, pos.z - (mc.getRenderManager()).renderPosZ);
-  		          GlStateManager.glNormal3f(0.0F, 1.0F, 0.0F);
-  		          GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
-  		          
-  		          GL11.glEnable(2848);
-  		          if (e instanceof net.minecraft.entity.player.EntityPlayer) {
-  		        	    playerColor = new JColor((int) pRed.getValue(), (int) pGreen.getValue(), (int) pBlue.getValue(), opacityGradient);
-  		        	    GlStateManager.glLineWidth((float) lineWidth.getValue());
-  		        	 playerColor.glColor();
-  		              GL11.glBegin(2);
-  		              GL11.glVertex2d(-e.width, 0.0D);
-  		              GL11.glVertex2d(-e.width, (e.height / 4.0F));
-  		              GL11.glVertex2d(-e.width, 0.0D);
-  		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), 0.0D);
-  		              GL11.glEnd();
-  		              GL11.glBegin(2);
-  		              GL11.glVertex2d(-e.width, e.height);
-  		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), e.height);
-  		              GL11.glVertex2d(-e.width, e.height);
-  		              GL11.glVertex2d(-e.width, (e.height / 2.5F * 2.0F));
-  		              GL11.glEnd();
-  		              GL11.glBegin(2);
-  		              GL11.glVertex2d(e.width, e.height);
-  		              GL11.glVertex2d((e.width / 4.0F * 2.0F), e.height);
-  		              GL11.glVertex2d(e.width, e.height);
-  		              GL11.glVertex2d(e.width, (e.height / 2.5F * 2.0F));
-  		              GL11.glEnd();
-  		              GL11.glBegin(2);
-  		              GL11.glVertex2d(e.width, 0.0D);
-  		              GL11.glVertex2d((e.width / 4.0F * 2.0F), 0.0D);
-  		              GL11.glVertex2d(e.width, 0.0D);
-  		              GL11.glVertex2d(e.width, (e.height / 4.0F));
-  		              GL11.glEnd();
-
-  		       } 
-  		          JTessellator.release();
-  		          GlStateManager.popMatrix();
-  		        });
-   } */
-    	
         mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
             defineEntityColors(entity);
             if (entityMode.getMode().equals("box") && entity instanceof EntityPlayer) {
             	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerColor);
             }
-            if (mob.isEnabled() && entityMode.getMode().equals("box")){
+            if (mob.isEnabled() && !entityMode.getMode().equals("outline") && !entityMode.getMode().equals("off")){
                 if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mobColor);
                 }
             }
-            if (item.isEnabled() && entity instanceof EntityItem){
+            if (item.isEnabled() && !entityMode.getMode().equals("off") && entity instanceof EntityItem){
             	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
             }
         });

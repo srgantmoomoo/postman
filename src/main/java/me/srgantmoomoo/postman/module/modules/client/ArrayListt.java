@@ -21,12 +21,13 @@ public class ArrayListt extends Module {
 	public NumberSetting xaxis = new NumberSetting("xaxis", 0, -1000, 1000, 10);
 	public NumberSetting yaxis = new NumberSetting("yaxis", 70, -1000, 1000, 10);
 	public BooleanSetting right = new BooleanSetting("right", false);
+	public BooleanSetting showHidden = new BooleanSetting("showHidden", false);
 	public boolean on;
 	//default, min, max, increments.
 	
 	public ArrayListt() {
 		super("arrayList", "classic hud", Keyboard.KEY_NONE, Category.CLIENT);
-		this.addSettings(right, xaxis, yaxis);
+		this.addSettings(showHidden, right, xaxis, yaxis);
 	}
 	private Minecraft mc = Minecraft.getMinecraft();
 	ScaledResolution sr = new ScaledResolution(mc);
@@ -39,7 +40,7 @@ public class ArrayListt extends Module {
 				int y = 1;
 				final int[] counter = { 1 };
 				for (Module mod : Main.moduleManager.getModuleList()) {
-					if (!mod.getName().equalsIgnoreCase("watermark") 
+					if (!mod.getName().equalsIgnoreCase("watermark") && !showHidden.isEnabled() 
 							&& !mod.getName().equalsIgnoreCase("armorHud")
 							&& !mod.getName().equalsIgnoreCase("hey!")
 							&& !mod.getName().equalsIgnoreCase("tabGui")
@@ -58,6 +59,17 @@ public class ArrayListt extends Module {
 						y += fr.FONT_HEIGHT;
 						counter[0]++;
 				}
+					
+					if(showHidden.isEnabled()) {
+						if (!mod.getName().equalsIgnoreCase("Esp2dHelper") && mod.isToggled()) {
+							if(right.isEnabled()) {
+							fr.drawStringWithShadow(mod.getName() + "<", sr.getScaledWidth() - fr.getStringWidth(">" + mod.getName()) - (float) xaxis.getValue(), y + (float) yaxis.getValue(), rainbow(counter[0] * -300));
+							}else
+								fr.drawStringWithShadow(">" + mod.getName(), 1 + (float) xaxis.getValue(), y + (float) yaxis.getValue(), rainbow(counter[0] * -300));
+							y += fr.FONT_HEIGHT;
+							counter[0]++;
+					}
+					}
 			}
 		}
 		}

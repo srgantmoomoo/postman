@@ -28,7 +28,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
 
     @Inject(method = "doRender", at = @At("HEAD"))
     private <T extends EntityLivingBase> void injectChamsPre(final T a, final double b, final double c, final double d, final float e, final float f, final CallbackInfo g) {
-        if (ModuleManager.getModuleByName("esp's") != null && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
+        if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
             GL11.glEnable(32823);
             GL11.glPolygonOffset(1.0f, -1000000.0f);
         }
@@ -36,7 +36,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
 
     @Inject(method = "doRender", at = @At("RETURN"))
     private <T extends EntityLivingBase> void injectChamsPost(final T a, final double b, final double c, final double d, final float e, final float f, final CallbackInfo g) {
-        if (ModuleManager.getModuleByName("esp's") != null && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
+        if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
             GL11.glPolygonOffset(1.0f, 1000000.0f);
             GL11.glDisable(32823);
         }

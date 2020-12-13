@@ -1,5 +1,7 @@
 package me.srgantmoomoo.postman.settings;
 
+import me.srgantmoomoo.postman.Main;
+
 /*
  * Written by @SrgantMooMoo on 11/17/20.
  */
@@ -19,6 +21,10 @@ public class KeybindSetting extends Setting {
 	
 	public void setKeyCode(int code) {
 		this.code = code;
+		
+		 if(Main.saveLoad != null) {
+				Main.saveLoad.save();
+			}
 	}
 
 }

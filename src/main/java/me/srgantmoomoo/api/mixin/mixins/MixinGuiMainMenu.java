@@ -11,6 +11,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 
 @Mixin({GuiMainMenu.class})
 public class MixinGuiMainMenu extends GuiScreen {
@@ -21,12 +22,12 @@ public class MixinGuiMainMenu extends GuiScreen {
 	    drawModalRectWithCustomSizedTexture(2, 2, 0.0F, 0.0F, 60, 60 - 2, 60, (60 - 2));
 	FontRenderer fr = mc.fontRenderer;
     //Gui.drawRect(2, 2, 4 + 4, 4, 1963986960);
-    fr.drawStringWithShadow("postman", 2, 61, 0xff79c2ec);
-    fr.drawStringWithShadow("made by SrgantMooMoo!", 2, 70, 0xffffffff);
-    fr.drawStringWithShadow("ur on version 0.114!", 2, 78, 0xffffffff);
-    fr.drawStringWithShadow("postmanclient.blue", 2, 86, 0xff0202ff);
-    fr.drawStringWithShadow("https://github.com/moomooooo/postman.git5", 2, 94, 0xff0202ff);
-    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 2, 102, 0xff0202ff);
+    fr.drawStringWithShadow(TextFormatting.ITALIC + "postman", 64, 26, 0xff79c2ec);
+    fr.drawStringWithShadow("made by SrgantMooMoo!", 64, 34, 0xffffffff);
+    fr.drawStringWithShadow("ur on version 0.114!", 64, 42, 0xffffffff);
+    fr.drawStringWithShadow("postmanclient.blue", 64, 2, 0xff0202ff);
+    fr.drawStringWithShadow("https://github.com/moomooooo/postman.git5", 64, 10, 0xff0202ff);
+    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 64, 18, 0xff0202ff);
 	}
 }
 

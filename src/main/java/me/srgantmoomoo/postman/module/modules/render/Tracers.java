@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.api.event.events.RenderEvent;
 import me.srgantmoomoo.api.util.Wrapper;
+import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;

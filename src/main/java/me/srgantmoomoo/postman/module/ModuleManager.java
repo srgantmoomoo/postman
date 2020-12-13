@@ -37,7 +37,7 @@ import me.srgantmoomoo.postman.module.modules.pvp.Aura;
 import me.srgantmoomoo.postman.module.modules.pvp.AutoClicker;
 import me.srgantmoomoo.postman.module.modules.pvp.AutoCrystal;
 import me.srgantmoomoo.postman.module.modules.pvp.AutoLog;
-import me.srgantmoomoo.postman.module.modules.pvp.BowSpam;
+import me.srgantmoomoo.postman.module.modules.pvp.FastUse;
 import me.srgantmoomoo.postman.module.modules.pvp.HoleTp;
 import me.srgantmoomoo.postman.module.modules.pvp.LogOutSpot;
 import me.srgantmoomoo.postman.module.modules.pvp.Surround;
@@ -127,7 +127,6 @@ public class ModuleManager {
 		ModuleManager.modules.add(new AutoLog());	
 		ModuleManager.modules.add(new AutoTotem());	
 		ModuleManager.modules.add(new Backdoor2b2t());
-		ModuleManager.modules.add(new BowSpam());	
 		ModuleManager.modules.add(new ChatBot());	
 		ModuleManager.modules.add(new ChatWatermark());
 		ModuleManager.modules.add(new ChestStealer());
@@ -135,6 +134,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Dupe());	
 		ModuleManager.modules.add(new ElytraFly());	
 		ModuleManager.modules.add(new Esp());
+		ModuleManager.modules.add(new FastUse());
 		ModuleManager.modules.add(new Freecam());	
 		ModuleManager.modules.add(new FullBright());	
 		ModuleManager.modules.add(new HoleEsp());
@@ -149,11 +149,11 @@ public class ModuleManager {
 		ModuleManager.modules.add(new NoHurtCam());
 		//ModuleManager.modules.add(new NoSlow());
 		ModuleManager.modules.add(new Peek());
-		ModuleManager.modules.add(new PlayerClone());
-		ModuleManager.modules.add(new Tracers());	
+		ModuleManager.modules.add(new PlayerClone());	
 		ModuleManager.modules.add(new Scaffold());	
 		ModuleManager.modules.add(new Sprint());		
 		ModuleManager.modules.add(new Surround());	
+		ModuleManager.modules.add(new Tracers());
 		ModuleManager.modules.add(new Velocity());	
 		ModuleManager.modules.add(new ViewModel());	
 		ModuleManager.modules.add(new Weather());	
