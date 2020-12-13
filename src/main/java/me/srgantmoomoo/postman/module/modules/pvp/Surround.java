@@ -94,7 +94,7 @@ public class Surround extends Module {
         if (mc.player == null){
             return;
         }
-
+        
         if (obbyHotbarSlot != cachedHotbarSlot && cachedHotbarSlot != -1){
             mc.player.inventory.currentItem = cachedHotbarSlot;
         }
@@ -120,6 +120,11 @@ public class Surround extends Module {
 
         if (mc.player.posY <= 0){
             return;
+        }
+        
+        if(noObby) {
+        	disable();
+        	return;
         }
 
         if (firstRun ){

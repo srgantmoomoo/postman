@@ -34,35 +34,35 @@ public class ClickGui extends GuiScreen {
 		drawDefaultBackground();
 		// PLAYER ------
 		if(playerOn) {
-			Gui.drawRect(80, 1, 160, 194, 0xe0ffffff);
+			Gui.drawRect(80, 1, 160, 192, 0xe0ffffff);
 		}else {
 		Gui.drawRect(80, 1, 160, 14, 0xe0ffffff);
 		}
 		
 		// RENDER ------
 		if(renderOn) {
-		Gui.drawRect(180, 1, 260, 248, 0xe0ffffff);
+		Gui.drawRect(180, 1, 260, 246, 0xe0ffffff);
 		}else {
 			Gui.drawRect(180, 1, 260, 14, 0xe0ffffff);
 		}
 		
 		// PVP ------
 		if(pvpOn) {
-			Gui.drawRect(280, 1, 360, 176, 0xe0ffffff);
+			Gui.drawRect(280, 1, 360, 174, 0xe0ffffff);
 		}else {
 			Gui.drawRect(280, 1, 360, 14, 0xe0ffffff);
 		}
 		
 		// EXPLOITS ------
 		if(exploitsOn) {
-		Gui.drawRect(380, 1, 460, 140, 0xe0ffffff);
+		Gui.drawRect(380, 1, 460, 138, 0xe0ffffff);
 		}else {
 			Gui.drawRect(380, 1, 460, 14, 0xe0ffffff);
 		}
 		
 		// CLIENT ------
 		if(clientOn) {
-		Gui.drawRect(480, 1, 560, 194, 0xe0ffffff);
+		Gui.drawRect(480, 1, 560, 210, 0xe0ffffff);
 		}else {
 			Gui.drawRect(480, 1, 560, 14, 0xe0ffffff);
 		}
@@ -111,7 +111,7 @@ public class ClickGui extends GuiScreen {
 		 * PVP MODULES DRAWN ------
 		 */
 		if(pvpOn) {
-			String[] buttons = { "aimBot", "aura", "autoClicker", "autoCrystal", "autoLog", "bowSpam", "holeTp", "logOutSpot", "surround" };		
+			String[] buttons = { "aimBot", "aura", "autoClicker", "autoCrystal", "autoLog", "fastUse", "holeTp", "logOutSpot", "surround" };		
 			
 			int count = 0;
 			for(String name : buttons) {
@@ -149,7 +149,7 @@ public class ClickGui extends GuiScreen {
 		 * CLIENT MODULES DRAWN ------
 		 */
 		if(clientOn) {
-			String[] buttons = { "watermark", "arrayList", "info", "inventory", "hey!", "armorHud", "keyStrokes", "discordRp", "clickGui", "tabGui" };		
+			String[] buttons = { "watermark", "arrayList", "info", "inventory", "hey!", "armorHud", "keyStrokes", "discordRp", "clickGui", "tabGui" , "mainMenuInfo"};		
 			
 			int count = 0;
 			for(String name : buttons) {
@@ -561,7 +561,7 @@ public class ClickGui extends GuiScreen {
 		 */
 		if(clientOn) {
 			
-			String[] buttons = { "watermark", "arrayList", "info", "inventory", "hey!", "armorHud", "keyStrokes", "discordRp", "clickGui", "tabGui" };	
+			String[] buttons = { "watermark", "arrayList", "info", "inventory", "hey!", "armorHud", "keyStrokes", "discordRp", "clickGui", "tabGui", "mainMenuInfo"};	
 			
 			int count = 0;
 			for(String name : buttons) {
@@ -606,6 +606,10 @@ public class ClickGui extends GuiScreen {
 						break;
 						
 					case "tabGui":
+						break;
+						
+					case "mainMenuInfo":
+						ModuleManager.getModuleByName("mainMenuInfo").toggle();
 						break;
 					}
 				}

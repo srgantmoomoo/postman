@@ -13,6 +13,7 @@ import me.srgantmoomoo.postman.module.modules.client.Hey;
 import me.srgantmoomoo.postman.module.modules.client.Info;
 import me.srgantmoomoo.postman.module.modules.client.InventoryViewer;
 import me.srgantmoomoo.postman.module.modules.client.KeyStrokes;
+import me.srgantmoomoo.postman.module.modules.client.MainMenuInfo;
 import me.srgantmoomoo.postman.module.modules.client.Watermark;
 import me.srgantmoomoo.postman.module.modules.exploits.AntiHunger;
 import me.srgantmoomoo.postman.module.modules.exploits.Backdoor2b2t;
@@ -172,6 +173,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new DiscordRichPresence());
 		ModuleManager.modules.add(new ClickGuiModule());
 	 	ModuleManager.modules.add(new TabGui());	
+	 	ModuleManager.modules.add(new MainMenuInfo());
 		ModuleManager.modules.add(new Esp2dHelper());	
 		
 	}

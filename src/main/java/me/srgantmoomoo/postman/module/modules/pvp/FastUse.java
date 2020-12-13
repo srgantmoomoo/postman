@@ -27,15 +27,15 @@ public class FastUse extends Module {
 	@Override
 	public void onUpdate() {
 		
-		if (bow.isEnabled() && mc.player.isHandActive() && mc.player.getItemInUseMaxCount() >= 3) {
+		if (bow.isEnabled() && mc.player.isHandActive() && mc.player.getItemInUseMaxCount() >= 3 && (mc.player.getHeldItemMainhand().getItem() == Items.BOW || mc.player.getHeldItemOffhand().getItem() == Items.BOW)) {
 			mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, mc.player.getHorizontalFacing()));
 			mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(mc.player.getActiveHand()));
 			mc.player.stopActiveHand();
 			}
 		
-		if (xpBottle.isEnabled() &&
-				mc.player != null && (mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE || mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE))
+		if (xpBottle.isEnabled() && mc.player != null && (mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE || mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE)) {
 				mc.rightClickDelayTimer = 0; 
+		}
 		}
 	
 }

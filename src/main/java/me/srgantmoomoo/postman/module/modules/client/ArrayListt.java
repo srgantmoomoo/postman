@@ -50,6 +50,8 @@ public class ArrayListt extends Module {
 							&& !mod.getName().equalsIgnoreCase("keyStrokes")
 							&& !mod.getName().equalsIgnoreCase("arrayList")
 							&& !mod.getName().equalsIgnoreCase("discordRp")
+							&& !mod.getName().equalsIgnoreCase("mainMenuInfo") 
+							&& !mod.getName().equalsIgnoreCase("clickGui")
 							&& !mod.getName().equalsIgnoreCase("Esp2dHelper") 
 							&& mod.isToggled()) {
 						if(right.isEnabled()) {
