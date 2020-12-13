@@ -24,14 +24,14 @@ public class MixinGuiMainMenu extends GuiScreen {
     //Gui.drawRect(2, 2, 4 + 4, 4, 1963986960);
     fr.drawStringWithShadow(TextFormatting.ITALIC + "postman", 64, 26, 0xff79c2ec);
     fr.drawStringWithShadow("made by SrgantMooMoo!", 64, 34, 0xffffffff);
-    fr.drawStringWithShadow("ur on version 0.114!", 64, 42, 0xffffffff);
-    fr.drawStringWithShadow("postmanclient.blue", 64, 2, 0xff0202ff);
+    fr.drawStringWithShadow("ur on version" + " " + Refrence.VERSION + "!", 64, 42, 0xffffffff);
+    fr.drawStringWithShadow("website coming soon!", 64, 2, 0xff0202ff);
     fr.drawStringWithShadow("https://github.com/moomooooo/postman.git5", 64, 10, 0xff0202ff);
     fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 64, 18, 0xff0202ff);
 	}
 }
 
-//postmanclient.blue
+//s889fd2js900
 //https://discord.gg/Jd8EmEuhb5
 //https://github.com/moomooooo/postman.git
 //without shadow 0xff0000d8
