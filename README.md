@@ -17,11 +17,13 @@ thank you,
 # credits
 **base stuff**
 
+
 event system - *ZeroMemes, Alpine 1.5* https://github.com/ZeroMemes/Alpine
 
 discord rpc - *club.minnced* (honestly cant find this anywhere, only found the jar on some wierd webstie lol)
 
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding :/**
+
 
 outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg
 
@@ -31,10 +33,13 @@ peek & surround & autoArmor & holeTp - *gamesense* https://github.com/IUDevman/g
 
 **a lot of inspiration from tutorials and what not take from these creators, so thank you so much to them!**
 
+
 intent - https://www.youtube.com/channel/UCFCz8KPvRLjZXaQl8epjp5A
 
 sebsb - https://www.youtube.com/channel/UChsMQm_9PXITsUhBkypP_1A
 
 superblaubeere27 - https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg
+
+
 
 ... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. srgantmoomoo#1052
