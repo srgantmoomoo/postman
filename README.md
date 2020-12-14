@@ -26,7 +26,6 @@ thank you,
 - 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
 
 **a lot of inspiration from tutorials and what not take from these creators, so thank you so much to them**
-- intent - https://www.youtube.com/channel/UCFCz8KPvRLjZXaQl8epjp5A
 - sebsb - https://www.youtube.com/channel/UChsMQm_9PXITsUhBkypP_1A
 - superblaubeere27 - https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg
 
