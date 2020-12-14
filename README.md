@@ -15,14 +15,14 @@ thank you,
 -SrgantMooMoo
 
 # credits
-######base stuff
+######base stuff######
 - event system - *ZeroMemes, Alpine 1.5* https://github.com/ZeroMemes/Alpine
 - discord rpc - *club.minnced* (honestly cant find this anywhere, only found the jar on some wierd webstie lol)
-######bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding
+######bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding######
 - outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg
 - peek & surround & autoArmor & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client 0_0
 - 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
-######a lot of inspiration from tutorials and what not take from these creators, so thank you so much to them!
+######a lot of inspiration from tutorials and what not take from these creators, so thank you so much to them!######
 - intent - https://www.youtube.com/channel/UCFCz8KPvRLjZXaQl8epjp5A
 - sebsb - https://www.youtube.com/channel/UChsMQm_9PXITsUhBkypP_1A
 - superblaubeere27 - https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg
