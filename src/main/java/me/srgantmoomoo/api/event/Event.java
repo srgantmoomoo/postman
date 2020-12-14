@@ -2,8 +2,8 @@ package me.srgantmoomoo.api.event;
 
 import me.zero.alpine.type.Cancellable;
 
-public class GameSenseEvent extends Cancellable {
+public class Event extends Cancellable {
 
-	public GameSenseEvent(){
+	public Event(){
 	}
 }

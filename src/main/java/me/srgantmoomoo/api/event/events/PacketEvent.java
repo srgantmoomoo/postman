@@ -1,9 +1,9 @@
 package me.srgantmoomoo.api.event.events;
 
-import me.srgantmoomoo.api.event.GameSenseEvent;
+import me.srgantmoomoo.api.event.Event;
 import net.minecraft.network.Packet;
 
-public class PacketEvent extends GameSenseEvent {
+public class PacketEvent extends Event {
 
 	private final Packet packet;
 

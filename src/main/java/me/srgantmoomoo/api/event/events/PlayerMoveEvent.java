@@ -1,9 +1,9 @@
 package me.srgantmoomoo.api.event.events;
 
-import me.srgantmoomoo.api.event.GameSenseEvent;
+import me.srgantmoomoo.api.event.Event;
 import net.minecraft.entity.MoverType;
 
-public class PlayerMoveEvent extends GameSenseEvent {
+public class PlayerMoveEvent extends Event {
 
 	MoverType type;
 	public double x;
