@@ -25,7 +25,7 @@ thank you,
 - peek & surround & autoArmor & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client. 0_0
 - 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
 
-**a lot of inspiration from tutorials and what not take from these creators, so thank you so much to them.**
+**a lot of inspiration from tutorials and what not taken from these creators, so thank you so much to them.**
 - sebsb - https://www.youtube.com/channel/UChsMQm_9PXITsUhBkypP_1A.
 - superblaubeere27 - https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
 
