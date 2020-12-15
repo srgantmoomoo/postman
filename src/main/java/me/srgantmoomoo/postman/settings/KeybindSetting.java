@@ -16,15 +16,11 @@ public class KeybindSetting extends Setting {
 	}
 	
 	public int getKeyCode() {
-		return code;
+		return this.code;
 	}
 	
 	public void setKeyCode(int code) {
 		this.code = code;
-		
-		 if(Main.saveLoad != null) {
-				Main.saveLoad.save();
-			}
 	}
 
 }

@@ -51,9 +51,7 @@ public class MixinGuiScreen {
 					int y1 = y - 30;
 					this.itemRender.zLevel = 300.0F;
 
-					//renders shulker gui
 					Gui.drawRect(x1, y1, x1 + 162, y1 + 66, 0xffffffff);
-					//renders name
 					fontRenderer.drawString(stack.getDisplayName(), x + 6 , y - 28, Color.DARK_GRAY.getRGB());
 					GlStateManager.enableBlend();
 					GlStateManager.enableAlpha();
@@ -61,7 +59,6 @@ public class MixinGuiScreen {
 					GlStateManager.enableLighting();
 					GlStateManager.enableDepth();
 					RenderHelper.enableGUIStandardItemLighting();
-					//renders items
 					for (int i = 0; i < nonnulllist.size(); i++){
 						int iX = x + 5 + i % 9 * 18;
 						int iY = y + 1 + (i / 9 - 1) * 18;

@@ -72,10 +72,10 @@ public class SaveLoad {
 				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
 			}
 			
-			if(setting instanceof KeybindSetting) {
-				KeybindSetting key = (KeybindSetting) setting;
-				toSave.add("BIND:" + mod.getName() + ":" + setting.name + ":" + key.getKeyCode());
-			}
+			//if(setting instanceof KeybindSetting) {
+				//KeybindSetting key = (KeybindSetting) setting;
+				//toSave.add("BIND:" + mod.getName() + ":" + setting.name + ":" + key.getKeyCode());
+			//}
 			}
 		} 
 		
@@ -129,7 +129,7 @@ public class SaveLoad {
 					//}
 						
 						//if(setting instanceof KeybindSetting) {
-						//((KeybindSetting)setting).setKeyCode(Integer.parseInt(args[3]));
+						//((KeybindSetting)setting).se(Integer.parseInt(args[3]));
 					//}
 					}
 				}

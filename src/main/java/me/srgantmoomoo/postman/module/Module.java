@@ -66,7 +66,12 @@ public abstract class Module {
 		return keyCode.code;
 	}
 	
-	public void setKey(int saveKey) {
+	public void setKey(int key) {
+		this.keyCode.code = key;
+		
+		 if(Main.saveLoad != null) {
+				Main.saveLoad.save();
+			}
 	} 
 	
 	public boolean isToggled() {

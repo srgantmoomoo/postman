@@ -85,8 +85,7 @@ public class ArrayListt extends Module {
 	public void onDisable() {
 		super.onDisable();
 		on = false;
-	}
-	
+	}			
 	public static int rainbow(int delay) {
 		double rainbowState = Math.ceil((System.currentTimeMillis() + delay) / 20.0);
 		rainbowState %= 360;
