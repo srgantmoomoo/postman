@@ -459,7 +459,7 @@ public class ClickGui extends GuiScreen {
 		 */
 		if(pvpOn) {
 			
-			String[] buttons = { "aimBot", "aura", "autoClicker", "autoCrystal", "autoLog", "bowSpam", "holeTp", "logOutSpot", "surround" };		
+			String[] buttons = { "aimBot", "aura", "autoClicker", "autoCrystal", "autoLog", "fastUse", "holeTp", "logOutSpot", "surround" };		
 			
 			int count = 0;
 			for(String name : buttons) {
@@ -488,8 +488,8 @@ public class ClickGui extends GuiScreen {
 						ModuleManager.getModuleByName("autoLog").toggle();
 						break;
 						
-					case "bowSpam":
-						ModuleManager.getModuleByName("bowSpam").toggle();
+					case "fastUse":
+						ModuleManager.getModuleByName("fastUse").toggle();
 						break;
 						
 					case "holeTp":

@@ -71,11 +71,6 @@ public class SaveLoad {
 				ModeSetting mode = (ModeSetting) setting;
 				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
 			}
-			
-			//if(setting instanceof KeybindSetting) {
-				//KeybindSetting key = (KeybindSetting) setting;
-				//toSave.add("BIND:" + mod.getName() + ":" + setting.name + ":" + key.getKeyCode());
-			//}
 			}
 		} 
 		
@@ -121,15 +116,11 @@ public class SaveLoad {
 						if(setting instanceof BooleanSetting) {
 						((BooleanSetting)setting).setEnabled(Boolean.parseBoolean(args[3]));
 					}
-						//if(setting instanceof NumberSetting) {
-						//((NumberSetting)setting).setValue(Double.parseDouble(args[3]));
-					//}
+						if(setting instanceof NumberSetting) {
+						((NumberSetting)setting).setValue(Double.parseDouble(args[3]));
+					}
 						//if(setting instanceof ModeSetting) {
 						//((ModeSetting)setting).setMode(args[3]);
-					//}
-						
-						//if(setting instanceof KeybindSetting) {
-						//((KeybindSetting)setting).se(Integer.parseInt(args[3]));
 					//}
 					}
 				}
