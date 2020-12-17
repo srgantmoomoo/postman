@@ -16,12 +16,12 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class ViewModel extends Module {
 	public BooleanSetting cancelEating = new BooleanSetting("noEat", false);
-	public NumberSetting LeftX = new NumberSetting("LeftX", 0, -2, 2, 0.1);
-	public NumberSetting LeftY = new NumberSetting("LeftY", 0, -2, 2, 0.1);
-	public NumberSetting LeftZ = new NumberSetting("LeftZ", 0, -2, 2, 0.1);
-	public NumberSetting RightX = new NumberSetting("RightX", 0, -2, 2, 0.1);
-	public NumberSetting RightY = new NumberSetting("RightY", 0, -2, 2, 0.1);
-	public NumberSetting RightZ = new NumberSetting("RightZ", 0, -2, 2, 0.1);
+	public NumberSetting LeftX = new NumberSetting("LeftX", this, 0, -2, 2, 0.1);
+	public NumberSetting LeftY = new NumberSetting("LeftY", this, 0, -2, 2, 0.1);
+	public NumberSetting LeftZ = new NumberSetting("LeftZ", this, 0, -2, 2, 0.1);
+	public NumberSetting RightX = new NumberSetting("RightX", this, 0, -2, 2, 0.1);
+	public NumberSetting RightY = new NumberSetting("RightY", this, 0, -2, 2, 0.1);
+	public NumberSetting RightZ = new NumberSetting("RightZ", this, 0, -2, 2, 0.1);
 	
 	public ViewModel() {
 		super("viewModel", "classic hud", Keyboard.KEY_NONE, Category.RENDER);

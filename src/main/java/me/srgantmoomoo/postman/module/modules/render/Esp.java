@@ -44,11 +44,11 @@ public class Esp extends Module {
 	public ModeSetting storage = new ModeSetting("storage", "fill", "fill", "outline", "off");
 	public BooleanSetting mob = new BooleanSetting("mob", false);
 	public BooleanSetting item = new BooleanSetting("item", true);
-	public NumberSetting range = new NumberSetting("range", 100, 10, 260, 10);
-	public NumberSetting lineWidth = new NumberSetting("lineWidth", 3, 0, 10, 1);
-	public NumberSetting pRed = new NumberSetting("plyrRed", 0, 0, 250, 10);
-	public NumberSetting pGreen = new NumberSetting("plyrGreen", 121, 0, 250, 10);
-	public NumberSetting pBlue = new NumberSetting("plyrBlue", 194, 0, 250, 10);
+	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
+	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
+	public NumberSetting pRed = new NumberSetting("plyrRed", this, 0, 0, 250, 10);
+	public NumberSetting pGreen = new NumberSetting("plyrGreen", this, 121, 0, 250, 10);
+	public NumberSetting pBlue = new NumberSetting("plyrBlue", this, 194, 0, 250, 10);
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);

@@ -37,9 +37,9 @@ public class Surround extends Module {
 	public BooleanSetting rotate = new BooleanSetting("rotate", true);
 	public BooleanSetting disableOnJump = new BooleanSetting("offJump", false);
 	public BooleanSetting centerPlayer = new BooleanSetting("autoCenter", false);
-	public NumberSetting tickDelay = new NumberSetting("tickDelay", 5, 0, 10, 1);
-	public NumberSetting timeOutTicks = new NumberSetting("timeOutTicks", 40, 1, 100, 10);
-	public NumberSetting blocksPerTick = new NumberSetting("blocksPerTick", 4, 0, 8, 1);
+	public NumberSetting tickDelay = new NumberSetting("tickDelay", this, 5, 0, 10, 1);
+	public NumberSetting timeOutTicks = new NumberSetting("timeOutTicks", this, 40, 1, 100, 10);
+	public NumberSetting blocksPerTick = new NumberSetting("blocksPerTick", this, 4, 0, 8, 1);
 	
 	public Surround() {
 		super ("surround", "automatically surrounds u in obby", Keyboard.KEY_NONE, Category.PVP);

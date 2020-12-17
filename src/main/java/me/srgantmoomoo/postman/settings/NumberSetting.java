@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.settings;
 
 import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.module.Module;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -15,8 +16,9 @@ public class NumberSetting extends Setting {
   
   public double increment;
   
-  public NumberSetting(String name, double value, double minimun, double maximum, double increment) {
+  public NumberSetting(String name, Module parent, double value, double minimun, double maximum, double increment) {
     this.name = name;
+    this.parent = parent;
     this.value = value;
     this.minimun = minimun;
     this.maximum = maximum;
@@ -28,9 +30,9 @@ public class NumberSetting extends Setting {
   }
   
   public void setValue(double value) {
-    //double precision = 1.0D / this.increment;
-    this.value = value;
-    //this.value = Math.round(Math.max(this.minimun, Math.min(this.maximum, value)) * precision) / precision;
+    double precision = 1.0D / this.increment;
+    //this.value = value;
+    this.value = Math.round(Math.max(this.minimun, Math.min(this.maximum, value)) * precision) / precision;
     
     if(Main.saveLoad != null) {
 		Main.saveLoad.save();

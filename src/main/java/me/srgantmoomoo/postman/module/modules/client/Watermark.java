@@ -13,8 +13,8 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Watermark extends Module {
-	public NumberSetting xaxis = new NumberSetting("xaxis", 0, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("yaxis", 0, -1000, 1000, 10);
+	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
+	public NumberSetting yaxis = new NumberSetting("yaxis", this, 0, -1000, 1000, 10);
 	private Minecraft mc = Minecraft.getMinecraft();
 	public boolean on;
 	

@@ -30,9 +30,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 	
 public class TargetHud extends Module {
-	public NumberSetting posX = new NumberSetting("xaxis", 0, -1000, 1000, 10);
-	public NumberSetting posY = new NumberSetting("yaxis", 0, -1000, 1000, 10);
-	public NumberSetting range = new NumberSetting("range", 100, 0, 260, 10);
+	public NumberSetting posX = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
+	public NumberSetting posY = new NumberSetting("yaxis", this, 0, -1000, 1000, 10);
+	public NumberSetting range = new NumberSetting("range", this, 100, 0, 260, 10);
 	boolean on;
 		
 	public TargetHud() {

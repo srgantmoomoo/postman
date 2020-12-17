@@ -19,8 +19,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * Written by @SrgantMooMoo on November 7th, 2020.
  */
 public class KeyStrokes extends Module {
-	public NumberSetting xaxis = new NumberSetting("xaxis", 60, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("yaxis", 160, -1000, 1000, 10);
+	public NumberSetting xaxis = new NumberSetting("xaxis", this, 60, -1000, 1000, 10);
+	public NumberSetting yaxis = new NumberSetting("yaxis", this, 160, -1000, 1000, 10);
 	public boolean enabled;
 	
 	public KeyStrokes() {

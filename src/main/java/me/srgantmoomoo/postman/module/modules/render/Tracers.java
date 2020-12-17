@@ -25,9 +25,9 @@ public class Tracers extends Module {
 	public BooleanSetting hostileMobs = new BooleanSetting("hostiles", false);
 	public BooleanSetting passiveMobs = new BooleanSetting("passives", false);
 	public BooleanSetting players = new BooleanSetting("players", true);
-	public NumberSetting pRed = new NumberSetting("pRed", 0.0, 0.0, 1.0, 0.1);
-	public NumberSetting pGreen = new NumberSetting("pGreen", 0.6, 0.0, 1.0, 0.1);
-	public NumberSetting pBlue = new NumberSetting("pBlue", 1.0, 0.0, 1.0, 0.1);
+	public NumberSetting pRed = new NumberSetting("pRed", this, 0.0, 0.0, 1.0, 0.1);
+	public NumberSetting pGreen = new NumberSetting("pGreen", this, 0.6, 0.0, 1.0, 0.1);
+	public NumberSetting pBlue = new NumberSetting("pBlue", this, 1.0, 0.0, 1.0, 0.1);
 	
 	public Tracers() {
 		super ("tracers", "draws line to entitys and/or sotrage", Keyboard.KEY_NONE, Category.RENDER);

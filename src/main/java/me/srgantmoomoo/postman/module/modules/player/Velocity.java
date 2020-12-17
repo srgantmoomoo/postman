@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 
 public class Velocity extends Module {
-	public NumberSetting percent = new NumberSetting("percent", 0, 0, 100, 10);
+	public NumberSetting percent = new NumberSetting("percent", this, 0, 0, 100, 10);
 	
 	private Minecraft mc = Minecraft.getMinecraft();
 	

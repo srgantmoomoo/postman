@@ -18,8 +18,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ArrayListt extends Module {
 	public ModeSetting sort = new ModeSetting("sort", "left", "left", "right");
-	public NumberSetting xaxis = new NumberSetting("xaxis", 0, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("yaxis", 70, -1000, 1000, 10);
+	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
+	public NumberSetting yaxis = new NumberSetting("yaxis", this, 70, -1000, 1000, 10);
 	public BooleanSetting right = new BooleanSetting("right", false);
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", false);
 	public boolean on;

@@ -25,13 +25,13 @@ import net.minecraft.util.math.BlockPos;
  */
 
 public class HoleEsp extends Module {
-	public NumberSetting size = new NumberSetting("size", 0.1, 0.0, 1.0, 0.1);
-	public NumberSetting bedrockR = new NumberSetting("bedrockR", 0, 0, 250, 10);
-	public NumberSetting bedrockG = new NumberSetting("bedrockG", 200, 0, 250, 10);
-	public NumberSetting bedrockB = new NumberSetting("bedrockB", 250, 0, 250, 10);
-	public NumberSetting obbyR = new NumberSetting("obbyR", 0, 0, 250, 10);
-	public NumberSetting obbyG = new NumberSetting("obbyG", 121, 0, 250, 10);
-	public NumberSetting obbyB = new NumberSetting("obbyB", 194, 0, 250, 10);
+	public NumberSetting size = new NumberSetting("size", this, 0.1, 0.0, 1.0, 0.1);
+	public NumberSetting bedrockR = new NumberSetting("bedrockR", this, 0, 0, 250, 10);
+	public NumberSetting bedrockG = new NumberSetting("bedrockG", this, 200, 0, 250, 10);
+	public NumberSetting bedrockB = new NumberSetting("bedrockB", this, 250, 0, 250, 10);
+	public NumberSetting obbyR = new NumberSetting("obbyR", this, 0, 0, 250, 10);
+	public NumberSetting obbyG = new NumberSetting("obbyG", this, 121, 0, 250, 10);
+	public NumberSetting obbyB = new NumberSetting("obbyB", this, 194, 0, 250, 10);
 	
 	public HoleEsp() {
 		super ("holeEsp", "shows an esp in holes in the ground", Keyboard.KEY_NONE, Category.RENDER);
