@@ -43,10 +43,6 @@ repositories {
 		url = 'http://repo.spongepowered.org/maven/'
 	}
 	maven {
-		name = 'impactdevelopment-repo'
-		url = 'https://impactdevelopment.github.io/maven/'
-	}
-	maven {
 		name = 'swt-repo'
 		url = "http://maven-eclipse.github.io/maven"
 	}

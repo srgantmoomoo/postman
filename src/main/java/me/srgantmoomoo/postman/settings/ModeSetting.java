@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.module.Module;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -14,8 +15,9 @@ public class ModeSetting extends Setting {
   
   public List<String> modes;
   
-  public ModeSetting(String name, String defaultMode, String... modes) {
+  public ModeSetting(String name, Module parent, String defaultMode, String... modes) {
     this.name = name;
+    this.parent = parent;
     this.modes = Arrays.asList(modes);
     this.index = this.modes.indexOf(defaultMode);
   }

@@ -17,11 +17,11 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ArrayListt extends Module {
-	public ModeSetting sort = new ModeSetting("sort", "left", "left", "right");
+	public ModeSetting sort = new ModeSetting("sort", this, "left", "left", "right");
 	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
 	public NumberSetting yaxis = new NumberSetting("yaxis", this, 70, -1000, 1000, 10);
-	public BooleanSetting right = new BooleanSetting("right", false);
-	public BooleanSetting showHidden = new BooleanSetting("showHidden", false);
+	public BooleanSetting right = new BooleanSetting("right", this, false);
+	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 	public boolean on;
 	//default, min, max, increments.
 	

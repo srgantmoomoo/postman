@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.settings;
 
 import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.module.Module;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -9,8 +10,9 @@ import me.srgantmoomoo.postman.Main;
 public class BooleanSetting extends Setting {
   public boolean enabled;
   
-  public BooleanSetting(String name, boolean enabled) {
+  public BooleanSetting(String name, Module parent, boolean enabled) {
     this.name = name;
+    this.parent = parent;
     this.enabled = enabled;
   }
   

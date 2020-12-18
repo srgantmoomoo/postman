@@ -22,9 +22,9 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class Aura extends Module {
 	public NumberSetting rangeA = new NumberSetting("range", this, 4, 1, 6, 0.5);
-	public BooleanSetting passiveMobsA = new BooleanSetting("passives", false);
-	public BooleanSetting hostileMobsA = new BooleanSetting("hostiles", false);
-	public BooleanSetting playersA = new BooleanSetting("players", true);
+	public BooleanSetting passiveMobsA = new BooleanSetting("passives", this, false);
+	public BooleanSetting hostileMobsA = new BooleanSetting("hostiles", this, false);
+	public BooleanSetting playersA = new BooleanSetting("players", this, true);
 	private Minecraft mc = Minecraft.getMinecraft();
 	
 	public boolean on;

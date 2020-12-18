@@ -12,7 +12,7 @@ import net.minecraft.client.Minecraft;
  */
 
 public class NoHurtCam extends Module {
-	public ModeSetting mode = new ModeSetting("mode", "normal", "normal", "sikeLol");
+	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "sikeLol");
 	
 	public NoHurtCam() {
 		super ("noHurtCam", "hurt animation isnt rendered", Keyboard.KEY_NONE, Category.RENDER);

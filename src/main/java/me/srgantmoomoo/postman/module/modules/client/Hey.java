@@ -13,9 +13,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Hey extends Module {
-	public BooleanSetting hey = new BooleanSetting("hey", true);
-	public BooleanSetting coords = new BooleanSetting("coords", true);
-	public BooleanSetting right = new BooleanSetting("right", false);
+	public BooleanSetting hey = new BooleanSetting("hey", this, true);
+	public BooleanSetting coords = new BooleanSetting("coords", this, true);
+	public BooleanSetting right = new BooleanSetting("right", this, false);
 	public NumberSetting xaxis = new NumberSetting("xaxis", this, 80, -1000, 1000, 10);
 	public NumberSetting yaxis = new NumberSetting("yaxis", this, 100, -1000, 1000, 10);
 	public boolean on;

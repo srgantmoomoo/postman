@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.settings.ModeSetting;
 import net.minecraft.client.Minecraft;
 
 public class Sprint extends Module {
-	public ModeSetting mode = new ModeSetting("mode", "normal", "normal", "sickomode");
+	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "sickomode");
 	
 	private Minecraft mc = Minecraft.getMinecraft();
 	public boolean on;

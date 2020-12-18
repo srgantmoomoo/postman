@@ -29,11 +29,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ClassicHud extends Module {
 	public boolean enabled;
 	public boolean constant;
-	public ModeSetting arrayList = new ModeSetting("arrayList", "betic", "betic", "size");
-	public ModeSetting inventory = new ModeSetting("inv", "normal", "normal", "compact", "none");
-	public BooleanSetting coords = new BooleanSetting("coords", true);
-	public BooleanSetting hey = new BooleanSetting("hey", true);
-	public BooleanSetting postman = new BooleanSetting("thepostman", true);
+	public ModeSetting arrayList = new ModeSetting("arrayList", this, "betic", "betic", "size");
+	public ModeSetting inventory = new ModeSetting("inv", this, "normal", "normal", "compact", "none");
+	public BooleanSetting coords = new BooleanSetting("coords", this, true);
+	public BooleanSetting hey = new BooleanSetting("hey", this, true);
+	public BooleanSetting postman = new BooleanSetting("thepostman", this, true);
 
 	public ClassicHud() {
 		super("hud", "classic hud", Keyboard.KEY_NONE, Category.CLIENT);

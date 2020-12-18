@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ArmorHud extends Module {
 	public boolean on;
-	public BooleanSetting ez = new BooleanSetting("ez", false);
+	public BooleanSetting ez = new BooleanSetting("ez", this, false);
 	
 	public ArmorHud() {
 		super ("armorHud", "shows ur armor values on top of hotbar", Keyboard.KEY_NONE, Category.CLIENT);

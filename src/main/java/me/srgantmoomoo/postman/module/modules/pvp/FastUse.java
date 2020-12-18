@@ -15,8 +15,8 @@ import net.minecraft.util.math.BlockPos;
 public class FastUse extends Module {
 	
 	public boolean plswork;
-	public BooleanSetting xpBottle = new BooleanSetting("xpBottle", true);
-	public BooleanSetting bow = new BooleanSetting("bow", true);
+	public BooleanSetting xpBottle = new BooleanSetting("xpBottle", this, true);
+	public BooleanSetting bow = new BooleanSetting("bow", this, true);
 	
 	public FastUse() {
 		super ("fastUse", "lol bow go brrrrrrrr", Keyboard.KEY_NONE, Category.PVP);

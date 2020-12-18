@@ -16,7 +16,7 @@ import net.minecraft.inventory.ContainerHorseInventory;
 import net.minecraft.inventory.IInventory;
 
 public class ChestStealer extends Module {
-	public ModeSetting mode = new ModeSetting("mode", "steal", "steal", "drop");
+	public ModeSetting mode = new ModeSetting("mode", this, "steal", "steal", "drop");
 	
 	public TimeHelper time = new TimeHelper();
 	private Minecraft mc = Minecraft.getMinecraft();

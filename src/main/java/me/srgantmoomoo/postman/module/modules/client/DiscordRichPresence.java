@@ -7,17 +7,17 @@ import me.srgantmoomoo.api.util.misc.Discord;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 
-public class DiscordRichPresence extends Module{
+public class DiscordRichPresence extends Module {
 	
 	public DiscordRichPresence() {
 		super ("discordRp", "shows ur playing postman on discord", Keyboard.KEY_NONE, Category.CLIENT);
 	}
 	
-		public void onEnable(){
+		public void onEnable() {
 	    Discord.startRPC();
 	}
 	
-	public void onDisable(){
+	public void onDisable() {
 	    Discord.stopRPC();
 		}
 	}

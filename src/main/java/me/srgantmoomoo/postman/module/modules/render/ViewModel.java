@@ -15,7 +15,7 @@ import net.minecraft.util.EnumHandSide;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ViewModel extends Module {
-	public BooleanSetting cancelEating = new BooleanSetting("noEat", false);
+	public BooleanSetting cancelEating = new BooleanSetting("noEat", this, false);
 	public NumberSetting LeftX = new NumberSetting("LeftX", this, 0, -2, 2, 0.1);
 	public NumberSetting LeftY = new NumberSetting("LeftY", this, 0, -2, 2, 0.1);
 	public NumberSetting LeftZ = new NumberSetting("LeftZ", this, 0, -2, 2, 0.1);

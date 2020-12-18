@@ -22,9 +22,9 @@ import net.minecraft.util.math.Vec3d;
  */
 
 public class Tracers extends Module {
-	public BooleanSetting hostileMobs = new BooleanSetting("hostiles", false);
-	public BooleanSetting passiveMobs = new BooleanSetting("passives", false);
-	public BooleanSetting players = new BooleanSetting("players", true);
+	public BooleanSetting hostileMobs = new BooleanSetting("hostiles", this, false);
+	public BooleanSetting passiveMobs = new BooleanSetting("passives", this, false);
+	public BooleanSetting players = new BooleanSetting("players", this, true);
 	public NumberSetting pRed = new NumberSetting("pRed", this, 0.0, 0.0, 1.0, 0.1);
 	public NumberSetting pGreen = new NumberSetting("pGreen", this, 0.6, 0.0, 1.0, 0.1);
 	public NumberSetting pBlue = new NumberSetting("pBlue", this, 1.0, 0.0, 1.0, 0.1);

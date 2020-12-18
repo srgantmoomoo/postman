@@ -39,11 +39,11 @@ import net.minecraft.util.math.Vec3d;
  */
 
 public class Esp extends Module {
-	public BooleanSetting chams = new BooleanSetting("chams", false);
-	public ModeSetting entityMode = new ModeSetting("entity", "box", "box", "outline", "2dEsp", "off");
-	public ModeSetting storage = new ModeSetting("storage", "fill", "fill", "outline", "off");
-	public BooleanSetting mob = new BooleanSetting("mob", false);
-	public BooleanSetting item = new BooleanSetting("item", true);
+	public BooleanSetting chams = new BooleanSetting("chams", this, false);
+	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "outline", "2dEsp", "off");
+	public ModeSetting storage = new ModeSetting("storage", this, "fill", "fill", "outline", "off");
+	public BooleanSetting mob = new BooleanSetting("mob", this, false);
+	public BooleanSetting item = new BooleanSetting("item", this, true);
 	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
 	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
 	public NumberSetting pRed = new NumberSetting("plyrRed", this, 0, 0, 250, 10);
