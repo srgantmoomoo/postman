@@ -119,9 +119,9 @@ public class SaveLoad {
 						if(setting instanceof NumberSetting) {
 						((NumberSetting)setting).setValue(Double.parseDouble(args[3]));
 					}
-						//if(setting instanceof ModeSetting) {
-						//((ModeSetting)setting).setMode(args[3]);
-					//}
+						if(setting instanceof ModeSetting) {
+						((ModeSetting)setting).setMode(args[3]);
+					}
 					}
 				}
 			}
