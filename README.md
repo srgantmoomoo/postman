@@ -19,7 +19,7 @@ thank you,
 **base stuff.**
 - event system - *ZeroMemes, Alpine 1.5* https://github.com/ZeroMemes/Alpine.
 - discord rpc - *club.minnced* (honestly cant find this anywhere, only found the jar on some wierd webstie lol).
--clickGui library - *lukflug, panelstudio* https://github.com/lukflug/PanelStudio/tree/v0.1.1.
+- clickGui library - *lukflug, panelstudio* https://github.com/lukflug/PanelStudio/tree/v0.1.1.
 
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding.**
 - outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
