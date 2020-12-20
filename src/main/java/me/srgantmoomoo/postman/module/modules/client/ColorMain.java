@@ -8,12 +8,17 @@ import org.lwjgl.input.Keyboard;
 import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.settings.ModeSetting;
 import net.minecraft.util.text.TextFormatting;
 
 public class ColorMain extends Module {
 	
+	private static final Module ColorMain = null;
+	public static ModeSetting colorModel = new ModeSetting("entity", ColorMain, "HSB", "RGB", "HSB");
+	
 	public ColorMain() {
 		super ("colorMain", "world of colors", Keyboard.KEY_NONE, Category.CLIENT);
+		this.addSettings(colorModel);
 	}
 
 		public void setup() {
@@ -70,5 +75,11 @@ public class ColorMain extends Module {
 		public static JColor getEnemyGSColor(){
 			return new JColor(0xffffffff);
 	}
+
+		@Override
+		public boolean isOn() {
+			// TODO Auto-generated method stub
+			return false;
+		}
 
 }

@@ -38,4 +38,10 @@ public class InventoryMove extends Module {
 			}
 		}
 	}
+
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

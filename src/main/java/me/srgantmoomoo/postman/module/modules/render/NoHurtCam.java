@@ -28,4 +28,10 @@ public class NoHurtCam extends Module {
 		}
 	}
 
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }	

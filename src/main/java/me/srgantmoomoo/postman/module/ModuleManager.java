@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.module;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import me.srgantmoomoo.api.event.events.RenderEvent;
 import me.srgantmoomoo.api.util.render.Esp2dHelper;
@@ -228,11 +229,20 @@ public class ModuleManager {
 		
 		for(Module m : ModuleManager.modules) {
 			if(!m.getName().equals("Esp2dHelper")) {
-			if(m.getCateogory() == c)
+			if(m.getCategory() == c)
 				modules.add(m);
 		}
 		}
 		return modules;
+	}
+	
+	public static ArrayList<Module> getModules() {
+		return modules;
+	}
+	
+	public static ArrayList<Module> getModulesInCategory(Category c){
+		ArrayList<Module> list = (ArrayList<Module>) modules.stream().filter(m -> m.category.equals(c)).collect(Collectors.toList());
+		return list;
 	}
 	
 	public static Module getModuleByName(String name){

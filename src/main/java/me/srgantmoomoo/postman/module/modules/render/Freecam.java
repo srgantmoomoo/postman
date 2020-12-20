@@ -111,4 +111,10 @@ public class Freecam extends Module {
 			event.cancel();
 		}
 	});
+
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

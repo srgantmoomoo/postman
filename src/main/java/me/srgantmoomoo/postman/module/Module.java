@@ -5,7 +5,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import com.lukflug.panelstudio.settings.ColorSetting;
+import com.lukflug.panelstudio.settings.Toggleable;
+
 import me.srgantmoomoo.api.event.events.RenderEvent;
+import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.settings.KeybindSetting;
 import me.srgantmoomoo.postman.settings.Setting;
@@ -16,7 +20,7 @@ import net.minecraftforge.common.MinecraftForge;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public abstract class Module {
+public abstract class Module implements Toggleable {
 	
 	protected static final Minecraft mc = Minecraft.getMinecraft();
 	public static ArrayList<Module> modules;
@@ -119,8 +123,7 @@ public abstract class Module {
 		return this.name;
 	}
 	
-	public Category getCateogory() {
+	public Category getCategory() {
 		return this.category;
 	}
-	
 }

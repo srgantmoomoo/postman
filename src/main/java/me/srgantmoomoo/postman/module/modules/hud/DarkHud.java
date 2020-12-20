@@ -222,6 +222,12 @@ public class DarkHud extends Module {
 					}
 					return p;
 				}
+
+			@Override
+			public boolean isOn() {
+				// TODO Auto-generated method stub
+				return false;
+			}
 		
 	}
 

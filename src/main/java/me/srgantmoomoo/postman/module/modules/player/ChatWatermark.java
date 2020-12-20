@@ -19,6 +19,12 @@ public class ChatWatermark extends Module {
 		super ("chatWatermark", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings();
 	}
+
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
 
 	/*public void setup(){

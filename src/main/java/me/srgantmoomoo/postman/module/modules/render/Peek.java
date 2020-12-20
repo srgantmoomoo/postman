@@ -12,4 +12,10 @@ public class Peek extends Module {
 		super ("peek", "shows preview of wuts in a shulker", Keyboard.KEY_NONE, Category.RENDER);
 	}
 
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

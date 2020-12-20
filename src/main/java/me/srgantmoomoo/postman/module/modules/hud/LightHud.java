@@ -220,6 +220,12 @@ public class LightHud extends Module {
 				}
 				return p;
 			}
+
+		@Override
+		public boolean isOn() {
+			// TODO Auto-generated method stub
+			return false;
+		}
 	
 }
 

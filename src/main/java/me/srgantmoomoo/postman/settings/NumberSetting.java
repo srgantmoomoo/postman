@@ -7,7 +7,7 @@ import me.srgantmoomoo.postman.module.Module;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public class NumberSetting extends Setting {
+public class NumberSetting extends Setting implements com.lukflug.panelstudio.settings.NumberSetting {
   public double value;
   
   public double minimun;
@@ -66,4 +66,34 @@ public class NumberSetting extends Setting {
   public void setIncrement(double increment) {
     this.increment = increment;
   }
+
+@Override
+public double getMaximumValue() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public double getMinimumValue() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public double getNumber() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public int getPrecision() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public void setNumber(double arg0) {
+	// TODO Auto-generated method stub
+	
+}
 }

@@ -44,4 +44,10 @@ public class ViewModel extends Module {
 	public void onDisable(){
 		Main.EVENT_BUS.unsubscribe(this);
 	}
+
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -11,4 +11,10 @@ public class NewChunks extends Module {
 		super ("newChunks", "shows when newchunks r generated", Keyboard.KEY_NONE, Category.RENDER);
 	}
 
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

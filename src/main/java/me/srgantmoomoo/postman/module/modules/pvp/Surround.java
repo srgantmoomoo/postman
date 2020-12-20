@@ -330,4 +330,10 @@ public class Surround extends Module {
                 new Vec3d(0, -1, -1)
         };
     }
+
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

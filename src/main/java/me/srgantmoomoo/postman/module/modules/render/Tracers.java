@@ -118,4 +118,10 @@ public class Tracers extends Module {
 		Vec3d eyes=ActiveRenderInfo.getCameraPosition().add(mc.getRenderManager().viewerPosX,mc.getRenderManager().viewerPosY,mc.getRenderManager().viewerPosZ);
 		JTessellator.drawLine(eyes.x, eyes.y, eyes.z, posx, posy + 1.2, posz, red, green, blue, 2f);
 	}
+
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

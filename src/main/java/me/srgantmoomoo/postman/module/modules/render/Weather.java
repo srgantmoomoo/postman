@@ -11,4 +11,10 @@ public class Weather extends Module {
 		super ("weather", "eliminates weather", Keyboard.KEY_NONE, Category.RENDER);
 	}
 
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -1,649 +1,231 @@
 package me.srgantmoomoo.postman.ui.clickgui;
 
-import java.io.IOException;
-import java.util.List;
+import com.lukflug.panelstudio.CollapsibleContainer;
+import com.lukflug.panelstudio.DraggableContainer;
+import com.lukflug.panelstudio.FixedComponent;
+import com.lukflug.panelstudio.Interface;
+import com.lukflug.panelstudio.SettingsAnimation;
+import com.lukflug.panelstudio.hud.HUDClickGUI;
+import com.lukflug.panelstudio.hud.HUDPanel;
+import com.lukflug.panelstudiomc.GLInterface;
+import com.lukflug.panelstudiomc.MinecraftHUDGUI;
 
+import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
+import me.srgantmoomoo.postman.module.modules.client.ColorMain;
+import me.srgantmoomoo.postman.settings.BooleanSetting;
+import me.srgantmoomoo.postman.settings.ColorSetting;
+import me.srgantmoomoo.postman.settings.ModeSetting;
+import me.srgantmoomoo.postman.settings.Setting;
+
+import java.awt.Color;
+import java.awt.Point;
+
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+
+import com.lukflug.panelstudio.settings.BooleanComponent;
+import com.lukflug.panelstudio.settings.EnumComponent;
+import com.lukflug.panelstudio.settings.EnumSetting;
+import com.lukflug.panelstudio.settings.NumberComponent;
+import com.lukflug.panelstudio.settings.NumberSetting;
+import com.lukflug.panelstudio.settings.SimpleToggleable;
+import com.lukflug.panelstudio.settings.Toggleable;
+import com.lukflug.panelstudio.settings.ToggleableContainer;
+import com.lukflug.panelstudio.theme.GameSenseTheme;
+import com.lukflug.panelstudio.theme.SettingsColorScheme;
+import com.lukflug.panelstudio.theme.Theme;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 
-public class ClickGui extends GuiScreen {
-	private Minecraft mc = Minecraft.getMinecraft();
-	ScaledResolution sr = new ScaledResolution(mc);
-	ClickGuiButton button;
-	int player;
+public class ClickGui extends MinecraftHUDGUI {
+	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
+	private final Toggleable colorToggle;
+	public final GUIInterface guiInterface;
+	public final HUDClickGUI gui;
+	private final Theme theme;
 	
-	public boolean playerOn;
-	public boolean renderOn;
-	public boolean pvpOn;
-	public boolean exploitsOn;
-	public boolean clientOn;
-	
-	final int BUTTON = 0;
-	
-	@Override
-	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		drawDefaultBackground();
-		// PLAYER ------
-		if(playerOn) {
-			Gui.drawRect(80, 1, 160, 192, 0xe0ffffff);
-		}else {
-		Gui.drawRect(80, 1, 160, 14, 0xe0ffffff);
-		}
+	public ClickGui() {
 		
-		// RENDER ------
-		if(renderOn) {
-		Gui.drawRect(180, 1, 260, 246, 0xe0ffffff);
-		}else {
-			Gui.drawRect(180, 1, 260, 14, 0xe0ffffff);
-		}
-		
-		// PVP ------
-		if(pvpOn) {
-			Gui.drawRect(280, 1, 360, 174, 0xe0ffffff);
-		}else {
-			Gui.drawRect(280, 1, 360, 14, 0xe0ffffff);
-		}
-		
-		// EXPLOITS ------
-		if(exploitsOn) {
-		Gui.drawRect(380, 1, 460, 138, 0xe0ffffff);
-		}else {
-			Gui.drawRect(380, 1, 460, 14, 0xe0ffffff);
-		}
-		
-		// CLIENT ------
-		if(clientOn) {
-		Gui.drawRect(480, 1, 560, 210, 0xe0ffffff);
-		}else {
-			Gui.drawRect(480, 1, 560, 14, 0xe0ffffff);
-		}
-		
-		//button.drawButton(mc, mouseX, mouseY, partialTicks);
-		
-		/*
-		 * PLAYER MODULES DRAWN ------
-		 */
-		if(playerOn) {
-		String[] buttons = { "autoArmor", "autoTotem", "chatBot", "chatWatermark", "inventoryMove", "jesus", "noPush", "scaffold", "sprint", "velocity" };		
-		
-		int count = 0;
-		for(String name : buttons) {
-			float x = 120 - mc.fontRenderer.getStringWidth(name)/2f;
-			float y = 18 + count * 18;
-						
-			boolean hovered = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT; 
-			boolean enabled = ModuleManager.getModuleByName(name).isToggled();
-						
-			this.drawCenteredString(mc.fontRenderer, name, 120, 18 + count * 18, enabled ? 0xff79c2ec : hovered ? 0xfff9c2ec : -1); //0xff2090ec
-			count++;
-		}
-		}
-		
-		/*
-		 * RENDER MODULES DRAWN ------
-		 */
-		if(renderOn) {
-			String[] buttons = { "esp's", "freecam", "fullBright", "holeEsp", "lowOffHand", "nametags", "newChunks", "noHurtCam", "peek", "tracers", "viewModel", "weather", "xray" };		
-			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 220 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-							
-				boolean hovered = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT; 
-				boolean enabled = ModuleManager.getModuleByName(name).isToggled();
-							
-				this.drawCenteredString(mc.fontRenderer, name, 220, 18 + count * 18, enabled ? 0xff79c2ec : hovered ? 0xfff9c2ec : -1);
-				count++;
+		theme=new GameSenseTheme(new SettingsColorScheme(ClickGuiModule.enabledColor,ClickGuiModule.backgroundColor,ClickGuiModule.settingBackgroundColor,ClickGuiModule.outlineColor,ClickGuiModule.fontColor,ClickGuiModule.opacity),HEIGHT,2);
+		colorToggle=new Toggleable() {
+			@Override
+			public void toggle() {
+				//ColorMain.colorModel.increment();
 			}
-		}
-		
-		/*
-		 * PVP MODULES DRAWN ------
-		 */
-		if(pvpOn) {
-			String[] buttons = { "aimBot", "aura", "autoClicker", "autoCrystal", "autoLog", "fastUse", "holeTp", "logOutSpot", "surround" };		
 			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 320 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-							
-				boolean hovered = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT; 
-				boolean enabled = ModuleManager.getModuleByName(name).isToggled();
-							
-				this.drawCenteredString(mc.fontRenderer, name, 320, 18 + count * 18, enabled ? 0xff79c2ec : hovered ? 0xfff9c2ec : -1);
-				count++;
+			@Override
+			public boolean isOn() {
+				return ColorMain.colorModel.getMode().equals("HSB");
 			}
-		}
+		};
 		
-		/*
-		 * EXPLOITS MODULES DRAWN ------
-		 */
-		if(exploitsOn) {
-			String[] buttons = { "antiHunger", "ezBackdoor", "chestStealer", "coordExploit", "dupe", "elytraFly", "playerClone" };		
-			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 420 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-							
-				boolean hovered = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT; 
-				boolean enabled = ModuleManager.getModuleByName(name).isToggled();
-							
-				this.drawCenteredString(mc.fontRenderer, name, 420, 18 + count * 18, enabled ? 0xff79c2ec : hovered ? 0xfff9c2ec : -1);
-				count++;
+		guiInterface=new GUIInterface() {
+			@Override
+			public void drawString(Point pos, String s, Color c) {
+				FontRenderer fr = mc.fontRenderer;
+				GLInterface.end();
+				int x=pos.x+2, y=pos.y+1;
+				fr.drawStringWithShadow(s,(float)x,(float)y,0xffffff);
+				GLInterface.begin();
 			}
-		}
-		
-		/*
-		 * CLIENT MODULES DRAWN ------
-		 */
-		if(clientOn) {
-			String[] buttons = { "watermark", "arrayList", "info", "inventory", "hey!", "armorHud", "keyStrokes", "discordRp", "clickGui", "tabGui" , "mainMenuInfo"};		
 			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 520 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-							
-				boolean hovered = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT; 
-				boolean enabled = ModuleManager.getModuleByName(name).isToggled();
-							
-				this.drawCenteredString(mc.fontRenderer, name, 520, 18 + count * 18, enabled ? 0xff79c2ec : hovered ? 0xfff9c2ec : -1);
-				count++;
+			@Override
+			public int getFontWidth(String s) {
+				FontRenderer fr = mc.fontRenderer;
+				return (int)Math.round(fr.getStringWidth(s))+4;
 			}
-		}
-		
-		/*
-		 * PLAYER CATEGORY DRAWN ------
-		 */
-		String[] playerCatButtons = { "player" };	
-		
-		for(String playerCatName : playerCatButtons) {
-						
-			this.drawCenteredString(mc.fontRenderer, TextFormatting.ITALIC + playerCatName, 120, 3, 0xff79c2ec);
-		}
-		
-		/*
-		 * RENDER CATEGORY DRAWN ------
-		 */
-		String[] renderCatButtons = { "render" };	
-		
-		for(String renderCatName : renderCatButtons) {
-						
-			this.drawCenteredString(mc.fontRenderer, TextFormatting.ITALIC + renderCatName, 220, 3, 0xff79c2ec);
-		}
-		
-		/*
-		 * PVP CATEGORY DRAWN ------
-		 */
-		String[] pvpCatButtons = { "pvp" };	
-		
-		for(String pvpCatName : pvpCatButtons) {
-						
-			this.drawCenteredString(mc.fontRenderer, TextFormatting.ITALIC + pvpCatName, 320, 3, 0xff79c2ec);
-		}
-		
-		/*
-		 * EXPLOITS CATEGORY DRAWN ------
-		 */
-		String[] exploitsCatButtons = { "exploits" };	
-		
-		for(String exploitsCatName : exploitsCatButtons) {
-						
-			this.drawCenteredString(mc.fontRenderer, TextFormatting.ITALIC + exploitsCatName, 420, 3, 0xff79c2ec);
-		}
-		
-		/*
-		 * CLIENT CATEGORY DRAWN ------
-		 */
-		String[] clientCatButtons = { "client" };	
-		
-		for(String clientCatName : clientCatButtons) {
-						
-			this.drawCenteredString(mc.fontRenderer, TextFormatting.ITALIC + clientCatName, 520, 3, 0xff79c2ec);
-		}
-		
-		super.drawScreen(mouseX, mouseY, partialTicks);
-	}
-	
-	public void mouseClicked(int mouseX, int mouseY, int button) {
-		
-		/*
-		 * PLAYER CATEGORY ------
-		 */
-		String[] playerCatButtons = { "player" };		
-		
-		for(String playerCatName : playerCatButtons) {
-		float x = 120 - mc.fontRenderer.getStringWidth(playerCatName)/2f;
-		float y = 3;
+
+			@Override
+			public int getFontHeight() {
+				FontRenderer fr = mc.fontRenderer;
+				return (int)Math.round(((Interface) fr).getFontHeight())+2;
+			}
 			
-			if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(playerCatName) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-				switch(playerCatName) {
-				case "player":
-					if(playerOn) {
-						playerOn = false;
-					}else 
-						playerOn = true;
-					break;
+			@Override
+			public String getResourcePrefix() {
+				return "gamesense:gui/";
+			}
+		};
+		
+		gui=new HUDClickGUI(guiInterface);
+		Toggleable hudToggle=new Toggleable() {
+			@Override
+			public void toggle() {
+			}
+
+			@Override
+			public boolean isOn() {
+				return gui.isOn(); //&& ClickGuiModule.showHUD.isOn();
+			}
+		};
+		
+		//for (Module module: ModuleManager.modules) {
+			//if (module instanceof HUDModule) {
+				//((HUDModule)module).populate(theme);
+				//gui.addHUDComponent(new HUDPanel(((HUDModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation((NumberSetting)ClickGuiModule.animationSpeed),hudToggle,HUD_BORDER));
+			//}
+		//}
+		
+		Point pos=new Point(DISTANCE,DISTANCE);
+			for(Category category : Category.values()) {
+			DraggableContainer panel=new DraggableContainer(category.name,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),new Point(pos),WIDTH) {
+				@Override
+				protected int getScrollHeight (int childHeight) {
+					//if (ClickGuiModule.scrolling.getValue().equals("Screen")) {
+						//return childHeight;
+					//}
+					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight()-HEIGHT));
 				}
-			}
+			};
+			gui.addComponent(panel);
+			pos.translate(WIDTH+DISTANCE,0);
+			//for (Module module: ModuleManager.getModulesInCategory(category)) {
+				//addModule(panel,module);
+			//}
 		}
-			
-		/*
-		 * RENDER CATEGORY ------
-		 */
-			String[] renderCatButtons = { "render" };		
-			
-			for(String renderCatName : renderCatButtons) {
-			float x = 220 - mc.fontRenderer.getStringWidth(renderCatName)/2f;
-			float y = 3;
-				
-				if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(renderCatName) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-					switch(renderCatName) {
-					case "render":
-						if(renderOn) {
-							renderOn = false;
-						}else 
-							renderOn = true;
-						break;
-					}
-				}
-			}
-			
-			/*
-			 * PVP CATEGORY ------
-			 */
-				String[] pvpCatButtons = { "pvp" };		
-				
-				for(String pvpCatName : pvpCatButtons) {
-				float x = 320 - mc.fontRenderer.getStringWidth(pvpCatName)/2f;
-				float y = 3;
-					
-					if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(pvpCatName) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-						switch(pvpCatName) {
-						case "pvp":
-							if(pvpOn) {
-								pvpOn = false;
-							}else 
-								pvpOn = true;
-							break;
-						}
-					}
-				}
-				
-				/*
-				 * EXPLOITS CATEGORY ------
-				 */
-					String[] exploitsCatButtons = { "exploits" };		
-					
-					for(String exploitsCatName : exploitsCatButtons) {
-					float x = 420 - mc.fontRenderer.getStringWidth(exploitsCatName)/2f;
-					float y = 3;
-						
-						if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(exploitsCatName) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-							switch(exploitsCatName) {
-							case "exploits":
-								if(exploitsOn) {
-									exploitsOn = false;
-								}else 
-									exploitsOn = true;
-								break;
-							}
-						}
-					}
-					
-					/*
-					 * CLIENT CATEGORY ------
-					 */
-						String[] clientCatButtons = { "client" };		
-						
-						for(String clientCatName : clientCatButtons) {
-						float x = 520 - mc.fontRenderer.getStringWidth(clientCatName)/2f;
-						float y = 3;
-							
-							if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(clientCatName) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-								switch(clientCatName) {
-								case "client":
-									if(clientOn) {
-										clientOn = false;
-									}else 
-										clientOn = true;
-									break;
-								}
-							}
-						}
-				
-		/*
-		 * PLAYER MODULES ------
-		 */
-		if(playerOn) {
-		
-		String[] buttons = { "autoArmor", "autoTotem", "chatBot", "chatWatermark", "inventoryMove", "jesus", "noPush", "scaffold", "sprint", "velocity" };		
-		
-		int count = 0;
-		for(String name : buttons) {
-			float x = 120 - mc.fontRenderer.getStringWidth(name)/2f;
-			float y = 18 + count * 18;
-			
-			if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-				switch(name) {
-				case "autoArmor":
-					ModuleManager.getModuleByName("autoArmor").toggle();
-					break;
-				
-				case "autoTotem":
-					ModuleManager.getModuleByName("autoTotem").toggle();
-					break;
-					
-				case "chatBot":
-					ModuleManager.getModuleByName("chatBot").toggle();
-					break;
-					
-				case "chatWatermark":
-					ModuleManager.getModuleByName("chatWatermark").toggle();
-					break;
-					
-				case "inventoryMove":
-					ModuleManager.getModuleByName("inventoryMove").toggle();
-					break;
-					
-				case "jesus":
-					ModuleManager.getModuleByName("jesus").toggle();
-					break;
-					
-				case "noPush":
-					ModuleManager.getModuleByName("noPush").toggle();
-					break;
-					
-				case "scaffold":
-					ModuleManager.getModuleByName("scaffold").toggle();
-					break;
-					
-				case "sprint":
-					ModuleManager.getModuleByName("sprint").toggle();
-					break;
-					
-				case "velocity":
-					ModuleManager.getModuleByName("velocity").toggle();
-					break;
-				}
-			}
-			count++;
-		}
-	}
-		
-		/*
-		 * RENDER MODULES ------
-		 */
-		if(renderOn) {
-			
-			String[] buttons = { "esp's", "freecam", "fullBright", "holeEsp", "lowOffHand", "nametags", "newChunks", "noHurtCam", "peek", "tracers", "viewModel", "weather", "xray" };
-			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 220 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-				
-				if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-					switch(name) {
-					case "esp's":
-						ModuleManager.getModuleByName("esp's").toggle();
-						break;
-					
-					case "freecam":
-						ModuleManager.getModuleByName("freecam").toggle();
-						break;
-						
-					case "fullBright":
-						ModuleManager.getModuleByName("fullBright").toggle();
-						break;
-						
-					case "holeEsp":
-						ModuleManager.getModuleByName("holeEsp").toggle();
-						break;
-						
-					case "lowOffHand":
-						ModuleManager.getModuleByName("lowOffHand").toggle();
-						break;
-						
-					case "nametags":
-						ModuleManager.getModuleByName("nametags").toggle();
-						break;
-						
-					case "newChunks":
-						ModuleManager.getModuleByName("newChunks").toggle();
-						break;
-						
-					case "noHurtCam":
-						ModuleManager.getModuleByName("noHurtCam").toggle();
-						break;
-						
-					case "peek":
-						ModuleManager.getModuleByName("peek").toggle();
-						break;
-						
-					case "tracers":
-						ModuleManager.getModuleByName("tracers").toggle();
-						break;
-						
-					case "viewModel":
-						ModuleManager.getModuleByName("viewModel").toggle();
-						break;
-						
-					case "weather":
-						ModuleManager.getModuleByName("weather").toggle();
-						break;
-						
-					case "xray":
-						ModuleManager.getModuleByName("xray").toggle();
-						break;
-					}
-				}
-				count++;
-			}
-	}
-		
-		/*
-		 * PVP MODULES ------
-		 */
-		if(pvpOn) {
-			
-			String[] buttons = { "aimBot", "aura", "autoClicker", "autoCrystal", "autoLog", "fastUse", "holeTp", "logOutSpot", "surround" };		
-			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 320 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-				
-				if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-					switch(name) {
-					case "aimBot":
-						ModuleManager.getModuleByName("aimBot").toggle();
-						break;
-					
-					case "aura":
-						ModuleManager.getModuleByName("aura").toggle();
-						break;
-						
-					case "autoClicker":
-						ModuleManager.getModuleByName("autoClicker").toggle();
-						break;
-						
-					case "autoCrystal":
-						ModuleManager.getModuleByName("autoCrystal").toggle();
-						break;
-						
-					case "autoLog":
-						ModuleManager.getModuleByName("autoLog").toggle();
-						break;
-						
-					case "fastUse":
-						ModuleManager.getModuleByName("fastUse").toggle();
-						break;
-						
-					case "holeTp":
-						ModuleManager.getModuleByName("holeTp").toggle();
-						break;
-						
-					case "logOutSpot":
-						ModuleManager.getModuleByName("logOutSpot").toggle();
-						break;
-						
-					case "surround":
-						ModuleManager.getModuleByName("surround").toggle();
-						break;
-					}
-				}
-				count++;
-			}
-	}
-		
-		/*
-		 * EXPLOITS MODULES ------
-		 */
-		if(exploitsOn) {
-			
-			String[] buttons = { "antiHunger", "ezBackdoor", "chestStealer", "coordExploit", "dupe", "elytraFly", "playerClone" };		
-			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 420 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-				
-				if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-					switch(name) {
-					case "antiHunger":
-						ModuleManager.getModuleByName("antiHunger").toggle();
-						break;
-					
-					case "ezBackdoor":
-						ModuleManager.getModuleByName("ezBackdoor").toggle();
-						break;
-						
-					case "chestStealer":
-						ModuleManager.getModuleByName("chestStealer").toggle();
-						break;
-						
-					case "coordExploit":
-						ModuleManager.getModuleByName("coordExploit").toggle();
-						break;
-						
-					case "dupe":
-						ModuleManager.getModuleByName("dupe").toggle();
-						break;
-						
-					case "elytraFly":
-						ModuleManager.getModuleByName("elytraFly").toggle();
-						break;
-						
-					case "playerClone":
-						ModuleManager.getModuleByName("playerClone").toggle();
-						break;
-					}
-				}
-				count++;
-			}
-	}
-		
-		/*
-		 * CLIENT MODULES ------
-		 */
-		if(clientOn) {
-			
-			String[] buttons = { "watermark", "arrayList", "info", "inventory", "hey!", "armorHud", "keyStrokes", "discordRp", "clickGui", "tabGui", "mainMenuInfo"};	
-			
-			int count = 0;
-			for(String name : buttons) {
-				float x = 520 - mc.fontRenderer.getStringWidth(name)/2f;
-				float y = 18 + count * 18;
-				
-				if (mouseX >= x && mouseY >= y && mouseX < x + mc.fontRenderer.getStringWidth(name) && mouseY < y + mc.fontRenderer.FONT_HEIGHT) {
-					switch(name) {
-					case "watermark":
-						ModuleManager.getModuleByName("watermark").toggle();
-						break;
-					
-					case "arrayList":
-						ModuleManager.getModuleByName("arrayList").toggle();
-						break;
-						
-					case "info":
-						ModuleManager.getModuleByName("info").toggle();
-						break;
-						
-					case "inventory":
-						ModuleManager.getModuleByName("inventory").toggle();
-						break;
-						
-					case "hey!":
-						ModuleManager.getModuleByName("hey!").toggle();
-						break;
-						
-					case "armorHud":
-						ModuleManager.getModuleByName("armorHud").toggle();
-						break;
-						
-					case "keyStrokes":
-						ModuleManager.getModuleByName("keyStrokes").toggle();
-						break;
-						
-					case "discordRp":
-						ModuleManager.getModuleByName("discordRp").toggle();
-						break;
-						
-					case "clickGui":
-						break;
-						
-					case "tabGui":
-						break;
-						
-					case "mainMenuInfo":
-						ModuleManager.getModuleByName("mainMenuInfo").toggle();
-						break;
-					}
-				}
-				count++;
-			}
-	}
 	}
 	
 	@Override
-	public void initGui() {
-		buttonList.clear();
-		playerOn = true;
-		renderOn = true;
-		pvpOn = true;
-		exploitsOn = true;
-		clientOn = true;
-		//buttonList.add(button = new ClickGuiButton(BUTTON, 100, 100, 10, 10, m.getName()));
-		super.initGui();
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		super.drawScreen(mouseX,mouseY,partialTicks);
+        int scroll=Mouse.getDWheel();
+        if (scroll!=0) {
+        	//if (ClickGuiModule.scrolling.getValue().equals("Screen")) {
+	        	//for (FixedComponent component: gui.getComponents()) {
+	        		//if (!(component instanceof HUDPanel)) {
+		        		//Point p=component.getPosition(guiInterface);
+		        		//if (scroll>0) p.translate(0,5);
+		        		//else p.translate(0,-5);
+		        		//component.setPosition(guiInterface,p);
+	        		//}
+	        	//}
+        	//}
+        	if (scroll>0) gui.handleScroll(-5);
+        	else gui.handleScroll(5);
+        }
+    }
+	
+	private void addModule (CollapsibleContainer panel, Module module) {
+		CollapsibleContainer container;
+		container=new ToggleableContainer(module.getName(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation((NumberSetting)ClickGuiModule.animationSpeed),module);
+		panel.addComponent(container);
+		Main.getInstance();
+		for (Setting property: Main.settingsManager.getSettingsByMod(module)) {
+			if (property instanceof BooleanSetting) {
+				container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(Toggleable) property));
+			} else if (property instanceof me.srgantmoomoo.postman.settings.NumberSetting) {
+				container.addComponent(new NumberComponent(property.name,theme.getComponentRenderer(),(NumberSetting)property,((NumberSetting)property).getMinimumValue(),((NumberSetting)property).getMaximumValue()));
+			} else if (property instanceof ModeSetting) {
+				container.addComponent(new EnumComponent(property.name,theme.getComponentRenderer(),(EnumSetting)property));
+			} //else if (property instanceof ColorSetting) {
+				//container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.animationSpeed)));
+			//}
+		}
+		//container.addComponent(new KeybindSetting(theme.getComponentRenderer(),module));
+	}
+	
+	public static void renderItem (ItemStack item, Point pos) {
+		GlStateManager.enableTexture2D();
+		GlStateManager.depthMask(true);
+		GL11.glPushAttrib(GL11.GL_SCISSOR_BIT);
+		GL11.glDisable(GL11.GL_SCISSOR_TEST);
+		GlStateManager.clear(GL11.GL_DEPTH_BUFFER_BIT);
+		GL11.glPopAttrib();
+		GlStateManager.enableDepth();
+		GlStateManager.disableAlpha();
+		GlStateManager.pushMatrix();
+		Minecraft.getMinecraft().getRenderItem().zLevel = -150.0f;
+        RenderHelper.enableGUIStandardItemLighting();
+        Minecraft.getMinecraft().getRenderItem().renderItemAndEffectIntoGUI(item,pos.x,pos.y);
+        Minecraft.getMinecraft().getRenderItem().renderItemOverlays(Minecraft.getMinecraft().fontRenderer,item,pos.x,pos.y);
+        RenderHelper.disableStandardItemLighting();
+        Minecraft.getMinecraft().getRenderItem().zLevel = 0.0F;
+        GlStateManager.popMatrix();
+		GlStateManager.disableDepth();
+		GlStateManager.depthMask(false);
+		GLInterface.begin();
+	}
+	
+	public static void renderEntity (EntityLivingBase entity, Point pos, int scale) {
+		GlStateManager.enableTexture2D();
+		GlStateManager.depthMask(true);
+		GL11.glPushAttrib(GL11.GL_SCISSOR_BIT);
+		GL11.glDisable(GL11.GL_SCISSOR_TEST);
+		GlStateManager.clear(GL11.GL_DEPTH_BUFFER_BIT);
+		GL11.glPopAttrib();
+		GlStateManager.enableDepth();
+		GlStateManager.disableAlpha();
+        GlStateManager.pushMatrix();
+        GlStateManager.color(1,1,1,1);
+        GuiInventory.drawEntityOnScreen(pos.x,pos.y,scale,28,60,entity);
+        GlStateManager.popMatrix();
+		GlStateManager.disableDepth();
+		GlStateManager.depthMask(false);
+		GLInterface.begin();
 	}
 	
 	@Override
-	protected void actionPerformed(GuiButton button) throws IOException {
-		super.actionPerformed(button);
-		
-	}
-	
-	@Override
-	protected void keyTyped(char typedChar, int keyCode) throws IOException {
-		super.keyTyped(typedChar, keyCode);
-	}
-	
-	@Override
-	public boolean doesGuiPauseGame() {
-		return false;
+	protected HUDClickGUI getHUDGUI() {
+		return gui;
 	}
 
+	@Override
+	protected GUIInterface getInterface() {
+		return guiInterface;
+	}
+
+	@Override
+	protected int getScrollSpeed() {
+		return 5;
+	}
 }

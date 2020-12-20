@@ -12,4 +12,10 @@ public class MainMenuInfo extends Module {
 	}
 	//check MixinGuiMainMenu :)
 
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

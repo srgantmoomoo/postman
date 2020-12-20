@@ -13,6 +13,7 @@ import me.srgantmoomoo.postman.proxy.CommonProxy;
 import me.srgantmoomoo.postman.save.SaveLoad;
 import me.srgantmoomoo.postman.settings.SettingsManager;
 import me.srgantmoomoo.postman.ui.TabGui;
+import me.srgantmoomoo.postman.ui.clickgui.ClickGui;
 import me.zero.alpine.EventBus;
 import me.zero.alpine.EventManager;
 import me.srgantmoomoo.api.event.EventProcessor;
@@ -40,6 +41,7 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingsManager settingsManager;
 	public static SaveLoad saveLoad;
+	public ClickGui clickGui;
 	public static TabGui tabGui;
 	public EventProcessor eventProcessor;
 	public static Notification notification;
@@ -78,6 +80,9 @@ public class Main {
 		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
 		log.info("user interface initialized.");
+		
+		clickGui = new ClickGui();
+		log.info("ClickGUI initialized!");
 		
 		moduleManager = new ModuleManager();
 		log.info("module system initialized.");

@@ -2,40 +2,53 @@ package me.srgantmoomoo.postman.ui.clickgui;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.api.util.render.JColor;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import me.srgantmoomoo.postman.settings.ColorSetting;
+import me.srgantmoomoo.postman.settings.NumberSetting;
+import net.minecraft.util.ResourceLocation;
 
-public class ClickGuiModule extends Module {
-	boolean on;
+public class ClickGuiModule extends Module{
+	private static Module ClickGuiModule;
+
+	public ClickGuiModule INSTANCE;
+		
+	public static NumberSetting animationSpeed = new NumberSetting("animationSpeed", ClickGuiModule, 1, 0, 5, 1);
+	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(255, 0, 0, 255));
+	public static ColorSetting backgroundColor = new ColorSetting("backgroundColor", ClickGuiModule, new JColor(255, 0, 0, 255));
+	public static ColorSetting settingBackgroundColor = new ColorSetting("settingBackgroundColor", ClickGuiModule, new JColor(255, 0, 0, 255));
+	public static ColorSetting outlineColor = new ColorSetting("outlineColor", ClickGuiModule, new JColor(0, 121, 194, 255));
+	public static ColorSetting fontColor = new ColorSetting("fontColor", ClickGuiModule, new JColor(255, 0, 0, 255));
+	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 0, 121, 194, 10);
 	
-	public ClickGuiModule() {
-		super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
-		this.addSettings();
+public ClickGuiModule() {
+	super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
+	this.addSettings();
+	INSTANCE = this;
+}
+
+/** This uses minecraft's old "super secret" shaders, which means it could be modified to be a bunch of things in the future */
+private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
+
+	public void onEnable(){
+		Main.getInstance().clickGui.enterGUI();
 	}
 
-	@SubscribeEvent
-	public void key(KeyInputEvent e) {
-		int keyCode = Keyboard.getEventKey();
-		if(keyCode == Keyboard.KEY_ESCAPE) {
-			toggled = false;
-			on = false;
-			
+	public void onUpdate(){
+
+		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
+			this.disable();
 		}
 	}
 
-	public void onDisable() {
-		super.onDisable();
-		on = false;
+	public void onDisable(){
 		}
 
-	public void onEnable() {
-		super.onEnable();
-		on = true;
-		if(on) {
-		Minecraft.getMinecraft().displayGuiScreen(new ClickGui());
-		}
+	@Override
+	public boolean isOn() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
