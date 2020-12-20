@@ -50,6 +50,10 @@ repositories {
 		name = "jitpack.io"
 		url = "https://jitpack.io"
 	}
+	maven {
+		name = 'lukflug'
+		url = 'https://lukflug.github.io/maven'
+	}
 	mavenCentral()
 }
 
@@ -64,6 +68,7 @@ dependencies {
 	compile group: 'net.jodah', name: 'typetools', version: '0.5.0'
 	compile group: "com.googlecode.json-simple", name: "json-simple", version: "1.1.1"
 	compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
+	compile("com.lukflug:panelstudio:0.1.1")
 }
 
 processResources {
@@ -95,6 +100,7 @@ shadowJar {
 		include(dependency('net.jodah:typetools'))
 		include(dependency('com.googlecode.json-simple:json-simple:1.1.1'))
 		include(dependency('club.minnced:java-discord-rpc:2.0.1'))
+		include(dependency('com.lukflug:panelstudio'))
 	}
 	exclude 'dummyThing'
 	exclude 'LICENSE.txt'
@@ -127,4 +133,16 @@ jar {
 	}
 }
 
+task downloadPanelstudio {
+	doLast {
+		new URL("https://github.com/lukflug/PanelStudio/releases/download/v0.1.2/panelstudio-mc-0.1.1.jar").withInputStream{i->new File("${buildDir}/panelstudio-mc-0.1.1.jar").withOutputStream{it<<i}}
+	}
+}
+
+task unpackPanelstudio(dependsOn: downloadPanelstudio, type: Copy) {
+	from zipTree("${buildDir}/panelstudio-mc-0.1.1.jar")
+	into "src/main/java"
+}
+
 build.dependsOn(shadowJar)
+setupDecompWorkspace.dependsOn(unpackPanelstudio)
