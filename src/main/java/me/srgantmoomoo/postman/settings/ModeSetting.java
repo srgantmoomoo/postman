@@ -3,6 +3,8 @@ package me.srgantmoomoo.postman.settings;
 import java.util.Arrays;
 import java.util.List;
 
+import com.lukflug.panelstudio.settings.EnumSetting;
+
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 
@@ -10,7 +12,7 @@ import me.srgantmoomoo.postman.module.Module;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public class ModeSetting extends Setting {
+public class ModeSetting extends Setting implements EnumSetting {
   public int index;
   
   public List<String> modes;
@@ -45,4 +47,16 @@ public class ModeSetting extends Setting {
       this.index = 0;
     } 
   }
+
+@Override
+public String getValueName() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public void increment() {
+	// TODO Auto-generated method stub
+	
+}
 }

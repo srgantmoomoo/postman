@@ -1,6 +1,8 @@
 package me.srgantmoomoo.postman.settings;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
@@ -26,10 +28,10 @@ public class SettingsManager {
 		return this.settings;
 	}
 	
-	public ArrayList<Setting> getSettingsByMod(Module mod) {
+	public ArrayList<Setting> getSettingsByMod(Module mod){
 		ArrayList<Setting> out = new ArrayList<Setting>();
 		for(Setting s : getSettings()){
-			if(mod.getName().equals(mod)){
+			if(s.parent.equals(mod)){
 				out.add(s);
 			}
 		}
@@ -37,6 +39,10 @@ public class SettingsManager {
 			return null;
 		}
 		return out;
+	}
+	
+	public List<Setting> getSettingsForMod(final Module parent) {
+		return this.settings.stream().filter(s -> s.parent.equals(parent)).collect(Collectors.toList());
 	}
 	
 	public Setting getSettingByName(Module mod, String name) {

@@ -1,5 +1,7 @@
 package me.srgantmoomoo.postman.settings;
 
+import com.lukflug.panelstudio.settings.Toggleable;
+
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 
@@ -7,7 +9,7 @@ import me.srgantmoomoo.postman.module.Module;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public class BooleanSetting extends Setting {
+public class BooleanSetting extends Setting implements Toggleable {
   public boolean enabled;
   
   public BooleanSetting(String name, Module parent, boolean enabled) {
@@ -35,4 +37,10 @@ public class BooleanSetting extends Setting {
 		Main.saveLoad.save();
 	}
   }
+
+@Override
+public boolean isOn() {
+	// TODO Auto-generated method stub
+	return false;
+}
 }

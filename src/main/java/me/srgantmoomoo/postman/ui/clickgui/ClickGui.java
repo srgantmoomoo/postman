@@ -2,7 +2,6 @@ package me.srgantmoomoo.postman.ui.clickgui;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
 import com.lukflug.panelstudio.DraggableContainer;
-import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.SettingsAnimation;
 import com.lukflug.panelstudio.hud.HUDClickGUI;
@@ -10,14 +9,13 @@ import com.lukflug.panelstudio.hud.HUDPanel;
 import com.lukflug.panelstudiomc.GLInterface;
 import com.lukflug.panelstudiomc.MinecraftHUDGUI;
 
-import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.module.modules.client.ColorMain;
+import me.srgantmoomoo.postman.module.modules.client.HudModule;
 import me.srgantmoomoo.postman.settings.BooleanSetting;
-import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.ModeSetting;
 import me.srgantmoomoo.postman.settings.Setting;
 
@@ -65,7 +63,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			
 			@Override
 			public boolean isOn() {
-				return ColorMain.colorModel.getMode().equals("HSB");
+				return ColorMain.colorModel.getMode().equals("RGB");
 			}
 		};
 		
@@ -105,34 +103,31 @@ public class ClickGui extends MinecraftHUDGUI {
 
 			@Override
 			public boolean isOn() {
-				return gui.isOn(); //&& ClickGuiModule.showHUD.isOn();
+				return gui.isOn() && ClickGuiModule.showHud.isEnabled();
 			}
 		};
 		
-		//for (Module module: ModuleManager.modules) {
-			//if (module instanceof HUDModule) {
-				//((HUDModule)module).populate(theme);
-				//gui.addHUDComponent(new HUDPanel(((HUDModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation((NumberSetting)ClickGuiModule.animationSpeed),hudToggle,HUD_BORDER));
-			//}
-		//}
+		for(Module mod : ModuleManager.modules) {
+			if (mod instanceof HudModule) {
+				((HudModule)mod).populate(theme);
+				gui.addHUDComponent(new HUDPanel(((HudModule)mod).getComponent(),theme.getPanelRenderer(),mod,new SettingsAnimation((NumberSetting)ClickGuiModule.animationSpeed),hudToggle,HUD_BORDER));
+			}
+		}
 		
 		Point pos=new Point(DISTANCE,DISTANCE);
-			for(Category category : Category.values()) {
+		for (Category category: Category.values()) {
 			DraggableContainer panel=new DraggableContainer(category.name,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),new Point(pos),WIDTH) {
 				@Override
 				protected int getScrollHeight (int childHeight) {
-					//if (ClickGuiModule.scrolling.getValue().equals("Screen")) {
-						//return childHeight;
-					//}
 					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight()-HEIGHT));
 				}
 			};
 			gui.addComponent(panel);
 			pos.translate(WIDTH+DISTANCE,0);
-			//for (Module module: ModuleManager.getModulesInCategory(category)) {
-				//addModule(panel,module);
-			//}
-		}
+			for (Module module: ModuleManager.getModulesInCategory(category)) {
+				addModule(panel,module);
+				}
+			}
 	}
 	
 	@Override
@@ -159,16 +154,15 @@ public class ClickGui extends MinecraftHUDGUI {
 		CollapsibleContainer container;
 		container=new ToggleableContainer(module.getName(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation((NumberSetting)ClickGuiModule.animationSpeed),module);
 		panel.addComponent(container);
-		Main.getInstance();
-		for (Setting property: Main.settingsManager.getSettingsByMod(module)) {
+		for (Setting property: Main.getInstance().settingsManager.getSettingsForMod(module)) {
 			if (property instanceof BooleanSetting) {
-				container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(Toggleable) property));
+				container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(BooleanSetting)property));
 			} else if (property instanceof me.srgantmoomoo.postman.settings.NumberSetting) {
-				container.addComponent(new NumberComponent(property.name,theme.getComponentRenderer(),(NumberSetting)property,((NumberSetting)property).getMinimumValue(),((NumberSetting)property).getMaximumValue()));
+				container.addComponent(new NumberComponent(property.name,theme.getComponentRenderer(),(me.srgantmoomoo.postman.settings.NumberSetting)property,((me.srgantmoomoo.postman.settings.NumberSetting)property).getMinimumValue(),((me.srgantmoomoo.postman.settings.NumberSetting)property).getMaximumValue()));
 			} else if (property instanceof ModeSetting) {
-				container.addComponent(new EnumComponent(property.name,theme.getComponentRenderer(),(EnumSetting)property));
-			} //else if (property instanceof ColorSetting) {
-				//container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.animationSpeed)));
+				container.addComponent(new EnumComponent(property.name,theme.getComponentRenderer(),(ModeSetting)property));
+			} //else if (property instanceof Setting.ColorSetting) {
+				//container.addComponent(new SyncableColorComponent(theme,(Setting.ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.animationSpeed)));
 			//}
 		}
 		//container.addComponent(new KeybindSetting(theme.getComponentRenderer(),module));

@@ -6,6 +6,7 @@ import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.settings.BooleanSetting;
 import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +22,8 @@ public class ClickGuiModule extends Module{
 	public static ColorSetting settingBackgroundColor = new ColorSetting("settingBackgroundColor", ClickGuiModule, new JColor(255, 0, 0, 255));
 	public static ColorSetting outlineColor = new ColorSetting("outlineColor", ClickGuiModule, new JColor(0, 121, 194, 255));
 	public static ColorSetting fontColor = new ColorSetting("fontColor", ClickGuiModule, new JColor(255, 0, 0, 255));
-	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 0, 121, 194, 10);
+	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 0, 121, 194, 255);
+	public static BooleanSetting showHud = new BooleanSetting("showHud", ClickGuiModule, true);
 	
 public ClickGuiModule() {
 	super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);

@@ -77,18 +77,18 @@ public class Main {
 		notification = new Notification(null, null, null, 0);
 		log.info("notification system initialized.");
 		
+		settingsManager = new SettingsManager();
+		log.info("settings system initialized.");
+		
+		moduleManager = new ModuleManager();
+		log.info("module system initialized.");
+		
 		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
 		log.info("user interface initialized.");
 		
 		clickGui = new ClickGui();
 		log.info("ClickGUI initialized!");
-		
-		moduleManager = new ModuleManager();
-		log.info("module system initialized.");
-		
-		settingsManager = new SettingsManager();
-		log.info("settings system initialized.");
 		
 		saveLoad = new SaveLoad();
 		log.info("configs initialized.");
