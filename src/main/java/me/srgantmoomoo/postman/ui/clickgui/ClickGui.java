@@ -1,7 +1,14 @@
 package me.srgantmoomoo.postman.ui.clickgui;
 
+import java.awt.Color;
+import java.awt.Point;
+
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+
 import com.lukflug.panelstudio.CollapsibleContainer;
 import com.lukflug.panelstudio.DraggableContainer;
+import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.SettingsAnimation;
 import com.lukflug.panelstudio.hud.HUDClickGUI;
@@ -9,6 +16,7 @@ import com.lukflug.panelstudio.hud.HUDPanel;
 import com.lukflug.panelstudiomc.GLInterface;
 import com.lukflug.panelstudiomc.MinecraftHUDGUI;
 
+import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
@@ -16,20 +24,14 @@ import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.module.modules.client.ColorMain;
 import me.srgantmoomoo.postman.module.modules.client.HudModule;
 import me.srgantmoomoo.postman.settings.BooleanSetting;
+import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.ModeSetting;
+import me.srgantmoomoo.postman.settings.NumberSetting;
 import me.srgantmoomoo.postman.settings.Setting;
-
-import java.awt.Color;
-import java.awt.Point;
-
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
 
 import com.lukflug.panelstudio.settings.BooleanComponent;
 import com.lukflug.panelstudio.settings.EnumComponent;
-import com.lukflug.panelstudio.settings.EnumSetting;
 import com.lukflug.panelstudio.settings.NumberComponent;
-import com.lukflug.panelstudio.settings.NumberSetting;
 import com.lukflug.panelstudio.settings.SimpleToggleable;
 import com.lukflug.panelstudio.settings.Toggleable;
 import com.lukflug.panelstudio.settings.ToggleableContainer;
@@ -38,7 +40,6 @@ import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -53,12 +54,11 @@ public class ClickGui extends MinecraftHUDGUI {
 	private final Theme theme;
 	
 	public ClickGui() {
-		
 		theme=new GameSenseTheme(new SettingsColorScheme(ClickGuiModule.enabledColor,ClickGuiModule.backgroundColor,ClickGuiModule.settingBackgroundColor,ClickGuiModule.outlineColor,ClickGuiModule.fontColor,ClickGuiModule.opacity),HEIGHT,2);
 		colorToggle=new Toggleable() {
 			@Override
 			public void toggle() {
-				//ColorMain.colorModel.increment();
+				ColorMain.colorModel.increment();
 			}
 			
 			@Override
@@ -66,27 +66,27 @@ public class ClickGui extends MinecraftHUDGUI {
 				return ColorMain.colorModel.getMode().equals("RGB");
 			}
 		};
-		
 		guiInterface=new GUIInterface() {
 			@Override
 			public void drawString(Point pos, String s, Color c) {
-				FontRenderer fr = mc.fontRenderer;
 				GLInterface.end();
 				int x=pos.x+2, y=pos.y+1;
-				fr.drawStringWithShadow(s,(float)x,(float)y,0xffffff);
+				//if (!ColorMain.customFont.getValue()) {
+					//x+=1;
+					//y+=1;
+				//}
+				fontRenderer.drawStringWithShadow(s,x,y,0xffffffff);
 				GLInterface.begin();
 			}
 			
 			@Override
 			public int getFontWidth(String s) {
-				FontRenderer fr = mc.fontRenderer;
-				return (int)Math.round(fr.getStringWidth(s))+4;
+				return (int)Math.round(fontRenderer.getStringWidth(s))+4;
 			}
 
 			@Override
 			public int getFontHeight() {
-				FontRenderer fr = mc.fontRenderer;
-				return (int)Math.round(((Interface) fr).getFontHeight())+2;
+				return (int)Math.round(((Interface) fontRenderer).getFontHeight()+2);
 			}
 			
 			@Override
@@ -94,7 +94,6 @@ public class ClickGui extends MinecraftHUDGUI {
 				return "gamesense:gui/";
 			}
 		};
-		
 		gui=new HUDClickGUI(guiInterface);
 		Toggleable hudToggle=new Toggleable() {
 			@Override
@@ -103,22 +102,24 @@ public class ClickGui extends MinecraftHUDGUI {
 
 			@Override
 			public boolean isOn() {
-				return gui.isOn() && ClickGuiModule.showHud.isEnabled();
+				return gui.isOn() && ClickGuiModule.showHud.isOn();
 			}
 		};
 		
-		for(Module mod : ModuleManager.modules) {
-			if (mod instanceof HudModule) {
-				((HudModule)mod).populate(theme);
-				gui.addHUDComponent(new HUDPanel(((HudModule)mod).getComponent(),theme.getPanelRenderer(),mod,new SettingsAnimation((NumberSetting)ClickGuiModule.animationSpeed),hudToggle,HUD_BORDER));
+		for (Module module: ModuleManager.getModules()) {
+			if (module instanceof HudModule) {
+				((HudModule)module).populate(theme);
+				gui.addHUDComponent(new HUDPanel(((HudModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation(ClickGuiModule.animationSpeed),hudToggle,HUD_BORDER));
 			}
 		}
-		
 		Point pos=new Point(DISTANCE,DISTANCE);
 		for (Category category: Category.values()) {
 			DraggableContainer panel=new DraggableContainer(category.name,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),new Point(pos),WIDTH) {
 				@Override
 				protected int getScrollHeight (int childHeight) {
+					//if (ClickGuiModule.scrolling.getValue().equals("Screen")) {
+						//return childHeight;
+					//}
 					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight()-HEIGHT));
 				}
 			};
@@ -126,8 +127,8 @@ public class ClickGui extends MinecraftHUDGUI {
 			pos.translate(WIDTH+DISTANCE,0);
 			for (Module module: ModuleManager.getModulesInCategory(category)) {
 				addModule(panel,module);
-				}
 			}
+		}
 	}
 	
 	@Override
@@ -139,8 +140,8 @@ public class ClickGui extends MinecraftHUDGUI {
 	        	//for (FixedComponent component: gui.getComponents()) {
 	        		//if (!(component instanceof HUDPanel)) {
 		        		//Point p=component.getPosition(guiInterface);
-		        		//if (scroll>0) p.translate(0,5);
-		        		//else p.translate(0,-5);
+		        		//if (scroll>0) p.translate(0,ClickGuiModule.scrollSpeed.getValue());
+		        		//else p.translate(0,-ClickGuiModule.scrollSpeed.getValue());
 		        		//component.setPosition(guiInterface,p);
 	        		//}
 	        	//}
@@ -152,20 +153,26 @@ public class ClickGui extends MinecraftHUDGUI {
 	
 	private void addModule (CollapsibleContainer panel, Module module) {
 		CollapsibleContainer container;
-		container=new ToggleableContainer(module.getName(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation((NumberSetting)ClickGuiModule.animationSpeed),module);
+		container=new ToggleableContainer(module.getName(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),module);
 		panel.addComponent(container);
-		for (Setting property: Main.getInstance().settingsManager.getSettingsForMod(module)) {
+		for (Setting property: Main.settingsManager.getSettingsForMod(module)) {
+			
+			for(Module m : ModuleManager.modules) {
+				for(Setting setting : m.settings) {
+			
 			if (property instanceof BooleanSetting) {
 				container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(BooleanSetting)property));
-			} else if (property instanceof me.srgantmoomoo.postman.settings.NumberSetting) {
-				container.addComponent(new NumberComponent(property.name,theme.getComponentRenderer(),(me.srgantmoomoo.postman.settings.NumberSetting)property,((me.srgantmoomoo.postman.settings.NumberSetting)property).getMinimumValue(),((me.srgantmoomoo.postman.settings.NumberSetting)property).getMaximumValue()));
-			} else if (property instanceof ModeSetting) {
+			} else if (property instanceof NumberSetting) {
+				container.addComponent(new NumberComponent(property.name,theme.getComponentRenderer(),(NumberSetting)property,((NumberSetting)property).getMinimun(),((NumberSetting)property).getMaximum()));
+			}  else if (property instanceof ModeSetting) {
 				container.addComponent(new EnumComponent(property.name,theme.getComponentRenderer(),(ModeSetting)property));
-			} //else if (property instanceof Setting.ColorSetting) {
-				//container.addComponent(new SyncableColorComponent(theme,(Setting.ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.animationSpeed)));
-			//}
+			}	else if (property instanceof ColorSetting) { 
+				container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.animationSpeed)));
+			}
 		}
-		//container.addComponent(new KeybindSetting(theme.getComponentRenderer(),module));
+		}
+		}
+		//container.addComponent(new GameSenseKeybind(theme.getComponentRenderer(),module));
 	}
 	
 	public static void renderItem (ItemStack item, Point pos) {

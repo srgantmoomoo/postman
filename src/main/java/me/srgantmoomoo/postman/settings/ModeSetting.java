@@ -50,13 +50,14 @@ public class ModeSetting extends Setting implements EnumSetting {
 
 @Override
 public String getValueName() {
-	// TODO Auto-generated method stub
-	return null;
+	return this.modes.get(this.index);
 }
 
 @Override
 public void increment() {
-	// TODO Auto-generated method stub
+	int modeIndex = modes.indexOf(index);
+	modeIndex = (modeIndex + 1) % modes.size();
+	setMode(modes.get(modeIndex));
 	
 }
 }

@@ -9,6 +9,7 @@ import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.settings.BooleanSetting;
+import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.KeybindSetting;
 import me.srgantmoomoo.postman.settings.ModeSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;

@@ -241,7 +241,7 @@ public class ModuleManager {
 	}
 	
 	public static ArrayList<Module> getModulesInCategory(Category c){
-		ArrayList<Module> list = (ArrayList<Module>) modules.stream().filter(m -> m.category.equals(c)).collect(Collectors.toList());
+		ArrayList<Module> list = (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
 		return list;
 	}
 	

@@ -40,7 +40,6 @@ public class BooleanSetting extends Setting implements Toggleable {
 
 @Override
 public boolean isOn() {
-	// TODO Auto-generated method stub
-	return false;
+	return this.isEnabled();
 }
 }

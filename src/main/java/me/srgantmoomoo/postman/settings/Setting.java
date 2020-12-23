@@ -6,7 +6,7 @@ import me.srgantmoomoo.postman.module.Module;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public class Setting {
+public abstract class Setting {
 
 	public String name;
 	public Module parent;

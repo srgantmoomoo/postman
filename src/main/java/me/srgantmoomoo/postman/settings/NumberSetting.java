@@ -69,31 +69,27 @@ public class NumberSetting extends Setting implements com.lukflug.panelstudio.se
 
 @Override
 public double getMaximumValue() {
-	// TODO Auto-generated method stub
-	return 0;
+	 return this.maximum;
 }
 
 @Override
 public double getMinimumValue() {
-	// TODO Auto-generated method stub
-	return 0;
+	return this.minimun;
 }
 
 @Override
 public double getNumber() {
-	// TODO Auto-generated method stub
-	return 0;
+    return this.value;
 }
 
 @Override
 public int getPrecision() {
-	// TODO Auto-generated method stub
 	return 0;
 }
 
 @Override
 public void setNumber(double arg0) {
-	// TODO Auto-generated method stub
-	
+	 double precision = 1.0D / this.increment;
+	 this.value = Math.round(Math.max(this.minimun, Math.min(this.maximum, value)) * precision) / precision;
 }
 }

@@ -16,18 +16,18 @@ public class ClickGuiModule extends Module{
 
 	public ClickGuiModule INSTANCE;
 		
-	public static NumberSetting animationSpeed = new NumberSetting("animationSpeed", ClickGuiModule, 1, 0, 5, 1);
-	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(255, 0, 0, 255));
-	public static ColorSetting backgroundColor = new ColorSetting("backgroundColor", ClickGuiModule, new JColor(255, 0, 0, 255));
+	public static NumberSetting animationSpeed = new NumberSetting("animationSpeed", ClickGuiModule, 200, 0, 1000, 100);
+	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(0, 121, 194, 255));
+	public static ColorSetting backgroundColor = new ColorSetting("backgroundColor", ClickGuiModule, new JColor(0, 121, 194, 255));
 	public static ColorSetting settingBackgroundColor = new ColorSetting("settingBackgroundColor", ClickGuiModule, new JColor(255, 0, 0, 255));
 	public static ColorSetting outlineColor = new ColorSetting("outlineColor", ClickGuiModule, new JColor(0, 121, 194, 255));
 	public static ColorSetting fontColor = new ColorSetting("fontColor", ClickGuiModule, new JColor(255, 0, 0, 255));
-	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 0, 121, 194, 255);
+	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 90, 50, 255, 10);
 	public static BooleanSetting showHud = new BooleanSetting("showHud", ClickGuiModule, true);
 	
 public ClickGuiModule() {
 	super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
-	this.addSettings();
+	this.addSettings(animationSpeed,opacity,enabledColor,backgroundColor,settingBackgroundColor,outlineColor,fontColor,showHud);
 	INSTANCE = this;
 }
 
@@ -41,8 +41,9 @@ private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/pos
 	public void onUpdate(){
 
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
-			this.disable();
+			this.setToggled(!toggled);
 		}
+		
 	}
 
 	public void onDisable(){
