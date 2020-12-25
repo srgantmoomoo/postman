@@ -1,15 +1,16 @@
 package me.srgantmoomoo.postman.settings;
 
+import org.lwjgl.input.Keyboard;
+
 import com.lukflug.panelstudio.theme.Renderer;
 
-import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public class KeybindSetting extends Setting {
+public class KeybindSetting extends Setting implements com.lukflug.panelstudio.settings.KeybindSetting {
 	
 	public int code;
 	
@@ -28,6 +29,21 @@ public class KeybindSetting extends Setting {
 	
 	public void setKeyCode(int code) {
 		this.code = code;
+	}
+
+	@Override
+	public int getKey() {
+		return code;
+	}
+
+	@Override
+	public String getKeyName() {
+		return Keyboard.getKeyName(code);
+	}
+
+	@Override
+	public void setKey(int key) {
+		code=key;
 	}
 
 }

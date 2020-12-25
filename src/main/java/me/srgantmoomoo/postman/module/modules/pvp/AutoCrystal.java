@@ -11,10 +11,4 @@ public class AutoCrystal extends Module {
 		super ("autoCrystal", "automatically crystals ur opponent in the best way possible", Keyboard.KEY_NONE, Category.PVP);
 	}
 
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

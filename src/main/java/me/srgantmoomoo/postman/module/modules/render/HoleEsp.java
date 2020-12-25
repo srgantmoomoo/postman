@@ -159,10 +159,4 @@ public class HoleEsp extends Module {
 					JTessellator.drawBoundingBox(blockPos, size.getValue(), width, color);
 	}
 
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

@@ -27,10 +27,4 @@ public class FullBright extends Module {
 	public void onDisable() {
 		mc.gameSettings.gammaSetting = oldGamma;
 	}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

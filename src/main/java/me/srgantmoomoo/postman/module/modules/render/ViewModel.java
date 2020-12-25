@@ -46,10 +46,4 @@ public class ViewModel extends Module {
 		Main.EVENT_BUS.unsubscribe(this);
 		MinecraftForge.EVENT_BUS.unregister(this);
 	}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

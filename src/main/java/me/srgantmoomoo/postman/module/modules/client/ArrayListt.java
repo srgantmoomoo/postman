@@ -92,10 +92,4 @@ public class ArrayListt extends Module {
 		return Color.getHSBColor((float) (rainbowState / 360.0f), 0.5f, 1f).getRGB();
 	}
 
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

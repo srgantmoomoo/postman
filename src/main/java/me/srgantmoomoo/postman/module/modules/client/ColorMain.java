@@ -76,10 +76,4 @@ public class ColorMain extends Module {
 			return new JColor(0xffffffff);
 	}
 
-		@Override
-		public boolean isOn() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
 }

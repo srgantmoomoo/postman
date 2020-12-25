@@ -68,12 +68,6 @@ public class ChestStealer extends Module {
 		}
 		
 	}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
 		/*
 		 * for (int l_I = 0; l_I < l_Chest.lowerChestInventory.getSizeInventory(); ++l_I)	

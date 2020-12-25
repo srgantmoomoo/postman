@@ -37,12 +37,6 @@ public class FastUse extends Module {
 				mc.rightClickDelayTimer = 0; 
 		}
 		}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 }
 

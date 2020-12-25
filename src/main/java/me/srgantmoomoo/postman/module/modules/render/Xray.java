@@ -11,10 +11,4 @@ public class Xray extends Module {
 		super ("xray", "see thru some hot girls clothes lol", Keyboard.KEY_NONE, Category.RENDER);
 	}
 
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

@@ -44,10 +44,4 @@ public class Watermark extends Module {
 		super.onDisable();
 		on = false;
 	}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
