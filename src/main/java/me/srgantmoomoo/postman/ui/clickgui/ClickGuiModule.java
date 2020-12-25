@@ -16,8 +16,8 @@ public class ClickGuiModule extends Module {
 
 	public ClickGuiModule INSTANCE;
 		
-	public static NumberSetting animationSpeed = new NumberSetting("animationSpeed", ClickGuiModule, 200, 0, 1000, 100);
-	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(0, 121, 194, 255));
+	public static NumberSetting animationSpeed = new NumberSetting("animationSpeed", ClickGuiModule, 150, 0, 1000, 100);
+	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(155, 0, 0, 255));
 	public static ColorSetting backgroundColor = new ColorSetting("backgroundColor", ClickGuiModule, new JColor(0, 121, 194, 255));
 	public static ColorSetting settingBackgroundColor = new ColorSetting("settingBackgroundColor", ClickGuiModule, new JColor(255, 0, 0, 255));
 	public static ColorSetting outlineColor = new ColorSetting("outlineColor", ClickGuiModule, new JColor(0, 121, 194, 255));

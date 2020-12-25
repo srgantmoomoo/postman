@@ -158,12 +158,6 @@ public class ClickGui extends MinecraftHUDGUI {
 		container=new ToggleableContainer(module.getName(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),module);
 		panel.addComponent(container);
 		for (Setting property: Main.settingsManager.getSettingsForMod(module)) {
-			
-			for(Module m : ModuleManager.modules) {
-				for(Setting setting : m.settings) {
-			
-					container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(BooleanSetting)property));
-					
 			if (property instanceof BooleanSetting) {
 				container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(BooleanSetting)property));
 			} else if (property instanceof NumberSetting) {
@@ -174,9 +168,6 @@ public class ClickGui extends MinecraftHUDGUI {
 				container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.animationSpeed)));
 			}
 		}
-		}
-		}
-		//container.addComponent(new GameSenseKeybind(theme.getComponentRenderer(),module));
 	}
 	
 	public static void renderItem (ItemStack item, Point pos) {
