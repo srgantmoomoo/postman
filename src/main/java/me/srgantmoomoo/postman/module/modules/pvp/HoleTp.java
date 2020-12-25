@@ -146,10 +146,4 @@ public class HoleTp extends Module {
 		}
 		return false;
 	}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

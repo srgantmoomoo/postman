@@ -1,0 +1,8 @@
+/.gradle/
+/build/
+.classpath
+.settings/
+bin/
+src/main/java/META-INF/
+src/main/java/com/lukflug/panelstudio/
+.project

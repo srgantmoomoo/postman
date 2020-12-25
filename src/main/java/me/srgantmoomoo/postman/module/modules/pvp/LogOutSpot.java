@@ -11,10 +11,4 @@ public class LogOutSpot extends Module {
 		super ("logOutSpot", "shows where a player logs out", Keyboard.KEY_NONE, Category.PVP);
 	}
 
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

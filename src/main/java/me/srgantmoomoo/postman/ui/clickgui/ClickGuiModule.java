@@ -48,10 +48,4 @@ private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/pos
 
 	public void onDisable(){
 		}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

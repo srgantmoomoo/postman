@@ -11,10 +11,4 @@ public class Scaffold extends Module {
 		super ("scaffold", "places blocks under u automatically", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

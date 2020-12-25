@@ -1,7 +1,6 @@
 package me.srgantmoomoo.postman.ui.clickgui;
 
 import java.awt.Color;
-import java.awt.Desktop;
 import java.awt.Point;
 
 import org.lwjgl.input.Mouse;
@@ -9,29 +8,15 @@ import org.lwjgl.opengl.GL11;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
 import com.lukflug.panelstudio.DraggableContainer;
-import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.SettingsAnimation;
 import com.lukflug.panelstudio.hud.HUDClickGUI;
 import com.lukflug.panelstudio.hud.HUDPanel;
-import com.lukflug.panelstudiomc.GLInterface;
-import com.lukflug.panelstudiomc.MinecraftHUDGUI;
-
-import me.srgantmoomoo.api.util.render.JColor;
-import me.srgantmoomoo.postman.Main;
-import me.srgantmoomoo.postman.module.Category;
-import me.srgantmoomoo.postman.module.Module;
-import me.srgantmoomoo.postman.module.ModuleManager;
-import me.srgantmoomoo.postman.module.modules.client.ColorMain;
-import me.srgantmoomoo.postman.module.modules.client.HudModule;
-import me.srgantmoomoo.postman.settings.BooleanSetting;
-import me.srgantmoomoo.postman.settings.ColorSetting;
-import me.srgantmoomoo.postman.settings.ModeSetting;
-import me.srgantmoomoo.postman.settings.NumberSetting;
-import me.srgantmoomoo.postman.settings.Setting;
-
+import com.lukflug.panelstudio.mc.GLInterface;
+import com.lukflug.panelstudio.mc.MinecraftHUDGUI;
 import com.lukflug.panelstudio.settings.BooleanComponent;
 import com.lukflug.panelstudio.settings.EnumComponent;
+import com.lukflug.panelstudio.settings.KeybindComponent;
 import com.lukflug.panelstudio.settings.NumberComponent;
 import com.lukflug.panelstudio.settings.SimpleToggleable;
 import com.lukflug.panelstudio.settings.Toggleable;
@@ -40,13 +25,23 @@ import com.lukflug.panelstudio.theme.GameSenseTheme;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.postman.module.Category;
+import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.module.ModuleManager;
+import me.srgantmoomoo.postman.module.modules.client.ColorMain;
+import me.srgantmoomoo.postman.module.modules.client.HudModule;
+import me.srgantmoomoo.postman.settings.BooleanSetting;
+import me.srgantmoomoo.postman.settings.ColorSetting;
+import me.srgantmoomoo.postman.settings.KeybindSetting;
+import me.srgantmoomoo.postman.settings.ModeSetting;
+import me.srgantmoomoo.postman.settings.NumberSetting;
+import me.srgantmoomoo.postman.settings.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import scala.xml.dtd.PCDATA;
 
 public class ClickGui extends MinecraftHUDGUI {
 	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
@@ -157,7 +152,7 @@ public class ClickGui extends MinecraftHUDGUI {
 		CollapsibleContainer container;
 		container=new ToggleableContainer(module.getName(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),module);
 		panel.addComponent(container);
-		for (Setting property: Main.settingsManager.getSettingsForMod(module)) {
+		for (Setting property: module.settings) {
 			if (property instanceof BooleanSetting) {
 				container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(BooleanSetting)property));
 			} else if (property instanceof NumberSetting) {
@@ -166,6 +161,8 @@ public class ClickGui extends MinecraftHUDGUI {
 				container.addComponent(new EnumComponent(property.name,theme.getComponentRenderer(),(ModeSetting)property));
 			}	else if (property instanceof ColorSetting) { 
 				container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.animationSpeed)));
+			} else if (property instanceof KeybindSetting) {
+				container.addComponent(new KeybindComponent(theme.getComponentRenderer(),(KeybindSetting)property));
 			}
 		}
 	}

@@ -126,4 +126,8 @@ public abstract class Module implements Toggleable {
 	public Category getCategory() {
 		return this.category;
 	}
+	
+	public final boolean isOn() {
+		return toggled;
+	}
 }

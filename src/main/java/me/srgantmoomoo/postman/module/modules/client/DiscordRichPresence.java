@@ -20,11 +20,5 @@ public class DiscordRichPresence extends Module {
 	public void onDisable() {
 	    Discord.stopRPC();
 		}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	}
 	

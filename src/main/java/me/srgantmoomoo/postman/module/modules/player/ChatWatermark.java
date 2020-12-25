@@ -21,12 +21,6 @@ public class ChatWatermark extends Module {
 		this.addSettings();
 	}
 
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public void setup(){
 
 		ArrayList<String> Separators = new ArrayList<>();

@@ -10,12 +10,6 @@ public class ChatBot extends Module {
 	public ChatBot() {
 		super ("chatBot", "bot chat", Keyboard.KEY_NONE, Category.PLAYER);
 	}
-
-	@Override
-	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 
 }

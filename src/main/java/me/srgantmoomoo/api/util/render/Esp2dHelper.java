@@ -130,10 +130,4 @@ public class Esp2dHelper extends Module {
 
 	        return true;
 	    }
-
-		@Override
-		public boolean isOn() {
-			// TODO Auto-generated method stub
-			return false;
-		}
 }	  	  
