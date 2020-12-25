@@ -67,12 +67,12 @@ public class Main {
 	
 	@EventHandler
 	public void init (FMLInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(this);
-		log.info("minecraft forge initialized.");
-		
 		eventProcessor = new EventProcessor();
 		eventProcessor.init();
 		log.info("event system initialized.");
+		
+		MinecraftForge.EVENT_BUS.register(this);
+		log.info("minecraft forge events initialized.");
 		
 		notification = new Notification(null, null, null, 0);
 		log.info("notification system initialized.");

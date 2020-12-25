@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.ui.clickgui;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Point;
 
 import org.lwjgl.input.Mouse;
@@ -45,6 +46,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import scala.xml.dtd.PCDATA;
 
 public class ClickGui extends MinecraftHUDGUI {
 	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
@@ -160,6 +162,8 @@ public class ClickGui extends MinecraftHUDGUI {
 			for(Module m : ModuleManager.modules) {
 				for(Setting setting : m.settings) {
 			
+					container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(BooleanSetting)property));
+					
 			if (property instanceof BooleanSetting) {
 				container.addComponent(new BooleanComponent(property.name,theme.getComponentRenderer(),(BooleanSetting)property));
 			} else if (property instanceof NumberSetting) {

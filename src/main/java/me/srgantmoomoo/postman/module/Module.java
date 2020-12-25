@@ -107,13 +107,13 @@ public abstract class Module implements Toggleable {
 		}
 	}
 	
-	public void onEnable() {
+	protected void onEnable() {
 		MinecraftForge.EVENT_BUS.register(this);
 		Main.EVENT_BUS.subscribe(this);
 		enable();
 	}
 	
-	public void onDisable() {
+	protected void onDisable() {
 		MinecraftForge.EVENT_BUS.register(this);
 		Main.EVENT_BUS.subscribe(this);
 		disable();

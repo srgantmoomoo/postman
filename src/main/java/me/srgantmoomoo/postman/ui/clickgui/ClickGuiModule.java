@@ -11,7 +11,7 @@ import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
 import net.minecraft.util.ResourceLocation;
 
-public class ClickGuiModule extends Module{
+public class ClickGuiModule extends Module {
 	private static Module ClickGuiModule;
 
 	public ClickGuiModule INSTANCE;

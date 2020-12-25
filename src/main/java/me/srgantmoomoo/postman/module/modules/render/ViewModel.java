@@ -30,19 +30,21 @@ public class ViewModel extends Module {
 
 	@EventHandler
 	private final Listener<TransformSideFirstPersonEvent> eventListener = new Listener<>(event -> {
-		if (event.getHandSide() == EnumHandSide.RIGHT){
-			GlStateManager.translate(RightX.getValue(), RightY.getValue(), RightZ.getValue());
-		} else if (event.getHandSide() == EnumHandSide.LEFT){
-			GlStateManager.translate(LeftX.getValue(), LeftY.getValue(), LeftZ.getValue());
-		}
+			if (event.getEnumHandSide() == EnumHandSide.RIGHT) {
+				GlStateManager.translate(RightX.getValue(), RightY.getValue(), RightZ.getValue());
+			} else if (event.getEnumHandSide() == EnumHandSide.LEFT) {
+				GlStateManager.translate(LeftX.getValue(), LeftY.getValue(), LeftZ.getValue());
+			}
 	});
 
 	public void onEnable(){
 		Main.EVENT_BUS.subscribe(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	public void onDisable(){
 		Main.EVENT_BUS.unsubscribe(this);
+		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 
 	@Override

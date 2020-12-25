@@ -23,7 +23,7 @@ import net.minecraftforge.common.MinecraftForge;
  * Edited by @SrgantMooMoo on 11/17/20.
  */
 
-public class Freecam extends Module {
+public class Freecam extends Module  {
 	
 	public Freecam() {
 		super ("freecam", "gives an out of body expirience 0_0", Keyboard.KEY_NONE, Category.RENDER);
@@ -38,7 +38,7 @@ public class Freecam extends Module {
 	private Entity ridingEntity;
 
 	@Override
-	public void onEnable() {
+	protected void onEnable() {
 		Main.EVENT_BUS.subscribe(this);
 		if (mc.player != null) {
 			isRidingEntity = mc.player.getRidingEntity() != null;
@@ -60,13 +60,13 @@ public class Freecam extends Module {
 			clonedPlayer.rotationYawHead = mc.player.rotationYawHead;
 			mc.world.addEntityToWorld(-100, clonedPlayer);
 			mc.player.capabilities.isFlying = true;
-			mc.player.capabilities.setFlySpeed((float) (10 / 100f));
+			mc.player.capabilities.setFlySpeed((float) (5 / 100f));
 			mc.player.noClip = true;
 		}
 	}
 
 	@Override
-	public void onDisable() {
+	protected void onDisable() {
 		Main.EVENT_BUS.unsubscribe(this);
 		EntityPlayer localPlayer = mc.player;
 		if (localPlayer != null) {
@@ -89,12 +89,12 @@ public class Freecam extends Module {
 	@Override
 	public void onUpdate() {
 		mc.player.capabilities.isFlying = true;
-		mc.player.capabilities.setFlySpeed((float) (10 / 100f));
+		mc.player.capabilities.setFlySpeed((float) (5 / 100f));
 		mc.player.noClip = true;
 		mc.player.onGround = false;
 		mc.player.fallDistance = 0;
 	}
-
+	
 	@EventHandler
 	private final Listener<PlayerMoveEvent> moveListener = new Listener<>(event -> {
 		mc.player.noClip = true;
@@ -107,7 +107,7 @@ public class Freecam extends Module {
 
 	@EventHandler
 	private final Listener<PacketEvent.Send> sendListener = new Listener<>(event -> {
-		if ((event.getPacket() instanceof CPacketPlayer || event.getPacket() instanceof CPacketInput) && true) {
+		if ((event.getPacket() instanceof CPacketPlayer || event.getPacket() instanceof CPacketInput)) {
 			event.cancel();
 		}
 	});

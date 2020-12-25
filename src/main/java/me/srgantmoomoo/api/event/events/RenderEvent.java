@@ -3,14 +3,15 @@ package me.srgantmoomoo.api.event.events;
 import me.srgantmoomoo.api.event.Event;
 
 public class RenderEvent extends Event {
+
 	private final float partialTicks;
 
-	public RenderEvent(float ticks){
+	public RenderEvent(float partialTicks) {
 		super();
-		partialTicks = ticks;
+		this.partialTicks = partialTicks;
 	}
 
-	public float getPartialTicks(){
-		return partialTicks;
+	public float getPartialTicks() {
+		return this.partialTicks;
 	}
 }

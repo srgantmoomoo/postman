@@ -12,6 +12,7 @@ import me.srgantmoomoo.postman.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.network.play.client.CPacketChatMessage;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ChatWatermark extends Module {
 	
@@ -25,9 +26,8 @@ public class ChatWatermark extends Module {
 		// TODO Auto-generated method stub
 		return false;
 	}
-}
 
-	/*public void setup(){
+	public void setup(){
 
 		ArrayList<String> Separators = new ArrayList<>();
 		Separators.add(">>");
@@ -89,4 +89,4 @@ public class ChatWatermark extends Module {
 				.replace("y", "\u028f")
 				.replace("z", "\u1d22");
 	}
-}*/
+}
