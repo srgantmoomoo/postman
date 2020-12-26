@@ -68,7 +68,7 @@ public class InventoryViewer extends Module {
 			GlStateManager.disableAlpha();
 		}else if(mode.getMode().equals("compact")) {
 			GlStateManager.enableAlpha();
-			Gui.drawRect((int) (sr.getScaledWidth() - 155 + (float) xaxis.getValue()), (int) (1 + yaxis.getValue()), (int) (sr.getScaledWidth() - 1 + xaxis.getValue()), (int) (53 + yaxis.getValue()), 0x4079c2ec); 
+			Gui.drawRect((int) (sr.getScaledWidth() - 155 + (float) xaxis.getValue()), (int) (1 + yaxis.getValue()), (int) (sr.getScaledWidth() - 1 + xaxis.getValue()), (int) (53 + yaxis.getValue()), 0x4079c2ec); //0x40009dff
 			GlStateManager.disableAlpha();
 		}
 

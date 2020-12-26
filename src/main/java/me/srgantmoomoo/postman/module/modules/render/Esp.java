@@ -52,7 +52,7 @@ public class Esp extends Module {
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(entityMode, mob, item, storage, chams, range, lineWidth, pRed, pGreen, pBlue);
+		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, pRed, pGreen, pBlue);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 

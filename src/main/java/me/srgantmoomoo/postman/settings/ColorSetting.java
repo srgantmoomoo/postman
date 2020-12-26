@@ -10,7 +10,7 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 	private boolean rainbow;
 	private JColor value;
 	
-	public ColorSetting (String name, Module parent, JColor value) {
+	public ColorSetting (String name, Module parent, final JColor value) {
 		this.name = name;
 		this.parent = parent;
 		this.value=value;

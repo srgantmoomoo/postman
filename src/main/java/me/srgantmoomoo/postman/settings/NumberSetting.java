@@ -88,7 +88,7 @@ public int getPrecision() {
 }
 
 @Override
-public void setNumber(double arg0) {
+public void setNumber(double value) {
 	 double precision = 1.0D / this.increment;
 	 this.value = Math.round(Math.max(this.minimun, Math.min(this.maximum, value)) * precision) / precision;
 }

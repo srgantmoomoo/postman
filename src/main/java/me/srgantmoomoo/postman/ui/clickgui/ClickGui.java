@@ -83,7 +83,7 @@ public class ClickGui extends MinecraftHUDGUI {
 
 			@Override
 			public int getFontHeight() {
-				return (int)Math.round(((Interface) fontRenderer).getFontHeight()+2);
+				return (int)Math.round(fontRenderer.FONT_HEIGHT)+2;
 			}
 			
 			@Override
@@ -143,8 +143,8 @@ public class ClickGui extends MinecraftHUDGUI {
 	        		//}
 	        	//}
         	//}
-        	if (scroll>0) gui.handleScroll(-5);
-        	else gui.handleScroll(5);
+        	if (scroll>0) gui.handleScroll(-getScrollSpeed());
+        	else gui.handleScroll(getScrollSpeed());
         }
     }
 	
@@ -219,6 +219,6 @@ public class ClickGui extends MinecraftHUDGUI {
 
 	@Override
 	protected int getScrollSpeed() {
-		return 5;
+		return (int) ClickGuiModule.scrolls.getValue();
 	}
 }

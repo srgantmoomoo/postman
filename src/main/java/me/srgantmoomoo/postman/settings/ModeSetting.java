@@ -55,9 +55,10 @@ public String getValueName() {
 
 @Override
 public void increment() {
-	int modeIndex = modes.indexOf(index);
-	modeIndex = (modeIndex + 1) % modes.size();
-	setMode(modes.get(modeIndex));
-	
-}
+	 if (this.index < this.modes.size() - 1) {
+	      this.index++;
+	    } else {
+	      this.index = 0;
+	    } 
+	  }
 }

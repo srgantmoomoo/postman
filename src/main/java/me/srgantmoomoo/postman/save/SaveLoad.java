@@ -7,18 +7,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 
 import me.srgantmoomoo.postman.Main;
-import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.settings.BooleanSetting;
-import me.srgantmoomoo.postman.settings.KeybindSetting;
+import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.ModeSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
 import me.srgantmoomoo.postman.settings.Setting;
-import me.srgantmoomoo.postman.settings.SettingsManager;
 import net.minecraft.client.Minecraft;
 
 /*
@@ -71,6 +68,11 @@ public class SaveLoad {
 				ModeSetting mode = (ModeSetting) setting;
 				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
 			}
+			
+			if(setting instanceof ColorSetting) {
+				ColorSetting color = (ColorSetting) setting;
+				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + color.toInteger());
+			}
 			}
 		} 
 		
@@ -122,6 +124,9 @@ public class SaveLoad {
 						if(setting instanceof ModeSetting) {
 						((ModeSetting)setting).setMode(args[3]);
 					}
+						if(setting instanceof ColorSetting) {
+						((ColorSetting)setting).fromInteger(Integer.parseInt(args[3]));
+						}
 					}
 				}
 			}

@@ -17,17 +17,18 @@ public class ClickGuiModule extends Module {
 	public ClickGuiModule INSTANCE;
 		
 	public static NumberSetting animationSpeed = new NumberSetting("animationSpeed", ClickGuiModule, 150, 0, 1000, 100);
-	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(155, 0, 0, 255));
-	public static ColorSetting backgroundColor = new ColorSetting("backgroundColor", ClickGuiModule, new JColor(0, 121, 194, 255));
-	public static ColorSetting settingBackgroundColor = new ColorSetting("settingBackgroundColor", ClickGuiModule, new JColor(255, 0, 0, 255));
-	public static ColorSetting outlineColor = new ColorSetting("outlineColor", ClickGuiModule, new JColor(0, 121, 194, 255));
-	public static ColorSetting fontColor = new ColorSetting("fontColor", ClickGuiModule, new JColor(255, 0, 0, 255));
-	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 90, 50, 255, 10);
+	public static NumberSetting scrolls = new NumberSetting("scrollSpeed", ClickGuiModule, 10, 0, 10, 1);
+	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(121, 193, 255, 255)); //(0, 157, 255, 255));
+	public static ColorSetting backgroundColor = new ColorSetting("backgroundColor", ClickGuiModule, new JColor(103, 167, 221, 255)); //(0, 121, 194, 255));
+	public static ColorSetting settingBackgroundColor = new ColorSetting("settingBackgroundColor", ClickGuiModule, new JColor(216, 216, 216, 255));
+	public static ColorSetting outlineColor = new ColorSetting("outlineColor", ClickGuiModule, new JColor(103, 167, 221, 255));
+	public static ColorSetting fontColor = new ColorSetting("fontColor", ClickGuiModule, new JColor(255, 255, 255, 255));
+	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 255, 50, 255, 10);
 	public static BooleanSetting showHud = new BooleanSetting("showHud", ClickGuiModule, true);
 	
 public ClickGuiModule() {
 	super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
-	this.addSettings(animationSpeed,opacity,enabledColor,backgroundColor,settingBackgroundColor,outlineColor,fontColor,showHud);
+	this.addSettings(animationSpeed,scrolls,opacity,enabledColor,backgroundColor,settingBackgroundColor,outlineColor,fontColor,showHud);
 	INSTANCE = this;
 }
 
