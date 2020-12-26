@@ -58,13 +58,13 @@ public class TabGui extends Module {
 		ScaledResolution sr = new ScaledResolution(mc);
 		
 		if(tab) {
-	    			Gui.drawRect(sr.getScaledWidth() - 1, 59, sr.getScaledWidth() - 60, 129, 0x20000000);
+	    			Gui.drawRect(sr.getScaledWidth() - 1, 60, sr.getScaledWidth() - 60, 132, 0x40000000);
 			
-			Gui.drawRect(sr.getScaledWidth() - 1, 60 + currentTab * 14 - 1, sr.getScaledWidth() - 60, 62 + currentTab * 14 + 11, 0xff79c2ec);
+			Gui.drawRect(sr.getScaledWidth() - 1, 61 + currentTab * 12 - 1, sr.getScaledWidth() - 60, 61 + currentTab * 12 + 11, 0xff79c2ec);
 			
 			int count = 0;
 			for(Category c : Category.values()) {
-						fr.drawStringWithShadow("<" + " " + c.name, sr.getScaledWidth() - 57, 62 + count * 14, 0xffffffff);
+						fr.drawStringWithShadow("<" + " " + c.name, sr.getScaledWidth() - 57, 62 + count * 12, 0xffffffff);
 				count++;
 			}
 			
@@ -100,20 +100,20 @@ public class TabGui extends Module {
 		int count = 0;
 		if (modules.size() == 0)
 			return;
-		Gui.drawRect(sr.getScaledWidth() - 139, 59, sr.getScaledWidth() - 61, 59 + modules.size() * 14 , 0x20000000);
-		Gui.drawRect(sr.getScaledWidth() - 61, 60 + category.moduleIndex * 14 - 1, sr.getScaledWidth() - 139, 62 + category.moduleIndex * 14 + 11, 0xff79c2ec);
+		Gui.drawRect(sr.getScaledWidth() - 139, 60, sr.getScaledWidth() - 61, 60 + modules.size() * 12 , 0x40000000);
+		Gui.drawRect(sr.getScaledWidth() - 61, 61 + category.moduleIndex * 12 - 1, sr.getScaledWidth() - 139, 61 + category.moduleIndex * 12 + 11, 0xff79c2ec);
 		
 			count = 0;
 			for(Module m : modules) {
 				if (!m.getName().equals("Esp2dHelper")) {
-				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 14, 0xffffffff);
+				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 12, 0xffffffff);
 				}
 				
 				if(count == category.moduleIndex && m.expanded) {
 					
 					if(!m.settings.isEmpty()) {
-						Gui.drawRect(sr.getScaledWidth() - 140, 59, sr.getScaledWidth() - 226, 59 + m.settings.size() * 14, 0x20000000);
-						Gui.drawRect(sr.getScaledWidth() - 140, 60 + m.index * 14 - 1, sr.getScaledWidth() - 226, 62 + m.index * 14 + 11, m.settings.get(m.index).focused ? 0xff67a7dd : 0xff79c2ec);
+						Gui.drawRect(sr.getScaledWidth() - 140, 60, sr.getScaledWidth() - 226, 60 + m.settings.size() * 12, 0x40000000);
+						Gui.drawRect(sr.getScaledWidth() - 140, 61 + m.index * 12 - 1, sr.getScaledWidth() - 226, 61 + m.index * 12 + 11, m.settings.get(m.index).focused ? 0xff67a7dd : 0xff79c2ec);
 					}
 					
 					int index = 0;
@@ -121,25 +121,25 @@ public class TabGui extends Module {
 						
 						if(setting instanceof BooleanSetting) {
 							BooleanSetting bool = (BooleanSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + (bool.isEnabled() ? "on" : "off"), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + (bool.isEnabled() ? "on" : "off"), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
 						}
 						
 						if(setting instanceof NumberSetting) {
 							NumberSetting number = (NumberSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + number.getValue(), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + number.getValue(), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
 						}
 						
 						if(setting instanceof ModeSetting) {
 							ModeSetting mode = (ModeSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + mode.getMode(), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + mode.getMode(), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
 						}
 						
 						if(setting instanceof KeybindSetting) {
 							KeybindSetting keyBind = (KeybindSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + Keyboard.getKeyName(keyBind.code), sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
+							fr.drawStringWithShadow(setting.name + ":" + " " + Keyboard.getKeyName(keyBind.code), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
 						}
 						
-						fr.drawStringWithShadow(setting.name, sr.getScaledWidth() - 224, 62 + index * 14, 0xffffffff);
+						fr.drawStringWithShadow(setting.name, sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
 						index++;
 					}
 				}
@@ -151,9 +151,9 @@ public class TabGui extends Module {
 				} */
 				
 				if(!m.getName().equals("Esp2dHelper") && m.toggled) 
-					Gui.drawRect(sr.getScaledWidth() - 139, 60 + count * 14, sr.getScaledWidth() - 138, 72 + count * 14, 0xffffffff);
+					Gui.drawRect(sr.getScaledWidth() - 139, 60 + count * 12, sr.getScaledWidth() - 138, 72 + count * 12, 0xffffffff);
 				if (!m.getName().equals("Esp2dHelper")) {
-				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 14, 0xffffffff);
+				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 12, 0xffffffff);
 				count++;
 				}
 			}

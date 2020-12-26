@@ -23,7 +23,7 @@ public class MixinGuiMainMenu extends GuiScreen {
   @Inject(method = {"drawScreen"}, at = {@At("TAIL")}, cancellable = true)
   public void drawText(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
 	  if(ModuleManager.getModuleByName("mainMenuInfo").isToggled()) {
-	  ResourceLocation postman = new ResourceLocation(Refrence.MOD_ID, "textures/postmanbg.png");
+	  ResourceLocation postman = new ResourceLocation(Refrence.MOD_ID, "textures/christmanbg.png");
 	    this.mc.getTextureManager().bindTexture(postman);
 	    drawModalRectWithCustomSizedTexture(2, 2, 0.0F, 0.0F, 60, 60 - 2, 60, (60 - 2));
 	FontRenderer fr = mc.fontRenderer;

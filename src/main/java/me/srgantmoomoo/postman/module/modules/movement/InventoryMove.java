@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.module.modules.player;
+package me.srgantmoomoo.postman.module.modules.movement;
 
 import org.lwjgl.input.Keyboard;
 
@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiChat;
 public class InventoryMove extends Module {
 	
 	public InventoryMove() {
-		super ("inventoryMove", "lets you move while in ur inventory", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("inventoryMove", "lets you move while in ur inventory", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 	
 	private Minecraft mc = Minecraft.getMinecraft();

@@ -44,7 +44,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 public class ClickGui extends MinecraftHUDGUI {
-	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
+	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=0;
 	private final Toggleable colorToggle;
 	public final GUIInterface guiInterface;
 	public final HUDClickGUI gui;
@@ -68,10 +68,6 @@ public class ClickGui extends MinecraftHUDGUI {
 			public void drawString(Point pos, String s, Color c) {
 				GLInterface.end();
 				int x=pos.x+2, y=pos.y+1;
-				//if (!ColorMain.customFont.getValue()) {
-					//x+=1;
-					//y+=1;
-				//}
 				fontRenderer.drawStringWithShadow(s,x,y,0xffffffff);
 				GLInterface.begin();
 			}
@@ -85,13 +81,18 @@ public class ClickGui extends MinecraftHUDGUI {
 			public int getFontHeight() {
 				return (int)Math.round(fontRenderer.FONT_HEIGHT)+2;
 			}
-			
+
 			@Override
-			public String getResourcePrefix() {
-				return "gamesense:gui/";
+			protected String getResourcePrefix() {
+				return "psotman:gui/";
 			}
 		};
-		gui=new HUDClickGUI(guiInterface);
+		gui=new HUDClickGUI(guiInterface) {
+			@Override
+			public void handleScroll (int diff) {
+				super.handleScroll(diff);
+			}
+		};
 		Toggleable hudToggle=new Toggleable() {
 			@Override
 			public void toggle() {
@@ -103,7 +104,8 @@ public class ClickGui extends MinecraftHUDGUI {
 			}
 		};
 		
-		for (Module module: ModuleManager.getModules()) {
+		
+		for (Module module: ModuleManager.modules) {
 			if (module instanceof HudModule) {
 				((HudModule)module).populate(theme);
 				gui.addHUDComponent(new HUDPanel(((HudModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation(ClickGuiModule.animationSpeed),hudToggle,HUD_BORDER));
@@ -150,6 +152,7 @@ public class ClickGui extends MinecraftHUDGUI {
 	
 	private void addModule (CollapsibleContainer panel, Module module) {
 		CollapsibleContainer container;
+		if(!module.getName().equals("Esp2dHelper")) {
 		container=new ToggleableContainer(module.getName(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),module);
 		panel.addComponent(container);
 		for (Setting property: module.settings) {
@@ -164,6 +167,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			} else if (property instanceof KeybindSetting) {
 				container.addComponent(new KeybindComponent(theme.getComponentRenderer(),(KeybindSetting)property));
 			}
+		}
 		}
 	}
 	

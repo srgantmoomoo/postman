@@ -27,7 +27,7 @@ public class SaveLoad {
 	private File dir;
 	private File dataFile;
 	int currentTab;
-	
+	   
 	public SaveLoad() {
 		dir = new File(Minecraft.getMinecraft().gameDir, "postman");
 		if(!dir.exists()) {
@@ -42,7 +42,7 @@ public class SaveLoad {
 		
 		this.load();
 	}
-	
+	 
 	public void save() {
 		ArrayList<String> toSave = new ArrayList<String>();
 		

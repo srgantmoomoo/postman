@@ -11,6 +11,7 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 
+//originally written by @lukflug... ive got to properly credit these better lmao
 public abstract class HudModule extends Module {
 	protected FixedComponent component;
 	protected Point position;

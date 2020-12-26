@@ -24,7 +24,7 @@ public class Velocity extends Module {
 			if(mc.player == null) {
 				return;
 			}
-		if(mc.player.hurtTime == mc.player.maxHurtTime && mc.player.maxHurtTime > 0) {
+		if(mc.player.hurtTime > 0) {
 			mc.player.motionX *= (float) percent.getValue() / 100;
 			mc.player.motionY *= (float) percent.getValue() / 100;
 			mc.player.motionZ *= (float) percent.getValue() / 100;

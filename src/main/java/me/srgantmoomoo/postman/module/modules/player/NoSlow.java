@@ -1,4 +1,4 @@
-/*package me.srgantmoomoo.postman.module.modules.player;
+/*package me.srgantmoomoo.postman.module.modules.movement;
 
 import org.lwjgl.input.Keyboard;
 

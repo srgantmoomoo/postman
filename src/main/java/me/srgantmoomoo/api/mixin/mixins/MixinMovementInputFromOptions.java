@@ -1,7 +1,7 @@
 package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.module.ModuleManager;
-import me.srgantmoomoo.postman.module.modules.player.InventoryMove;
+import me.srgantmoomoo.postman.module.modules.movement.InventoryMove;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.settings.KeyBinding;

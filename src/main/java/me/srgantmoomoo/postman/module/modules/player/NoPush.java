@@ -20,7 +20,11 @@ public class NoPush extends Module {
 		if (this.saveReduction == 1.0E8F)
 		      this.saveReduction = mc.player.entityCollisionReduction; 
 		    mc.player.entityCollisionReduction = 1.0F;
-			}
+	}
+	
+	public void onEnable() {
+		super.onEnable();
+	}
 	
 	public void onDisable() {
 		super.onDisable();

@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.module.modules.player;
+package me.srgantmoomoo.postman.module.modules.movement;
 
 import org.lwjgl.input.Keyboard;
 
@@ -14,7 +14,7 @@ public class Sprint extends Module {
 	public boolean on;
 	
 	public Sprint() {
-		super ("sprint", "now u cant walk, good going", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("sprint", "now u cant walk, good going", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(mode);
 	}
 	

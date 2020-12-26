@@ -1,7 +1,7 @@
 package me.srgantmoomoo.postman.module;
 
 public enum Category {
-	PLAYER("player"), RENDER("render"), PVP("pvp"), EXPLOITS("exploits"), CLIENT("client");
+	PLAYER("player"), RENDER("render"), PVP("pvp"), EXPLOITS("exploits"), MOVEMENT("movement"), CLIENT("client");
 	
 	public String name;
 	public int moduleIndex;

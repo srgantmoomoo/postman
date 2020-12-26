@@ -9,6 +9,7 @@ public class MainMenuInfo extends Module {
 	
 	public MainMenuInfo() {
 		super("mainMenuInfo", "asd dsa", Keyboard.KEY_NONE, Category.CLIENT);
+		toggled = true;
 	}
 	//check MixinGuiMainMenu :)
 
