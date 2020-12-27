@@ -84,7 +84,7 @@ public double getNumber() {
 
 @Override
 public int getPrecision() {
-	return 0;
+	return 1;
 }
 
 @Override

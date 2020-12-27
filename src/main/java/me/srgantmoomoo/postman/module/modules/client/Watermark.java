@@ -55,3 +55,43 @@ public class Watermark extends Module {
 		on = false;
 	}
 }
+	
+// ADD COLOR SETTING TO HERE THIS TEUHTUIWEHTBLKJHDFSBWTYRCSA
+	/*
+	public Watermark() {
+		super("watermark", "s", new Point(1,2));
+	}
+	
+	@Override
+	public void populate (Theme theme) {
+		component=new ListComponent(getName(),theme.getPanelRenderer(),position,new WatermarkList());
+	}
+	
+	
+	private class WatermarkList implements HUDList {
+		@Override
+		public int getSize() {
+			return 1;
+		}
+
+		@Override
+		public String getItem(int index) {
+			return "postman "+ Refrence.VERSION;
+		}
+
+		@Override
+		public Color getItemColor(int index) {
+			return color.getValue();
+		}
+
+		@Override
+		public boolean sortUp() {
+			return false;
+		}
+
+		@Override
+		public boolean sortRight() {
+			return false;
+		}
+	}
+}*/

@@ -16,8 +16,8 @@ public abstract class HudModule extends Module {
 	protected FixedComponent component;
 	protected Point position;
 	
-	public HudModule (String title, Point defaultPos) {
-		super(title, "HudModule", Keyboard.KEY_NONE, Category.CLIENT);
+	public HudModule (String title, String description, Point defaultPos) {
+		super(title, description, Keyboard.KEY_NONE, Category.CLIENT);
 		position=defaultPos;
 	}
 	

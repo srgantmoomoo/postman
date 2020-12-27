@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.ui.clickgui;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +19,9 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.lukflug.panelstudio.ConfigList;
 import com.lukflug.panelstudio.PanelConfig;
+
+import me.srgantmoomoo.postman.Main;
+import net.minecraftforge.fml.client.config.GuiConfig;
 /*
  * ok, literally just skidded from gs atm, im v tired... will come back to this wen redoing clickgui... @SrgantMooMoo 12/16/2020 1:55am 0_0
  */

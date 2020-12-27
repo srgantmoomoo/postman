@@ -10,6 +10,8 @@ import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.notification.Notification;
 import me.srgantmoomoo.postman.proxy.CommonProxy;
+import me.srgantmoomoo.postman.save.ClickGuiLoad;
+import me.srgantmoomoo.postman.save.ClickGuiSave;
 import me.srgantmoomoo.postman.save.SaveLoad;
 import me.srgantmoomoo.postman.settings.SettingsManager;
 import me.srgantmoomoo.postman.ui.TabGui;
@@ -41,6 +43,8 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingsManager settingsManager;
 	public static SaveLoad saveLoad;
+	public ClickGuiSave clickGuiSave;
+	public ClickGuiLoad clickGuiLoad;
 	public ClickGui clickGui;
 	public static TabGui tabGui;
 	public EventProcessor eventProcessor;
@@ -88,9 +92,11 @@ public class Main {
 		log.info("user interface initialized.");
 		
 		clickGui = new ClickGui();
-		log.info("ClickGUI initialized!");
+		log.info("clickGui initialized!");
 		
 		saveLoad = new SaveLoad();
+		clickGuiSave = new ClickGuiSave();
+		clickGuiLoad = new ClickGuiLoad();
 		log.info("configs initialized.");
 		
 		log.info("postman initialization finished");

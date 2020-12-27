@@ -36,7 +36,7 @@ public class InventoryViewer extends Module {
 		this.addSettings(mode, xaxis, yaxis);
 	}
 	private static final Minecraft mc = Minecraft.getMinecraft();
-	private final ResourceLocation inventorylogo = new ResourceLocation(Refrence.MOD_ID, "textures/christmancircle.png");
+	private final ResourceLocation inventorylogo = new ResourceLocation(Refrence.MOD_ID, "textures/postmancircle.png");
 	
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent event) {
