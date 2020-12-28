@@ -26,10 +26,11 @@ public class ViewModel extends Module {
 	public ViewModel() {
 		super("viewModel", "classic hud", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(LeftX, LeftY, LeftZ, RightX, RightY, RightZ);
+		toggled = true;
 	}
 
 	@EventHandler
-	private final Listener<TransformSideFirstPersonEvent> eventListener = new Listener<>(event -> {
+	private final Listener<TransformSideFirstPersonEvent> listener = new Listener<>(event -> {
 			if (event.getEnumHandSide() == EnumHandSide.RIGHT) {
 				GlStateManager.translate(RightX.getValue(), RightY.getValue(), RightZ.getValue());
 			} else if (event.getEnumHandSide() == EnumHandSide.LEFT) {
@@ -37,12 +38,12 @@ public class ViewModel extends Module {
 			}
 	});
 
-	public void onEnable(){
+	public void onEnable() {
 		Main.EVENT_BUS.subscribe(this);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	public void onDisable(){
+	public void onDisable() {
 		Main.EVENT_BUS.unsubscribe(this);
 		MinecraftForge.EVENT_BUS.unregister(this);
 	}

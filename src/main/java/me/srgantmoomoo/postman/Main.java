@@ -8,6 +8,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
+import me.srgantmoomoo.postman.module.modules.render.ViewModel;
 import me.srgantmoomoo.postman.notification.Notification;
 import me.srgantmoomoo.postman.proxy.CommonProxy;
 import me.srgantmoomoo.postman.save.ClickGuiLoad;

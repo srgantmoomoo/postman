@@ -47,65 +47,6 @@ public class SaveLoad {
 		
 		this.load();
 	}
-	
-	// SAVE ------
-		public void SaveConfig() {
-			  try {
-		            saveConfig();
-		        }
-		        catch (IOException e) {
-		            e.printStackTrace();
-		        }
-		}
-		
-		 public static final String fileName = "postman/";
-		    String mainName = "Main/";
-		    
-		 public void saveConfig() throws IOException {
-		        if (!Files.exists(Paths.get(fileName))) {
-		            Files.createDirectories(Paths.get(fileName));
-		        }
-		        if (!Files.exists(Paths.get(fileName + mainName))) {
-		            Files.createDirectories(Paths.get(fileName + mainName));
-		        }
-		      
-		    }
-		 
-		 public void registerFiles(String location, String name) throws IOException {
-		        if (!Files.exists(Paths.get(fileName + location + name + ".json"))) {
-		            Files.createFile(Paths.get(fileName + location + name + ".json"));
-		        }
-		        else {
-		            File file = new File(fileName + location + name + ".json");
-
-		            file.delete();
-
-		            Files.createFile(Paths.get(fileName + location +name + ".json"));
-		        }
-		    }
-		 
-			public void saveClickGUIPositions() throws IOException {
-		        registerFiles(mainName, "ClickGUI");
-				Main.getInstance().clickGui.gui.saveConfig(new ClickGuiConfig(fileName+mainName));
-		    }
-			
-			// LOAD ------
-			  public void LoadConfig() {
-			        try {
-			            loadConfig();
-			        }
-			        catch (IOException e) {
-			            e.printStackTrace();
-			        }
-			    }
-			  
-			  public void loadConfig() throws IOException {
-			        loadClickGUIPositions();
-			    }
-			  
-			  public void loadClickGUIPositions() throws IOException {
-					Main.getInstance().clickGui.gui.loadConfig(new ClickGuiConfig(fileName+mainName));
-			    }
 	 
 	public void save() {
 		ArrayList<String> toSave = new ArrayList<String>();
