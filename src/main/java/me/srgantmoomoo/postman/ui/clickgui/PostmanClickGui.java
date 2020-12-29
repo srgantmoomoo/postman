@@ -8,6 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
 import com.lukflug.panelstudio.DraggableContainer;
+import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.SettingsAnimation;
 import com.lukflug.panelstudio.hud.HUDClickGUI;
 import com.lukflug.panelstudio.hud.HUDPanel;
@@ -42,15 +43,15 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
-public class ClickGui extends MinecraftHUDGUI {
+public class PostmanClickGui extends MinecraftHUDGUI {
 	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=0;
 	private final Toggleable colorToggle;
 	public final GUIInterface guiInterface;
 	public final HUDClickGUI gui;
 	private final Theme theme;
 	
-	public ClickGui() {
-		theme=new PostmanTheme(new SettingsColorScheme(ClickGuiModule.enabledColor,ClickGuiModule.backgroundColor,ClickGuiModule.settingBackgroundColor,ClickGuiModule.outlineColor,ClickGuiModule.fontColor,ClickGuiModule.opacity),HEIGHT,2);
+	public PostmanClickGui() {
+		theme=new GameSenseTheme(new SettingsColorScheme(ClickGuiModule.enabledColor,ClickGuiModule.backgroundColor,ClickGuiModule.settingBackgroundColor,ClickGuiModule.outlineColor,ClickGuiModule.fontColor,ClickGuiModule.opacity),HEIGHT,2);
 		colorToggle=new Toggleable() {
 			@Override
 			public void toggle() {
@@ -118,7 +119,7 @@ public class ClickGui extends MinecraftHUDGUI {
 					//if (ClickGuiModule.scrolling.getValue().equals("Screen")) {
 						//return childHeight;
 					//}
-					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight()-HEIGHT));
+					return Math.min(childHeight,Math.max(HEIGHT*4,PostmanClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight()-HEIGHT));
 				}
 			};
 			gui.addComponent(panel);
