@@ -8,6 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
 import com.lukflug.panelstudio.DraggableContainer;
+import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.SettingsAnimation;
 import com.lukflug.panelstudio.hud.HUDClickGUI;
 import com.lukflug.panelstudio.hud.HUDPanel;
@@ -90,6 +91,15 @@ public class ClickGui extends MinecraftHUDGUI {
 			@Override
 			public void handleScroll (int diff) {
 				super.handleScroll(diff);
+				if (ClickGuiModule.scrollMode.getMode().equals("screen")) {
+					for (FixedComponent component: components) {
+		        		if (!hudComponents.contains(component)) {
+			        		Point p=component.getPosition(guiInterface);
+			        		p.translate(0,-diff);
+			        		component.setPosition(guiInterface,p);
+		        		}
+		        	}
+				}
 			}
 		};
 		Toggleable hudToggle=new Toggleable() {
@@ -103,8 +113,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			}
 		};
 		
-		
-		for (Module module: ModuleManager.modules) {
+		for (Module module: ModuleManager.getModules()) {
 			if (module instanceof HudModule) {
 				((HudModule)module).populate(theme);
 				gui.addHUDComponent(new HUDPanel(((HudModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation(ClickGuiModule.animationSpeed),hudToggle,HUD_BORDER));
@@ -115,9 +124,9 @@ public class ClickGui extends MinecraftHUDGUI {
 			DraggableContainer panel=new DraggableContainer(category.name,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),new Point(pos),WIDTH) {
 				@Override
 				protected int getScrollHeight (int childHeight) {
-					//if (ClickGuiModule.scrolling.getValue().equals("Screen")) {
-						//return childHeight;
-					//}
+					if (ClickGuiModule.scrollMode.getMode().equals("screen")) {
+						return childHeight;
+					}
 					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight()-HEIGHT));
 				}
 			};
@@ -129,25 +138,6 @@ public class ClickGui extends MinecraftHUDGUI {
 		}
 	}
 	
-	@Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		super.drawScreen(mouseX,mouseY,partialTicks);
-        int scroll=Mouse.getDWheel();
-        if (scroll!=0) {
-        	//if (ClickGuiModule.scrolling.getValue().equals("Screen")) {
-	        	//for (FixedComponent component: gui.getComponents()) {
-	        		//if (!(component instanceof HUDPanel)) {
-		        		//Point p=component.getPosition(guiInterface);
-		        		//if (scroll>0) p.translate(0,ClickGuiModule.scrollSpeed.getValue());
-		        		//else p.translate(0,-ClickGuiModule.scrollSpeed.getValue());
-		        		//component.setPosition(guiInterface,p);
-	        		//}
-	        	//}
-        	//}
-        	if (scroll>0) gui.handleScroll(-getScrollSpeed());
-        	else gui.handleScroll(getScrollSpeed());
-        }
-    }
 	
 	private void addModule (CollapsibleContainer panel, Module module) {
 		CollapsibleContainer container;
