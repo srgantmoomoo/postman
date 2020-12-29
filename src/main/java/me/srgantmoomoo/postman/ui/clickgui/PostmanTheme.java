@@ -21,7 +21,7 @@ public class PostmanTheme implements Theme {
 	
 	public PostmanTheme (ColorScheme scheme, int height, int border) {
 		this.scheme=scheme;
-		panelRenderer=new ComponentRenderer(9,height,border);
+		panelRenderer=new ComponentRenderer(0,height,border);
 		containerRenderer=new ComponentRenderer(1,height,border);
 		componentRenderer=new ComponentRenderer(2,height,border);
 	}
@@ -82,16 +82,20 @@ public class PostmanTheme implements Theme {
 		@Override
 		public Color getMainColor (boolean focus, boolean active) {
 			Color color;
-			if (active) color=getColorScheme().getActiveColor();
+			if (active && level>0) color=getColorScheme().getActiveColor();
 			else color=getColorScheme().getBackgroundColor();
 			if (!active && level<2) color=getColorScheme().getInactiveColor();
+			if (active && level<1) color=getColorScheme().getInactiveColor();
 			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
 			return color;
 		}
 
 		@Override
 		public Color getBackgroundColor (boolean focus) {
-			return new Color(103,167,221,255);
+			Color color;
+			color=getColorScheme().getInactiveColor();
+			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
+			return color;
 		}
 
 		@Override
