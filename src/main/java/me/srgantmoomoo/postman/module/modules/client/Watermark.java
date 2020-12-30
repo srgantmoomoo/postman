@@ -12,54 +12,23 @@ import com.lukflug.panelstudio.theme.Theme;
 import me.srgantmoomoo.api.util.Refrence;
 import me.srgantmoomoo.api.util.render.JColor;
 import me.srgantmoomoo.postman.module.Category;
-import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class Watermark extends Module {
+public class Watermark extends HudModule {
 	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
 	public NumberSetting yaxis = new NumberSetting("yaxis", this, 0, -1000, 1000, 10);
+	
 	private Minecraft mc = Minecraft.getMinecraft();
 	public boolean on;
 	
+	private ColorSetting color;
+	public ColorSetting colorSettings = new ColorSetting("colorSettings", this, new JColor(121, 193, 255, 255));
+
+	
 	public Watermark() {
-		super ("watermark", "yeeyee", Keyboard.KEY_NONE, Category.CLIENT);
-		this.addSettings(xaxis,yaxis);
-	}
-	
-	ScaledResolution sr = new ScaledResolution(mc);
-	FontRenderer fr = mc.fontRenderer;
-	
-	@SubscribeEvent
-	public void renderOverlay(RenderGameOverlayEvent event) {
-	if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
-		if(on) {
-		fr.drawStringWithShadow(Refrence.NAME, (float) (1 + xaxis.getValue()), (float) (2 + yaxis.getValue()), 0xffffffff);
-		fr.drawStringWithShadow(Refrence.VERSION, (float) (42 + xaxis.getValue()), (float) (2 + yaxis.getValue()), 0xff79c2ec); //0xff009dff
-			}
-		}
-	}
-	
-	public void onEnable() {
-		super.onEnable();
-		on = true;
-	}
-	
-	public void onDisable() {
-		super.onDisable();
-		on = false;
-	}
-}
-	
-// ADD COLOR SETTING TO HERE THIS TEUHTUIWEHTBLKJHDFSBWTYRCSA
-	/*
-	public Watermark() {
-		super("watermark", "s", new Point(1,2));
+		super ("watermark", "yeeyee", new Point(0,0));
 	}
 	
 	@Override
@@ -81,7 +50,7 @@ public class Watermark extends Module {
 
 		@Override
 		public Color getItemColor(int index) {
-			return color.getValue();
+			return colorSettings.getValue();
 		}
 
 		@Override
@@ -94,4 +63,4 @@ public class Watermark extends Module {
 			return false;
 		}
 	}
-}*/
+}
