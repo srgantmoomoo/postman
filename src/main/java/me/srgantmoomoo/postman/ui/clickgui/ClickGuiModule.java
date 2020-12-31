@@ -20,11 +20,11 @@ public class ClickGuiModule extends Module {
 	public static NumberSetting scrolls = new NumberSetting("scrollSpeed", ClickGuiModule, 10, 0, 100, 1);
 	public static ModeSetting scrollMode = new ModeSetting("scroll", ClickGuiModule, "container", "container", "screen");
 	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(121, 193, 255, 255)); //(0, 157, 255, 255));
-	public static ColorSetting backgroundColor = new ColorSetting("backgroundColor", ClickGuiModule, new JColor(103, 167, 221, 255)); //(0, 121, 194, 255));
-	public static ColorSetting settingBackgroundColor = new ColorSetting("settingBackgroundColor", ClickGuiModule, new JColor(216, 216, 216, 255));
-	public static ColorSetting outlineColor = new ColorSetting("outlineColor", ClickGuiModule, new JColor(103, 167, 221, 255));
-	public static ColorSetting fontColor = new ColorSetting("fontColor", ClickGuiModule, new JColor(255, 255, 255, 255));
-	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 255, 50, 255, 10);
+	public static ColorSetting backgroundColor = new ColorSetting("bgColor", ClickGuiModule, new JColor(103, 167, 221, 255)); //(0, 121, 194, 255));
+	public static ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", ClickGuiModule, new JColor(216, 216, 216, 255));
+	public static ColorSetting outlineColor = new ColorSetting("settingsOutline", ClickGuiModule, new JColor(255, 255, 255, 255));
+	public static ColorSetting fontColor = new ColorSetting("categoryColor", ClickGuiModule, new JColor(103, 167, 221, 255));
+	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 255, 0, 255, 5);
 	public static BooleanSetting showHud = new BooleanSetting("showHud", ClickGuiModule, true);
 	
 public ClickGuiModule() {
@@ -36,18 +36,18 @@ public ClickGuiModule() {
 /** This uses minecraft's old "super secret" shaders, which means it could be modified to be a bunch of things in the future */
 private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 
-	public void onEnable(){
+	public void onEnable() {
 		Main.getInstance().clickGui.enterGUI();
 	}
 
-	public void onUpdate(){
+	public void onUpdate() {
 
-		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
+		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			this.setToggled(!toggled);
 		}
 		
 	}
 
-	public void onDisable(){
+	public void onDisable() {
 		}
 }

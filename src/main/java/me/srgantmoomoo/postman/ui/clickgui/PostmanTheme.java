@@ -77,15 +77,25 @@ public class PostmanTheme implements Theme {
 
 		@Override
 		public void renderBorder (Context context, boolean focus, boolean active, boolean open) {
+			Color color;
+			color=getDefaultColorScheme().getOutlineColor();
+			if (level==1 && open) {
+				context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(1,context.getSize().height)),color,color,color,color);
+				context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width-1,context.getPos().y),new Dimension(1,context.getSize().height)),color,color,color,color);
+			}
 		}
 
 		@Override
 		public Color getMainColor (boolean focus, boolean active) {
 			Color color;
+			// active modules
 			if (active && level>0) color=getColorScheme().getActiveColor();
+			// background
 			else color=getColorScheme().getBackgroundColor();
+			// inactive modules
 			if (!active && level<2) color=getColorScheme().getInactiveColor();
-			if (active && level<1) color=getColorScheme().getInactiveColor();
+			// category
+			if (active && level<1) color=getColorScheme().getFontColor();
 			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
 			return color;
 		}

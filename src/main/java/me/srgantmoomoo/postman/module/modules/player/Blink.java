@@ -15,20 +15,23 @@ import net.minecraft.network.play.client.CPacketVehicleMove;
 
 import java.util.LinkedList;
 
+import org.lwjgl.input.Keyboard;
+
 public class Blink extends Module {
-    public final Value<Boolean> Visualize = new Value<Boolean>("Visualize", new String[] {"FakePlayer"}, "Visualizes your body while blink is enabled", true);
-    public final Value<Boolean> EntityBlink = new Value<Boolean>("EntityBlink", new String[] {"Vehicles"}, "Holds the CPacketVehicleMove", true);
+   // public final Value<Boolean> Visualize = new Value<Boolean>("Visualize", new String[] {"FakePlayer"}, "Visualizes your body while blink is enabled", true);
+   // public final Value<Boolean> EntityBlink = new Value<Boolean>("EntityBlink", new String[] {"Vehicles"}, "Holds the CPacketVehicleMove", true);
     
 	public Blink() {
 		super ("blink", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.PLAYER);
 	}
+}
 
 
-    private EntityOtherPlayerMP Original;
-    private EntityDonkey RidingEntity;
-    private LinkedList<Packet> Packets = new LinkedList<Packet>();
+   // private EntityOtherPlayerMP Original;
+   // private EntityDonkey RidingEntity;
+    //private LinkedList<Packet> Packets = new LinkedList<Packet>();
 
-    @Override
+   /* @Override
     public void onEnable()
     {
         super.onEnable();
@@ -95,4 +98,4 @@ public class Blink extends Module {
             Packets.add(p_Event.getPacket());
         }
     });
-}
+}*/
