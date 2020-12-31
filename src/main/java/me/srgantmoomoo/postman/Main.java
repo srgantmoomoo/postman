@@ -76,6 +76,8 @@ public class Main {
 		eventProcessor.init();
 		log.info("event system initialized.");
 		
+		Display.setTitle(name + " " + version);
+		
 		MinecraftForge.EVENT_BUS.register(this);
 		log.info("minecraft forge events initialized.");
 		
@@ -112,6 +114,7 @@ public class Main {
 	public static Main getInstance() {
 		return instance;
 	}
+	
 	
 	@SubscribeEvent
 	public void key(KeyInputEvent e) {
