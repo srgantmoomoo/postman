@@ -1,7 +1,7 @@
 {
 "required": true,
 "compatibilityLevel": "JAVA_8",
-"package": "me.srgantmoomoo.api.mixin.mixins",
+"package": "me.srgantmoomoo.postman.api.mixin.mixins",
 "refmap": "mixins.postman.refmap.json",
 "mixins": [
 	"MixinGuiScreen",

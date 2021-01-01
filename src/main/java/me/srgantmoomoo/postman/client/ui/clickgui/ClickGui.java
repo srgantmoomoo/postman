@@ -40,7 +40,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 
 public class ClickGui extends MinecraftHUDGUI {
 	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=0;
