@@ -3,7 +3,6 @@ package me.srgantmoomoo.postman.ui.clickgui;
 import java.awt.Color;
 import java.awt.Point;
 
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
@@ -21,7 +20,6 @@ import com.lukflug.panelstudio.settings.NumberComponent;
 import com.lukflug.panelstudio.settings.SimpleToggleable;
 import com.lukflug.panelstudio.settings.Toggleable;
 import com.lukflug.panelstudio.settings.ToggleableContainer;
-import com.lukflug.panelstudio.theme.GameSenseTheme;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
@@ -42,6 +40,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Mod.EventHandler;
 
 public class ClickGui extends MinecraftHUDGUI {
 	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=0;
@@ -132,6 +131,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			};
 			gui.addComponent(panel);
 			pos.translate(WIDTH+DISTANCE,0);
+			render();
 			for (Module module: ModuleManager.getModulesInCategory(category)) {
 				addModule(panel,module);
 			}
@@ -163,7 +163,7 @@ public class ClickGui extends MinecraftHUDGUI {
 	public static void renderItem (ItemStack item, Point pos) {
 		GlStateManager.enableTexture2D();
 		GlStateManager.depthMask(true);
-		GL11.glPushAttrib(GL11.GL_SCISSOR_BIT);
+		GL11.glPushAttrib(GL11.GL_SCISSOR_BIT);		
 		GL11.glDisable(GL11.GL_SCISSOR_TEST);
 		GlStateManager.clear(GL11.GL_DEPTH_BUFFER_BIT);
 		GL11.glPopAttrib();

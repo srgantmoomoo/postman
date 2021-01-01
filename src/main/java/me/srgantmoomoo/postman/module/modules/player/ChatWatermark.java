@@ -25,7 +25,7 @@ public class ChatWatermark extends Module {
 		{
 			if (event.getMessage().startsWith(s)) return;
 		}
-		event.setMessage(event.getMessage() + " " + "/\\postman/\\"); 
+		event.setMessage(event.getMessage() + " " + "\\u007c" + " " + "\u1d18\u1d0f\u0073\u1d1b\u1d0d\u1d00\u0274"); 
 	}
 	}
 	public void onEnable() {

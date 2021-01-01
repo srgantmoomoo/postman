@@ -6,19 +6,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
-import com.sun.jna.platform.unix.X11.Display;
-
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.ModuleManager;
-import me.srgantmoomoo.postman.module.modules.render.ViewModel;
 import me.srgantmoomoo.postman.notification.Notification;
 import me.srgantmoomoo.postman.proxy.CommonProxy;
-import me.srgantmoomoo.postman.save.ClickGuiLoad;
-import me.srgantmoomoo.postman.save.ClickGuiSave;
 import me.srgantmoomoo.postman.save.SaveLoad;
 import me.srgantmoomoo.postman.settings.SettingsManager;
 import me.srgantmoomoo.postman.ui.TabGui;
 import me.srgantmoomoo.postman.ui.clickgui.ClickGui;
+import me.srgantmoomoo.postman.ui.clickgui.ClickGuiConfig;
 import me.zero.alpine.EventBus;
 import me.zero.alpine.EventManager;
 import me.srgantmoomoo.api.event.EventProcessor;
@@ -46,8 +42,7 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingsManager settingsManager;
 	public static SaveLoad saveLoad;
-	public ClickGuiSave clickGuiSave;
-	public ClickGuiLoad clickGuiLoad;
+	public ClickGuiConfig clickGuiConfig;
 	public ClickGui clickGui;
 	public static TabGui tabGui;
 	public EventProcessor eventProcessor;
@@ -98,8 +93,6 @@ public class Main {
 		log.info("clickGui initialized!");
 		
 		saveLoad = new SaveLoad();
-		clickGuiSave = new ClickGuiSave();
-		clickGuiLoad = new ClickGuiLoad();
 		log.info("configs initialized.");
 		
 		log.info("postman initialization finished");

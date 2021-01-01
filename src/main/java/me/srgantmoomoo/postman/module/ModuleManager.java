@@ -7,70 +7,13 @@ import java.util.stream.Collectors;
 import me.srgantmoomoo.api.event.events.RenderEvent;
 import me.srgantmoomoo.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.api.util.render.JTessellator;
-import me.srgantmoomoo.postman.module.modules.client.ArmorHud;
-import me.srgantmoomoo.postman.module.modules.client.ArrayListt;
-import me.srgantmoomoo.postman.module.modules.client.DiscordRichPresence;
-import me.srgantmoomoo.postman.module.modules.client.Hey;
-import me.srgantmoomoo.postman.module.modules.client.Info;
-import me.srgantmoomoo.postman.module.modules.client.InventoryViewer;
-import me.srgantmoomoo.postman.module.modules.client.KeyStrokes;
-import me.srgantmoomoo.postman.module.modules.client.MainMenuInfo;
-import me.srgantmoomoo.postman.module.modules.client.Watermark;
-import me.srgantmoomoo.postman.module.modules.exploits.AntiHunger;
-import me.srgantmoomoo.postman.module.modules.exploits.Backdoor2b2t;
-import me.srgantmoomoo.postman.module.modules.exploits.CoordExploit;
-import me.srgantmoomoo.postman.module.modules.exploits.Dupe;
-import me.srgantmoomoo.postman.module.modules.exploits.ElytraFly;
-import me.srgantmoomoo.postman.module.modules.exploits.PlayerClone;
-import me.srgantmoomoo.postman.module.modules.player.AutoArmor;
-import me.srgantmoomoo.postman.module.modules.player.AutoElytra;
-import me.srgantmoomoo.postman.module.modules.player.AutoRespawn;
-import me.srgantmoomoo.postman.module.modules.player.AutoTotem;
-import me.srgantmoomoo.postman.module.modules.player.Blink;
-import me.srgantmoomoo.postman.module.modules.player.ChatBot;
-import me.srgantmoomoo.postman.module.modules.player.ChatWatermark;
-import me.srgantmoomoo.postman.module.modules.player.ChestStealer;
-import me.srgantmoomoo.postman.module.modules.player.DeathCoords;
-import me.srgantmoomoo.postman.module.modules.movement.AutoWalk;
-import me.srgantmoomoo.postman.module.modules.movement.InventoryMove;
-import me.srgantmoomoo.postman.module.modules.movement.LongJump;
-import me.srgantmoomoo.postman.module.modules.movement.SafeWalk;
-import me.srgantmoomoo.postman.module.modules.player.Jesus;
-import me.srgantmoomoo.postman.module.modules.player.NoPush;
-import me.srgantmoomoo.postman.module.modules.player.Timer;
-//import me.srgantmoomoo.postman.module.modules.player.NoSlow;
-import me.srgantmoomoo.postman.module.modules.movement.Scaffold;
-import me.srgantmoomoo.postman.module.modules.movement.Sneak;
-import me.srgantmoomoo.postman.module.modules.movement.Speed;
-import me.srgantmoomoo.postman.module.modules.movement.Sprint;
-import me.srgantmoomoo.postman.module.modules.movement.Step;
-import me.srgantmoomoo.postman.module.modules.player.Velocity;
-import me.srgantmoomoo.postman.module.modules.pvp.AimBot;
-import me.srgantmoomoo.postman.module.modules.pvp.Aura;
-import me.srgantmoomoo.postman.module.modules.pvp.AutoClicker;
-import me.srgantmoomoo.postman.module.modules.pvp.AutoCrystal;
-import me.srgantmoomoo.postman.module.modules.pvp.AutoHut;
-import me.srgantmoomoo.postman.module.modules.pvp.AutoLog;
-import me.srgantmoomoo.postman.module.modules.pvp.AutoTrap;
-import me.srgantmoomoo.postman.module.modules.pvp.Criticals;
-import me.srgantmoomoo.postman.module.modules.pvp.FastUse;
-import me.srgantmoomoo.postman.module.modules.pvp.HoleTp;
-import me.srgantmoomoo.postman.module.modules.pvp.LogOutSpot;
-import me.srgantmoomoo.postman.module.modules.pvp.Surround;
-import me.srgantmoomoo.postman.module.modules.render.CameraClip;
-import me.srgantmoomoo.postman.module.modules.render.Esp;
-import me.srgantmoomoo.postman.module.modules.render.Freecam;
-import me.srgantmoomoo.postman.module.modules.render.FullBright;
-import me.srgantmoomoo.postman.module.modules.render.HoleEsp;
-import me.srgantmoomoo.postman.module.modules.render.LowOffHand;
-import me.srgantmoomoo.postman.module.modules.render.Nametags;
-import me.srgantmoomoo.postman.module.modules.render.NewChunks;
-import me.srgantmoomoo.postman.module.modules.render.NoHurtCam;
-import me.srgantmoomoo.postman.module.modules.render.Peek;
-import me.srgantmoomoo.postman.module.modules.render.Tracers;
-import me.srgantmoomoo.postman.module.modules.render.ViewModel;
-import me.srgantmoomoo.postman.module.modules.render.Weather;
-import me.srgantmoomoo.postman.module.modules.render.Xray;
+import me.srgantmoomoo.postman.module.modules.Tab;
+import me.srgantmoomoo.postman.module.modules.client.*;
+import me.srgantmoomoo.postman.module.modules.exploits.*;
+import me.srgantmoomoo.postman.module.modules.movement.*;
+import me.srgantmoomoo.postman.module.modules.player.*;
+import me.srgantmoomoo.postman.module.modules.pvp.*;
+import me.srgantmoomoo.postman.module.modules.render.*;
 import me.srgantmoomoo.postman.ui.TabGui;
 import me.srgantmoomoo.postman.ui.clickgui.ClickGuiModule;
 import net.minecraft.client.Minecraft;
@@ -86,55 +29,9 @@ public class ModuleManager {
 	
 	public ModuleManager() {
 		modules = new ArrayList<>();
-		/*
-		
-		//exploits
-		this.modules.add(new Dupe());
-		this.modules.add(new ElytraFly());
-		this.modules.add(new AntiHunger());
-		this.modules.add(new Backdoor2b2t());
-		//render
-		this.modules.add(new Freecam());
-		this.modules.add(new FullBright());
-		this.modules.add(new Nametags());
-		this.modules.add(new NewChunks());
-		this.modules.add(new Peek());
-		this.modules.add(new Weather());
-		this.modules.add(new Xray());
-		this.modules.add(new ItemEsp());
-		this.modules.add(new PlayerEsp());
-		this.modules.add(new StorageEsp());
-		this.modules.add(new PlayerTracers());
-		this.modules.add(new StorageTracers());
-		//player
-		this.modules.add(new AutoTotem());
-		this.modules.add(new ChatBot());
-		this.modules.add(new InvWalk());
-		this.modules.add(new Jesus());
-		this.modules.add(new NoPush());
-		this.modules.add(new Scaffold());
-		this.modules.add(new Sprint());
-		this.modules.add(new Timer());
-		this.modules.add(new Velocity());
-		//pvp
-		this.modules.add(new AutoLog());
-		this.modules.add(new HoleEsp());
-		this.modules.add(new AimBot());
-		this.modules.add(new Aura());
-		this.modules.add(new AutoCrystal());
-		this.modules.add(new BowSpam());
-		this.modules.add(new Surround());
-		this.modules.add(new LogOutSpot());
-		//client
-		this.modules.add(new TabGui());
-		this.modules.add(new DiscordRichPresence());
-		//hud
-		this.modules.add(new DarkHud());
-		this.modules.add(new LightHud());
-		
-		*/
 		
 		//alphabetic
+		ModuleManager.modules.add(new Tab());
 		ModuleManager.modules.add(new AimBot());	
 		ModuleManager.modules.add(new AntiHunger());	
 		ModuleManager.modules.add(new Aura());	
@@ -218,7 +115,7 @@ public class ModuleManager {
 	}
 	
 	public static void onWorldRender(RenderWorldLastEvent event) {
-		Minecraft.getMinecraft().profiler.startSection("gamesense");
+		Minecraft.getMinecraft().profiler.startSection("postman");
 		Minecraft.getMinecraft().profiler.startSection("setup");
 		JTessellator.prepare();
 		RenderEvent e = new RenderEvent(event.getPartialTicks());

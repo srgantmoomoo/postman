@@ -3,28 +3,24 @@ package me.srgantmoomoo.postman.module.modules.client;
 import java.awt.Color;
 import java.awt.Point;
 
-import org.lwjgl.input.Keyboard;
-
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.api.util.Refrence;
 import me.srgantmoomoo.api.util.render.JColor;
-import me.srgantmoomoo.postman.module.Category;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.settings.ColorSetting;
 import me.srgantmoomoo.postman.settings.NumberSetting;
-import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.common.Mod.EventHandler;
 
 public class Watermark extends HudModule {
 	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
 	public NumberSetting yaxis = new NumberSetting("yaxis", this, 0, -1000, 1000, 10);
 	
-	private Minecraft mc = Minecraft.getMinecraft();
 	public boolean on;
 	
-	private ColorSetting color;
-	public ColorSetting colorSettings = new ColorSetting("colorSettings", this, new JColor(121, 193, 255, 255));
+	public ColorSetting colorSettings = new ColorSetting("colorSettings", this, new JColor(121, 193, 255, 0));
 
 	
 	public Watermark() {
@@ -36,6 +32,9 @@ public class Watermark extends HudModule {
 		component=new ListComponent(getName(),theme.getPanelRenderer(),position,new WatermarkList());
 	}
 	
+	@EventHandler
+	public void onEnable() {
+	}
 	
 	private class WatermarkList implements HUDList {
 		@Override

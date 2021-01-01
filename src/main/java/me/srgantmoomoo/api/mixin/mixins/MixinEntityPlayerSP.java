@@ -1,4 +1,4 @@
-/*package me.srgantmoomoo.api.mixin.mixins;
+package me.srgantmoomoo.api.mixin.mixins;
 
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.api.event.events.PlayerMoveEvent;
@@ -10,18 +10,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(EntityPlayerSP.class)
-public abstract class MixinEntityPlayerSP extends AbstractClientPlayer{
+public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
 
-	public MixinEntityPlayerSP(){
+	public MixinEntityPlayerSP() {
 		super(null, null);
 	}
 
 	@Redirect(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/entity/AbstractClientPlayer;move(Lnet/minecraft/entity/MoverType;DDD)V"))
-	public void move(AbstractClientPlayer player, MoverType type, double x, double y, double z){
+	public void move(AbstractClientPlayer player, MoverType type, double x, double y, double z) {
 		PlayerMoveEvent moveEvent = new PlayerMoveEvent(type, x, y, z);
 		Main.EVENT_BUS.post(moveEvent);
-		if (moveEvent.isCancelled()){
-		}
 		super.move(type, moveEvent.x, moveEvent.y, moveEvent.z);
 	}
-}*/
+}

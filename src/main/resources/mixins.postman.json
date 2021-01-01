@@ -9,6 +9,8 @@
 	"MixinRendererLivingEntity",
 	"MixinRenderer",
 	"MixinEntityRenderer",
-	"MixinGuiMainMenu"
+	"MixinGuiMainMenu",
+	"MixinEntityPlayerSP",
+	"MixinItemRenderer"
 ]
 }

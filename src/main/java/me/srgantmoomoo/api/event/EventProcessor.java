@@ -208,10 +208,7 @@ public class EventProcessor {
 	//public Freecam freecam;
 	
 	public void init() {
-		Main.EVENT_BUS.subscribe(this);
-		Main.EVENT_BUS.post("eventTest");
-		//freecam = new Freecam();
-		//Main.EVENT_BUS.subscribe(freecam);
 		MinecraftForge.EVENT_BUS.register(this);
+		Main.EVENT_BUS.subscribe(this);
 	}
 }

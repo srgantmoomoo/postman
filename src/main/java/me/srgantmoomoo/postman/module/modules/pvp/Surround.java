@@ -93,7 +93,7 @@ public class Surround extends Module {
 	    }
 
 	    public void onDisable() {
-	        if (mc.player == null){
+	        if (mc.player == null) {
 	            return;
 	        }
 
@@ -125,7 +125,7 @@ public class Surround extends Module {
 
 	        if (firstRun){
 	            firstRun = false;
-	            if (findObsidianSlot() == -1 ){
+	            if (findObsidianSlot() == -1 ) {
 	                noObby = true;
 	                disable();
 	            }

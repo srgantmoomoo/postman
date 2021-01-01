@@ -1,78 +1,67 @@
 package me.srgantmoomoo.postman.ui.clickgui;
 
 import java.awt.Point;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.lukflug.panelstudio.ConfigList;
 import com.lukflug.panelstudio.PanelConfig;
 
-import me.srgantmoomoo.postman.Main;
-import net.minecraftforge.fml.client.config.GuiConfig;
+import net.minecraft.client.Minecraft;
 /*
  * ok, literally just skidded from gs atm, im v tired... will come back to this wen redoing clickgui... @SrgantMooMoo 12/16/2020 1:55am 0_0
  */
 public class ClickGuiConfig implements ConfigList {
-	private final String fileLocation;
 	private JsonObject panelObject=null;
+	private File dir;
+	private File dataFile;
+	int currentTab;
 	
-	public ClickGuiConfig (String fileLocation) {
-		this.fileLocation=fileLocation;
+	public ClickGuiConfig(File dataFile) {
+		this.dataFile=dataFile;
 	}
 	
 	@Override
 	public void begin(boolean loading) {
 		if (loading) {
-	        if (!Files.exists(Paths.get(fileLocation + "ClickGUI" + ".json"))) {
-	            return;
-	        }
-			try {
-		        InputStream inputStream;
-				inputStream = Files.newInputStream(Paths.get(fileLocation + "ClickGUI" + ".json"));
-		        JsonObject mainObject = new JsonParser().parse(new InputStreamReader(inputStream)).getAsJsonObject();
-		        if (mainObject.get("Panels") == null) {
-		            return;
-		        }
-		        panelObject = mainObject.get("Panels").getAsJsonObject();
-		        inputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+	        dir = new File(Minecraft.getMinecraft().gameDir, "postman");
+			if(!dir.exists()) {
 			}
-		} else {
-	        panelObject = new JsonObject();
+			dataFile = new File(dir, "clickgui.txt");
+			if(!dataFile.exists()) {
+				try {
+					dataFile.createNewFile();
+				} catch (IOException e) {e.printStackTrace();}
+			}
+	        
 		}
 	}
 
 	@Override
 	public void end(boolean loading) {
+		ArrayList<String> lines = new ArrayList<String>();
+		
 		if (panelObject==null) return;
 		if (!loading) {
-	        try {
-				Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		        OutputStreamWriter fileOutputStreamWriter = new OutputStreamWriter(new FileOutputStream(fileLocation + "ClickGUI" + ".json"), StandardCharsets.UTF_8);
-		        JsonObject mainObject = new JsonObject();
-		        mainObject.add("Panels", panelObject);
-		        String jsonString = gson.toJson(new JsonParser().parse(mainObject.toString()));
-				fileOutputStreamWriter.write(jsonString);
-		        fileOutputStreamWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(this.dataFile));
+			String line = reader.readLine();
+			while(line != null) {
+				lines.add(line);
+				line = reader.readLine();
+			}
+			reader.close();
+		} catch(Exception e) {
+			e.printStackTrace();
 			}
 		}
-		panelObject=null;
+		panelObject = null;
 	}
 
 	@Override
