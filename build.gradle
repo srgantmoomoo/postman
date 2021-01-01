@@ -135,7 +135,7 @@ jar {
 
 task downloadPanelstudio {
 	doLast {
-		new URL("https://github.com/lukflug/PanelStudio/releases/download/v0.1.2/panelstudio-mc-0.1.2.jar").withInputStream{i->new File("${buildDir}/panelstudio-mc-0.1.2.jar").withOutputStream{it<<i}}
+		new URL("https://github.com/lukflug/PanelStudio/releases/download/v0.1.2/panelstudio-mc-0.1.1.jar").withInputStream{i->new File("${buildDir}/panelstudio-mc-0.1.2.jar").withOutputStream{it<<i}}
 	}
 }
 
