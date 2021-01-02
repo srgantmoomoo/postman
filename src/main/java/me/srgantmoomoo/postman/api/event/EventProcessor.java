@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
 import net.minecraftforge.client.event.*;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONArray;
@@ -23,13 +25,17 @@ import me.srgantmoomoo.postman.client.module.modules.render.Freecam;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.SPacketPlayerListItem;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.eventhandler.Cancelable;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -43,11 +49,6 @@ public class EventProcessor {
 	public EventProcessor() {
 		instance = this;
 	}
-	
-	@EventHandler
-    private Listener<String> stringListener = new Listener<>(str -> {
-        System.out.println(str);
-    });
 
 	@SubscribeEvent
 	public void onTick(TickEvent.ClientTickEvent event) {
@@ -204,11 +205,9 @@ public class EventProcessor {
 
 		return null;
 	}
-
-	//public Freecam freecam;
 	
 	public void init() {
-		MinecraftForge.EVENT_BUS.register(this);
 		Main.EVENT_BUS.subscribe(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 }

@@ -11,6 +11,9 @@
 	"MixinEntityRenderer",
 	"MixinGuiMainMenu",
 	"MixinEntityPlayerSP",
-	"MixinItemRenderer"
+	"MixinItemRenderer",
+	"MixinEntityPlayer",
+	"MixinEntity",
+	"MixinNetworkManager"
 ]
 }

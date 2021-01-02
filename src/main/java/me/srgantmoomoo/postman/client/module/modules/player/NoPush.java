@@ -2,31 +2,31 @@ package me.srgantmoomoo.postman.client.module.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.postman.api.event.events.WaterPushEvent;
+import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import net.minecraft.client.Minecraft;
+import me.zero.alpine.listener.EventHandler;
+import me.zero.alpine.listener.Listener;
 
 public class NoPush extends Module {
-	
-	public float saveReduction = 1.0E8F;
-	private Minecraft mc = Minecraft.getMinecraft();
-	public boolean on;
 	
 	public NoPush() {
 		super ("noPush", "u cant get pushed, and u cant push", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 
-	public void onUpdate() {
-		if (this.saveReduction == 1.0E8F)
-		      this.saveReduction = mc.player.entityCollisionReduction; 
-		    mc.player.entityCollisionReduction = 1.0F;
-	}
+	@EventHandler
+	private final Listener<WaterPushEvent> waterPushEventListener = new Listener<>(event -> {
+			event.cancel();
+	});
 	
 	public void onEnable() {
-		super.onEnable();
+		Main.EVENT_BUS.subscribe(this);
 	}
 	
 	public void onDisable() {
-		super.onDisable();
+		Main.EVENT_BUS.unsubscribe(this);
 	}
 }
+
+// Refrenced in MixinEntity

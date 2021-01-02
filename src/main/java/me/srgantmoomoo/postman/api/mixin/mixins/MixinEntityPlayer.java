@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
-/*package me.srgantmoomoo.api.mixin.mixins;
 
-import me.srgantmoomoo.postman.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,25 +9,28 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import me.srgantmoomoo.postman.api.event.events.PlayerJumpEvent;
+import me.srgantmoomoo.postman.api.event.events.WaterPushEvent;
+import me.srgantmoomoo.postman.client.Main;
+
 @Mixin(EntityPlayer.class)
-public abstract class MixinEntityPlayer{
+public abstract class MixinEntityPlayer {
 
 	@Shadow public abstract String getName();
 
 	@Inject(method = "jump", at = @At("HEAD"), cancellable = true)
-	public void onJump(CallbackInfo ci){
-		if (Minecraft.getMinecraft().player.getName() == this.getName()){
+	public void onJump(CallbackInfo callbackInfo) {
+		if (Minecraft.getMinecraft().player.getName() == this.getName()) {
 			Main.EVENT_BUS.post(new PlayerJumpEvent());
 		}
 	}
 
 	@Inject(method = "isPushedByWater", at = @At("HEAD"), cancellable = true)
-	private void onPushedByWater(CallbackInfoReturnable<Boolean> cir){
+	private void onPushedByWater(CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
 		WaterPushEvent event = new WaterPushEvent();
 		Main.EVENT_BUS.post(event);
-		if (event.isCancelled()){
-			cir.setReturnValue(false);
+		if (event.isCancelled()) {
+			callbackInfoReturnable.setReturnValue(false);
 		}
 	}
 }
-*/
