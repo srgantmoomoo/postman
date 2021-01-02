@@ -3,16 +3,17 @@ package me.srgantmoomoo.postman.client.module.modules.client;
 import java.awt.Color;
 import java.awt.Point;
 
+import org.lwjgl.input.Keyboard;
+
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 
 public class Watermark extends HudModule {
 	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
@@ -24,19 +25,17 @@ public class Watermark extends HudModule {
 
 	
 	public Watermark() {
-		super ("watermark", "yeeyee", new Point(0,0));
+		super ("watermark", "yeeyee", Keyboard.KEY_NONE, Category.CLIENT, new Point(0,0));
 	}
 	
 	@Override
 	public void populate (Theme theme) {
-		component=new ListComponent(getName(),theme.getPanelRenderer(),position,new WatermarkList());
+		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new WatermarkList());
 	}
 	
-	@EventHandler
-	public void onEnable() {
-	}
 	
 	private class WatermarkList implements HUDList {
+
 		@Override
 		public int getSize() {
 			return 1;

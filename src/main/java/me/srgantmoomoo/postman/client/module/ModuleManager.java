@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
-import me.srgantmoomoo.postman.client.module.modules.Tab;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
@@ -31,7 +30,6 @@ public class ModuleManager {
 		modules = new ArrayList<>();
 		
 		//alphabetic
-		ModuleManager.modules.add(new Tab());
 		ModuleManager.modules.add(new AimBot());	
 		ModuleManager.modules.add(new AntiHunger());	
 		ModuleManager.modules.add(new Aura());	
