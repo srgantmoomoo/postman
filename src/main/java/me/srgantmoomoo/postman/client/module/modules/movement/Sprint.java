@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import net.minecraft.client.Minecraft;
 
 public class Sprint extends Module {

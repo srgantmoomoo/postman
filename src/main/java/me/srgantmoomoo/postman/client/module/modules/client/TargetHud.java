@@ -5,12 +5,12 @@ import java.util.Objects;
 	
 import org.lwjgl.input.Keyboard;
 
-import me.srgantmoomoo.postman.api.util.Refrence;
+import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;

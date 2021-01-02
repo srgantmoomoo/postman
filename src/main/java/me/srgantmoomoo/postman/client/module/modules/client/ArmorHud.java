@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;

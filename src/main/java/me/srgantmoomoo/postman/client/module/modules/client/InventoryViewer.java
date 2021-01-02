@@ -3,12 +3,12 @@ package me.srgantmoomoo.postman.client.module.modules.client;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import me.srgantmoomoo.postman.api.util.Refrence;
+import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.Wrapper;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.ModeSetting;
-import me.srgantmoomoo.postman.client.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -36,7 +36,7 @@ public class InventoryViewer extends Module {
 		this.addSettings(mode, xaxis, yaxis);
 	}
 	private static final Minecraft mc = Minecraft.getMinecraft();
-	private final ResourceLocation inventorylogo = new ResourceLocation(Refrence.MOD_ID, "textures/postmancircle.png");
+	private final ResourceLocation inventorylogo = new ResourceLocation(Reference.MOD_ID, "textures/postmancircle.png");
 	
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent event) {

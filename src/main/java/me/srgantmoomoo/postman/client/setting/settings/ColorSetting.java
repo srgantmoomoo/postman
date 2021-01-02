@@ -1,9 +1,10 @@
-package me.srgantmoomoo.postman.client.settings;
+package me.srgantmoomoo.postman.client.setting.settings;
 
 import java.awt.Color;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.setting.Setting;
 
 public class ColorSetting extends Setting implements com.lukflug.panelstudio.settings.ColorSetting {
 

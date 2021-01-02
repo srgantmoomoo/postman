@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;

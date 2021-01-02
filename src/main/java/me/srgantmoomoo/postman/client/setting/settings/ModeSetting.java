@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.settings;
+package me.srgantmoomoo.postman.client.setting.settings;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,6 +7,7 @@ import com.lukflug.panelstudio.settings.EnumSetting;
 
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.setting.Setting;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

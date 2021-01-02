@@ -9,7 +9,7 @@ import com.lukflug.panelstudio.settings.Toggleable;
 import com.lukflug.panelstudio.theme.Renderer;
 import com.lukflug.panelstudio.theme.Theme;
 
-import me.srgantmoomoo.postman.client.settings.ColorSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import net.minecraft.util.text.TextFormatting;
 
 public class SyncableColorComponent extends ColorComponent {

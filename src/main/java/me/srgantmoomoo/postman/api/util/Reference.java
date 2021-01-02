@@ -1,6 +1,6 @@
 package me.srgantmoomoo.postman.api.util;
 
-public class Refrence {
+public class Reference {
 	
 	public static final String MOD_ID = "pst";
 	public static final String NAME = "postman";

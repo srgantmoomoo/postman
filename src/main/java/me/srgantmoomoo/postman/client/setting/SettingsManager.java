@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.settings;
+package me.srgantmoomoo.postman.client.setting;
 
 import java.util.ArrayList;
 import java.util.List;

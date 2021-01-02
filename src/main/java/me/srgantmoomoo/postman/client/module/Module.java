@@ -9,8 +9,8 @@ import com.lukflug.panelstudio.settings.Toggleable;
 
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.client.Main;
-import me.srgantmoomoo.postman.client.settings.KeybindSetting;
-import me.srgantmoomoo.postman.client.settings.Setting;
+import me.srgantmoomoo.postman.client.setting.Setting;
+import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 

@@ -7,13 +7,13 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.api.event.EventProcessor;
-import me.srgantmoomoo.postman.api.util.Refrence;
+import me.srgantmoomoo.postman.api.proxy.CommonProxy;
+import me.srgantmoomoo.postman.api.save.SaveLoad;
+import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.notification.Notification;
-import me.srgantmoomoo.postman.client.proxy.CommonProxy;
-import me.srgantmoomoo.postman.client.save.SaveLoad;
-import me.srgantmoomoo.postman.client.settings.SettingsManager;
+import me.srgantmoomoo.postman.client.setting.SettingsManager;
 import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiConfig;
@@ -35,7 +35,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-@Mod(modid = Refrence.MOD_ID, name = Refrence.NAME, version = Refrence.VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
 	public static ArrayList<Module> modules;
 	
@@ -59,7 +59,7 @@ public class Main {
 		instance = this;
 	}
 	
-	@SidedProxy(clientSide = Refrence.CLIENT_PROXY_CLASS, serverSide = Refrence.COMMON_PROXY_CLASS)
+	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
 	
 	@EventHandler

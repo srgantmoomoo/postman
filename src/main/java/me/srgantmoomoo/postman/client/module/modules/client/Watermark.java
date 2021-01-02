@@ -7,11 +7,11 @@ import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
-import me.srgantmoomoo.postman.api.util.Refrence;
+import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.Main;
-import me.srgantmoomoo.postman.client.settings.ColorSetting;
-import me.srgantmoomoo.postman.client.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 
 public class Watermark extends HudModule {
@@ -44,7 +44,7 @@ public class Watermark extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return "postman "+ Refrence.VERSION;
+			return "postman "+ Reference.VERSION;
 		}
 
 		@Override

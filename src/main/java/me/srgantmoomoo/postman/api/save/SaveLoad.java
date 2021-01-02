@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.save;
+package me.srgantmoomoo.postman.api.save;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.settings.BooleanSetting;
-import me.srgantmoomoo.postman.client.settings.ColorSetting;
-import me.srgantmoomoo.postman.client.settings.ModeSetting;
-import me.srgantmoomoo.postman.client.settings.NumberSetting;
-import me.srgantmoomoo.postman.client.settings.Setting;
-import me.srgantmoomoo.postman.client.settings.SettingsManager;
+import me.srgantmoomoo.postman.client.setting.Setting;
+import me.srgantmoomoo.postman.client.setting.SettingsManager;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.client.config.GuiConfig;

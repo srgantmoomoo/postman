@@ -6,7 +6,7 @@ import java.util.Comparator;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import me.srgantmoomoo.postman.api.util.Refrence;
+import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -74,7 +74,7 @@ public class DarkHud extends Module {
 				}
 			}
 			
-			private final ResourceLocation watermark = new ResourceLocation(Refrence.MOD_ID, "textures/watermark.png");
+			private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/watermark.png");
 			
 				@SubscribeEvent
 			    public void renderOverlay(RenderGameOverlayEvent event) {
@@ -102,8 +102,8 @@ public class DarkHud extends Module {
 			        		
 			            	
 			            	//title
-			            	fr.drawStringWithShadow(Refrence.NAME, 2, 2, 0xffffffff); 
-			            	fr.drawStringWithShadow(Refrence.VERSION, 56, 2, 0xffffa6f1); //0xff808080
+			            	fr.drawStringWithShadow(Reference.NAME, 2, 2, 0xffffffff); 
+			            	fr.drawStringWithShadow(Reference.VERSION, 56, 2, 0xffffa6f1); //0xff808080
 			            	
 			            	//totem counter
 			            	fr.drawStringWithShadow(totems + " ", 2, 14, 0xffffd700);

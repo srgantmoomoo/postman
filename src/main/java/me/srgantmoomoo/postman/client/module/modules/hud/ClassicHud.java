@@ -7,12 +7,12 @@ import java.util.Comparator;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import me.srgantmoomoo.postman.api.util.Refrence;
+import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.BooleanSetting;
-import me.srgantmoomoo.postman.client.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -84,8 +84,8 @@ public class ClassicHud extends Module {
 		}
 	}
 
-	private final ResourceLocation inventorylogo = new ResourceLocation(Refrence.MOD_ID, "textures/postmancircle.png");
-	private final ResourceLocation thepostman = new ResourceLocation(Refrence.MOD_ID, "textures/thepostman.png");
+	private final ResourceLocation inventorylogo = new ResourceLocation(Reference.MOD_ID, "textures/postmancircle.png");
+	private final ResourceLocation thepostman = new ResourceLocation(Reference.MOD_ID, "textures/thepostman.png");
 
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent event) {
@@ -130,8 +130,8 @@ public class ClassicHud extends Module {
 				drawInventory(10, 10);
 
 				//title
-				fr.drawStringWithShadow(Refrence.NAME, 1, 2, 0xffffffff);
-				fr.drawStringWithShadow(Refrence.VERSION, 42, 2, 0xff79c2ec); // 0xff808080
+				fr.drawStringWithShadow(Reference.NAME, 1, 2, 0xffffffff);
+				fr.drawStringWithShadow(Reference.VERSION, 42, 2, 0xff79c2ec); // 0xff808080
 				
 				//hey!
 				if(hey.isEnabled()) {

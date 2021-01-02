@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.proxy;
+package me.srgantmoomoo.postman.api.proxy;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

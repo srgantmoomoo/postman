@@ -13,7 +13,7 @@ import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;

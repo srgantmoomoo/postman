@@ -6,10 +6,10 @@ import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.settings.BooleanSetting;
-import me.srgantmoomoo.postman.client.settings.ColorSetting;
-import me.srgantmoomoo.postman.client.settings.ModeSetting;
-import me.srgantmoomoo.postman.client.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.util.ResourceLocation;
 
 public class ClickGuiModule extends Module {
