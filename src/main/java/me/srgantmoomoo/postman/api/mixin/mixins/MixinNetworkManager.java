@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
 
 import io.netty.channel.ChannelHandlerContext;
+import me.srgantmoomoo.postman.api.event.events.NetworkPacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.client.Main;
 import net.minecraft.network.NetworkManager;
@@ -12,6 +13,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(NetworkManager.class)
 public class MixinNetworkManager {
+	
+	@Inject(method = "sendPacket(Lnet/minecraft/network/Packet;)V", at = @At("HEAD"), cancellable = true)
+	private void onSendPacket(Packet<?> p_Packet, CallbackInfo callbackInfo) {
+	    NetworkPacketEvent event = new NetworkPacketEvent(p_Packet);
+	    Main.EVENT_BUS.post(event);
+
+	    if (event.isCancelled()) {
+	        callbackInfo.cancel();
+	     }
+	}
 
 	@Inject(method = "sendPacket(Lnet/minecraft/network/Packet;)V", at = @At("HEAD"), cancellable = true)
 	private void preSendPacket(Packet<?> packet, CallbackInfo callbackInfo) {

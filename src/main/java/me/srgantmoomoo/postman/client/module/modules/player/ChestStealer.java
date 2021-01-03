@@ -3,6 +3,7 @@ package me.srgantmoomoo.postman.client.module.modules.player;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
+import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
@@ -18,15 +19,25 @@ public class ChestStealer extends Module {
 	public NumberSetting delay = new NumberSetting("delay", this, 1, 0, 10, 1);
 	
 	public ChestStealer() {
-		super ("chestStealer", "slows down ur hungerness", Keyboard.KEY_NONE, Category.EXPLOITS);
+		super ("chestStealer", "slows down ur hungerness", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(mode,delay);
 	}
 
 	private Timer timer = new Timer();
+	
+	public void onEnable() {
+		super.onEnable();
+		Main.EVENT_BUS.subscribe(this);
+	}
+	
+	public void onDisable() {
+		super.onDisable();
+		Main.EVENT_BUS.unsubscribe(this);
+	}
+	
 
     @EventHandler
-    private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(p_Event ->
-    {
+    private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
         if (!timer.passed(delay.getValue() * 100f))
             return;
 
