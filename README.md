@@ -15,6 +15,8 @@ thank you,
 -SrgantMooMoo
 
 # credits
+**contributions**
+- lukflug, being helpful person. making panelstudio. helping me with panelstudio.
 
 **base stuff.**
 - event system - *ZeroMemes, Alpine 1.5* https://github.com/ZeroMemes/Alpine.
@@ -22,7 +24,7 @@ thank you,
 - clickGui library - *lukflug, panelstudio* https://github.com/lukflug/PanelStudio/tree/v0.1.2.
 
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding.**
-- outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
+- outline esp utils... and a lot of the fontrenderer - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
 - surround & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client. 0_0
 - 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
 
