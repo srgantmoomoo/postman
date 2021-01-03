@@ -22,7 +22,7 @@ public class Velocity extends Module {
 	
 	public Velocity() {
 		super ("velocity", "take no knockback when hit", Keyboard.KEY_NONE, Category.PLAYER);
-		this.addSettings(percent);
+		this.addSettings();
 	}
 	
 	public void onEnable() {
