@@ -137,8 +137,5 @@ public class SaveLoad {
 			}
 		}
 	}
-	public void saveClickGUIPositions() throws IOException {
-		dataFile = new File(dir, "clickgui.txt");
-		Main.getInstance().clickGui.gui.saveConfig(new ClickGuiConfig(dataFile));
-    }
+ 
 }

@@ -20,7 +20,7 @@ public class ClickGuiModule extends Module {
 	public static NumberSetting scrolls = new NumberSetting("scrollSpeed", ClickGuiModule, 10, 0, 100, 1);
 	public static ModeSetting scrollMode = new ModeSetting("scroll", ClickGuiModule, "container", "container", "screen");
 	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(121, 193, 255, 255)); //(0, 157, 255, 255));
-	public static ColorSetting backgroundColor = new ColorSetting("bgColor", ClickGuiModule, new JColor(103, 167, 221, 100)); //(0, 121, 194, 255));
+	public static ColorSetting backgroundColor = new ColorSetting("bgColor", ClickGuiModule, new JColor(103, 167, 221, 255)); //(0, 121, 194, 255));
 	public static ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", ClickGuiModule, new JColor(216, 216, 216, 255));
 	public static ColorSetting outlineColor = new ColorSetting("settingsOutline", ClickGuiModule, new JColor(255, 255, 255, 255));
 	public static ColorSetting fontColor = new ColorSetting("categoryColor", ClickGuiModule, new JColor(103, 167, 221, 255));
