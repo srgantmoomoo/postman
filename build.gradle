@@ -33,7 +33,7 @@ minecraft {
 	version = project.forgeVersion
 	runDir = 'run'
 	mappings = project.mcpVersion
-	coreMod = 'me.srgantmoomoo.postman.Main'
+	coreMod = 'me.srgantmoomoo.postman.client.Main'
 	makeObfSourceJar = false
 }
 
@@ -126,7 +126,7 @@ jar {
 				'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
 				'TweakOrder': 0,
 				'FMLCorePluginContainsFMLMod': 'true',
-				'FMLCorePlugin': 'me.srgantmoomoo.postman.Main',
+				'FMLCorePlugin': 'me.srgantmoomoo.postman.client.Main',
 				'ForceLoadAsMod': 'true',
 				'FMLAT': 'postman_at.cfg'
 		)

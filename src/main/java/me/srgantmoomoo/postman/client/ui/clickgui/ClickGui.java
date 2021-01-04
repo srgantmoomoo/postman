@@ -136,7 +136,7 @@ public class ClickGui extends MinecraftHUDGUI {
 	}
 	
 	private void addModule (CollapsibleContainer panel, Module module) {
-		CollapsibleContainer container=new CollapsibleContainer(module.getName(),null,theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),module);
+		CollapsibleContainer container=new CollapsibleContainer(module.getName(),module.getDescription(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.animationSpeed),module);
 		if(!module.getName().equals("Esp2dHelper")) {
 		panel.addComponent(container);
 		for (Setting property: module.settings) {

@@ -83,7 +83,7 @@ public class PostmanTheme implements Theme {
 				context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width-1,context.getPos().y),new Dimension(1,context.getSize().height)),color,color,color,color);
 			}
 		}
-
+	
 		@Override
 		public Color getMainColor (boolean focus, boolean active) {
 			Color color;
