@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class AutoDisconnect extends Module {
-	public NumberSetting health = new NumberSetting("delay", this, 10, 1, 30, 1);
+	public NumberSetting health = new NumberSetting("health", this, 10, 1, 30, 1);
 
 	
 	public AutoDisconnect() {
@@ -43,4 +43,3 @@ public class AutoDisconnect extends Module {
         }
     }
 }
-
