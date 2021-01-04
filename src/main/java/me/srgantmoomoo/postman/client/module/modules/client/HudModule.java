@@ -23,6 +23,7 @@ public abstract class HudModule extends Module {
 	public HudModule (String title, String description, Point defaultPos) {
 		super(title, description, Keyboard.KEY_NONE, Category.CLIENT);
 		position = defaultPos;
+		toggled = true;
 	}
 	
 	public abstract void populate (Theme theme);

@@ -31,7 +31,6 @@ public class SaveLoad {
 
 	private File dir;
 	private File dataFile;
-	int currentTab;
 	   
 	public SaveLoad() {
 		dir = new File(Minecraft.getMinecraft().gameDir, "postman");
@@ -137,5 +136,4 @@ public class SaveLoad {
 			}
 		}
 	}
- 
 }
