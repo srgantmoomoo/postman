@@ -11,14 +11,17 @@ import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 
-//originally written by @lukflug... ive got to properly credit these better lmao
+/**
+ * @author lukflug
+ */
 
 public abstract class HudModule extends Module {
+
 	protected FixedComponent component;
 	protected Point position;
 	
-	public HudModule(String name, String description, int key, Category category, Point defaultPos) {
-		super(name, description, Keyboard.KEY_NONE, Category.CLIENT);
+	public HudModule (String title, String description, Point defaultPos) {
+		super(title, description, Keyboard.KEY_NONE, Category.CLIENT);
 		position = defaultPos;
 	}
 	

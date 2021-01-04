@@ -15,6 +15,7 @@ import me.srgantmoomoo.postman.client.module.modules.pvp.*;
 import me.srgantmoomoo.postman.client.module.modules.render.*;
 import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiModule;
+import me.srgantmoomoo.postman.client.ui.clickgui.HudEditor;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 
@@ -99,6 +100,7 @@ public class ModuleManager {
 		//ModuleManager.modules.add(new DarkHud());
 		ModuleManager.modules.add(new DiscordRichPresence());
 		ModuleManager.modules.add(new ClickGuiModule());
+		ModuleManager.modules.add(new HudEditor());
 	 	ModuleManager.modules.add(new TabGui());	
 	 	ModuleManager.modules.add(new MainMenuInfo());
 		ModuleManager.modules.add(new Esp2dHelper());	

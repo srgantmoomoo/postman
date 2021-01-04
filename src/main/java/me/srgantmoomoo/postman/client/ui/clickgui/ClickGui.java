@@ -57,7 +57,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			
 			@Override
 			public boolean isOn() {
-				return ColorMain.colorModel.getMode().equals("HSB");
+				return ColorMain.colorModel.getMode().equals("RGB");
 			}
 		};
 		guiInterface=new GUIInterface(true) {
