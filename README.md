@@ -20,7 +20,7 @@ thank you,
 
 **base stuff.**
 - event system - *ZeroMemes, Alpine 1.5* https://github.com/ZeroMemes/Alpine.
-- discord rpc - *club.minnced* https://github.com/MinnDevelopment/java-discord-rpc
+- discord rpc - *club.minnced* https://github.com/MinnDevelopment/java-discord-rpc.
 - clickGui library - *lukflug, panelstudio* https://github.com/lukflug/PanelStudio/tree/v0.1.2.
 
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding.**
