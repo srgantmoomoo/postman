@@ -97,7 +97,7 @@ public class Main {
 		
 		log.info("postman initialization finished");
 	
-	}
+	} //pp
 	
 	@EventHandler
 	public void PostInit (FMLPostInitializationEvent event) {
