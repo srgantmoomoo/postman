@@ -17,6 +17,7 @@ thank you,
 # credits
 **contributions**
 - lukflug, being helpful person. making panelstudio. helping me with panelstudio.
+- some random guy idk named jacobtread, for giving proper credits to the MinnDevelopment java discord rpc.
 
 **base stuff.**
 - event system - *ZeroMemes, Alpine 1.5* https://github.com/ZeroMemes/Alpine.
