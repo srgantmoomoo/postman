@@ -34,7 +34,7 @@ thank you,
 **building**
 1. gradlew unpackPanelStudio <br />
 2. gradlew setupDecompWorkspace <br />
-3. gradlew eclipse (for eclipse) <br />
+3. gradlew eclipse (for eclipse) or gradlew genIntellijRuns (for intellij) <br />
 
 # credits
 **contributions**
