@@ -32,7 +32,7 @@ thank you,
 - esc to close the clickgui 0_0.
 
 **building** <br />
-the commands you need are... <br />
+the commands you need are... 
 1. gradlew unpackPanelStudio <br />
 2. gradlew setupDecompWorkspace <br />
 3. gradlew eclipse (for eclipse) <br />
