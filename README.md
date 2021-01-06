@@ -31,7 +31,7 @@ thank you,
 - you can rebind each module in the settings to by clicking keybind (at the bottom of each module settings), and clicking the button you want to bind the module to.
 - esc to close the clickgui 0_0.
 
-**building**
+**building** <br />
 the commands you need are... <br />
 1. gradlew unpackPanelStudio <br />
 2. gradlew setupDecompWorkspace <br />
