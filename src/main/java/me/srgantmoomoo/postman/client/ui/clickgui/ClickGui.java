@@ -102,6 +102,7 @@ public class ClickGui extends MinecraftHUDGUI {
 		Toggleable hudToggle=new Toggleable() {
 			@Override
 			public void toggle() {
+				render();
 			}
 
 			@Override

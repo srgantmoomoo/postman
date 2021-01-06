@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
+import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
@@ -113,6 +114,7 @@ public class ModuleManager {
 	
 	public static void onRender() {
 		modules.stream().filter(Module::isToggled).forEach(Module::onRender);
+		Main.getInstance().clickGui.render();
 	}
 	
 	public static void onWorldRender(RenderWorldLastEvent event) {
