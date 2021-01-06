@@ -14,6 +14,29 @@ thank you,
 
 -SrgantMooMoo
 
+# instructions
+**download**
+1. postman uses forge in order to run so, if you havent already, go to http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html and download the latest or recommended version of forge 1.12.2. <br />
+2. in this repository, under tags/releases find the latest version or whatever version you want. <br />
+3. click assets, then download the .jar file. <br />
+4. if you havent ran forge yet, do so, if you have already ran forge at least once, type %appdata% in ur windows search (if your on any other os than locate your .minecraft folder, you may need to look it up). <br />
+5. locate and open up your .minecraft folder, than find your mods folder. <br />
+6. open up your mods folder and drag the postman .jar file into it. <br />
+
+**use**
+- the inital keybind for the clickgui is rshift.
+- once your clickgui is opened you will see a bunch of categorys, right click to open them up.
+- each category has different modules you may enable by left clicking, or right clicking to open up their settings.
+- the settings consist of booleans (enabled or disable), numbers (sliders to change the value of something), and modes (switches modes). 
+- you can rebind each module in the settings to by clicking keybind (at the bottom of each module settings), and clicking the button you want to bind the module to.
+- esc to close the clickgui 0_0.
+
+**building**
+the commands you need are... <br />
+1. gradlew unpackPanelStudio <br />
+2. gradlew setupDecompWorkspace <br />
+3. gradlew eclipse (for eclipse) <br />
+
 # credits
 **contributions**
 - lukflug, being helpful person. making panelstudio. helping me with panelstudio.
