@@ -6,6 +6,7 @@ import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
@@ -42,7 +43,11 @@ private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/pos
 
 	public void onUpdate() {
 
-		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+			this.setToggled(!toggled);
+		}
+		
+		if(ModuleManager.getModuleByName("hudEditor").isToggled()) {
 			this.setToggled(!toggled);
 		}
 		

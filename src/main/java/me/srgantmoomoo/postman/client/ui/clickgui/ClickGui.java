@@ -107,7 +107,7 @@ public class ClickGui extends MinecraftHUDGUI {
 
 			@Override
 			public boolean isOn() {
-				return gui.isOn() && ClickGuiModule.showHud.isOn() || hudEditor;
+				return hudEditor;
 			}
 		};
 		
