@@ -53,7 +53,9 @@ public class PostmanTheme implements Theme {
 		@Override
 		public void renderRect (Context context, String text, boolean focus, boolean active, Rectangle rectangle, boolean overlay) {
 			Color color=getMainColor(focus,active);
-			context.getInterface().fillRect(rectangle,color,color,color,color);
+			Color color2=getBackgroundColor(focus);
+			if (level==1 && !active)context.getInterface().fillRect(context.getRect(),color2,color2,color2,color2);
+			else context.getInterface().fillRect(rectangle,color,color,color,color);
 			if (overlay) {
 				Color overlayColor;
 				if (context.isHovered()) {
@@ -92,7 +94,7 @@ public class PostmanTheme implements Theme {
 			// background
 			else color=getColorScheme().getBackgroundColor();
 			// inactive modules
-			if (!active && level<2) color=getColorScheme().getInactiveColor();
+			if (!active && level<2) color=getColorScheme().getBackgroundColor();
 			// category
 			if (active && level<1) color=getColorScheme().getFontColor();
 			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());

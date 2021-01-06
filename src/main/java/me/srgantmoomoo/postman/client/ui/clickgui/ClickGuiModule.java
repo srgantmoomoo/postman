@@ -11,7 +11,6 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import net.minecraft.util.ResourceLocation;
 
 public class ClickGuiModule extends Module {
 	private static Module ClickGuiModule;
@@ -21,7 +20,7 @@ public class ClickGuiModule extends Module {
 	public static NumberSetting scrolls = new NumberSetting("scrollSpeed", ClickGuiModule, 10, 0, 100, 1);
 	public static ModeSetting scrollMode = new ModeSetting("scroll", ClickGuiModule, "container", "container", "screen");
 	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(121, 193, 255, 255)); //(0, 157, 255, 255));
-	public static ColorSetting backgroundColor = new ColorSetting("bgColor", ClickGuiModule, new JColor(0, 0, 0, 20)); //(0, 121, 194, 255));
+	public static ColorSetting backgroundColor = new ColorSetting("bgColor", ClickGuiModule, new JColor(0, 0, 0, 255)); //(0, 121, 194, 255));
 	public static ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", ClickGuiModule, new JColor(216, 216, 216, 255));
 	public static ColorSetting outlineColor = new ColorSetting("settingsOutline", ClickGuiModule, new JColor(255, 255, 255, 255));
 	public static ColorSetting fontColor = new ColorSetting("categoryColor", ClickGuiModule, new JColor(103, 167, 221, 255));
@@ -33,9 +32,6 @@ public ClickGuiModule() {
 	this.addSettings(showHud,scrollMode,scrolls,animationSpeed,opacity,enabledColor,backgroundColor,settingBackgroundColor,outlineColor,fontColor);
 	INSTANCE = this;
 }
-
-/** This uses minecraft's old "super secret" shaders, which means it could be modified to be a bunch of things in the future */
-private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 
 	public void onEnable() {
 		Main.getInstance().clickGui.enterGUI();
