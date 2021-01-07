@@ -13,24 +13,28 @@ import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 
 public class ClickGuiModule extends Module {
-	private static Module ClickGuiModule;
-	public ClickGuiModule INSTANCE;
+	public static ClickGuiModule INSTANCE;
 	
-	public static NumberSetting animationSpeed = new NumberSetting("animation", ClickGuiModule, 150, 0, 1000, 50);
-	public static NumberSetting scrolls = new NumberSetting("scrollSpeed", ClickGuiModule, 10, 0, 100, 1);
-	public static ModeSetting scrollMode = new ModeSetting("scroll", ClickGuiModule, "container", "container", "screen");
-	public static ColorSetting enabledColor = new ColorSetting("enabledColor", ClickGuiModule, new JColor(121, 193, 255, 255)); //(0, 157, 255, 255));
-	public static ColorSetting backgroundColor = new ColorSetting("bgColor", ClickGuiModule, new JColor(0, 0, 0, 255)); //(0, 121, 194, 255));
-	public static ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", ClickGuiModule, new JColor(216, 216, 216, 255));
-	public static ColorSetting outlineColor = new ColorSetting("settingsOutline", ClickGuiModule, new JColor(255, 255, 255, 255));
-	public static ColorSetting fontColor = new ColorSetting("categoryColor", ClickGuiModule, new JColor(103, 167, 221, 255));
-	public static NumberSetting opacity = new NumberSetting("opacity", ClickGuiModule, 200, 0, 255, 5);
-	public static BooleanSetting showHud = new BooleanSetting("showHud", ClickGuiModule, true);
+	public ModeSetting theme = new ModeSetting("theme", this, "new", "new", "old");
+	public NumberSetting animationSpeed = new NumberSetting("animation", this, 150, 0, 1000, 50);
+	public NumberSetting scrolls = new NumberSetting("scrollSpeed", this, 10, 0, 100, 1);
+	public ModeSetting scrollMode = new ModeSetting("scroll", this, "container", "container", "screen");
+	public ColorSetting enabledColor = new ColorSetting("enabledColor", this, new JColor(103, 167, 221, 255)); //(0, 157, 255, 255));
+	public ColorSetting backgroundColor = new ColorSetting("bgColor", this, new JColor(0, 0, 0, 255)); //(0, 121, 194, 255));
+	public ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", this, new JColor(216, 216, 216, 255));
+	public ColorSetting outlineColor = new ColorSetting("settingsOutline", this, new JColor(255, 255, 255, 255));
+	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(121, 193, 255, 255)); 
+	public NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
+	public BooleanSetting showHud = new BooleanSetting("showHud", this, true);
 	
 public ClickGuiModule() {
 	super("clickGuiModule", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
-	this.addSettings(showHud,scrollMode,scrolls,animationSpeed,opacity,enabledColor,backgroundColor,settingBackgroundColor,outlineColor,fontColor);
+	this.addSettings(theme,showHud,scrollMode,scrolls,animationSpeed,opacity,fontColor,enabledColor,backgroundColor,settingBackgroundColor,outlineColor);
 	INSTANCE = this;
+}
+
+public static Module getClickGuiModule() {
+	return INSTANCE;
 }
 
 	public void onEnable() {

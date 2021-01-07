@@ -5,7 +5,6 @@ import java.util.Objects;
 	
 import org.lwjgl.input.Keyboard;
 
-import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.client.module.Category;

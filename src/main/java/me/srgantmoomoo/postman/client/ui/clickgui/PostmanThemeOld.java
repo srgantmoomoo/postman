@@ -14,11 +14,11 @@ import com.lukflug.panelstudio.theme.Theme;
 /**
  * @author SrgantMooMoo
  */
-public class PostmanTheme implements Theme {
+public class PostmanThemeOld implements Theme {
 	protected ColorScheme scheme;
 	protected Renderer componentRenderer,containerRenderer,panelRenderer;
 	
-	public PostmanTheme (ColorScheme scheme, int height, int border) {
+	public PostmanThemeOld (ColorScheme scheme, int height, int border) {
 		this.scheme=scheme;
 		panelRenderer=new ComponentRenderer(0,height,border);
 		containerRenderer=new ComponentRenderer(1,height,border);
@@ -45,7 +45,7 @@ public class PostmanTheme implements Theme {
 		protected final int level,border;
 		
 		public ComponentRenderer (int level, int height, int border) {
-			super(height+1,0,0,0,0);
+			super(height+1,1,1,0,0);
 			this.level=level;
 			this.border=border;
 		}
@@ -53,9 +53,7 @@ public class PostmanTheme implements Theme {
 		@Override
 		public void renderRect (Context context, String text, boolean focus, boolean active, Rectangle rectangle, boolean overlay) {
 			Color color=getMainColor(focus,active);
-			Color color2=getBackgroundColor(focus);
-			if (level==1 && !active)context.getInterface().fillRect(context.getRect(),color2,color2,color2,color2);
-			else context.getInterface().fillRect(rectangle,color,color,color,color);
+			context.getInterface().fillRect(rectangle,color,color,color,color);
 			if (overlay) {
 				Color overlayColor;
 				if (context.isHovered()) {
@@ -72,8 +70,8 @@ public class PostmanTheme implements Theme {
 
 		@Override
 		public void renderBackground (Context context, boolean focus) {
-				//Color color=getBackgroundColor(focus);
-				//context.getInterface().fillRect(context.getRect(),color,color,color,color);
+				Color color=getBackgroundColor(focus);
+				context.getInterface().fillRect(context.getRect(),color,color,color,color);
 			}
 
 		@Override
@@ -94,7 +92,7 @@ public class PostmanTheme implements Theme {
 			// background
 			else color=getColorScheme().getBackgroundColor();
 			// inactive modules
-			if (!active && level<2) color=getColorScheme().getBackgroundColor();
+			if (!active && level<2) color=getColorScheme().getInactiveColor();
 			// category
 			if (active && level<1) color=getColorScheme().getFontColor();
 			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
@@ -105,13 +103,13 @@ public class PostmanTheme implements Theme {
 		public Color getBackgroundColor (boolean focus) {
 			Color color;
 			color=getColorScheme().getInactiveColor();
-			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),200);
+			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
 			return color;
 		}
 
 		@Override
 		public ColorScheme getDefaultColorScheme() {
-			return PostmanTheme.this.scheme;
+			return PostmanThemeOld.this.scheme;
 		}
 	}
 }

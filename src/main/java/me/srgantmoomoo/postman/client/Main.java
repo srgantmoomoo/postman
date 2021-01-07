@@ -39,6 +39,9 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 public class Main {
 	public static ArrayList<Module> modules;
 	
+	int strong;
+	int postman = strong;
+	
 	public static ModuleManager moduleManager;
 	public static SettingsManager settingsManager;
 	public static SaveLoad saveLoad;
