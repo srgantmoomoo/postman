@@ -14,21 +14,44 @@ thank you,
 
 -SrgantMooMoo
 
+# instructions
+**download**
+1. postman uses forge in order to run so, if you havent already, go to http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html and download the latest or recommended version of forge 1.12.2. <br />
+2. in this repository, under tags/releases find the latest version or whatever version you want. <br />
+3. click assets, then download the .jar file. <br />
+4. if you havent ran forge yet, do so, if you have already ran forge at least once, type %appdata% in ur windows search (if your on any other os than locate your .minecraft folder, you may need to look it up). <br />
+5. locate and open up your .minecraft folder, than find your mods folder. <br />
+6. open up your mods folder and drag the postman .jar file into it. <br />
+
+**use**
+- the inital keybind for the clickgui is rshift.
+- once your clickgui is opened you will see a bunch of categorys, right click to open them up.
+- each category has different modules you may enable by left clicking, or right clicking to open up their settings.
+- the settings consist of booleans (enabled or disable), numbers (sliders to change the value of something), and modes (switches modes). 
+- you can rebind each module in the settings to by clicking keybind (at the bottom of each module settings), and clicking the button you want to bind the module to.
+- esc to close the clickgui 0_0.
+
+**building**
+1. gradlew unpackPanelStudio <br />
+2. gradlew setupDecompWorkspace <br />
+3. gradlew eclipse (for eclipse) or gradlew genIntellijRuns (for intellij) <br />
+
 # credits
 **contributions**
 - lukflug, being helpful person. making panelstudio. helping me with panelstudio.
+- some random guy idk named jacobtread, for giving proper credits to the MinnDevelopment java discord rpc.
 
-**base stuff.**
+**base stuff**
 - event system - *ZeroMemes, Alpine 1.5* https://github.com/ZeroMemes/Alpine.
 - discord rpc - *club.minnced* https://github.com/MinnDevelopment/java-discord-rpc.
 - clickGui library - *lukflug, panelstudio* https://github.com/lukflug/PanelStudio/tree/v0.1.2.
 
-**bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding.**
+**bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding**
 - outline esp utils... and a lot of the fontrenderer - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
 - surround & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client. 0_0
 - 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
 
-**a lot of inspiration from tutorials and what not taken from these creators, so thank you so much to them.**
+**a lot of inspiration from tutorials and what not taken from these creators, so thank you so much to them**
 - sebsb - https://www.youtube.com/channel/UChsMQm_9PXITsUhBkypP_1A.
 - superblaubeere27 - https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
 
