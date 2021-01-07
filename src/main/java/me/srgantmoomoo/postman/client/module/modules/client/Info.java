@@ -41,7 +41,7 @@ public class Info extends HudModule {
 	public ColorSetting color2 = new ColorSetting("color2", this, new JColor(255, 0, 0, 255)); 
 	
 	public Info() {
-		super("watermark", "thatweehoo", new Point(-3,10));
+		super("info", "thatweehoo", new Point(-3,10));
 		this.addSettings(color1, color2);
 	}
     @Override
@@ -85,11 +85,9 @@ public class Info extends HudModule {
 	
 		@Override
 		public String getItem(int index) {
-				if (index==0) return "gamesense.cc";
-				else if (index==1) return "HTR";
-				else if (index==2) return "PLR";
-				else if (index==3) return ""+totems;
-				else if (index==4) return "PING "+getPing();
+				if (index==0) return "postman";
+				else if (index==1) return ""+totems;
+				else if (index==2) return "PING "+getPing();
 				else return "LBY";
 		}
 	

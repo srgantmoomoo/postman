@@ -25,11 +25,10 @@ public class ClickGuiModule extends Module {
 	public ColorSetting outlineColor = new ColorSetting("settingsOutline", this, new JColor(255, 255, 255, 255));
 	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(121, 193, 255, 255)); 
 	public NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
-	public BooleanSetting showHud = new BooleanSetting("showHud", this, true);
 	
 public ClickGuiModule() {
 	super("clickGuiModule", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
-	this.addSettings(theme,showHud,scrollMode,scrolls,animationSpeed,opacity,fontColor,enabledColor,backgroundColor,settingBackgroundColor,outlineColor);
+	this.addSettings(theme,scrollMode,scrolls,animationSpeed,opacity,fontColor,enabledColor,backgroundColor,settingBackgroundColor,outlineColor);
 	INSTANCE = this;
 }
 
