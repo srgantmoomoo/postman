@@ -14,7 +14,7 @@ import net.minecraft.client.Minecraft;
 
 
 public class Frames extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(103, 167, 221, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255)); 
 
 	public Frames() {
 		super("frames", "thatweehoo", new Point(-3,29));
@@ -36,7 +36,7 @@ public class Frames extends HudModule {
 		@Override
 		public String getItem(int index) {
 			if(Minecraft.getDebugFPS() <= 20) return ChatFormatting.RED + "fps "+ Minecraft.getDebugFPS();
-			else return "fps "+ Minecraft.getDebugFPS();
+			else return ChatFormatting.WHITE + "fps "+ Minecraft.getDebugFPS();
 		}
 
 		@Override

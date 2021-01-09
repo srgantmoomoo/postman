@@ -14,7 +14,7 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 
 public class Ping extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(103, 167, 221, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255)); 
 
 	public Ping() {
 		super("ping", "thatweehoo", new Point(-3,19));
@@ -47,7 +47,7 @@ public class Ping extends HudModule {
 		@Override
 		public String getItem(int index) {
 			if(getPing() >= 200) return ChatFormatting.RED + "ping " + getPing();
-			else return "ping " + getPing();
+			else return ChatFormatting.WHITE + "ping " + getPing();
 		}
 
 		@Override

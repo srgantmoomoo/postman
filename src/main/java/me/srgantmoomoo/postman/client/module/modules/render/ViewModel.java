@@ -26,7 +26,6 @@ public class ViewModel extends Module {
 	public ViewModel() {
 		super("viewModel", "classic hud", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(LeftX, LeftY, LeftZ, RightX, RightY, RightZ);
-		toggled = true;
 	}
 
 	@EventHandler

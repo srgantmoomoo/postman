@@ -21,7 +21,7 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 public class ArrayListt extends HudModule {
 	private ModuleArrayList list=new ModuleArrayList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(103, 167, 221, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 255, 255, 255)); 
 
 	public ArrayListt() {
 		super("arrayList", "twobee2twotee", new Point(-3,59));

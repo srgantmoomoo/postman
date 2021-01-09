@@ -17,7 +17,7 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 public class AutoCInfo extends HudModule {
 	private AutoCInfoList list=new AutoCInfoList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(103, 167, 221, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255)); 
 
 	public AutoCInfo() {
 		super("autoCrystalInfo", "thatweehoo", new Point(-3,39));
