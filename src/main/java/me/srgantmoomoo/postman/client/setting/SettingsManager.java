@@ -28,14 +28,14 @@ public class SettingsManager {
 		return this.settings;
 	}
 	
-	public ArrayList<Setting> getSettingsByMod(Module mod){
+	public ArrayList<Setting> getSettingsByMod(Module mod) {
 		ArrayList<Setting> out = new ArrayList<Setting>();
-		for(Setting s : getSettings()){
-			if(s.parent.equals(mod)){
+		for(Setting s : getSettings()) {
+			if(s.parent.equals(mod)) {
 				out.add(s);
 			}
 		}
-		if(out.isEmpty()){
+		if(out.isEmpty()) {
 			return null;
 		}
 		return out;
@@ -47,8 +47,8 @@ public class SettingsManager {
 	
 	public Setting getSettingByName(Module mod, String name) {
 		for (Module m : ModuleManager.modules) {
-		for(Setting set : m.settings){
-			if(set.name.equalsIgnoreCase(name) && set.parent == mod) {
+		for (Setting set : m.settings){
+			if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
 				return set;
 			}
 			}

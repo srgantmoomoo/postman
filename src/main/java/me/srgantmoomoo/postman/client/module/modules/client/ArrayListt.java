@@ -1,95 +1,75 @@
 package me.srgantmoomoo.postman.client.module.modules.client;
 
 import java.awt.Color;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
-import org.lwjgl.input.Keyboard;
+import com.lukflug.panelstudio.hud.HUDList;
+import com.lukflug.panelstudio.hud.ListComponent;
+import com.lukflug.panelstudio.theme.Theme;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
+import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.Main;
-import me.srgantmoomoo.postman.client.module.Category;
+import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
-import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
-import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
-public class ArrayListt extends Module {
-	public ModeSetting sort = new ModeSetting("sort", this, "left", "left", "right");
-	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("yaxis", this, 70, -1000, 1000, 10);
-	public BooleanSetting right = new BooleanSetting("right", this, false);
-	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
-	public boolean on;
-	//default, min, max, increments.
+public class ArrayListt extends HudModule {
+	private ModuleArrayList list=new ModuleArrayList();
 	
+	public ColorSetting color = new ColorSetting("color", this, new JColor(103, 167, 221, 255)); 
+
 	public ArrayListt() {
-		super("arrayList", "classic hud", Keyboard.KEY_NONE, Category.CLIENT);
-		this.addSettings(showHidden, right, xaxis, yaxis);
+		super("arrayList", "twobee2twotee", new Point(-3,59));
+		this.addSettings(color);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
-	ScaledResolution sr = new ScaledResolution(mc);
-	FontRenderer fr = mc.fontRenderer;
-	
-	@SubscribeEvent
-	public void renderOverlay(RenderGameOverlayEvent event) {
-	if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
-				if(on) {
-				int y = 1;
-				final int[] counter = { 1 };
-				for (Module mod : Main.moduleManager.getModuleList()) {
-					if (!mod.getName().equalsIgnoreCase("watermark") && !showHidden.isEnabled() 
-							&& !mod.getName().equalsIgnoreCase("armorHud")
-							&& !mod.getName().equalsIgnoreCase("hey!")
-							&& !mod.getName().equalsIgnoreCase("tabGui")
-							&& !mod.getName().equalsIgnoreCase("info")
-							&& !mod.getName().equalsIgnoreCase("inventory")
-							&& !mod.getName().equalsIgnoreCase("postman")
-							&& !mod.getName().equalsIgnoreCase("keyStrokes")
-							&& !mod.getName().equalsIgnoreCase("arrayList")
-							&& !mod.getName().equalsIgnoreCase("discordRp")
-							&& !mod.getName().equalsIgnoreCase("mainMenuInfo") 
-							&& !mod.getName().equalsIgnoreCase("clickGui")
-							&& !mod.getName().equalsIgnoreCase("Esp2dHelper") 
-							&& mod.isToggled()) {
-						if(right.isEnabled()) {
-						fr.drawStringWithShadow(mod.getName() + "<", sr.getScaledWidth() - fr.getStringWidth(">" + mod.getName()) - (float) xaxis.getValue(), y + (float) yaxis.getValue(), rainbow(counter[0] * -300));
-						}else
-							fr.drawStringWithShadow(">" + mod.getName(), 1 + (float) xaxis.getValue(), y + (float) yaxis.getValue(), rainbow(counter[0] * -300));
-						y += fr.FONT_HEIGHT;
-						counter[0]++;
-				}
-					
-					if(showHidden.isEnabled()) {
-						if (!mod.getName().equalsIgnoreCase("Esp2dHelper") && mod.isToggled()) {
-							if(right.isEnabled()) {
-							fr.drawStringWithShadow(mod.getName() + "<", sr.getScaledWidth() - fr.getStringWidth(">" + mod.getName()) - (float) xaxis.getValue(), y + (float) yaxis.getValue(), rainbow(counter[0] * -300));
-							}else
-								fr.drawStringWithShadow(">" + mod.getName(), 1 + (float) xaxis.getValue(), y + (float) yaxis.getValue(), rainbow(counter[0] * -300));
-							y += fr.FONT_HEIGHT;
-							counter[0]++;
-					}
-					}
-			}
-		}
-		}
-	}
-	
-	public void onEnable() {
-		super.onEnable();
-		on = true;
-	}
-	
-	public void onDisable() {
-		super.onDisable();
-		on = false;
-	}			
-	public static int rainbow(int delay) {
-		double rainbowState = Math.ceil((System.currentTimeMillis() + delay) / 20.0);
-		rainbowState %= 360;
-		return Color.getHSBColor((float) (rainbowState / 360.0f), 0.5f, 1f).getRGB();
-	}
+    
+    @Override
+    public void populate (Theme theme) {
+    	component = new ListComponent(getName(),theme.getPanelRenderer(),position,list);
+    }
 
+    public void onRender() {
+    	list.activeModules.clear();
+    	for (Module module: ModuleManager.getModules()) {
+    		if (module.isToggled()) list.activeModules.add(module);
+    	}
+    	list.activeModules.sort(Comparator.comparing(module -> -Main.getInstance().clickGui.guiInterface.getFontWidth(module.getName())));
+    }
+
+    private class ModuleArrayList implements HUDList {
+
+		public List<Module> activeModules=new ArrayList<Module>();
+		
+		@Override
+		public int getSize() {
+			return activeModules.size();
+		}
+	
+		@Override
+		public String getItem(int index) {
+			Module module = activeModules.get(index);
+			return module.getName();
+		}
+	
+		@Override
+		public Color getItemColor(int index) {
+			JColor c = color.getValue();
+			return Color.getHSBColor(c.getHue() + (color.getRainbow() ? .02f * index : 0), c.getSaturation(), c.getBrightness());
+		}
+
+		@Override
+		public boolean sortUp() {
+			return false;
+		}
+
+		@Override
+		public boolean sortRight() {
+			return false;
+		}
+	}
 }

@@ -90,8 +90,12 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Xray());
 		//client
 		ModuleManager.modules.add(new Watermark());
+		ModuleManager.modules.add(new Totems());
+		ModuleManager.modules.add(new Ping());
+		ModuleManager.modules.add(new Frames());
+		ModuleManager.modules.add(new AutoCInfo());
+		ModuleManager.modules.add(new SurroundInfo());
 		ModuleManager.modules.add(new ArrayListt());
-		ModuleManager.modules.add(new Info());
 		ModuleManager.modules.add(new InventoryViewer());
 		ModuleManager.modules.add(new Hey());
 		ModuleManager.modules.add(new ArmorHud());

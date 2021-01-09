@@ -23,10 +23,10 @@ import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.postman.client.module.Category;
+import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.module.modules.client.ColorMain;
-import me.srgantmoomoo.postman.client.module.modules.client.HudModule;
 import me.srgantmoomoo.postman.client.setting.Setting;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
@@ -45,22 +45,25 @@ public class ClickGui extends MinecraftHUDGUI {
 	private final Toggleable colorToggle;
 	public final GUIInterface guiInterface;
 	public final HUDClickGUI gui;
-	private final Theme theme;
+	private Theme theme;
 	
 	public ClickGui() {
-		if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.getMode().equals("new")) theme=new PostmanTheme(new SettingsColorScheme(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
-		else theme=new PostmanThemeOld(new SettingsColorScheme(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
-		colorToggle=new Toggleable() {
-			@Override
-			public void toggle() {
-				ColorMain.colorModel.increment();
-			}
+		if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.getMode().equals("new"));
+			theme=new PostmanTheme(new SettingsColorScheme(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
 			
-			@Override
-			public boolean isOn() {
-				return ColorMain.colorModel.getMode().equals("RGB");
-			}
-		};
+			if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.getMode().equals("old"));
+			theme=new PostmanTheme(new SettingsColorScheme(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
+			colorToggle=new Toggleable() {
+				@Override
+				public void toggle() {
+					ColorMain.colorModel.increment();
+				}
+				
+				@Override
+				public boolean isOn() {
+					return ColorMain.colorModel.getMode().equals("RGB");
+				}
+			};
 		guiInterface=new GUIInterface(true) {
 			@Override
 			public void drawString(Point pos, String s, Color c) {
