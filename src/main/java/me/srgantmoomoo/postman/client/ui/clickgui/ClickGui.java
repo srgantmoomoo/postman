@@ -22,6 +22,8 @@ import com.lukflug.panelstudio.settings.Toggleable;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.postman.api.util.font.FontUtils;
+import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -69,7 +71,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			public void drawString(Point pos, String s, Color c) {
 				GLInterface.end();
 				int x=pos.x+2, y=pos.y+1;
-				fontRenderer.drawStringWithShadow(s,x,y,0xffffffff);
+				FontUtils.drawStringWithShadow(false,s,x,y,new JColor(c));
 				GLInterface.begin();
 			}
 			

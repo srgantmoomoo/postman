@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +11,7 @@ import me.srgantmoomoo.postman.api.event.EventProcessor;
 import me.srgantmoomoo.postman.api.proxy.CommonProxy;
 import me.srgantmoomoo.postman.api.save.SaveLoad;
 import me.srgantmoomoo.postman.api.util.Reference;
+import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.notification.Notification;
@@ -50,6 +52,7 @@ public class Main {
 	public static TabGui tabGui;
 	public EventProcessor eventProcessor;
 	public static Notification notification;
+	public CustomFontRenderer customFontRenderer;
 	
 	public static final Logger log = LogManager.getLogger("postman");
 	
@@ -75,6 +78,9 @@ public class Main {
 		eventProcessor = new EventProcessor();
 		eventProcessor.init();
 		log.info("event system initialized.");
+		
+		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 18), true,true);
+		log.info("Custom font initialized!");
 		
 		MinecraftForge.EVENT_BUS.register(this);
 		log.info("minecraft forge events initialized.");
