@@ -45,6 +45,7 @@ thank you,
 - event system - *ZeroMemes, Alpine* https://github.com/ZeroMemes/Alpine.
 - discord rpc - *club.minnced, java discord rpc* https://github.com/MinnDevelopment/java-discord-rpc.
 - clickGui library - *lukflug, PanelStudio* https://github.com/lukflug/PanelStudio/tree/v0.1.2.
+- mixins - *SpongeForge* https://www.spongepowered.org/downloads/spongeforge/stable/1.12.2.
 - font renderer - pretty much *kamiblue*, some stuff was rewritten for postman tho, so it's not exactly https://github.com/kami-blue/client.
 
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding**
