@@ -64,14 +64,14 @@ public class Aura extends Module {
 		on = false;
 	}
 
-	public void attack(Entity e){
+	public void attack(Entity e) {
 		if (mc.player.getCooledAttackStrength(0) >= 1){
 			mc.playerController.attackEntity(mc.player, e);
 			mc.player.swingArm(EnumHand.MAIN_HAND);
 		}
 	}
 	
-	private boolean attackCheck(Entity entity){
+	private boolean attackCheck(Entity entity) {
 
 		if (playersA.isEnabled() && entity instanceof EntityPlayer){
 			if (((EntityPlayer) entity).getHealth() > 0) {
@@ -79,15 +79,15 @@ public class Aura extends Module {
 			}
 		}
 
-		if (passiveMobsA.isEnabled() && entity instanceof EntityAnimal){
-			if (entity instanceof EntityTameable){
+		if (passiveMobsA.isEnabled() && entity instanceof EntityAnimal) {
+			if (entity instanceof EntityTameable) {
 				return false;
 			}
 			else {
 				return true;
 			}
 		}
-		if (hostileMobsA.isEnabled() && entity instanceof EntityMob){
+		if (hostileMobsA.isEnabled() && entity instanceof EntityMob) {
 			return true;
 		}
 		return false;
