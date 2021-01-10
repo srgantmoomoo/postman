@@ -5,10 +5,14 @@ import org.lwjgl.input.Keyboard;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 
 public class HudEditor extends Module {
+	public BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGUi", this, true);
+	
 	public HudEditor() {
 		super("hudEditor", "descrp", Keyboard.KEY_NONE, Category.CLIENT);
+		this.addSettings(exitToClickGui);
 	}
 	
 	public void onEnable() {
@@ -17,9 +21,10 @@ public class HudEditor extends Module {
 	}
 	
 	public void onUpdate() {
-
+		
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
-			this.setToggled(!toggled);
+			if(exitToClickGui.isEnabled()) { this.setToggled(!toggled); Main.getInstance().clickGui.enterGUI(); }
+			else { this.setToggled(!toggled); }
 		}
 		
 	}

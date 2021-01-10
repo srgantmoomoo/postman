@@ -17,7 +17,7 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 public class SurroundInfo extends HudModule {
 	private SurroundInfoList list=new SurroundInfoList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(103, 167, 221, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public SurroundInfo() {
 		super("surroundInfo", "thatweehoo", new Point(-3,49));
@@ -39,7 +39,7 @@ public class SurroundInfo extends HudModule {
 		@Override
 		public String getItem(int index) {
 			if (ModuleManager.isModuleEnabled("surround")) return ChatFormatting.GREEN + "srnd " + "on";
-			else return ChatFormatting.RED + "srnd" + " off";
+			else return "srnd" + " off";
 		}
 
 		@Override

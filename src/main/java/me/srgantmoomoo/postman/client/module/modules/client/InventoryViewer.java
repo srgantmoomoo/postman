@@ -1,105 +1,64 @@
 package me.srgantmoomoo.postman.client.module.modules.client;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
+import java.awt.Color;
+import java.awt.Point; 
 
-import me.srgantmoomoo.postman.api.util.Reference;
-import me.srgantmoomoo.postman.client.module.Category;
-import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
-import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
+import com.lukflug.panelstudio.Context;
+import com.lukflug.panelstudio.Interface;
+import com.lukflug.panelstudio.hud.HUDComponent;
+import com.lukflug.panelstudio.theme.Theme;
+
+import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.HudModule;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-/*
- * Written by @SrgantMooMoo on November 6th, 2020
- */
+public class InventoryViewer extends HudModule {
+	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
 
-public class InventoryViewer extends Module {
-	boolean on;
-	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "compact", "none");
-	public NumberSetting xaxis = new NumberSetting("xaxis", this, 0, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("yaxis", this, 0, -1000, 1000, 10);
-	
-	public InventoryViewer() {
-		super ("inventory", "draws line to entitys and/or sotrage", Keyboard.KEY_NONE, Category.CLIENT);
-		this.addSettings(mode, xaxis, yaxis);
-	}
-	private static final Minecraft mc = Minecraft.getMinecraft();
-	private final ResourceLocation inventorylogo = new ResourceLocation(Reference.MOD_ID, "textures/postmancircle.png");
-	
-	@SubscribeEvent
-	public void renderOverlay(RenderGameOverlayEvent event) {
-		ScaledResolution sr = new ScaledResolution(mc);
-		if(on) {
+    
+    public InventoryViewer() {
+    	super("inventoryViewer","fdhusnapeepeenisggaewiojwajmvdj", new Point(0,10));
+    	this.addSettings(color);
+    }
+    
+    @Override
+    public void populate (Theme theme) {
+    	component = new InventoryViewerComponent(theme);
+    }
+
+    private class InventoryViewerComponent extends HUDComponent {
+
+		public InventoryViewerComponent (Theme theme) {
+			super(getName(),theme.getPanelRenderer(),InventoryViewer.this.position);
+		}
 		
-		if (event.getType() == RenderGameOverlayEvent.ElementType.HELMET) {
-			mc.renderEngine.bindTexture(inventorylogo);
-			if(mode.getMode().equals("normal")) {
-			Gui.drawScaledCustomSizeModalRect((int) (sr.getScaledWidth() - 106 + xaxis.getValue()), (int) (2 + yaxis.getValue()), 50, 0, 50, 50, 50, 50, 50, 50);
-			}else if(mode.getMode().equals("compact")) {
-				Gui.drawScaledCustomSizeModalRect((int) (sr.getScaledWidth() - 102 + xaxis.getValue()), (int) (1 + yaxis.getValue()), 50, 0, 50, 50, 50, 50, 50, 50);
-			}
-			}
-		}
-	
-	if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
-		drawInventory(10, 10);
-	}
-	}
-	
-	public void drawInventory(int x, int y) {
-		ScaledResolution sr = new ScaledResolution(mc);
-		if(on) {
-		
-		if(mode.getMode().equals("normal")) {
-			GlStateManager.enableAlpha();
-			Gui.drawRect((int) (sr.getScaledWidth() - 163 + (float) xaxis.getValue()), (int) (1 + yaxis.getValue()), (int) (sr.getScaledWidth() - 1 + xaxis.getValue()), (int) (55 + yaxis.getValue()), 0x4079c2ec); // 0x2fffc3b1
-			GlStateManager.disableAlpha();
-		}else if(mode.getMode().equals("compact")) {
-			GlStateManager.enableAlpha();
-			Gui.drawRect((int) (sr.getScaledWidth() - 155 + (float) xaxis.getValue()), (int) (1 + yaxis.getValue()), (int) (sr.getScaledWidth() - 1 + xaxis.getValue()), (int) (53 + yaxis.getValue()), 0x4079c2ec); //0x40009dff
-			GlStateManager.disableAlpha();
+		@Override
+		public void render (Context context) {
+			super.render(context);
+			// Render background
+			Color bgcolor=new JColor(color.getValue(),100);
+			context.getInterface().fillRect(context.getRect(),bgcolor,bgcolor,bgcolor,bgcolor);
+			// Render the actual items
+	        NonNullList<ItemStack> items = Minecraft.getMinecraft().player.inventory.mainInventory;
+	        for (int size = items.size(), item = 9; item < size; ++item) {
+	            int slotX = context.getPos().x + item % 9 * 18;
+	            int slotY = context.getPos().y + 2 + (item / 9 - 1) * 18;
+				ClickGui.renderItem(items.get(item),new Point(slotX,slotY));
+	        }
 		}
 
-		GlStateManager.clear(GL11.GL_DEPTH_BUFFER_BIT);
-		NonNullList<ItemStack> items = Minecraft.getMinecraft().player.inventory.mainInventory;
-		for (int size = items.size(), item = 9; item < size; ++item) {
-			if(mode.getMode().equals("normal")) {
-				final int slotX = (int) (sr.getScaledWidth() - 163 + 1 + xaxis.getValue() + item % 9 * 18);
-				final int slotY = (int) (1 + 1 + yaxis.getValue() + (item / 9 - 1) * 18);
-				RenderHelper.enableGUIStandardItemLighting();
-				mc.getRenderItem().renderItemAndEffectIntoGUI(items.get(item), slotX, slotY);
-				mc.getRenderItem().renderItemOverlays(mc.fontRenderer, items.get(item), slotX, slotY);
-				RenderHelper.disableStandardItemLighting();
-			}else if(mode.getMode().equals("compact")) {
-				final int slotX = (int) (sr.getScaledWidth() - 155 + 1 + xaxis.getValue() + item % 9 * 17);
-				final int slotY = (int) (1 + 1 + yaxis.getValue() + (item / 9 - 1) * 17);
-				RenderHelper.enableGUIStandardItemLighting();
-				mc.getRenderItem().renderItemAndEffectIntoGUI(items.get(item), slotX, slotY);
-				mc.getRenderItem().renderItemOverlays(mc.fontRenderer, items.get(item), slotX, slotY);
-				RenderHelper.disableStandardItemLighting();
-			}
+		@Override
+		public int getWidth (Interface inter) {
+			return 162;
+		}
+
+		@Override
+		public void getHeight (Context context) {
+			context.setHeight(56);
 		}
 	}
-	}
-	
-	public void onEnable() {
-		super.onEnable();
-			on = true;
-	}
-	
-	public void onDisable() {
-		super.onDisable();
-			on = false;
-	}
-
 }

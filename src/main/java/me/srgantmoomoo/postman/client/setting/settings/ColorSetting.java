@@ -19,9 +19,15 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 	
 	public JColor getValue() {
 		if (rainbow) {
-			return JColor.fromHSB((System.currentTimeMillis()%(360*32))/(360f * 32),1,1);
+			return JColor.fromHSB((System.currentTimeMillis()%(360*20))/(360f * 20),0.5f,1f);
 		}
 		return this.value;
+	}
+	
+	public static int rainbow(int delay) {
+		double rainbowState = Math.ceil((System.currentTimeMillis() + delay) / 20.0);
+		rainbowState %= 360;
+		return Color.getHSBColor((float) (rainbowState / 360.0f), 0.5f, 1f).getRGB();
 	}
 	
 	public void setValue (boolean rainbow, final JColor value) {
