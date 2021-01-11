@@ -77,12 +77,12 @@ public class ClickGui extends MinecraftHUDGUI {
 			
 			@Override
 			public int getFontWidth(String s) {
-				return (int)Math.round(fontRenderer.getStringWidth(s))+4;
+				return Math.round(FontUtils.getStringWidth(false,s))+4;
 			}
 
 			@Override
 			public int getFontHeight() {
-				return (int)Math.round(fontRenderer.FONT_HEIGHT)+2;
+				return Math.round(FontUtils.getFontHeight(false))+2;
 			}
 
 			@Override
