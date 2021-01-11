@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.client.module.modules.client;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -17,17 +18,41 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /*
  * Written by @SrgantMooMoo on November 7th, 2020.
+ * Rewritten by @SrgantMooMoo on January 10th, 2021.
  */
-public class KeyStrokes extends Module {
-	public NumberSetting xaxis = new NumberSetting("xaxis", this, 60, -1000, 1000, 10);
-	public NumberSetting yaxis = new NumberSetting("yaxis", this, 160, -1000, 1000, 10);
-	public boolean enabled;
-	
-	public KeyStrokes() {
-		super("keyStrokes", "key strooookkkesss", Keyboard.KEY_NONE, Category.CLIENT);
-		this.addSettings(xaxis, yaxis);
-	}
-	
+
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import com.lukflug.panelstudio.Context;
+import com.lukflug.panelstudio.Interface;
+import com.lukflug.panelstudio.hud.HUDComponent;
+import com.lukflug.panelstudio.theme.Theme;
+
+import me.srgantmoomoo.postman.api.util.Reference;
+import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.HudModule;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+
+public class KeyStrokes extends HudModule {
+	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
+    
+    public KeyStrokes() {
+    	super("keyStrokes","key strooookkkesss", new Point(0,10));
+    	this.addSettings(color);
+    }
+    
+    @Override
+    public void populate (Theme theme) {
+    	component = new KeyStrokesComponent(theme);
+    }
+    
 	public static enum KeyStrokesMode {
 		
 		WASD(Key.W, Key.A, Key.S, Key.D),
@@ -111,60 +136,48 @@ public class KeyStrokes extends Module {
 	}
 	
 	private KeyStrokesMode mode = KeyStrokesMode.WASD_SHFT;
-	
-	@SubscribeEvent
-	public void renderOverlay(RenderGameOverlayEvent event) {
-		Minecraft mc = Minecraft.getMinecraft();
-		FontRenderer fr = mc.fontRenderer;
-		
-		if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
-			if(enabled) {
-		
-		GL11.glPushMatrix();
-		
-		boolean blend = GL11.glIsEnabled(GL11.GL_BLEND);
-		
-		GL11.glDisable(GL11.GL_BLEND);
-		
-		
-		for(Key key : mode.getKeys()) {
-			
-			int textWidth = fr.getStringWidth(key.getName());
-			
-			Gui.drawRect(
-					(int) (xaxis.getValue() + key.getX()), 
-					(int) (yaxis.getValue() + key.getY()), 
-					(int) (xaxis.getValue() + key.getX()) + key.getWidth(), 
-					(int) (yaxis.getValue() + key.getY()) + key.getHeight(), 
-					key.isDown() ? Color.WHITE.getRGB() : new Color(0, 0, 0, 102).getRGB()
-					);
-			
-			fr.drawString(
-					key.getName(), 
-					(int) (xaxis.getValue() + key.getX() + key.getWidth() /2 - textWidth / 2), 
-					(int) (yaxis.getValue() + key.getY() + key.getHeight() / 2 - 4), 
-					key.isDown() ? Color.BLACK.getRGB() : Color.WHITE.getRGB());
-			
-		}
-		
-		
-		if(blend) {
-			GL11.glEnable(GL11.GL_BLEND);
-		}
-		
-		GL11.glPopMatrix();
-			}
-		}
-	}
-	
-	public void onEnable() {
-		super.onEnable();
-		enabled = true;
-	}
-	
-	public void onDisable() {
-		super.onDisable();
-		enabled = false;
-	}
 
+    private class KeyStrokesComponent extends HUDComponent {
+
+		public KeyStrokesComponent (Theme theme) {
+			super(getName(),theme.getPanelRenderer(),KeyStrokes.this.position);
+		}
+		
+		@Override
+		public void render (Context context) {
+			ScaledResolution sr = new ScaledResolution(mc);
+			
+			super.render(context);
+			Color colors=new JColor(color.getValue(),100);
+			
+			GL11.glPushMatrix();
+			
+			boolean blend = GL11.glIsEnabled(GL11.GL_BLEND);
+			
+			GL11.glDisable(GL11.GL_BLEND);
+			
+			for(Key key : mode.getKeys()) { 
+			context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(key.getWidth(),key.getHeight())),colors,colors,colors,colors);
+			}
+			
+
+			if(blend) {
+				GL11.glEnable(GL11.GL_BLEND);
+			}
+			
+			GL11.glPopMatrix();
+			
+		}
+
+		@Override
+		public int getWidth (Interface inter) {
+			return 56;
+			}
+
+		@Override
+		public void getHeight(Context context) {
+			context.setHeight(54);
+			
+		}
+	}
 }

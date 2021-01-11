@@ -99,10 +99,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new InventoryViewer());
 		ModuleManager.modules.add(new Hey());
 		ModuleManager.modules.add(new ArmorHud());
-		ModuleManager.modules.add(new KeyStrokes());
-		//ModuleManager.modules.add(new ClassicHud());
-		//ModuleManager.modules.add(new LightHud());	
-		//ModuleManager.modules.add(new DarkHud());
+		//ModuleManager.modules.add(new KeyStrokes());
 		ModuleManager.modules.add(new DiscordRichPresence());
 		ModuleManager.modules.add(new ClickGuiModule());
 		ModuleManager.modules.add(new HudEditor());

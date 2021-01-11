@@ -38,7 +38,7 @@ public class TabGui extends Module {
 	public TabGui() {
 		super ("tabGui", "cloocky clocky", Keyboard.KEY_NONE, Category.CLIENT);
 		toggled = true;
-		tab = true;
+		tab = false;
 	}
 	
 	public static int rainbow(int delay) {
