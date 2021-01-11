@@ -90,7 +90,7 @@ public class ArrayListt extends HudModule {
 		@Override
 		public Color getItemColor(int index) {
 			JColor c = color.getValue();
-			return Color.getHSBColor(c.getHue() + (color.getRainbow() ? .05f * index : 0), (color.getRainbow() ? 0.5f : c.getBrightness()), c.getBrightness());
+			return Color.getHSBColor(c.getHue() + (color.getRainbow() ? .05f * index : 0), (color.getRainbow() ? 0.5f : c.getSaturation()), c.getBrightness());
 		}
 		
 		@Override
