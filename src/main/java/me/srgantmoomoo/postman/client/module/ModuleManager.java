@@ -70,8 +70,9 @@ public class ModuleManager {
 		ModuleManager.modules.add(new LowOffHand());
 		ModuleManager.modules.add(new Nametags());	
 		ModuleManager.modules.add(new NewChunks());	
-		ModuleManager.modules.add(new NoPush());
 		ModuleManager.modules.add(new NoHurtCam());
+		ModuleManager.modules.add(new NoPush());
+		ModuleManager.modules.add(new NoRain());
 		//ModuleManager.modules.add(new NoSlow());
 		ModuleManager.modules.add(new Peek());
 		ModuleManager.modules.add(new PlayerClone());	
@@ -86,7 +87,6 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Tracers());
 		ModuleManager.modules.add(new Velocity());	
 		ModuleManager.modules.add(new ViewModel());	
-		ModuleManager.modules.add(new Weather());	
 		ModuleManager.modules.add(new Xray());
 		//client
 		ModuleManager.modules.add(new Watermark());

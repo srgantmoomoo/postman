@@ -23,7 +23,7 @@ public class ArrayListt extends HudModule {
 	private ModuleArrayList list=new ModuleArrayList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 255, 255, 255));
-	public ModeSetting sortHeight = new ModeSetting("sortHeight", this, "alphabetic", "alphabetic", "up", "down");
+	public ModeSetting sortHeight = new ModeSetting("sortHeight", this, "betic", "betic", "up", "down");
 	public ModeSetting sortLength = new ModeSetting("sortLength", this, "left", "left", "right");
 	public BooleanSetting forgeHax = new BooleanSetting("forgeHax", this, true);
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
@@ -90,7 +90,7 @@ public class ArrayListt extends HudModule {
 		@Override
 		public Color getItemColor(int index) {
 			JColor c = color.getValue();
-			return Color.getHSBColor(c.getHue() + (color.getRainbow() ? .05f * index : 0), (color.getRainbow() ? 0.5f : 0), c.getBrightness());
+			return Color.getHSBColor(c.getHue() + (color.getRainbow() ? .05f * index : 0), (color.getRainbow() ? 0.5f : c.getBrightness()), c.getBrightness());
 		}
 		
 		@Override

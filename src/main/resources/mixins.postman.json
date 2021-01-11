@@ -14,6 +14,7 @@
 	"MixinItemRenderer",
 	"MixinEntityPlayer",
 	"MixinEntity",
-	"MixinNetworkManager"
+	"MixinNetworkManager",
+	"MixinWorld"
 ]
 }

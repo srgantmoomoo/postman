@@ -2,17 +2,17 @@ package me.srgantmoomoo.postman.client.module.modules.render;
 
 import org.lwjgl.input.Keyboard;
 
-import me.srgantmoomoo.postman.api.event.events.RenderCameraEvent;
+import me.srgantmoomoo.postman.api.event.events.RenderRainEvent;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 
-public class CameraClip extends Module {
+public class NoRain extends Module {
 	
-	public CameraClip() {
-		super ("cameraClip", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
+	public NoRain() {
+		super ("noRain", "eliminates weather", Keyboard.KEY_NONE, Category.RENDER);
 	}
 	
 	public void onEnable() {
@@ -26,8 +26,9 @@ public class CameraClip extends Module {
 	}
 	
 	@EventHandler
-    private Listener<RenderCameraEvent> onRenderCameraEvent = new Listener<>(event -> {
-        event.cancel();
-    });
-
+	private Listener<RenderRainEvent> onRain = new Listener<>(event -> {
+	    if (mc.world == null)
+	        return;
+	    event.cancel();
+	});
 }
