@@ -9,6 +9,9 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.api.event.EventProcessor;
 import me.srgantmoomoo.postman.api.proxy.CommonProxy;
+import me.srgantmoomoo.postman.api.save.ClickGuiLoad;
+import me.srgantmoomoo.postman.api.save.ClickGuiSave;
+import me.srgantmoomoo.postman.api.save.ConfigStopper;
 import me.srgantmoomoo.postman.api.save.SaveLoad;
 import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
@@ -18,7 +21,6 @@ import me.srgantmoomoo.postman.client.notification.Notification;
 import me.srgantmoomoo.postman.client.setting.SettingsManager;
 import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
-import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiConfig;
 import me.zero.alpine.EventBus;
 import me.zero.alpine.EventManager;
 import net.minecraft.client.Minecraft;
@@ -47,12 +49,13 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingsManager settingsManager;
 	public static SaveLoad saveLoad;
-	public ClickGuiConfig clickGuiConfig;
 	public ClickGui clickGui;
 	public static TabGui tabGui;
 	public EventProcessor eventProcessor;
 	public static Notification notification;
 	public CustomFontRenderer customFontRenderer;
+	public ClickGuiSave clickGuiSave;
+	public ClickGuiLoad clickGuiLoad;
 	
 	public static final Logger log = LogManager.getLogger("postman");
 	
@@ -101,6 +104,9 @@ public class Main {
 		clickGui = new ClickGui();
 		log.info("clickGui initialized!");
 		
+		clickGuiSave = new ClickGuiSave();
+		clickGuiLoad = new ClickGuiLoad();
+		Runtime.getRuntime().addShutdownHook(new ConfigStopper());
 		saveLoad = new SaveLoad();
 		log.info("configs initialized.");
 		

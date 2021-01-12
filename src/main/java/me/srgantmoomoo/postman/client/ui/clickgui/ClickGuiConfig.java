@@ -18,10 +18,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.lukflug.panelstudio.ConfigList;
 import com.lukflug.panelstudio.PanelConfig;
-import net.minecraft.client.Minecraft;
-/*
- * ok, literally just skidded from gs atm, im v tired... will come back to this wen redoing clickgui... @SrgantMooMoo 12/16/2020 1:55am 0_0
- */
+
 public class ClickGuiConfig implements ConfigList {
 	private final String fileLocation;
 	private JsonObject panelObject=null;
@@ -77,22 +74,22 @@ public class ClickGuiConfig implements ConfigList {
 		if (panelObject==null) return null;
         JsonObject valueObject = new JsonObject();
         panelObject.add(title,valueObject);
-        return new GSPanelConfig(valueObject);
+        return new JPanelConfig(valueObject);
 	}
 
 	@Override
 	public PanelConfig getPanel(String title) {
 		if (panelObject==null) return null;
 		JsonElement configObject = panelObject.get(title);
-		if (configObject!=null && configObject.isJsonObject()) return new GSPanelConfig(configObject.getAsJsonObject());
+		if (configObject!=null && configObject.isJsonObject()) return new JPanelConfig(configObject.getAsJsonObject());
 		return null;
 	}
 	
 	
-	private static class GSPanelConfig implements PanelConfig {
+	private static class JPanelConfig implements PanelConfig {
 		private final JsonObject configObject;
 		
-		public GSPanelConfig (JsonObject configObject) {
+		public JPanelConfig (JsonObject configObject) {
 			this.configObject=configObject;
 		}
 		

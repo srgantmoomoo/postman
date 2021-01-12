@@ -46,7 +46,7 @@ public class SaveLoad {
 		
 		this.load();
 	}
-	 
+	
 	public void save() {
 		ArrayList<String> toSave = new ArrayList<String>();
 		
