@@ -64,12 +64,14 @@ public class ModuleManager {
 		ModuleManager.modules.add(new HoleEsp());
 		ModuleManager.modules.add(new HoleTp());
 		ModuleManager.modules.add(new InventoryMove());	
+		ModuleManager.modules.add(new InventorySlots());	
 		ModuleManager.modules.add(new Jesus());	
 		ModuleManager.modules.add(new LogOutSpot());
 		ModuleManager.modules.add(new LongJump());
 		ModuleManager.modules.add(new LowOffHand());
 		ModuleManager.modules.add(new Nametags());	
 		ModuleManager.modules.add(new NewChunks());	
+		ModuleManager.modules.add(new NoFall());	
 		ModuleManager.modules.add(new NoHurtCam());
 		ModuleManager.modules.add(new NoPush());
 		ModuleManager.modules.add(new NoRain());

@@ -7,6 +7,7 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -22,11 +23,13 @@ public class AutoDisconnect extends Module {
 	public void onEnable() {
 		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	public void onDisable() {
 		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
+		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 	
     @SubscribeEvent
