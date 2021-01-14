@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.client.module.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.postman.api.event.events.NetworkPacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
@@ -26,11 +27,12 @@ public class NoFall extends Module {
 	}
 	
 	@EventHandler
-	private final Listener<PacketEvent.Send> listener = new Listener<>(event -> {
-		
-		final CPacketPlayer packet = (CPacketPlayer) event.getPacket();
-		if (event.getPacket() instanceof CPacketPlayer && Minecraft.getMinecraft().player.fallDistance >= 3.0f) {
-			packet.onGround = true;
+	private final Listener<NetworkPacketEvent> listener = new Listener<>(event -> {
+		if (event.getPacket() instanceof CPacketPlayer) {
+			final CPacketPlayer packet = (CPacketPlayer) event.getPacket();
+			if (event.getPacket() instanceof CPacketPlayer && Minecraft.getMinecraft().player.fallDistance >= 3.0f) {
+				packet.onGround = true;
+			}
 		}
 	});
 }

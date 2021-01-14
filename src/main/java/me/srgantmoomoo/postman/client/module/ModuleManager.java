@@ -33,7 +33,7 @@ public class ModuleManager {
 		
 		//alphabetic
 		ModuleManager.modules.add(new AimBot());	
-		ModuleManager.modules.add(new AntiHunger());	
+		//ModuleManager.modules.add(new AntiHunger());	
 		ModuleManager.modules.add(new Aura());	
 		ModuleManager.modules.add(new AutoArmor());	
 		ModuleManager.modules.add(new AutoClicker());
@@ -75,7 +75,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new NoHurtCam());
 		ModuleManager.modules.add(new NoPush());
 		ModuleManager.modules.add(new NoRain());
-		//ModuleManager.modules.add(new NoSlow());
+		ModuleManager.modules.add(new NoSlow());
 		ModuleManager.modules.add(new Peek());
 		ModuleManager.modules.add(new PlayerClone());	
 		ModuleManager.modules.add(new SafeWalk());
@@ -99,7 +99,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new SurroundInfo());
 		ModuleManager.modules.add(new ArrayListt());
 		ModuleManager.modules.add(new InventoryViewer());
-		ModuleManager.modules.add(new Hey());
+		ModuleManager.modules.add(new Coords());
 		ModuleManager.modules.add(new ArmorHud());
 		//ModuleManager.modules.add(new KeyStrokes());
 		ModuleManager.modules.add(new DiscordRichPresence());

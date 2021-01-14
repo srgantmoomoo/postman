@@ -1,7 +1,9 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
+import net.minecraft.init.Blocks;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,6 +24,12 @@ public abstract class MixinEntity {
 			entity.isAirBorne = true;
 		}
 	}
+	
+	@Redirect(method = "getVelocityMultiplier", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getBlock()Lnet/minecraft/block/Block;"))
+    private Block getVelocityMultiplierGetBlockProxy(BlockState blockState) {
+        if (blockState.getBlockState() == Blocks.SOUL_SAND && ModuleManager.getModuleByName("noSlow").isToggled()) return Blocks.STONE;
+        return blockState.getBlockState();
+    }
 	
 	  @Shadow public abstract boolean equals(Object p_equals_1_);
 

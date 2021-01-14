@@ -11,35 +11,21 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 
+public class Coords extends HudModule {
+	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255)); 
 
-public class Totems extends HudModule {
-	private TotemList list=new TotemList();
-	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
-
-	public Totems() {
-		super("totems", "thatweehoo", new Point(-3,11));
+	public Coords() {
+		super("coords", "thatweehoo", new Point(13,1));
 		this.addSettings(color);
 	}
 	
-	   public void onRender() {
-	    	list.totems = mc.player.inventory.mainInventory.stream()
-	    			.filter(itemStack -> itemStack.getItem() == Items.TOTEM_OF_UNDYING)
-	    			.mapToInt(ItemStack::getCount).sum();
-	    	if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING)
-	    		list.totems++;
-	    }
-	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
+		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new CoordsList());
 	}
 	
-	private class TotemList implements HUDList {
-
-		public int totems=0;
+	private class CoordsList implements HUDList {
 		
 		@Override
 		public int getSize() {
@@ -48,7 +34,9 @@ public class Totems extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return "" + totems;
+			return ChatFormatting.RESET + "(x)" + ChatFormatting.WHITE + mc.player.getPosition().getX()
+					+ ChatFormatting.RESET + "(y)" + ChatFormatting.WHITE + mc.player.getPosition().getY()
+					+ ChatFormatting.RESET + "(z)" + ChatFormatting.WHITE + mc.player.getPosition().getZ();
 		}
 
 		@Override
