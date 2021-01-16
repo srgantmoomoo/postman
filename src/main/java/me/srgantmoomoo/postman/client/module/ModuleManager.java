@@ -54,6 +54,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ChestStealer());
 		ModuleManager.modules.add(new CoordExploit());
 		ModuleManager.modules.add(new Criticals());	
+		//ModuleManager.modules.add(new DamageTiltCorrection());	
 		ModuleManager.modules.add(new DeathCoords());	
 		ModuleManager.modules.add(new Dupe());	
 		ModuleManager.modules.add(new ElytraFly());	

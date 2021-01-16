@@ -13,7 +13,6 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 	public class NoSlow extends Module {
 		private Minecraft mc = Minecraft.getMinecraft();
 
-		
 	public NoSlow() {
 		super ("noSlow", "slow? no.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
