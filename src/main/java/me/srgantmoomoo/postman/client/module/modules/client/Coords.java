@@ -16,7 +16,7 @@ public class Coords extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255)); 
 
 	public Coords() {
-		super("coords", "thatweehoo", new Point(13,1));
+		super("coords", "thatweehoo", new Point(100,1));
 		this.addSettings(color);
 	}
 	

@@ -54,11 +54,12 @@ public class ArrayListt extends HudModule {
     					&& !module.getName().equalsIgnoreCase("Hey")
     					&& !module.getName().equalsIgnoreCase("ArmorHud")
     					&& !module.getName().equalsIgnoreCase("KeyStrokes")
-    					&& !module.getName().equalsIgnoreCase("DiscordRichPresence")
+    					&& !module.getName().equalsIgnoreCase("DiscordRp")
     					&& !module.getName().equalsIgnoreCase("ClickGuiModule")
     					&& !module.getName().equalsIgnoreCase("HudEditor")
     					&& !module.getName().equalsIgnoreCase("TabGui")
     					&& !module.getName().equalsIgnoreCase("MainMenuInfo")
+    					&& !module.getName().equalsIgnoreCase("coords")
     					&& !module.getName().equalsIgnoreCase("Esp2dHelper")) {
     				list.activeModules.add(module);
     			}
