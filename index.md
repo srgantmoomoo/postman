@@ -1,6 +1,6 @@
 **postman client** <br />
    this client was started for fun as a project to help with my java and coding in general.
-postman is a client for Minecraft 1.12.2 intended for use on servers which allow client-side modification. this client is not intended for and is of no use on servers which do not allow it.
+postman is a client for Minecraft 1.12.2 intended for use on servers which allow client-side modification. this client is not intended for and is of no use on servers which do not allow it. <br />
 **current modules** <br />
 <details>
     <summary>player</summary>
