@@ -52,7 +52,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>nothing<p><i>nothing lol</i></p></li>
     </ul></p>
 </details>
-*everything under client works*
-<br />
+*everything under client works* <br />
+
 ***for more information check out the github readme.md :)***
 
