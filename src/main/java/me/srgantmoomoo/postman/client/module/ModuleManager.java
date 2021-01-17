@@ -50,7 +50,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Blink());	
 		ModuleManager.modules.add(new CameraClip());	
 		ModuleManager.modules.add(new ChatBot());	
-		ModuleManager.modules.add(new ChatWatermark());
+		ModuleManager.modules.add(new ChatSuffix());
 		ModuleManager.modules.add(new ChestStealer());
 		ModuleManager.modules.add(new CoordExploit());
 		ModuleManager.modules.add(new Criticals());	

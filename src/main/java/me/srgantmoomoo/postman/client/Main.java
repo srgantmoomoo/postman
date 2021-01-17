@@ -80,13 +80,13 @@ public class Main {
 	public void init (FMLInitializationEvent event) {
 		eventProcessor = new EventProcessor();
 		eventProcessor.init();
-		log.info("event system initialized.");
-		
-		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 18), true,true);
-		log.info("Custom font initialized!");
+		log.info("postman event system initialized.");
 		
 		MinecraftForge.EVENT_BUS.register(this);
-		log.info("minecraft forge events initialized.");
+		log.info("forge event system initialized.");
+		
+		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 18), true,true);
+		log.info("custom font initialized.");
 		
 		notification = new Notification(null, null, null, 0);
 		log.info("notification system initialized.");
@@ -99,10 +99,10 @@ public class Main {
 		
 		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
-		log.info("user interface initialized.");
+		log.info("tabgui initialized.");
 		
 		clickGui = new ClickGui();
-		log.info("clickGui initialized!");
+		log.info("clickGui initialized.");
 		
 		clickGuiSave = new ClickGuiSave();
 		clickGuiLoad = new ClickGuiLoad();
@@ -110,7 +110,7 @@ public class Main {
 		saveLoad = new SaveLoad();
 		log.info("configs initialized.");
 		
-		log.info("postman initialization finished");
+		log.info("postman initialization finished.");
 	
 	} //pp
 	
