@@ -1,1 +1,10 @@
+title: postman
+description: 1.12.2 anarchy client :)
+show_downloads: true
+github:
+  repository_url: https://github.com/kami-blue/client
+  website_url: https://github.com/kami-blue/website
+  jar_url: https://github.com/moomooooo/postman/releases/download/1.200/postman1.200.jar
+cur_ver: 1.200
+discord_url: https://discord.gg/Jd8EmEuhb5
 theme: jekyll-theme-minimal
