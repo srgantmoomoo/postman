@@ -1,5 +1,6 @@
 title: postman
 description: 1.12.2 anarchy client :)
+logo: /src/main/resources/postmancircle.png
 show_downloads: true
 github:
   repository_url: https://github.com/moomooooo/postman
