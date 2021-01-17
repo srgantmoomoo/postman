@@ -11,8 +11,9 @@ import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.SettingsAnimation;
 import com.lukflug.panelstudio.hud.HUDClickGUI;
 import com.lukflug.panelstudio.hud.HUDPanel;
-import com.lukflug.panelstudio.mc.GLInterface;
-import com.lukflug.panelstudio.mc.MinecraftHUDGUI;
+import com.lukflug.panelstudio.mc12.GLInterface;
+import com.lukflug.panelstudio.mc12.MinecraftGUI.GUIInterface;
+import com.lukflug.panelstudio.mc12.MinecraftHUDGUI;
 import com.lukflug.panelstudio.settings.BooleanComponent;
 import com.lukflug.panelstudio.settings.EnumComponent;
 import com.lukflug.panelstudio.settings.KeybindComponent;
@@ -131,7 +132,7 @@ public class ClickGui extends MinecraftHUDGUI {
 					if (((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).scrollMode.equals("screen")) {
 						return childHeight;
 					}
-					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight()-HEIGHT));
+					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight(open.getValue()!=0)-HEIGHT));
 				}
 			};
 			gui.addComponent(panel);
