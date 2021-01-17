@@ -74,6 +74,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new NewChunks());	
 		ModuleManager.modules.add(new NoFall());	
 		ModuleManager.modules.add(new NoHurtCam());
+		ModuleManager.modules.add(new NoPotionEffects());
 		ModuleManager.modules.add(new NoPush());
 		ModuleManager.modules.add(new NoRain());
 		ModuleManager.modules.add(new NoSlow());

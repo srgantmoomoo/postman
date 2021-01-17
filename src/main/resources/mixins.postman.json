@@ -15,6 +15,7 @@
 	"MixinEntityPlayer",
 	"MixinEntity",
 	"MixinNetworkManager",
-	"MixinWorld"
+	"MixinWorld",
+	"MixinPlayerOverlay"
 ]
 }

@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.exploits;
+package me.srgantmoomoo.postman.client.module.modules.player;
 
 import java.util.UUID;
 
@@ -18,11 +18,11 @@ import net.minecraft.world.GameType;
 public class PlayerClone extends Module {
 	
 	public PlayerClone() {
-		super ("playerClone", "cloneeee", Keyboard.KEY_NONE, Category.EXPLOITS);
+		super ("playerClone", "cloneeee", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	 private EntityOtherPlayerMP clonedPlayer;
 	
-	public void onEnable() {
+	public void onEnable() { 
 		Minecraft mc = Minecraft.getMinecraft();
 
 
