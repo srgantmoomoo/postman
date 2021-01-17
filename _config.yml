@@ -4,8 +4,7 @@ logo: /src/main/resources/postmancircle.png
 show_downloads: true
 github:
   repository_url: https://github.com/moomooooo/postman
-  website_url: https://moomooooo.github.io/postman/
+  discord_url: https://discord.gg/Jd8EmEuhb5
   jar_url: https://github.com/moomooooo/postman/releases/download/1.200/postman1.200.jar
 cur_ver: 1.200
-discord_url: https://discord.gg/Jd8EmEuhb5
 theme: jekyll-theme-minimal
