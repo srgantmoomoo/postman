@@ -42,7 +42,7 @@ thank you,
 - some random guy idk named jacobtread, for giving proper credits to the MinnDevelopment java discord rpc.
 
 **base stuff**
-- mod loader - *Forge* http://files.minecraftforge.net.
+- mod api - *Forge* http://files.minecraftforge.net.
 - event system - *ZeroMemes, Alpine* https://github.com/ZeroMemes/Alpine.
 - discord rpc - *club.minnced, java discord rpc* https://github.com/MinnDevelopment/java-discord-rpc.
 - clickGui library - *lukflug, PanelStudio* https://github.com/lukflug/PanelStudio/tree/main.
