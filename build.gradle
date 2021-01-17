@@ -128,4 +128,3 @@ jar {
 }
 
 build.dependsOn(shadowJar)
-setupDecompWorkspace.dependsOn(unpackPanelstudio)
