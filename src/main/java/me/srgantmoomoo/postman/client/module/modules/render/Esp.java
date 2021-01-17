@@ -1,7 +1,6 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.Wrapper;
@@ -10,12 +9,10 @@ import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.module.modules.pvp.Surround;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.item.EntityItem;
@@ -32,7 +29,6 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.tileentity.TileEntityShulkerBox;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

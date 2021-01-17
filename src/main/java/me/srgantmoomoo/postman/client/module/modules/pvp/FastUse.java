@@ -7,7 +7,6 @@ import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemBow;
 import net.minecraft.network.play.client.CPacketPlayerDigging;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 import net.minecraft.util.math.BlockPos;

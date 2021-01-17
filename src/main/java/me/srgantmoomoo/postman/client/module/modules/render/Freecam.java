@@ -7,9 +7,9 @@ import me.srgantmoomoo.postman.api.event.events.PlayerMoveEvent;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,18 +24,12 @@ import net.minecraftforge.common.MinecraftForge;
  */
 
 public class Freecam extends Module  {
+	public NumberSetting speed = new NumberSetting("speed", this, 5, 0, 20, 1);
 	
 	public Freecam() {
 		super ("freecam", "gives an out of body expirience 0_0", Keyboard.KEY_NONE, Category.RENDER);
+		this.addSettings(speed);
 	}
-
-		//Setting.Boolean cancelPackets;
-		//Setting.Double speed;
-
-		public void setup() {
-		//	cancelPackets = registerBoolean("Cancel Packets","CancelPackets",true);
-			//speed = registerDouble("Speed", "Speed", 10, 0, 20);
-		}
 
 		private double posX, posY, posZ;
 		private float pitch, yaw;
@@ -69,7 +63,7 @@ public class Freecam extends Module  {
 				clonedPlayer.rotationYawHead = mc.player.rotationYawHead;
 				mc.world.addEntityToWorld(-100, clonedPlayer);
 				mc.player.capabilities.isFlying = true;
-				mc.player.capabilities.setFlySpeed((float) (10 / 100f));
+				mc.player.capabilities.setFlySpeed((float) (speed.getValue() / 100f));
 				mc.player.noClip = true;
 			}
 		}
@@ -99,7 +93,7 @@ public class Freecam extends Module  {
 		@Override
 		public void onUpdate() {
 			mc.player.capabilities.isFlying = true;
-			mc.player.capabilities.setFlySpeed((float) (10 / 100f));
+			mc.player.capabilities.setFlySpeed((float) (speed.getValue() / 100f));
 			mc.player.noClip = true;
 			mc.player.onGround = false;
 			mc.player.fallDistance = 0;

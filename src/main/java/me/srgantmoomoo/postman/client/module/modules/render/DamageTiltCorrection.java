@@ -1,21 +1,12 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
 import org.lwjgl.input.Keyboard;
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InsnList;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.VarInsnNode;
 
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.util.math.MathHelper;
 
 public class DamageTiltCorrection extends Module {

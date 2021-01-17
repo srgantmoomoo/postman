@@ -7,7 +7,6 @@ import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;

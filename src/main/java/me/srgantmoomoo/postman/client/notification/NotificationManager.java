@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.client.notification;
 
-import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class NotificationManager {

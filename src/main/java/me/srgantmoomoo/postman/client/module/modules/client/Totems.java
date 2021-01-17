@@ -6,7 +6,6 @@ import java.awt.Point;
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
-import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.HudModule;

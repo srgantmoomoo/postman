@@ -14,7 +14,6 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
@@ -40,7 +39,7 @@ public class InventoryViewer extends HudModule {
 		
 		@Override
 		public void render (Context context) {
-			ScaledResolution sr = new ScaledResolution(mc);
+			//ScaledResolution sr = new ScaledResolution(mc);
 			
 			/*final ResourceLocation inventorylogo = new ResourceLocation(Reference.MOD_ID, "textures/postmancircle.png");
 			mc.renderEngine.bindTexture(inventorylogo); {
