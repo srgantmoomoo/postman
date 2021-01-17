@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 import com.lukflug.panelstudio.Context;
 import com.lukflug.panelstudio.theme.ColorScheme;
+import com.lukflug.panelstudio.theme.DescriptionRenderer;
 import com.lukflug.panelstudio.theme.Renderer;
 import com.lukflug.panelstudio.theme.RendererBase;
 import com.lukflug.panelstudio.theme.Theme;
@@ -17,6 +18,7 @@ import com.lukflug.panelstudio.theme.Theme;
 public class PostmanTheme implements Theme {
 	protected ColorScheme scheme;
 	protected Renderer componentRenderer,containerRenderer,panelRenderer;
+	protected DescriptionRenderer descriptionRenderer;
 	
 	public PostmanTheme (ColorScheme scheme, int height, int border) {
 		this.scheme=scheme;
@@ -38,6 +40,10 @@ public class PostmanTheme implements Theme {
 	@Override
 	public Renderer getComponentRenderer() {
 		return componentRenderer;
+	}
+	
+	public DescriptionRenderer getDescription() {
+		return descriptionRenderer;
 	}
 
 	
@@ -85,6 +91,9 @@ public class PostmanTheme implements Theme {
 				context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width-1,context.getPos().y),new Dimension(1,context.getSize().height)),color,color,color,color);
 			}
 		}
+		
+		//public void renderDescription (Context context) {
+		//}
 	
 		@Override
 		public Color getMainColor (boolean focus, boolean active) {

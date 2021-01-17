@@ -3,6 +3,7 @@ package me.srgantmoomoo.postman.api.util.misc;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
+import me.srgantmoomoo.postman.api.util.Reference;
 
 public class Discord {
 
@@ -17,10 +18,10 @@ public class Discord {
         discordRPC.Discord_Initialize(discordID, eventHandlers, true, null);
 
         discordRichPresence.startTimestamp = System.currentTimeMillis() / 1000L;
-        discordRichPresence.details = "postman strong";
+        discordRichPresence.details = "im on version " + Reference.VERSION + "!";
         discordRichPresence.largeImageKey = "postmanlogo";
-        discordRichPresence.largeImageText = "hi :D";
-        discordRichPresence.state = null;
+        discordRichPresence.largeImageText = "by SrgantMooMoo and others!";
+        discordRichPresence.state = "postman strong";
         discordRPC.Discord_UpdatePresence(discordRichPresence);
     }
 
