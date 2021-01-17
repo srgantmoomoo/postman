@@ -7,7 +7,7 @@ this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.
 
 join the postman discord - https://discord.gg/Jd8EmEuhb5
 
-check out the postman website - sikenotyet
+check out the postman website - https://moomooooo.github.io/postman/
 
 
 thank you,
