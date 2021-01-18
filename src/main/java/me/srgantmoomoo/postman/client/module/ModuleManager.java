@@ -33,7 +33,8 @@ public class ModuleManager {
 		
 		//alphabetic
 		ModuleManager.modules.add(new AimBot());	
-		//ModuleManager.modules.add(new AntiHunger());	
+		ModuleManager.modules.add(new AntiHunger());
+		ModuleManager.modules.add(new AntiSwing());	
 		ModuleManager.modules.add(new Aura());	
 		ModuleManager.modules.add(new AutoArmor());	
 		ModuleManager.modules.add(new AutoClicker());
