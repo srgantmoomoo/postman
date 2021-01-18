@@ -68,7 +68,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 	<li>discordRp<p><i>shows you are playing postman on discord</i></p></li>
 	<li>clickGuiModule<p><i>gives you multiple setting to customize the clickGui to your liking</i></p></li>
 	<li>hudEditor<p><i>allows you to edit the hud of the client</i></p></li>
-	<li>tabGui<p><i>allows you to navigate the client through your arrow keys</i></p></li>'
+	<li>tabGui<p><i>allows you to navigate the client through your arrow keys</i></p></li>
 	<li>mainMenuInfo<p><i>shows postman info on the main menu of Minecraft</i></p></li>
     </ul></p>
 </details>
