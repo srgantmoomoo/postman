@@ -52,7 +52,26 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>nothing<p><i>nothing lol</i></p></li>
     </ul></p>
 </details>
-*everything under client works* <br />
+<details>
+    <summary>client</summary>
+    <p><ul>
+        <li>watermark<p><i>shows the client name and version</i></p></li>
+        <li>totems's<p><i>shows you how many totems you currently have on your player</i></p></li>
+        <li>ping<p><i>shows your current ping</i></p></li>
+        <li>frames<p><i>shows the current frame rate of your game</i></p></li>
+        <li>autoCrystalInfo<p><i>tells you if your auto crystal is off or on</i></p></li>
+        <li>surroundInfo<p><i>tells you if your surround is off or on</i></p></li>
+	<li>arraylist<p><i>shows you all current enabled modules</i></p></li>
+	<li>inventoryViewer<p><i>gives you a hud of your inventory</i></p></li>
+	<li>coords<p><i>shows you your current coordinates in game</i></p></li>
+	<li>armorHud<p><i>gives you a display of your armor along with the durability of each armor piece</i></p></li>
+	<li>discordRp<p><i>shows you are playing postman on discord</i></p></li>
+	<li>clickGuiModule<p><i>gives you multiple setting to customize the clickGui to your liking</i></p></li>
+	<li>hudEditor<p><i>allows you to edit the hud of the client</i></p></li>
+	<li>tabGui<p><i>allows you to navigate the client through your arrow keys</i></p></li>'
+	<li>mainMenuInfo<p><i>shows postman info on the main menu of Minecraft</i></p></li>
+    </ul></p>
+</details>
 
 **media**
 <details> 
@@ -61,5 +80,5 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 <p>click gui</p>
 
 <img src="https://user-images.githubusercontent.com/69589624/104859565-5cf8b600-58f4-11eb-8dce-1b6a05287e70.png" width="500" alt="click gui"/>
-</details> <br />
+</details> 
 ***for more information check out the github readme.md :)***
