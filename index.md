@@ -10,8 +10,8 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>autoDisconnect<p><i>automatically disconnects when u reach a set health</i></p></li>
         <li>autoTotem<p><i>autmatically equips a totem in ur offhand from ur inventory</i></p></li>
         <li>blink<p><i>temporarily creates a second player to throw off opponents</i></p></li>
-        <li>chatSuffix (lil bit broken rn tho)<p><i>adds "postman" to the end of all ur chats</i></p></li>
-        <li>chestStealer<p><i>autmatically steals from a storage container when opened</i></p></li>
+        <li>chatSuffix<p><i>adds "postman" to the end of all ur chats</i></p></li>
+        <li>chestStealer (currently unfinished)<p><i>autmatically steals from a storage container when opened</i></p></li>
         <li>inventorySlots<p><i>allows u to use your crafting slots as extra inventory space</i></p></li>
         <li>noFall<p><i>negates fall damage</i></p></li>
         <li>noPush <p><i>stop u from being pushed by entities</i></p></li>
@@ -23,12 +23,14 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <summary>render</summary>
     <p><ul>
         <li>cameraClip<p><i>stops ur camera from being effected by the enviorment in third person view</i></p></li>
+	<li>damageTilit<p><i>fixes Minecraft's age old damage tilt bug</i></p></li>
         <li>esp's<p><i>makes entities and storages visible (lots of customization)</i></p></li>
         <li>freecam<p><i>allows u to leave ur body and explore the enviorment with a free camera</i></p></li>
         <li>fullBright<p><i>fully brightens everything</i></p></li>
         <li>holeEsp<p><i>draws esp in bedrock and obsidian holes for better cpvp</i></p></li>
         <li>lowOffHand<p><i>allows u to chose the visual height of ur offhand</i></p></li>
         <li>noHurtCam<p><i>disables the hurt effect from rendering</i></p></li>
+	<li>noPotionEffects<p><i>doesn't render the potion effects overlay</i></p></li>
         <li>noRain<p><i>stops rendering rain</i></p></li>
         <li>peek<p><i>allows u to see whats in a shulker by hovering ur mouse over it</i></p></li>
         <li>tracers<p><i>draws a line to certain entities</i></p></li>
@@ -49,7 +51,17 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 <details>
     <summary>exploits</summary>
     <p><ul>
-        <li>nothing<p><i>nothing lol</i></p></li>
+        <li>antiHunger<p><i>reduces the amount of hunger you loose</i></p></li>
+	<li>antiSwing<p><i>prevents swinging server side</i></p></li>
+	<li>timer<p><i>allows you to edit your player's timer</i></p></li>
+    </ul></p>
+</details>
+<details>
+    <summary>movement</summary>
+    <p><ul>
+        <li>inventoryMove<p><i>allows you to move while in a gui screen</i></p></li>
+        <li>noSlow (not completely finished)<p><i>allows you to eat without slowing down</i></p></li>
+        <li>sprint<p><i>automatically sprints when holding your foward key</i></p></li>
     </ul></p>
 </details>
 <details>
