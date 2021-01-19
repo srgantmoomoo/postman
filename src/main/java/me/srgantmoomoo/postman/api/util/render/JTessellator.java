@@ -6,14 +6,19 @@ import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Sphere;
 
 import me.srgantmoomoo.postman.api.util.Wrapper;
+import me.srgantmoomoo.postman.api.util.font.FontUtils;
+import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
+import me.srgantmoomoo.postman.client.module.modules.client.ColorMain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 
 //Credit 086 for Kami base Tessellator, heavily rewrote/modified by lukflug and others
 
@@ -279,14 +284,14 @@ public class JTessellator {
 		GlStateManager.popMatrix();
 	}
 
-	/* public static void drawNametag (Entity entity, String[] text, JColor color, int type) {
+	public static void drawNametag (Entity entity, String[] text, JColor color, int type) {
 		Vec3d pos = EntityUtil.getInterpolatedPos(entity,mc.getRenderPartialTicks());
 		drawNametag(pos.x,pos.y+entity.height,pos.z,text,color,type);
 	}
 
-	public static void drawNametag (double x, double y, double z, String[] text, GSColor color, int type) {
+	public static void drawNametag (double x, double y, double z, String[] text, JColor color, int type) {
 		double dist=mc.player.getDistance(x,y,z);
-		double scale=1,offset=0;
+		double scale = 1, offset = 0;
 		int start=0;
 		switch (type) {
 			case 0:
@@ -312,24 +317,29 @@ public class JTessellator {
 		GlStateManager.rotate(-mc.getRenderManager().playerViewY,0,1,0);
 		GlStateManager.rotate(mc.getRenderManager().playerViewX,mc.gameSettings.thirdPersonView==2?-1:1,0,0);
 		GlStateManager.scale(-scale,-scale,scale);
-		if (type==2) {
-			double width=0;
-			JColor bcolor=new JColor(0,0,0,51);
-			if (Nametags.customColor.getValue()) bcolor=Nametags.borderColor.getValue();
-			for (int i=0;i<text.length;i++) {
-				double w=FontUtils.getStringWidth(ColorMain.customFont.getValue(),text[i])/2;
-				if (w>width) width=w;
+		if (type == 2) {
+			double width = 0;
+			JColor bcolor = new JColor(0,0,0,51);
+			/*if (Nametags.customColor.getValue()) {
+				bcolor = Nametags.borderColor.getValue();
+			}*/
+			for (int i = 0; i < text.length; i++) {
+				double w= FontUtils.getStringWidth(false,text[i])/2;
+				if (w > width) {
+					width = w;
+				}
 			}
-			drawBorderedRect(-width-1,-mc.fontRenderer.FONT_HEIGHT,width+2,1,1.8f,new GSColor(0,4,0,85), bcolor);
+			drawBorderedRect(-width - 1, -mc.fontRenderer.FONT_HEIGHT, width + 2,1,1.8f, new JColor(0,4,0,85), bcolor);
 		}
 		GlStateManager.enableTexture2D();
 		for (int i=0;i<text.length;i++) {
-			FontUtils.drawStringWithShadow(ColorMain.customFont.getValue(),text[i],-FontUtils.getStringWidth(ColorMain.customFont.getValue(),text[i])/2,i*(mc.fontRenderer.FONT_HEIGHT+1)+start,color);
+			FontUtils.drawStringWithShadow(false,text[i],-FontUtils.getStringWidth(false,text[i])/2,i*(mc.fontRenderer.FONT_HEIGHT+1)+start,color);
 		}
 		GlStateManager.disableTexture2D();
-		// TODO CFontRenderer state leak exists. Fixing it breaks the GUI. Fixing it, will make disabling GL_TEXTURE_2D unnecessary.
-		if (type!=2) GlStateManager.popMatrix();
-	} */
+		if (type!=2) {
+			GlStateManager.popMatrix();
+		}
+	}
 
 	private static void drawBorderedRect (double x, double y, double x1, double y1, float lineWidth, JColor inside, JColor border) {
 		Tessellator tessellator = Tessellator.getInstance();
