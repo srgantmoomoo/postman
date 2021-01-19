@@ -93,7 +93,14 @@ public class AutoCrystal extends Module {
 	}
 	
 	public void onUpdate() {
+		if(mc.player == null || mc.world == null)
+			return;
 		
+		implementLogic();
+	}
+	
+	private void implementLogic() {
+		breakLogic();
 	}
 	
 	private void breakLogic() {
