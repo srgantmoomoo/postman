@@ -75,7 +75,7 @@ public class AutoCrystal extends Module {
 	public NumberSetting placeRange = new NumberSetting("placeRange", this, 4.4, 0.0, 6.0, 0.1);
 	public NumberSetting facePlaceValue = new NumberSetting("facePlaceValue", this, 8, 0, 36, 1);
 	
-	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, true);
+	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
 	public NumberSetting antiSuicideValue = new NumberSetting("antiSuicideValue", this, 14, 1, 36, 1);
 	
 	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
