@@ -61,7 +61,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <summary>movement</summary>
     <p><ul>
         <li>inventoryMove<p><i>allows you to move while in a gui screen</i></p></li>
-        <li>noSlow<p><i>allows you to eat without slowing down</i></p></li>
+        <li>noSlow<p><i>prevents certain events from slowing you down, e.g. eating, soulsand, webs, and slimeblocks</i></p></li>
         <li>sprint<p><i>automatically sprints when holding your foward key</i></p></li>
     </ul></p>
 </details>
