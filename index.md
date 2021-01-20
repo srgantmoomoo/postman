@@ -90,5 +90,5 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 <img src="https://user-images.githubusercontent.com/69589624/104859565-5cf8b600-58f4-11eb-8dce-1b6a05287e70.png" width="500" alt="click gui"/> <br />
 
 <p>auto crystal</p>
-<img src="https://giphy.com/gifs/enYiyNkWuTtYi44FXW/html5" width="500" alt="auto crystal"/> <br />
+<img src="https://user-images.githubusercontent.com/69589624/105116229-530fb800-5a98-11eb-8792-5f4665454e6a.png" width="500" alt="auto crystal"/> <br />
 ***for more information check out the github readme.md :)***
