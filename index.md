@@ -23,14 +23,14 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <summary>render</summary>
     <p><ul>
         <li>cameraClip<p><i>stops ur camera from being effected by the enviorment in third person view</i></p></li>
-	<li>damageTilit<p><i>fixes Minecraft's age old damage tilt bug</i></p></li>
+	    <li>damageTilit<p><i>fixes Minecraft's age old damage tilt bug</i></p></li>
         <li>esp's<p><i>makes entities and storages visible (lots of customization)</i></p></li>
         <li>freecam<p><i>allows u to leave ur body and explore the enviorment with a free camera</i></p></li>
         <li>fullBright<p><i>fully brightens everything</i></p></li>
         <li>holeEsp<p><i>draws esp in bedrock and obsidian holes for better cpvp</i></p></li>
         <li>lowOffHand<p><i>allows u to chose the visual height of ur offhand</i></p></li>
         <li>noHurtCam<p><i>disables the hurt effect from rendering</i></p></li>
-	<li>noPotionEffects<p><i>doesn't render the potion effects overlay</i></p></li>
+	    <li>noPotionEffects<p><i>doesn't render the potion effects overlay</i></p></li>
         <li>noRain<p><i>stops rendering rain</i></p></li>
         <li>peek<p><i>allows u to see whats in a shulker by hovering ur mouse over it</i></p></li>
         <li>tracers<p><i>draws a line to certain entities</i></p></li>
@@ -42,6 +42,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <p><ul>
         <li>aura<p><i>automatically hits certain entities</i></p></li>
         <li>autoClicker's<p><i>clicks really fast wen held</i></p></li>
+        <li>autoCrystal<p><i>automatically crystals your opponent</i></p></li>
         <li>criticals<p><i>always land critical hits without having to jump</i></p></li>
         <li>fastUse<p><i>allows u to use things faster like shoot bows and throw xp bottles</i></p></li>
         <li>holeTp<p><i>automatically sucks u into a bedrock or obsidian hole</i></p></li>
@@ -52,8 +53,8 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <summary>exploits</summary>
     <p><ul>
         <li>antiHunger<p><i>reduces the amount of hunger you loose</i></p></li>
-	<li>antiSwing<p><i>prevents swinging server side</i></p></li>
-	<li>timer<p><i>allows you to edit your player's timer</i></p></li>
+	    <li>antiSwing<p><i>prevents swinging server side</i></p></li>
+	    <li>timer<p><i>allows you to edit your player's timer</i></p></li>
     </ul></p>
 </details>
 <details>
@@ -73,15 +74,15 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>frames<p><i>shows the current frame rate of your game</i></p></li>
         <li>autoCrystalInfo<p><i>tells you if your auto crystal is off or on</i></p></li>
         <li>surroundInfo<p><i>tells you if your surround is off or on</i></p></li>
-	<li>arraylist<p><i>shows you all current enabled modules</i></p></li>
-	<li>inventoryViewer<p><i>gives you a hud of your inventory</i></p></li>
-	<li>coords<p><i>shows you your current coordinates in game</i></p></li>
-	<li>armorHud<p><i>gives you a display of your armor along with the durability of each armor piece</i></p></li>
-	<li>discordRp<p><i>shows you are playing postman on discord</i></p></li>
-	<li>clickGuiModule<p><i>gives you multiple setting to customize the clickGui to your liking</i></p></li>
-	<li>hudEditor<p><i>allows you to edit the hud of the client</i></p></li>
-	<li>tabGui<p><i>allows you to navigate the client through your arrow keys</i></p></li>
-	<li>mainMenuInfo<p><i>shows postman info on the main menu of Minecraft</i></p></li>
+	    <li>arraylist<p><i>shows you all current enabled modules</i></p></li>
+	    <li>inventoryViewer<p><i>gives you a hud of your inventory</i></p></li>
+	    <li>coords<p><i>shows you your current coordinates in game</i></p></li>
+	    <li>armorHud<p><i>gives you a display of your armor along with the durability of each armor piece</i></p></li>
+	    <li>discordRp<p><i>shows you are playing postman on discord</i></p></li>
+	    <li>clickGuiModule<p><i>gives you multiple setting to customize the clickGui to your liking</i></p></li>
+	    <li>hudEditor<p><i>allows you to edit the hud of the client</i></p></li>
+	    <li>tabGui<p><i>allows you to navigate the client through your arrow keys</i></p></li>
+	    <li>mainMenuInfo<p><i>shows postman info on the main menu of Minecraft</i></p></li>
     </ul></p>
 </details>
 
