@@ -65,9 +65,9 @@ import org.lwjgl.input.Keyboard;
 public class AutoCrystal extends Module {
 	//redo
 	public BooleanSetting breakCrystal = new BooleanSetting("breakCrystal", this, true);
-	public NumberSetting breakSpeed = new NumberSetting("breakSpeed", this, 16, 0, 20, 1);
-	public ModeSetting breakType = new ModeSetting("breakType", this, "swing", "swing", "packet");
-	public ModeSetting breakHand = new ModeSetting("breakHand", this, "main", "main", "offhand", "both");
+	public NumberSetting breakSpeed = new NumberSetting("breakSpeed", this, 19, 0, 20, 1);
+	public ModeSetting breakType = new ModeSetting("breakType", this, "packet", "swing", "packet");
+	public ModeSetting breakHand = new ModeSetting("breakHand", this, "both", "main", "offhand", "both");
 	public ModeSetting breakMode = new ModeSetting("breakMode", this, "all", "all", "smart", "own");
 	public NumberSetting breakRange = new NumberSetting("breakRange", this, 4.4, 0.0, 10.0, 0.1);
 	
@@ -78,15 +78,16 @@ public class AutoCrystal extends Module {
 	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, true);
 	public NumberSetting antiSuicideValue = new NumberSetting("antiSuicideValue", this, 14, 1, 36, 1);
 	
-	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, false);
+	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
 	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
 	
-	public NumberSetting maxSelfDmg = new NumberSetting("maxSelfDmg", this, 10, 1, 36, 1);
+	public NumberSetting maxSelfDmg = new NumberSetting("maxSelfDmg", this, 10, 0, 36, 1);
 	public NumberSetting wallsRange = new NumberSetting("wallsRange", this, 3.5, 0.0, 10.0, 0.1);
 	public NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
 	public NumberSetting enemyRange = new NumberSetting("enemyRange", this, 6.0, 0.0, 16.0, 1.0);
 	
-	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, false);
+	public BooleanSetting switchToCrystal = new BooleanSetting("switchToCrystal", this, false);
+	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, true);
 	public BooleanSetting multiPlace = new BooleanSetting("multiPlace", this, false);
 	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
 	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);
@@ -95,10 +96,11 @@ public class AutoCrystal extends Module {
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,multiPlace,cancelCrystal,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
+		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,multiPlace,cancelCrystal,switchToCrystal,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
 				,antiSuicide,antiSuicideValue,enemyRange,facePlaceValue,raytrace,showDamage,color);
 	}
 	
+	private boolean switchCooldown = false;
 	private BlockPos renderBlock;
 	private EnumFacing enumFacing;
 	private Entity renderEnt;
@@ -190,6 +192,18 @@ public class AutoCrystal extends Module {
 	}
 	
 	private void placeLogic() {
+		 int crystalSlot = mc.player.getHeldItemMainhand().getItem() == Items.END_CRYSTAL ? mc.player.inventory.currentItem : -1;
+	        if (crystalSlot == -1) {
+	            for (int l = 0; l < 9; ++l) {
+	                if (mc.player.inventory.getStackInSlot(l).getItem() == Items.END_CRYSTAL) {
+	                    if (mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.END_CRYSTAL) {
+	                        crystalSlot = l;
+	                        break;
+	                    }
+	                }
+	            }
+	        }
+		
 		if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) offHand=true;
 		else offHand=false;
 		
@@ -203,6 +217,15 @@ public class AutoCrystal extends Module {
 		
 		if(!placeCrystal.isEnabled())
 			return;
+		
+		if (!offHand && mc.player.inventory.currentItem != crystalSlot) {
+            if (this.switchToCrystal.isEnabled()) {
+                    mc.player.inventory.currentItem = crystalSlot;
+                    resetRotation();
+                    this.switchCooldown = true;
+            }
+            return;
+        }
 		
 		for(Entity entity : entities) {
 			if(entity == mc.player || ((EntityLivingBase)entity).getHealth() <= 0) continue;
@@ -260,6 +283,11 @@ public class AutoCrystal extends Module {
                     } else {
                         enumFacing = result.sideHit;
                     }
+                }
+                
+                if (this.switchCooldown) {
+                    this.switchCooldown = false;
+                    return;
                 }
                 
                 if (blockPos1 != null) {
