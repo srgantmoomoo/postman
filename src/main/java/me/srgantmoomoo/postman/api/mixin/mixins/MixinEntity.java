@@ -25,12 +25,6 @@ public abstract class MixinEntity {
 		}
 	}
 	
-	/*@Redirect(method = "getVelocityMultiplier", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getBlock()Lnet/minecraft/block/Block;"))
-    private Block getVelocityMultiplierGetBlockProxy(BlockState blockState) {
-        if (blockState.getBlockState() == Blocks.SOUL_SAND && ModuleManager.getModuleByName("noSlow").isToggled()) return Blocks.STONE;
-        return blockState.getBlockState();
-    }*/
-	
 	  @Shadow public abstract boolean equals(Object p_equals_1_);
 
 	    @Shadow

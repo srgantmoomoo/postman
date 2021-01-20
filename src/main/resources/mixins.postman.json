@@ -16,6 +16,9 @@
 	"MixinEntity",
 	"MixinNetworkManager",
 	"MixinWorld",
-	"MixinPlayerOverlay"
+	"MixinPlayerOverlay",
+	"MixinBlockSoulSand",
+	"MixinBlockWeb",
+	"MixinBlockSlimeBlock"
 ]
 }

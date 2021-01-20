@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
-import net.minecraft.block.BlockSoulSand;
+
+import net.minecraft.block.BlockSlime;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
@@ -12,11 +13,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.module.modules.movement.NoSlow;
 
-@Mixin(BlockSoulSand.class)
-public class MixinBlockSoulSand {
-	@Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
-	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn, CallbackInfo info) {
-		if (ModuleManager.isModuleEnabled("noSlow") && ((NoSlow)ModuleManager.getModuleByName("noSlow")).soulSand.isEnabled())
-			info.cancel();
-	}
+@Mixin(BlockSlime.class)
+public class MixinBlockSlimeBlock {
+    @Inject(method = "onEntityWalk", at = @At("HEAD"), cancellable = true)
+    private void onSteppedOn(World world, BlockPos pos, Entity entity, CallbackInfo info) {
+    	if (ModuleManager.isModuleEnabled("noSlow") && ((NoSlow)ModuleManager.getModuleByName("noSlow")).slimeBlock.isEnabled())
+        	info.cancel();
+    }
 }

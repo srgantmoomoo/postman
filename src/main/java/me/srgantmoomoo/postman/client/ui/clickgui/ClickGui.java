@@ -156,6 +156,7 @@ public class ClickGui extends MinecraftHUDGUI {
 				container.addComponent(new EnumComponent(property.name,null,theme.getComponentRenderer(),(ModeSetting)property));
 			}	else if (property instanceof ColorSetting) { 
 				container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).animationSpeed)));
+
 			} else if (property instanceof KeybindSetting) {
 				container.addComponent(new KeybindComponent(theme.getComponentRenderer(),(KeybindSetting)property));
 			}
