@@ -319,7 +319,6 @@ public class AutoCrystal extends Module {
 	}
 	
 	public void onWorldRender(RenderEvent event) {
-        // As far as I can tell, this code never gets executed, since render is always null :(
         if (this.renderBlock != null) {
         	JTessellator.drawBox(this.renderBlock,1, new JColor(color.getValue(),255), 255);
         }

@@ -10,7 +10,6 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -18,26 +17,19 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class Aura extends Module {
 	public NumberSetting rangeA = new NumberSetting("range", this, 4, 1, 6, 0.5);
 	public BooleanSetting passiveMobsA = new BooleanSetting("passives", this, false);
 	public BooleanSetting hostileMobsA = new BooleanSetting("hostiles", this, false);
 	public BooleanSetting playersA = new BooleanSetting("players", this, true);
-	private Minecraft mc = Minecraft.getMinecraft();
-	
-	public boolean on;
 	
 	public Aura() {
 		super ("aura", "automatically hits anything near u", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(rangeA, playersA, passiveMobsA, hostileMobsA);
 	}
 
-	
-	@SubscribeEvent
-	public void onTick(TickEvent.RenderTickEvent e) {
-		if(on) {
+	public void onUpdate() {
 		if (mc.player == null || mc.player.isDead) return;
 		List<Entity> targets = mc.world.loadedEntityList.stream()
 				.filter(entity -> entity != mc.player)
@@ -51,17 +43,14 @@ public class Aura extends Module {
 			attack(target);
 		});
 	}
-	}
 	
 
 	public void onEnable() {
 		super.onEnable();
-		on = true;
 	}
 
 	public void onDisable() {
 		super.onDisable();
-		on = false;
 	}
 
 	public void attack(Entity e) {
@@ -93,4 +82,3 @@ public class Aura extends Module {
 		return false;
 	}
 }
-
