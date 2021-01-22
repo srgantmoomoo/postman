@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 
 public class HudEditor extends Module {
-	public BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGUi", this, true);
+	public BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGui", this, true);
 	
 	public HudEditor() {
 		super("hudEditor", "descrp", Keyboard.KEY_NONE, Category.CLIENT);
