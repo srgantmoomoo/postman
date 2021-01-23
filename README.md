@@ -5,10 +5,11 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 
 this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.5, PanelStudio 0.1.7, and is coded in 100% java (although the website code is not java, obviously).
 
-join the postman discord - https://discord.gg/Jd8EmEuhb
+join the postman discord - https://discord.gg/Jd8EmEuhb.
 
-check out the postman website - https://moomooooo.github.io/postman/
+check out the postman website - https://moomooooo.github.io/postman/.
 
+*postman archive* - this basically just holds all the old versions of postman, https://github.com/moomooooo/postman-archive.
 
 thank you,
 
