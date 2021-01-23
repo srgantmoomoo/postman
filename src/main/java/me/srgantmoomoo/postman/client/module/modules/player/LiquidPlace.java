@@ -9,10 +9,10 @@ import me.srgantmoomoo.postman.client.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 
-public class LiquidInteract extends Module {
+public class LiquidPlace extends Module {
 	
-	public LiquidInteract() {
-		super ("liquidInteract", "fly ez lololol", Keyboard.KEY_NONE, Category.EXPLOITS);
+	public LiquidPlace() {
+		super ("liquidPlace", "fly ez lololol", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
 	public void onEnable() {

@@ -19,6 +19,7 @@
 	"MixinPlayerOverlay",
 	"MixinBlockSoulSand",
 	"MixinBlockWeb",
-	"MixinBlockSlimeBlock"
+	"MixinBlockSlimeBlock",
+	"MixinBlockLiquid"
 ]
 }
