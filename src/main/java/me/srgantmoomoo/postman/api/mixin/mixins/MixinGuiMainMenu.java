@@ -24,15 +24,15 @@ public class MixinGuiMainMenu extends GuiScreen {
 	  if(ModuleManager.getModuleByName("mainMenuInfo").isToggled()) {
 	  ResourceLocation postman = new ResourceLocation(Reference.MOD_ID, "textures/postmancircle.png");
 	    this.mc.getTextureManager().bindTexture(postman);
-	    drawModalRectWithCustomSizedTexture(-2, -4, 0.0F, 0.0F, 60, 60 - 2, 60, (60 - 2));
+	    drawScaledCustomSizeModalRect(-2, -4, 60, 0, 60, 60, 60, 60, 60, 60);
 	FontRenderer fr = mc.fontRenderer;
     //Gui.drawRect(2, 2, 4 + 4, 4, 1963986960);
     fr.drawStringWithShadow(TextFormatting.ITALIC + "postman", 58, 28, 0xff79c2ec);
     fr.drawStringWithShadow("made by SrgantMooMoo!", 58, 36, 0xffffffff);
     fr.drawStringWithShadow("ur on version" + " " + Reference.VERSION + "!", 58, 44, 0xffffffff);
-    fr.drawStringWithShadow("https://moomooooo.github.io/postman/", 58, 4, 0xff0202ff);
-    fr.drawStringWithShadow("https://github.com/moomooooo/postman", 58, 12, 0xff0202ff);
-    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 58, 20, 0xff0202ff);
+    fr.drawStringWithShadow("https://moomooooo.github.io/postman/", 58, 4, 0x808080); //0xff0202ff
+    fr.drawStringWithShadow("https://github.com/moomooooo/postman", 58, 12, 0x808080);
+    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 58, 20, 0x808080);
 	  }
 	}
 }

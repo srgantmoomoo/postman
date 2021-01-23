@@ -87,8 +87,7 @@ public class PostmanTheme implements Theme {
 			Color color;
 			color=getDefaultColorScheme().getOutlineColor();
 			if (level==1 && open) {
-				context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(1,context.getSize().height)),color,color,color,color);
-				context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width-1,context.getPos().y),new Dimension(1,context.getSize().height)),color,color,color,color);
+				context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width - 1,14 + context.getPos().y),new Dimension(1,context.getSize().height - 15)),color,color,color,color);
 			}
 		}
 		

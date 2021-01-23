@@ -83,6 +83,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Peek());
 		ModuleManager.modules.add(new PlayerClone());
 		ModuleManager.modules.add(new PortalGodMode());
+		ModuleManager.modules.add(new ReverseStep());
 		ModuleManager.modules.add(new SafeWalk());
 		ModuleManager.modules.add(new Scaffold());	
 		ModuleManager.modules.add(new Sneak());
