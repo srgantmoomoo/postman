@@ -50,14 +50,14 @@ public class Esp extends Module {
 	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 255)); 
 	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 255)); 
 	
-	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50)); 
+	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 194, 50)); 
 	public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50)); 
 	public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50)); 
 	public ColorSetting otherColor = new ColorSetting("other", this, new JColor(150, 150, 150, 50)); 
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, playerColor, hostileMobColor, itemColor, chestColor
+		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor
 				, enderChestColor, shulkerBoxColor, otherColor);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
@@ -80,6 +80,11 @@ public class Esp extends Module {
             if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("off")){
                 if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, hostileMobC);
+                }
+            }
+            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("off")){
+                if (entity instanceof EntityAnimal) {
+                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, passiveMobC);
                 }
             }
             if (item.isEnabled() && !entityMode.is("off") && entity instanceof EntityItem){
@@ -119,19 +124,19 @@ public class Esp extends Module {
                 }
                 if (tileEntity instanceof TileEntityEnderChest){
                 	containerColor = new JColor(enderChestColor.getValue(), 255);
-                	containerColor = new JColor(enderChestColor.getValue());
+                	containerBox = new JColor(enderChestColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawStorageBox(tileEntity.getPos(),1, containerBox);
                 }
                 if (tileEntity instanceof TileEntityShulkerBox){
                 	containerColor = new JColor(shulkerBoxColor.getValue(), 255);
-                	containerColor = new JColor(shulkerBoxColor.getValue());
+                	containerBox = new JColor(shulkerBoxColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawBox(tileEntity.getPos(),1, containerBox);
                 }
                 if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
                 	containerColor = new JColor(otherColor.getValue(), 255);
-                	containerColor = new JColor(otherColor.getValue());
+                	containerBox = new JColor(otherColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawBox(tileEntity.getPos(),1, containerBox);
                 }
