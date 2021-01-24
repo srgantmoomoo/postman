@@ -30,16 +30,16 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
 	        if (event.isCancelled())
 	            info.cancel();
 	    }
-
-	    @Inject(method = "onUpdateWalkingPlayer", at = @At("RETURN"), cancellable = true)
+	   
+	   @Inject(method = "onUpdateWalkingPlayer", at = @At("RETURN"), cancellable = true)
 	    public void OnPostUpdateWalkingPlayer(CallbackInfo p_Info) {
 	    	PlayerMotionUpdateEvent event = new PlayerMotionUpdateEvent(Era.POST);
 	        Main.EVENT_BUS.post(event);
 	        if (event.isCancelled())
 	            p_Info.cancel();
 	    }
-	    
-	    @Inject(method = "onUpdate", at = @At("HEAD"), cancellable = true)
+	   
+	   @Inject(method = "onUpdate", at = @At("HEAD"), cancellable = true)
 	    public void onUpdate(CallbackInfo info) {
 	        PlayerUpdateEvent event = new PlayerUpdateEvent();
 	        Main.EVENT_BUS.post(event);

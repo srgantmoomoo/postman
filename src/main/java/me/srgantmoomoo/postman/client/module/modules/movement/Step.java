@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.PlayerMotionUpdateEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateMoveStateEvent;
+import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
@@ -21,11 +22,12 @@ import net.minecraft.util.math.MathHelper;
 
 public class Step extends Module {
 	public BooleanSetting entityStep = new BooleanSetting("entityStep", this, false);
-	public ModeSetting height = new ModeSetting("height", this, "one", "one", "two");
+	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "delay");
+	public ModeSetting delayHeight = new ModeSetting("delayHeight", this, "one", "one", "two");
 
     public Step() {
 		super ("step", "steps lol", Keyboard.KEY_NONE, Category.MOVEMENT);
-		this.addSettings(height,entityStep);
+		this.addSettings(mode, delayHeight,entityStep);
 	}
     private byte cancelStage;
     private float _prevEntityStep;
@@ -38,6 +40,7 @@ public class Step extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
+        Main.EVENT_BUS.subscribe(this);
         cancelStage = 0;
         
         if (mc.player != null && mc.player.isRiding())
@@ -47,6 +50,7 @@ public class Step extends Module {
     @Override
     public void onDisable()  {
         super.onDisable();
+        Main.EVENT_BUS.unsubscribe(this);
         mc.player.stepHeight = 0.5F;
 
         if (mc.player.isRiding())
@@ -65,9 +69,11 @@ public class Step extends Module {
     
     @EventHandler
     private Listener<PlayerMotionUpdateEvent> OnMotionUpdate = new Listener<>(event -> {
+    	
+    	if(mode.is("delay")) {
     	if (event.getEra() == Era.PRE) {
 
-            switch (this.height.getMode()) {
+            switch (this.delayHeight.getMode()) {
                 case "one":
                     this.selectedPositions = this.oneblockPositions;
                     break;
@@ -99,5 +105,33 @@ public class Step extends Module {
                 this.packets = 0;
             }
     	}
+    	}
+    	
+    	if(mode.is("normal")) {
+    	  if (event.getEra() != Era.PRE)
+              return;
+          
+          if (mc.player.collidedHorizontally && mc.player.onGround && mc.player.fallDistance == 0.0f && !mc.player.isInWeb && !mc.player.isOnLadder() && !mc.player.movementInput.jump) {
+              AxisAlignedBB box = mc.player.getEntityBoundingBox().offset(0.0, 0.05, 0.0).grow(0.05);
+              if (!mc.world.getCollisionBoxes(mc.player, box.offset(0.0, 1.0, 0.0)).isEmpty())
+                  return;
+              
+              double stepHeight = -1.0;
+              for (final AxisAlignedBB bb : mc.world.getCollisionBoxes(mc.player, box)) {
+                  if (bb.maxY > stepHeight)
+                	  stepHeight = bb.maxY;
+              }
+              
+              stepHeight -= mc.player.posY;
+              
+              if (stepHeight < 0.0 || stepHeight > 1.0)
+                  return;
+
+              mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.42, mc.player.posZ, mc.player.onGround));
+              mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.75, mc.player.posZ, mc.player.onGround));
+              mc.player.setPosition(mc.player.posX, mc.player.posY+1, mc.player.posZ);
+          }
+  
+  } 	
     });
 }

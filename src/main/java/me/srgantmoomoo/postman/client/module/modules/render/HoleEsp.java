@@ -14,6 +14,7 @@ import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -34,11 +35,11 @@ public class HoleEsp extends Module {
 	public NumberSetting obbyG = new NumberSetting("obbyG", this, 121, 0, 250, 10);
 	public NumberSetting obbyB = new NumberSetting("obbyB", this, 194, 0, 250, 10);
 	
-	public BooleanSetting solid = new BooleanSetting("solid", this, false);
+	public ModeSetting look = new ModeSetting("look", this, "classic", "classic", "solid", "outline");
 	
 	public HoleEsp() {
 		super ("holeEsp", "shows an esp in holes in the ground", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(size, solid, bedrockR, bedrockG, bedrockB, obbyR, obbyG, obbyB);
+		this.addSettings(look, size, bedrockR, bedrockG, bedrockB, obbyR, obbyG, obbyB);
 	}
 
 	private static final Minecraft mc = Wrapper.getMinecraft();
@@ -152,10 +153,10 @@ public class HoleEsp extends Module {
 
 	//renders fill
 	private void drawBox(BlockPos blockPos, int width, boolean isBedrock) {
-		if(solid.isEnabled()) {
+		if(look.is("solid")) {
 			JColor color=getColor(isBedrock,255);
 			JTessellator.drawBox(blockPos, size.getValue(), color, GeometryMasks.Quad.ALL);
-		} else {
+		} else if(look.is("classic")) {
 			JColor color=getColor(isBedrock,50);
 			JTessellator.drawBox(blockPos, size.getValue(), color, GeometryMasks.Quad.ALL);
 		}
@@ -163,8 +164,8 @@ public class HoleEsp extends Module {
 	//renders outline
 	private void drawOutline(BlockPos blockPos, int width, boolean isBedrock) {
 		JColor color=getColor(isBedrock,50);
-		if(!solid.isEnabled()) {
-					JTessellator.drawBoundingBox(blockPos, size.getValue(), width, color);
+		if(look.is("classic") || look.is("outline")) {
+			JTessellator.drawBoundingBox(blockPos, size.getValue(), width, color);
 		}
 	}
 
