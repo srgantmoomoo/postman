@@ -9,7 +9,6 @@ import me.srgantmoomoo.postman.api.util.Wrapper;
 import me.srgantmoomoo.postman.api.util.font.FontUtils;
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
-import me.srgantmoomoo.postman.client.module.modules.client.ColorMain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;

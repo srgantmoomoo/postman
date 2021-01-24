@@ -45,25 +45,20 @@ public class Esp extends Module {
 	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
 	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
 	
-	public ColorSetting playerColor = new ColorSetting("playerColor", this, new JColor(0, 121, 194, 255)); 
-	public ColorSetting hostileMobColor = new ColorSetting("hostileMobColor", this, new JColor(255, 0, 0, 255)); 
-	public ColorSetting passiveMobColor = new ColorSetting("passiveMobColr", this, new JColor(0, 255, 0, 255)); 
-	public ColorSetting itemColor = new ColorSetting("itemColor", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 255)); 
+	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 255)); 
+	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 255)); 
 	
-	public ColorSetting chestColor = new ColorSetting("chestColor", this, new JColor(0, 121, 194, 255)); 
-	public ColorSetting enderChestColor = new ColorSetting("enderChestColor", this, new JColor(0, 121, 194, 255)); 
-	public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBoxColor", this, new JColor(0, 121, 194, 255)); 
-	public ColorSetting dispenserColor = new ColorSetting("dispenserColor", this, new JColor(0, 121, 194, 255)); 
-	
-	public NumberSetting pRed = new NumberSetting("plyrRed", this, 0, 0, 250, 10);
-	public NumberSetting pGreen = new NumberSetting("plyrGreen", this, 121, 0, 250, 10);
-	public NumberSetting pBlue = new NumberSetting("plyrBlue", this, 194, 0, 250, 10);
-	
+	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50)); 
+	public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50)); 
+	public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50)); 
+	public ColorSetting otherColor = new ColorSetting("other", this, new JColor(150, 150, 150, 50)); 
 	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, pRed, pGreen, pBlue, playerColor, hostileMobColor, dispenserColor, itemColor, chestColor
-				, enderChestColor, shulkerBoxColor, dispenserColor);
+		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, playerColor, hostileMobColor, itemColor, chestColor
+				, enderChestColor, shulkerBoxColor, otherColor);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
@@ -96,19 +91,19 @@ public class Esp extends Module {
         if (storage.is("outline")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
-                    containerColor = new JColor(255, 255, 0, opacityGradient);
+                    containerColor = new JColor(chestColor.getValue(), 255);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
                 if (tileEntity instanceof TileEntityEnderChest){
-                    containerColor = new JColor(180, 70, 200, opacityGradient);
+                    containerColor = new JColor(enderChestColor.getValue(), 255);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
                 if (tileEntity instanceof TileEntityShulkerBox){
-                    containerColor = new JColor(255, 182, 193, opacityGradient);
+                    containerColor = new JColor(shulkerBoxColor.getValue(), 255);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
                 if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
-                    containerColor = new JColor(150, 150, 150, opacityGradient);
+                    containerColor = new JColor(otherColor.getValue(), 255);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
             });
@@ -117,26 +112,26 @@ public class Esp extends Module {
         if (storage.is("fill")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
-                    containerColor = new JColor(255, 255, 0, opacityGradient);
-                    containerBox = new JColor(255, 255, 0, 50);
+                    containerColor = new JColor(chestColor.getValue(), 255);
+                    containerBox = new JColor(chestColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawStorageBox(tileEntity.getPos(),1, containerBox);
                 }
                 if (tileEntity instanceof TileEntityEnderChest){
-                    containerColor = new JColor(180, 70, 200, opacityGradient);
-                    containerBox = new JColor(255, 70, 200, 50);
+                	containerColor = new JColor(enderChestColor.getValue(), 255);
+                	containerColor = new JColor(enderChestColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawStorageBox(tileEntity.getPos(),1, containerBox);
                 }
                 if (tileEntity instanceof TileEntityShulkerBox){
-                    containerColor = new JColor(255, 182, 193, opacityGradient);
-                    containerBox = new JColor(255, 182, 193, 50);
+                	containerColor = new JColor(shulkerBoxColor.getValue(), 255);
+                	containerColor = new JColor(shulkerBoxColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawBox(tileEntity.getPos(),1, containerBox);
                 }
                 if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
-                    containerColor = new JColor(150, 150, 150, opacityGradient);
-                    containerBox = new JColor(150, 150, 150, 50);
+                	containerColor = new JColor(otherColor.getValue(), 255);
+                	containerColor = new JColor(otherColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawBox(tileEntity.getPos(),1, containerBox);
                 }
@@ -161,21 +156,21 @@ public class Esp extends Module {
         }
 
         if (entity instanceof EntityMob){
-        	hostileMobC = hostileMobColor.getValue();
+        	hostileMobC = new JColor(hostileMobColor.getValue());
         }
         else if (entity instanceof EntityAnimal){
-        	passiveMobC = passiveMobColor.getValue();
+        	passiveMobC = new JColor(passiveMobColor.getValue());
         }
         else {
-        	passiveMobC = new JColor(255, 165, 0, opacityGradient);
+        	passiveMobC = new JColor(passiveMobColor.getValue());
         }
 
         if (entity instanceof EntitySlime){
-        	hostileMobC = new JColor(255, 0, 0, opacityGradient);
+        	hostileMobC = new JColor(hostileMobColor.getValue());
         }
 
         if (entity != null) {
-            mainIntColor = playerColor.getValue();
+            mainIntColor = new JColor(itemColor.getValue());
         }
         }
     //boolean range check and opacity gradient

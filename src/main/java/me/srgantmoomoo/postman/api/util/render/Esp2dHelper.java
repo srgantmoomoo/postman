@@ -47,35 +47,34 @@ public class Esp2dHelper extends Module {
 	  		          
 	  		          GL11.glEnable(2848);
 	  		          if (e instanceof net.minecraft.entity.player.EntityPlayer) {
-	  		        	    ppColor = new JColor((int) ((Esp) ModuleManager.getModuleByName("esp's")).pRed.getValue(), (int) ((Esp) ModuleManager.getModuleByName("esp's")).pGreen.getValue(), (int) ((Esp) ModuleManager.getModuleByName("esp's")).pBlue.getValue(), 255);
-	  		        	    GlStateManager.glLineWidth((float) ((Esp) ModuleManager.getModuleByName("esp's")).lineWidth.getValue());
-	  		        	 ppColor.glColor();
-	  		              GL11.glBegin(2);
-	  		              GL11.glVertex2d(-e.width, 0.0D);
-	  		              GL11.glVertex2d(-e.width, (e.height / 4.0F));
-	  		              GL11.glVertex2d(-e.width, 0.0D);
-	  		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), 0.0D);
-	  		              GL11.glEnd();
-	  		              GL11.glBegin(2);
-	  		              GL11.glVertex2d(-e.width, e.height);
-	  		              GL11.glVertex2d((-e.width / 4.0F * 2.0F), e.height);
-	  		              GL11.glVertex2d(-e.width, e.height);
-	  		              GL11.glVertex2d(-e.width, (e.height / 2.5F * 2.0F));
-	  		              GL11.glEnd();
-	  		              GL11.glBegin(2);
-	  		              GL11.glVertex2d(e.width, e.height);
-	  		              GL11.glVertex2d((e.width / 4.0F * 2.0F), e.height);
-	  		              GL11.glVertex2d(e.width, e.height);
-	  		              GL11.glVertex2d(e.width, (e.height / 2.5F * 2.0F));
-	  		              GL11.glEnd();
-	  		              GL11.glBegin(2);
-	  		              GL11.glVertex2d(e.width, 0.0D);
-	  		              GL11.glVertex2d((e.width / 4.0F * 2.0F), 0.0D);
-	  		              GL11.glVertex2d(e.width, 0.0D);
-	  		              GL11.glVertex2d(e.width, (e.height / 4.0F));
-	  		              GL11.glEnd();
-
-	  		       } 
+	  		        	ppColor = new JColor(((Esp) ModuleManager.getModuleByName("esp's")).playerColor.getValue());
+	  		        	GlStateManager.glLineWidth((float) ((Esp) ModuleManager.getModuleByName("esp's")).lineWidth.getValue());
+	  		        	ppColor.glColor();
+	  		        	GL11.glBegin(2);
+	  		        	GL11.glVertex2d(-e.width, 0.0D);
+	  		            GL11.glVertex2d(-e.width, (e.height / 4.0F));
+	  		            GL11.glVertex2d(-e.width, 0.0D);
+	  		            GL11.glVertex2d((-e.width / 4.0F * 2.0F), 0.0D);
+	  		            GL11.glEnd();
+	  		            GL11.glBegin(2);
+	  		            GL11.glVertex2d(-e.width, e.height);
+	  		            GL11.glVertex2d((-e.width / 4.0F * 2.0F), e.height);
+	  		            GL11.glVertex2d(-e.width, e.height);
+	  		            GL11.glVertex2d(-e.width, (e.height / 2.5F * 2.0F));
+	  		            GL11.glEnd();
+	  		            GL11.glBegin(2);
+	  		            GL11.glVertex2d(e.width, e.height);
+	  		            GL11.glVertex2d((e.width / 4.0F * 2.0F), e.height);
+	  		            GL11.glVertex2d(e.width, e.height);
+	  		            GL11.glVertex2d(e.width, (e.height / 2.5F * 2.0F));
+	  		            GL11.glEnd();
+	  		            GL11.glBegin(2);
+	  		            GL11.glVertex2d(e.width, 0.0D);
+	  		            GL11.glVertex2d((e.width / 4.0F * 2.0F), 0.0D);
+	  		            GL11.glVertex2d(e.width, 0.0D);
+	  		            GL11.glVertex2d(e.width, (e.height / 4.0F));
+	  		            GL11.glEnd();
+	  		          }
 	  		          JTessellator.release();
 	  		          GlStateManager.popMatrix();
 	  		        });

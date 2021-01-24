@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.api.util.render.OutlineUtils;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.module.modules.render.Esp;
@@ -68,7 +69,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
 
             if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled()) {
                 if (entitylivingbaseIn instanceof EntityPlayer && entitylivingbaseIn != Minecraft.getMinecraft().player && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.is("outline")) {
-                    Color n = new Color((int) ((Esp) ModuleManager.getModuleByName("esp's")).pRed.getValue(), (int) ((Esp) ModuleManager.getModuleByName("esp's")).pGreen.getValue(), (int) ((Esp) ModuleManager.getModuleByName("esp's")).pBlue.getValue());
+                    Color n = new JColor(((Esp) ModuleManager.getModuleByName("esp's")).playerColor.getValue());
                     OutlineUtils.setColor(n);
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderOne((float) ((Esp) ModuleManager.getModuleByName("esp's")).lineWidth.getValue());
