@@ -67,7 +67,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
             }
 
             if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled()) {
-                if (entitylivingbaseIn instanceof EntityPlayer && entitylivingbaseIn != Minecraft.getMinecraft().player && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.getMode().equals("outline")) {
+                if (entitylivingbaseIn instanceof EntityPlayer && entitylivingbaseIn != Minecraft.getMinecraft().player && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.is("outline")) {
                     Color n = new Color((int) ((Esp) ModuleManager.getModuleByName("esp's")).pRed.getValue(), (int) ((Esp) ModuleManager.getModuleByName("esp's")).pGreen.getValue(), (int) ((Esp) ModuleManager.getModuleByName("esp's")).pBlue.getValue());
                     OutlineUtils.setColor(n);
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
@@ -81,7 +81,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderFive();
                     OutlineUtils.setColor(Color.WHITE);
-                } else if (((Esp) ModuleManager.getModuleByName("esp's")).mob.isEnabled() && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.getMode().equals("outline")) {
+                } else if (((Esp) ModuleManager.getModuleByName("esp's")).mob.isEnabled() && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.is("outline")) {
                     GL11.glLineWidth(5.0F);
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderOne((float) ((Esp) ModuleManager.getModuleByName("esp's")).lineWidth.getValue());

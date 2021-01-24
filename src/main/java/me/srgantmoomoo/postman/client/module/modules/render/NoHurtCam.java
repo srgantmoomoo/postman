@@ -23,7 +23,7 @@ public class NoHurtCam extends Module {
 	
 	@Override
 	public void onUpdate() {
-		if(mode.getMode().equals("sikeLol")) {
+		if(mode.is("sikeLol")) {
 		mc.player.performHurtAnimation();
 		}
 	}

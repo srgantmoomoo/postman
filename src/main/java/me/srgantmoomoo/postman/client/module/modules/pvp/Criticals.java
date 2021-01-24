@@ -39,11 +39,11 @@ public class Criticals extends Module {
             if (packet.getAction() == CPacketUseEntity.Action.ATTACK) {
                 if (packet.getEntityFromWorld(mc.world) instanceof EntityLivingBase && mc.player.onGround && !mc.gameSettings.keyBindJump.isKeyDown()) {
                 	
-                	if(mode.getMode().equals("jump")) {
+                	if(mode.is("jump")) {
                 		mc.player.jump();
                 	}
                 	
-                	if(mode.getMode().equals("packet")) {
+                	if(mode.is("packet")) {
                         mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.1f, mc.player.posZ, false));
                         mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY, mc.player.posZ, false));
                 	}

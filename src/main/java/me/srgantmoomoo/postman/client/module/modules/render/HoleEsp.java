@@ -13,7 +13,6 @@ import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.block.Block;
@@ -44,8 +43,6 @@ public class HoleEsp extends Module {
 
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
-	
-	//defines the render borders
 	private final BlockPos[] surroundOffset ={
 			new BlockPos(0, -1, 0), // down
 			new BlockPos(0, 0, -1), // north
@@ -54,10 +51,8 @@ public class HoleEsp extends Module {
 			new BlockPos(-1, 0, 0) // west
 	};
 
-	//used to register safe holes for rendering
 	private ConcurrentHashMap<BlockPos, Boolean> safeHoles;
 
-	//defines the area for the client to search
 	public List<BlockPos> getSphere(BlockPos loc, float r, int h, boolean hollow, boolean sphere, int plus_y){
 		List<BlockPos> circleblocks = new ArrayList<>();
 		int cx = loc.getX();
@@ -77,12 +72,10 @@ public class HoleEsp extends Module {
 		return circleblocks;
 	}
 
-	//gets the players location
 	public static BlockPos getPlayerPos(){
 		return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
 	}
 
-	//finds safe holes to render
 	@Override
 	public void onUpdate(){
 		if (safeHoles == null){
@@ -126,7 +119,6 @@ public class HoleEsp extends Module {
 		}
 	}
 
-	//renders safe holes
 	@Override
 	public void onWorldRender(final RenderEvent event){
 		if (mc.player == null || safeHoles == null){
@@ -151,7 +143,6 @@ public class HoleEsp extends Module {
 		return new JColor(c,alpha);
 	}
 
-	//renders fill
 	private void drawBox(BlockPos blockPos, int width, boolean isBedrock) {
 		if(look.is("solid")) {
 			JColor color=getColor(isBedrock,255);
@@ -161,7 +152,7 @@ public class HoleEsp extends Module {
 			JTessellator.drawBox(blockPos, size.getValue(), color, GeometryMasks.Quad.ALL);
 		}
 	}
-	//renders outline
+
 	private void drawOutline(BlockPos blockPos, int width, boolean isBedrock) {
 		JColor color=getColor(isBedrock,50);
 		if(look.is("classic") || look.is("outline")) {

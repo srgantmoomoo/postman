@@ -33,7 +33,7 @@ public class Esp2dHelper extends Module {
 	 public void onWorldRender(RenderEvent event) {
 			Minecraft mc = Minecraft.getMinecraft();
 	    	//add mobs and items to 2dEsp
-		  if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.getMode().equals("2dEsp")) {
+		  if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.is("2dEsp")) {
 	       	 if ((mc.getRenderManager()).options == null)
 	  		      return; 
 	  		    float viewerYaw = (mc.getRenderManager()).playerViewY;

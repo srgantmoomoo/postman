@@ -44,10 +44,10 @@ public class ChestStealer extends Module {
                 
                 for(int i = 0; i < chest.getLowerChestInventory().getSizeInventory(); i++) {
     				if((chest.getLowerChestInventory().getStackInSlot(i) != null) && (this.timer.hasReached(40L))) {
-    					if(mode.getMode().equals("steal")) {
+    					if(mode.is("steal")) {
     						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.QUICK_MOVE, Module.mc.player);
     						this.timer.reset();
-    					if(mode.getMode().equals("drop")) {  
+    					if(mode.is("drop")) {  
     						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.THROW, Module.mc.player);
     						this.timer.reset();
     					}

@@ -66,7 +66,7 @@ public class ArrayListt extends HudModule {
     		}else
     			if (module.isToggled() && !module.getName().equalsIgnoreCase("Esp2dHelper")) list.activeModules.add(module);
     	}
-    	if(sortHeight.getMode().equals("up") || sortHeight.getMode().equals("down")) {
+    	if(sortHeight.is("up") || sortHeight.is("down")) {
     	list.activeModules.sort(Comparator.comparing(module -> -Main.getInstance().clickGui.guiInterface.getFontWidth(module.getName())));
     	}
     }
@@ -83,8 +83,8 @@ public class ArrayListt extends HudModule {
 		@Override
 		public String getItem(int index) {
 			Module module = activeModules.get(index);
-			if(forgeHax.isEnabled() && sortLength.getMode().equals("right")) return module.getName() + "<";
-			else if(forgeHax.isEnabled() && sortLength.getMode().equals("left")) return ">" + module.getName();
+			if(forgeHax.isEnabled() && sortLength.is("right")) return module.getName() + "<";
+			else if(forgeHax.isEnabled() && sortLength.is("left")) return ">" + module.getName();
 			else return module.getName();
 		}
 		
@@ -96,12 +96,12 @@ public class ArrayListt extends HudModule {
 		
 		@Override
 		public boolean sortUp() {
-			return sortHeight.getMode().equals("up");
+			return sortHeight.is("up");
 		}
 
 		@Override
 		public boolean sortRight() {
-			return sortLength.getMode().equals("right");
+			return sortLength.is("right");
 		}
 	}
 }

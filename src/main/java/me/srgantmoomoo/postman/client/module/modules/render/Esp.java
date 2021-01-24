@@ -63,20 +63,20 @@ public class Esp extends Module {
     	
         mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
             defineEntityColors(entity);
-            if (entityMode.getMode().equals("box") && entity instanceof EntityPlayer) {
+            if (entityMode.is("box") && entity instanceof EntityPlayer) {
             	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerColor);
             }
-            if (mob.isEnabled() && !entityMode.getMode().equals("outline") && !entityMode.getMode().equals("off")){
+            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("off")){
                 if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mobColor);
                 }
             }
-            if (item.isEnabled() && !entityMode.getMode().equals("off") && entity instanceof EntityItem){
+            if (item.isEnabled() && !entityMode.is("off") && entity instanceof EntityItem){
             	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
             }
         });
         
-        if (storage.getMode().equals("outline")) {
+        if (storage.is("outline")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(255, 255, 0, opacityGradient);
@@ -97,7 +97,7 @@ public class Esp extends Module {
             });
         }
         
-        if (storage.getMode().equals("fill")) {
+        if (storage.is("fill")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(255, 255, 0, opacityGradient);

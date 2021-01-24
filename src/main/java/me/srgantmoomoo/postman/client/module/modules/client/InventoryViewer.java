@@ -39,16 +39,6 @@ public class InventoryViewer extends HudModule {
 		
 		@Override
 		public void render (Context context) {
-			//ScaledResolution sr = new ScaledResolution(mc);
-			
-			/*final ResourceLocation inventorylogo = new ResourceLocation(Reference.MOD_ID, "textures/postmancircle.png");
-			mc.renderEngine.bindTexture(inventorylogo); {
-			if(sizee.getMode().equals("normal")) {
-				Gui.drawScaledCustomSizeModalRect(context.getPos().x + sr.getScaledWidth() - 600, context.getPos().y + 2, 50, 0, 50, 50, 50, 50, 50, 50);
-				}else {
-					Gui.drawModalRectWithCustomSizedTexture(50, 50, 50, 50, 50, 50, 50, 50);
-				}
-			}*/
 			
 			super.render(context);
 			Color bgcolor=new JColor(color.getValue(),100);
@@ -56,7 +46,7 @@ public class InventoryViewer extends HudModule {
 		
 	        NonNullList<ItemStack> items = Minecraft.getMinecraft().player.inventory.mainInventory;
 	        for (int size = items.size(), item = 9; item < size; ++item) {
-	        	if(sizee.getMode().equals("normal")) {
+	        	if(sizee.is("normal")) {
 	            int slotX = context.getPos().x + 1 + item % 9 * 18;
 	            int slotY = context.getPos().y + 1 + (item / 9 - 1) * 18;
 				ClickGui.renderItem(items.get(item),new Point(slotX,slotY));
@@ -70,7 +60,7 @@ public class InventoryViewer extends HudModule {
 
 		@Override
 		public int getWidth (Interface inter) {
-			if(sizee.getMode().equals("normal")) {
+			if(sizee.is("normal")) {
 			return 162;
 			}else {
 				return 154;
@@ -79,7 +69,7 @@ public class InventoryViewer extends HudModule {
 
 		@Override
 		public void getHeight (Context context) {
-			if(sizee.getMode().equals("normal")) {
+			if(sizee.is("normal")) {
 			context.setHeight(54);
 			}else {
 				context.setHeight(52);

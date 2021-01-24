@@ -51,10 +51,10 @@ public class ClickGui extends MinecraftHUDGUI {
 	private Theme theme;
 	
 	public ClickGui() {
-		if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.getMode().equals("new"));
+		if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.is("new"));
 			theme=new PostmanTheme(new SettingsColorScheme(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
 			
-			if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.getMode().equals("old"));
+			if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.is("old"));
 			theme=new PostmanTheme(new SettingsColorScheme(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
 			colorToggle=new Toggleable() {
 				@Override
@@ -64,7 +64,7 @@ public class ClickGui extends MinecraftHUDGUI {
 				
 				@Override
 				public boolean isOn() {
-					return ColorMain.colorModel.getMode().equals("RGB");
+					return ColorMain.colorModel.is("RGB");
 				}
 			};
 		guiInterface=new GUIInterface(true) {
@@ -95,7 +95,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			@Override
 			public void handleScroll (int diff) {
 				super.handleScroll(diff);
-				if (((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).scrollMode.getMode().equals("screen")) {
+				if (((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).scrollMode.is("screen")) {
 					for (FixedComponent component: components) {
 		        		if (!hudComponents.contains(component)) {
 			        		Point p=component.getPosition(guiInterface);
