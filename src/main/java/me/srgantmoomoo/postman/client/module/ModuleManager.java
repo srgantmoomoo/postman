@@ -61,6 +61,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ElytraFly());	
 		ModuleManager.modules.add(new Esp());
 		ModuleManager.modules.add(new FastUse());
+		ModuleManager.modules.add(new FootExp());
 		ModuleManager.modules.add(new Freecam());	
 		ModuleManager.modules.add(new FullBright());	
 		ModuleManager.modules.add(new HoleEsp());
