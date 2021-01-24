@@ -30,9 +30,9 @@ public class MixinGuiMainMenu extends GuiScreen {
     fr.drawStringWithShadow(TextFormatting.ITALIC + "postman", 58, 28, 0xff79c2ec);
     fr.drawStringWithShadow("made by SrgantMooMoo!", 58, 36, 0xffffffff);
     fr.drawStringWithShadow("ur on version" + " " + Reference.VERSION + "!", 58, 44, 0xffffffff);
-    fr.drawStringWithShadow("https://moomooooo.github.io/postman/", 58, 4, 0x808080); //0xff0202ff
-    fr.drawStringWithShadow("https://github.com/moomooooo/postman", 58, 12, 0x808080);
-    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 58, 20, 0x808080);
+    fr.drawStringWithShadow("https://moomooooo.github.io/postman/", 58, 4, 0xd3d3d3); //0xff0202ff
+    fr.drawStringWithShadow("https://github.com/moomooooo/postman", 58, 12, 0xd3d3d3);
+    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 58, 20, 0xd3d3d3);
 	  }
 	}
 }

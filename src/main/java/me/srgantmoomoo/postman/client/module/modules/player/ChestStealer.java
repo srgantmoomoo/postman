@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import me.srgantmoomoo.postman.api.util.misc.Timer;
+import me.srgantmoomoo.postman.api.util.world.JTimer;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.inventory.ClickType;
@@ -23,7 +23,7 @@ public class ChestStealer extends Module {
 		this.addSettings(mode,delay);
 	}
 
-	private Timer timer = new Timer();
+	private JTimer timer = new JTimer();
 	
 	public void onEnable() {
 		super.onEnable();
@@ -38,7 +38,7 @@ public class ChestStealer extends Module {
 
     @EventHandler
     private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
-        if (!timer.passed(delay.getValue() * 100f))
+        if (!timer.hasReached((long) (delay.getValue() * 100f)))
             return;
 
         timer.reset();
