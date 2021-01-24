@@ -64,21 +64,19 @@ import org.lwjgl.input.Keyboard;
 
 public class AutoCrystal extends Module {
 	//redo
-	public BooleanSetting breakCrystal = new BooleanSetting("breakCrystal", this, true);
-	public NumberSetting breakSpeed = new NumberSetting("breakSpeed", this, 19, 0, 20, 1);
-	public ModeSetting breakType = new ModeSetting("breakType", this, "packet", "swing", "packet");
-	public ModeSetting breakHand = new ModeSetting("breakHand", this, "both", "main", "offhand", "both");
-	public ModeSetting breakMode = new ModeSetting("breakMode", this, "all", "all", "smart", "own");
-	public NumberSetting breakRange = new NumberSetting("breakRange", this, 4.4, 0.0, 10.0, 0.1);
+	public BooleanSetting breakCrystal = new BooleanSetting("brkCrystal", this, true);
+	public NumberSetting breakSpeed = new NumberSetting("brkSpeed", this, 20, 0, 20, 1);
+	public ModeSetting breakType = new ModeSetting("brkType", this, "packet", "swing", "packet");
+	public ModeSetting breakHand = new ModeSetting("brkHand", this, "both", "main", "offhand", "both");
+	public ModeSetting breakMode = new ModeSetting("brkMode", this, "all", "all", "smart", "own");
+	public NumberSetting breakRange = new NumberSetting("brkRange", this, 4.4, 0.0, 10.0, 0.1);
 	
-	public BooleanSetting placeCrystal = new BooleanSetting("placeCrystal", this, true);
-	public NumberSetting placeRange = new NumberSetting("placeRange", this, 4.4, 0.0, 6.0, 0.1);
-	public NumberSetting facePlaceValue = new NumberSetting("facePlaceValue", this, 8, 0, 36, 1);
-	
-	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
-	public NumberSetting antiSuicideValue = new NumberSetting("antiSuicideValue", this, 14, 1, 36, 1);
+	public BooleanSetting placeCrystal = new BooleanSetting("plcCrystal", this, true);
+	public NumberSetting placeRange = new NumberSetting("plcRange", this, 4.4, 0.0, 6.0, 0.1);
+	public NumberSetting facePlaceValue = new NumberSetting("facePlcVal", this, 8, 0, 36, 1);
 	
 	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
+	public BooleanSetting outline = new BooleanSetting("outline", this, false);
 	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
 	
 	public NumberSetting maxSelfDmg = new NumberSetting("maxSelfDmg", this, 10, 0, 36, 1);
@@ -97,7 +95,7 @@ public class AutoCrystal extends Module {
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,multiPlace,cancelCrystal,switchToCrystal,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
-				,antiSuicide,antiSuicideValue,enemyRange,facePlaceValue,raytrace,showDamage,color);
+				,enemyRange,facePlaceValue,raytrace,outline,showDamage,color);
 	}
 	
 	private boolean switchCooldown = false;
@@ -144,9 +142,6 @@ public class AutoCrystal extends Module {
 	}
 	
 	private void breakLogic() {
-		if (antiSuicide.isEnabled() && (mc.player.getHealth() + mc.player.getAbsorptionAmount() <= antiSuicideValue.getValue()))
-			return;
-		
 		 EntityEnderCrystal crystal = mc.world.loadedEntityList.stream()
                  .filter(entity -> entity instanceof EntityEnderCrystal)
                  .filter(e -> mc.player.getDistance(e) <= breakRange.getValue())
@@ -320,7 +315,8 @@ public class AutoCrystal extends Module {
 	
 	public void onWorldRender(RenderEvent event) {
         if (this.renderBlock != null) {
-        	JTessellator.drawBox(this.renderBlock,1, new JColor(color.getValue(),255), 255);
+        	JTessellator.drawBox(this.renderBlock,1, new JColor(color.getValue()), 255);
+        	JTessellator.drawBoundingBox(this.renderBlock, 1, 1.00f, new JColor(color.getValue(),255));
         }
 
         if(showDamage.isEnabled()) {

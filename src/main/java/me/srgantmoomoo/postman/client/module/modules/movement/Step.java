@@ -46,16 +46,6 @@ public class Step extends Module {
         if (mc.player != null && mc.player.isRiding())
             _prevEntityStep = mc.player.getRidingEntity().stepHeight;
     }
-    
-    @Override
-    public void onDisable()  {
-        super.onDisable();
-        Main.EVENT_BUS.unsubscribe(this);
-        mc.player.stepHeight = 0.5F;
-
-        if (mc.player.isRiding())
-            mc.player.getRidingEntity().stepHeight = _prevEntityStep;
-    }
 
     @EventHandler
     private Listener<PlayerUpdateMoveStateEvent> onInputUpdate = new Listener<>(event -> {

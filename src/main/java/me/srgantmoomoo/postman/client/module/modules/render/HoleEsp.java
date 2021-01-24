@@ -13,7 +13,8 @@ import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -22,23 +23,20 @@ import net.minecraft.util.math.BlockPos;
 
 /*
  * Originally written by someone at gamesense.
- * Heavily modified by @SrgantMooMoo on 11/17/20.
+ * modified by @SrgantMooMoo on 11/17/20.
+ * rewrote colors on 01/24/2021.
  */
 
 public class HoleEsp extends Module {
 	public NumberSetting size = new NumberSetting("size", this, 0.1, 0.0, 1.0, 0.1);
-	public NumberSetting bedrockR = new NumberSetting("bedrockR", this, 0, 0, 250, 10);
-	public NumberSetting bedrockG = new NumberSetting("bedrockG", this, 200, 0, 250, 10);
-	public NumberSetting bedrockB = new NumberSetting("bedrockB", this, 250, 0, 250, 10);
-	public NumberSetting obbyR = new NumberSetting("obbyR", this, 0, 0, 250, 10);
-	public NumberSetting obbyG = new NumberSetting("obbyG", this, 121, 0, 250, 10);
-	public NumberSetting obbyB = new NumberSetting("obbyB", this, 194, 0, 250, 10);
-	
-	public ModeSetting look = new ModeSetting("look", this, "classic", "classic", "solid", "outline");
+	public BooleanSetting outline = new BooleanSetting("outline", this, true);
+
+	public ColorSetting obbyColor = new ColorSetting("obbyColor", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting bedrockColor = new ColorSetting("bedrockColor", this, new JColor(0, 200, 255, 255)); 
 	
 	public HoleEsp() {
 		super ("holeEsp", "shows an esp in holes in the ground", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(look, size, bedrockR, bedrockG, bedrockB, obbyR, obbyG, obbyB);
+		this.addSettings(size, outline, bedrockColor, obbyColor);
 	}
 
 	private static final Minecraft mc = Wrapper.getMinecraft();
@@ -53,7 +51,7 @@ public class HoleEsp extends Module {
 
 	private ConcurrentHashMap<BlockPos, Boolean> safeHoles;
 
-	public List<BlockPos> getSphere(BlockPos loc, float r, int h, boolean hollow, boolean sphere, int plus_y){
+	public List<BlockPos> getSphere(BlockPos loc, float r, int h, boolean hollow, boolean sphere, int plus_y) {
 		List<BlockPos> circleblocks = new ArrayList<>();
 		int cx = loc.getX();
 		int cy = loc.getY();
@@ -72,13 +70,13 @@ public class HoleEsp extends Module {
 		return circleblocks;
 	}
 
-	public static BlockPos getPlayerPos(){
+	public static BlockPos getPlayerPos() {
 		return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
 	}
 
 	@Override
-	public void onUpdate(){
-		if (safeHoles == null){
+	public void onUpdate() {
+		if (safeHoles == null) {
 			safeHoles = new ConcurrentHashMap<>();
 		}
 		else{
@@ -93,22 +91,22 @@ public class HoleEsp extends Module {
 			if (!mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)){
 				continue;
 			}
-			if (!mc.world.getBlockState(pos.add(0, 1, 0)).getBlock().equals(Blocks.AIR)){
+			if (!mc.world.getBlockState(pos.add(0, 1, 0)).getBlock().equals(Blocks.AIR)) {
 				continue;
 			}
-			if (!mc.world.getBlockState(pos.add(0, 2, 0)).getBlock().equals(Blocks.AIR)){
+			if (!mc.world.getBlockState(pos.add(0, 2, 0)).getBlock().equals(Blocks.AIR)) {
 				continue;
 			}
 
 			boolean isSafe = true;
 			boolean isBedrock = true;
 
-			for (BlockPos offset : surroundOffset){
+			for (BlockPos offset : surroundOffset) {
 				Block block = mc.world.getBlockState(pos.add(offset)).getBlock();
 				if (block != Blocks.BEDROCK){
 					isBedrock = false;
 				}
-				if (block != Blocks.BEDROCK && block != Blocks.OBSIDIAN && block != Blocks.ENDER_CHEST && block != Blocks.ANVIL){
+				if (block != Blocks.BEDROCK && block != Blocks.OBSIDIAN && block != Blocks.ENDER_CHEST && block != Blocks.ANVIL) {
 					isSafe = false;
 					break;
 				}
@@ -120,11 +118,11 @@ public class HoleEsp extends Module {
 	}
 
 	@Override
-	public void onWorldRender(final RenderEvent event){
+	public void onWorldRender(final RenderEvent event) {
 		if (mc.player == null || safeHoles == null){
 			return;
 		}
-		if (safeHoles.isEmpty()){
+		if (safeHoles.isEmpty()) {
 			return;
 		}
 		
@@ -136,26 +134,21 @@ public class HoleEsp extends Module {
 		});
 	}
 
-	private JColor getColor (boolean isBedrock, int alpha) {
+	private JColor getColor (boolean isBedrock) {
 		JColor c;
-		if (isBedrock) c= new JColor((int) bedrockR.getValue(), (int) bedrockG.getValue(), (int) bedrockB.getValue());
-		else c= new JColor((int) obbyR.getValue(), (int) obbyG.getValue(), (int) obbyB.getValue());
-		return new JColor(c,alpha);
+		if (isBedrock) c= bedrockColor.getValue();
+		else c= obbyColor.getValue();
+		return new JColor(c);
 	}
 
 	private void drawBox(BlockPos blockPos, int width, boolean isBedrock) {
-		if(look.is("solid")) {
-			JColor color=getColor(isBedrock,255);
-			JTessellator.drawBox(blockPos, size.getValue(), color, GeometryMasks.Quad.ALL);
-		} else if(look.is("classic")) {
-			JColor color=getColor(isBedrock,50);
+			JColor color=getColor(isBedrock);
 			JTessellator.drawBox(blockPos, size.getValue(), color, GeometryMasks.Quad.ALL);
 		}
-	}
 
 	private void drawOutline(BlockPos blockPos, int width, boolean isBedrock) {
-		JColor color=getColor(isBedrock,50);
-		if(look.is("classic") || look.is("outline")) {
+		JColor color=getColor(isBedrock);
+		if(outline.isEnabled()) {
 			JTessellator.drawBoundingBox(blockPos, size.getValue(), width, color);
 		}
 	}

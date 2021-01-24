@@ -10,6 +10,7 @@ import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
@@ -35,6 +36,7 @@ import net.minecraft.util.math.BlockPos;
  */
 
 public class Esp extends Module {
+	
 	public BooleanSetting chams = new BooleanSetting("chams", this, false);
 	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "outline", "2dEsp", "off");
 	public ModeSetting storage = new ModeSetting("storage", this, "fill", "fill", "outline", "off");
@@ -42,18 +44,32 @@ public class Esp extends Module {
 	public BooleanSetting item = new BooleanSetting("item", this, true);
 	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
 	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
+	
+	public ColorSetting playerColor = new ColorSetting("playerColor", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting hostileMobColor = new ColorSetting("hostileMobColor", this, new JColor(255, 0, 0, 255)); 
+	public ColorSetting passiveMobColor = new ColorSetting("passiveMobColr", this, new JColor(0, 255, 0, 255)); 
+	public ColorSetting itemColor = new ColorSetting("itemColor", this, new JColor(0, 121, 194, 255)); 
+	
+	public ColorSetting chestColor = new ColorSetting("chestColor", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting enderChestColor = new ColorSetting("enderChestColor", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBoxColor", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting dispenserColor = new ColorSetting("dispenserColor", this, new JColor(0, 121, 194, 255)); 
+	
 	public NumberSetting pRed = new NumberSetting("plyrRed", this, 0, 0, 250, 10);
 	public NumberSetting pGreen = new NumberSetting("plyrGreen", this, 121, 0, 250, 10);
 	public NumberSetting pBlue = new NumberSetting("plyrBlue", this, 194, 0, 250, 10);
 	
+	
 	public Esp() {
 		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, pRed, pGreen, pBlue);
+		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, pRed, pGreen, pBlue, playerColor, hostileMobColor, dispenserColor, itemColor, chestColor
+				, enderChestColor, shulkerBoxColor, dispenserColor);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
-    JColor playerColor;
-    JColor mobColor;
+    JColor playerC;
+    JColor hostileMobC;
+    JColor passiveMobC;
     JColor mainIntColor;
     JColor containerColor;
     JColor containerBox;
@@ -64,16 +80,17 @@ public class Esp extends Module {
         mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
             defineEntityColors(entity);
             if (entityMode.is("box") && entity instanceof EntityPlayer) {
-            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerColor);
+            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerC);
             }
             if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("off")){
                 if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
-                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mobColor);
+                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, hostileMobC);
                 }
             }
             if (item.isEnabled() && !entityMode.is("off") && entity instanceof EntityItem){
             	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
             }
+            // 2d esp is under me/srgantmoomoo/postman/api/util/render/Esp2dHelper
         });
         
         if (storage.is("outline")) {
@@ -139,27 +156,26 @@ public class Esp extends Module {
     }
 
     private void defineEntityColors(Entity entity) {
-        //should have everything covered here, mob categorizing is weird
         if (entity instanceof EntityPlayer){
-                playerColor = new JColor((int) pRed.getValue(), (int) pGreen.getValue(), (int) pBlue.getValue(), opacityGradient);
-            }
+             playerC = new JColor(playerColor.getValue());
+        }
 
         if (entity instanceof EntityMob){
-            mobColor = new JColor(255, 0, 0, opacityGradient);
+        	hostileMobC = hostileMobColor.getValue();
         }
         else if (entity instanceof EntityAnimal){
-            mobColor = new JColor(0, 255, 0, opacityGradient);
+        	passiveMobC = passiveMobColor.getValue();
         }
         else {
-            mobColor = new JColor(255, 165, 0, opacityGradient);
+        	passiveMobC = new JColor(255, 165, 0, opacityGradient);
         }
 
         if (entity instanceof EntitySlime){
-            mobColor = new JColor(255, 0, 0, opacityGradient);
+        	hostileMobC = new JColor(255, 0, 0, opacityGradient);
         }
 
         if (entity != null) {
-            mainIntColor = new JColor(0, 121, 194, opacityGradient);
+            mainIntColor = playerColor.getValue();
         }
         }
     //boolean range check and opacity gradient
