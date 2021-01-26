@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 /**
 * @author lukflug
 */
-// Why would anyone ever need to use JavaDoc properly?
+// this is taken from gs from a while ago lol
 
 public class JColor extends Color {
 	/**
