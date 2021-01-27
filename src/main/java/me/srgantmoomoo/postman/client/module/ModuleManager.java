@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.lwjgl.input.Keyboard;
+
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
@@ -18,7 +20,10 @@ import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiModule;
 import me.srgantmoomoo.postman.client.ui.clickgui.HudEditor;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 /*
  * Written by @SrgantMooMoo 11/17/20.
@@ -144,6 +149,30 @@ public class ModuleManager {
 		JTessellator.release();
 		Minecraft.getMinecraft().profiler.endSection();
 		Minecraft.getMinecraft().profiler.endSection();
+	}
+	
+	@SubscribeEvent
+	public void key(KeyInputEvent e) {
+		if(Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null)
+			return;
+		try {
+			if(Keyboard.isCreated()) {
+				if(Keyboard.getEventKeyState()) {
+					int keyCode = Keyboard.getEventKey();
+					if(keyCode <= 0)
+						return;
+					for(Module m : ModuleManager.modules) {
+						if(m.getKey() == keyCode && keyCode > 0) {
+							m.toggle();
+						}
+					}
+				}
+			}
+		} catch (Exception q) { q.printStackTrace(); }
+	}
+	
+	public static void addChatMessage(String message) {
+		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
 	}
 	
 	public static boolean isModuleEnabled(String name){

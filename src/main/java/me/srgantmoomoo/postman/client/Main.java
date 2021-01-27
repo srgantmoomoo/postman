@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.api.event.EventProcessor;
 import me.srgantmoomoo.postman.api.proxy.CommonProxy;
@@ -25,7 +24,6 @@ import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
 import me.zero.alpine.EventBus;
 import me.zero.alpine.EventManager;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -34,8 +32,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -72,6 +68,10 @@ public class Main {
 		instance = this;
 	}
 	
+	public static Main getInstance() {
+		return instance;
+	}
+	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
 	
@@ -98,11 +98,13 @@ public class Main {
 		settingsManager = new SettingsManager();
 		log.info("settings system initialized.");
 		
+		MinecraftForge.EVENT_BUS.register(new ModuleManager());
+		// ^^^ module manager needs to register to minecraft forge event for things like onkeypressed
 		moduleManager = new ModuleManager();
 		log.info("module system initialized.");
 		
-		commandManager = new CommandManager();
 		Main.EVENT_BUS.subscribe(new CommandManager());
+		// ^^^ command manager needs to subcribe to alpine event for onchatsend
 		commandManager = new CommandManager();
 		log.info("command system initialized.");
 		
@@ -126,29 +128,5 @@ public class Main {
 	@EventHandler
 	public void PostInit (FMLPostInitializationEvent event) {
 		
-	}
-	
-	public static Main getInstance() {
-		return instance;
-	}
-	
-	@SubscribeEvent
-	public void key(KeyInputEvent e) {
-		if(Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null)
-			return;
-		try {
-			if(Keyboard.isCreated()) {
-				if(Keyboard.getEventKeyState()) {
-					int keyCode = Keyboard.getEventKey();
-					if(keyCode <= 0)
-						return;
-					for(Module m : ModuleManager.modules) {
-						if(m.getKey() == keyCode && keyCode > 0) {
-							m.toggle();
-						}
-					}
-				}
-			}
-		} catch (Exception q) { q.printStackTrace(); }
 	}
 }
