@@ -5,7 +5,7 @@ import java.util.List;
 
 import scala.actors.threadpool.Arrays;
 
-public class Command {
+public abstract class Command {
 	public String name, description, syntax;
 	public List<String> aliases = new ArrayList<String>();
 	
@@ -16,9 +16,7 @@ public class Command {
 		this.aliases = Arrays.asList(aliases);
 	}
 	
-	public void onCommand(String[] args, String command) {
-		
-	}
+	public abstract void onCommand(String[] args, String command);
 	
 	public String getName() {
 		return name;

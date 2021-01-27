@@ -87,7 +87,7 @@ public class ClickGui extends MinecraftHUDGUI {
 
 			@Override
 			protected String getResourcePrefix() {
-				return "psotman:gui/";
+				return "pst/textures/";
 			}
 		};
 		gui=new HUDClickGUI(guiInterface,null) {

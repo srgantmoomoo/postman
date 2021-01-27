@@ -39,8 +39,8 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 		return this.value.getRGB()&0xFFFFFFFF+(rainbow?1:0)*0x100000000L;
 	}
 	
-	public void fromInteger (int number) {
-		this.value = new JColor(number&0xFFFFFFFF,true);
+	public void fromInteger (long number) {
+		this.value = new JColor((int) (number&0xFFFFFFFF),true);
 		this.rainbow = ((number&0x100000000L)!=0);
 	}
 	
