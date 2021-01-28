@@ -14,7 +14,6 @@ import me.srgantmoomoo.postman.api.save.ConfigStopper;
 import me.srgantmoomoo.postman.api.save.SaveLoad;
 import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
-import me.srgantmoomoo.postman.client.command.Command;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -47,7 +46,6 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingsManager settingsManager;
 	public static CommandManager commandManager;
-	public static Command command;
 	public static SaveLoad saveLoad;
 	public ClickGui clickGui;
 	public static TabGui tabGui;
@@ -103,8 +101,6 @@ public class Main {
 		moduleManager = new ModuleManager();
 		log.info("module system initialized.");
 		
-		Main.EVENT_BUS.subscribe(new CommandManager());
-		// ^^^ command manager needs to subcribe to alpine event for onchatsend
 		commandManager = new CommandManager();
 		log.info("command system initialized.");
 		

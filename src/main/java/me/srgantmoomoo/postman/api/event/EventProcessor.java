@@ -77,6 +77,11 @@ public class EventProcessor {
 	public void onRenderScreen(RenderGameOverlayEvent.Text event) {
 		Main.EVENT_BUS.post(event);
 	}
+	
+	@SubscribeEvent
+    public void onChat(ClientChatEvent event) {
+        Main.EVENT_BUS.post(event);
+    }
 
 	@SubscribeEvent
 	public void onChatReceived(ClientChatReceivedEvent event) {

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
+import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.client.Main;
@@ -172,6 +173,7 @@ public class ModuleManager {
 	}
 	
 	public static void addChatMessage(String message) {
+		message = "\247b" + Reference.NAME + "\2477: " + message;
 		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
 	}
 	

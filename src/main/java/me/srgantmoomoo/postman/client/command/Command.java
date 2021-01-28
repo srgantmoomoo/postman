@@ -1,9 +1,8 @@
 package me.srgantmoomoo.postman.client.command;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import scala.actors.threadpool.Arrays;
 
 public abstract class Command {
 	public String name, description, syntax;
