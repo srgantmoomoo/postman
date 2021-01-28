@@ -1,5 +1,7 @@
 package me.srgantmoomoo.postman.client.command.commands;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import me.srgantmoomoo.postman.client.command.Command;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -14,18 +16,20 @@ public class Toggle extends Command {
 	public void onCommand(String[] args, String command) {
 		if(args.length > 0) {
 			String moduleName = args[0];
-			boolean foundModule = false;
+			boolean moduleFound = false;
 			for(Module module : ModuleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.toggle();
-					ModuleManager.addChatMessage((module.isToggled() ? "enabled" : "disabled") + " " + module.name);
-					foundModule = true;
+					ModuleManager.addChatMessage(module.name + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.RED + "disabled" + ChatFormatting.GRAY + "."));
+					moduleFound = true;
 					break;
 				}
 			}
-			if(!foundModule) {
-				ModuleManager.addChatMessage("module not found.");
+			if(!moduleFound) {
+				ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
 			}
+		}else {
+			ModuleManager.addChatMessage("correct usage of toggle command -> .toggle <module>");
 		}
 	}
 

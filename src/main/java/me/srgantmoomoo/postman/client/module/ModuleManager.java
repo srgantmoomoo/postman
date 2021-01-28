@@ -6,11 +6,15 @@ import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.postman.client.command.Command;
+import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
@@ -173,7 +177,7 @@ public class ModuleManager {
 	}
 	
 	public static void addChatMessage(String message) {
-		message = "\247b" + Reference.NAME + "\2477: " + message;
+		message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + message;
 		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
 	}
 	
