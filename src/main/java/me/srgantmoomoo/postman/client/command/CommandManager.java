@@ -16,7 +16,7 @@ import net.minecraftforge.client.event.ClientChatEvent;
 public class CommandManager {
 	
 	public List<Command> commands = new ArrayList<Command>();
-	public String prefix = ".";
+	public String prefix = "!";
 	public boolean commandFound = false;
 	
 	public CommandManager() {
@@ -50,7 +50,7 @@ public class CommandManager {
         		}
         	}
         	if(!commandFound) {
-        		ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "command does not exist, use .help for help.");
+        		ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "command does not exist, use " + ChatFormatting.ITALIC + "!help " + ChatFormatting.RESET + "" + ChatFormatting.DARK_RED + "for help.");
         	}
         }
     });

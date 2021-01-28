@@ -20,7 +20,7 @@ public class Toggle extends Command {
 			for(Module module : ModuleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.toggle();
-					ModuleManager.addChatMessage(module.name + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.RED + "disabled" + ChatFormatting.GRAY + "."));
+					ModuleManager.addChatMessage(module.name + " " + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.RED + "disabled" + ChatFormatting.GRAY + "."));
 					moduleFound = true;
 					break;
 				}
@@ -29,7 +29,7 @@ public class Toggle extends Command {
 				ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
 			}
 		}else {
-			ModuleManager.addChatMessage("correct usage of toggle command -> .toggle <module>");
+			ModuleManager.addChatMessage("correct usage of toggle command -> !toggle <module>");
 		}
 	}
 

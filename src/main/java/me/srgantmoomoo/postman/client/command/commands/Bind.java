@@ -43,7 +43,7 @@ public class Bind extends Command {
 			}
 			ModuleManager.addChatMessage("cleared all binds.");
 		}
-		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> .bind <module> <key>");
+		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> !bind <module> <key>");
 	}
 
 }
