@@ -33,6 +33,7 @@ thank you,
 **building**
 1. gradlew setupDecompWorkspace <br />
 2. gradlew eclipse (for eclipse) or gradlew genIntellijRuns (for intellij) <br />
+(./gradlew for linux and mac users) <br />
 
 # credits
 **contributions**
