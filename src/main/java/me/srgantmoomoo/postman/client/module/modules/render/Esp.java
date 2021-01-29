@@ -50,7 +50,7 @@ public class Esp extends Module {
 	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 255)); 
 	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 255)); 
 	
-	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 194, 50)); 
+	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50));
 	public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50)); 
 	public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50)); 
 	public ColorSetting otherColor = new ColorSetting("other", this, new JColor(150, 150, 150, 50)); 
