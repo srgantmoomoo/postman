@@ -12,7 +12,9 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>blink<p><i>temporarily creates a second player to throw off opponents</i></p></li>
         <li>chatSuffix<p><i>adds "postman" to the end of all ur chats</i></p></li>
         <li>chestStealer (currently unfinished)<p><i>autmatically steals from a storage container when opened</i></p></li>
+        <li>footExp<p><i>automatically throws xp bottles at your feet</i></p></li>
         <li>inventorySlots<p><i>allows u to use your crafting slots as extra inventory space</i></p></li>
+        <li>liquidInteract<p><i>allows you to interact with liquids</i></p></li>
         <li>noFall<p><i>negates fall damage</i></p></li>
         <li>noPush <p><i>stop u from being pushed by entities</i></p></li>
         <li>playerClone <p><i>creates a fake clone of ur player</i></p></li>
@@ -54,6 +56,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <p><ul>
         <li>antiHunger<p><i>reduces the amount of hunger you loose</i></p></li>
 	    <li>antiSwing<p><i>prevents swinging server side</i></p></li>
+        <li>portalGodMode<p><i>gives you god mode in portals</i></p></li>
 	    <li>timer<p><i>allows you to edit your player's timer</i></p></li>
     </ul></p>
 </details>
@@ -63,6 +66,8 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>inventoryMove<p><i>allows you to move while in a gui screen</i></p></li>
         <li>noSlow<p><i>prevents certain events from slowing you down, e.g. eating, soulsand, webs, and slimeblocks</i></p></li>
         <li>sprint<p><i>automatically sprints when holding your foward key</i></p></li>
+        <li>step<p><i>tp's you to the top of a block so you don't have to jump</i></p></li>
+        <li>reverseStep<p><i>sucks you down when going down one block</i></p></li>
     </ul></p>
 </details>
 <details>
