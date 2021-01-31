@@ -18,7 +18,7 @@ import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.notification.Notification;
-import me.srgantmoomoo.postman.client.setting.SettingsManager;
+import me.srgantmoomoo.postman.client.setting.SettingManager;
 import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
 import me.zero.alpine.EventBus;
@@ -44,7 +44,7 @@ public class Main {
 	int postman = strong;
 	
 	public static ModuleManager moduleManager;
-	public static SettingsManager settingsManager;
+	public static SettingManager settingManager;
 	public static CommandManager commandManager;
 	public static SaveLoad saveLoad;
 	public ClickGui clickGui;
@@ -93,7 +93,7 @@ public class Main {
 		notification = new Notification(null, null, null, 0);
 		log.info("notification system initialized.");
 		
-		settingsManager = new SettingsManager();
+		settingManager = new SettingManager();
 		log.info("settings system initialized.");
 		
 		MinecraftForge.EVENT_BUS.register(new ModuleManager());

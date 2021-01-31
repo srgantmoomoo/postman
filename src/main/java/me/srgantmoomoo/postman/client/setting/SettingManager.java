@@ -12,11 +12,11 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
  * Edited by @SrgantMooMoo on 11/17/20 with inspiration taken from @Sebsb.
  */
 
-public class SettingsManager {
+public class SettingManager {
 	
 	private ArrayList<Setting> settings;
 	
-	public SettingsManager(){
+	public SettingManager(){
 		this.settings = new ArrayList<Setting>();
 	}
 	
@@ -41,13 +41,9 @@ public class SettingsManager {
 		return out;
 	}
 	
-	public List<Setting> getSettingsForMod(final Module parent) {
-		return this.settings.stream().filter(s -> s.parent.equals(parent)).collect(Collectors.toList());
-	}
-	
 	public Setting getSettingByName(Module mod, String name) {
 		for (Module m : ModuleManager.modules) {
-		for (Setting set : m.settings){
+		for (Setting set : m.settings) {
 			if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
 				return set;
 			}

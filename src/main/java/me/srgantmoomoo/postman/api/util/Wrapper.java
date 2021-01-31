@@ -8,8 +8,6 @@ import org.lwjgl.input.Keyboard;
 
 //Created by 086 on 11/11/2017.
 
-//got this from game sense, im guessing they got it from kami or smthn... but it was written by 086 - srgantmoomoo
-
 public class Wrapper{
 
 	private static FontRenderer fontRenderer;

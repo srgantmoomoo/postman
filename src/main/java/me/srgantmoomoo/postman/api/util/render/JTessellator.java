@@ -24,7 +24,7 @@ import net.minecraft.util.math.Vec3d;
 /*
  * Originally credited to 086 from Kami base Tessalator, heavily rewritten by lukflug and other
  * Including bits from Osiris by finz0 
- * modified and rewritten by SrgantMooMoo on November 2nd, 2020
+ * modified by SrgantMooMoo on November 2nd, 2020
  */
 
 public class JTessellator {
