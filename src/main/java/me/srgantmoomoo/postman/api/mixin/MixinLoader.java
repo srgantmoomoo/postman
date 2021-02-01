@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.Main;
 
 import javax.annotation.Nullable;
 import java.util.Map;
-public class MixinLoader implements IFMLLoadingPlugin{
+public class MixinLoader implements IFMLLoadingPlugin {
 
 	public MixinLoader(){
 		Main.log.info("mixins initialized");

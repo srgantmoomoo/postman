@@ -116,7 +116,7 @@ public class SaveLoad {
 			}else if(s.toLowerCase().startsWith("set:")) {
 				Module m = Main.moduleManager.getModule(args[1]);
 				if(m != null) {
-					Setting setting = Main.settingsManager.getSettingByName(m,args[2]);
+					Setting setting = Main.settingManager.getSettingByName(m,args[2]);
 					if(setting != null) {
 						if(setting instanceof BooleanSetting) {
 						((BooleanSetting)setting).setEnabled(Boolean.parseBoolean(args[3]));
