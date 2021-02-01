@@ -48,7 +48,7 @@ thank you,
 - mixins - *SpongeForge* https://www.spongepowered.org/downloads/spongeforge/stable/1.12.2.
 
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding**
-- outline esp utils... and a lot of the fontrenderer - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
+- outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
 - font renderer - pretty much *kamiblue*, some stuff was rewritten for postman tho, so it's not exactly https://github.com/kami-blue/client.
 - surround & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client. 0_0
 - 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
