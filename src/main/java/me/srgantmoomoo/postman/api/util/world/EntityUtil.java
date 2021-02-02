@@ -24,6 +24,7 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -122,6 +123,34 @@ public class EntityUtil {
 		}
 		return false;
 	}
+	
+	public static boolean isOnLiquidOffset(double offset) {
+        final Minecraft mc = Minecraft.getMinecraft();
+
+        if (mc.player.fallDistance >= 3.0f) {
+            return false;
+        }
+
+        if (mc.player != null) {
+            final AxisAlignedBB bb = mc.player.getRidingEntity() != null ? mc.player.getRidingEntity().getEntityBoundingBox().contract(0.0d, 0.0d, 0.0d).offset(0.0d, -offset, 0.0d) : mc.player.getEntityBoundingBox().contract(0.0d, 0.0d, 0.0d).offset(0.0d, -offset, 0.0d);
+            boolean onLiquid = false;
+            int y = (int) bb.minY;
+            for (int x = MathHelper.floor(bb.minX); x < MathHelper.floor(bb.maxX + 1.0D); x++) {
+                for (int z = MathHelper.floor(bb.minZ); z < MathHelper.floor(bb.maxZ + 1.0D); z++) {
+                    final Block block = mc.world.getBlockState(new BlockPos(x, y, z)).getBlock();
+                    if (block != Blocks.AIR) {
+                        if (!(block instanceof BlockLiquid)) {
+                            return false;
+                        }
+                        onLiquid = true;
+                    }
+                }
+            }
+            return onLiquid;
+        }
+
+        return false;
+    }
 
 	public static void setTimer(float speed) {
 		Minecraft.getMinecraft().timer.tickLength = 50.0f / speed;
@@ -137,6 +166,32 @@ public class EntityUtil {
 
 	public static Vec3d getInterpolatedAmount(Entity entity, double ticks) {
 		return getInterpolatedAmount(entity, ticks, ticks, ticks);
+	}
+	
+	public static double[] forward(final double speed) {
+		float forward = Minecraft.getMinecraft().player.movementInput.moveForward;
+		float side = Minecraft.getMinecraft().player.movementInput.moveStrafe;
+		float yaw = Minecraft.getMinecraft().player.prevRotationYaw + (Minecraft.getMinecraft().player.rotationYaw - Minecraft.getMinecraft().player.prevRotationYaw) * Minecraft.getMinecraft().getRenderPartialTicks();
+		if (forward != 0.0f) {
+			if (side > 0.0f) {
+				yaw += ((forward > 0.0f) ? -45 : 45);
+			}
+			else if (side < 0.0f) {
+				yaw += ((forward > 0.0f) ? 45 : -45);
+			}
+			side = 0.0f;
+			if (forward > 0.0f) {
+				forward = 1.0f;
+			}
+			else if (forward < 0.0f) {
+				forward = -1.0f;
+			}
+		}
+		final double sin = Math.sin(Math.toRadians(yaw + 90.0f));
+		final double cos = Math.cos(Math.toRadians(yaw + 90.0f));
+		final double posX = forward * speed * cos + side * speed * sin;
+		final double posZ = forward * speed * sin - side * speed * cos;
+		return new double[]{posX, posZ};
 	}
 
 	public static boolean isMobAggressive(Entity entity) {
@@ -182,6 +237,10 @@ public class EntityUtil {
 
 	public static Vec3d getInterpolatedRenderPos(Entity entity, float ticks) {
 		return getInterpolatedPos(entity, ticks).subtract(Wrapper.getMinecraft().getRenderManager().renderPosX, Wrapper.getMinecraft().getRenderManager().renderPosY, Wrapper.getMinecraft().getRenderManager().renderPosZ);
+	}
+	
+	public static boolean isMoving(EntityLivingBase entity) {
+		return entity.moveForward != 0 || entity.moveStrafing != 0;
 	}
 
 	public static boolean isInWater(Entity entity) {
