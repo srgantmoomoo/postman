@@ -138,6 +138,32 @@ public class EntityUtil {
 	public static Vec3d getInterpolatedAmount(Entity entity, double ticks) {
 		return getInterpolatedAmount(entity, ticks, ticks, ticks);
 	}
+	
+	public static double[] forward(final double speed) {
+		float forward = Minecraft.getMinecraft().player.movementInput.moveForward;
+		float side = Minecraft.getMinecraft().player.movementInput.moveStrafe;
+		float yaw = Minecraft.getMinecraft().player.prevRotationYaw + (Minecraft.getMinecraft().player.rotationYaw - Minecraft.getMinecraft().player.prevRotationYaw) * Minecraft.getMinecraft().getRenderPartialTicks();
+		if (forward != 0.0f) {
+			if (side > 0.0f) {
+				yaw += ((forward > 0.0f) ? -45 : 45);
+			}
+			else if (side < 0.0f) {
+				yaw += ((forward > 0.0f) ? 45 : -45);
+			}
+			side = 0.0f;
+			if (forward > 0.0f) {
+				forward = 1.0f;
+			}
+			else if (forward < 0.0f) {
+				forward = -1.0f;
+			}
+		}
+		final double sin = Math.sin(Math.toRadians(yaw + 90.0f));
+		final double cos = Math.cos(Math.toRadians(yaw + 90.0f));
+		final double posX = forward * speed * cos + side * speed * sin;
+		final double posZ = forward * speed * sin - side * speed * cos;
+		return new double[]{posX, posZ};
+	}
 
 	public static boolean isMobAggressive(Entity entity) {
 		if (entity instanceof EntityPigZombie) {
@@ -182,6 +208,10 @@ public class EntityUtil {
 
 	public static Vec3d getInterpolatedRenderPos(Entity entity, float ticks) {
 		return getInterpolatedPos(entity, ticks).subtract(Wrapper.getMinecraft().getRenderManager().renderPosX, Wrapper.getMinecraft().getRenderManager().renderPosY, Wrapper.getMinecraft().getRenderManager().renderPosZ);
+	}
+	
+	public static boolean isMoving(EntityLivingBase entity) {
+		return entity.moveForward != 0 || entity.moveStrafing != 0;
 	}
 
 	public static boolean isInWater(Entity entity) {
