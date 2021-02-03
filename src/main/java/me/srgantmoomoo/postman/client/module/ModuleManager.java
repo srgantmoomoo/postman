@@ -51,6 +51,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new AutoCrystal());
 		ModuleManager.modules.add(new AutoDisconnect());
 		ModuleManager.modules.add(new AutoElytra());
+		ModuleManager.modules.add(new AutoGap());	
 		ModuleManager.modules.add(new AutoHut());	
 		ModuleManager.modules.add(new AutoLog());
 		ModuleManager.modules.add(new AutoRespawn());	
@@ -97,6 +98,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ReverseStep());
 		ModuleManager.modules.add(new SafeWalk());
 		ModuleManager.modules.add(new Scaffold());	
+		ModuleManager.modules.add(new SmartOffHand());	
 		ModuleManager.modules.add(new Sneak());
 		ModuleManager.modules.add(new Speed());
 		ModuleManager.modules.add(new Sprint());	
