@@ -18,6 +18,16 @@ public class AutoGap extends Module {
 	}
 	
 	public void onUpdate() {
+		if(mode.is("always")) {
+			eatGap();
+		}
+		
+		if(mode.is("smart")) {
+			if(mc.player.getHealth() <= 14) eatGap();
+		}
+	}
+	
+	public void eatGap() {
 		if(mc.player.getHeldItemMainhand().getItem() == Items.GOLDEN_APPLE || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) {
 			if(mc.currentScreen == null) {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
