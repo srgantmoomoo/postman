@@ -29,12 +29,14 @@ public class AutoGap extends Module {
 	
 	public void eatGap() {
 		if(mc.player.getHeldItemMainhand().getItem() == Items.GOLDEN_APPLE || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) {
-			if(mc.currentScreen == null) {
+			
+			
+			/*if(mc.currentScreen == null) {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
 				if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
 			}else {
             mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
-			}
+			}*/
 		}
 	}
 
