@@ -48,6 +48,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Aura());	
 		ModuleManager.modules.add(new AutoArmor());	
 		ModuleManager.modules.add(new AutoClicker());
+		ModuleManager.modules.add(new AutoCopeAndSeethe());
 		ModuleManager.modules.add(new AutoCrystal());
 		ModuleManager.modules.add(new AutoDisconnect());
 		ModuleManager.modules.add(new AutoElytra());
