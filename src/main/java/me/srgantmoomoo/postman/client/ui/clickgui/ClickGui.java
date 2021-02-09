@@ -19,6 +19,7 @@ import com.lukflug.panelstudio.settings.KeybindComponent;
 import com.lukflug.panelstudio.settings.NumberComponent;
 import com.lukflug.panelstudio.settings.SimpleToggleable;
 import com.lukflug.panelstudio.settings.Toggleable;
+import com.lukflug.panelstudio.theme.DescriptionRenderer;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
@@ -50,12 +51,10 @@ public class ClickGui extends MinecraftHUDGUI {
 	private Theme theme;
 	
 	public ClickGui() {
-		if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.is("new"));
-			theme=new PostmanTheme(new SettingsColorScheme(ClickGuiModule.INSTANCE.enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
+			theme = new PostmanTheme(new SettingsColorScheme(ClickGuiModule.INSTANCE.enabledColor, ClickGuiModule.INSTANCE.backgroundColor,ClickGuiModule.INSTANCE.settingBackgroundColor,
+					ClickGuiModule.INSTANCE.outlineColor,ClickGuiModule.INSTANCE.fontColor,ClickGuiModule.INSTANCE.opacity),HEIGHT,2);		
 			
-			if(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).theme.is("old"));
-			theme=new PostmanTheme(new SettingsColorScheme(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).enabledColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).backgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).settingBackgroundColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).outlineColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).fontColor,((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).opacity),HEIGHT,2);
-			colorToggle=new Toggleable() {
+			colorToggle = new Toggleable() {
 				@Override
 				public void toggle() {
 					ColorMain.colorModel.increment();
@@ -66,7 +65,7 @@ public class ClickGui extends MinecraftHUDGUI {
 					return ColorMain.colorModel.is("RGB");
 				}
 			};
-		guiInterface=new GUIInterface(true) {
+		guiInterface = new GUIInterface(true) {
 			@Override
 			public void drawString(Point pos, String s, Color c) {
 				GLInterface.end();
@@ -90,11 +89,11 @@ public class ClickGui extends MinecraftHUDGUI {
 				return "pst/textures/";
 			}
 		};
-		gui=new HUDClickGUI(guiInterface,null) {
+		gui = new HUDClickGUI(guiInterface,MouseDescription(new Point(0,0))) {
 			@Override
 			public void handleScroll (int diff) {
 				super.handleScroll(diff);
-				if (((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).scrollMode.is("screen")) {
+				if (ClickGuiModule.INSTANCE.scrollMode.is("screen")) {
 					for (FixedComponent component: components) {
 		        		if (!hudComponents.contains(component)) {
 			        		Point p=component.getPosition(guiInterface);
@@ -120,15 +119,15 @@ public class ClickGui extends MinecraftHUDGUI {
 		for (Module module: ModuleManager.getModules()) {
 			if (module instanceof HudModule) {
 				((HudModule)module).populate(theme);
-				gui.addHUDComponent(new HUDPanel(((HudModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).animationSpeed),hudToggle,HUD_BORDER));
+				gui.addHUDComponent(new HUDPanel(((HudModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),hudToggle,HUD_BORDER));
 			}
 		}
-		Point pos=new Point(DISTANCE,DISTANCE);
+		Point pos = new Point(DISTANCE,DISTANCE);
 		for (Category category: Category.values()) {
-			DraggableContainer panel=new DraggableContainer(category.name,null,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).animationSpeed),null,new Point(pos),WIDTH) {
+			DraggableContainer panel=new DraggableContainer(category.name,null,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),null,new Point(pos),WIDTH) {
 				@Override
 				protected int getScrollHeight (int childHeight) {
-					if (((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).scrollMode.equals("screen")) {
+					if (ClickGuiModule.INSTANCE.scrollMode.is("screen")) {
 						return childHeight;
 					}
 					return Math.min(childHeight,Math.max(HEIGHT*4,ClickGui.this.height-getPosition(guiInterface).y-renderer.getHeight(open.getValue()!=0)-HEIGHT));
@@ -141,9 +140,13 @@ public class ClickGui extends MinecraftHUDGUI {
 			}
 		}
 	}
-	
+
+	private DescriptionRenderer MouseDescription(Point point) {
+		return null;
+	}
+
 	private void addModule (CollapsibleContainer panel, Module module) {
-		CollapsibleContainer container=new CollapsibleContainer(module.getName(),module.getDescription(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).animationSpeed),module);
+		CollapsibleContainer container=new CollapsibleContainer(module.getName(),module.getDescription(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),module);
 		if(!module.getName().equals("Esp2dHelper")) {
 		panel.addComponent(container);
 		for (Setting property: module.settings) {
@@ -154,8 +157,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			}  else if (property instanceof ModeSetting) {
 				container.addComponent(new EnumComponent(property.name,null,theme.getComponentRenderer(),(ModeSetting)property));
 			}	else if (property instanceof ColorSetting) { 
-				container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).animationSpeed)));
-
+				container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed)));
 			} else if (property instanceof KeybindSetting) {
 				container.addComponent(new KeybindComponent(theme.getComponentRenderer(),(KeybindSetting)property));
 			}
@@ -215,6 +217,6 @@ public class ClickGui extends MinecraftHUDGUI {
 
 	@Override
 	protected int getScrollSpeed() {
-		return (int) ((ClickGuiModule)ModuleManager.getModuleByName("clickGuiModule")).scrolls.getValue();
+		return (int) ClickGuiModule.INSTANCE.scrolls.getValue();
 	}
 }

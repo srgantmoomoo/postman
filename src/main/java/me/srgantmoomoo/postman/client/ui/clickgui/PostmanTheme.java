@@ -92,8 +92,11 @@ public class PostmanTheme implements Theme {
 			}
 		}
 		
-		//public void renderDescription (Context context) {
-		//}
+		private DescriptionRenderer FixedDescription(Point point) {
+			return getDescription();
+		}
+
+
 	
 		@Override
 		public Color getMainColor (boolean focus, boolean active) {

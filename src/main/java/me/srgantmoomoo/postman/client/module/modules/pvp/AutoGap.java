@@ -39,10 +39,12 @@ public class AutoGap extends Module {
 	public void onUpdate() {
 		if(mode.is("always")) {
 			if(!(mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock) || !(mc.player.getHeldItemOffhand().getItem() instanceof ItemBlock)) eatGap();
+			if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
 		}
 		
 		if(mode.is("smart")) {
 			if(mc.player.getHealth() <= 14) eatGap();
+			if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
 			
 			if (wasEating && mc.player.getHealth() >= 14) {
 				wasEating = false;
@@ -55,10 +57,10 @@ public class AutoGap extends Module {
 		if(mc.player.getHeldItemMainhand().getItem() == Items.GOLDEN_APPLE || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) {
 			if(mc.currentScreen == null) {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
-				if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
 				wasEating = true;
 			}else {
             mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
+            wasEating = true;
 			}
 		}
 	}
