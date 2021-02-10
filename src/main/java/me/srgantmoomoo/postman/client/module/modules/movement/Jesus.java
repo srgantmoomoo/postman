@@ -6,6 +6,7 @@ import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.LiquidCollisionBBEvent;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateMoveStateEvent;
+import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -40,40 +41,29 @@ public class Jesus extends Module {
 	
 	@EventHandler
     private final Listener<LiquidCollisionBBEvent> getLiquidCollisionBB = new Listener<>(event -> {
-    	if (Minecraft.getMinecraft().world != null && Minecraft.getMinecraft().player != null) {
-            if (this.checkCollide() && !(Minecraft.getMinecraft().player.motionY >= 0.1f) && event.getBlockPos().getY() < Minecraft.getMinecraft().player.posY - this.offset) {
-                if (Minecraft.getMinecraft().player.getRidingEntity() != null) {
-                    event.setBoundingBox(new AxisAlignedBB(0, 0, 0, 1, 1 - this.offset, 1));
-                } else {
-                        event.setBoundingBox(Block.FULL_BLOCK_AABB);
-                    }
-                }
-                event.cancel();
-            }
+    	if(toggled) {
+	    	if (Minecraft.getMinecraft().world != null && Minecraft.getMinecraft().player != null) {
+	            if (this.checkCollide() && !(Minecraft.getMinecraft().player.motionY >= 0.1f) && event.getBlockPos().getY() < Minecraft.getMinecraft().player.posY - this.offset) {
+	                if (Minecraft.getMinecraft().player.getRidingEntity() != null) {
+	                    event.setBoundingBox(new AxisAlignedBB(0, 0, 0, 1, 1 - this.offset, 1));
+	                } else {
+	                        event.setBoundingBox(Block.FULL_BLOCK_AABB);
+	                    }
+	                }
+	                event.cancel();
+	            }
+    	}
     });
 	
 	@EventHandler
     private final Listener<PlayerUpdateMoveStateEvent> updateWalkingPlayer = new Listener<>(event -> {
-    	if (event.getEra() == Era.PRE) {
-            if (!Minecraft.getMinecraft().player.isSneaking() && !Minecraft.getMinecraft().player.noClip && !Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown() && isInLiquid()) {
-                Minecraft.getMinecraft().player.motionY = 0.1f;
-            }
-        }
-    });
-	
-	@EventHandler
-    private final Listener<PacketEvent.Send> sendPacket = new Listener<>(event -> {
-    	if (event.getEra() == Era.PRE) {
-            if (event.getPacket() instanceof CPacketPlayer) {
-                if (Minecraft.getMinecraft().player.getRidingEntity() == null && !Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
-                    final CPacketPlayer packet = (CPacketPlayer) event.getPacket();
-
-                    if (!isInLiquid() && isOnLiquid(this.offset) && checkCollide() && Minecraft.getMinecraft().player.ticksExisted % 3 == 0) {
-                        packet.y -= this.offset;
-                    }
-                }
-            }
-        }
+    	if(toggled) {
+	    	if (event.getEra() == Era.PRE) {
+	            if (!Minecraft.getMinecraft().player.isSneaking() && !Minecraft.getMinecraft().player.noClip && !Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown() && EntityUtil.isInLiquid()) {
+	                Minecraft.getMinecraft().player.motionY = 0.1f;
+	            }
+	        }
+    	}
     });
 
     private boolean checkCollide() {
@@ -94,61 +84,6 @@ public class Jesus extends Module {
         }
 
         return true;
-    }
-
-    public static boolean isInLiquid() {
-        final Minecraft mc = Minecraft.getMinecraft();
-
-        if (mc.player.fallDistance >= 3.0f) {
-            return false;
-        }
-
-        if (mc.player != null) {
-            boolean inLiquid = false;
-            final AxisAlignedBB bb = mc.player.getRidingEntity() != null ? mc.player.getRidingEntity().getEntityBoundingBox() : mc.player.getEntityBoundingBox();
-            int y = (int) bb.minY;
-            for (int x = MathHelper.floor(bb.minX); x < MathHelper.floor(bb.maxX) + 1; x++) {
-                for (int z = MathHelper.floor(bb.minZ); z < MathHelper.floor(bb.maxZ) + 1; z++) {
-                    final Block block = mc.world.getBlockState(new BlockPos(x, y, z)).getBlock();
-                    if (!(block instanceof BlockAir)) {
-                        if (!(block instanceof BlockLiquid)) {
-                            return false;
-                        }
-                        inLiquid = true;
-                    }
-                }
-            }
-            return inLiquid;
-        }
-        return false;
-    }
-
-    public static boolean isOnLiquid(double offset) {
-        final Minecraft mc = Minecraft.getMinecraft();
-
-        if (mc.player.fallDistance >= 3.0f) {
-            return false;
-        }
-
-        if (mc.player != null) {
-            final AxisAlignedBB bb = mc.player.getRidingEntity() != null ? mc.player.getRidingEntity().getEntityBoundingBox().contract(0.0d, 0.0d, 0.0d).offset(0.0d, -offset, 0.0d) : mc.player.getEntityBoundingBox().contract(0.0d, 0.0d, 0.0d).offset(0.0d, -offset, 0.0d);
-            boolean onLiquid = false;
-            int y = (int) bb.minY;
-            for (int x = MathHelper.floor(bb.minX); x < MathHelper.floor(bb.maxX + 1.0D); x++) {
-                for (int z = MathHelper.floor(bb.minZ); z < MathHelper.floor(bb.maxZ + 1.0D); z++) {
-                    final Block block = mc.world.getBlockState(new BlockPos(x, y, z)).getBlock();
-                    if (block != Blocks.AIR) {
-                        if (!(block instanceof BlockLiquid)) {
-                            return false;
-                        }
-                        onLiquid = true;
-                    }
-                }
-            }
-            return onLiquid;
-        }
-
-        return false;
     }
 
 }

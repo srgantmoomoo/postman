@@ -38,13 +38,14 @@ public class AutoGap extends Module {
 	
 	public void onUpdate() {
 		if(mode.is("always")) {
-			if(!(mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock) || !(mc.player.getHeldItemOffhand().getItem() instanceof ItemBlock)) eatGap();
-			if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
+			if(!(mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock) || !(mc.player.getHeldItemOffhand().getItem() instanceof ItemBlock)) {
+				if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
+				eatGap();
+			}
 		}
 		
 		if(mode.is("smart")) {
 			if(mc.player.getHealth() <= 14) eatGap();
-			if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
 			
 			if (wasEating && mc.player.getHealth() >= 14) {
 				wasEating = false;
