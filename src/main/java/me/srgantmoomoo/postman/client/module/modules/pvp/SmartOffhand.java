@@ -60,7 +60,7 @@ public class SmartOffHand extends Module {
             return;
         }
         
-        SwitchOffHand((ModeSetting) mode.modes);
+        SwitchOffHand(mode);
     });
     
     public static float getHealthWithAbsorption() {

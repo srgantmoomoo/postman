@@ -21,7 +21,6 @@
 	"MixinPlayerOverlay",
 	"MixinRenderer",
 	"MixinRendererLivingEntity",
-	"MixinRenderPlayer",
 	"MixinWorld"
 ]
 }

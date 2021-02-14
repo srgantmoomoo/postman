@@ -37,8 +37,10 @@ import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 public class ClickGui extends MinecraftHUDGUI {
@@ -180,6 +182,25 @@ public class ClickGui extends MinecraftHUDGUI {
 		GlStateManager.depthMask(false);
 		GLInterface.begin();
 	}
+	
+	public static void renderEntity (EntityLivingBase entity, Point pos, int scale) {
+		GlStateManager.enableTexture2D();
+		GlStateManager.depthMask(true);
+		GL11.glPushAttrib(GL11.GL_SCISSOR_BIT);
+		GL11.glDisable(GL11.GL_SCISSOR_TEST);
+		GlStateManager.clear(GL11.GL_DEPTH_BUFFER_BIT);
+		GL11.glPopAttrib();
+		GlStateManager.enableDepth();
+		GlStateManager.disableAlpha();
+        GlStateManager.pushMatrix();
+        GlStateManager.color(1,1,1,1);
+        GuiInventory.drawEntityOnScreen(pos.x,pos.y,scale,28,60,entity);
+        GlStateManager.popMatrix();
+		GlStateManager.disableDepth();
+		GlStateManager.depthMask(false);
+		GLInterface.begin();
+	}
+	
 	@Override
 	protected HUDClickGUI getHUDGUI() {
 		return gui;
