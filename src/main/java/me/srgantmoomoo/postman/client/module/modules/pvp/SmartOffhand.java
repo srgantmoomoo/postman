@@ -52,16 +52,20 @@ public class SmartOffHand extends Module {
 
     @EventHandler
     private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(p_Event -> {
-        if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory) && !(mc.currentScreen instanceof SalGuiScreen)))
+        if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
             return;
         
-        if (/* player health / absorbtion */ < ToggleHealth.getValue()) {
+        if (getHealthWithAbsorption() < 15) {
             toggle();
             return;
         }
         
-        SwitchOffHand(mode.index);
+        SwitchOffHand((ModeSetting) mode.modes);
     });
+    
+    public static float getHealthWithAbsorption() {
+        return mc.player.getHealth() + mc.player.getAbsorptionAmount();
+    }
     
     public static int getItemSlot(Item input) {
         if (mc.player == null)
