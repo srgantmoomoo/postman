@@ -74,7 +74,7 @@ public class Main {
 	public static CommonProxy proxy;
 	
 	@EventHandler
-	public void PreInit (FMLPreInitializationEvent event) {
+	public void preInit (FMLPreInitializationEvent event) {
 		
 	}
 	
@@ -122,7 +122,7 @@ public class Main {
 	} //pp
 	
 	@EventHandler
-	public void PostInit (FMLPostInitializationEvent event) {
+	public void postInit (FMLPostInitializationEvent event) {
 		
 	}
 }

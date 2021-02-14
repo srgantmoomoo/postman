@@ -19,7 +19,7 @@ import com.lukflug.panelstudio.settings.KeybindComponent;
 import com.lukflug.panelstudio.settings.NumberComponent;
 import com.lukflug.panelstudio.settings.SimpleToggleable;
 import com.lukflug.panelstudio.settings.Toggleable;
-import com.lukflug.panelstudio.theme.DescriptionRenderer;
+import com.lukflug.panelstudio.theme.MouseDescription;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
@@ -37,10 +37,8 @@ import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 public class ClickGui extends MinecraftHUDGUI {
@@ -89,7 +87,7 @@ public class ClickGui extends MinecraftHUDGUI {
 				return "pst/textures/";
 			}
 		};
-		gui = new HUDClickGUI(guiInterface,MouseDescription(new Point(0,0))) {
+		gui = new HUDClickGUI(guiInterface,new MouseDescription(new Point(5,0))) {
 			@Override
 			public void handleScroll (int diff) {
 				super.handleScroll(diff);
@@ -141,10 +139,6 @@ public class ClickGui extends MinecraftHUDGUI {
 		}
 	}
 
-	private DescriptionRenderer MouseDescription(Point point) {
-		return null;
-	}
-
 	private void addModule (CollapsibleContainer panel, Module module) {
 		CollapsibleContainer container=new CollapsibleContainer(module.getName(),module.getDescription(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),module);
 		if(!module.getName().equals("Esp2dHelper")) {
@@ -186,25 +180,6 @@ public class ClickGui extends MinecraftHUDGUI {
 		GlStateManager.depthMask(false);
 		GLInterface.begin();
 	}
-	
-	public static void renderEntity (EntityLivingBase entity, Point pos, int scale) {
-		GlStateManager.enableTexture2D();
-		GlStateManager.depthMask(true);
-		GL11.glPushAttrib(GL11.GL_SCISSOR_BIT);
-		GL11.glDisable(GL11.GL_SCISSOR_TEST);
-		GlStateManager.clear(GL11.GL_DEPTH_BUFFER_BIT);
-		GL11.glPopAttrib();
-		GlStateManager.enableDepth();
-		GlStateManager.disableAlpha();
-        GlStateManager.pushMatrix();
-        GlStateManager.color(1,1,1,1);
-        GuiInventory.drawEntityOnScreen(pos.x,pos.y,scale,28,60,entity);
-        GlStateManager.popMatrix();
-		GlStateManager.disableDepth();
-		GlStateManager.depthMask(false);
-		GLInterface.begin();
-	}
-	
 	@Override
 	protected HUDClickGUI getHUDGUI() {
 		return gui;
