@@ -18,7 +18,7 @@ import net.minecraft.world.GameType;
 public class PlayerClone extends Module {
 	
 	public PlayerClone() {
-		super ("playerClone", "cloneeee", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("playerClone", "cloneeee.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	 private EntityOtherPlayerMP clonedPlayer;
 	

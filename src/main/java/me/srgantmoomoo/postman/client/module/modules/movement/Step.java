@@ -26,7 +26,7 @@ public class Step extends Module {
 	public ModeSetting delayHeight = new ModeSetting("delayHeight", this, "one", "one", "two");
 
     public Step() {
-		super ("step", "steps lol", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("step", "steps up blocks lol.", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(mode, delayHeight,entityStep);
 	}
     private byte cancelStage;

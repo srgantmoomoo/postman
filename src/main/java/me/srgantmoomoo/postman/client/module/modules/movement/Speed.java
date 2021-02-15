@@ -22,7 +22,7 @@ public class Speed extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "strafe", "strafe", "vanilla");
 	
 	public Speed() {
-		super ("speed", "s", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("speed", "speeeeeeeeddddyyy.", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(timerSpeed, jumpHeight, vanillaSpeed, mode);
 	}
 	private boolean slowDown;

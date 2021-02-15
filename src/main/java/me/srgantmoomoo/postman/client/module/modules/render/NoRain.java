@@ -12,7 +12,7 @@ import me.zero.alpine.listener.Listener;
 public class NoRain extends Module {
 	
 	public NoRain() {
-		super ("noRain", "eliminates weather", Keyboard.KEY_NONE, Category.RENDER);
+		super ("noRain", "eliminates rain.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 	
 	public void onEnable() {

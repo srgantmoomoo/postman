@@ -12,7 +12,7 @@ import me.zero.alpine.listener.Listener;
 public class LiquidPlace extends Module {
 	
 	public LiquidPlace() {
-		super ("liquidPlace", "fly ez lololol", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("liquidPlace", "lets u place blocks on liquid.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
 	public void onEnable() {

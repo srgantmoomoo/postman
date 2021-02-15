@@ -22,7 +22,7 @@ public class InventoryViewer extends HudModule {
 	public ModeSetting sizee = new ModeSetting("size", this, "normal", "normal", "compact");
     
     public InventoryViewer() {
-    	super("inventoryViewer","fdhusnapeepeenisggaewiojwajmvdj", new Point(300,10));
+    	super("inventoryViewer","shows ur inventory on ur hud.", new Point(300,10));
     	this.addSettings(color, sizee);
     }
     

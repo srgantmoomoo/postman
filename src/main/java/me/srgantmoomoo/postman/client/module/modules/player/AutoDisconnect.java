@@ -12,7 +12,7 @@ public class AutoDisconnect extends Module {
 
 	
 	public AutoDisconnect() {
-		super ("autoDisconnect", "seeeeeee", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("autoDisconnect", "automatically disconnects at desired health.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(health);
 	}
 	

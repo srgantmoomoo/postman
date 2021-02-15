@@ -10,7 +10,7 @@ import net.minecraft.util.EnumHand;
 public class AutoWalk extends Module {
 	
 	public AutoWalk() {
-		super ("autoWalk", "s", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("autoWalk", "automatically walks for u, u lazy fuck.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 	
 	public void onDisable() {

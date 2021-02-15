@@ -17,7 +17,7 @@ public class Criticals extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "packet", "packet", "jump");
 	
 	public Criticals() {
-		super ("criticals", "logs out when ur too low", Keyboard.KEY_NONE, Category.PVP);
+		super ("criticals", "always land a critical hit.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(mode);
 	}
 	

@@ -17,7 +17,7 @@ import net.minecraft.util.math.MathHelper;
 public class HoleTp extends Module {
 	
 	public HoleTp() {
-		super ("holeTp", "automatically hits anything near u", Keyboard.KEY_NONE, Category.PVP);
+		super ("holeTp", "sucks u in holes.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings();
 	}
 

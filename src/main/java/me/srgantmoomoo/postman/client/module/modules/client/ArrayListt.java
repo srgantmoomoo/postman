@@ -29,7 +29,7 @@ public class ArrayListt extends HudModule {
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 
 	public ArrayListt() {
-		super("arrayList", "twobee2twotee", new Point(-3,59));
+		super("arrayList", "shows currently enabled modules.", new Point(-3,59));
 		this.addSettings(color, sortHeight, sortLength, showHidden, forgeHax);
 	}
     

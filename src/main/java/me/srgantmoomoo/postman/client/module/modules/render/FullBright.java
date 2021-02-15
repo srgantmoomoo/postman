@@ -18,7 +18,7 @@ import net.minecraft.init.MobEffects;
 public class FullBright extends Module {
 	
 	public FullBright() {
-		super ("fullBright", "makes everything fully bright", Keyboard.KEY_NONE, Category.RENDER);
+		super ("fullBright", "makes everything fully bright.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 	 private float lastGamma;
 

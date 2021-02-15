@@ -11,7 +11,7 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 public class DeathCoords extends Module {
 	
 	public DeathCoords() {
-		super ("deathCoords", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("deathCoords", "tells u ur coords after death occurs :O", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
 	public void onUpdate() {

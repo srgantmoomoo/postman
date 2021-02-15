@@ -19,7 +19,7 @@ public class Blink extends Module {
 	  private EntityOtherPlayerMP player;
 
 	public Blink() {
-		super ("blink", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("blink", "makes temporary player clone and stuff.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
 @EventHandler

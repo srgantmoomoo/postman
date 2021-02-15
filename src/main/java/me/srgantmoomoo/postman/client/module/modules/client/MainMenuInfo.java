@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class MainMenuInfo extends Module {
 	
 	public MainMenuInfo() {
-		super("mainMenuInfo", "asd dsa", Keyboard.KEY_NONE, Category.CLIENT);
+		super("mainMenuInfo", "shows postman on minecrafts main menu screen.", Keyboard.KEY_NONE, Category.CLIENT);
 		toggled = false;
 	}
 	//check MixinGuiMainMenu :)

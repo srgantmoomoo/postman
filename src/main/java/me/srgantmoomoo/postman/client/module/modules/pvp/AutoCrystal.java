@@ -93,7 +93,7 @@ public class AutoCrystal extends Module {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(0, 255, 0, 255));
 
 	public AutoCrystal() {
-		super ("autoCrystal", "best ca on the block", Keyboard.KEY_NONE, Category.PVP);
+		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,multiPlace,cancelCrystal,switchToCrystal,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
 				,enemyRange,facePlaceValue,raytrace,outline,showDamage,color);
 	}

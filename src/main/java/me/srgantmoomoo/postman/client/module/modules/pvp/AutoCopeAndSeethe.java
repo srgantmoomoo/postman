@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class AutoCopeAndSeethe extends Module {
 	
 	public AutoCopeAndSeethe() {
-		super("autoCopeAndSeethe", "penis yes noa", Keyboard.KEY_NONE, Category.PVP);
+		super("autoCopeAndSeethe", "penis yes noa.", Keyboard.KEY_NONE, Category.PVP);
 	}
 	
 	public void onEnable() {

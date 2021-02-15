@@ -21,7 +21,7 @@ public class Velocity extends Module {
 	public boolean on;
 	
 	public Velocity() {
-		super ("velocity", "take no knockback when hit", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("velocity", "take no knockback when hit.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings();
 	}
 	

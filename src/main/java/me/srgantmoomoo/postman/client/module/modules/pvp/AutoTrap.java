@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class AutoTrap  extends Module {
 	
 	public AutoTrap() {
-		super ("autoTrap", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.PVP);
+		super ("autoTrap", "automatically traps opponent.", Keyboard.KEY_NONE, Category.PVP);
 	}
 
 }

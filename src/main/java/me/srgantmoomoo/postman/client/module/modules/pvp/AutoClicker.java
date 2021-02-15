@@ -17,7 +17,7 @@ public class AutoClicker extends Module {
 	private double holdLength;
 	
 	public AutoClicker() {
-		super ("autoClicker", "clicks fast when holding down left click", Keyboard.KEY_NONE, Category.PVP);
+		super ("autoClicker", "clicks fast when holding down left click.", Keyboard.KEY_NONE, Category.PVP);
 	}
 
 	public void onUpdate() {

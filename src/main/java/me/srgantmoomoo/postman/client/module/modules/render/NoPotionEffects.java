@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class NoPotionEffects extends Module {
 	
 	public NoPotionEffects() {
-		super ("noPotionEffects", "yea,no... fall", Keyboard.KEY_NONE, Category.RENDER);
+		super ("noPotionEffects", "doesn't render potion effects at top right of gui.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 
 }

@@ -14,7 +14,7 @@ public class Sprint extends Module {
 	public boolean on;
 	
 	public Sprint() {
-		super ("sprint", "now u cant walk, good going", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("sprint", "now u cant walk, good going.", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(mode);
 	}
 	

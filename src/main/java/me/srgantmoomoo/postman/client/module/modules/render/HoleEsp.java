@@ -35,7 +35,7 @@ public class HoleEsp extends Module {
 	public ColorSetting bedrockColor = new ColorSetting("bedrockColor", this, new JColor(0, 200, 255, 50));
 	
 	public HoleEsp() {
-		super ("holeEsp", "shows an esp in holes in the ground", Keyboard.KEY_NONE, Category.RENDER);
+		super ("holeEsp", "shows an esp inobby and bedrock holes.", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(size, outline, bedrockColor, obbyColor);
 	}
 

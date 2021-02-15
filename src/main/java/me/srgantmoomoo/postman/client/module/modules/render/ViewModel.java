@@ -24,7 +24,7 @@ public class ViewModel extends Module {
 	public NumberSetting RightZ = new NumberSetting("RightZ", this, 0, -2, 2, 0.1);
 	
 	public ViewModel() {
-		super("viewModel", "classic hud", Keyboard.KEY_NONE, Category.RENDER);
+		super("viewModel", "allows u to change how ur model look in 1st person.", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(LeftX, LeftY, LeftZ, RightX, RightY, RightZ);
 	}
 

@@ -17,7 +17,7 @@ public class Ping extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public Ping() {
-		super("ping", "thatweehoo", new Point(-3,19));
+		super("ping", "shows ur ping on ur hud.", new Point(-3,19));
 		this.addSettings(color);
 	}
 	

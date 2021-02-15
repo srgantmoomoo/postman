@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiChat;
 public class InventoryMove extends Module {
 	
 	public InventoryMove() {
-		super ("inventoryMove", "lets you move while in ur inventory", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("inventoryMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 	
 	private Minecraft mc = Minecraft.getMinecraft();

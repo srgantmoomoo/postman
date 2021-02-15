@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class AutoRespawn extends Module {
 	
 	public AutoRespawn() {
-		super("autoRespawn", "classic hud", Keyboard.KEY_NONE, Category.PLAYER);
+		super("autoRespawn", "automatically respawns after death occurs.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 
 }

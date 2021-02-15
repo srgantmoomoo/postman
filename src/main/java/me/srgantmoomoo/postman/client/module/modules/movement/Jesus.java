@@ -25,7 +25,7 @@ import net.minecraft.util.math.MathHelper;
 public class Jesus extends Module {
 	
 	public Jesus() {
-		super ("jesus", "u r now jesus lul", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("jesus", "lets u walk on water.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 	public float offset = 0.5f;
 	

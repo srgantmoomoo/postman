@@ -56,7 +56,7 @@ public class Esp extends Module {
 	public ColorSetting otherColor = new ColorSetting("other", this, new JColor(150, 150, 150, 50)); 
 	
 	public Esp() {
-		super ("esp's", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
+		super ("esp's", "draws esp around players and storage blocks.", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor
 				, enderChestColor, shulkerBoxColor, otherColor);
 	}

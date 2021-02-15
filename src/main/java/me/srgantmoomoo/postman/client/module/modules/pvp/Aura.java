@@ -25,7 +25,7 @@ public class Aura extends Module {
 	public BooleanSetting playersA = new BooleanSetting("players", this, true);
 	
 	public Aura() {
-		super ("aura", "automatically hits anything near u", Keyboard.KEY_NONE, Category.PVP);
+		super ("aura", "automatically hits anything near u.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(rangeA, playersA, passiveMobsA, hostileMobsA);
 	}
 

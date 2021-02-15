@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.ItemRenderer;
 		public NumberSetting lowness = new NumberSetting("lowness", this, 0.7, 0, 1, 0.1);
 		
 		public LowOffHand() {
-			super ("lowOffHand", "lowers offhand", Keyboard.KEY_NONE, Category.RENDER);
+			super ("lowOffHand", "lowers the offhand.", Keyboard.KEY_NONE, Category.RENDER);
 			this.addSettings(lowness);
 		}
 		

@@ -15,7 +15,7 @@ public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
 	
 	public AutoGap() {
-		super("autoGap", "automattically eat any gapples in ur hand", Keyboard.KEY_NONE, Category.PVP);
+		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(mode);;
 	}
 	

@@ -53,8 +53,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new AutoDisconnect());
 		ModuleManager.modules.add(new AutoElytra());
 		ModuleManager.modules.add(new AutoGap());	
-		ModuleManager.modules.add(new AutoHut());	
-		ModuleManager.modules.add(new AutoLog());
+		ModuleManager.modules.add(new AutoHut());
 		ModuleManager.modules.add(new AutoRespawn());	
 		ModuleManager.modules.add(new AutoTotem());	
 		ModuleManager.modules.add(new AutoTrap());	
@@ -79,7 +78,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new HoleEsp());
 		ModuleManager.modules.add(new HoleTp());
 		ModuleManager.modules.add(new InventoryMove());	
-		ModuleManager.modules.add(new InventorySlots());	
+		ModuleManager.modules.add(new CraftingSlots());	
 		ModuleManager.modules.add(new Jesus());	
 		ModuleManager.modules.add(new LiquidPlace());
 		ModuleManager.modules.add(new LogOutSpot());

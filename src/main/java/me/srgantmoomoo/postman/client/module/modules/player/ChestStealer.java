@@ -19,7 +19,7 @@ public class ChestStealer extends Module {
 	public NumberSetting delay = new NumberSetting("delay", this, 1, 0, 10, 1);
 	
 	public ChestStealer() {
-		super ("chestStealer", "slows down ur hungerness", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("chestStealer", "automatically steals from inventory gui's.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(mode,delay);
 	}
 

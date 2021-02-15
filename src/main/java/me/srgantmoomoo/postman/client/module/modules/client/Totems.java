@@ -19,7 +19,7 @@ public class Totems extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
 
 	public Totems() {
-		super("totems", "thatweehoo", new Point(-3,11));
+		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11));
 		this.addSettings(color);
 	}
 	

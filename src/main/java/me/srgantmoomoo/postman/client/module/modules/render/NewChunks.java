@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class NewChunks extends Module {
 	
 	public NewChunks() {
-		super ("newChunks", "shows when newchunks r generated", Keyboard.KEY_NONE, Category.RENDER);
+		super ("newChunks", "shows when new chunks r generated.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 
 }

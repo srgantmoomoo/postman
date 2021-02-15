@@ -17,7 +17,7 @@ public class Frames extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public Frames() {
-		super("frames", "thatweehoo", new Point(-3,29));
+		super("frames", "shows ur fps on ur hud.", new Point(-3,29));
 		this.addSettings(color);
 	}
 	

@@ -10,10 +10,10 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.client.CPacketCloseWindow;
 
-public class InventorySlots extends Module {
+public class CraftingSlots extends Module {
 	
-	public InventorySlots() {
-		super ("inventorySlots", "shows ur armor values on top of hotbar", Keyboard.KEY_NONE, Category.PLAYER);
+	public CraftingSlots() {
+		super ("craftingSlots", "lets u hold items in ur crafting gui.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
 	 @EventHandler

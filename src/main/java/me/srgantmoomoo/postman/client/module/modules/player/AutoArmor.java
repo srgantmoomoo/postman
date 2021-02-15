@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 public class AutoArmor extends Module {
 	
 	public AutoArmor() {
-		super("autoArmor", "classic hud", Keyboard.KEY_NONE, Category.PLAYER);
+		super("autoArmor", "automatically applies the best armor.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	private Minecraft mc = Minecraft.getMinecraft();
 	

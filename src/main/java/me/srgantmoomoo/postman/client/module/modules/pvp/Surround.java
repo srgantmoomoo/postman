@@ -42,7 +42,7 @@ public class Surround extends Module {
 	public NumberSetting blocksPerTick = new NumberSetting("blocksPerTick", this, 4, 0, 8, 1);
 	
 	public Surround() {
-		super ("surround", "automatically surrounds u in obby", Keyboard.KEY_NONE, Category.PVP);
+		super ("surround", "automatically surrounds u in obby.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(triggerSurround, shiftOnly, rotate, disableOnJump, centerPlayer, tickDelay, timeOutTicks, blocksPerTick);
 	}
 

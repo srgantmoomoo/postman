@@ -29,7 +29,7 @@ public class Tracers extends Module {
 	public NumberSetting pBlue = new NumberSetting("pBlue", this, 1.0, 0.0, 1.0, 0.1);
 	
 	public Tracers() {
-		super ("tracers", "draws line to entitys and/or sotrage", Keyboard.KEY_NONE, Category.RENDER);
+		super ("tracers", "draws line to entitys.", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(players, hostileMobs, passiveMobs, pRed, pGreen, pBlue);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();

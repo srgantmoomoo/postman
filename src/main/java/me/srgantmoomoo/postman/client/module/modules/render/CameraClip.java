@@ -12,7 +12,7 @@ import me.zero.alpine.listener.Listener;
 public class CameraClip extends Module {
 	
 	public CameraClip() {
-		super ("cameraClip", "draws esp around storage blocks", Keyboard.KEY_NONE, Category.RENDER);
+		super ("cameraClip", "camera clips when in 3rd person.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 	
 	public void onEnable() {

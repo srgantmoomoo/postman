@@ -17,7 +17,7 @@ public class Watermark extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255)); 
 
 	public Watermark() {
-		super("watermark", "thatweehoo", new Point(-3,1));
+		super("watermark", "postman watermark!", new Point(-3,1));
 		this.addSettings(color);
 	}
 	

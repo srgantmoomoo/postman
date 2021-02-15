@@ -12,7 +12,7 @@ import me.zero.alpine.listener.Listener;
 public class NoPush extends Module {
 	
 	public NoPush() {
-		super ("noPush", "u cant get pushed, and u cant push", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("noPush", "u cant get pushed, and u cant push.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 
 	@EventHandler

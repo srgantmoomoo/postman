@@ -8,6 +8,6 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class Sneak extends Module {
 	
 	public Sneak() {
-		super ("sneak", "s", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("sneak", "sneak... doesn't work rn.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 }

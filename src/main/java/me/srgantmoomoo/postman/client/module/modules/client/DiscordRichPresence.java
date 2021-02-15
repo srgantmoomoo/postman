@@ -9,7 +9,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 public class DiscordRichPresence extends Module {
 	
 	public DiscordRichPresence() {
-		super ("discordRpc", "shows ur playing postman on discord", Keyboard.KEY_NONE, Category.CLIENT);
+		super ("discordRpc", "shows ur playing postman on discord.", Keyboard.KEY_NONE, Category.CLIENT);
 	}
 	
 		public void onEnable() {
