@@ -22,7 +22,7 @@ import net.minecraft.item.ItemStack;
 
 /*
  * i looked at a bit of salhack for some of the stuff used here o_0
- * SrgantMooMoo feb 13 2021
+ * SrgantMooMoo feb 14 2021 (valentines day, and im all a fucking lone :')
  */
 public class SmartOffHand extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal");
