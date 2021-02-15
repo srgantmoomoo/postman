@@ -17,10 +17,10 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 public class AutoCInfo extends HudModule {
 	private AutoCInfoList list=new AutoCInfoList();
 	
-	public ColorSetting color = new ColorSetting("shows if autocrystal is on or off.", this, new JColor(230, 0, 0, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public AutoCInfo() {
-		super("autoCrystalInfo", "thatweehoo", new Point(-3,39));
+		super("autoCrystalInfo", "shows if autocrystal is on or off.", new Point(-3,39));
 		this.addSettings(color);
 	}
 	

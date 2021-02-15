@@ -20,7 +20,7 @@ public class SurroundInfo extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public SurroundInfo() {
-		super("surroundInfo", "hows if surround is on or off.", new Point(-3,49));
+		super("surroundInfo", "shows if surround is on or off.", new Point(-3,49));
 		this.addSettings(color);
 	}
 	
