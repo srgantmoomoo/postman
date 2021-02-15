@@ -93,8 +93,8 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 
 **media**
 <p>click gui</p>
-<img src="https://user-images.githubusercontent.com/69589624/104859565-5cf8b600-58f4-11eb-8dce-1b6a05287e70.png" width="500" alt="click gui"/> <br />
+<img src="https://user-images.githubusercontent.com/69589624/107998717-b6b3d500-6fb3-11eb-996a-616feafeb4c3.png" width="500" alt="click gui"/> <br />
 
 <p>auto crystal</p>
-<img src="https://media.giphy.com/media/enYiyNkWuTtYi44FXW/giphy.gif" width="500" alt="auto crystal"/> <br />
+<img src="https://user-images.githubusercontent.com/69589624/107998626-8a985400-6fb3-11eb-8596-66d40ae78d87.gif" width="500" alt="auto crystal"/> <br />
 ***for more information check out the github readme.md :)***
