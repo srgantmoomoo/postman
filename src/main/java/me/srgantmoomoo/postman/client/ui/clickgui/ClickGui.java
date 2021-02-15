@@ -19,6 +19,7 @@ import com.lukflug.panelstudio.settings.KeybindComponent;
 import com.lukflug.panelstudio.settings.NumberComponent;
 import com.lukflug.panelstudio.settings.SimpleToggleable;
 import com.lukflug.panelstudio.settings.Toggleable;
+import com.lukflug.panelstudio.theme.FixedDescription;
 import com.lukflug.panelstudio.theme.MouseDescription;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
@@ -44,7 +45,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 public class ClickGui extends MinecraftHUDGUI {
-	public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
+	public static final int WIDTH=ClickGuiModule.INSTANCE.thinGui.isEnabled() ? 80 : 100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
 	private final Toggleable colorToggle;
 	public final GUIInterface guiInterface;
 	public final HUDClickGUI gui;
@@ -89,7 +90,7 @@ public class ClickGui extends MinecraftHUDGUI {
 				return "pst/textures/";
 			}
 		};
-		gui = new HUDClickGUI(guiInterface,new MouseDescription(new Point(5,0))) {
+		gui = new HUDClickGUI(guiInterface,ClickGuiModule.INSTANCE.description.is("mouse") ? new MouseDescription(new Point(5,0)) : new FixedDescription(new Point(0,0))) {
 			@Override
 			public void handleScroll (int diff) {
 				super.handleScroll(diff);
