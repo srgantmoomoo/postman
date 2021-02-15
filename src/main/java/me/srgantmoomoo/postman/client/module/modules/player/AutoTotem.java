@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
@@ -28,7 +29,8 @@ public class AutoTotem extends Module {
                 return;
             }
 
-            if (mc.player.getHeldItemOffhand().getItem() == Items.AIR) {
+            if (mc.player.getHeldItemOffhand().getItem() == Items.AIR || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE && !ModuleManager.getModuleByName("SmartOffHand").isToggled() ||
+            		mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL && !ModuleManager.getModuleByName("SmartOffHand").isToggled()) {
             	swapTotem(getTotem(), 0);
             }
 

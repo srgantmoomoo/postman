@@ -6,9 +6,12 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
+import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -23,10 +26,21 @@ import net.minecraft.item.ItemStack;
  */
 public class SmartOffHand extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal");
+	public NumberSetting health = new NumberSetting("health", this, 14, 0, 20, 1);
 	
 	public SmartOffHand() {
 		super("smartOffHand", "smart, off. HAND.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode);
+		this.addSettings(mode, health);
+	}
+	
+	public void onEnable() {
+		super.onEnable();
+		Main.EVENT_BUS.subscribe(this);
+	}
+	
+	public void onDisable() {
+		super.onDisable();
+		Main.EVENT_BUS.unsubscribe(this);
 	}
 	
 	private void SwitchOffHand(ModeSetting val) {
@@ -54,8 +68,8 @@ public class SmartOffHand extends Module {
         if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
             return;
         
-        if (getHealthWithAbsorption() < 15) {
-            toggle();
+        if (getHealthWithAbsorption() < health.getValue()) {
+        	toggled = false;
             return;
         }
         
