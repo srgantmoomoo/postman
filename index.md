@@ -8,13 +8,15 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <p><ul>
         <li>autoArmor<p><i>automatically equips the best armor in ur inventory</i></p></li>
         <li>autoDisconnect<p><i>automatically disconnects when u reach a set health</i></p></li>
+        <li>autoRespawn<p><i>automatically respawns after dying</i></p></li>
         <li>autoTotem<p><i>autmatically equips a totem in ur offhand from ur inventory</i></p></li>
         <li>blink<p><i>temporarily creates a second player to throw off opponents</i></p></li>
         <li>chatSuffix<p><i>adds "postman" to the end of all ur chats</i></p></li>
         <li>chestStealer (currently unfinished)<p><i>autmatically steals from a storage container when opened</i></p></li>
+        <li>craftingSlots<p><i>allows u to use your crafting slots as extra inventory space</i></p></li>
+        <li>deathCoords<p><i>tells u ur coords after dying</i></p></li>
         <li>footExp<p><i>automatically throws xp bottles at your feet</i></p></li>
-        <li>inventorySlots<p><i>allows u to use your crafting slots as extra inventory space</i></p></li>
-        <li>liquidInteract<p><i>allows you to interact with liquids</i></p></li>
+        <li>liquidPlace<p><i>allows you to interact with liquids</i></p></li>
         <li>noFall<p><i>negates fall damage</i></p></li>
         <li>noPush <p><i>stop u from being pushed by entities</i></p></li>
         <li>playerClone <p><i>creates a fake clone of ur player</i></p></li>
@@ -43,11 +45,13 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     <summary>pvp</summary>
     <p><ul>
         <li>aura<p><i>automatically hits certain entities</i></p></li>
-        <li>autoClicker's<p><i>clicks really fast wen held</i></p></li>
+        <li>autoClicker<p><i>clicks really fast wen held</i></p></li>
         <li>autoCrystal<p><i>automatically crystals your opponent</i></p></li>
+        <li>autoGap's<p><i>automatically eats any gapples in ur hands</i></p></li>
         <li>criticals<p><i>always land critical hits without having to jump</i></p></li>
         <li>fastUse<p><i>allows u to use things faster like shoot bows and throw xp bottles</i></p></li>
         <li>holeTp<p><i>automatically sucks u into a bedrock or obsidian hole</i></p></li>
+        <li>smartOffHand's<p><i>allows u to use crystals and gaps smartly without a totem in ur hand 24/7</i></p></li>
         <li>surround<p><i>autmatically surrounds u in obsidian</i></p></li>
     </ul></p>
 </details>
@@ -63,11 +67,15 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 <details>
     <summary>movement</summary>
     <p><ul>
+        <li>autoWalk<p><i>autmatically holds w key for u to walk</i></p></li>
         <li>inventoryMove<p><i>allows you to move while in a gui screen</i></p></li>
+        <li>jesus<p><i>lets u walk on water like jesus himself</i></p></li>
         <li>noSlow<p><i>prevents certain events from slowing you down, e.g. eating, soulsand, webs, and slimeblocks</i></p></li>
+        <li>reverseStep<p><i>automatically sucks u down when stepping down a block</i></p></li>
+        <li>safeWalk<p><i>prevents u from falling off the edges of blocks</i></p></li>
+        <li>speed<p><i>allows you to outrun his bullet</i></p></li>
         <li>sprint<p><i>automatically sprints when holding your foward key</i></p></li>
         <li>step<p><i>tp's you to the top of a block so you don't have to jump</i></p></li>
-        <li>reverseStep<p><i>sucks you down when going down one block</i></p></li>
     </ul></p>
 </details>
 <details>
@@ -87,7 +95,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 	    <li>clickGuiModule<p><i>gives you multiple setting to customize the clickGui to your liking</i></p></li>
 	    <li>hudEditor<p><i>allows you to edit the hud of the client</i></p></li>
 	    <li>tabGui<p><i>allows you to navigate the client through your arrow keys</i></p></li>
-	    <li>mainMenuInfo<p><i>shows postman info on the main menu of Minecraft</i></p></li>
+	    <li>mainMenuI-nfo<p><i>shows postman info on the main menu of Minecraft</i></p></li>
     </ul></p>
 </details>
 
