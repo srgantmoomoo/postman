@@ -65,6 +65,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ChatSuffix());
 		ModuleManager.modules.add(new ChestStealer());
 		ModuleManager.modules.add(new CoordExploit());
+		ModuleManager.modules.add(new CraftingSlots());	
 		ModuleManager.modules.add(new Criticals());	
 		ModuleManager.modules.add(new DamageTiltCorrection());	
 		ModuleManager.modules.add(new DeathCoords());	
@@ -78,7 +79,6 @@ public class ModuleManager {
 		ModuleManager.modules.add(new HoleEsp());
 		ModuleManager.modules.add(new HoleTp());
 		ModuleManager.modules.add(new InventoryMove());	
-		ModuleManager.modules.add(new CraftingSlots());	
 		ModuleManager.modules.add(new Jesus());	
 		ModuleManager.modules.add(new LiquidPlace());
 		ModuleManager.modules.add(new LogOutSpot());

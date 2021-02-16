@@ -19,7 +19,7 @@ public class AutoWalk extends Module {
 	
 	public void onUpdate() {
 		if(mc.currentScreen == null) {
-			KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
+			KeyBinding.setKeyBindState(mc.gameSettings.keyBindForward.getKeyCode(), true);
 		}
 	}
 
