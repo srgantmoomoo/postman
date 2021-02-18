@@ -87,7 +87,7 @@ public class Main {
 		MinecraftForge.EVENT_BUS.register(this);
 		log.info("forge event system initialized.");
 		
-		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 18), true,true);
+		customFontRenderer = new CustomFontRenderer(new Font("Comic Sans MS", Font.PLAIN, 18), false,false);
 		log.info("custom font initialized.");
 		
 		notification = new Notification(null, null, null, 0);

@@ -122,6 +122,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ArmorHud());
 		//ModuleManager.modules.add(new KeyStrokes());
 		ModuleManager.modules.add(new DiscordRichPresence());
+		ModuleManager.modules.add(new ClientFont());
 		ModuleManager.modules.add(new ClickGuiModule());
 		ModuleManager.modules.add(new HudEditor());
 	 	ModuleManager.modules.add(new TabGui());	
