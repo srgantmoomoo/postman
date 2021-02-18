@@ -46,10 +46,10 @@ thank you,
 - discord rpc - *club.minnced, java discord rpc* https://github.com/MinnDevelopment/java-discord-rpc.
 - clickGui library - *lukflug, PanelStudio* https://github.com/lukflug/PanelStudio/tree/main.
 - mixins - *SpongeForge* https://www.spongepowered.org/downloads/spongeforge/stable/1.12.2.
+- font renderer - *086, KAMI* some stuff was rewritten, so it's not exact, https://github.com/zeroeightysix/KAMI.
 
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding**
 - outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
-- font renderer - pretty much *kamiblue*, some stuff was rewritten for postman tho, so it's not exactly https://github.com/kami-blue/client.
 - surround & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client. 0_0
 - 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
 
