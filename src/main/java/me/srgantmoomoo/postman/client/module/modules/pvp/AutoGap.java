@@ -61,9 +61,9 @@ public class AutoGap extends Module {
 		
 		if(disableOnSurround.isEnabled()) {
 			if(((Surround)ModuleManager.getModuleByName("surround")).shiftOnly.isEnabled()) {
-				if(mc.player.isSneaking()) toggled = false;
+				if(mc.player.isSneaking()) toggle();
 			}else {
-				if(ModuleManager.isModuleEnabled("surround")) toggled = false;
+				if(ModuleManager.isModuleEnabled("surround")) toggle();
 			}
 		}
 	}
