@@ -52,6 +52,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new AutoElytra());
 		ModuleManager.modules.add(new AutoGap());	
 		ModuleManager.modules.add(new AutoHut());
+		ModuleManager.modules.add(new AutoReconnect());	
 		ModuleManager.modules.add(new AutoRespawn());	
 		ModuleManager.modules.add(new AutoTotem());	
 		ModuleManager.modules.add(new AutoTrap());	
