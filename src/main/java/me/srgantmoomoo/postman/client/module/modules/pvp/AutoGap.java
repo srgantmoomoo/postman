@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
@@ -17,11 +18,11 @@ public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
 	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
 	public ModeSetting disableOn = new ModeSetting("disableOn", this, "switchToCrystal", "switchToCrystal", "autoCrystalEnabled");
-	public BooleanSetting disabelOnSurround = new BooleanSetting("disabelOnSurround", this, false);
+	public BooleanSetting disableOnSurround = new BooleanSetting("disableOnSurround", this, false);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode, health);;
+		this.addSettings(mode, health, disableOnSurround);;
 	}
 	
 	public void onEnable() {
@@ -56,6 +57,14 @@ public class AutoGap extends Module {
 				wasEating = false;
 	            KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	        }
+		}
+		
+		if(disableOnSurround.isEnabled()) {
+			if(((Surround)ModuleManager.getModuleByName("surround")).shiftOnly.isEnabled()) {
+				if(mc.player.isSneaking()) toggled = false;
+			}else {
+				if(ModuleManager.isModuleEnabled("surround")) toggled = false;
+			}
 		}
 	}
 	

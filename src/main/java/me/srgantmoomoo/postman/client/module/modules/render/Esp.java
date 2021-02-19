@@ -1,5 +1,8 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
@@ -38,7 +41,7 @@ import net.minecraft.util.math.BlockPos;
 public class Esp extends Module {
 	
 	public BooleanSetting chams = new BooleanSetting("chams", this, false);
-	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "outline", "2dEsp", "off");
+	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "outline", "2dEsp", "glow", "off");
 	public ModeSetting storage = new ModeSetting("storage", this, "fill", "fill", "outline", "off");
 	public BooleanSetting mob = new BooleanSetting("mob", this, false);
 	public BooleanSetting item = new BooleanSetting("item", this, true);
@@ -62,6 +65,8 @@ public class Esp extends Module {
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
+	List<Entity> entities;
+	
     JColor playerC;
     JColor hostileMobC;
     JColor passiveMobC;
@@ -72,22 +77,56 @@ public class Esp extends Module {
 
     public void onWorldRender(RenderEvent event) {
     	
-        mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(entity -> rangeEntityCheck(entity)).forEach(entity -> {
+    	entities = mc.world.loadedEntityList.stream()
+                .filter(entity -> entity != mc.player)
+                .collect(Collectors.toList());
+        entities.forEach(entity -> {
             defineEntityColors(entity);
+            
+            if(!entityMode.is("glow")) {
+            	 entities.forEach(p -> p.setGlowing(false));
+            }
+            if(entityMode.is("glow") && !mob.isEnabled() && entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal) {
+             	 entity.setGlowing(false);
+           }
+            if(entityMode.is("glow") && !item.isEnabled() && entity instanceof EntityItem) {
+              	 entity.setGlowing(false);
+            }
+            
+            
+            //players - box
             if (entityMode.is("box") && entity instanceof EntityPlayer) {
             	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerC);
             }
-            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("off")){
+            
+            // glow esp's
+            if (entityMode.is("glow") && entity instanceof EntityPlayer) {
+            	entity.setGlowing(true);
+            }
+            if (entityMode.is("glow") && mob.isEnabled() &&  entity instanceof EntityCreature || entity instanceof EntitySlime) {
+            	entity.setGlowing(true);
+            }
+            if (entityMode.is("glow") && mob.isEnabled() && entity instanceof EntityAnimal) {
+            	entity.setGlowing(true);
+            }
+            if (entityMode.is("glow") && item.isEnabled() && entity instanceof EntityItem) {
+            	entity.setGlowing(true);
+            }
+            
+            // hostiles and passives - box
+            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("glow") && !entityMode.is("off")){
                 if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, hostileMobC);
                 }
             }
-            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("off")){
+            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("glow") && !entityMode.is("off")){
                 if (entity instanceof EntityAnimal) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, passiveMobC);
                 }
             }
-            if (item.isEnabled() && !entityMode.is("off") && entity instanceof EntityItem){
+            
+            // items
+            if (item.isEnabled() && !entityMode.is("off") && !entityMode.is("glow") && entity instanceof EntityItem){
             	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
             }
             // 2d esp is under me/srgantmoomoo/postman/api/util/render/Esp2dHelper
@@ -152,7 +191,9 @@ public class Esp extends Module {
 		JTessellator.drawBox(blockPos, 1, color, GeometryMasks.Quad.ALL);
    }
 
-    public void onDisable(){
+    public void onDisable() {
+    	super.onDisable();
+        entities.forEach(p -> p.setGlowing(false));
     }
 
     private void defineEntityColors(Entity entity) {

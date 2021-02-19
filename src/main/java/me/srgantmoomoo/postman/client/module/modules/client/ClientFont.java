@@ -11,7 +11,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 
 public class ClientFont extends Module {
-	public ModeSetting font = new ModeSetting("font", this, "Comic Sans Ms", "Comic Sans Ms", "Arial", "Verdana",  "smtn");
+	public ModeSetting font = new ModeSetting("font", this, "Comic Sans Ms", "Comic Sans Ms", "Arial", "Verdana");
 	
 	public ClientFont() {
 		super ("clientFont", "u have to re enable for it to change :(", Keyboard.KEY_NONE, Category.CLIENT);
@@ -31,10 +31,5 @@ public class ClientFont extends Module {
 		if(font.is("Verdana")) {
 			Main.getInstance().customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 18), true, true);
 		}
-		
-		if(font.is("smtn")) {
-			Main.getInstance().customFontRenderer = new CustomFontRenderer(new Font("smtn", Font.PLAIN, 18), true, true);
-		}
 	}
-
 }

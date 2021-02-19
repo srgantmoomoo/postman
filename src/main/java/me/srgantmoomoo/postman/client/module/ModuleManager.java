@@ -13,8 +13,6 @@ import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.client.Main;
-import me.srgantmoomoo.postman.client.command.Command;
-import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
