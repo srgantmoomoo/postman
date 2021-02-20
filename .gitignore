@@ -10,11 +10,13 @@
 /saves/
 /postman/
 
+*.launch
 options.txt
 usercache.json
 usernamecache.json
 .classpath
 .settings/
+*.project
 bin/
 src/main/java/META-INF/
 
