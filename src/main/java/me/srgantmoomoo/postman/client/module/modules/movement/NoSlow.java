@@ -8,9 +8,13 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.InputUpdateEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 	public class NoSlow extends Module {
 	public BooleanSetting food = new BooleanSetting("food", this, true);
@@ -36,9 +40,24 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 	
 	@EventHandler
 	private final Listener<InputUpdateEvent> eventListener = new Listener<>(event -> {
-			if (mc.player.isHandActive() && !mc.player.isRiding() && food.isEnabled()) {
+	
+		
+			if (mc.player.isHandActive() && !mc.player.isRiding() && !mc.player.isSneaking() && food.isEnabled()) { // added sneaking check as almost all anticheats rubberbands and its annoying
 				event.getMovementInput().moveStrafe *= 5;
 				event.getMovementInput().moveForward *= 5;
 		}
+			
 	});
+	private final Listener<TickEvent.ClientTickEvent> eventLis = new Listener<>(event -> {
+		
+		BlockPos playerStandingPos = mc.player.getPosition().down(); // gets the pos
+		IBlockState blockUnderPlayer = mc.player.world.getBlockState(playerStandingPos); //gets the state of the block
+		
+		if(slimeBlock.isEnabled() && blockUnderPlayer.getBlock() == Blocks.SLIME_BLOCK) { //now gets the block, im pretty sure there is an easier way to do this, but it works so ye
+			Blocks.SLIME_BLOCK.setDefaultSlipperiness(0.4945f); 
+		}
+		
+	});
+	
+	
 }
