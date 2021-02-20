@@ -85,7 +85,8 @@ public class ModuleManager {
 		ModuleManager.modules.add(new LowOffHand());
 		ModuleManager.modules.add(new Nametags());	
 		ModuleManager.modules.add(new NewChunks());	
-		ModuleManager.modules.add(new NoFall());	
+		ModuleManager.modules.add(new NoFall());
+		ModuleManager.modules.add(new NoHandShake());	
 		ModuleManager.modules.add(new NoHurtCam());
 		ModuleManager.modules.add(new NoPotionEffects());
 		ModuleManager.modules.add(new NoPush());
