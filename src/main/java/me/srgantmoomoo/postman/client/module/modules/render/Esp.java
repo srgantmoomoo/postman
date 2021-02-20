@@ -220,7 +220,7 @@ public class Esp extends Module {
         if (entity != null) {
             mainIntColor = new JColor(itemColor.getValue());
         }
-        }
+    }
     //boolean range check and opacity gradient
 
     private boolean rangeEntityCheck(Entity entity) {

@@ -21,6 +21,7 @@ public class AutoReconnect extends Module {
 	
 	public AutoReconnect() {
 		super("autoReconnect", "automatically reconnects to a server.", Keyboard.KEY_NONE, Category.PLAYER);
+		this.addSettings(delay);
 	}
 	private String lastIp;
     private int lastPort;
@@ -44,7 +45,7 @@ public class AutoReconnect extends Module {
 	private final Listener<PacketEvent.Send> sendPacketEventPost = new Listener<>(event -> {
 		if(event.getEra() == Era.POST) {
 			if (this.lastIp != null && this.lastPort > 0 && this.reconnect) {
-                if (this.timer.hasReached((long) this.delay.getValue())) {
+                if (this.timer.hasReached((long) delay.getValue())) {
                     Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(null, Minecraft.getMinecraft(), this.lastIp, this.lastPort));
                     this.timer.reset();
                     this.reconnect = false;
