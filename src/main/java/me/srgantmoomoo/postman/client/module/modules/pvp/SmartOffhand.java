@@ -2,14 +2,11 @@ package me.srgantmoomoo.postman.client.module.modules.pvp;
 
 import org.lwjgl.input.Keyboard;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
-import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import me.zero.alpine.listener.EventHandler;
@@ -27,20 +24,22 @@ import net.minecraft.item.ItemStack;
 public class SmartOffHand extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal");
 	public NumberSetting health = new NumberSetting("health", this, 14, 0, 20, 1);
+	public BooleanSetting reEnableWhenSafe = new BooleanSetting("reEnableWhenSafe", this, true);
 	
 	public SmartOffHand() {
 		super("smartOffHand", "smart, off. HAND.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode, health);
+		this.addSettings(mode, health, reEnableWhenSafe);
 	}
+	public boolean wasEnabled;
 	
 	public void onEnable() {
 		super.onEnable();
-		Main.EVENT_BUS.subscribe(this);
+		wasEnabled = false;
 	}
 	
 	public void onDisable() {
 		super.onDisable();
-		Main.EVENT_BUS.unsubscribe(this);
+		wasEnabled = true;
 	}
 	
 	private void SwitchOffHand(ModeSetting val) {
@@ -65,15 +64,20 @@ public class SmartOffHand extends Module {
 
     @EventHandler
     private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(p_Event -> {
-        if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
-            return;
-        
-        if (getHealthWithAbsorption() < health.getValue()) {
-        	toggled = false;
-            return;
-        }
-        
-        SwitchOffHand(mode);
+    	if(reEnableWhenSafe.isEnabled() && wasEnabled && getHealthWithAbsorption() >= health.getValue()) {
+    		toggled = true;
+    	}
+    	if(toggled) {
+	        if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
+	            return;
+	        
+	        if (getHealthWithAbsorption() <= health.getValue()) {
+	        	toggled = false;
+	            return;
+	        }
+	        
+	        SwitchOffHand(mode);
+    	}
     });
     
     public static float getHealthWithAbsorption() {

@@ -13,8 +13,6 @@ import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.client.Main;
-import me.srgantmoomoo.postman.client.command.Command;
-import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
@@ -44,6 +42,7 @@ public class ModuleManager {
 		//alphabetic
 		ModuleManager.modules.add(new AimBot());	
 		ModuleManager.modules.add(new AntiHunger());
+		ModuleManager.modules.add(new AntiNick());	
 		ModuleManager.modules.add(new AntiSwing());	
 		ModuleManager.modules.add(new Aura());	
 		ModuleManager.modules.add(new AutoArmor());	
@@ -54,6 +53,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new AutoElytra());
 		ModuleManager.modules.add(new AutoGap());	
 		ModuleManager.modules.add(new AutoHut());
+		ModuleManager.modules.add(new AutoReconnect());	
 		ModuleManager.modules.add(new AutoRespawn());	
 		ModuleManager.modules.add(new AutoTotem());	
 		ModuleManager.modules.add(new AutoTrap());	
@@ -65,6 +65,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ChatSuffix());
 		ModuleManager.modules.add(new ChestStealer());
 		ModuleManager.modules.add(new CoordExploit());
+		ModuleManager.modules.add(new CraftingSlots());	
 		ModuleManager.modules.add(new Criticals());	
 		ModuleManager.modules.add(new DamageTiltCorrection());	
 		ModuleManager.modules.add(new DeathCoords());	
@@ -78,7 +79,6 @@ public class ModuleManager {
 		ModuleManager.modules.add(new HoleEsp());
 		ModuleManager.modules.add(new HoleTp());
 		ModuleManager.modules.add(new InventoryMove());	
-		ModuleManager.modules.add(new CraftingSlots());	
 		ModuleManager.modules.add(new Jesus());	
 		ModuleManager.modules.add(new LiquidPlace());
 		ModuleManager.modules.add(new LogOutSpot());
@@ -86,7 +86,8 @@ public class ModuleManager {
 		ModuleManager.modules.add(new LowOffHand());
 		ModuleManager.modules.add(new Nametags());	
 		ModuleManager.modules.add(new NewChunks());	
-		ModuleManager.modules.add(new NoFall());	
+		ModuleManager.modules.add(new NoFall());
+		ModuleManager.modules.add(new NoHandShake());	
 		ModuleManager.modules.add(new NoHurtCam());
 		ModuleManager.modules.add(new NoPotionEffects());
 		ModuleManager.modules.add(new NoPush());
@@ -122,6 +123,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new ArmorHud());
 		//ModuleManager.modules.add(new KeyStrokes());
 		ModuleManager.modules.add(new DiscordRichPresence());
+		ModuleManager.modules.add(new ClientFont());
 		ModuleManager.modules.add(new ClickGuiModule());
 		ModuleManager.modules.add(new HudEditor());
 	 	ModuleManager.modules.add(new TabGui());	

@@ -5,7 +5,10 @@ import org.lwjgl.input.Keyboard;
 import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
@@ -13,10 +16,13 @@ import net.minecraft.util.EnumHand;
 
 public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
+	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
+	public ModeSetting disableOn = new ModeSetting("disableOn", this, "switchToCrystal", "switchToCrystal", "autoCrystalEnabled");
+	public BooleanSetting disableOnSurround = new BooleanSetting("disableOnSurround", this, false);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode);;
+		this.addSettings(mode, health, disableOnSurround);;
 	}
 	
 	public void onEnable() {
@@ -45,12 +51,20 @@ public class AutoGap extends Module {
 		}
 		
 		if(mode.is("smart")) {
-			if(mc.player.getHealth() <= 14) eatGap();
+			if(mc.player.getHealth() <= health.getValue()) eatGap();
 			
-			if (wasEating && mc.player.getHealth() >= 14) {
+			if (wasEating && mc.player.getHealth() >= health.getValue()) {
 				wasEating = false;
 	            KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	        }
+		}
+		
+		if(disableOnSurround.isEnabled()) {
+			if(((Surround)ModuleManager.getModuleByName("surround")).shiftOnly.isEnabled()) {
+				if(mc.player.isSneaking()) toggle();
+			}else {
+				if(ModuleManager.isModuleEnabled("surround")) toggle();
+			}
 		}
 	}
 	

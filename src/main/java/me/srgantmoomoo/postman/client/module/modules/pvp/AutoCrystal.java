@@ -316,7 +316,7 @@ public class AutoCrystal extends Module {
 	public void onWorldRender(RenderEvent event) {
         if (this.renderBlock != null) {
         	JTessellator.drawBox(this.renderBlock,1, new JColor(color.getValue()), 255);
-        	JTessellator.drawBoundingBox(this.renderBlock, 1, 1.00f, new JColor(color.getValue(),255));
+        	if(outline.isEnabled()) JTessellator.drawBoundingBox(this.renderBlock, 1, 1.00f, new JColor(color.getValue(),255));
         }
 
         if(showDamage.isEnabled()) {
