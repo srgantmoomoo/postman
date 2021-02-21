@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.lukflug.panelstudio.settings.EnumSetting;
 
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.Setting;
 

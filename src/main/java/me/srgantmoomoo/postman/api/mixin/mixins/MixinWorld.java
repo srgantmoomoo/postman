@@ -1,7 +1,7 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderRainEvent;
-import me.srgantmoomoo.postman.client.Main;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

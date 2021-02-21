@@ -2,8 +2,8 @@ package me.srgantmoomoo.postman.client.ui.clickgui;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.util.render.JColor;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -24,7 +24,7 @@ public class ClickGuiModule extends Module {
 	public ColorSetting backgroundColor = new ColorSetting("bgColor", this, new JColor(0, 0, 0, 255)); //(0, 121, 194, 255));
 	public ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", this, new JColor(0, 0, 0, 255));
 	public ColorSetting outlineColor = new ColorSetting("settingsHighlight", this, new JColor(255, 255, 255, 255));
-	public ColorSetting fontColor = new ColorSetting("fontColor", this, new JColor(255, 255, 255, 255)); 
+	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(255, 255, 255, 255)); 
 	public NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
 	
 	public BooleanSetting thinGui = new BooleanSetting("thinGui", this, false);

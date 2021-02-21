@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.api.util;
+package me.srgantmoomoo;
 
 public class Reference {
 	

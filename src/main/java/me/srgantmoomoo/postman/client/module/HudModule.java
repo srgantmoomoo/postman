@@ -7,7 +7,7 @@ import org.lwjgl.input.Keyboard;
 import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.Main;
 
 /**
  * @author lukflug

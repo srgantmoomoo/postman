@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client;
+package me.srgantmoomoo;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import me.srgantmoomoo.postman.api.save.ClickGuiLoad;
 import me.srgantmoomoo.postman.api.save.ClickGuiSave;
 import me.srgantmoomoo.postman.api.save.ConfigStopper;
 import me.srgantmoomoo.postman.api.save.SaveLoad;
-import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;

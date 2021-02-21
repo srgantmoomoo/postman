@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderCameraEvent;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.module.modules.render.NoHurtCam;
 

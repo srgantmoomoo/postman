@@ -1,11 +1,11 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.JTimer;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;

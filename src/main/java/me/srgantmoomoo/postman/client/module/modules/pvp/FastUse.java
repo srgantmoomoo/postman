@@ -18,7 +18,7 @@ public class FastUse extends Module {
 	public BooleanSetting bow = new BooleanSetting("bow", this, true);
 	
 	public FastUse() {
-		super ("fastUse", "lol bow and xp bottle go brrrrrrrr", Keyboard.KEY_NONE, Category.PVP);
+		super ("fastUse", "lol bow and xp bottle go brrrrrrrr.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(xpBottle, bow);
 	}
 	private Minecraft mc = Minecraft.getMinecraft();

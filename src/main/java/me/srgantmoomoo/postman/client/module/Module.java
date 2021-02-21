@@ -7,8 +7,8 @@ import java.util.List;
 
 import com.lukflug.panelstudio.settings.Toggleable;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.setting.Setting;
 import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import net.minecraft.client.Minecraft;

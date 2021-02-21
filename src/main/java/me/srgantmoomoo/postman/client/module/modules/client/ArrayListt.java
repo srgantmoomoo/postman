@@ -10,8 +10,8 @@ import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.util.render.JColor;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;

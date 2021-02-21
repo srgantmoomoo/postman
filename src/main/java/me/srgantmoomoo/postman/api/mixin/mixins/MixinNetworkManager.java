@@ -1,9 +1,9 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
 
 import io.netty.channel.ChannelHandlerContext;
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.NetworkPacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
-import me.srgantmoomoo.postman.client.Main;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import org.spongepowered.asm.mixin.Mixin;

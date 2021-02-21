@@ -2,7 +2,7 @@ package me.srgantmoomoo.postman.api.save;
 
 import java.io.IOException;
 
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiConfig;
 
 /**

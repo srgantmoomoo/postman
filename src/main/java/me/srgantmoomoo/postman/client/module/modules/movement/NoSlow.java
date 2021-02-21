@@ -1,14 +1,12 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 import org.lwjgl.input.Keyboard;
 
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
-import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
-import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.InputUpdateEvent;
 
@@ -20,7 +18,7 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 	
 	public NoSlow() {
 		super ("noSlow", "slow? no.", Keyboard.KEY_NONE, Category.MOVEMENT);
-		this.addSettings(food,web,soulSand,slimeBlock);
+		this.addSettings(food, web, soulSand, slimeBlock);
 	}
 	
 	public void onEnable() {

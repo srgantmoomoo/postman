@@ -2,8 +2,8 @@ package me.srgantmoomoo.postman.client.module.modules.pvp;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
@@ -63,7 +63,7 @@ public class SmartOffHand extends Module {
     }
 
     @EventHandler
-    private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(p_Event -> {
+    private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
     	if(reEnableWhenSafe.isEnabled() && wasEnabled && getHealthWithAbsorption() >= health.getValue()) {
     		toggled = true;
     	}
@@ -109,13 +109,6 @@ public class SmartOffHand extends Module {
     	if(val.is("gap")) return Items.GOLDEN_APPLE;
         
         return Items.TOTEM_OF_UNDYING;
-    }
-
-    private String getItemName(ModeSetting val) {
-    	if(val.is("crystal")) return "crystal";
-    	if(val.is("gap")) return "gap";
-        
-        return "totem";
     }
 
 }

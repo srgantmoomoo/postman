@@ -1,7 +1,7 @@
 package me.srgantmoomoo.postman.api.util.font;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.util.render.JColor;
-import me.srgantmoomoo.postman.client.Main;
 import net.minecraft.client.Minecraft;
 
 public class FontUtils {

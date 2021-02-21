@@ -29,7 +29,7 @@ import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
-import me.srgantmoomoo.postman.api.util.Reference;
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;

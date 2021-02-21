@@ -71,8 +71,8 @@ public class ClickGui extends MinecraftHUDGUI {
 			public void drawString(Point pos, String s, Color c) {
 				GLInterface.end();
 				int x=pos.x+2, y=pos.y+1;
-				if(ModuleManager.getModuleByName("clientFont").isToggled())FontUtils.drawStringWithShadow(true,s,x,y,new JColor(c));
-				else FontUtils.drawStringWithShadow(false,s,x,y,new JColor(c));
+				if(ModuleManager.getModuleByName("clientFont").isToggled())FontUtils.drawStringWithShadow(true,s,x,y,new JColor(255,255,255));
+				else FontUtils.drawStringWithShadow(false,s,x,y,new JColor(255,255,255));
 				GLInterface.begin();
 			}
 			

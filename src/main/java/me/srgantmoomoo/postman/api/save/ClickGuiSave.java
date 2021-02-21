@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiConfig;
 
 /**

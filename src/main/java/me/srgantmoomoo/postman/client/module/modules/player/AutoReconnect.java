@@ -2,10 +2,10 @@ package me.srgantmoomoo.postman.client.module.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.util.world.JTimer;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;

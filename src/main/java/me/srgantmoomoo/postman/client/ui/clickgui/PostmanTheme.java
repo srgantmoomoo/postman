@@ -12,6 +12,8 @@ import com.lukflug.panelstudio.theme.Renderer;
 import com.lukflug.panelstudio.theme.RendererBase;
 import com.lukflug.panelstudio.theme.Theme;
 
+import net.minecraft.util.text.TextFormatting;
+
 /**
  * @author SrgantMooMoo
  */
@@ -91,12 +93,6 @@ public class PostmanTheme implements Theme {
 				context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width - 1,14 + context.getPos().y),new Dimension(1,context.getSize().height - 15)),color,color,color,color);
 			}
 		}
-		
-		private DescriptionRenderer FixedDescription(Point point) {
-			return getDescription();
-		}
-
-
 	
 		@Override
 		public Color getMainColor (boolean focus, boolean active) {
@@ -108,7 +104,7 @@ public class PostmanTheme implements Theme {
 			// inactive modules
 			if (!active && level<2) color=getColorScheme().getBackgroundColor();
 			// category
-			if (active && level<1) color=getColorScheme().getActiveColor();
+			if (active && level<1) color=getColorScheme().getFontColor();
 			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
 			return color;
 		}

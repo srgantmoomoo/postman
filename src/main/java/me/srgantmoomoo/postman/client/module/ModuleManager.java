@@ -8,11 +8,11 @@ import org.lwjgl.input.Keyboard;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
-import me.srgantmoomoo.postman.api.util.Reference;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
@@ -84,6 +84,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new LogOutSpot());
 		ModuleManager.modules.add(new LongJump());
 		ModuleManager.modules.add(new LowOffHand());
+		ModuleManager.modules.add(new MultiTask());
 		ModuleManager.modules.add(new Nametags());	
 		ModuleManager.modules.add(new NewChunks());	
 		ModuleManager.modules.add(new NoFall());

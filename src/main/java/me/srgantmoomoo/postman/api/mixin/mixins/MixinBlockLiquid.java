@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.CanCollideCheckEvent;
-import me.srgantmoomoo.postman.client.Main;
 
 @Mixin(BlockLiquid.class)
 public class MixinBlockLiquid {

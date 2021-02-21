@@ -3,7 +3,7 @@ package me.srgantmoomoo.postman.api.util.misc;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
-import me.srgantmoomoo.postman.api.util.Reference;
+import me.srgantmoomoo.Reference;
 
 public class Discord {
 

@@ -14,10 +14,10 @@ import org.lwjgl.input.Mouse;
 
 import com.google.common.collect.Maps;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerJoinEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerLeaveEvent;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;

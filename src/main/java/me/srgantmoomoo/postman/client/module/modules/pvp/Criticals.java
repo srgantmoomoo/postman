@@ -2,8 +2,8 @@ package me.srgantmoomoo.postman.client.module.modules.pvp;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.NetworkPacketEvent;
-import me.srgantmoomoo.postman.client.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;

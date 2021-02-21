@@ -5,8 +5,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.TransformSideFirstPersonEvent;
-import me.srgantmoomoo.postman.client.Main;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.util.EnumHandSide;
 

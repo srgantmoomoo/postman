@@ -4,7 +4,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.Mixins;
 
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.Main;
 
 import javax.annotation.Nullable;
 import java.util.Map;

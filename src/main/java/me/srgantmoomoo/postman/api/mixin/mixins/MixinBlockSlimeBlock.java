@@ -1,7 +1,6 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
 
 import net.minecraft.block.BlockSlime;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

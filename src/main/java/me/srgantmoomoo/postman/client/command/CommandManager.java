@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
-import me.srgantmoomoo.postman.client.Main;
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.command.commands.*;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.zero.alpine.listener.EventHandler;
