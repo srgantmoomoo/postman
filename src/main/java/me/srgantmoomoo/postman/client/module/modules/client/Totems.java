@@ -8,6 +8,7 @@ import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import net.minecraft.init.Items;
@@ -19,7 +20,7 @@ public class Totems extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
 
 	public Totems() {
-		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11));
+		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11), Category.CLIENT);
 		this.addSettings(color);
 	}
 	

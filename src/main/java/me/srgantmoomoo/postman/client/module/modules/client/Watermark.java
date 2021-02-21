@@ -9,6 +9,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
@@ -17,7 +18,7 @@ public class Watermark extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255)); 
 
 	public Watermark() {
-		super("watermark", "postman watermark!", new Point(-3,1));
+		super("watermark", "postman watermark!", new Point(-3,1), Category.CLIENT);
 		this.addSettings(color);
 	}
 	
@@ -35,7 +36,7 @@ public class Watermark extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return ChatFormatting.WHITE + "postman " + ChatFormatting.RESET + Reference.VERSION;
+			return ChatFormatting.WHITE + Reference.NAME + " " + ChatFormatting.RESET + Reference.VERSION;
 		}
 
 		@Override

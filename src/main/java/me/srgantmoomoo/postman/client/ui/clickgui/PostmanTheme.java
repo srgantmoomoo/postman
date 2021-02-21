@@ -104,7 +104,7 @@ public class PostmanTheme implements Theme {
 			// inactive modules
 			if (!active && level<2) color=getColorScheme().getBackgroundColor();
 			// category
-			if (active && level<1) color=getColorScheme().getFontColor();
+			if (active && level<1) color=getColorScheme().getActiveColor();
 			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
 			return color;
 		}

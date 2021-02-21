@@ -105,7 +105,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Speed());
 		ModuleManager.modules.add(new Sprint());	
 		ModuleManager.modules.add(new Step());
-		ModuleManager.modules.add(new Surround());	
+		ModuleManager.modules.add(new Surround());
 		ModuleManager.modules.add(new Timer());	
 		ModuleManager.modules.add(new Tracers());
 		ModuleManager.modules.add(new Velocity());	

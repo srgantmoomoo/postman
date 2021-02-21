@@ -9,6 +9,7 @@ import com.lukflug.panelstudio.theme.Theme;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
@@ -17,7 +18,7 @@ public class Ping extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public Ping() {
-		super("ping", "shows ur ping on ur hud.", new Point(-3,19));
+		super("ping", "shows ur ping on ur hud.", new Point(-3,19), Category.CLIENT);
 		this.addSettings(color);
 	}
 	

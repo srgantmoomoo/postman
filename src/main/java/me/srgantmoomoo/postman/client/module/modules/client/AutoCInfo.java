@@ -9,6 +9,7 @@ import com.lukflug.panelstudio.theme.Theme;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
@@ -20,7 +21,7 @@ public class AutoCInfo extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public AutoCInfo() {
-		super("autoCrystalInfo", "shows if autocrystal is on or off.", new Point(-3,39));
+		super("autoCrystalInfo", "shows if autocrystal is on or off.", new Point(-3,39), Category.CLIENT);
 		this.addSettings(color);
 	}
 	

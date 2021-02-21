@@ -8,6 +8,7 @@ import com.lukflug.panelstudio.theme.Theme;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import net.minecraft.client.Minecraft;
@@ -17,7 +18,7 @@ public class Frames extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public Frames() {
-		super("frames", "shows ur fps on ur hud.", new Point(-3,29));
+		super("frames", "shows ur fps on ur hud.", new Point(-3,29), Category.CLIENT);
 		this.addSettings(color);
 	}
 	

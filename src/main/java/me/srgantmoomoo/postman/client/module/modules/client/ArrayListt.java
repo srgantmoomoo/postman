@@ -12,6 +12,7 @@ import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -29,7 +30,7 @@ public class ArrayListt extends HudModule {
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 
 	public ArrayListt() {
-		super("arrayList", "shows currently enabled modules.", new Point(-3,59));
+		super("arrayList", "shows currently enabled modules.", new Point(-3,59), Category.CLIENT);
 		this.addSettings(color, sortHeight, sortLength, showHidden, forgeHax);
 	}
     

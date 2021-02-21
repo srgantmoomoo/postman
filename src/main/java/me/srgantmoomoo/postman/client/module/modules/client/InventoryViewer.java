@@ -9,6 +9,7 @@ import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
@@ -22,7 +23,7 @@ public class InventoryViewer extends HudModule {
 	public ModeSetting sizee = new ModeSetting("size", this, "normal", "normal", "compact");
     
     public InventoryViewer() {
-    	super("inventoryViewer","shows ur inventory on ur hud.", new Point(300,10));
+    	super("inventoryViewer","shows ur inventory on ur hud.", new Point(300,10), Category.CLIENT);
     	this.addSettings(color, sizee);
     }
     

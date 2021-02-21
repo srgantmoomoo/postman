@@ -9,6 +9,7 @@ import com.lukflug.panelstudio.theme.Theme;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
@@ -20,7 +21,7 @@ public class SurroundInfo extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 
 	public SurroundInfo() {
-		super("surroundInfo", "shows if surround is on or off.", new Point(-3,49));
+		super("surroundInfo", "shows if surround is on or off.", new Point(-3,49), Category.CLIENT);
 		this.addSettings(color);
 	}
 	
