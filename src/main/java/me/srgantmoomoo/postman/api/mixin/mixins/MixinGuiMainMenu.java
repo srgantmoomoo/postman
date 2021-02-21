@@ -25,10 +25,9 @@ public class MixinGuiMainMenu extends GuiScreen {
 		FontRenderer fr = mc.fontRenderer;
 	    fr.drawStringWithShadow(TextFormatting.ITALIC + Reference.NAME + TextFormatting.WHITE + " by" + TextFormatting.GRAY + "" +
 	    		TextFormatting.ITALIC+ " SrgantMooMoo", 2, 2, 0xff79c2ec); 
-	    fr.drawStringWithShadow("ur on version" + TextFormatting.ITALIC + Reference.VERSION + "!", 2, 12, 0xff79c2ec);
-	    fr.drawStringWithShadow("https://moomooooo.github.io/postman/", 2, 22, 0xd3d3d3);
-	    fr.drawStringWithShadow("https://github.com/moomooooo/postman", 58, 32, 0xd3d3d3);
-	    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 2, 42, 0xd3d3d3);
+	    fr.drawStringWithShadow(TextFormatting.WHITE + "ur on version" + TextFormatting.ITALIC + Reference.VERSION + "!", 2, 12, 0xff79c2ec);
+	    fr.drawStringWithShadow("https://moomooooo.github.io/postman/", 2, 22, 0xff79c2ec);
+	    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 2, 32, 0xff79c2ec);
 	}
   }
 }
