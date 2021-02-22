@@ -10,7 +10,6 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
 /*
@@ -24,8 +23,8 @@ public class MixinGuiMainMenu extends GuiScreen {
 	if(ModuleManager.getModuleByName("mainMenuInfo").isToggled()) {
 		FontRenderer fr = mc.fontRenderer;
 	    fr.drawStringWithShadow(TextFormatting.ITALIC + Reference.NAME + TextFormatting.WHITE + " by" + TextFormatting.GRAY + "" +
-	    		TextFormatting.ITALIC+ " SrgantMooMoo", 2, 2, 0xff79c2ec); 
-	    fr.drawStringWithShadow(TextFormatting.WHITE + "ur on version" + TextFormatting.ITALIC + Reference.VERSION + "!", 2, 12, 0xff79c2ec);
+	    		TextFormatting.ITALIC + " SrgantMooMoo", 2, 2, 0xff79c2ec); 
+	    fr.drawStringWithShadow(TextFormatting.WHITE + "ur on version " + TextFormatting.ITALIC + Reference.VERSION + "!", 2, 12, 0xff79c2ec);
 	    fr.drawStringWithShadow("https://moomooooo.github.io/postman/", 2, 22, 0xff79c2ec);
 	    fr.drawStringWithShadow("https://discord.gg/Jd8EmEuhb5", 2, 32, 0xff79c2ec);
 	}

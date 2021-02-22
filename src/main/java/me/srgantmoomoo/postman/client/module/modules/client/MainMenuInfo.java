@@ -9,7 +9,7 @@ public class MainMenuInfo extends Module {
 	
 	public MainMenuInfo() {
 		super("mainMenuInfo", "shows postman on minecrafts main menu screen.", Keyboard.KEY_NONE, Category.CLIENT);
-		toggled = false;
+		toggled = true;
 	}
 	//check MixinGuiMainMenu :)
 

@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 public class SmartOffHand extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal");
 	public NumberSetting health = new NumberSetting("health", this, 14, 0, 20, 1);
-	public BooleanSetting reEnableWhenSafe = new BooleanSetting("reEnableWhenSafe", this, true);
+	public BooleanSetting reEnableWhenSafe = new BooleanSetting("reEnableWhenSafe", this, false);
 	
 	public SmartOffHand() {
 		super("smartOffHand", "smart, off. HAND.", Keyboard.KEY_NONE, Category.PVP);

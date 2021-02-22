@@ -21,6 +21,9 @@
 	"MixinPlayerOverlay",
 	"MixinRenderer",
 	"MixinRendererLivingEntity",
-	"MixinWorld"
+	"MixinWorld",
+	"MixinMinecraft",
+	"MixinPlayerControllerMP",
+	"accessor.AccessorEntityPlayerSP"
 ]
 }
