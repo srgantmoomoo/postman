@@ -61,12 +61,10 @@ public class ArmorHud extends Module {
 		}
 	 	
 	 	public void onEnable() {
-	 		super.onEnable();
 	 		MinecraftForge.EVENT_BUS.register(this);
 	 	}
 	 	
 	 	public void onDisable() {
-	 		super.onDisable();
 	 		MinecraftForge.EVENT_BUS.unregister(this);
 	 	}
 

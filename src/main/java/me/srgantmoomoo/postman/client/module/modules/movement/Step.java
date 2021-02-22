@@ -39,7 +39,6 @@ public class Step extends Module {
 
     @Override
     public void onEnable() {
-        super.onEnable();
         Main.EVENT_BUS.subscribe(this);
         cancelStage = 0;
         
@@ -49,7 +48,6 @@ public class Step extends Module {
 
     @Override
     public void onDisable() {
-        super.onDisable();
         Main.EVENT_BUS.unsubscribe(this);
     }
 

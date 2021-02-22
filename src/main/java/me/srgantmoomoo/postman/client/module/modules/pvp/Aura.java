@@ -43,15 +43,6 @@ public class Aura extends Module {
 			attack(target);
 		});
 	}
-	
-
-	public void onEnable() {
-		super.onEnable();
-	}
-
-	public void onDisable() {
-		super.onDisable();
-	}
 
 	public void attack(Entity e) {
 		if (mc.player.getCooledAttackStrength(0) >= 1){

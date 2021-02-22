@@ -30,7 +30,6 @@ public class Speed extends Module {
 	private JTimer timer = new JTimer();
 	
 	public void onEnable() {
-		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
 		playerSpeed = EntityUtil.getBaseMoveSpeed();
 	}

@@ -35,13 +35,5 @@ public class AutoClicker extends Module {
 				}
 			}
 	}
-	
-	public void onEnable() {
-		super.onEnable();
-	}
-	
-	public void onDisable() {
-		super.onDisable();
-	}
 
 }

@@ -22,12 +22,10 @@ public class Criticals extends Module {
 	}
 	
 	public void onEnbale() {
-		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
 	}
 		
 	public void onDisable() {
-		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
 	}
 

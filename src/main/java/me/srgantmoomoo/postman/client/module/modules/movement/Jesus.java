@@ -30,12 +30,10 @@ public class Jesus extends Module {
 	public float offset = 0.5f;
 	
 	public void onEnable() {
-		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
 	}
 	
 	public void onDisbale() {
-		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
 	}
 	

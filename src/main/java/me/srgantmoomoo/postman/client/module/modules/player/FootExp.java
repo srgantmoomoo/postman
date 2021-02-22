@@ -23,12 +23,10 @@ public class FootExp extends Module {
 	}
 	
 	public void onEnable() {
-		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
 	}
 	
 	public void onDisbale() {
-		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
 	}
 	

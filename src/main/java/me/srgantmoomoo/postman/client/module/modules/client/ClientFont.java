@@ -19,7 +19,6 @@ public class ClientFont extends Module {
 	}
 	
 	public void onEnable() {
-		super.onEnable();
 		if(font.is("Comic Sans Ms")) {
 			Main.getInstance().customFontRenderer = new CustomFontRenderer(new Font("Comic Sans MS", Font.PLAIN, 18), true, true);
 		}

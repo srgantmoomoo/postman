@@ -30,13 +30,11 @@ public class DamageTiltCorrection extends Module {
 	}
 	
 	public void onEnable() {
-		super.onEnable();
 		PacketHandler.init();
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	public void onDisable() {
-		super.onDisable();
 		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 	

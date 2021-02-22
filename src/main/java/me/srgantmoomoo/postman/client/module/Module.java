@@ -47,9 +47,13 @@ public abstract class Module implements Toggleable {
 	
 	public void onRender(){}
 	
-	protected void enable(){}
+	protected void enable(){
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
-	protected void disable(){}
+	protected void disable(){
+		MinecraftForge.EVENT_BUS.unregister(this);
+	}
 	
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));

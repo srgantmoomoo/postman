@@ -192,7 +192,6 @@ public class Esp extends Module {
    }
 
     public void onDisable() {
-    	super.onDisable();
         if (entities != mc.player) {
         	entities.forEach(p -> p.setGlowing(false));
         }

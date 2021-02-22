@@ -86,7 +86,6 @@ public class AutoCrystal extends Module {
 	
 	public BooleanSetting switchToCrystal = new BooleanSetting("switchToCrystal", this, false);
 	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, true);
-	public BooleanSetting multiPlace = new BooleanSetting("multiPlace", this, false);
 	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
 	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);
 	
@@ -94,7 +93,7 @@ public class AutoCrystal extends Module {
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,multiPlace,cancelCrystal,switchToCrystal,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
+		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,cancelCrystal,switchToCrystal,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
 				,enemyRange,facePlaceValue,raytrace,outline,showDamage,color);
 	}
 	
@@ -112,7 +111,6 @@ public class AutoCrystal extends Module {
 	
 	@Override
 	public void onEnable() {
-		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
 		PlacedCrystals.clear();
 		active = false;
@@ -120,7 +118,6 @@ public class AutoCrystal extends Module {
 	
 	@Override
 	public void onDisable() {
-		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
 		renderBlock = null;
         renderEnt = null;
@@ -261,7 +258,6 @@ public class AutoCrystal extends Module {
 		renderBlock = blockPos1;
 
 		if(timer.getTimePassed() / 50 >= 20 - breakSpeed.getValue()) {
-            if (!multiPlace.isEnabled()) {
 
                 if (rotate.isEnabled()) {
                     lookAtPacket(blockPos1.getX() + 0.5D, blockPos1.getY() - 0.5D, blockPos1.getZ() + 0.5D, mc.player);
@@ -304,7 +300,6 @@ public class AutoCrystal extends Module {
                     } else {
                         mc.player.rotationPitch -= 0.0004;
                         togglePitch = true;
-                    }
                 }
             }
             if (!placeCrystal.isEnabled()) return;

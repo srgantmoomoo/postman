@@ -33,12 +33,10 @@ public class SmartOffHand extends Module {
 	public boolean wasEnabled;
 	
 	public void onEnable() {
-		super.onEnable();
 		wasEnabled = false;
 	}
 	
 	public void onDisable() {
-		super.onDisable();
 		wasEnabled = true;
 	}
 	

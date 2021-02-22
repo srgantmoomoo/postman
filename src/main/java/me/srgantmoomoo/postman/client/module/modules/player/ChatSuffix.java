@@ -7,6 +7,7 @@ import org.lwjgl.input.Keyboard;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraftforge.client.event.ClientChatEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatSuffix extends Module {
@@ -59,10 +60,10 @@ public class ChatSuffix extends Module {
 	}
 	
 	public void onEnable() {
-		super.onEnable();
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	public void onDisbale() {
-		super.onDisable();
+		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 }

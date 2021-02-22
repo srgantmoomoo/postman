@@ -17,12 +17,10 @@ public class SafeWalk extends Module {
 	}
 	
 	public void onEnable() {
-		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
 	}
 	
 	public void onDisable() {
-		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
 	}
 	
