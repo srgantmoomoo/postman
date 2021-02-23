@@ -8,6 +8,9 @@ import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.JTimer;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.notification.Notification;
+import me.srgantmoomoo.postman.client.notification.NotificationManager;
+import me.srgantmoomoo.postman.client.notification.NotificationType;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
@@ -111,6 +114,7 @@ public class AutoCrystal extends Module {
 	
 	@Override
 	public void onEnable() {
+		NotificationManager.show(new Notification(NotificationType.INFO, "autoCrystal", "autoCrystal enabled", 1));
 		Main.EVENT_BUS.subscribe(this);
 		PlacedCrystals.clear();
 		active = false;

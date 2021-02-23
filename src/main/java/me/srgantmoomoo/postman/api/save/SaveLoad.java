@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import me.srgantmoomoo.Main;
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.Setting;
@@ -28,7 +29,7 @@ public class SaveLoad {
 	private File dataFile;
 	   
 	public SaveLoad() {
-		dir = new File(Minecraft.getMinecraft().gameDir, "postman");
+		dir = new File(Minecraft.getMinecraft().gameDir, Reference.NAME);
 		if(!dir.exists()) {
 			dir.mkdir();
 		}

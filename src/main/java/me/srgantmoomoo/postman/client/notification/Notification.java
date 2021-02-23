@@ -2,12 +2,16 @@ package me.srgantmoomoo.postman.client.notification;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 
 import java.awt.Color;
+
+import org.lwjgl.opengl.GL11;
 
 public class Notification {
     private NotificationType type;
@@ -71,11 +75,11 @@ public class Notification {
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
 
-        drawRect(10, 10 - 5 - height, 10, 10 - 5, color.getRGB());
-        drawRect(10, 10 - 5 - height, 10 - offset + 4, 10 - 5, color1.getRGB());
+        drawRect(600 - offset, 600 - 5 - height, 600, 600 - 5, color.getRGB());
+        drawRect(600 - offset, 600 - 5 - height, 600 - offset + 4, 600 - 5, color1.getRGB());
 
-        fontRenderer.drawString(title, (int) (10 - offset + 8), 10 - 2 - height, -1);
-        fontRenderer.drawString(messsage, (int) (10 - offset + 8), 10 - 15, -1);
+        fontRenderer.drawString(title, (int) (600 - offset + 8), 600 - 2 - height, -1);
+        fontRenderer.drawString(messsage, (int) (600 - offset + 8), 600 - 15, -1);
     }
 
     public static void drawRect(double left, double top, double right, double bottom, int color) {
@@ -129,7 +133,7 @@ public class Notification {
         float f1 = (float) (color >> 8 & 255) / 255.0F;
         float f2 = (float) (color & 255) / 255.0F;
         Tessellator tessellator = Tessellator.getInstance();
-        BufferBuilder  worldrenderer = tessellator.getBuffer();
+        BufferBuilder worldrenderer = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);

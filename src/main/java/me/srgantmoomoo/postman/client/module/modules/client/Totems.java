@@ -10,6 +10,7 @@ import com.lukflug.panelstudio.theme.Theme;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,9 @@ import net.minecraft.item.ItemStack;
 
 public class Totems extends HudModule {
 	private TotemList list=new TotemList();
+	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
+	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Totems() {
 		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11), Category.CLIENT);
@@ -63,7 +66,7 @@ public class Totems extends HudModule {
 
 		@Override
 		public boolean sortRight() {
-			return false;
+			return sort.isEnabled();
 		}
 	}
 }

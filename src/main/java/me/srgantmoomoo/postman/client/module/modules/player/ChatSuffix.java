@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -25,7 +26,7 @@ public class ChatSuffix extends Module {
 		{
 			if (event.getMessage().startsWith(s)) return;
 		}
-		event.setMessage(event.getMessage() + " " + "\u23D0" + toUnicode(" postman strong")); 
+		event.setMessage(event.getMessage() + " " + "\u23D0" + toUnicode(Reference.NAME + " strong")); 
 		}
 	}
 	

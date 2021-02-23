@@ -16,10 +16,11 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 
 /*
  * i looked at a bit of salhack for some of the stuff used here o_0
- * SrgantMooMoo feb 14 2021 (valentines day, and im all a fucking lone :')
+ * SrgantMooMoo feb 14 2021 (valentines day, and im all a fucking lone :stronk_tone6: :')
  */
 public class SmartOffHand extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal");
@@ -32,11 +33,15 @@ public class SmartOffHand extends Module {
 	}
 	public boolean wasEnabled;
 	
+	@Override
 	public void onEnable() {
+		Main.EVENT_BUS.subscribe(this);
 		wasEnabled = false;
 	}
 	
+	@Override
 	public void onDisable() {
+		Main.EVENT_BUS.unsubscribe(this);
 		wasEnabled = true;
 	}
 	

@@ -17,6 +17,7 @@ import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.notification.Notification;
+import me.srgantmoomoo.postman.client.notification.NotificationType;
 import me.srgantmoomoo.postman.client.setting.SettingManager;
 import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
@@ -88,9 +89,6 @@ public class Main {
 		
 		customFontRenderer = new CustomFontRenderer(new Font("Comic Sans MS", Font.PLAIN, 18), false,false);
 		log.info("custom font initialized.");
-		
-		notification = new Notification(null, null, null, 0);
-		log.info("notification system initialized.");
 		
 		settingManager = new SettingManager();
 		log.info("settings system initialized.");

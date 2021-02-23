@@ -11,10 +11,13 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 public class Coords extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255)); 
+	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+
 
 	public Coords() {
 		super("coords", "shows ur coords on ur hud.", new Point(100,1), Category.CLIENT);
@@ -52,7 +55,7 @@ public class Coords extends HudModule {
 
 		@Override
 		public boolean sortRight() {
-			return false;
+			return sort.isEnabled();
 		}
 	}
 }

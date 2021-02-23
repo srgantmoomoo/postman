@@ -10,12 +10,14 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import net.minecraft.client.Minecraft;
 
 
 public class Frames extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
+	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Frames() {
 		super("frames", "shows ur fps on ur hud.", new Point(-3,29), Category.CLIENT);
@@ -52,7 +54,7 @@ public class Frames extends HudModule {
 
 		@Override
 		public boolean sortRight() {
-			return false;
+			return sort.isEnabled();
 		}
 	}
 }

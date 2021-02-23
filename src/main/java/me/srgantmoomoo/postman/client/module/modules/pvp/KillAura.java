@@ -18,14 +18,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class Aura extends Module {
+public class KillAura extends Module {
 	public NumberSetting rangeA = new NumberSetting("range", this, 4, 1, 6, 0.5);
 	public BooleanSetting passiveMobsA = new BooleanSetting("passives", this, false);
 	public BooleanSetting hostileMobsA = new BooleanSetting("hostiles", this, false);
 	public BooleanSetting playersA = new BooleanSetting("players", this, true);
 	
-	public Aura() {
-		super ("aura", "automatically hits anything near u.", Keyboard.KEY_NONE, Category.PVP);
+	public KillAura() {
+		super ("killAura", "automatically hits anything near u.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(rangeA, playersA, passiveMobsA, hostileMobsA);
 	}
 

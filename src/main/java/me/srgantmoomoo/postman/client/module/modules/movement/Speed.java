@@ -15,6 +15,10 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.init.MobEffects;
 
+/*
+ * strafe is iffy rn, vanilla obvi doesn't work in most cases, strafe utils 
+ */
+
 public class Speed extends Module {
 	public NumberSetting timerSpeed = new NumberSetting("timerSpeed", this, 1.15, 1, 1.5, 0.01);
 	public NumberSetting jumpHeight = new NumberSetting("jumpHeight", this, 0.41, 0, 1, 0.01);

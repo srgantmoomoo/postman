@@ -11,11 +11,13 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 
 public class Ping extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
+	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Ping() {
 		super("ping", "shows ur ping on ur hud.", new Point(-3,19), Category.CLIENT);
@@ -63,7 +65,7 @@ public class Ping extends HudModule {
 
 		@Override
 		public boolean sortRight() {
-			return false;
+			return sort.isEnabled();
 		}
 	}
 }

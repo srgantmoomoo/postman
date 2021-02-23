@@ -18,7 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public abstract class Module implements Toggleable {
+public class Module implements Toggleable {
 	
 	protected static final Minecraft mc = Minecraft.getMinecraft();
 	public static ArrayList<Module> modules;
@@ -47,13 +47,17 @@ public abstract class Module implements Toggleable {
 	
 	public void onRender(){}
 	
-	protected void enable(){
-		MinecraftForge.EVENT_BUS.register(this);
+	public void enable() {
+		setToggled(true);
 	}
 
-	protected void disable(){
-		MinecraftForge.EVENT_BUS.unregister(this);
+	public void disable() {
+		setToggled(false);
 	}
+	
+	protected void onEnable() {}
+
+	protected void onDisable() {}
 	
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));
@@ -107,18 +111,6 @@ public abstract class Module implements Toggleable {
 		if(Main.saveLoad != null) {
 			Main.saveLoad.save();
 		}
-	}
-	
-	protected void onEnable() {
-		MinecraftForge.EVENT_BUS.register(this);
-		Main.EVENT_BUS.subscribe(this);
-		enable();
-	}
-	
-	protected void onDisable() {
-		MinecraftForge.EVENT_BUS.register(this);
-		Main.EVENT_BUS.subscribe(this);
-		disable();
 	}
 	
 	public String getName() {
