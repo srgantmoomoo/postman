@@ -55,10 +55,6 @@ thank you,
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding**
 - outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
 - surround & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client. 0_0
-- 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
-
-**a lot of inspiration from tutorials and what not taken from these creators, so thank you so much to them**
-- sebsb - https://www.youtube.com/channel/UChsMQm_9PXITsUhBkypP_1A.
-- superblaubeere27 - https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
+- 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore.
 
 ... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. srgantmoomoo#1052
