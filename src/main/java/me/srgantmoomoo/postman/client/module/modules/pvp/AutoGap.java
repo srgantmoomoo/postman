@@ -71,9 +71,6 @@ public class AutoGap extends Module {
 			if(mc.currentScreen == null) {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
 				wasEating = true;
-			}else {
-            mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
-            wasEating = true;
 			}
 		}
 	}

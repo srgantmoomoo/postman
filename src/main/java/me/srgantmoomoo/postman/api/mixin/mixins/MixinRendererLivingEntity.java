@@ -27,6 +27,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
     @Shadow
     protected ModelBase mainModel;
 
+    // chams
     @Inject(method = "doRender", at = @At("HEAD"))
     private <T extends EntityLivingBase> void injectChamsPre(final T a, final double b, final double c, final double d, final float e, final float f, final CallbackInfo g) {
         if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
@@ -45,10 +46,10 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
 
     /**
      * @author superblaubeere27
-     * idk i stole this from that guy ^
+     * outline esp's
      */
-    @Overwrite
-    protected void renderModel(T entitylivingbaseIn, float p_77036_2_, float p_77036_3_, float p_77036_4_, float p_77036_5_, float p_77036_6_, float scaleFactor) {
+    @Inject(method = "renderModel", at = @At("HEAD"))
+    protected void renderModel(T entitylivingbaseIn, float p_77036_2_, float p_77036_3_, float p_77036_4_, float p_77036_5_, float p_77036_6_, float scaleFactor, final CallbackInfo g) {
     	// etc yea ok cool
         boolean flag = !entitylivingbaseIn.isInvisible();
         boolean flag1 = !flag && !entitylivingbaseIn.isInvisibleToPlayer(Minecraft.getMinecraft().player);
