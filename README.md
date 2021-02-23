@@ -1,11 +1,15 @@
 # postman
-this client was started for fun as a project to help with my java and coding in general. i started getting into coding around July of 2020 and a project like this is perfect, not only for fun, but to help me out. postman originally started as a private project with roots stemming from my previous project, Present, i decided to make postman a public project on Halloween 2020, the original set release date for Present Utility Mod. :)
-
-postman is a client for Minecraft 1.12.2 intended for use on servers which allow client-side modification. this client is not intended for and is of no use on servers which do not allow it. postman takes inspiration from a few clients listed in the credits below, and uses Zeros Alpine for an event system and lukflugs panelstudio for the clickGui, so thank you to all mentioned! this wouldn't be possible without them. i intend for this project to be as community driven as possible, no private access, no private development, every beta release is public and free to use! and with this GitHub, the client is now officially open source.
+[![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
+[![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
+[![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
+[![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE) <br>
+<hr>
+postman is a client that runs of Minecraft Forge 1.12.2, it is intended for use on servers which allow client-side modification. postman takes inpiration from many previoud clients like osiris, kami, gamesense, and others. this client uses ZeroMemes's Alpine for an event system, lukflugs PanelStudio for the clickGui library, and Forge's 1.12.2 mod api. i intend for this project to be community driven and as open as possible, open acces, open development, and open sourced. 
+<br>
+<br>
 
 this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.5, PanelStudio 0.1.8, and is coded in 100% java (although the website code is not java, obviously).
 
-join the postman discord - https://discord.gg/Jd8EmEuhb. <br />
 check out the postman website - https://moomooooo.github.io/postman/. <br />
 *postman archive* - this basically just holds all the old versions of postman, https://github.com/moomooooo/postman-archive. <br />
 
@@ -51,10 +55,6 @@ thank you,
 **bassically everything that has been skidded, hopefully one day this is pointless :D. whenever i have the time, i try to work on unskidding**
 - outline esp utils - *superblaubeere27* https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
 - surround & holeTp - *gamesense* https://github.com/IUDevman/gamesense-client. 0_0
-- 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore, some drama or smthn, not sure lol.
-
-**a lot of inspiration from tutorials and what not taken from these creators, so thank you so much to them**
-- sebsb - https://www.youtube.com/channel/UChsMQm_9PXITsUhBkypP_1A.
-- superblaubeere27 - https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg.
+- 2dEsp - mostly taken from *finz0's Osiris*, but changed a quite bit. git doesent exsist anymore.
 
 ... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. srgantmoomoo#1052
