@@ -1,5 +1,8 @@
 # postman
-![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square) ![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square) ![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square) ![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square) <br>
+[![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
+[![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
+[![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
+[![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE) <br>
 <hr>
 this client was started for fun as a project to help with my java and coding in general. i started getting into coding around July of 2020 and a project like this is perfect, not only for fun, but to help me out. postman originally started as a private project with roots stemming from my previous project, Present, i decided to make postman a public project on Halloween 2020, the original set release date for Present Utility Mod. :)
 
