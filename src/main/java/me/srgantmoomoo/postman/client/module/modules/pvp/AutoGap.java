@@ -45,10 +45,8 @@ public class AutoGap extends Module {
 	
 	public void onUpdate() {
 		if(mode.is("always")) {
-			if(!(mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock) || !(mc.player.getHeldItemOffhand().getItem() instanceof ItemBlock)) {
 				if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
 				eatGap();
-			}
 		}
 		
 		if(mode.is("smart")) {
@@ -70,13 +68,13 @@ public class AutoGap extends Module {
 	}
 	
 	public void eatGap() {
-			if(!(mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock)) {
-				
+			if(mc.player.getHeldItemMainhand().getItem() == Items.GOLDEN_APPLE || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) {
 				if(mc.currentScreen == null) {
 					KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
 					wasEating = true;
+				}else {
+		            mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
 				}
 			}
 	}
-
 }
