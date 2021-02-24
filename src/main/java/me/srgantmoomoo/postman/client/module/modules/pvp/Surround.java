@@ -36,7 +36,7 @@ public class Surround extends Module {
 	public BooleanSetting shiftOnly = new BooleanSetting("onShift", this, false);
 	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
 	public BooleanSetting disableOnJump = new BooleanSetting("offJump", this, false);
-	public BooleanSetting centerPlayer = new BooleanSetting("autoCenter", this, false);
+	public BooleanSetting centerPlayer = new BooleanSetting("autoCenter", this, true);
 	public NumberSetting tickDelay = new NumberSetting("tickDelay", this, 5, 0, 10, 1);
 	public NumberSetting timeOutTicks = new NumberSetting("timeOutTicks", this, 40, 1, 100, 10);
 	public NumberSetting blocksPerTick = new NumberSetting("blocksPerTick", this, 4, 0, 8, 1);

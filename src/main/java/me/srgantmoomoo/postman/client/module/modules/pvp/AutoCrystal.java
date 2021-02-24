@@ -92,7 +92,7 @@ public class AutoCrystal extends Module {
 	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
 	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(0, 255, 0, 255));
+	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255));
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
@@ -189,16 +189,19 @@ public class AutoCrystal extends Module {
 	
 	private void placeLogic() {
 		 int crystalSlot = mc.player.getHeldItemMainhand().getItem() == Items.END_CRYSTAL ? mc.player.inventory.currentItem : -1;
-	        if (crystalSlot == -1) {
-	            for (int l = 0; l < 9; ++l) {
-	                if (mc.player.inventory.getStackInSlot(l).getItem() == Items.END_CRYSTAL) {
-	                    if (mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.END_CRYSTAL) {
-	                        crystalSlot = l;
-	                        break;
-	                    }
-	                }
-	            }
-	        }
+		 if (crystalSlot == -1) {
+			 for (int l = 0; l < 9; ++l) {
+				 if (mc.player.inventory.getStackInSlot(l).getItem() == Items.END_CRYSTAL) {
+					 if (mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.END_CRYSTAL) {
+						 crystalSlot = l;
+						 break;
+					 }
+				 }
+			 }
+		 }
+		 if (crystalSlot == -1) {
+			 return;
+		 }
 		
 		if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) offHand=true;
 		else offHand=false;

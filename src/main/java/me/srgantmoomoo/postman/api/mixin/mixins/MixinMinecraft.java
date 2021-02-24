@@ -23,7 +23,7 @@ public class MixinMinecraft {
 
 	@Inject(method = "rightClickMouse", at = @At("HEAD"))
 	public void rightClickMousePre(CallbackInfo ci) {
-		if (ModuleManager.isModuleEnabled("multiTask")) {
+		if (ModuleManager.isModuleEnabled("multitask")) {
 			isHittingBlock = playerController.getIsHittingBlock();
 			playerController.isHittingBlock = false;
 		}
@@ -31,14 +31,14 @@ public class MixinMinecraft {
 
 	@Inject(method = "rightClickMouse", at = @At("RETURN"))
 	public void rightClickMousePost(CallbackInfo ci) {
-		if (ModuleManager.isModuleEnabled("multiTask") && !playerController.getIsHittingBlock()) {
+		if (ModuleManager.isModuleEnabled("multitask") && !playerController.getIsHittingBlock()) {
 			playerController.isHittingBlock = isHittingBlock;
 		}
 	}
 
 	@Inject(method = "sendClickBlockToController", at = @At("HEAD"))
 	public void sendClickBlockToControllerPre(boolean leftClick, CallbackInfo ci) {
-		if (ModuleManager.isModuleEnabled("multiTask")) {
+		if (ModuleManager.isModuleEnabled("multitask")) {
 			handActive = player.isHandActive();
 			((AccessorEntityPlayerSP) player).gsSetHandActive(false);
 		}
@@ -46,7 +46,7 @@ public class MixinMinecraft {
 
 	@Inject(method = "sendClickBlockToController", at = @At("RETURN"))
 	public void sendClickBlockToControllerPost(boolean leftClick, CallbackInfo ci) {
-		if (ModuleManager.isModuleEnabled("multiTask") && !player.isHandActive()) {
+		if (ModuleManager.isModuleEnabled("multitask") && !player.isHandActive()) {
 			((AccessorEntityPlayerSP) player).gsSetHandActive(handActive);
 		}
 	}

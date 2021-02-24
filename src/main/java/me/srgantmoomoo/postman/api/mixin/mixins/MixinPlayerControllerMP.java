@@ -13,7 +13,7 @@ public abstract class MixinPlayerControllerMP {
 	//author cookiedragon234
 	@Inject(method = "resetBlockRemoving", at = @At("HEAD"), cancellable = true)
 	private void resetBlock(CallbackInfo callbackInfo) {
-		if (ModuleManager.isModuleEnabled("multiTask")) {
+		if (ModuleManager.isModuleEnabled("multitask")) {
 			callbackInfo.cancel();
 		}
 	}

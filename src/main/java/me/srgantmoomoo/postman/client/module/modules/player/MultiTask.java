@@ -5,10 +5,10 @@ import org.lwjgl.input.Keyboard;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 
-public class MultiTask extends Module {
+public class Multitask extends Module {
 	
-	public MultiTask() {
-		super("multiTask", "allows you to do multiple things with each hand.", Keyboard.KEY_NONE, Category.PLAYER);
+	public Multitask() {
+		super("multitask", "allows you to do different things in each hand.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 
 }

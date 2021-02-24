@@ -26,7 +26,7 @@ public class ChatSuffix extends Module {
 		{
 			if (event.getMessage().startsWith(s)) return;
 		}
-		event.setMessage(event.getMessage() + " " + "\u23D0" + toUnicode(Reference.NAME + " strong")); 
+		event.setMessage(event.getMessage() + " " + "\u23D0" + toUnicode(" " + Reference.NAME + " strong")); 
 		}
 	}
 	

@@ -9,8 +9,11 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
+import net.minecraft.block.Block;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumHand;
 
@@ -67,12 +70,13 @@ public class AutoGap extends Module {
 	}
 	
 	public void eatGap() {
-		if(mc.player.getHeldItemMainhand().getItem() == Items.GOLDEN_APPLE || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) {
-			if(mc.currentScreen == null) {
-				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
-				wasEating = true;
+			if(!(mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock)) {
+				
+				if(mc.currentScreen == null) {
+					KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
+					wasEating = true;
+				}
 			}
-		}
 	}
 
 }
