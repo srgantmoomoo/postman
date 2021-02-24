@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.player;
+package me.srgantmoomoo.postman.client.module.modules.pvp;
 
 import org.lwjgl.input.Keyboard;
 
@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 public class AutoArmor extends Module {
 	
 	public AutoArmor() {
-		super("autoArmor", "automatically applies the best armor.", Keyboard.KEY_NONE, Category.PLAYER);
+		super("autoArmor", "automatically applies the best armor.", Keyboard.KEY_NONE, Category.PVP);
 	}
 	private Minecraft mc = Minecraft.getMinecraft();
 	

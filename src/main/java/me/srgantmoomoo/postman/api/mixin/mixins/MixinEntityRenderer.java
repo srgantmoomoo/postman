@@ -14,14 +14,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderCameraEvent;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.module.modules.render.NoHurtCam;
+import me.srgantmoomoo.postman.client.module.modules.render.NoRender;
 
 @Mixin(EntityRenderer.class)
 public class MixinEntityRenderer {
 
 	@Inject(method = "hurtCameraEffect", at = @At("HEAD"), cancellable = true)
 	public void hurtCameraEffect(float ticks, CallbackInfo info) {
-		if (ModuleManager.isModuleEnabled("noHurtCam") && ((NoHurtCam)ModuleManager.getModuleByName("noHurtCam")).mode.is("normal"))
+		if (ModuleManager.isModuleEnabled("noRender") && ((NoRender)ModuleManager.getModuleByName("noRender")).hurtCam.is("normal"))
 			info.cancel();
 	}
 	

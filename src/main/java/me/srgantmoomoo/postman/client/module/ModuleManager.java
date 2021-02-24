@@ -52,10 +52,12 @@ public class ModuleManager {
 		ModuleManager.modules.add(new AutoElytra());
 		ModuleManager.modules.add(new AutoGap());	
 		ModuleManager.modules.add(new AutoHut());
+		ModuleManager.modules.add(new AutoMine());	
 		ModuleManager.modules.add(new AutoReconnect());	
 		ModuleManager.modules.add(new AutoRespawn());	
 		ModuleManager.modules.add(new AutoTotem());	
-		ModuleManager.modules.add(new AutoTrap());	
+		ModuleManager.modules.add(new AutoTrap());
+		ModuleManager.modules.add(new AutoUse());	
 		ModuleManager.modules.add(new AutoWalk());
 		ModuleManager.modules.add(new Backdoor2b2t());
 		ModuleManager.modules.add(new Blink());	
@@ -89,11 +91,8 @@ public class ModuleManager {
 		ModuleManager.modules.add(new NewChunks());	
 		ModuleManager.modules.add(new NoFall());
 		ModuleManager.modules.add(new NoHandShake());	
-		ModuleManager.modules.add(new NoHurtCam());
-		ModuleManager.modules.add(new NoPortalEffect());
-		ModuleManager.modules.add(new NoPotionEffects());
 		ModuleManager.modules.add(new NoPush());
-		ModuleManager.modules.add(new NoRain());
+		ModuleManager.modules.add(new NoRender());
 		ModuleManager.modules.add(new NoSlow());
 		ModuleManager.modules.add(new Peek());
 		ModuleManager.modules.add(new PlayerClone());

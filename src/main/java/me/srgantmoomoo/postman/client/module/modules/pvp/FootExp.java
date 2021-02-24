@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.player;
+package me.srgantmoomoo.postman.client.module.modules.pvp;
 
 import org.lwjgl.input.Keyboard;
 
@@ -19,7 +19,7 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 public class FootExp extends Module {
 	
 	public FootExp() {
-		super ("footExp", "automatically throws xp bottles downwards.", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("footExp", "automatically throws xp bottles downwards.", Keyboard.KEY_NONE, Category.PVP);
 	}
 	
 	public void onEnable() {

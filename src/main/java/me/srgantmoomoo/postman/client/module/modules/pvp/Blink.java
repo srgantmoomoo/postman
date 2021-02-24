@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.player;
+package me.srgantmoomoo.postman.client.module.modules.pvp;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
@@ -19,7 +19,7 @@ public class Blink extends Module {
 	  private EntityOtherPlayerMP player;
 
 	public Blink() {
-		super ("blink", "makes temporary player clone and stuff.", Keyboard.KEY_NONE, Category.PLAYER);
+		super ("blink", "makes temporary player clone and stuff.", Keyboard.KEY_NONE, Category.PVP);
 	}
 	
 @EventHandler
