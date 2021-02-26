@@ -87,6 +87,7 @@ public class AutoCrystal extends Module {
 	public NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
 	public NumberSetting enemyRange = new NumberSetting("enemyRange", this, 6.0, 0.0, 16.0, 1.0);
 	
+	public BooleanSetting mode113 = new BooleanSetting("1.13place", this, false);
 	public BooleanSetting switchToCrystal = new BooleanSetting("switchToCrystal", this, false);
 	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, true);
 	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
@@ -96,7 +97,7 @@ public class AutoCrystal extends Module {
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,cancelCrystal,switchToCrystal,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
+		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,cancelCrystal,switchToCrystal,mode113,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
 				,enemyRange,facePlaceValue,raytrace,outline,showDamage,color);
 	}
 	
@@ -114,6 +115,7 @@ public class AutoCrystal extends Module {
 	
 	@Override
 	public void onEnable() {
+		super.onEnable();
 		NotificationManager.show(new Notification(NotificationType.INFO, "autoCrystal", "autoCrystal enabled", 1));
 		Main.EVENT_BUS.subscribe(this);
 		PlacedCrystals.clear();
@@ -122,6 +124,7 @@ public class AutoCrystal extends Module {
 	
 	@Override
 	public void onDisable() {
+		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
 		renderBlock = null;
         renderEnt = null;
@@ -199,13 +202,16 @@ public class AutoCrystal extends Module {
 				 }
 			 }
 		 }
-		 if (crystalSlot == -1) {
+		 
+		 if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) offHand=true;
+		else offHand=false;
+		 
+		 if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) {
+			 offHand = true;
+		 }else if (crystalSlot == -1) {
 			 return;
 		 }
-		
-		if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) offHand=true;
-		else offHand=false;
-		
+		 
 		List<BlockPos> blocks = findCrystalBlocks();
 		List<Entity> entities = new ArrayList<>();
 		
@@ -480,10 +486,19 @@ public class AutoCrystal extends Module {
 	public boolean canPlaceCrystal(BlockPos blockPos) {
         BlockPos boost = blockPos.add(0, 1, 0);
         BlockPos boost2 = blockPos.add(0, 2, 0);
-            return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
+        if(mode113.isEnabled()) {
+        	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
                     || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
                     && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
                     && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+        }else {
+        return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
+                || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
+                && mc.world.getBlockState(boost).getBlock() == Blocks.AIR
+                && mc.world.getBlockState(boost2).getBlock() == Blocks.AIR
+                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
+                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+        }
     }
 	
 	public List<BlockPos> getSphere(BlockPos loc, float r, int h, boolean hollow, boolean sphere, int plus_y) {
