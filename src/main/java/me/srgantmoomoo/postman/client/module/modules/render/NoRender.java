@@ -20,7 +20,7 @@ public class NoRender extends Module {
 	public BooleanSetting rain = new BooleanSetting("rain", this, false);
 	public ModeSetting hurtCam = new ModeSetting("hurtCam", this, "disabled", "disabled", "normal", "penis");
 	public BooleanSetting potionEffects = new BooleanSetting("potionEffects", this, false);
-	public ModeSetting fire = new ModeSetting("fire", this, "disabled", "disabled", "noRender", "noAnimation");
+	public BooleanSetting fire = new BooleanSetting("fire", this, false);
 	public BooleanSetting portalEffect = new BooleanSetting("portalEffect", this, false);
 	
 	public NoRender() {
@@ -72,6 +72,6 @@ public class NoRender extends Module {
 	// fire
 	@EventHandler
     private Listener<RenderBlockOverlayEvent> OnBlockOverlayEvent = new Listener<>(event -> {
-        if (fire.is("noRender") && event.getOverlayType() == OverlayType.FIRE) event.setCanceled(true);
+        if (fire.isEnabled() && event.getOverlayType() == OverlayType.FIRE) event.setCanceled(true);
     });
 }

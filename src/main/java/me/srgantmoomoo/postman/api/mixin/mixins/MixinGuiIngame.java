@@ -11,7 +11,7 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.module.modules.render.NoRender;
 
 @Mixin(GuiIngame.class)
-public class MixinPlayerOverlay {
+public class MixinGuiIngame {
 
 	@Inject(method = "renderPotionEffects", at = @At("HEAD"), cancellable = true)
 	protected void renderPotionEffectsHook(ScaledResolution scaledRes, CallbackInfo callbackInfo) {

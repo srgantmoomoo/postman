@@ -18,12 +18,13 @@
 	"MixinItemRenderer",
 	"MixinMovementInputFromOptions",
 	"MixinNetworkManager",
-	"MixinPlayerOverlay",
-	"MixinRenderer",
-	"MixinRendererLivingEntity",
+	"MixinGuiIngame",
+	"MixinRender",
+	"MixinRenderLivingBase",
 	"MixinWorld",
 	"MixinMinecraft",
 	"MixinPlayerControllerMP",
+	"MixinAbstractClientPlayer",
 	"accessor.AccessorEntityPlayerSP"
 ]
 }

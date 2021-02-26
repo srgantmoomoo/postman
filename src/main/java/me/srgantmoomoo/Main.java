@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import me.srgantmoomoo.postman.api.cape.Capes;
 import me.srgantmoomoo.postman.api.event.EventProcessor;
 import me.srgantmoomoo.postman.api.proxy.CommonProxy;
 import me.srgantmoomoo.postman.api.save.ClickGuiLoad;
@@ -17,7 +18,6 @@ import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.notification.Notification;
-import me.srgantmoomoo.postman.client.notification.NotificationType;
 import me.srgantmoomoo.postman.client.setting.SettingManager;
 import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
@@ -46,6 +46,7 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingManager settingManager;
 	public static CommandManager commandManager;
+	public static Capes capes;
 	public static SaveLoad saveLoad;
 	public ClickGui clickGui;
 	public static TabGui tabGui;
@@ -101,6 +102,9 @@ public class Main {
 		commandManager = new CommandManager();
 		log.info("command system initialized.");
 		
+		capes = new Capes();
+		log.info("capes initialized.");
+		
 		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
 		log.info("tabgui initialized.");
@@ -116,7 +120,7 @@ public class Main {
 		
 		log.info("postman initialization finished.");
 	
-	} //pp
+	}
 	
 	@EventHandler
 	public void postInit (FMLPostInitializationEvent event) {

@@ -21,7 +21,7 @@ import me.srgantmoomoo.postman.client.module.modules.render.Esp;
 import java.awt.*;
 
 @Mixin(RenderLivingBase.class)
-public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> extends MixinRenderer<T> {
+public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends MixinRender<T> {
 
     @Shadow
     protected ModelBase mainModel;
