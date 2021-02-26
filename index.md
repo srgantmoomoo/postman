@@ -95,7 +95,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
 	    <li>inventoryViewer<p><i>gives you a hud of your inventory.</i></p></li>
 	    <li>coords<p><i>shows you your current coordinates in game.</i></p></li>
 	    <li>armorHud<p><i>gives you a display of your armor along with the durability of each armor piece.</i></p></li>
-        <li>capes<p><i>allows u to see your own, and other peoples postman capes (if u have ++).</i></p></li>
+        <li>capes<p><i>allows u to see your own, and other peoples postman capes (u can get a cape if u have ++).</i></p></li>
 	    <li>discordRp<p><i>shows you are playing postman on discord.</i></p></li>
         <li>clientFont<p><i>allows u to change the font of the client.</i></p></li>
 	    <li>clickGuiModule<p><i>gives you multiple setting to customize the clickGui to your liking.</i></p></li>
