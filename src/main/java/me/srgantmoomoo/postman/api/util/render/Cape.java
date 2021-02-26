@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.api.cape;
+package me.srgantmoomoo.postman.api.util.render;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Capes {
+public class Cape {
 
 	List<UUID> uuids = new ArrayList<>();
 
-	public Capes() {
+	public Cape() {
 		try {
-			URL capesList = new URL("https://raw.githubusercontent.com/IUDevman/gamesense-assets/main/files/capeslist.txt");
+			URL capesList = new URL("https://pastebin.com/raw/2K1zmXZc");
 			BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {

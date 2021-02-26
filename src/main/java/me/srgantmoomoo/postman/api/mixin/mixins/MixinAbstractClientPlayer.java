@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 
 import java.util.UUID;
 
@@ -25,6 +26,8 @@ public abstract class MixinAbstractClientPlayer {
 	public void getLocationCape(CallbackInfoReturnable<ResourceLocation> callbackInfoReturnable) {
 		UUID uuid = getPlayerInfo().getGameProfile().getId();
 		Main.getInstance();
-		callbackInfoReturnable.setReturnValue(new ResourceLocation(Reference.MOD_ID, "textures/postmanCape.png"));
+		if (ModuleManager.isModuleEnabled("capes") && Main.cape.hasCape(uuid)) {
+			callbackInfoReturnable.setReturnValue(new ResourceLocation(Reference.MOD_ID, "textures/postmancape.png"));
+		}
 	}
 }

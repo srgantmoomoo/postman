@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import me.srgantmoomoo.postman.api.cape.Capes;
 import me.srgantmoomoo.postman.api.event.EventProcessor;
 import me.srgantmoomoo.postman.api.proxy.CommonProxy;
 import me.srgantmoomoo.postman.api.save.ClickGuiLoad;
@@ -14,6 +13,7 @@ import me.srgantmoomoo.postman.api.save.ClickGuiSave;
 import me.srgantmoomoo.postman.api.save.ConfigStopper;
 import me.srgantmoomoo.postman.api.save.SaveLoad;
 import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
+import me.srgantmoomoo.postman.api.util.render.Cape;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -46,7 +46,7 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingManager settingManager;
 	public static CommandManager commandManager;
-	public static Capes capes;
+	public static Cape cape;
 	public static SaveLoad saveLoad;
 	public ClickGui clickGui;
 	public static TabGui tabGui;
@@ -102,7 +102,7 @@ public class Main {
 		commandManager = new CommandManager();
 		log.info("command system initialized.");
 		
-		capes = new Capes();
+		cape = new Cape();
 		log.info("capes initialized.");
 		
 		MinecraftForge.EVENT_BUS.register(new TabGui());

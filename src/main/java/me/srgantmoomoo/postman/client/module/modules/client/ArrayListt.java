@@ -63,6 +63,7 @@ public class ArrayListt extends HudModule {
     					&& !module.getName().equalsIgnoreCase("coords")
     					&& !module.getName().equalsIgnoreCase("Esp2dHelper")
     					&& !module.getName().equalsIgnoreCase("killAuraInfo")
+    					&& !module.getName().equalsIgnoreCase("capes")
     					&& !module.getName().equalsIgnoreCase("clientFont")) {
     				list.activeModules.add(module);
     			}
