@@ -46,12 +46,11 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingManager settingManager;
 	public static CommandManager commandManager;
-	public static Cape cape;
 	public static SaveLoad saveLoad;
-	public ClickGui clickGui;
 	public static TabGui tabGui;
+	public static Cape cape;
+	public ClickGui clickGui;
 	public EventProcessor eventProcessor;
-	public static Notification notification;
 	public CustomFontRenderer customFontRenderer;
 	public ClickGuiSave clickGuiSave;
 	public ClickGuiLoad clickGuiLoad;

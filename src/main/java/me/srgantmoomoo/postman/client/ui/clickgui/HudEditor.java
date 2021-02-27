@@ -17,14 +17,17 @@ public class HudEditor extends Module {
 	
 	public void onEnable() {
 		Main.getInstance().clickGui.enterHUDEditor();
-		disable();
 	}
 	
 	public void onUpdate() {
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
-			if(exitToClickGui.isEnabled()) { this.setToggled(!toggled); Main.getInstance().clickGui.enterGUI(); }
-			else { this.setToggled(!toggled); }
+			if(exitToClickGui.isEnabled()) {
+				this.setToggled(false); 
+				Main.getInstance().clickGui.enterGUI(); 
+			}else {
+				this.setToggled(false);
+			}
 		}
 		
 	}
