@@ -19,7 +19,7 @@ public class Prefix extends Command {
 			ModuleManager.addChatMessage(String.format(ChatFormatting.GREEN + "prefix " + ChatFormatting.GRAY + "was set to " + ChatFormatting.GREEN + CommandManager.prefix));
 		}
 		
-		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> !bind <module> <key>");
+		if(args.length == 0) ModuleManager.addChatMessage("correct usage of prefix command -> " + CommandManager.prefix + "prefix <key>");
 	}
 
 }
