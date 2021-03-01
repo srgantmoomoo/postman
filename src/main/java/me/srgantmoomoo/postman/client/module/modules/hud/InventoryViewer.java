@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import java.awt.Color;
 import java.awt.Point; 
@@ -23,7 +23,7 @@ public class InventoryViewer extends HudModule {
 	public ModeSetting sizee = new ModeSetting("size", this, "normal", "normal", "compact");
     
     public InventoryViewer() {
-    	super("inventoryViewer","shows ur inventory on ur hud.", new Point(300,10), Category.CLIENT);
+    	super("inventoryViewer","shows ur inventory on ur hud.", new Point(300,10), Category.HUD);
     	this.addSettings(color, sizee);
     }
     

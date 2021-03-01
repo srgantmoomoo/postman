@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.client.command.Command;
+import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 
@@ -43,7 +44,7 @@ public class Bind extends Command {
 			}
 			ModuleManager.addChatMessage("cleared all binds.");
 		}
-		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> !bind <module> <key>");
+		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> " + CommandManager.prefix + "bind <module> <key>");
 	}
 
 }

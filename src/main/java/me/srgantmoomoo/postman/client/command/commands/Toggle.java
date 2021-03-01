@@ -3,6 +3,7 @@ package me.srgantmoomoo.postman.client.command.commands;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.postman.client.command.Command;
+import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 
@@ -29,7 +30,7 @@ public class Toggle extends Command {
 				ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
 			}
 		}else {
-			ModuleManager.addChatMessage("correct usage of toggle command -> !toggle <module>");
+			ModuleManager.addChatMessage("correct usage of toggle command -> " + CommandManager.prefix + "toggle <module>");
 		}
 	}
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.Main;
@@ -11,15 +13,21 @@ import me.srgantmoomoo.postman.client.command.commands.*;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraftforge.client.event.ClientChatEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 public class CommandManager {
 	
 	public List<Command> commands = new ArrayList<Command>();
-	public String prefix = "!";
+	public static String prefix = ",";
 	public boolean commandFound = false;
 	
 	public CommandManager() {
+		MinecraftForge.EVENT_BUS.register(this);
 		Main.EVENT_BUS.subscribe(this);
 		register();
 	}
@@ -28,6 +36,7 @@ public class CommandManager {
 		commands.add(new Toggle());
 		commands.add(new Bind());
 		commands.add(new Help());
+		commands.add(new Prefix());
 	}
 	
 	@EventHandler
@@ -54,4 +63,20 @@ public class CommandManager {
         	}
         }
     });
+	
+	@SubscribeEvent
+	public void key(KeyInputEvent e) {
+		if (prefix.length() == 1) {
+            final char key = Keyboard.getEventCharacter();
+            if (prefix.charAt(0) == key) {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiChat());
+                ((GuiChat) Minecraft.getMinecraft().currentScreen).inputField.setText(prefix);
+            }
+        }
+	}
+	
+	public static void setCommandPrefix(String pre) {
+        prefix = pre;
+    }
+	
 }
