@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -23,7 +23,7 @@ public class Totems extends HudModule {
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Totems() {
-		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11), Category.CLIENT);
+		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11), Category.HUD);
 		this.addSettings(color);
 	}
 	

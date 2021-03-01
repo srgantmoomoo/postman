@@ -1,8 +1,7 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import java.awt.Color;
 import java.awt.Point;
-
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
@@ -13,35 +12,25 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import net.minecraft.client.Minecraft;
 
 
-public class Ping extends HudModule {
+public class Frames extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-	public Ping() {
-		super("ping", "shows ur ping on ur hud.", new Point(-3,19), Category.CLIENT);
+	public Frames() {
+		super("frames", "shows ur fps on ur hud.", new Point(-3,29), Category.HUD);
 		this.addSettings(color);
 	}
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new PingList());
+		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new FramesList());
 	}
 	
-	private static int getPing () {
-        int p = -1;
-        if (mc.player == null || mc.getConnection() == null || mc.getConnection().getPlayerInfo(mc.player.getName()) == null) {
-            p = -1;
-        }
-        else {
-            p = mc.getConnection().getPlayerInfo(mc.player.getName()).getResponseTime();
-        }
-        return p;
-    }
-	
-	private class PingList implements HUDList {
-		
+	private class FramesList implements HUDList {
+
 		@Override
 		public int getSize() {
 			return 1;
@@ -49,8 +38,8 @@ public class Ping extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			if(getPing() >= 200) return "ping " + getPing();
-			else return ChatFormatting.WHITE + "ping " + getPing();
+			if(Minecraft.getDebugFPS() <= 20) return "fps "+ Minecraft.getDebugFPS();
+			else return ChatFormatting.WHITE + "fps "+ Minecraft.getDebugFPS();
 		}
 
 		@Override

@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -14,22 +14,33 @@ import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
-public class Coords extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255)); 
+
+public class Ping extends HudModule {
+	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-
-	public Coords() {
-		super("coords", "shows ur coords on ur hud.", new Point(100,1), Category.CLIENT);
+	public Ping() {
+		super("ping", "shows ur ping on ur hud.", new Point(-3,19), Category.HUD);
 		this.addSettings(color);
 	}
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new CoordsList());
+		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new PingList());
 	}
 	
-	private class CoordsList implements HUDList {
+	private static int getPing () {
+        int p = -1;
+        if (mc.player == null || mc.getConnection() == null || mc.getConnection().getPlayerInfo(mc.player.getName()) == null) {
+            p = -1;
+        }
+        else {
+            p = mc.getConnection().getPlayerInfo(mc.player.getName()).getResponseTime();
+        }
+        return p;
+    }
+	
+	private class PingList implements HUDList {
 		
 		@Override
 		public int getSize() {
@@ -38,9 +49,8 @@ public class Coords extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return ChatFormatting.RESET + "(x)" + ChatFormatting.WHITE + mc.player.getPosition().getX()
-					+ ChatFormatting.RESET + "(y)" + ChatFormatting.WHITE + mc.player.getPosition().getY()
-					+ ChatFormatting.RESET + "(z)" + ChatFormatting.WHITE + mc.player.getPosition().getZ();
+			if(getPing() >= 200) return "ping " + getPing();
+			else return ChatFormatting.WHITE + "ping " + getPing();
 		}
 
 		@Override

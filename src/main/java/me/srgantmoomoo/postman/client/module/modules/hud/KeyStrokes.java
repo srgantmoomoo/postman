@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -44,7 +44,7 @@ public class KeyStrokes extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
     
     public KeyStrokes() {
-    	super("keyStrokes","key strooookkkesss", new Point(0,10), Category.CLIENT);
+    	super("keyStrokes","key strooookkkesss", new Point(0,10), Category.HUD);
     	this.addSettings(color);
     }
     

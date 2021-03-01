@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -30,7 +30,7 @@ public class ArrayListt extends HudModule {
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 
 	public ArrayListt() {
-		super("arrayList", "shows currently enabled modules.", new Point(-3,59), Category.CLIENT);
+		super("arrayList", "shows currently enabled modules.", new Point(-3,59), Category.HUD);
 		this.addSettings(color, sortHeight, sortLength, showHidden, forgeHax);
 	}
     

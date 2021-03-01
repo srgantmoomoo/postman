@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import org.lwjgl.input.Keyboard;
 
@@ -17,7 +17,7 @@ public class ArmorHud extends Module {
 	public boolean on;
 	
 	public ArmorHud() {
-		super ("armorHud", "shows ur armor values on top of hotbar", Keyboard.KEY_NONE, Category.CLIENT);
+		super ("armorHud", "shows ur armor values on top of hotbar", Keyboard.KEY_NONE, Category.HUD);
 	}
 	private Minecraft mc = Minecraft.getMinecraft();
 

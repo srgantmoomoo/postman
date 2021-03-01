@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.module.modules.client;
+package me.srgantmoomoo.postman.client.module.modules.hud;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -18,7 +18,7 @@ public class Watermark extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255)); 
 
 	public Watermark() {
-		super("watermark", "postman watermark!", new Point(-3,1), Category.CLIENT);
+		super("watermark", "postman watermark!", new Point(-3,1), Category.HUD);
 		this.addSettings(color);
 	}
 	

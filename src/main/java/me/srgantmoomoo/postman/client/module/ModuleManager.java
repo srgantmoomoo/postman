@@ -15,6 +15,17 @@ import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
+import me.srgantmoomoo.postman.client.module.modules.hud.ArmorHud;
+import me.srgantmoomoo.postman.client.module.modules.hud.ArrayListt;
+import me.srgantmoomoo.postman.client.module.modules.hud.AutoCInfo;
+import me.srgantmoomoo.postman.client.module.modules.hud.Coords;
+import me.srgantmoomoo.postman.client.module.modules.hud.Frames;
+import me.srgantmoomoo.postman.client.module.modules.hud.InventoryViewer;
+import me.srgantmoomoo.postman.client.module.modules.hud.KillAuraInfo;
+import me.srgantmoomoo.postman.client.module.modules.hud.Ping;
+import me.srgantmoomoo.postman.client.module.modules.hud.SurroundInfo;
+import me.srgantmoomoo.postman.client.module.modules.hud.Totems;
+import me.srgantmoomoo.postman.client.module.modules.hud.Watermark;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
 import me.srgantmoomoo.postman.client.module.modules.player.*;
 import me.srgantmoomoo.postman.client.module.modules.pvp.*;
@@ -111,7 +122,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new Velocity());	
 		ModuleManager.modules.add(new ViewModel());	
 		ModuleManager.modules.add(new Xray());
-		//client
+		//hud
 		ModuleManager.modules.add(new Watermark());
 		ModuleManager.modules.add(new Totems());
 		ModuleManager.modules.add(new Ping());
@@ -123,16 +134,16 @@ public class ModuleManager {
 		ModuleManager.modules.add(new InventoryViewer());
 		ModuleManager.modules.add(new Coords());
 		ModuleManager.modules.add(new ArmorHud());
+		ModuleManager.modules.add(new HudEditor());
+		//client
 		//ModuleManager.modules.add(new KeyStrokes());
+		ModuleManager.modules.add(new ClientFont());
 		ModuleManager.modules.add(new Capes());
 		ModuleManager.modules.add(new DiscordRichPresence());
-		ModuleManager.modules.add(new ClientFont());
 		ModuleManager.modules.add(new ClickGuiModule());
-		ModuleManager.modules.add(new HudEditor());
-	 	ModuleManager.modules.add(new TabGui());	
+	 	ModuleManager.modules.add(new TabGui());
 	 	ModuleManager.modules.add(new MainMenuInfo());
-		ModuleManager.modules.add(new Esp2dHelper());	
-		
+		ModuleManager.modules.add(new Esp2dHelper());
 	}
 	
 	public static void onUpdate() {
