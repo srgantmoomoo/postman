@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 public class CommandManager {
 	
 	public List<Command> commands = new ArrayList<Command>();
-	public String prefix = ",";
+	public static String prefix = ",";
 	public boolean commandFound = false;
 	
 	public CommandManager() {
@@ -36,6 +36,7 @@ public class CommandManager {
 		commands.add(new Toggle());
 		commands.add(new Bind());
 		commands.add(new Help());
+		commands.add(new Prefix());
 	}
 	
 	@EventHandler
@@ -65,13 +66,17 @@ public class CommandManager {
 	
 	@SubscribeEvent
 	public void key(KeyInputEvent e) {
-		if (this.prefix.length() == 1) {
+		if (prefix.length() == 1) {
             final char key = Keyboard.getEventCharacter();
-            if (this.prefix.charAt(0) == key) {
+            if (prefix.charAt(0) == key) {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiChat());
-                ((GuiChat) Minecraft.getMinecraft().currentScreen).inputField.setText(this.prefix);
+                ((GuiChat) Minecraft.getMinecraft().currentScreen).inputField.setText(prefix);
             }
         }
 	}
+	
+	public static void setCommandPrefix(String pre) {
+        prefix = pre;
+    }
 	
 }
