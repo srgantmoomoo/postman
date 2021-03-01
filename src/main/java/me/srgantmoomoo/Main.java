@@ -17,7 +17,6 @@ import me.srgantmoomoo.postman.api.util.render.Cape;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.notification.Notification;
 import me.srgantmoomoo.postman.client.setting.SettingManager;
 import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
@@ -93,8 +92,7 @@ public class Main {
 		settingManager = new SettingManager();
 		log.info("settings system initialized.");
 		
-		MinecraftForge.EVENT_BUS.register(new ModuleManager());
-		// ^^^ module manager needs to register to minecraft forge event for things like onkeypressed
+		MinecraftForge.EVENT_BUS.register(new ModuleManager()); // for onKeyPressed
 		moduleManager = new ModuleManager();
 		log.info("module system initialized.");
 		
