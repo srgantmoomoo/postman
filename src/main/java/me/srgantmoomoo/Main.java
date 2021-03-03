@@ -1,6 +1,7 @@
 package me.srgantmoomoo;
 
 import java.awt.Font;
+import java.sql.Ref;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +31,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.lwjgl.opengl.Display;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -74,13 +76,12 @@ public class Main {
 	
 	@EventHandler
 	public void preInit (FMLPreInitializationEvent event) {
-		
+		Display.setTitle(Reference.NAME + Reference.VERSION);
 	}
 	
 	@EventHandler
 	public void init (FMLInitializationEvent event) {
 		eventProcessor = new EventProcessor();
-		eventProcessor.init();
 		log.info("postman event system initialized.");
 		
 		MinecraftForge.EVENT_BUS.register(this);
@@ -91,8 +92,7 @@ public class Main {
 		
 		settingManager = new SettingManager();
 		log.info("settings system initialized.");
-		
-		MinecraftForge.EVENT_BUS.register(new ModuleManager()); // for onKeyPressed
+
 		moduleManager = new ModuleManager();
 		log.info("module system initialized.");
 		
@@ -101,7 +101,7 @@ public class Main {
 		
 		cape = new Cape();
 		log.info("capes initialized.");
-		
+
 		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
 		log.info("tabgui initialized.");
@@ -118,7 +118,7 @@ public class Main {
 		log.info("postman initialization finished.");
 	
 	}
-	
+
 	@EventHandler
 	public void postInit (FMLPostInitializationEvent event) {
 		

@@ -41,6 +41,8 @@ public class EventProcessor {
 
 	public EventProcessor() {
 		instance = this;
+		Main.EVENT_BUS.subscribe(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@SubscribeEvent
@@ -77,11 +79,6 @@ public class EventProcessor {
 	public void onRenderScreen(RenderGameOverlayEvent.Text event) {
 		Main.EVENT_BUS.post(event);
 	}
-	
-	@SubscribeEvent
-    public void onChat(ClientChatEvent event) {
-        Main.EVENT_BUS.post(event);
-    }
 
 	@SubscribeEvent
 	public void onChatReceived(ClientChatReceivedEvent event) {
@@ -202,10 +199,5 @@ public class EventProcessor {
 		}
 
 		return null;
-	}
-	
-	public void init() {
-		Main.EVENT_BUS.subscribe(this);
-		MinecraftForge.EVENT_BUS.register(this);
 	}
 }
