@@ -1,30 +1,29 @@
 package me.srgantmoomoo.postman.api.mixin.mixins;
 
-import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.Event.Era;
-import me.srgantmoomoo.postman.api.event.events.PlayerMotionUpdateEvent;
-import me.srgantmoomoo.postman.api.event.events.PlayerMoveEvent;
-import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.MoverType;
-import net.minecraftforge.client.event.ClientChatEvent;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.api.event.Event.Era;
+import me.srgantmoomoo.postman.api.event.events.PlayerMotionUpdateEvent;
+import me.srgantmoomoo.postman.api.event.events.PlayerMoveEvent;
+import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
+
 @Mixin(EntityPlayerSP.class)
 public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
 
-
-	// poo
 	public MixinEntityPlayerSP() {
 		super(null, null);
 	}
-
-	@Inject(method = "onUpdateWalkingPlayer", at = @At("HEAD"), cancellable = true)
+	
+	   @Inject(method = "onUpdateWalkingPlayer", at = @At("HEAD"), cancellable = true)
 	    public void OnPreUpdateWalkingPlayer(CallbackInfo info) {
 	        PlayerMotionUpdateEvent event = new PlayerMotionUpdateEvent(Era.PRE);
 	        Main.EVENT_BUS.post(event);
@@ -53,13 +52,5 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
 		   PlayerMoveEvent moveEvent = new PlayerMoveEvent(type, x, y, z);
 		   Main.EVENT_BUS.post(moveEvent);
 		   super.move(type, moveEvent.x, moveEvent.y, moveEvent.z);
-	   }
-
-	   @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
-	   public void sendChat(String p_sendChatMessage_1_, CallbackInfo ci) {
-		   ClientChatEvent event = new ClientChatEvent(p_sendChatMessage_1_);
-		   Main.EVENT_BUS.post(event);
-		   if (event.isCanceled())
-		   	   ci.cancel();
 	   }
 }

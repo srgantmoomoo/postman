@@ -3,7 +3,6 @@ package me.srgantmoomoo.postman.client.ui;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraftforge.common.MinecraftForge;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.client.module.Category;
@@ -37,7 +36,6 @@ public class TabGui extends Module {
 	
 	public TabGui() {
 		super ("tabGui", "cloocky clocky", Keyboard.KEY_NONE, Category.CLIENT);
-		MinecraftForge.EVENT_BUS.register(this);
 		toggled = true;
 		tab = false;
 	}
@@ -68,6 +66,32 @@ public class TabGui extends Module {
 						fr.drawStringWithShadow("<" + " " + c.name, sr.getScaledWidth() - 57, 62 + count * 12, 0xffffffff);
 				count++;
 			}
+			
+			/* Category category = Category.values()[currentTab];
+			for (Module mod : Main.moduleManager.getModuleList()) {
+			 if(category.name.equals("player")) {
+				 fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 47 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
+				}else {
+					if(category.name.equals("render")) {
+					fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 61 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
+				
+				}else {
+					if(category.name.equals("pvp")) {
+						fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 75 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
+				}else {
+					if(category.name.equals("exploits")) {
+						fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 89 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
+				
+				}else {
+					if(category.name.equals("client")) {
+						fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 103 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
+				}
+			}
+				
+		}
+				}
+				}
+				} */
 			} 
 	if(expanded) {
 		Category category = Category.values()[currentTab];

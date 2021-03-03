@@ -29,7 +29,7 @@ public class Module implements Toggleable {
 	public boolean toggled;
 	public boolean expanded;
 	public int index;
-	public List<Setting> settings = new ArrayList<>();
+	public List<Setting> settings = new ArrayList<Setting>();
 	
 	public Module(String name, String description, int key, Category category) {
 		super();
@@ -66,6 +66,10 @@ public class Module implements Toggleable {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public int getKey() {
