@@ -2,6 +2,11 @@ package me.srgantmoomoo.postman.client.module.modules.player;
 
 import java.util.Arrays;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.api.event.events.PacketEvent;
+import me.zero.alpine.listener.EventHandler;
+import me.zero.alpine.listener.Listener;
+import net.minecraft.network.play.client.CPacketChatMessage;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.Reference;
@@ -18,18 +23,20 @@ public class ChatSuffix extends Module {
 		this.addSettings();
 	}
 
-	@SubscribeEvent
-	public void onChat(final ClientChatEvent event)
-	{
-		if(toggled) {
-		for (final String s : Arrays.asList("/", ".", "-", ",", ":", ";", "'", "\"", "+", "\\", "@"))
-		{
-			if (event.getMessage().startsWith(s)) return;
+	@EventHandler
+	private Listener<PacketEvent.Send> packetListener = new Listener<>(event -> {
+		if (toggled) {
+			if (event.getPacket() instanceof CPacketChatMessage) {
+				for (final String s : Arrays.asList("/", ".", "-", ",", ":", ";", "'", "\"", "+", "\\", "@")) {
+					if (((CPacketChatMessage) event.getPacket()).getMessage().startsWith(s)) return;
+				}
+
+				((CPacketChatMessage) event.getPacket()).getMessage().concat(" " + "\u23D0" + toUnicode(" " + Reference.NAME + " strong"));
+			}
 		}
-		event.setMessage(event.getMessage() + " " + "\u23D0" + toUnicode(" " + Reference.NAME + " strong")); 
-		}
-	}
-	
+	});
+
+	// wut
 	public String toUnicode(String s) {
 		return s.toLowerCase()
 				.replace("a", "\u1d00")
@@ -61,10 +68,10 @@ public class ChatSuffix extends Module {
 	}
 	
 	public void onEnable() {
-		MinecraftForge.EVENT_BUS.register(this);
+		Main.EVENT_BUS.subscribe(this);
 	}
 	
 	public void onDisbale() {
-		MinecraftForge.EVENT_BUS.unregister(this);
+		Main.EVENT_BUS.unsubscribe(this);
 	}
 }

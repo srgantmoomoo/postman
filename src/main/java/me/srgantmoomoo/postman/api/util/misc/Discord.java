@@ -21,7 +21,7 @@ public class Discord {
         discordRichPresence.details = "im on version " + Reference.VERSION + "!";
         discordRichPresence.largeImageKey = "postmanlogo";
         discordRichPresence.largeImageText = "by SrgantMooMoo and others!";
-        discordRichPresence.state = "postman strong";
+        discordRichPresence.state = "postman strong - gav06 was here ;)";
         discordRPC.Discord_UpdatePresence(discordRichPresence);
     }
 
