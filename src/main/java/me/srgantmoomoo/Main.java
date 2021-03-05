@@ -76,47 +76,81 @@ public class Main {
 	public void preInit (FMLPreInitializationEvent event) {
 		
 	}
-	
-	@EventHandler
-	public void init (FMLInitializationEvent event) {
+
+	public Object syncronize = new Object();
+
+	public void printLog(String text) {
+		synchronized (syncronize) {
+			log.info(text);
+		}
+	}
+
+	public void fontInit() {
+
+		customFontRenderer = new CustomFontRenderer(new Font("Comic Sans MS", Font.PLAIN, 18), false,false);
+		printLog("custom font initialized.");
+	}
+
+	private void loadCfg() {
+		saveLoad = new SaveLoad();
+		printLog("configs initialized.");
+	}
+
+	public void extClientInit() {
+
 		eventProcessor = new EventProcessor();
 		eventProcessor.init();
-		log.info("postman event system initialized.");
-		
+		printLog("postman event system initialized.");
+
 		MinecraftForge.EVENT_BUS.register(this);
-		log.info("forge event system initialized.");
-		
-		customFontRenderer = new CustomFontRenderer(new Font("Comic Sans MS", Font.PLAIN, 18), false,false);
-		log.info("custom font initialized.");
-		
+		printLog("forge event system initialized.");
+
 		settingManager = new SettingManager();
-		log.info("settings system initialized.");
-		
+		printLog("settings system initialized.");
+
 		MinecraftForge.EVENT_BUS.register(new ModuleManager()); // for onKeyPressed
 		moduleManager = new ModuleManager();
-		log.info("module system initialized.");
-		
+		printLog("module system initialized.");
+
 		commandManager = new CommandManager();
-		log.info("command system initialized.");
-		
+		printLog("command system initialized.");
+
 		cape = new Cape();
-		log.info("capes initialized.");
-		
+		printLog("capes initialized.");
+
 		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
-		log.info("tabgui initialized.");
-		
+		printLog("tabgui initialized.");
+
 		clickGui = new ClickGui();
-		log.info("clickGui initialized.");
-		
+		printLog("clickGui initialized.");
+
 		clickGuiSave = new ClickGuiSave();
 		clickGuiLoad = new ClickGuiLoad();
 		Runtime.getRuntime().addShutdownHook(new ConfigStopper());
-		saveLoad = new SaveLoad();
-		log.info("configs initialized.");
-		
+
+	}
+
+
+	@EventHandler
+	public void init (FMLInitializationEvent event) {
+		// Create a thread with extClientInit
+		Thread t = new Thread(this::extClientInit);
+		// Start it
+		t.start();
+		// Run opengl
+		fontInit();
+		try {
+			// Wait for extClientInit to finish
+			t.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		log.info("postman initialization finished.");
-	
+		// Start an async thread with loadCfg. I dunno why but, for some reasons, you cannot put this with
+		// The other, if you do, it will create problems with CustomFontRenderer
+		new Thread(this::loadCfg).start();
+
 	}
 	
 	@EventHandler
@@ -124,3 +158,4 @@ public class Main {
 		
 	}
 }
+

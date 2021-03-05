@@ -12,6 +12,9 @@ import com.lukflug.panelstudio.theme.Renderer;
 import com.lukflug.panelstudio.theme.RendererBase;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.postman.api.util.render.JColor;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
 /**
@@ -75,7 +78,7 @@ public class PostmanTheme implements Theme {
 			}
 			Point stringPos=new Point(rectangle.getLocation());
 			stringPos.translate(0,border);
-			context.getInterface().drawString(stringPos,text,getFontColor(focus));
+			context.getInterface().drawString(stringPos,text,new JColor (255, 255, 255, 255));
 		}
 
 		@Override
@@ -104,7 +107,7 @@ public class PostmanTheme implements Theme {
 			// inactive modules
 			if (!active && level<2) color=getColorScheme().getBackgroundColor();
 			// category
-			if (active && level<1) color=getColorScheme().getActiveColor();
+			if (active && level<1) color=getColorScheme().getFontColor();
 			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
 			return color;
 		}
