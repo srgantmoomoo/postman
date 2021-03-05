@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.Main;
@@ -32,8 +33,10 @@ public class FootExp extends Module {
 	
 	@EventHandler
 	public Listener<PacketEvent.Send> listener = new Listener<>(event -> {
-		if(event.getPacket() instanceof CPacketPlayerTryUseItem && mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle) {
-			mc.player.connection.sendPacket(new CPacketPlayer.Rotation(mc.player.rotationYaw, 90.0f, mc.player.onGround));
+		if (ModuleManager.isModuleEnabled("FootExp")) {
+			if (event.getPacket() instanceof CPacketPlayerTryUseItem && mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle) {
+				mc.player.connection.sendPacket(new CPacketPlayer.Rotation(mc.player.rotationYaw, 90.0f, mc.player.onGround));
+			}
 		}
 	});
 }
