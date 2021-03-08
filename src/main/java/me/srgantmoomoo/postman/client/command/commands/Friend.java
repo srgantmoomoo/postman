@@ -10,7 +10,6 @@ public class Friend extends Command {
 
 	@Override
 	public void onCommand(String[] args, String command) {
-		// TODO Auto-generated method stub
 		
 	}
 }

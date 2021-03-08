@@ -19,7 +19,8 @@ public class Help extends Command {
 		ModuleManager.addChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!");
 		ModuleManager.addChatMessage("prefix - " + TextFormatting.ITALIC + "allows you to change the command prefix" + " -> "  + CommandManager.prefix + "prefix <key>");
 		ModuleManager.addChatMessage("toggle - " + TextFormatting.ITALIC + "toggles modules on and off" + " -> "  + CommandManager.prefix + "toggle <module>");
-		ModuleManager.addChatMessage("bind - " + TextFormatting.ITALIC + "allows you to set keybinds" + " -> " + CommandManager.prefix + "bind <module> <key>");
+		ModuleManager.addChatMessage("bind - " + TextFormatting.ITALIC + "allows you to set keybinds" + " -> " + CommandManager.prefix + "bind <module> <key>" 
+		+ TextFormatting.RESET + TextFormatting.GRAY +" or " + TextFormatting.ITALIC + CommandManager.prefix + "bind clear");
 	}
 
 }

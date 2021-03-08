@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
+import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.Setting;
@@ -46,35 +47,40 @@ public class SaveLoad {
 	public void save() {
 		ArrayList<String> toSave = new ArrayList<String>();
 		
+		// modules and keybinds
 		for(Module mod : ModuleManager.modules) {
 			if(!mod.getName().equals("tabGui"))
 			toSave.add("MOD:" + mod.getName() + ":" + mod.isToggled() + ":" + mod.getKey());
 		}
 		
+		// settings
 		for(Module mod : ModuleManager.modules) {
-		for(Setting setting : mod.settings) {
-			
-			if(setting instanceof BooleanSetting) {
-				BooleanSetting bool = (BooleanSetting) setting;
-				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + bool.isEnabled());
+			for(Setting setting : mod.settings) {
+				
+				if(setting instanceof BooleanSetting) {
+					BooleanSetting bool = (BooleanSetting) setting;
+					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + bool.isEnabled());
+					}
+				
+				if(setting instanceof NumberSetting) {
+					NumberSetting numb = (NumberSetting) setting;
+					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + numb.getValue());
 				}
-			
-			if(setting instanceof NumberSetting) {
-				NumberSetting numb = (NumberSetting) setting;
-				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + numb.getValue());
+				
+				if(setting instanceof ModeSetting) {
+					ModeSetting mode = (ModeSetting) setting;
+					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
+				}
+				
+				if(setting instanceof ColorSetting) {
+					ColorSetting color = (ColorSetting) setting;
+					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + color.toInteger());
+				}
 			}
-			
-			if(setting instanceof ModeSetting) {
-				ModeSetting mode = (ModeSetting) setting;
-				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
-			}
-			
-			if(setting instanceof ColorSetting) {
-				ColorSetting color = (ColorSetting) setting;
-				toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + color.toInteger());
-			}
-			}
-		} 
+		}
+		
+		// command prefix
+		toSave.add("COMMANDPREFIX:" + CommandManager.prefix);
 		
 		try {
 			PrintWriter pw = new PrintWriter(this.dataFile);
@@ -120,19 +126,21 @@ public class SaveLoad {
 					Setting setting = Main.settingManager.getSettingByName(m,args[2]);
 					if(setting != null) {
 						if(setting instanceof BooleanSetting) {
-						((BooleanSetting)setting).setEnabled(Boolean.parseBoolean(args[3]));
-					}
+							((BooleanSetting)setting).setEnabled(Boolean.parseBoolean(args[3]));
+						}
 						if(setting instanceof NumberSetting) {
-						((NumberSetting)setting).setValue(Double.parseDouble(args[3]));
-					}
+							((NumberSetting)setting).setValue(Double.parseDouble(args[3]));
+						}
 						if(setting instanceof ModeSetting) {
-						((ModeSetting)setting).setMode(args[3]);
-					}
+							((ModeSetting)setting).setMode(args[3]);
+						}
 						if(setting instanceof ColorSetting) {
-						((ColorSetting)setting).fromInteger(Integer.parseInt(args[3]));
+							((ColorSetting)setting).fromInteger(Integer.parseInt(args[3]));
 						}
 					}
 				}
+			}else if(s.toLowerCase().startsWith("commandprefix:")) {
+				CommandManager.setCommandPrefix(args[1]);
 			}
 		}
 	}
