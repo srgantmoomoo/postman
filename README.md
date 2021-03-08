@@ -42,6 +42,8 @@ thank you,
 # credits
 **contributions**
 - lukflug, being helpful person. making panelstudio. helping me with panelstudio.
+- techale, for multithreading in main class.
+- RECIOR, for postman bot.
 - some random guy idk named jacobtread, for giving proper credits to the MinnDevelopment java discord rpc.
 
 **base stuff**
