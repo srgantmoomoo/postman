@@ -25,7 +25,7 @@ public class KillAuraInfo extends HudModule {
 
 	public KillAuraInfo() {
 		super("killAuraInfo", "shows if kill aura is on or off.", new Point(-3,49), Category.HUD);
-		this.addSettings(color);
+		this.addSettings(sort, color);
 	}
 	
 	@Override

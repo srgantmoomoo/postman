@@ -24,7 +24,7 @@ public class SurroundInfo extends HudModule {
 
 	public SurroundInfo() {
 		super("surroundInfo", "shows if surround is on or off.", new Point(-3,59), Category.HUD);
-		this.addSettings(color);
+		this.addSettings(sort, color);
 	}
 	
 	@Override

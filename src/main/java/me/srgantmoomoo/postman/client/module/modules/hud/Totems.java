@@ -24,7 +24,7 @@ public class Totems extends HudModule {
 
 	public Totems() {
 		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11), Category.HUD);
-		this.addSettings(color);
+		this.addSettings(sort, color);
 	}
 	
 	   public void onRender() {

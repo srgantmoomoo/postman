@@ -11,7 +11,7 @@ import net.minecraft.util.text.TextFormatting;
 public class Help extends Command {
 	
 	public Help() {
-		super("help", "helps lol.", "bind <name> <key> | clear", "h");
+		super("help", "helps lol.", "help | clear", "h");
 	}
 
 	@Override

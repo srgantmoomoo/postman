@@ -19,6 +19,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
@@ -35,7 +36,8 @@ public class TabGui extends Module {
 	private Minecraft mc = Minecraft.getMinecraft();
 	
 	public TabGui() {
-		super ("tabGui", "cloocky clocky", Keyboard.KEY_NONE, Category.CLIENT);
+		super ("tabGui", "cloocky clocky.", Keyboard.KEY_NONE, Category.CLIENT);
+		MinecraftForge.EVENT_BUS.register(this);
 		toggled = true;
 		tab = false;
 	}

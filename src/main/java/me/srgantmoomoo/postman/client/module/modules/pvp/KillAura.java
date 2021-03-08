@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
 
+import me.srgantmoomoo.postman.client.friend.FriendManager;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
@@ -16,13 +17,13 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class KillAura extends Module {
 	public NumberSetting rangeA = new NumberSetting("range", this, 4, 1, 6, 0.5);
 	public BooleanSetting passiveMobsA = new BooleanSetting("passives", this, false);
 	public BooleanSetting hostileMobsA = new BooleanSetting("hostiles", this, false);
 	public BooleanSetting playersA = new BooleanSetting("players", this, true);
+	public BooleanSetting targetFriends = new BooleanSetting("targetFriends", this, false);
 	
 	public KillAura() {
 		super ("killAura", "automatically hits anything near u.", Keyboard.KEY_NONE, Category.PVP);
@@ -53,9 +54,10 @@ public class KillAura extends Module {
 	
 	private boolean attackCheck(Entity entity) {
 
-		if (playersA.isEnabled() && entity instanceof EntityPlayer){
+		if (playersA.isEnabled() && entity instanceof EntityPlayer) {
 			if (((EntityPlayer) entity).getHealth() > 0) {
-				return true;
+				if(targetFriends.isEnabled() && !FriendManager.isFriend(entity.getName())) return true;
+				else return true;
 			}
 		}
 

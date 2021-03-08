@@ -21,7 +21,7 @@ public class Criticals extends Module {
 		this.addSettings(mode);
 	}
 	
-	public void onEnbale() {
+	public void onEnable() {
 		Main.EVENT_BUS.subscribe(this);
 	}
 		

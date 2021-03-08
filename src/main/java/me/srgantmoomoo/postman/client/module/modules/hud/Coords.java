@@ -21,7 +21,7 @@ public class Coords extends HudModule {
 
 	public Coords() {
 		super("coords", "shows ur coords on ur hud.", new Point(100,1), Category.HUD);
-		this.addSettings(color);
+		this.addSettings(sort, color);
 	}
 	
 	@Override

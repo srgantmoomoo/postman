@@ -8,7 +8,7 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 
 public class Prefix extends Command {
 	public Prefix() {
-		super("Prefix", "Sets the command prefix.", "prefix <key>", "p");
+		super("prefix", "sets the command prefix.", "prefix <key>", "p");
 	}
 	
 	@Override

@@ -64,7 +64,7 @@ public class ChatSuffix extends Module {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
-	public void onDisbale() {
+	public void onDisable() {
 		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 }

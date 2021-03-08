@@ -21,7 +21,7 @@ public class Ping extends HudModule {
 
 	public Ping() {
 		super("ping", "shows ur ping on ur hud.", new Point(-3,19), Category.HUD);
-		this.addSettings(color);
+		this.addSettings(sort, color);
 	}
 	
 	@Override

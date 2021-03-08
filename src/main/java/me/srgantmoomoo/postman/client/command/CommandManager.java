@@ -37,6 +37,7 @@ public class CommandManager {
 		commands.add(new Bind());
 		commands.add(new Help());
 		commands.add(new Prefix());
+		//commands.add(new Friend());
 	}
 	
 	@EventHandler

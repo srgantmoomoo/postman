@@ -21,7 +21,7 @@ public class Frames extends HudModule {
 
 	public Frames() {
 		super("frames", "shows ur fps on ur hud.", new Point(-3,29), Category.HUD);
-		this.addSettings(color);
+		this.addSettings(sort, color);
 	}
 	
 	@Override

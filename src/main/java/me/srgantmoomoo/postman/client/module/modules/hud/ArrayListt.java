@@ -56,7 +56,7 @@ public class ArrayListt extends HudModule {
     					&& !module.getName().equalsIgnoreCase("ArmorHud")
     					&& !module.getName().equalsIgnoreCase("KeyStrokes")
     					&& !module.getName().equalsIgnoreCase("DiscordRpc")
-    					&& !module.getName().equalsIgnoreCase("ClickGuiModule")
+    					&& !module.getName().equalsIgnoreCase("clickGui")
     					&& !module.getName().equalsIgnoreCase("HudEditor")
     					&& !module.getName().equalsIgnoreCase("TabGui")
     					&& !module.getName().equalsIgnoreCase("MainMenuInfo")

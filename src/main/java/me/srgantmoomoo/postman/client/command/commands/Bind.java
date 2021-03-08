@@ -37,12 +37,13 @@ public class Bind extends Command {
 		}
 		
 		if(args.length == 1) {
-			if(args[0] == "clear") {
+			String clear = args[0];
+			if(clear.equalsIgnoreCase("clear")) {
 				for(Module module : ModuleManager.modules) {
 					module.keyCode.setKeyCode(Keyboard.KEY_NONE);
 				}
+				ModuleManager.addChatMessage("cleared all binds.");
 			}
-			ModuleManager.addChatMessage("cleared all binds.");
 		}
 		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> " + CommandManager.prefix + "bind <module> <key>");
 	}

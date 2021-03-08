@@ -107,10 +107,10 @@ public class SaveLoad {
 			if(s.toLowerCase().startsWith("mod:")) {
 				Module m = Main.moduleManager.getModule(args[1]);
 				if(m != null) {
-					if(m.getName().equals("clickGuiModule") && m.getName().equals("hudEditor"))
+					if(m.getName().equals("clickGui") && m.getName().equals("hudEditor"))
 						m.setToggled(!Boolean.parseBoolean(args[2]));
 					
-					if(!m.getName().equals("clickGuiModule") && !m.getName().equals("hudEditor"))
+					if(!m.getName().equals("clickGui") && !m.getName().equals("hudEditor"))
 					m.setToggled(Boolean.parseBoolean(args[2]));
 					m.setKey(Integer.parseInt(args[3]));
 				}

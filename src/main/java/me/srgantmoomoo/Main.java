@@ -15,6 +15,7 @@ import me.srgantmoomoo.postman.api.save.SaveLoad;
 import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
 import me.srgantmoomoo.postman.api.util.render.Cape;
 import me.srgantmoomoo.postman.client.command.CommandManager;
+import me.srgantmoomoo.postman.client.friend.FriendManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.SettingManager;
@@ -28,8 +29,6 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -45,6 +44,7 @@ public class Main {
 	public static ModuleManager moduleManager;
 	public static SettingManager settingManager;
 	public static CommandManager commandManager;
+	public static FriendManager friendManager;
 	public static SaveLoad saveLoad;
 	public static TabGui tabGui;
 	public static Cape cape;
@@ -61,29 +61,14 @@ public class Main {
 	@Instance
 	public static Main instance;
 	
-	public Main() {
-		instance = this;
-	}
+	public Main() { instance = this; }
 	
-	public static Main getInstance() {
-		return instance;
-	}
+	public static Main getInstance() { return instance; }
 	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
-	
-	@EventHandler
-	public void preInit (FMLPreInitializationEvent event) {
-		
-	}
 
 	public Object syncronize = new Object();
-
-	public void printLog(String text) {
-		synchronized (syncronize) {
-			log.info(text);
-		}
-	}
 
 	public void fontInit() {
 
@@ -97,28 +82,26 @@ public class Main {
 	}
 
 	public void extClientInit() {
+		MinecraftForge.EVENT_BUS.register(this);
 
 		eventProcessor = new EventProcessor();
-		eventProcessor.init();
 		printLog("postman event system initialized.");
-
-		MinecraftForge.EVENT_BUS.register(this);
-		printLog("forge event system initialized.");
 
 		settingManager = new SettingManager();
 		printLog("settings system initialized.");
 
-		MinecraftForge.EVENT_BUS.register(new ModuleManager()); // for onKeyPressed
 		moduleManager = new ModuleManager();
 		printLog("module system initialized.");
 
 		commandManager = new CommandManager();
 		printLog("command system initialized.");
+		
+		friendManager = new FriendManager();
+		printLog("friend system initialized.");
 
 		cape = new Cape();
 		printLog("capes initialized.");
 
-		MinecraftForge.EVENT_BUS.register(new TabGui());
 		tabGui = new TabGui();
 		printLog("tabgui initialized.");
 
@@ -128,6 +111,9 @@ public class Main {
 		clickGuiSave = new ClickGuiSave();
 		clickGuiLoad = new ClickGuiLoad();
 		Runtime.getRuntime().addShutdownHook(new ConfigStopper());
+		printLog("gui config initialized");
+		
+		printLog("postman finished initializing.");
 
 	}
 
@@ -153,9 +139,10 @@ public class Main {
 
 	}
 	
-	@EventHandler
-	public void postInit (FMLPostInitializationEvent event) {
-		
+	public void printLog(String text) {
+		synchronized (syncronize) {
+			log.info(text);
+		}
 	}
 }
 

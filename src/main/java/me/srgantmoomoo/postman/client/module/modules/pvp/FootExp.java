@@ -11,6 +11,7 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.item.ItemExpBottle;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
+import net.minecraftforge.common.MinecraftForge;
 
 /*
  * I originally got this idea from olliem5, it was done in his "past" client. not sure where he got it, but that's where i got it :)
@@ -26,7 +27,7 @@ public class FootExp extends Module {
 		Main.EVENT_BUS.subscribe(this);
 	}
 	
-	public void onDisbale() {
+	public void onDisable() {
 		Main.EVENT_BUS.unsubscribe(this);
 	}
 	

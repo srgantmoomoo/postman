@@ -25,7 +25,7 @@ public class AutoCInfo extends HudModule {
 
 	public AutoCInfo() {
 		super("autoCrystalInfo", "shows if autocrystal is on or off.", new Point(-3,39), Category.HUD);
-		this.addSettings(color);
+		this.addSettings(sort, color);
 	}
 	
 	@Override
