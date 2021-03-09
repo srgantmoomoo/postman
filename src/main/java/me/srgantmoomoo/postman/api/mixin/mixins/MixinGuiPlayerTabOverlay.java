@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinGuiPlayerTabOverlay{
 
 	@Inject(method = "getPlayerName", at = @At("HEAD"), cancellable = true)
-	public void getPlayerName(NetworkPlayerInfo networkPlayerInfoIn, CallbackInfoReturnable returnable){
+	public void getPlayerName(NetworkPlayerInfo networkPlayerInfoIn, CallbackInfoReturnable<String> returnable){
 			returnable.cancel();
 			returnable.setReturnValue(getPlayerName(networkPlayerInfoIn));
 	}

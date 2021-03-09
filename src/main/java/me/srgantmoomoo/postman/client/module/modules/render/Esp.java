@@ -222,30 +222,6 @@ public class Esp extends Module {
     }
     //boolean range check and opacity gradient
 
-    private boolean rangeEntityCheck(Entity entity) {
-        if (entity.getDistance(mc.player) > range.getValue()){
-            return false;
-        }
-
-        if (entity.getDistance(mc.player) >= 180){
-            opacityGradient = 50;
-        }
-        else if (entity.getDistance(mc.player) >= 130 && entity.getDistance(mc.player) < 180){
-            opacityGradient = 100;
-        }
-        else if (entity.getDistance(mc.player) >= 80 && entity.getDistance(mc.player) < 130){
-            opacityGradient = 150;
-        }
-        else if (entity.getDistance(mc.player) >= 30 && entity.getDistance(mc.player) < 80){
-            opacityGradient = 200;
-        }
-        else {
-            opacityGradient = 255;
-        }
-
-        return true;
-    }
-
     private boolean rangeTileCheck(TileEntity tileEntity) {
         //the range value has to be squared for this
         if (tileEntity.getDistanceSq(mc.player.posX, mc.player.posY, mc.player.posZ) > range.getValue() * range.getValue()){

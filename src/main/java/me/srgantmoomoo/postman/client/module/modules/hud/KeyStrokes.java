@@ -3,18 +3,11 @@ package me.srgantmoomoo.postman.client.module.modules.hud;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import me.srgantmoomoo.postman.client.module.Category;
-import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /*
  * Written by @SrgantMooMoo on November 7th, 2020.
@@ -29,16 +22,10 @@ import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
-import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
-import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
-import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 
 public class KeyStrokes extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
@@ -94,32 +81,20 @@ public class KeyStrokes extends HudModule {
 		private static final Key SHFT = new Key("shft", Minecraft.getMinecraft().gameSettings.keyBindSneak, 1, 41, 28, 18);
 		private static final Key JMP = new Key("jmp", Minecraft.getMinecraft().gameSettings.keyBindJump, 31, 41, 28, 18);
 		
-		private final String name;
-		private final KeyBinding keyBind;
 		private final int x;
 		private final int y;
 		private final int width;
 		private final int height;
 		
 		public Key(String name, KeyBinding keyBind, int x, int y, int width, int height) {
-			this.name = name;
-			this.keyBind = keyBind;
 			this.x = x;
 			this.y = y;
 			this.width = width;
 			this.height = height;
 		}
 		
-		public boolean isDown() {
-			return keyBind.isKeyDown();
-		}
-		
 		public int getHeight() {
 			return height;
-		}
-		
-		public String getName() {
-			return name;
 		}
 		
 		public int getWidth() {
@@ -145,7 +120,7 @@ public class KeyStrokes extends HudModule {
 		
 		@Override
 		public void render (Context context) {
-			ScaledResolution sr = new ScaledResolution(mc);
+			new ScaledResolution(mc);
 			
 			super.render(context);
 			Color colors=new JColor(color.getValue(),100);

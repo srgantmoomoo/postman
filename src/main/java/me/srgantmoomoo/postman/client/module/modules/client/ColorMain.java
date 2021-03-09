@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.client;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 import org.lwjgl.input.Keyboard;
@@ -64,10 +63,6 @@ public class ColorMain extends Module {
 
 		public static TextFormatting getDisabledColor(){return settingToFormatting();}
 		
-		private static Color settingToColor () {
-				return Color.cyan;
-		}
-
 		public static JColor getFriendGSColor(){
 			return new JColor(0xffffffff);
 		}

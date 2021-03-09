@@ -111,7 +111,7 @@ public class Main {
 		clickGuiSave = new ClickGuiSave();
 		clickGuiLoad = new ClickGuiLoad();
 		Runtime.getRuntime().addShutdownHook(new ConfigStopper());
-		printLog("gui config initialized");
+		printLog("gui config initialized.");
 		
 		printLog("postman finished initializing.");
 

@@ -13,9 +13,6 @@ import com.lukflug.panelstudio.theme.RendererBase;
 import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.postman.api.util.render.JColor;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
 
 /**
  * @author SrgantMooMoo

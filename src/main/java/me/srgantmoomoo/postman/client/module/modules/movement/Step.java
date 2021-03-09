@@ -30,7 +30,7 @@ public class Step extends Module {
 		this.addSettings(mode, delayHeight,entityStep);
 	}
     private byte cancelStage;
-    private float _prevEntityStep;
+    private float prevEntityStep;
     
     private final double[] oneblockPositions = {0.42D, 0.75D};
     private final double[] twoblockPositions = {0.4D, 0.75D, 0.5D, 0.41D, 0.83D, 1.16D, 1.41D, 1.57D, 1.58D, 1.42D};
@@ -43,7 +43,7 @@ public class Step extends Module {
         cancelStage = 0;
         
         if (mc.player != null && mc.player.isRiding())
-            _prevEntityStep = mc.player.getRidingEntity().stepHeight;
+            prevEntityStep = mc.player.getRidingEntity().stepHeight;
     }
 
     @Override

@@ -6,7 +6,6 @@ import org.lwjgl.input.Mouse;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AutoClicker extends Module {
 	

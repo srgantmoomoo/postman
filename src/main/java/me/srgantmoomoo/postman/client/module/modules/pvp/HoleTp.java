@@ -75,7 +75,7 @@ public class HoleTp extends Module {
 
 	private boolean isObbyHole(final BlockPos blockPos){
 		final BlockPos[] array;
-		final BlockPos[] touchingBlocks = array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
+		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
 			final IBlockState touchingState = HoleTp.mc.world.getBlockState(touching);
 			if (touchingState.getBlock() == Blocks.AIR || touchingState.getBlock() != Blocks.OBSIDIAN){
@@ -87,7 +87,7 @@ public class HoleTp extends Module {
 
 	private boolean isBedrockHole(final BlockPos blockPos){
 		final BlockPos[] array;
-		final BlockPos[] touchingBlocks = array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
+		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
 			final IBlockState touchingState = HoleTp.mc.world.getBlockState(touching);
 			if (touchingState.getBlock() == Blocks.AIR || touchingState.getBlock() != Blocks.BEDROCK){
@@ -99,7 +99,7 @@ public class HoleTp extends Module {
 
 	private boolean isBothHole(final BlockPos blockPos){
 		final BlockPos[] array;
-		final BlockPos[] touchingBlocks = array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
+		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
 			final IBlockState touchingState = HoleTp.mc.world.getBlockState(touching);
 			if (touchingState.getBlock() == Blocks.AIR || (touchingState.getBlock() != Blocks.BEDROCK && touchingState.getBlock() != Blocks.OBSIDIAN)){
@@ -111,7 +111,7 @@ public class HoleTp extends Module {
 
 	private boolean isElseHole(final BlockPos blockPos){
 		final BlockPos[] array;
-		final BlockPos[] touchingBlocks = array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
+		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
 			final IBlockState touchingState = HoleTp.mc.world.getBlockState(touching);
 			if (touchingState.getBlock() == Blocks.AIR || !touchingState.isFullBlock()){

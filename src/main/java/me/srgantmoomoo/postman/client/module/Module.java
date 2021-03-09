@@ -12,7 +12,6 @@ import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.client.setting.Setting;
 import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.common.MinecraftForge;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
