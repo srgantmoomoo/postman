@@ -27,7 +27,7 @@ public class KillAura extends Module {
 	
 	public KillAura() {
 		super ("killAura", "automatically hits anything near u.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(rangeA, playersA, targetFriends, passiveMobsA, hostileMobsA);
+		this.addSettings(rangeA, playersA, passiveMobsA, hostileMobsA);
 	}
 
 	public void onUpdate() {
@@ -54,10 +54,9 @@ public class KillAura extends Module {
 	
 	private boolean attackCheck(Entity entity) {
 
-		if (playersA.isEnabled() && entity instanceof EntityPlayer) {
-			if (((EntityPlayer) entity).getHealth() > 0) {
-				if(targetFriends.isEnabled() && !FriendManager.isFriend(entity.getName())) return true;
-				else return true;
+		if (playersA.isEnabled() && entity instanceof EntityPlayer && !FriendManager.isFriend(entity.getName())) {
+			if (((EntityPlayer) entity).getHealth() > 0) { 
+				return true;
 			}
 		}
 

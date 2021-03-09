@@ -45,7 +45,7 @@ public class FriendManager {
 		friends.add(new Friend(name));
 	}
 
-	public static void delFriend(String name) {
+	public static void removeFriend(String name) {
 		friends.remove(getFriendByName(name));
 	}
 }

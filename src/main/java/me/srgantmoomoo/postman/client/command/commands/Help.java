@@ -17,10 +17,16 @@ public class Help extends Command {
 	@Override
 	public void onCommand(String[] args, String command) {
 		ModuleManager.addChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!");
+		
 		ModuleManager.addChatMessage("prefix - " + TextFormatting.ITALIC + "allows you to change the command prefix" + " -> "  + CommandManager.prefix + "prefix <key>");
+		
 		ModuleManager.addChatMessage("toggle - " + TextFormatting.ITALIC + "toggles modules on and off" + " -> "  + CommandManager.prefix + "toggle <module>");
+		
 		ModuleManager.addChatMessage("bind - " + TextFormatting.ITALIC + "allows you to set keybinds" + " -> " + CommandManager.prefix + "bind <module> <key>" 
 		+ TextFormatting.RESET + TextFormatting.GRAY +" or " + TextFormatting.ITALIC + CommandManager.prefix + "bind clear");
+		
+		ModuleManager.addChatMessage("friend - " + TextFormatting.ITALIC + "allows you to manage friends" + " -> " + CommandManager.prefix + "friend add <name> / or " 
+		+ CommandManager.prefix + "friend remove <name> / or " + CommandManager.prefix + "friend list");
 	}
 
 }

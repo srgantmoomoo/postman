@@ -8,28 +8,28 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 public class Friend extends Command {
 	
     public Friend() {
-		super("friend", "friend ppl yea yea.", "friend list | add <name> | del <name> | clear", "f");
+		super("friend", "friend ppl yea yea.", "friend list | add <name> | remove <name> | clear", "f");
 	}
 
 	@Override
 	public void onCommand(String[] args, String command) {
 		if(args.length > 0) {
-			String main = args[0];
-			boolean friendFound = false;
-			boolean commandFound = false;
+			String start = args[0];
 			
-			if(main.equalsIgnoreCase("list")) {
+			if(start.equalsIgnoreCase("list")) {
 				ModuleManager.addChatMessage("friends: " + FriendManager.getFriendsByName());
-			}
+			}else 
 			
-			if (main.equalsIgnoreCase("add") && !FriendManager.isFriend(args[1])) {
+			if (start.equalsIgnoreCase("add") && !FriendManager.isFriend(args[1])) {
 				FriendManager.addFriend(args[1]);
 				ModuleManager.addChatMessage("added friend: " + args[1].toUpperCase());
-			}
-			if (main.equalsIgnoreCase("remove") && FriendManager.isFriend(args[1])) {
-				FriendManager.delFriend(args[1]);
+			}else
+			if (start.equalsIgnoreCase("remove") && FriendManager.isFriend(args[1])) {
+				FriendManager.removeFriend(args[1]);
 				ModuleManager.addChatMessage("removed friend: " + args[1].toUpperCase());	
+			}else {
+				ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> / or " + CommandManager.prefix + "friend remove <name> / or " + CommandManager.prefix + "friend list");
 			}
-		}else  ModuleManager.addChatMessage("penis -> " + CommandManager.prefix + "toggle <module>");
+		}else ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> / or " + CommandManager.prefix + "friend remove <name> / or " + CommandManager.prefix + "friend list");
 	}
 }
