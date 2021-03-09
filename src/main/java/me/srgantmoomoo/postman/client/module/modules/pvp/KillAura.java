@@ -27,7 +27,7 @@ public class KillAura extends Module {
 	
 	public KillAura() {
 		super ("killAura", "automatically hits anything near u.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(rangeA, playersA, passiveMobsA, hostileMobsA);
+		this.addSettings(rangeA, playersA, targetFriends, passiveMobsA, hostileMobsA);
 	}
 
 	public void onUpdate() {
