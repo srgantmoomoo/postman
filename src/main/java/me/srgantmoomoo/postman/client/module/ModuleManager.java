@@ -100,6 +100,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new LogOutSpot());
 		ModuleManager.modules.add(new LongJump());
 		ModuleManager.modules.add(new LowOffHand());
+		ModuleManager.modules.add(new Mcf());
 		ModuleManager.modules.add(new Multitask());
 		ModuleManager.modules.add(new Nametags());	
 		ModuleManager.modules.add(new NewChunks());	

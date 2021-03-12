@@ -6,6 +6,7 @@ import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.JTimer;
+import me.srgantmoomoo.postman.client.friend.FriendManager;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
@@ -229,7 +230,7 @@ public class AutoCrystal extends Module {
         }
 		
 		for(Entity entity : entities) {
-			if(entity == mc.player || ((EntityLivingBase)entity).getHealth() <= 0) continue;
+			if(entity == mc.player || FriendManager.isFriend(entity.getName()) || ((EntityLivingBase)entity).getHealth() <= 0) continue;
 			
 			for(BlockPos blockPos : blocks) {
 				double b = entity.getDistanceSq(blockPos);
