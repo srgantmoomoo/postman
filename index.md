@@ -17,6 +17,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>craftingSlots<p><i>allows u to use your crafting slots as extra inventory space.</i></p></li>
         <li>deathCoords<p><i>tells u ur coords after dying.</i></p></li>
         <li>liquidPlace<p><i>allows you to interact with liquids.</i></p></li>
+        <li>mcf<p><i>allows you to middle click a player to friend them.</i></p></li>
         <li>multitask<p><i>allows you to do different things in each hand.</i></p></li>
         <li>noFall<p><i>negates fall damage.</i></p></li>
         <li>noHandShake<p><i>prevents forge from sending ur mod list to server's.</i></p></li>
@@ -82,7 +83,7 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
     </ul></p>
 </details>
 <details>
-    <summary>client</summary>
+    <summary>hud</summary>
     <p><ul>
         <li>watermark<p><i>shows the client name and version.</i></p></li>
         <li>totems's<p><i>shows you how many totems you currently have on your player.</i></p></li>
@@ -93,13 +94,19 @@ postman is a client for Minecraft 1.12.2 intended for use on servers which allow
         <li>surroundInfo<p><i>tells you if your surround is off or on.</i></p></li>
 	    <li>arraylist<p><i>shows you all current enabled modules.</i></p></li>
 	    <li>inventoryViewer<p><i>gives you a hud of your inventory.</i></p></li>
+	    <li>playerModel<p><i>shows ur player on the hud.</i></p></li>
 	    <li>coords<p><i>shows you your current coordinates in game.</i></p></li>
 	    <li>armorHud<p><i>gives you a display of your armor along with the durability of each armor piece.</i></p></li>
+	    <li>hudEditor<p><i>allows you to edit the hud of the client.</i></p></li>
+    </ul></p>
+</details>
+<details>
+    <summary>client</summary>
+    <p><ul>
+        <li>clientFont<p><i>allows u to change the font of the client.</i></p></li>
         <li>capes<p><i>allows u to see your own, and other peoples postman capes (u can get a cape if u have ++).</i></p></li>
 	    <li>discordRp<p><i>shows you are playing postman on discord.</i></p></li>
-        <li>clientFont<p><i>allows u to change the font of the client.</i></p></li>
-	    <li>clickGuiModule<p><i>gives you multiple setting to customize the clickGui to your liking.</i></p></li>
-	    <li>hudEditor<p><i>allows you to edit the hud of the client.</i></p></li>
+	    <li>clickGui<p><i>gives you multiple setting to customize the clickGui to your liking.</i></p></li>
 	    <li>tabGui<p><i>allows you to navigate the client through your arrow keys.</i></p></li>
 	    <li>mainMenuInfo<p><i>shows postman info on the main menu of Minecraft.</i></p></li>
     </ul></p>

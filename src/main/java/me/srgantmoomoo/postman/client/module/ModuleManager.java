@@ -23,6 +23,7 @@ import me.srgantmoomoo.postman.client.module.modules.hud.Frames;
 import me.srgantmoomoo.postman.client.module.modules.hud.InventoryViewer;
 import me.srgantmoomoo.postman.client.module.modules.hud.KillAuraInfo;
 import me.srgantmoomoo.postman.client.module.modules.hud.Ping;
+import me.srgantmoomoo.postman.client.module.modules.hud.PlayerModel;
 import me.srgantmoomoo.postman.client.module.modules.hud.SurroundInfo;
 import me.srgantmoomoo.postman.client.module.modules.hud.Totems;
 import me.srgantmoomoo.postman.client.module.modules.hud.Watermark;
@@ -136,6 +137,7 @@ public class ModuleManager {
 		ModuleManager.modules.add(new SurroundInfo());
 		ModuleManager.modules.add(new ArrayListt());
 		ModuleManager.modules.add(new InventoryViewer());
+		ModuleManager.modules.add(new PlayerModel());
 		ModuleManager.modules.add(new Coords());
 		ModuleManager.modules.add(new ArmorHud());
 		ModuleManager.modules.add(new HudEditor());
