@@ -63,6 +63,14 @@ public class Module implements Toggleable {
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
+	public Category getCategory() {
+		return this.category;
+	}
+	
 	public String getDescription() {
 		return description;
 	}
@@ -79,8 +87,8 @@ public class Module implements Toggleable {
 		this.keyCode.code = key;
 		
 		 if(Main.saveLoad != null) {
-				Main.saveLoad.save();
-			}
+			 Main.saveLoad.save();
+		 }
 	} 
 	
 	public boolean isToggled() {
@@ -110,14 +118,6 @@ public class Module implements Toggleable {
 		if(Main.saveLoad != null) {
 			Main.saveLoad.save();
 		}
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	
-	public Category getCategory() {
-		return this.category;
 	}
 	
 	public final boolean isOn() {

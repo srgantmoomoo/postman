@@ -55,101 +55,101 @@ public class ModuleManager {
 		modules = new ArrayList<>();
 		
 		//alphabetic
-		ModuleManager.modules.add(new AimBot());	
-		ModuleManager.modules.add(new AntiHunger());
-		ModuleManager.modules.add(new AntiNick());	
-		ModuleManager.modules.add(new AntiSwing());
-		ModuleManager.modules.add(new AutoArmor());	
-		ModuleManager.modules.add(new AutoClicker());
-		//ModuleManager.modules.add(new AutoCopeAndSeethe());
-		ModuleManager.modules.add(new AutoCrystal());
-		ModuleManager.modules.add(new AutoDisconnect());
-		ModuleManager.modules.add(new AutoElytra());
-		ModuleManager.modules.add(new AutoGap());	
-		ModuleManager.modules.add(new AutoHut());
-		ModuleManager.modules.add(new AutoMine());	
-		ModuleManager.modules.add(new AutoReconnect());	
-		ModuleManager.modules.add(new AutoRespawn());	
-		ModuleManager.modules.add(new AutoTotem());	
-		ModuleManager.modules.add(new AutoTrap());
-		ModuleManager.modules.add(new AutoUse());	
-		ModuleManager.modules.add(new AutoWalk());
-		ModuleManager.modules.add(new Backdoor2b2t());
-		ModuleManager.modules.add(new Blink());	
-		ModuleManager.modules.add(new CameraClip());	
-		ModuleManager.modules.add(new ChatBot());	
-		ModuleManager.modules.add(new ChatSuffix());
-		ModuleManager.modules.add(new ChestStealer());
-		ModuleManager.modules.add(new CoordExploit());
-		ModuleManager.modules.add(new CraftingSlots());	
-		ModuleManager.modules.add(new Criticals());	
-		ModuleManager.modules.add(new DamageTiltCorrection());	
-		ModuleManager.modules.add(new DeathCoords());	
-		ModuleManager.modules.add(new Dupe());	
-		ModuleManager.modules.add(new ElytraFly());	
-		ModuleManager.modules.add(new Esp());
-		ModuleManager.modules.add(new FastUse());
-		ModuleManager.modules.add(new FootExp());
-		ModuleManager.modules.add(new Freecam());	
-		ModuleManager.modules.add(new FullBright());	
-		ModuleManager.modules.add(new HoleEsp());
-		ModuleManager.modules.add(new HoleTp());
-		ModuleManager.modules.add(new InventoryMove());	
-		ModuleManager.modules.add(new Jesus());	
-		ModuleManager.modules.add(new KillAura());	
-		ModuleManager.modules.add(new LiquidPlace());
-		ModuleManager.modules.add(new LogOutSpot());
-		ModuleManager.modules.add(new LongJump());
-		ModuleManager.modules.add(new LowOffHand());
-		ModuleManager.modules.add(new Mcf());
-		ModuleManager.modules.add(new Multitask());
-		ModuleManager.modules.add(new Nametags());	
-		ModuleManager.modules.add(new NewChunks());	
-		ModuleManager.modules.add(new NoFall());
-		ModuleManager.modules.add(new NoHandShake());	
-		ModuleManager.modules.add(new NoPush());
-		ModuleManager.modules.add(new NoRender());
-		ModuleManager.modules.add(new NoSlow());
-		ModuleManager.modules.add(new Peek());
-		ModuleManager.modules.add(new PlayerClone());
-		ModuleManager.modules.add(new PortalGodMode());
-		ModuleManager.modules.add(new ReverseStep());
-		ModuleManager.modules.add(new SafeWalk());
-		ModuleManager.modules.add(new Scaffold());	
-		ModuleManager.modules.add(new SmartOffHand());	
-		ModuleManager.modules.add(new Sneak());
-		ModuleManager.modules.add(new Speed());
-		ModuleManager.modules.add(new Sprint());	
-		ModuleManager.modules.add(new Step());
-		ModuleManager.modules.add(new Surround());
-		ModuleManager.modules.add(new Timer());	
-		ModuleManager.modules.add(new Tracers());
-		ModuleManager.modules.add(new Velocity());	
-		ModuleManager.modules.add(new ViewModel());	
-		ModuleManager.modules.add(new Xray());
+		modules.add(new AimBot());	
+		modules.add(new AntiHunger());
+		modules.add(new AntiNick());	
+		modules.add(new AntiSwing());
+		modules.add(new AutoArmor());	
+		modules.add(new AutoClicker());
+		//modules.add(new AutoCopeAndSeethe());
+		modules.add(new AutoCrystal());
+		modules.add(new AutoDisconnect());
+		modules.add(new AutoGap());	
+		modules.add(new AutoHut());
+		modules.add(new AutoMine());	
+		modules.add(new AutoReconnect());	
+		modules.add(new AutoRespawn());	
+		modules.add(new AutoTotem());	
+		modules.add(new AutoTrap());
+		modules.add(new AutoUse());	
+		modules.add(new AutoWalk());
+		modules.add(new Backdoor2b2t());
+		modules.add(new Blink());	
+		modules.add(new CameraClip());	
+		modules.add(new ChatBot());	
+		modules.add(new ChatSuffix());
+		modules.add(new ChestStealer());
+		modules.add(new CoordExploit());
+		modules.add(new CraftingSlots());	
+		modules.add(new Criticals());	
+		modules.add(new DamageTiltCorrection());	
+		modules.add(new DeathCoords());	
+		modules.add(new Dupe());	
+		modules.add(new ElytraFly());
+		modules.add(new ElytraReplace());
+		modules.add(new Esp());
+		modules.add(new FastUse());
+		modules.add(new FootExp());
+		modules.add(new Freecam());	
+		modules.add(new FullBright());	
+		modules.add(new HoleEsp());
+		modules.add(new HoleTp());
+		modules.add(new InventoryMove());	
+		modules.add(new Jesus());	
+		modules.add(new KillAura());	
+		modules.add(new LiquidPlace());
+		modules.add(new LogOutSpot());
+		modules.add(new LongJump());
+		modules.add(new LowOffHand());
+		modules.add(new Mcf());
+		modules.add(new Multitask());
+		modules.add(new Nametags());	
+		modules.add(new NewChunks());	
+		modules.add(new NoFall());
+		modules.add(new NoHandShake());	
+		modules.add(new NoPush());
+		modules.add(new NoRender());
+		modules.add(new NoSlow());
+		modules.add(new Peek());
+		modules.add(new PlayerClone());
+		modules.add(new PortalGodMode());
+		modules.add(new ReverseStep());
+		modules.add(new SafeWalk());
+		modules.add(new Scaffold());	
+		modules.add(new SmartOffHand());	
+		modules.add(new Sneak());
+		modules.add(new Speed());
+		modules.add(new Sprint());	
+		modules.add(new Step());
+		modules.add(new Surround());
+		modules.add(new Timer());	
+		modules.add(new Tracers());
+		modules.add(new Velocity());	
+		modules.add(new ViewModel());	
+		modules.add(new Xray());
 		//hud
-		ModuleManager.modules.add(new Watermark());
-		ModuleManager.modules.add(new Totems());
-		ModuleManager.modules.add(new Ping());
-		ModuleManager.modules.add(new Frames());
-		ModuleManager.modules.add(new AutoCInfo());
-		ModuleManager.modules.add(new KillAuraInfo());
-		ModuleManager.modules.add(new SurroundInfo());
-		ModuleManager.modules.add(new ArrayListt());
-		ModuleManager.modules.add(new InventoryViewer());
-		ModuleManager.modules.add(new PlayerModel());
-		ModuleManager.modules.add(new Coords());
-		ModuleManager.modules.add(new ArmorHud());
-		ModuleManager.modules.add(new HudEditor());
+		modules.add(new Watermark());
+		modules.add(new Totems());
+		modules.add(new Ping());
+		modules.add(new Frames());
+		modules.add(new AutoCInfo());
+		modules.add(new KillAuraInfo());
+		modules.add(new SurroundInfo());
+		modules.add(new ArrayListt());
+		modules.add(new InventoryViewer());
+		modules.add(new PlayerModel());
+		modules.add(new Coords());
+		modules.add(new ArmorHud());
+		modules.add(new HudEditor());
 		//client
 		//ModuleManager.modules.add(new KeyStrokes());
-		ModuleManager.modules.add(new ClientFont());
-		ModuleManager.modules.add(new Capes());
-		ModuleManager.modules.add(new DiscordRichPresence());
-		ModuleManager.modules.add(new ClickGuiModule());
-	 	ModuleManager.modules.add(new TabGui());
-	 	ModuleManager.modules.add(new MainMenuInfo());
-		ModuleManager.modules.add(new Esp2dHelper());
+		modules.add(new ClientFont());
+		modules.add(new Capes());
+		modules.add(new DiscordRichPresence());
+		modules.add(new ClickGuiModule());
+	 	modules.add(new TabGui());
+	 	modules.add(new MainMenuInfo());
+		modules.add(new Esp2dHelper());
 	}
 	
 	public static void onUpdate() {
@@ -219,8 +219,8 @@ public class ModuleManager {
 		return null;
 	}
 	
-	public ArrayList<Module> getModuleList() {
-		return ModuleManager.modules;
+	public static ArrayList<Module> getModules() {
+		return modules;
 	}
 	
 	public static List<Module> getModulesByCategory(Category c) {
@@ -230,15 +230,12 @@ public class ModuleManager {
 			if(!m.getName().equals("Esp2dHelper")) {
 			if(m.getCategory() == c)
 				modules.add(m);
-		}
+			}
 		}
 		return modules;
 	}
 	
-	public static ArrayList<Module> getModules() {
-		return modules;
-	}
-	
+	// this works best with panelstudio for whatever reason, ill delete one of these soon.
 	public static ArrayList<Module> getModulesInCategory(Category c){
 		ArrayList<Module> list = (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
 		return list;
