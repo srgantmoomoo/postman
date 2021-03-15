@@ -228,7 +228,7 @@ public class TabGui extends Module {
 		}
 		
 		if(keyCode == Keyboard.KEY_DOWN) {
-			tab = true;
+			if(!tab) tab = true;
 			if (expanded) {
 				if(expanded && !modules.isEmpty() && modules.get(category.moduleIndex).expanded) {
 					Module module = modules.get(category.moduleIndex);

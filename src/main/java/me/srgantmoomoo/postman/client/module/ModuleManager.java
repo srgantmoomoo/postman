@@ -47,36 +47,34 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 public class ModuleManager {
 	
-	public static ArrayList<Module> modules;
+	public static ArrayList<Module> modules = new ArrayList<>();
 	
-	public ModuleManager() {
+	public ModuleManager() { 
 		MinecraftForge.EVENT_BUS.register(this);
 		
-		modules = new ArrayList<>();
-		
 		//alphabetic
-		modules.add(new AimBot());	
+		//modules.add(new AimBot());	// unstarted
 		modules.add(new AntiHunger());
-		modules.add(new AntiNick());	
+		//modules.add(new AntiNick());	// w i p
 		modules.add(new AntiSwing());
 		modules.add(new AutoArmor());	
 		modules.add(new AutoClicker());
-		//modules.add(new AutoCopeAndSeethe());
+		//modules.add(new AutoCopeAndSeethe()); // w i p
 		modules.add(new AutoCrystal());
 		modules.add(new AutoDisconnect());
 		modules.add(new AutoGap());	
-		modules.add(new AutoHut());
+		//modules.add(new AutoHut());   // unstarted
 		modules.add(new AutoMine());	
 		modules.add(new AutoReconnect());	
 		modules.add(new AutoRespawn());	
 		modules.add(new AutoTotem());	
-		modules.add(new AutoTrap());
+		//modules.add(new AutoTrap());   // unstarted
 		modules.add(new AutoUse());	
 		modules.add(new AutoWalk());
 		modules.add(new Backdoor2b2t());
 		modules.add(new Blink());	
 		modules.add(new CameraClip());	
-		modules.add(new ChatBot());	
+		//modules.add(new ChatBot());	// unstarted
 		modules.add(new ChatSuffix());
 		modules.add(new ChestStealer());
 		modules.add(new CoordExploit());
@@ -86,7 +84,7 @@ public class ModuleManager {
 		modules.add(new DeathCoords());	
 		modules.add(new Dupe());	
 		modules.add(new ElytraFly());
-		modules.add(new ElytraReplace());
+		//modules.add(new ElytraReplace());  // unstarted
 		modules.add(new Esp());
 		modules.add(new FastUse());
 		modules.add(new FootExp());
@@ -98,13 +96,13 @@ public class ModuleManager {
 		modules.add(new Jesus());	
 		modules.add(new KillAura());	
 		modules.add(new LiquidPlace());
-		modules.add(new LogOutSpot());
-		modules.add(new LongJump());
+		//modules.add(new LogOutSpot());  // unstarted
+		//modules.add(new LongJump());   // unstarted
 		modules.add(new LowOffHand());
 		modules.add(new Mcf());
 		modules.add(new Multitask());
-		modules.add(new Nametags());	
-		modules.add(new NewChunks());	
+		//modules.add(new Nametags());	// unstarted
+		//modules.add(new NewChunks());	// unstarted
 		modules.add(new NoFall());
 		modules.add(new NoHandShake());	
 		modules.add(new NoPush());
@@ -115,9 +113,9 @@ public class ModuleManager {
 		modules.add(new PortalGodMode());
 		modules.add(new ReverseStep());
 		modules.add(new SafeWalk());
-		modules.add(new Scaffold());	
+		//modules.add(new Scaffold());	// unstarted
 		modules.add(new SmartOffHand());	
-		modules.add(new Sneak());
+		//modules.add(new Sneak());    // unstarted
 		modules.add(new Speed());
 		modules.add(new Sprint());	
 		modules.add(new Step());
@@ -142,7 +140,7 @@ public class ModuleManager {
 		modules.add(new ArmorHud());
 		modules.add(new HudEditor());
 		//client
-		//ModuleManager.modules.add(new KeyStrokes());
+		//modules.add(new KeyStrokes());
 		modules.add(new ClientFont());
 		modules.add(new Capes());
 		modules.add(new DiscordRichPresence());
