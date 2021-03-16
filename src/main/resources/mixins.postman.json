@@ -25,6 +25,7 @@
 	"MixinMinecraft",
 	"MixinPlayerControllerMP",
 	"MixinAbstractClientPlayer",
+	"MixinRenderPlayer",
 	"accessor.AccessorEntityPlayerSP"
 ]
 }
