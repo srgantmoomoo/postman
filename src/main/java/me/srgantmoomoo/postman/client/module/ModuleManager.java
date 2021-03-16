@@ -83,16 +83,16 @@ public class ModuleManager {
 		modules.add(new DamageTiltCorrection());	
 		modules.add(new DeathCoords());	
 		modules.add(new Dupe());	
-		modules.add(new ElytraFly());
+		//modules.add(new ElytraFly());   // unstarted
 		//modules.add(new ElytraReplace());  // unstarted
 		modules.add(new Esp());
 		modules.add(new FastUse());
 		modules.add(new FootExp());
 		modules.add(new Freecam());	
 		modules.add(new FullBright());	
+		modules.add(new GuiMove());
 		modules.add(new HoleEsp());
 		modules.add(new HoleTp());
-		modules.add(new InventoryMove());	
 		modules.add(new Jesus());	
 		modules.add(new KillAura());	
 		modules.add(new LiquidPlace());

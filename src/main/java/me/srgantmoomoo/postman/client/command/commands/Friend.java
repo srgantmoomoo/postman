@@ -18,18 +18,20 @@ public class Friend extends Command {
 			
 			if(start.equalsIgnoreCase("list")) {
 				ModuleManager.addChatMessage("friends: " + FriendManager.getFriendsByName());
-			}else 
-			
-			if (start.equalsIgnoreCase("add") && !FriendManager.isFriend(args[1])) {
-				FriendManager.addFriend(args[1]);
-				ModuleManager.addChatMessage("added friend: " + args[1].toUpperCase());
+			}else if(start.equalsIgnoreCase("clear")) {
+				FriendManager.clearFriends();
+				ModuleManager.addChatMessage("cleared all friends");
 			}else
-			if (start.equalsIgnoreCase("remove") && FriendManager.isFriend(args[1])) {
-				FriendManager.removeFriend(args[1]);
-				ModuleManager.addChatMessage("removed friend: " + args[1].toUpperCase());	
-			}else {
-				ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> / or " + CommandManager.prefix + "friend remove <name> / or " + CommandManager.prefix + "friend list");
-			}
-		}else ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> / or " + CommandManager.prefix + "friend remove <name> / or " + CommandManager.prefix + "friend list");
+				
+				if (start.equalsIgnoreCase("add") && !FriendManager.isFriend(args[1])) {
+					FriendManager.addFriend(args[1]);
+					ModuleManager.addChatMessage("added friend: " + args[1].toUpperCase());
+				}else if (start.equalsIgnoreCase("remove") && FriendManager.isFriend(args[1])) {
+					FriendManager.removeFriend(args[1]);
+					ModuleManager.addChatMessage("removed friend: " + args[1].toUpperCase());	
+				}else {
+					ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> or... " + CommandManager.prefix + "friend remove <name> or... " +  CommandManager.prefix + "friend clear or... " + CommandManager.prefix + "friend list");
+				}
+		}else ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> or... " + CommandManager.prefix + "friend remove <name> or... " +  CommandManager.prefix + "friend clear or... " + CommandManager.prefix + "friend list");
 	}
 }

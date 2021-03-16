@@ -43,9 +43,9 @@ public class Bind extends Command {
 					module.keyCode.setKeyCode(Keyboard.KEY_NONE);
 				}
 				ModuleManager.addChatMessage("cleared all binds.");
-			} else ModuleManager.addChatMessage("correct usage of bind command -> " + CommandManager.prefix + "bind <module> <key> / or " + CommandManager.prefix + "bind clear");
+			} else ModuleManager.addChatMessage("correct usage of bind command -> " + CommandManager.prefix + "bind <module> <key> or... " + CommandManager.prefix + "bind clear");
 		}
-		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> " + CommandManager.prefix + "bind <module> <key> / or " + CommandManager.prefix + "bind clear");
+		if(args.length == 0) ModuleManager.addChatMessage("correct usage of bind command -> " + CommandManager.prefix + "bind <module> <key> or... " + CommandManager.prefix + "bind clear");
 	}
 
 }

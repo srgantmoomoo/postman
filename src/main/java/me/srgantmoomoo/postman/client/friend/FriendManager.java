@@ -48,4 +48,8 @@ public class FriendManager {
 	public static void removeFriend(String name) {
 		friends.remove(getFriendByName(name));
 	}
+	
+	public static void clearFriends() {
+		friends.clear();
+	}
 }

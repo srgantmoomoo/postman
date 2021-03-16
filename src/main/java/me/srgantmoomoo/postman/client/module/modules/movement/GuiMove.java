@@ -6,10 +6,10 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
-public class InventoryMove extends Module {
+public class GuiMove extends Module {
 	
-	public InventoryMove() {
-		super ("inventoryMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.MOVEMENT);
+	public GuiMove() {
+		super ("guiMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 	
 	private Minecraft mc = Minecraft.getMinecraft();
