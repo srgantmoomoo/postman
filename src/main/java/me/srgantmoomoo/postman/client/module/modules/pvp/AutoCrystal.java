@@ -63,9 +63,57 @@ import org.lwjgl.input.Keyboard;
  * also, i'm using some crystalUtils from gamesense listed below.
  */
 
+/*
+ * rewritten on 3/15/21 by SrgantMooMoo
+ */
+
 public class AutoCrystal extends Module {
+	
+	// rewrite
+	public BooleanSetting switchToCrystal = new BooleanSetting("switchToCrystal", this, false);
+	
+	public BooleanSetting breakCrystal = new BooleanSetting("breakCrystal", this, true);
+	public BooleanSetting placeCrystal = new BooleanSetting("placeCrystal", this, true);
+	
+	public ModeSetting logic = new ModeSetting("logic", this, "break, place", "break, place", "place, break");
+	
+	public NumberSetting breakSpeed = new NumberSetting("breakSpeed", this, 20, 0, 20, 1);
+	public ModeSetting breakType = new ModeSetting("breakType", this, "packet", "swing", "packet");
+	public ModeSetting breakHand = new ModeSetting("breakHand", this, "both", "main", "offhand", "both");
+	public ModeSetting breakMode = new ModeSetting("breakMode", this, "all", "all", "smart", "own");
+	public NumberSetting breakRange = new NumberSetting("breakRange", this, 4.4, 0.0, 10.0, 0.1);
+	
+	public NumberSetting placeRange = new NumberSetting("placeRange", this, 4.4, 0.0, 6.0, 0.1);
+	
+	public BooleanSetting facePlace = new BooleanSetting("facePlace", this, false);
+	public NumberSetting facePlaceValue = new NumberSetting("facePlcVal", this, 8, 0, 36, 1);
+	
+	public BooleanSetting antiGhost = new BooleanSetting("antiGhosting", this, true);
+	
+	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
+	
+	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
+	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);
+	
+	public NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
+	
+	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, true);
+	
+	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
+	
+	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
+	public NumberSetting maxSelfDmg = new NumberSetting("stopPlacingAtHlth...", this, 10, 0, 36, 1);
+	
+	public NumberSetting enemyRange = new NumberSetting("range", this, 6.0, 0.0, 16.0, 1.0);
+	public NumberSetting wallsRange = new NumberSetting("wallsRange", this, 3.5, 0.0, 10.0, 0.1);
+	
+	public BooleanSetting mode113 = new BooleanSetting("1.13place", this, false);
+	
+	public BooleanSetting outline = new BooleanSetting("outline", this, false);
+	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
+	
 	//redo
-	public BooleanSetting breakCrystal = new BooleanSetting("brkCrystal", this, true);
+	/*public BooleanSetting breakCrystal = new BooleanSetting("brkCrystal", this, true);
 	public NumberSetting breakSpeed = new NumberSetting("brkSpeed", this, 20, 0, 20, 1);
 	public ModeSetting breakType = new ModeSetting("brkType", this, "packet", "swing", "packet");
 	public ModeSetting breakHand = new ModeSetting("brkHand", this, "both", "main", "offhand", "both");
@@ -89,7 +137,7 @@ public class AutoCrystal extends Module {
 	public BooleanSetting switchToCrystal = new BooleanSetting("switchToCrystal", this, false);
 	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, true);
 	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
-	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);
+	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);*/
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255));
 
