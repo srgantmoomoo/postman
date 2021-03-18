@@ -100,7 +100,9 @@ public class AutoCrystal extends Module {
 	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
 	
 	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
-	public NumberSetting maxSelfDmg = new NumberSetting("stopPlacingAtHlth...", this, 10, 0, 36, 1);
+	public NumberSetting maxSelfDmg = new NumberSetting("antiSuicideValue", this, 10, 0, 36, 1);
+	
+	public BooleanSetting antiSelfPop = new BooleanSetting("antiSelfPop", this, true);
 	
 	public NumberSetting enemyRange = new NumberSetting("range", this, 6.0, 0.0, 16.0, 1.0);
 	public NumberSetting wallsRange = new NumberSetting("wallsRange", this, 3.5, 0.0, 10.0, 0.1);
@@ -113,8 +115,8 @@ public class AutoCrystal extends Module {
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(switchToCrystal, breakCrystal, placeCrystal, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, facePlace, facePlaceValue, antiGhost, raytrace, rotate,
-				spoofRotations, minDmg, multiplace, antiSuicide, maxSelfDmg, enemyRange, wallsRange, mode113, showDamage, outline, color);
+		this.addSettings(switchToCrystal, breakCrystal, placeCrystal, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, antiGhost, raytrace, rotate,
+				spoofRotations, multiplace, mode113, facePlace, facePlaceValue, antiSuicide, maxSelfDmg, antiSelfPop, minDmg, enemyRange, wallsRange, showDamage, outline, color);
 	}
 	
 	private boolean switchCooldown = false;
@@ -263,9 +265,9 @@ public class AutoCrystal extends Module {
 				if (d > damage) {
                     double self = calculateDamage(blockPos.getX() + 0.5D, blockPos.getY() + 1, blockPos.getZ() + 0.5D, mc.player);
 
-                    if ((self > d && !(d < ((EntityLivingBase) entity).getHealth())) || self - 0.5D > mc.player.getHealth()) continue;
+                    if ((self > d && !(d < ((EntityLivingBase) entity).getHealth())) || self - 0.5D > mc.player.getHealth() && antiSelfPop.isEnabled()) continue;
 
-                    if (self > maxSelfDmg.getValue()) 
+                    if (antiSuicide.isEnabled() && self > maxSelfDmg.getValue()) 
                     	continue;
 
                     damage = d;
@@ -398,12 +400,12 @@ public class AutoCrystal extends Module {
     });
     
     /*
-     * Custom Crystal utils
+     * somewhat custom crystal utils
      */
     
     public boolean canPlaceCrystal(BlockPos blockPos) {
-        BlockPos boost = blockPos.add(0, 1, 0);
-        BlockPos boost2 = blockPos.add(0, 2, 0);
+        BlockPos airBlock1 = blockPos.add(0, 1, 0);
+        BlockPos airBlock2 = blockPos.add(0, 2, 0);
         
         boolean crystal = mc.world.loadedEntityList.stream()
                 .filter(entity -> entity instanceof EntityEnderCrystal)
@@ -416,25 +418,25 @@ public class AutoCrystal extends Module {
         if(mode113.isEnabled()) {
         	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
                     || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
-                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
-                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock1)).isEmpty()
+                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
         }
 
         if(!multiplace.isEnabled() && !crystal) {
         	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
 	                || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
-	                && mc.world.getBlockState(boost).getBlock() == Blocks.AIR
-	                && mc.world.getBlockState(boost2).getBlock() == Blocks.AIR
-	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
-	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+	                && mc.world.getBlockState(airBlock1).getBlock() == Blocks.AIR
+	                && mc.world.getBlockState(airBlock2).getBlock() == Blocks.AIR
+	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock1)).isEmpty()
+	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
         }else if(!multiplace.isEnabled() && crystal) return false;
 
         return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
                 || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
-                && mc.world.getBlockState(boost).getBlock() == Blocks.AIR
-                && mc.world.getBlockState(boost2).getBlock() == Blocks.AIR
-                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
-                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+                && mc.world.getBlockState(airBlock1).getBlock() == Blocks.AIR
+                && mc.world.getBlockState(airBlock2).getBlock() == Blocks.AIR
+                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock1)).isEmpty()
+                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
     }
     
 	/*
