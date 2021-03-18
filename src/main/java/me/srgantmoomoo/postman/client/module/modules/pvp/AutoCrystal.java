@@ -97,8 +97,6 @@ public class AutoCrystal extends Module {
 	
 	public NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
 	
-	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, true);
-	
 	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
 	
 	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
@@ -111,40 +109,12 @@ public class AutoCrystal extends Module {
 	
 	public BooleanSetting outline = new BooleanSetting("outline", this, false);
 	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
-	
-	//redo
-	/*public BooleanSetting breakCrystal = new BooleanSetting("brkCrystal", this, true);
-	public NumberSetting breakSpeed = new NumberSetting("brkSpeed", this, 20, 0, 20, 1);
-	public ModeSetting breakType = new ModeSetting("brkType", this, "packet", "swing", "packet");
-	public ModeSetting breakHand = new ModeSetting("brkHand", this, "both", "main", "offhand", "both");
-	public ModeSetting breakMode = new ModeSetting("brkMode", this, "all", "all", "smart", "own");
-	public NumberSetting breakRange = new NumberSetting("brkRange", this, 4.4, 0.0, 10.0, 0.1);
-	
-	public BooleanSetting placeCrystal = new BooleanSetting("plcCrystal", this, true);
-	public NumberSetting placeRange = new NumberSetting("plcRange", this, 4.4, 0.0, 6.0, 0.1);
-	public NumberSetting facePlaceValue = new NumberSetting("facePlcVal", this, 8, 0, 36, 1);
-	
-	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
-	public BooleanSetting outline = new BooleanSetting("outline", this, false);
-	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
-	
-	public NumberSetting maxSelfDmg = new NumberSetting("maxSelfDmg", this, 10, 0, 36, 1);
-	public NumberSetting wallsRange = new NumberSetting("wallsRange", this, 3.5, 0.0, 10.0, 0.1);
-	public NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
-	public NumberSetting enemyRange = new NumberSetting("enemyRange", this, 6.0, 0.0, 16.0, 1.0);
-	
-	public BooleanSetting mode113 = new BooleanSetting("1.13place", this, false);
-	public BooleanSetting switchToCrystal = new BooleanSetting("switchToCrystal", this, false);
-	public BooleanSetting cancelCrystal = new BooleanSetting("cancelCrystal", this, true);
-	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
-	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);*/
-	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255));
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(breakCrystal,placeCrystal,breakMode,breakType,breakHand,breakSpeed,breakRange,placeRange,cancelCrystal,switchToCrystal,mode113,rotate,spoofRotations,minDmg,maxSelfDmg,wallsRange
-				,enemyRange,facePlaceValue,raytrace,outline,showDamage,color);
+		this.addSettings(switchToCrystal, breakCrystal, placeCrystal, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, facePlace, facePlaceValue, antiGhost, raytrace, rotate,
+				spoofRotations, minDmg, multiplace, antiSuicide, maxSelfDmg, enemyRange, wallsRange, mode113, showDamage, outline, color);
 	}
 	
 	private boolean switchCooldown = false;
@@ -186,8 +156,13 @@ public class AutoCrystal extends Module {
 	}
 	
 	private void implementLogic() {
-		breakLogic();
-		placeLogic();
+		if(logic.is("break, place")) {
+			breakLogic();
+			placeLogic();
+		}else if(logic.is("place, break")) {
+			placeLogic();
+			breakLogic();
+		}
 	}
 	
 	private void breakLogic() {
@@ -217,12 +192,6 @@ public class AutoCrystal extends Module {
 				 if(breakType.is("packet")) {
 					 mc.player.connection.sendPacket(new CPacketUseEntity(crystal));
 					 swingArm();
-				 }
-				 
-				 if(cancelCrystal.isEnabled()) {
-					 crystal.setDead();
-					 mc.world.removeAllEntities();
-					 mc.world.getLoadedEntityList();
 				 }
 				 
 				 active=false;
@@ -427,7 +396,47 @@ public class AutoCrystal extends Module {
             }
         }
     });
-	
+    
+    /*
+     * Custom Crystal utils
+     */
+    
+    public boolean canPlaceCrystal(BlockPos blockPos) {
+        BlockPos boost = blockPos.add(0, 1, 0);
+        BlockPos boost2 = blockPos.add(0, 2, 0);
+        
+        boolean crystal = mc.world.loadedEntityList.stream()
+                .filter(entity -> entity instanceof EntityEnderCrystal)
+                .filter(e -> mc.player.getDistance(e) <= breakRange.getValue())
+                .filter(e -> crystalCheck(e))
+                .map(entity -> (EntityEnderCrystal) entity)
+                .min(Comparator.comparing(c -> mc.player.getDistance(c)))
+                .orElse(null) != null;
+        
+        if(mode113.isEnabled()) {
+        	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
+                    || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
+                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
+                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+        }
+
+        if(!multiplace.isEnabled() && !crystal) {
+        	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
+	                || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
+	                && mc.world.getBlockState(boost).getBlock() == Blocks.AIR
+	                && mc.world.getBlockState(boost2).getBlock() == Blocks.AIR
+	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
+	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+        }else if(!multiplace.isEnabled() && crystal) return false;
+
+        return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
+                || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
+                && mc.world.getBlockState(boost).getBlock() == Blocks.AIR
+                && mc.world.getBlockState(boost2).getBlock() == Blocks.AIR
+                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
+                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
+    }
+    
 	/*
 	 * Crystal Utils from gamesense
 	 */
@@ -526,24 +535,6 @@ public class AutoCrystal extends Module {
         }
         damage = CombatRules.getDamageAfterAbsorb(damage, (float) entity.getTotalArmorValue(), (float) entity.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).getAttributeValue());
         return damage;
-    }
-	
-	public boolean canPlaceCrystal(BlockPos blockPos) {
-        BlockPos boost = blockPos.add(0, 1, 0);
-        BlockPos boost2 = blockPos.add(0, 2, 0);
-        if(mode113.isEnabled()) {
-        	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
-                    || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
-                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
-                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
-        }else {
-        return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
-                || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
-                && mc.world.getBlockState(boost).getBlock() == Blocks.AIR
-                && mc.world.getBlockState(boost2).getBlock() == Blocks.AIR
-                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost)).isEmpty()
-                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(boost2)).isEmpty();
-        }
     }
 	
 	public List<BlockPos> getSphere(BlockPos loc, float r, int h, boolean hollow, boolean sphere, int plus_y) {
