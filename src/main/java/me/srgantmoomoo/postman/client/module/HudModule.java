@@ -30,6 +30,6 @@ public abstract class HudModule extends Module {
 	}
 	
 	public void resetPosition() {
-		component.setPosition(Main.getInstance().clickGui.guiInterface,position);
+		component.setPosition(Main.clickGui.guiInterface,position);
 	}
 }

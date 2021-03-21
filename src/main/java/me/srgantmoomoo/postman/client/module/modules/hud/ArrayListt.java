@@ -71,7 +71,7 @@ public class ArrayListt extends HudModule {
     			if (module.isToggled() && !module.getName().equalsIgnoreCase("Esp2dHelper")) list.activeModules.add(module);
     	}
     	if(sortHeight.is("up") || sortHeight.is("down")) {
-    	list.activeModules.sort(Comparator.comparing(module -> -Main.getInstance().clickGui.guiInterface.getFontWidth(module.getName())));
+    	list.activeModules.sort(Comparator.comparing(module -> -Main.clickGui.guiInterface.getFontWidth(module.getName())));
     	}
     }
 

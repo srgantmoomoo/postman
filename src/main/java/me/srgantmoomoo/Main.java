@@ -32,7 +32,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
+ * Multithreading done by techale.
  */
+
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
@@ -48,11 +50,11 @@ public class Main {
 	public static SaveLoad saveLoad;
 	public static TabGui tabGui;
 	public static Cape cape;
-	public ClickGui clickGui;
-	public EventProcessor eventProcessor;
-	public CustomFontRenderer customFontRenderer;
-	public ClickGuiSave clickGuiSave;
-	public ClickGuiLoad clickGuiLoad;
+	public static ClickGui clickGui;
+	public static EventProcessor eventProcessor;
+	public static CustomFontRenderer customFontRenderer;
+	public static ClickGuiSave clickGuiSave;
+	public static ClickGuiLoad clickGuiLoad;
 	
 	public static final Logger log = LogManager.getLogger("postman");
 	
@@ -60,10 +62,6 @@ public class Main {
 	
 	@Instance
 	public static Main instance;
-	
-	public Main() { instance = this; }
-	
-	public static Main getInstance() { return instance; }
 	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
@@ -120,21 +118,15 @@ public class Main {
 
 	@EventHandler
 	public void init (FMLInitializationEvent event) {
-		// Create a thread with extClientInit
 		Thread t = new Thread(this::extClientInit);
-		// Start it
 		t.start();
-		// Run opengl
 		fontInit();
 		try {
-			// Wait for extClientInit to finish
 			t.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		log.info("postman initialization finished.");
-		// Start an async thread with loadCfg. I dunno why but, for some reasons, you cannot put this with
-		// The other, if you do, it will create problems with CustomFontRenderer
 		new Thread(this::loadCfg).start();
 
 	}

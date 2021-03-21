@@ -48,9 +48,13 @@ import net.minecraft.world.Explosion;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
+
+import com.google.common.collect.Lists;
 
 /**
  * @Author SrgantMooMoo
@@ -85,7 +89,7 @@ public class AutoCrystal extends Module {
 	
 	public NumberSetting placeRange = new NumberSetting("placeRange", this, 4.4, 0.0, 6.0, 0.1);
 	
-	public BooleanSetting facePlace = new BooleanSetting("facePlace", this, false);
+	//public BooleanSetting facePlace = new BooleanSetting("facePlace", this, false);
 	public NumberSetting facePlaceValue = new NumberSetting("facePlcVal", this, 8, 0, 36, 1);
 	
 	public BooleanSetting antiGhost = new BooleanSetting("antiGhosting", this, true);
@@ -109,6 +113,7 @@ public class AutoCrystal extends Module {
 	
 	public BooleanSetting mode113 = new BooleanSetting("1.13place", this, false);
 	
+	public BooleanSetting constantRender = new BooleanSetting("constantRender", this, true);
 	public BooleanSetting outline = new BooleanSetting("outline", this, false);
 	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255));
@@ -116,7 +121,7 @@ public class AutoCrystal extends Module {
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(switchToCrystal, breakCrystal, placeCrystal, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, antiGhost, raytrace, rotate,
-				spoofRotations, multiplace, mode113, facePlace, facePlaceValue, antiSuicide, maxSelfDmg, antiSelfPop, minDmg, enemyRange, wallsRange, showDamage, outline, color);
+				spoofRotations, multiplace, mode113, antiSuicide, maxSelfDmg, antiSelfPop, minDmg, facePlaceValue, enemyRange, wallsRange, showDamage, outline, constantRender, color);
 	}
 	
 	private boolean switchCooldown = false;
@@ -124,7 +129,7 @@ public class AutoCrystal extends Module {
 	private EnumFacing enumFacing;
 	private Entity renderEnt;
 	
-	private final ArrayList<BlockPos> PlacedCrystals = new ArrayList<BlockPos>();
+	public static final ArrayList<BlockPos> PlacedCrystals = new ArrayList<BlockPos>();
 	public boolean active = false;
 	boolean offHand = false;
 	private static boolean togglePitch = false;
@@ -153,7 +158,6 @@ public class AutoCrystal extends Module {
 	public void onUpdate() {
 		if(mc.player == null || mc.world == null)
 			return;
-		
 		implementLogic();
 	}
 	
@@ -194,6 +198,10 @@ public class AutoCrystal extends Module {
 				 if(breakType.is("packet")) {
 					 mc.player.connection.sendPacket(new CPacketUseEntity(crystal));
 					 swingArm();
+				 }
+				 
+				 if(constantRender.isEnabled() && !multiplace.isEnabled()) {
+					 crystal.setDead();
 				 }
 				 
 				 active=false;
@@ -259,7 +267,7 @@ public class AutoCrystal extends Module {
 				
 				double d = calculateDamage(blockPos.getX() + 0.5D, blockPos.getY() + 1, blockPos.getZ() + 0.5D, entity);
 				
-				if(d < minDmg.getValue() && ((EntityLivingBase)entity).getHealth() + ((EntityLivingBase) entity).getAbsorptionAmount() > facePlaceValue.getValue()) 
+				if(d <= minDmg.getValue() && ((EntityLivingBase)entity).getHealth() + ((EntityLivingBase) entity).getAbsorptionAmount() > facePlaceValue.getValue()) 
 					continue;
 				
 				if (d > damage) {
@@ -430,13 +438,20 @@ public class AutoCrystal extends Module {
 	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock1)).isEmpty()
 	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
         }else if(!multiplace.isEnabled() && crystal) return false;
-
+        
         return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
                 || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
                 && mc.world.getBlockState(airBlock1).getBlock() == Blocks.AIR
                 && mc.world.getBlockState(airBlock2).getBlock() == Blocks.AIR
                 && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock1)).isEmpty()
                 && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
+    }
+    
+    private List<BlockPos> findCrystalBlocks() {
+        NonNullList<BlockPos> positions = NonNullList.create();
+        //positions.addAll(getSphere(loc, r, h, hollow, sphere, plus_y))
+        positions.addAll(getSphere(getPlayerPos(), (float)placeRange.getValue(), (int)placeRange.getValue(), false, true, 0).stream().filter(this::canPlaceCrystal).collect(Collectors.toList()));
+        return positions;
     }
     
 	/*
@@ -560,12 +575,6 @@ public class AutoCrystal extends Module {
 	
 	public static BlockPos getPlayerPos() {
         return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
-    }
-	
-	private List<BlockPos> findCrystalBlocks() {
-        NonNullList<BlockPos> positions = NonNullList.create();
-        positions.addAll(getSphere(getPlayerPos(), (float)placeRange.getValue(), (int)placeRange.getValue(), false, true, 0).stream().filter(this::canPlaceCrystal).collect(Collectors.toList()));
-        return positions;
     }
 	
 	private static void resetRotation() {

@@ -60,7 +60,7 @@ public class ClickGuiModule extends Module {
 	public void onEnable() {
 		super.onEnable();
 		MinecraftForge.EVENT_BUS.register(this);
-		Main.getInstance().clickGui.enterGUI();
+		Main.clickGui.enterGUI();
 	}
 
 	public void onUpdate() {

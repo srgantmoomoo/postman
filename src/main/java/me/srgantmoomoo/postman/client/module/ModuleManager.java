@@ -19,6 +19,7 @@ import me.srgantmoomoo.postman.client.module.modules.hud.ArmorHud;
 import me.srgantmoomoo.postman.client.module.modules.hud.ArrayListt;
 import me.srgantmoomoo.postman.client.module.modules.hud.AutoCInfo;
 import me.srgantmoomoo.postman.client.module.modules.hud.Coords;
+import me.srgantmoomoo.postman.client.module.modules.hud.Cps;
 import me.srgantmoomoo.postman.client.module.modules.hud.Frames;
 import me.srgantmoomoo.postman.client.module.modules.hud.InventoryViewer;
 import me.srgantmoomoo.postman.client.module.modules.hud.KillAuraInfo;
@@ -124,12 +125,13 @@ public class ModuleManager {
 		modules.add(new Tracers());
 		modules.add(new Velocity());	
 		modules.add(new ViewModel());	
-		modules.add(new Xray());
+		//modules.add(new Xray());    // unstarted
 		//hud
 		modules.add(new Watermark());
 		modules.add(new Totems());
 		modules.add(new Ping());
 		modules.add(new Frames());
+		modules.add(new Cps());
 		modules.add(new AutoCInfo());
 		modules.add(new KillAuraInfo());
 		modules.add(new SurroundInfo());
@@ -156,7 +158,7 @@ public class ModuleManager {
 	
 	public static void onRender() {
 		modules.stream().filter(Module::isToggled).forEach(Module::onRender);
-		Main.getInstance().clickGui.render();
+		Main.clickGui.render();
 	}
 	
 	public static void onWorldRender(RenderWorldLastEvent event) {

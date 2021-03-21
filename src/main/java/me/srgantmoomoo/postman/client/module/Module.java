@@ -42,9 +42,9 @@ public class Module implements Toggleable {
 	
 	public void onWorldRender(RenderEvent event) {}
 	
-	public void onUpdate(){}
+	public void onUpdate() {}
 	
-	public void onRender(){}
+	public void onRender() {}
 	
 	public void enable() {
 		setToggled(true);

@@ -51,6 +51,6 @@ public class ClickGuiSave {
 
     public void saveClickGUIPositions() throws IOException {
         registerFiles(mainName, "ClickGUI");
-		Main.getInstance().clickGui.gui.saveConfig(new ClickGuiConfig(fileName+mainName));
+		Main.clickGui.gui.saveConfig(new ClickGuiConfig(fileName+mainName));
     }
 }

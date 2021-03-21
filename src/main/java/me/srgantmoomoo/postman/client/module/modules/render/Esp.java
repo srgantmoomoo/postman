@@ -1,9 +1,11 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.Wrapper;
@@ -12,13 +14,17 @@ import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.GlStateManager.Profile;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
@@ -33,6 +39,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.tileentity.TileEntityShulkerBox;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -40,9 +47,11 @@ import net.minecraft.util.math.BlockPos;
 
 public class Esp extends Module {
 	
-	public BooleanSetting chams = new BooleanSetting("chams", this, false);
+	public BooleanSetting chams = new BooleanSetting("walls", this, false);
 	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "outline", "2dEsp", "glow", "off");
 	public ModeSetting storage = new ModeSetting("storage", this, "fill", "fill", "outline", "off");
+	public ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
+	
 	public BooleanSetting mob = new BooleanSetting("mob", this, false);
 	public BooleanSetting item = new BooleanSetting("item", this, true);
 	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
@@ -60,7 +69,7 @@ public class Esp extends Module {
 	
 	public Esp() {
 		super ("esp's", "draws esp around players and storage blocks.", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(entityMode, storage, mob, item, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor
+		this.addSettings(entityMode, storage, crystalMode, mob, item, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor
 				, enderChestColor, shulkerBoxColor, otherColor);
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
@@ -110,6 +119,9 @@ public class Esp extends Module {
             	entity.setGlowing(true);
             }
             if (entityMode.is("glow") && item.isEnabled() && entity instanceof EntityItem) {
+            	entity.setGlowing(true);
+            }
+            if (crystalMode.is("glow") && entity instanceof EntityEnderCrystal) {
             	entity.setGlowing(true);
             }
             
@@ -181,7 +193,13 @@ public class Esp extends Module {
                 }
             });
         }
-    }
+        
+        // crystal csgo
+        
+        if(crystalMode.is("csgo")) {
+        	
+        }
+        }
     
     private void drawStorageBox(BlockPos blockPos, int width, JColor color) {
 		JTessellator.drawStorageBox(blockPos, 0.88, color, GeometryMasks.Quad.ALL);

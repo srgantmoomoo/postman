@@ -20,15 +20,15 @@ public class ClientFont extends Module {
 	
 	public void onEnable() {
 		if(font.is("Comic Sans Ms")) {
-			Main.getInstance().customFontRenderer = new CustomFontRenderer(new Font("Comic Sans MS", Font.PLAIN, 18), true, true);
+			Main.customFontRenderer = new CustomFontRenderer(new Font("Comic Sans MS", Font.PLAIN, 18), true, true);
 		}
 		
 		if(font.is("Arial")) {
-			Main.getInstance().customFontRenderer = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 18), true, true);
+			Main.customFontRenderer = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 18), true, true);
 		}
 		
 		if(font.is("Verdana")) {
-			Main.getInstance().customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 18), true, true);
+			Main.customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 18), true, true);
 		}
 	}
 }

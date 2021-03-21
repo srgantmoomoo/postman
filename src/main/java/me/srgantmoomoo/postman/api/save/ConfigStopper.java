@@ -13,8 +13,8 @@ public class ConfigStopper extends Thread {
 
     public static void saveConfig() {
         try {
-            Main.getInstance().clickGuiSave.clickGuiSave();
-            Main.getInstance().clickGuiSave.saveClickGUIPositions();
+            Main.clickGuiSave.clickGuiSave();
+            Main.clickGuiSave.saveClickGUIPositions();
             Main.log.info("saved config.");
         }
         catch (IOException e) {

@@ -29,6 +29,6 @@ public class ClickGuiLoad {
     }
 
     public void loadClickGUIPositions() throws IOException {
-		Main.getInstance().clickGui.gui.loadConfig(new ClickGuiConfig(fileName+mainName));
+		Main.clickGui.gui.loadConfig(new ClickGuiConfig(fileName+mainName));
     }
 }
