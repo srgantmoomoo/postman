@@ -14,14 +14,14 @@ import me.srgantmoomoo.postman.client.module.modules.pvp.AutoCrystal;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
-public class Cps extends HudModule {
-	private CpsList list = new CpsList();
+public class Ghosting extends HudModule {
+	private GhostingList list = new GhostingList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 
-	public Cps() {
+	public Ghosting() {
 		super("placedCrystals", "shows amount currently placed crystals", new Point(-3,39), Category.HUD);
 		this.addSettings(sort, color);
 	}
@@ -35,7 +35,7 @@ public class Cps extends HudModule {
 		
 	}
 	
-	private class CpsList implements HUDList {
+	private class GhostingList implements HUDList {
 
 		@Override
 		public int getSize() {
@@ -44,8 +44,8 @@ public class Cps extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			String caPlaced = AutoCrystal.PlacedCrystals.size() + "";
-			return caPlaced;
+			String ghosting = AutoCrystal.ghosting + "";
+			return ghosting;
 		}
 
 		@Override
@@ -64,3 +64,4 @@ public class Cps extends HudModule {
 		}
 	}
 }
+

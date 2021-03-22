@@ -21,6 +21,7 @@ import me.srgantmoomoo.postman.client.module.modules.hud.AutoCInfo;
 import me.srgantmoomoo.postman.client.module.modules.hud.Coords;
 import me.srgantmoomoo.postman.client.module.modules.hud.Cps;
 import me.srgantmoomoo.postman.client.module.modules.hud.Frames;
+import me.srgantmoomoo.postman.client.module.modules.hud.Ghosting;
 import me.srgantmoomoo.postman.client.module.modules.hud.InventoryViewer;
 import me.srgantmoomoo.postman.client.module.modules.hud.KillAuraInfo;
 import me.srgantmoomoo.postman.client.module.modules.hud.Ping;
@@ -79,7 +80,6 @@ public class ModuleManager {
 		modules.add(new ChatSuffix());
 		modules.add(new ChestStealer());
 		modules.add(new CoordExploit());
-		modules.add(new CraftingSlots());	
 		modules.add(new Criticals());	
 		modules.add(new DamageTiltCorrection());	
 		modules.add(new DeathCoords());	
@@ -94,6 +94,7 @@ public class ModuleManager {
 		modules.add(new GuiMove());
 		modules.add(new HoleEsp());
 		modules.add(new HoleTp());
+		modules.add(new InventoryPlus());	
 		modules.add(new Jesus());	
 		modules.add(new KillAura());	
 		modules.add(new LiquidPlace());
@@ -128,10 +129,12 @@ public class ModuleManager {
 		//modules.add(new Xray());    // unstarted
 		//hud
 		modules.add(new Watermark());
+		modules.add(new World());
 		modules.add(new Totems());
 		modules.add(new Ping());
 		modules.add(new Frames());
 		modules.add(new Cps());
+		modules.add(new Ghosting());
 		modules.add(new AutoCInfo());
 		modules.add(new KillAuraInfo());
 		modules.add(new SurroundInfo());

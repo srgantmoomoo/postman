@@ -25,7 +25,7 @@ public class NoRender extends Module {
 	
 	public NoRender() {
 		super("noRender", "stops certain events from rendering.", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(rain, hurtCam, potionEffects, fire, portalEffect);
+		this.addSettings(hurtCam, potionEffects, fire, portalEffect);
 	}
 	
 	@Override

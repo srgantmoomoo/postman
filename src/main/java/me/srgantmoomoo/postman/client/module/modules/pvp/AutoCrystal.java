@@ -105,7 +105,7 @@ public class AutoCrystal extends Module {
 	
 	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
 	public NumberSetting multiplaceValue = new NumberSetting("multiplaceValue", this, 2, 1, 10, 1);
-	public BooleanSetting multiplacePlus = new BooleanSetting("multiplacePlus", this, false);
+	public BooleanSetting multiplacePlus = new BooleanSetting("multiplacePlus", this, true);
 	
 	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
 	public NumberSetting maxSelfDmg = new NumberSetting("antiSuicideValue", this, 10, 0, 36, 1);
@@ -133,6 +133,7 @@ public class AutoCrystal extends Module {
 	private Entity renderEnt;
 	
 	public static final ArrayList<BlockPos> PlacedCrystals = new ArrayList<BlockPos>();
+	public static boolean ghosting = false;;
 	public boolean active = false;
 	boolean offHand = false;
 	private static boolean togglePitch = false;
@@ -145,6 +146,7 @@ public class AutoCrystal extends Module {
 		Main.EVENT_BUS.subscribe(this);
 		PlacedCrystals.clear();
 		active = false;
+		ghosting = false;
 	}
 	
 	@Override
@@ -156,12 +158,20 @@ public class AutoCrystal extends Module {
         resetRotation();
         PlacedCrystals.clear();
         active = false;
+        ghosting = false;
 	}
 	
 	public void onUpdate() {
 		if(mc.player == null || mc.world == null)
 			return;
 		implementLogic();
+		
+		if(antiGhost.isEnabled()) {
+			// && player is placeablee
+			if(breakCrystal.isEnabled() && placeCrystal.isEnabled() && !active) {
+				ghosting = true;
+			}else ghosting = false;
+		}
 	}
 	
 	private void implementLogic() {
