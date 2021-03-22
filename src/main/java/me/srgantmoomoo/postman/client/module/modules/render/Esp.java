@@ -92,15 +92,12 @@ public class Esp extends Module {
         entities.forEach(entity -> {
             defineEntityColors(entity);
             
-            if(!entityMode.is("glow")) {
-            	 entities.forEach(p -> p.setGlowing(false));
-            }
-            if(entityMode.is("glow") && !mob.isEnabled() && entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal) {
-             	 entity.setGlowing(false);
-           }
-            if(entityMode.is("glow") && !item.isEnabled() && entity instanceof EntityItem) {
-              	 entity.setGlowing(false);
-            }
+            if(!entityMode.is("glow")) entities.forEach(p -> p.setGlowing(false));
+            if(entityMode.is("glow") && !mob.isEnabled() && entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal) entity.setGlowing(false);
+            if(entityMode.is("glow") && !item.isEnabled() && entity instanceof EntityItem) entity.setGlowing(false);
+            
+            if(!crystalMode.is("glow")) entity.setGlowing(false);
+            if(crystalMode.is("glow")) entity.setGlowing(true);
             
             
             //players - box

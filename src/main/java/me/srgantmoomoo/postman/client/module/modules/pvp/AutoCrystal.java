@@ -92,6 +92,8 @@ public class AutoCrystal extends Module {
 	//public BooleanSetting facePlace = new BooleanSetting("facePlace", this, false);
 	public NumberSetting facePlaceValue = new NumberSetting("facePlcVal", this, 8, 0, 36, 1);
 	
+	public BooleanSetting highPing = new BooleanSetting("highPing", this, true);
+	
 	public BooleanSetting antiGhost = new BooleanSetting("antiGhosting", this, true);
 	
 	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
@@ -121,7 +123,7 @@ public class AutoCrystal extends Module {
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(switchToCrystal, breakCrystal, placeCrystal, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, antiGhost, raytrace, rotate,
+		this.addSettings(switchToCrystal, breakCrystal, placeCrystal, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, highPing, antiGhost, raytrace, rotate,
 				spoofRotations, mode113, multiplace, multiplaceValue, multiplacePlus, antiSuicide, maxSelfDmg, antiSelfPop, minDmg, facePlaceValue, enemyRange, wallsRange, showDamage, outline, color);
 	}
 	
@@ -200,6 +202,13 @@ public class AutoCrystal extends Module {
 					 mc.player.connection.sendPacket(new CPacketUseEntity(crystal));
 					 swingArm();
 				 }
+				 
+				 if (highPing.isEnabled()) {
+	                    crystal.setDead();
+	                    mc.world.removeAllEntities();
+	                    mc.world.getLoadedEntityList();
+	                }
+				 
 				 active = false;
 			 }
 		 }
@@ -450,14 +459,14 @@ public class AutoCrystal extends Module {
                     && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
         }
 
-        if(!multiplace.isEnabled() && !crystal) {
+        if(!multiplace.isEnabled() && !highPing.isEnabled() && !crystal) {
         	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
 	                || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
 	                && mc.world.getBlockState(airBlock1).getBlock() == Blocks.AIR
 	                && mc.world.getBlockState(airBlock2).getBlock() == Blocks.AIR
 	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock1)).isEmpty()
 	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
-        }else if(!multiplace.isEnabled() && crystal) return false;
+        }else if(!multiplace.isEnabled() && !highPing.isEnabled() && crystal) return false;
         
         if(multiplace.isEnabled() && !multiplacePlus.isEnabled() && PlacedCrystals.size() > multiplaceValue.getValue()) {
         	return false;
