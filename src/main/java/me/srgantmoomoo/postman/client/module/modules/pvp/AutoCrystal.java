@@ -102,6 +102,8 @@ public class AutoCrystal extends Module {
 	public NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
 	
 	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
+	public NumberSetting multiplaceValue = new NumberSetting("multiplaceValue", this, 2, 1, 10, 1);
+	public BooleanSetting multiplacePlus = new BooleanSetting("multiplacePlus", this, false);
 	
 	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
 	public NumberSetting maxSelfDmg = new NumberSetting("antiSuicideValue", this, 10, 0, 36, 1);
@@ -113,7 +115,6 @@ public class AutoCrystal extends Module {
 	
 	public BooleanSetting mode113 = new BooleanSetting("1.13place", this, false);
 	
-	public BooleanSetting constantRender = new BooleanSetting("constantRender", this, true);
 	public BooleanSetting outline = new BooleanSetting("outline", this, false);
 	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255));
@@ -121,7 +122,7 @@ public class AutoCrystal extends Module {
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(switchToCrystal, breakCrystal, placeCrystal, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, antiGhost, raytrace, rotate,
-				spoofRotations, multiplace, mode113, antiSuicide, maxSelfDmg, antiSelfPop, minDmg, facePlaceValue, enemyRange, wallsRange, showDamage, outline, constantRender, color);
+				spoofRotations, mode113, multiplace, multiplaceValue, multiplacePlus, antiSuicide, maxSelfDmg, antiSelfPop, minDmg, facePlaceValue, enemyRange, wallsRange, showDamage, outline, color);
 	}
 	
 	private boolean switchCooldown = false;
@@ -181,9 +182,9 @@ public class AutoCrystal extends Module {
                  .orElse(null);
 		 
 		 if(breakCrystal.isEnabled() && crystal !=null) {
-			 if (!mc.player.canEntityBeSeen(crystal) && mc.player.getDistance(crystal) > wallsRange.getValue())
-	                return;
-			 
+			 if (!mc.player.canEntityBeSeen(crystal) && mc.player.getDistance(crystal) > wallsRange.getValue()) 
+				 return;
+
 			 if(timer.getTimePassed() / 50 >= 20 - breakSpeed.getValue()) {
 				 timer.reset();
 				 active=true;
@@ -199,18 +200,13 @@ public class AutoCrystal extends Module {
 					 mc.player.connection.sendPacket(new CPacketUseEntity(crystal));
 					 swingArm();
 				 }
-				 
-				 if(constantRender.isEnabled() && !multiplace.isEnabled()) {
-					 crystal.setDead();
-				 }
-				 
-				 active=false;
+				 active = false;
 			 }
 		 }
 		 else {
 			 resetRotation();
 			 
-			 active=false;
+			 active = false;
 		 }
 	}
 	
@@ -407,6 +403,30 @@ public class AutoCrystal extends Module {
         }
     });
     
+    @EventHandler
+    private final Listener<PacketEvent.Receive> packetReceiveListener2 = new Listener<>(event -> {
+        if (event.getPacket() instanceof SPacketSoundEffect) {
+            final SPacketSoundEffect packet = (SPacketSoundEffect) event.getPacket();
+            if (packet.getCategory() == SoundCategory.BLOCKS && packet.getSound() == SoundEvents.ENTITY_GENERIC_EXPLODE) {
+                for (BlockPos blockPos : PlacedCrystals) {
+                    if (blockPos.getDistance((int) packet.getX(), (int) packet.getY(), (int) packet.getZ()) <= 6) {
+                        CPacketUseEntity cPacketUseEntity = new CPacketUseEntity(new EntityEnderCrystal(mc.world, blockPos.getX(), blockPos.getY(), blockPos.getZ()));
+                        mc.player.connection.sendPacket(cPacketUseEntity);
+                        PlacedCrystals.remove(blockPos);
+                        return;
+                    }
+                }
+                for (Entity e : Minecraft.getMinecraft().world.loadedEntityList) {
+                    if (e instanceof EntityEnderCrystal) {
+                        if (e.getDistance(packet.getX(), packet.getY(), packet.getZ()) <= 6.0f) {
+                            e.setDead();
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
     /*
      * somewhat custom crystal utils
      */
@@ -439,6 +459,17 @@ public class AutoCrystal extends Module {
 	                && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
         }else if(!multiplace.isEnabled() && crystal) return false;
         
+        if(multiplace.isEnabled() && !multiplacePlus.isEnabled() && PlacedCrystals.size() > multiplaceValue.getValue()) {
+        	return false;
+        }else if((multiplace.isEnabled() && PlacedCrystals.size() <= multiplaceValue.getValue()) || (multiplace.isEnabled() && multiplacePlus.isEnabled())) {
+        	return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
+                    || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
+                    && mc.world.getBlockState(airBlock1).getBlock() == Blocks.AIR
+                    && mc.world.getBlockState(airBlock2).getBlock() == Blocks.AIR
+                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock1)).isEmpty()
+                    && mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(airBlock2)).isEmpty();
+        }
+        
         return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK
                 || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN)
                 && mc.world.getBlockState(airBlock1).getBlock() == Blocks.AIR
@@ -449,7 +480,7 @@ public class AutoCrystal extends Module {
     
     private List<BlockPos> findCrystalBlocks() {
         NonNullList<BlockPos> positions = NonNullList.create();
-        //positions.addAll(getSphere(loc, r, h, hollow, sphere, plus_y))
+        // positions.addAll(getSphere(loc, r, h, hollow, sphere, plus_y))
         positions.addAll(getSphere(getPlayerPos(), (float)placeRange.getValue(), (int)placeRange.getValue(), false, true, 0).stream().filter(this::canPlaceCrystal).collect(Collectors.toList()));
         return positions;
     }
