@@ -48,13 +48,9 @@ import net.minecraft.world.Explosion;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
-
-import com.google.common.collect.Lists;
 
 /**
  * @Author SrgantMooMoo
