@@ -10,7 +10,7 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 public class Toggle extends Command {
 	
 	public Toggle() {
-		super("toggle", "toggles a module by name.", "toggle <name>", "t");
+		super("toggle", "toggles a module on or off.", "toggle <module>", "t");
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class Toggle extends Command {
 			if(!moduleFound) {
 				ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
 			}
-		}else ModuleManager.addChatMessage("correct usage of toggle command -> " + CommandManager.prefix + "toggle <module>");
+		}else CommandManager.correctUsageMsg("", getName(), getSyntax());
 	}
 
 }

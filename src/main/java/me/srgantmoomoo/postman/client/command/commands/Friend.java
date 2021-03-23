@@ -1,5 +1,7 @@
 package me.srgantmoomoo.postman.client.command.commands;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import me.srgantmoomoo.postman.client.command.Command;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.friend.FriendManager;
@@ -8,7 +10,7 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 public class Friend extends Command {
 	
     public Friend() {
-		super("friend", "friend ppl yea yea.", "friend list | add <name> | remove <name> | clear", "f");
+		super("friend", "manage your friends.", "friend list | friend add <name> | friend remove <name> | friend clear", "f");
 	}
 
 	@Override
@@ -25,13 +27,13 @@ public class Friend extends Command {
 				
 				if (start.equalsIgnoreCase("add") && !FriendManager.isFriend(args[1])) {
 					FriendManager.addFriend(args[1]);
-					ModuleManager.addChatMessage("added friend: " + args[1].toUpperCase());
+					ModuleManager.addChatMessage(ChatFormatting.GREEN + "added" + ChatFormatting.GRAY + " friend: " + args[1].toUpperCase());
 				}else if (start.equalsIgnoreCase("remove") && FriendManager.isFriend(args[1])) {
 					FriendManager.removeFriend(args[1]);
-					ModuleManager.addChatMessage("removed friend: " + args[1].toUpperCase());	
+					ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "removed" + ChatFormatting.GRAY + " friend: " + args[1].toUpperCase());	
 				}else {
-					ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> or... " + CommandManager.prefix + "friend remove <name> or... " +  CommandManager.prefix + "friend clear or... " + CommandManager.prefix + "friend list");
+					CommandManager.correctUsageMsg("", getName(), getSyntax());
 				}
-		}else ModuleManager.addChatMessage("correct usage of friend command -> " + CommandManager.prefix + "friend add <name> or... " + CommandManager.prefix + "friend remove <name> or... " +  CommandManager.prefix + "friend clear or... " + CommandManager.prefix + "friend list");
+		}else CommandManager.correctUsageMsg("", getName(), getSyntax());
 	}
 }

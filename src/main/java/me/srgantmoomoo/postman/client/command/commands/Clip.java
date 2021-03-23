@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d;
 public class Clip extends Command {
 	
     public Clip() {
-		super("clip", "clip thru shit.", "clip h <blocks> | clip v <blocks>", "c");
+		super("clip", "clip horrizontally or vertically through blocks.", "clip h <blocks> | clip v <blocks>", "c");
 	}
     
 	@Override
