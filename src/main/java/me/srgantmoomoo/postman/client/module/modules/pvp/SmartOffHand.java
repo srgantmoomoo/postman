@@ -21,26 +21,24 @@ import net.minecraft.item.ItemStack;
  * SrgantMooMoo feb 14 2021 (valentines day, and im all a fucking lone :stronk_tone6: :')
  */
 public class SmartOffHand extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal");
+	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal", "totem");
 	public NumberSetting health = new NumberSetting("health", this, 14, 0, 20, 1);
-	public BooleanSetting reEnableWhenSafe = new BooleanSetting("reEnable", this, false);
 	
 	public SmartOffHand() {
 		super("smartOffHand", "smart, off. HAND.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode, health, reEnableWhenSafe);
+		this.addSettings(mode, health);
 	}
-	public boolean wasEnabled;
-	
+	public String currentMode;
+
 	@Override
 	public void onEnable() {
 		Main.EVENT_BUS.subscribe(this);
-		wasEnabled = false;
+		currentMode = mode.getMode();
 	}
 	
 	@Override
 	public void onDisable() {
 		Main.EVENT_BUS.unsubscribe(this);
-		wasEnabled = true;
 	}
 	
 	private void SwitchOffHand(ModeSetting val) {
@@ -62,23 +60,41 @@ public class SmartOffHand extends Module {
             }
         }
     }
+	
+	private void SwitchOffHandTotem() {
+        Item item = Items.TOTEM_OF_UNDYING;
+        
+        if (mc.player.getHeldItemOffhand().getItem() != item) {
+            int slot = getItemSlot(item);
+            
+            if (slot != -1) {
+                mc.playerController.windowClick(mc.player.inventoryContainer.windowId, slot, 0,
+                        ClickType.PICKUP, mc.player);
+                mc.playerController.windowClick(mc.player.inventoryContainer.windowId, 45, 0, ClickType.PICKUP,
+                        mc.player);
+                
+                mc.playerController.windowClick(mc.player.inventoryContainer.windowId, slot, 0,
+                        ClickType.PICKUP, mc.player);
+                mc.playerController.updateController();
+                
+            }
+        }
+    }
 
     @EventHandler
     private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
-    	if(reEnableWhenSafe.isEnabled() && wasEnabled && getHealthWithAbsorption() >= health.getValue()) {
-    		toggled = true;
-    	}
-    	if(toggled) {
-	        if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
-	            return;
-	        
-	        if (getHealthWithAbsorption() <= health.getValue()) {
-	        	toggled = false;
-	            return;
-	        }
-	        
-	        SwitchOffHand(mode);
-    	}
+    	
+    	if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
+            return;
+    	
+    	if(getHealthWithAbsorption() > health.getValue()) {
+    		mode.setMode(currentMode);
+    		SwitchOffHand(mode);
+    	}else if (getHealthWithAbsorption() <= health.getValue()) {
+        	mode.setMode("totem");
+        	SwitchOffHandTotem();
+            return;
+        }
     });
     
     public static float getHealthWithAbsorption() {
@@ -108,6 +124,7 @@ public class SmartOffHand extends Module {
     public Item getItem(ModeSetting val) {
     	if(val.is("crystal")) return Items.END_CRYSTAL;
     	if(val.is("gap")) return Items.GOLDEN_APPLE;
+    	if(val.is("totem")) return Items.TOTEM_OF_UNDYING;
         
         return Items.TOTEM_OF_UNDYING;
     }
