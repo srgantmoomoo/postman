@@ -26,7 +26,7 @@ thank you,
 5. drag the postman .jar file that you downloaded earlier into the 1.12.2 folder. <br />
 
 **use**
-- prefix is "!".
+- prefix is "," (comma), this is customizable too.
 - the inital keybind for the clickgui is rshift.
 - once your clickgui is opened you will see a bunch of categorys, right click to open them up.
 - each category has different modules you may enable by left clicking, or right clicking to open up their settings.
