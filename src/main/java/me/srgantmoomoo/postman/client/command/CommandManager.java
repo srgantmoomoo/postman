@@ -40,7 +40,9 @@ public class CommandManager {
 		commands.add(new Help());
 		commands.add(new Prefix());
 		commands.add(new Friend());
+		commands.add(new MobOwner());
 		commands.add(new Clip());
+		commands.add(new Vanish());
 	}
 	
 	@EventHandler

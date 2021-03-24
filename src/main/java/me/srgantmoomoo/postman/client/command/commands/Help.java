@@ -18,17 +18,25 @@ public class Help extends Command {
 	public void onCommand(String[] args, String command) {
 		ModuleManager.addChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!");
 
-		ModuleManager.addChatMessage("prefix - " + TextFormatting.ITALIC + "sets the command prefix. -> "  + CommandManager.prefix + "prefix <key>");
+		ModuleManager.addChatMessage("prefix (p) - " + TextFormatting.ITALIC + "sets the command prefix. -> "  + CommandManager.prefix + "prefix <key>");
 		
-		ModuleManager.addChatMessage("toggle - " + TextFormatting.ITALIC + "toggles a module on or off. -> "  + CommandManager.prefix + "toggle <module>");
+		ModuleManager.addChatMessage("toggle (t) - " + TextFormatting.ITALIC + "toggles a module on or off. -> "  + CommandManager.prefix + "toggle <module>");
 		
-		ModuleManager.addChatMessage("bind - " + TextFormatting.ITALIC + "bind modules to specific keys. -> " + CommandManager.prefix + "bind <name> <key> | " + CommandManager.prefix + "bind clear");
+		ModuleManager.addChatMessage("bind (b) - " + TextFormatting.ITALIC + "bind modules to specific keys. -> " + CommandManager.prefix + "bind <name> <key> | " + CommandManager.prefix + "bind clear");
 		
-		ModuleManager.addChatMessage("friend - " + TextFormatting.ITALIC + "manage your friends. -> " + CommandManager.prefix + "friend list | " + CommandManager.prefix + "friend add <name> | " 
+		ModuleManager.addChatMessage("friend (f) - " + TextFormatting.ITALIC + "manage your friends. -> " + CommandManager.prefix + "friend list | " + CommandManager.prefix + "friend add <name> | " 
 				+ CommandManager.prefix + "friend remove <name> | " + CommandManager.prefix + "friend clear");
 		
-		ModuleManager.addChatMessage("clip - " + TextFormatting.ITALIC + "clip horrizontally or vertically through blocks. -> " + CommandManager.prefix + "clip h <blocks> | " + CommandManager.prefix 
+		ModuleManager.addChatMessage("mobOwner (mo) - " + TextFormatting.ITALIC + "check the owner of a ridden mob. -> " + CommandManager.prefix + "mobOwner"); // broken atm if null.
+		
+		ModuleManager.addChatMessage("clip (c) - " + TextFormatting.ITALIC + "clip horrizontally or vertically through blocks. -> " + CommandManager.prefix + "clip h <blocks> | " + CommandManager.prefix 
 				+ "clip v <blocks>");
+		
+		ModuleManager.addChatMessage("vanish (v) - " + TextFormatting.ITALIC + "vanish ridden entities. - > " + CommandManager.prefix + "vanish");
+		
+		// packetcancellor
+		
+		//ModuleManager.addChatMessage(TextFormatting.BOLD + "" + TextFormatting.ITALIC + "you can also use aliases by typing the first letter of a command instead of the entire command name :)");
 	}
 
 }

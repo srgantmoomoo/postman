@@ -34,7 +34,8 @@ import org.apache.commons.io.IOUtils;
 
 /**
  * @Author 086/KAMI
- * @Author Crystallinqq/Auto for some functions (check Speed.java)
+ * @Author Crystallinqq/Auto for some functions
+ * yeeyee pp penis - srgantmoomoo
  */
 
 public class EntityUtil {
