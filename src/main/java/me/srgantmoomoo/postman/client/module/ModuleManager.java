@@ -13,6 +13,7 @@ import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
+import me.srgantmoomoo.postman.client.module.modules.bot.*;
 import me.srgantmoomoo.postman.client.module.modules.client.*;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.hud.*;
@@ -81,6 +82,7 @@ public class ModuleManager {
 		modules.add(new GuiMove());
 		modules.add(new HoleEsp());
 		modules.add(new HoleTp());
+		modules.add(new InventoryBot());
 		modules.add(new InventoryPlus());	
 		modules.add(new Jesus());	
 		modules.add(new KillAura());	
@@ -97,6 +99,7 @@ public class ModuleManager {
 		modules.add(new NoPush());
 		modules.add(new NoRender());
 		modules.add(new NoSlow());
+		modules.add(new OffHandBot());
 		modules.add(new PacketCancellor());
 		modules.add(new Peek());
 		modules.add(new PlayerClone());

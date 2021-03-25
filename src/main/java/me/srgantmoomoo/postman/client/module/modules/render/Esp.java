@@ -237,22 +237,22 @@ public class Esp extends Module {
     }
 
     private void defineEntityColors(Entity entity) {
-        if (entity instanceof EntityPlayer){
+        if (entity instanceof EntityPlayer) {
              playerC = new JColor(playerColor.getValue());
              playerCOutline = new JColor(playerColor.getValue(), 255);
         }
 
-        if (entity instanceof EntityMob){
+        if (entity instanceof EntityMob) {
         	hostileMobC = new JColor(hostileMobColor.getValue());
         }
-        else if (entity instanceof EntityAnimal){
+        else if (entity instanceof EntityAnimal) {
         	passiveMobC = new JColor(passiveMobColor.getValue());
         }
         else {
         	passiveMobC = new JColor(passiveMobColor.getValue());
         }
 
-        if (entity instanceof EntitySlime){
+        if (entity instanceof EntitySlime) {
         	hostileMobC = new JColor(hostileMobColor.getValue());
         }
 

@@ -17,7 +17,7 @@ import net.minecraftforge.client.event.RenderBlockOverlayEvent.OverlayType;
 import net.minecraftforge.common.MinecraftForge;
 
 public class NoRender extends Module {
-	//public BooleanSetting rain = new BooleanSetting("rain", this, false);
+	public BooleanSetting rain = new BooleanSetting("rain", this, false);
 	public ModeSetting hurtCam = new ModeSetting("hurtCam", this, "disabled", "disabled", "normal", "penis");
 	public BooleanSetting potionEffects = new BooleanSetting("potionEffects", this, false);
 	public BooleanSetting fire = new BooleanSetting("fire", this, false);
@@ -25,7 +25,7 @@ public class NoRender extends Module {
 	
 	public NoRender() {
 		super("noRender", "stops certain events from rendering.", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(hurtCam, potionEffects, fire, portalEffect);
+		this.addSettings(hurtCam, rain, fire, potionEffects, portalEffect);
 	}
 	
 	@Override
@@ -55,7 +55,7 @@ public class NoRender extends Module {
 		}
 	}
 	
-	/* rain
+	// rain
 	@EventHandler
 	private Listener<RenderRainEvent> onRain = new Listener<>(event -> {
 		if(rain.isEnabled()) {
@@ -63,7 +63,7 @@ public class NoRender extends Module {
 		        return;
 		    event.cancel();
 		}
-	});*/
+	});
 	
 	// hurtCam = MixinEntityRenderer
 	
