@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE) <br>
 <hr>
-postman is a client that runs of Minecraft Forge 1.12.2, it is intended for use on servers which allow client-side modification. postman takes inpiration from many previous clients like osiris, kami, gamesense, and others. this client uses ZeroMemes's Alpine for an event system, lukflugs PanelStudio for the clickGui library, and Forge's 1.12.2 mod api. i intend for this project to be community driven and as open as possible, open acces, open development, and open sourced. 
+postman is a client that runs of Minecraft Forge 1.12.2, it is intended for use on servers which allow client-side modification. postman takes inpiration from many previous clients like osiris, kami, gamesense, and others. this client uses ZeroMemes's Alpine for an event system, lukflugs PanelStudio for the clickGui library, and Forge's 1.12.2 mod api. i intend for this project to be community driven and as open as possible, open access, open development, and open sourced. 
 <br>
 <br>
 
@@ -42,7 +42,7 @@ thank you,
 # credits
 **contributions**
 - lukflug, being helpful person. making panelstudio. helping me with panelstudio.
-- techale, for multithreading in main class.
+- techale, adding multithreading to the main class. making postman website. helping me.
 - RECIOR, for postman bot.
 - some random guy idk named jacobtread, for giving proper credits to the MinnDevelopment java discord rpc.
 
