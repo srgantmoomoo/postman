@@ -26,7 +26,7 @@ public class Bind extends Command {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.keyCode.setKeyCode(Keyboard.getKeyIndex(keyName.toUpperCase()));
 					
-					ModuleManager.addChatMessage(String.format(ChatFormatting.GREEN + "%s " + ChatFormatting.GRAY + "was bound to" + ChatFormatting.GREEN + " %s.", module.name, Keyboard.getKeyName(module.getKey())));;
+					ModuleManager.addChatMessage(String.format(ChatFormatting.GREEN + "%s " + ChatFormatting.GRAY + "was bound to" + ChatFormatting.GREEN + " %s", module.name, Keyboard.getKeyName(module.getKey())));;
 					moduleFound = true;
 					break;
 				}

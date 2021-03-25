@@ -27,16 +27,13 @@ public class Help extends Command {
 		ModuleManager.addChatMessage("friend (f) - " + TextFormatting.ITALIC + "manage your friends. -> " + CommandManager.prefix + "friend list | " + CommandManager.prefix + "friend add <name> | " 
 				+ CommandManager.prefix + "friend remove <name> | " + CommandManager.prefix + "friend clear");
 		
-		ModuleManager.addChatMessage("mobOwner (mo) - " + TextFormatting.ITALIC + "check the owner of a ridden mob. -> " + CommandManager.prefix + "mobOwner"); // broken atm if null.
+		ModuleManager.addChatMessage(TextFormatting.DARK_RED + "(wip) " + TextFormatting.GRAY + "mobOwner (mo) - " + TextFormatting.ITALIC + "check the owner of a ridden mob. -> " + CommandManager.prefix + "mobOwner"); // broken atm if null.
 		
 		ModuleManager.addChatMessage("clip (c) - " + TextFormatting.ITALIC + "clip horrizontally or vertically through blocks. -> " + CommandManager.prefix + "clip h <blocks> | " + CommandManager.prefix 
 				+ "clip v <blocks>");
 		
 		ModuleManager.addChatMessage("vanish (v) - " + TextFormatting.ITALIC + "vanish ridden entities. - > " + CommandManager.prefix + "vanish");
-		
-		// packetcancellor
-		
-		//ModuleManager.addChatMessage(TextFormatting.BOLD + "" + TextFormatting.ITALIC + "you can also use aliases by typing the first letter of a command instead of the entire command name :)");
+
 	}
 
 }

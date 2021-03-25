@@ -97,6 +97,7 @@ public class ModuleManager {
 		modules.add(new NoPush());
 		modules.add(new NoRender());
 		modules.add(new NoSlow());
+		modules.add(new PacketCancellor());
 		modules.add(new Peek());
 		modules.add(new PlayerClone());
 		modules.add(new PortalGodMode());

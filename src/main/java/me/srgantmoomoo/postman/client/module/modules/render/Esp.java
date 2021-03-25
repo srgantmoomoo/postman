@@ -1,11 +1,9 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import java.awt.Color;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.Wrapper;
@@ -14,14 +12,11 @@ import me.srgantmoomoo.postman.api.util.render.JTessellator;
 import me.srgantmoomoo.postman.api.util.world.GeometryMasks;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.GlStateManager.Profile;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.item.EntityEnderCrystal;
@@ -39,7 +34,6 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.tileentity.TileEntityShulkerBox;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -102,6 +96,7 @@ public class Esp extends Module {
             //players - box
             if (entityMode.is("box") && entity instanceof EntityPlayer) {
             	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerC);
+            	drawBox(entity.getPosition(), 1, playerC);
             }
             
             // glow esp's
@@ -167,25 +162,25 @@ public class Esp extends Module {
                     containerColor = new JColor(chestColor.getValue(), 255);
                     containerBox = new JColor(chestColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
-                    drawStorageBox(tileEntity.getPos(),1, containerBox);
+                    drawStorageBox(tileEntity.getPos(), 1, containerBox);
                 }
                 if (tileEntity instanceof TileEntityEnderChest){
                 	containerColor = new JColor(enderChestColor.getValue(), 255);
                 	containerBox = new JColor(enderChestColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
-                    drawStorageBox(tileEntity.getPos(),1, containerBox);
+                    drawStorageBox(tileEntity.getPos(), 1, containerBox);
                 }
                 if (tileEntity instanceof TileEntityShulkerBox){
                 	containerColor = new JColor(shulkerBoxColor.getValue(), 255);
                 	containerBox = new JColor(shulkerBoxColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
-                    drawBox(tileEntity.getPos(),1, containerBox);
+                    drawBox(tileEntity.getPos(), 1, containerBox);
                 }
                 if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
                 	containerColor = new JColor(otherColor.getValue(), 255);
                 	containerBox = new JColor(otherColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
-                    drawBox(tileEntity.getPos(),1, containerBox);
+                    drawBox(tileEntity.getPos(), 1, containerBox);
                 }
             });
         }
