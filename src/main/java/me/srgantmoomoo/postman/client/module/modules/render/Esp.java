@@ -42,8 +42,8 @@ import net.minecraft.util.math.BlockPos;
 public class Esp extends Module {
 	
 	public BooleanSetting chams = new BooleanSetting("walls", this, false);
-	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "outline", "2dEsp", "glow", "off");
-	public ModeSetting storage = new ModeSetting("storage", this, "fill", "fill", "outline", "off");
+	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2dEsp", "glow", "off");
+	public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "both", "off");
 	public ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
 	
 	public BooleanSetting mob = new BooleanSetting("mob", this, false);
@@ -51,7 +51,7 @@ public class Esp extends Module {
 	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
 	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
 	
-	public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 100)); 
 	public ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 255)); 
 	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 255)); 
 	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 255)); 
@@ -71,6 +71,7 @@ public class Esp extends Module {
 	List<Entity> entities;
 	
     JColor playerC;
+    JColor playerCOutline;
     JColor hostileMobC;
     JColor passiveMobC;
     JColor mainIntColor;
@@ -93,10 +94,18 @@ public class Esp extends Module {
             if(!crystalMode.is("glow") && entity instanceof EntityEnderCrystal) entity.setGlowing(false);
             
             
-            //players - box
+            // players - box
             if (entityMode.is("box") && entity instanceof EntityPlayer) {
-            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerC);
-            	drawBox(entity.getPosition(), 1, playerC);
+            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerCOutline);
+            }
+            // player - highlight
+            if (entityMode.is("highlight") && entity instanceof EntityPlayer) {
+            	JTessellator.drawPlayerBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerC, GeometryMasks.Quad.ALL);
+            }
+            // players - box+highlight
+            if (entityMode.is("box+highlight") && entity instanceof EntityPlayer) {
+            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerCOutline);
+            	JTessellator.drawPlayerBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerC, GeometryMasks.Quad.ALL);
             }
             
             // glow esp's
@@ -156,7 +165,7 @@ public class Esp extends Module {
             });
         }
         
-        if (storage.is("fill")) {
+        if (storage.is("both")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(chestColor.getValue(), 255);
@@ -185,12 +194,33 @@ public class Esp extends Module {
             });
         }
         
+        if (storage.is("fill")) {
+            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+                if (tileEntity instanceof TileEntityChest){
+                	containerBox = new JColor(chestColor.getValue());
+                    drawStorageBox(tileEntity.getPos(), 1, containerBox);
+                }
+                if (tileEntity instanceof TileEntityEnderChest){
+                	containerBox = new JColor(enderChestColor.getValue());
+                    drawStorageBox(tileEntity.getPos(), 1, containerBox);
+                }
+                if (tileEntity instanceof TileEntityShulkerBox){
+                	containerBox = new JColor(shulkerBoxColor.getValue());
+                    drawBox(tileEntity.getPos(), 1, containerBox);
+                }
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
+                	containerBox = new JColor(otherColor.getValue());
+                    drawBox(tileEntity.getPos(), 1, containerBox);
+                }
+            });
+        }
+        
         // crystal csgo
         
         if(crystalMode.is("csgo")) {
         	
         }
-        }
+    }
     
     private void drawStorageBox(BlockPos blockPos, int width, JColor color) {
 		JTessellator.drawStorageBox(blockPos, 0.88, color, GeometryMasks.Quad.ALL);
@@ -209,6 +239,7 @@ public class Esp extends Module {
     private void defineEntityColors(Entity entity) {
         if (entity instanceof EntityPlayer){
              playerC = new JColor(playerColor.getValue());
+             playerCOutline = new JColor(playerColor.getValue(), 255);
         }
 
         if (entity instanceof EntityMob){
@@ -256,4 +287,3 @@ public class Esp extends Module {
         return true;
     }
 }
-
