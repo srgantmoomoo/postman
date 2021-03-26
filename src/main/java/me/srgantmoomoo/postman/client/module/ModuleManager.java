@@ -107,6 +107,7 @@ public class ModuleManager {
 		modules.add(new ReverseStep());
 		modules.add(new SafeWalk());
 		//modules.add(new Scaffold());	// unstarted
+		//modules.add(new SmartHotbar()); // unstarted
 		modules.add(new SmartOffHand());	
 		//modules.add(new Sneak());    // unstarted
 		modules.add(new Speed());
@@ -117,7 +118,7 @@ public class ModuleManager {
 		modules.add(new Tracers());
 		modules.add(new Velocity());	
 		modules.add(new ViewModel());	
-		//modules.add(new Xray());    // unstarted
+		modules.add(new Xray());    // ACTUAL W I P
 		//hud
 		modules.add(new Watermark());
 		modules.add(new World());

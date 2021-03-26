@@ -4,10 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import com.lukflug.panelstudio.Context;
 import com.lukflug.panelstudio.theme.ColorScheme;
@@ -16,12 +12,7 @@ import com.lukflug.panelstudio.theme.Renderer;
 import com.lukflug.panelstudio.theme.RendererBase;
 import com.lukflug.panelstudio.theme.Theme;
 
-import me.srgantmoomoo.Main;
-import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.util.ResourceLocation;
-
 /**
  * @author SrgantMooMoo
  */
