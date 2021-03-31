@@ -41,7 +41,7 @@ public class AutoTotem extends Module {
 
     private int getTotem() {
         if (Items.TOTEM_OF_UNDYING == mc.player.getHeldItemOffhand().getItem()) return -1;
-        for(int i = 36; i >= 0; i--) {
+        for(int i = 45; i >= 0; i--) {
             final Item item = mc.player.inventory.getStackInSlot(i).getItem();
             if(item == Items.TOTEM_OF_UNDYING) {
                 if (i < 9) {

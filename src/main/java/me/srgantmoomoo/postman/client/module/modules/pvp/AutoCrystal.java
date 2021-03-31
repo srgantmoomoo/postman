@@ -44,6 +44,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Explosion;
+import scala.actors.threadpool.Arrays;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -51,6 +52,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
+
+import com.google.common.collect.Lists;
 
 /**
  * @Author SrgantMooMoo

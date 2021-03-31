@@ -92,7 +92,7 @@ public class ModuleManager {
 		modules.add(new LowOffHand());
 		modules.add(new Mcf());
 		modules.add(new Multitask());
-		//modules.add(new Nametags());	// unstarted
+		modules.add(new Nametags());	// ACTUAL W I P              									---------------------------
 		//modules.add(new NewChunks());	// unstarted
 		modules.add(new NoFall());
 		modules.add(new NoHandShake());	
@@ -104,6 +104,7 @@ public class ModuleManager {
 		modules.add(new Peek());
 		modules.add(new PlayerClone());
 		modules.add(new PortalGodMode());
+		modules.add(new Protester());
 		modules.add(new ReverseStep());
 		modules.add(new SafeWalk());
 		//modules.add(new Scaffold());	// unstarted
@@ -118,7 +119,7 @@ public class ModuleManager {
 		modules.add(new Tracers());
 		modules.add(new Velocity());	
 		modules.add(new ViewModel());	
-		modules.add(new Xray());    // ACTUAL W I P
+		modules.add(new Xray());    // ACTUAL W I P						-------------------------
 		//hud
 		modules.add(new Watermark());
 		modules.add(new World());
@@ -143,6 +144,7 @@ public class ModuleManager {
 	 	modules.add(new TabGui());
 	 	modules.add(new MainMenuInfo());
 		modules.add(new Esp2dHelper());
+		modules.add(new CrazyNewDupe());
 	}
 	
 	public static void onUpdate() {

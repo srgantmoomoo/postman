@@ -82,6 +82,12 @@ public class SaveLoad {
 		// command prefix
 		toSave.add("COMMANDPREFIX:" + CommandManager.prefix);
 		
+		/* friends
+		List<String> friends = FriendManager.getFriendsByName();
+		String friendsReplace = friends.toString();
+		String friendsReep = friendsReplace.replaceAll("[]", "");
+		toSave.add("FRIENDS:" + friendsReep);*/
+		
 		try {
 			PrintWriter pw = new PrintWriter(this.dataFile);
 			for(String str : toSave) {
@@ -141,7 +147,9 @@ public class SaveLoad {
 				}
 			}else if(s.toLowerCase().startsWith("commandprefix:")) {
 				CommandManager.setCommandPrefix(args[1]);
-			}
+			}/*else if(s.toLowerCase().startsWith("friends:")) {
+				FriendManager.addFriend(args[1]);
+			}*/
 		}
 	}
 }

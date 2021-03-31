@@ -114,9 +114,9 @@ public class SmartOffHand extends Module {
     });
     
     private boolean crystalCheck() {
-        for(Entity t : mc.world.loadedEntityList) {
-            if (t instanceof EntityEnderCrystal && mc.player.getDistance(t) <= 12) {
-                if ((AutoCrystal.calculateDamage(t.posX, t.posY, t.posZ, mc.player)) >= mc.player.getHealth()) {
+        for(Entity e : mc.world.loadedEntityList) {
+            if (e instanceof EntityEnderCrystal && mc.player.getDistance(e) <= 12) {
+                if ((AutoCrystal.calculateDamage(e.posX, e.posY, e.posZ, mc.player)) >= mc.player.getHealth()) {
                     return true;
                 }
             }
