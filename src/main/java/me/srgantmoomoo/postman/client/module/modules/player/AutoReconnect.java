@@ -39,10 +39,6 @@ public class AutoReconnect extends Module {
 				}
 			}
 		}
-	});
-	
-	@EventHandler
-	private final Listener<PacketEvent.Send> sendPacketEventPost = new Listener<>(event -> {
 		if(event.getEra() == Era.POST) {
 			if (this.lastIp != null && this.lastPort > 0 && this.reconnect) {
                 if (this.timer.hasReached((long) delay.getValue())) {

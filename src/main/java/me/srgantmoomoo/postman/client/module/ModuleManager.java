@@ -92,7 +92,7 @@ public class ModuleManager {
 		modules.add(new LowOffHand());
 		modules.add(new Mcf());
 		modules.add(new Multitask());
-		modules.add(new Nametags());	// ACTUAL W I P              									---------------------------
+		//modules.add(new Nametags());	// unstarted           									---------------------------
 		//modules.add(new NewChunks());	// unstarted
 		modules.add(new NoFall());
 		modules.add(new NoHandShake());	
@@ -119,7 +119,7 @@ public class ModuleManager {
 		modules.add(new Tracers());
 		modules.add(new Velocity());	
 		modules.add(new ViewModel());	
-		modules.add(new Xray());    // ACTUAL W I P						-------------------------
+		//modules.add(new Xray());    // unstarted						-------------------------
 		//hud
 		modules.add(new Watermark());
 		modules.add(new World());

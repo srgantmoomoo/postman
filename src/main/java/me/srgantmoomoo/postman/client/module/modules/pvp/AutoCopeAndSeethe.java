@@ -10,4 +10,7 @@ public class AutoCopeAndSeethe extends Module {
 	public AutoCopeAndSeethe() {
 		super("autCope", "penis yes noa.", Keyboard.KEY_NONE, Category.PVP);
 	}
+	
+	
+	
 }

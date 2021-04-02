@@ -8,17 +8,16 @@ import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 
 public class Protester extends Module {
-	public BooleanSetting shitOnClients = new BooleanSetting("shitOnClients", this, true);
-	public BooleanSetting postmanRespecter = new BooleanSetting("postmanRespecter", this, true);
+	public ModeSetting mode = new ModeSetting("mode", this, "clientShitter", "clientShitter", "postmanRespecter");
 	public NumberSetting delay = new NumberSetting("delay", this, 20, 0, 100, 1);
 	
 	public Protester() {
 		super("protester", "protests about postmans greatness.", Keyboard.KEY_NONE, Category.PLAYER);
-		this.addSettings(shitOnClients, postmanRespecter, delay);
+		this.addSettings(mode, delay);
 	}
 	
 	List<String> clients = new ArrayList<>();
@@ -47,6 +46,10 @@ public class Protester extends Module {
         respects.add("psotman above all!");
         respects.add("i just got new postage from my local post office thanks to postman!");
         respects.add("guys, wtf is this discord.... its... its incredible 0_0 https://discord.gg/Jd8EmEuhb5");
+        respects.add("postman on tipity top :)");
+        respects.add("postman strong.");
+        respects.add("postman stronk?");
+        
     }
     
     public void onDisable() {
@@ -55,16 +58,16 @@ public class Protester extends Module {
     
     @Override
     public void onUpdate() {
-    	if(shitOnClients.isEnabled()) {
+    	if(mode.is("clientShitter")) {
     		tickDelay++;
             if (tickDelay < delay.getValue() * 10) return;
             
-            String s = clients.get(random.nextInt(clients.size()));
+            String message = clients.get(random.nextInt(clients.size()));
 
-            mc.player.sendChatMessage(s);
+            mc.player.sendChatMessage(message);
             tickDelay = 0;
     	}
-    	if(postmanRespecter.isEnabled()) {
+    	if(mode.is("postmanRespecter")) {
             tickDelay++;
             if (tickDelay < delay.getValue() * 10) return;
             
