@@ -4,6 +4,7 @@ import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
 import me.srgantmoomoo.Reference;
+import net.minecraft.client.Minecraft;
 
 public class Discord {
 
@@ -18,10 +19,10 @@ public class Discord {
         discordRPC.Discord_Initialize(discordID, eventHandlers, true, null);
 
         discordRichPresence.startTimestamp = System.currentTimeMillis() / 1000L;
-        discordRichPresence.details = "im on version " + Reference.VERSION + "!";
+        discordRichPresence.details = Minecraft.getMinecraft().player.getName();
         discordRichPresence.largeImageKey = "postmanlogo";
-        discordRichPresence.largeImageText = "by SrgantMooMoo and others!";
-        discordRichPresence.state = "postman strong";
+        discordRichPresence.largeImageText = "by srgantmoomoo and others!";
+        discordRichPresence.state = "im on version " + Reference.VERSION + "!";
         discordRPC.Discord_UpdatePresence(discordRichPresence);
     }
 
