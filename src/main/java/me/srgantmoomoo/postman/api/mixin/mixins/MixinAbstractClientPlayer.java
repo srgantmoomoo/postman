@@ -26,7 +26,7 @@ public abstract class MixinAbstractClientPlayer {
 	public void getLocationCape(CallbackInfoReturnable<ResourceLocation> callbackInfoReturnable) {
 		UUID uuid = getPlayerInfo().getGameProfile().getId();
 		if (ModuleManager.isModuleEnabled("capes") && Main.cape.hasCape(uuid)) {
-			callbackInfoReturnable.setReturnValue(new ResourceLocation(Reference.MOD_ID, "textures/postmancape.png"));
+			callbackInfoReturnable.setReturnValue(new ResourceLocation(Reference.MOD_ID, "textures/postman-cape.png"));
 		}
 	}
 }

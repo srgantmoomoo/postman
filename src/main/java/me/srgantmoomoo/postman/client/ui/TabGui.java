@@ -39,7 +39,7 @@ public class TabGui extends Module {
 		super ("tabGui", "cloocky clocky.", Keyboard.KEY_NONE, Category.CLIENT);
 		MinecraftForge.EVENT_BUS.register(this);
 		toggled = true;
-		tab = false;
+		tab = true;
 	}
 	
 	public static int rainbow(int delay) {
@@ -165,7 +165,54 @@ public class TabGui extends Module {
 				}
 			}
 	
-		@SubscribeEvent
+	@SubscribeEvent
+	public void key(KeyInputEvent e) {
+		if(Keyboard.getEventKeyState()) {
+				int keyCode = Keyboard.getEventKey();
+	        if (keyCode == Keyboard.KEY_UP) {
+	            if (!expanded) {
+	            	if(currentTab >= Category.values().length - 1) currentTab = 0;
+					else currentTab--;
+	            }else {
+	            	if(category.moduleIndex >= modules.size() - 1) category.moduleIndex = 0;
+					else category.moduleIndex--;
+	            }
+	        }
+	 
+	        if (keyCode == Keyboard.KEY_DOWN) {
+	            if (!expanded) {
+	            	if(currentTab >= Category.values().length - 1) currentTab = 0;
+					else currentTab++;
+	            }else {
+	            	if(category.moduleIndex >= modules.size() - 1) category.moduleIndex = 0;
+					else category.moduleIndex++;
+	            }
+	        }
+	        
+	        if (keyCode == Keyboard.KEY_RIGHT) {
+	        	Module module = modules.get(category.moduleIndex);
+	            if (!expanded) {
+	                expanded = true;
+	                category.moduleIndex = 0;
+	            } else {
+	                module.toggle();
+	            }
+	        }
+	        
+	        if (keyCode == Keyboard.KEY_LEFT) {
+	            expanded = false;
+	        }
+	        
+	        if (keyCode == Keyboard.KEY_RETURN) {
+	        	Module module = modules.get(category.moduleIndex);
+	            if (expanded) {
+	                module.toggle();
+            	}
+        	}
+		}
+	}
+	
+		/*@SubscribeEvent
 		public void key(KeyInputEvent e) {
 
 		Category category = Category.values()[currentTab];
@@ -349,6 +396,6 @@ public class TabGui extends Module {
 			}
 				}
 			}
-		}
+		}*/
 }
 

@@ -8,7 +8,7 @@
 	"url": "https://github.com/moomooooo/postman",
 	"authorList": ["SrgantMooMoo", "lukflug", "techale"],
 	"credits": "lukflug for PanelStudio click gui library. ZeroMemes for Alpine event system.",
-	"logoFile": "postmancircle.png",
+	"logoFile": "postman-forge-logo.png",
 	"screenshots": [],
 	"dependencies": []
 }
