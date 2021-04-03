@@ -1,4 +1,4 @@
-![smaller](https://user-images.githubusercontent.com/69589624/113482836-69f66180-946e-11eb-8931-7db46045884d.PNG) <br>
+![postman-text-background-cut](https://user-images.githubusercontent.com/69589624/113482941-e6894000-946e-11eb-8029-e49dbc34b91f.PNG) <br>
 [![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
 [![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
