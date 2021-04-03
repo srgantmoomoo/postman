@@ -1,8 +1,9 @@
-![postman-text-background-cut](https://user-images.githubusercontent.com/69589624/113482941-e6894000-946e-11eb-8029-e49dbc34b91f.PNG) <br>
 [![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
 [![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE) <br>
+
+![postman-text-background-cut](https://user-images.githubusercontent.com/69589624/113482941-e6894000-946e-11eb-8029-e49dbc34b91f.PNG) 
 <hr>
 postman is a client that runs of Minecraft Forge 1.12.2, it is intended for use on servers which allow client-side modification. postman takes inpiration from many previous clients like osiris, kami, gamesense, and others. this client uses ZeroMemes's Alpine for an event system, lukflugs PanelStudio for the clickGui library, and Forge's 1.12.2 mod api. i intend for this project to be community driven and as open as possible, open access, open development, and open sourced. 
 <br>
