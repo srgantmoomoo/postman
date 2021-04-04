@@ -82,7 +82,6 @@ public class ModuleManager {
 		modules.add(new GuiMove());
 		modules.add(new HoleEsp());
 		modules.add(new HoleTp());
-		modules.add(new InventoryBot());
 		modules.add(new InventoryPlus());	
 		modules.add(new Jesus());	
 		modules.add(new KillAura());	
@@ -142,7 +141,7 @@ public class ModuleManager {
 		modules.add(new DiscordRichPresence());
 		modules.add(new ClickGuiModule());
 	 	modules.add(new TabGui());
-	 	modules.add(new MainMenuInfo());
+	 	modules.add(new MainMenuWatermark());
 		modules.add(new Esp2dHelper());
 		modules.add(new CrazyNewDupe());
 	}
