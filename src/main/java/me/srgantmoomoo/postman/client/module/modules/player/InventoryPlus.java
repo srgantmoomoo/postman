@@ -17,7 +17,7 @@ public class InventoryPlus extends Module {
 		super ("inventoryPlus", "lets u hold extra items in ur crafting gui.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
-	public void onEnabled() {
+	public void onEnable() {
 		Main.EVENT_BUS.subscribe(this);
 	}
 	

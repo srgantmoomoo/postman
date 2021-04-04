@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -47,123 +49,6 @@ public class TabGui extends Module {
 		   rainbowState %= -360;
 	       return Color.getHSBColor((float) (rainbowState / -360.0f), 0.5f, 1f).getRGB();
 	}
-	
-	@SubscribeEvent
-    public void onRender(RenderGameOverlayEvent event) {
-		event.getType();
-		if (!event.getType().equals(ElementType.TEXT)) {
-			return;
-		}
-		
-		FontRenderer fr = mc.fontRenderer;
-		ScaledResolution sr = new ScaledResolution(mc);
-		
-		if(tab) {
-	    			Gui.drawRect(sr.getScaledWidth() - 1, 60, sr.getScaledWidth() - 60, 132, 0x40000000);
-			
-			Gui.drawRect(sr.getScaledWidth() - 1, 61 + currentTab * 12 - 1, sr.getScaledWidth() - 60, 61 + currentTab * 12 + 11, 0xff79c2ec);
-			
-			int count = 0;
-			for(Category c : Category.values()) {
-						fr.drawStringWithShadow("<" + " " + c.name, sr.getScaledWidth() - 57, 62 + count * 12, 0xffffffff);
-				count++;
-			}
-			
-			/* Category category = Category.values()[currentTab];
-			for (Module mod : Main.moduleManager.getModuleList()) {
-			 if(category.name.equals("player")) {
-				 fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 47 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
-				}else {
-					if(category.name.equals("render")) {
-					fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 61 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
-				
-				}else {
-					if(category.name.equals("pvp")) {
-						fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 75 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
-				}else {
-					if(category.name.equals("exploits")) {
-						fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 89 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
-				
-				}else {
-					if(category.name.equals("client")) {
-						fr.drawStringWithShadow(category.name, sr.getScaledWidth() - 103 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
-				}
-			}
-				
-		}
-				}
-				}
-				} */
-			} 
-	if(expanded) {
-		Category category = Category.values()[currentTab];
-		List<Module> modules = ModuleManager.getModulesByCategory(category);
-		int count = 0;
-		if (modules.size() == 0)
-			return;
-		Gui.drawRect(sr.getScaledWidth() - 139, 60, sr.getScaledWidth() - 61, 60 + modules.size() * 12 , 0x40000000);
-		Gui.drawRect(sr.getScaledWidth() - 61, 61 + category.moduleIndex * 12 - 1, sr.getScaledWidth() - 139, 61 + category.moduleIndex * 12 + 11, 0xff79c2ec);
-		
-			count = 0;
-			for(Module m : modules) {
-				if (!m.getName().equals("Esp2dHelper")) {
-				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 12, 0xffffffff);
-				}
-				
-				if(count == category.moduleIndex && m.expanded) {
-					
-					if(!m.settings.isEmpty()) {
-						Gui.drawRect(sr.getScaledWidth() - 140, 60, sr.getScaledWidth() - 226, 60 + m.settings.size() * 12, 0x40000000);
-						Gui.drawRect(sr.getScaledWidth() - 140, 61 + m.index * 12 - 1, sr.getScaledWidth() - 226, 61 + m.index * 12 + 11, m.settings.get(m.index).focused ? 0xff67a7dd : 0xff79c2ec);
-					}
-					
-					int index = 0;
-					for(Setting setting : m.settings) {
-						
-						if(setting instanceof BooleanSetting) {
-							BooleanSetting bool = (BooleanSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + (bool.isEnabled() ? "on" : "off"), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
-						}
-						
-						if(setting instanceof NumberSetting) {
-							NumberSetting number = (NumberSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + number.getValue(), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
-						}
-						
-						if(setting instanceof ModeSetting) {
-							ModeSetting mode = (ModeSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + mode.getMode(), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
-						}
-						
-						if(setting instanceof KeybindSetting) {
-							KeybindSetting keyBind = (KeybindSetting) setting;
-							fr.drawStringWithShadow(setting.name + ":" + " " + Keyboard.getKeyName(keyBind.code), sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
-						}
-						
-						fr.drawStringWithShadow(setting.name, sr.getScaledWidth() - 224, 62 + index * 12, 0xffffffff);
-						index++;
-					}
-				}
-				
-				/* for(Module s : modules) {
-				Module module = modules.get(category.moduleIndex);
-				fr.drawStringWithShadow(module.getName(), sr.getScaledWidth() - 125 + currentTab * 14 - 1, 51 + currentTab * 14 + 11, 0xffffa6f1);
-				
-				} */
-				
-				if(!m.getName().equals("Esp2dHelper") && m.toggled) 
-					Gui.drawRect(sr.getScaledWidth() - 139, 60 + count * 12, sr.getScaledWidth() - 138, 72 + count * 12, 0xffffffff);
-				if (!m.getName().equals("Esp2dHelper")) {
-				fr.drawStringWithShadow(m.getName(), sr.getScaledWidth() - 136, 62 + count * 12, 0xffffffff);
-				count++;
-				}
-			}
-			
-			//description
-			/*Module module = modules.get(category.moduleIndex);
-				fr.drawStringWithShadow(module.getDescription(), 1, sr.getScaledHeight() - 10, 0xfffffacd);*/
-				}
-			}
 	
 	@SubscribeEvent
 	public void key(KeyInputEvent e) {

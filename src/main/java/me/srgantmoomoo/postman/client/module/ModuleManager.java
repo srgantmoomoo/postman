@@ -49,7 +49,7 @@ public class ModuleManager {
 		modules.add(new AntiSwing());
 		modules.add(new AutoArmor());	
 		modules.add(new AutoClicker());
-		//modules.add(new AutoCopeAndSeethe()); // w i p
+		modules.add(new AutoCopeAndSeethe()); // w i p
 		modules.add(new AutoCrystal());
 		modules.add(new AutoDisconnect());
 		modules.add(new AutoGap());	
