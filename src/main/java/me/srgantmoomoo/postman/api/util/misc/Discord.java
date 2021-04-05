@@ -21,7 +21,7 @@ public class Discord {
         discordRichPresence.startTimestamp = System.currentTimeMillis() / 1000L;
         discordRichPresence.details = Minecraft.getMinecraft().player.getName();
         discordRichPresence.largeImageKey = "postmanlogo";
-        discordRichPresence.largeImageText = "by srgantmoomoo and others!";
+        discordRichPresence.largeImageText = "postman strong";
         discordRichPresence.state = "im on version " + Reference.VERSION + "!";
         discordRPC.Discord_UpdatePresence(discordRichPresence);
     }

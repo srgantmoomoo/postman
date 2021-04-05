@@ -9,6 +9,7 @@ import me.srgantmoomoo.postman.api.util.world.JTimer;
 import me.srgantmoomoo.postman.client.friend.FriendManager;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
@@ -339,6 +340,8 @@ public class AutoCrystal extends Module {
                     }
                     mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                     PlacedCrystals.add(blockPos1);
+                    
+                    if (ModuleManager.isModuleEnabled("autoCope")) AutoCope.addTarget(renderEnt.getName());
                 }
                 
                 if (isSpoofingAngles) {
@@ -370,8 +373,8 @@ public class AutoCrystal extends Module {
             if (this.renderBlock != null && this.renderEnt != null) {
                 double d = calculateDamage(renderBlock.getX() + .5, renderBlock.getY() + 1, renderBlock.getZ() + .5, renderEnt);
                 String[] damageText=new String[1];
-                damageText[0]=(Math.floor(d) == d ? (int) d : String.format("%.1f", d)) + "";
-                JTessellator.drawNametag(renderBlock.getX()+0.5,renderBlock.getY()+0.5,renderBlock.getZ()+0.5,damageText,new JColor(255,255,255),1);
+                damageText[0] = (Math.floor(d) == d ? (int) d : String.format("%.1f", d)) + "";
+                JTessellator.drawNametag(renderBlock.getX()+0.5,renderBlock.getY() + 0.5,renderBlock.getZ() + 0.5,damageText,new JColor(255, 255, 255), 1);
             }
         }
     }
