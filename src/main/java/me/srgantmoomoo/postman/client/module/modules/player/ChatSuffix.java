@@ -18,7 +18,7 @@ public class ChatSuffix extends Module {
 	
 	public ChatSuffix() {
 		super ("chatSuffix", "adds postman suffix to all of ur chat msg's.", Keyboard.KEY_NONE, Category.PLAYER);
-		this.addSettings(mode, discludePercent);
+		this.addSettings(mode);
 	}
 
 	@SubscribeEvent

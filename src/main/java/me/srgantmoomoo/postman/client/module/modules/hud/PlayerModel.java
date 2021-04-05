@@ -22,7 +22,7 @@ public class PlayerModel extends HudModule {
 	public ColorSetting color = new ColorSetting("rectColor", this, new JColor(121, 193, 255, 100)); 
 	
 	public PlayerModel() {
-    	super("playerModel","shows ur player model on ur hud.", new Point(1,30), Category.HUD);
+    	super("playerModel","shows ur player model on ur hud.", new Point(75, 2), Category.HUD);
     	this.addSettings(size, rect, color);
     }
 	
@@ -39,14 +39,11 @@ public class PlayerModel extends HudModule {
 		
 		@Override
 		public void render (Context context) {
-			if(size.getValue() != 28) rect.setEnabled(false);
-			
 			super.render(context);
 			if(rect.isEnabled()) {
 			Color bgcolor=new JColor(color.getValue(),100);
 			context.getInterface().fillRect(context.getRect(),bgcolor,bgcolor,bgcolor,bgcolor);
 			}
-		
 			ClickGui.renderEntity(mc.player,new Point(context.getPos().x+22,context.getPos().y+58-(mc.player.isSneaking()?10:0)), (int) size.getValue());
 		}
 

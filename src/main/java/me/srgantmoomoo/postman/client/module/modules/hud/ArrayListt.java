@@ -30,7 +30,7 @@ public class ArrayListt extends HudModule {
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 
 	public ArrayListt() {
-		super("arrayList", "shows currently enabled modules.", new Point(-3,59), Category.HUD);
+		super("arrayList", "shows currently enabled modules.", new Point(-2, 69), Category.HUD);
 		this.addSettings(color, sortHeight, sortLength, showHidden, forgeHax);
 	}
     
@@ -43,28 +43,7 @@ public class ArrayListt extends HudModule {
     	list.activeModules.clear();
     	for (Module module: ModuleManager.getModules()) {
     		if(!showHidden.isEnabled()) {
-    			if (module.isToggled()
-    					&& !module.getName().equalsIgnoreCase("Watermark")
-    					&& !module.getName().equalsIgnoreCase("Totems")
-    					&& !module.getName().equalsIgnoreCase("Ping")
-    					&& !module.getName().equalsIgnoreCase("Frames")
-    					&& !module.getName().equalsIgnoreCase("AutoCrystalInfo")
-    					&& !module.getName().equalsIgnoreCase("SurroundInfo")
-    					&& !module.getName().equalsIgnoreCase("ArrayList")
-    					&& !module.getName().equalsIgnoreCase("InventoryViewer")
-    					&& !module.getName().equalsIgnoreCase("Hey")
-    					&& !module.getName().equalsIgnoreCase("ArmorHud")
-    					&& !module.getName().equalsIgnoreCase("KeyStrokes")
-    					&& !module.getName().equalsIgnoreCase("DiscordRpc")
-    					&& !module.getName().equalsIgnoreCase("clickGui")
-    					&& !module.getName().equalsIgnoreCase("HudEditor")
-    					&& !module.getName().equalsIgnoreCase("TabGui")
-    					&& !module.getName().equalsIgnoreCase("MainMenuInfo")
-    					&& !module.getName().equalsIgnoreCase("coords")
-    					&& !module.getName().equalsIgnoreCase("Esp2dHelper")
-    					&& !module.getName().equalsIgnoreCase("killAuraInfo")
-    					&& !module.getName().equalsIgnoreCase("capes")
-    					&& !module.getName().equalsIgnoreCase("clientFont")) {
+    			if (module.isToggled() && !module.getCategory().equals(Category.HUD) && !module.getCategory().equals(Category.CLIENT)) {
     				list.activeModules.add(module);
     			}
     		}else

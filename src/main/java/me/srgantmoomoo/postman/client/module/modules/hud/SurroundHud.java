@@ -16,16 +16,15 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 
-public class AutoCInfo extends HudModule {
-	private AutoCInfoList list=new AutoCInfoList();
+public class SurroundHud extends HudModule {
+	private SurroundInfoList list=new SurroundInfoList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-
-	public AutoCInfo() {
-		super("autoCrystalInfo", "shows if autocrystal is on or off.", new Point(-3,39), Category.HUD);
-		this.addSettings(sort, color);
+	public SurroundHud() {
+		super("surroundHud", "shows u if surround is on or off.", new Point(-2, 59), Category.HUD);
+		this.addSettings(color, sort);
 	}
 	
 	@Override
@@ -33,7 +32,7 @@ public class AutoCInfo extends HudModule {
 		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
-	private class AutoCInfoList implements HUDList {
+	private class SurroundInfoList implements HUDList {
 
 		@Override
 		public int getSize() {
@@ -42,8 +41,8 @@ public class AutoCInfo extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			if (ModuleManager.isModuleEnabled("autoCrystal")) return ChatFormatting.GREEN + "autoC" + " on";
-			else return "autoC" + " off";
+			if (ModuleManager.isModuleEnabled("surround")) return ChatFormatting.GREEN + "srnd" + " on";
+			else return "srnd" + " off";
 		}
 
 		@Override

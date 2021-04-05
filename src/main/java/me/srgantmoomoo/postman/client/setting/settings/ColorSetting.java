@@ -14,7 +14,7 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 	public ColorSetting (String name, Module parent, final JColor value) {
 		this.name = name;
 		this.parent = parent;
-		this.value=value;
+		this.value = value;
 	}
 	
 	public JColor getValue() {
@@ -24,11 +24,11 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 		return this.value;
 	}
 	
-	public static int rainbow(int delay) {
+	/*public static int rainbow(int delay) {
 		double rainbowState = Math.ceil((System.currentTimeMillis() + delay) / 20.0);
 		rainbowState %= 360;
-		return Color.getHSBColor((float) (rainbowState / 360.0f), 0.5f, 1f).getRGB();
-	}
+		return Color.getHSBColor((float) (rainbowState / 360.0f), 0.5f, 0.5f).getRGB();
+	}*/
 
 	public void setValue (boolean rainbow, final JColor value) {
 		this.rainbow = rainbow;
@@ -59,6 +59,6 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 
 	@Override
 	public void setRainbow(boolean rainbow) {
-		this.rainbow=rainbow;
+		this.rainbow = rainbow;
 	}
 }

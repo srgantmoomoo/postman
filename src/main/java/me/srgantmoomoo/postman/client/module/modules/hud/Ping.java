@@ -20,7 +20,7 @@ public class Ping extends HudModule {
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Ping() {
-		super("ping", "shows ur ping on ur hud.", new Point(-3,19), Category.HUD);
+		super("ping", "shows ur ping on ur hud.", new Point(-2,19), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	

@@ -20,7 +20,7 @@ public class Coords extends HudModule {
 
 
 	public Coords() {
-		super("coords", "shows ur coords on ur hud.", new Point(100,1), Category.HUD);
+		super("coords", "shows ur coords on ur hud.", new Point(122, 57), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	

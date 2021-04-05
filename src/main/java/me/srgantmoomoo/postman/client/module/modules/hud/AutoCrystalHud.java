@@ -16,16 +16,16 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 
-public class KillAuraInfo extends HudModule {
-	private KillAuraInfoList list=new KillAuraInfoList();
+public class AutoCrystalHud extends HudModule {
+	private AutoCInfoList list=new AutoCInfoList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 
-	public KillAuraInfo() {
-		super("killAuraInfo", "shows if kill aura is on or off.", new Point(-3,49), Category.HUD);
-		this.addSettings(sort, color);
+	public AutoCrystalHud() {
+		super("autoCrystalHud", "shows u if autoCrystal is on or off.", new Point(-2, 39), Category.HUD);
+		this.addSettings(color, sort);
 	}
 	
 	@Override
@@ -33,7 +33,7 @@ public class KillAuraInfo extends HudModule {
 		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
-	private class KillAuraInfoList implements HUDList {
+	private class AutoCInfoList implements HUDList {
 
 		@Override
 		public int getSize() {
@@ -42,8 +42,8 @@ public class KillAuraInfo extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			if (ModuleManager.isModuleEnabled("killAura")) return ChatFormatting.GREEN + "killA" +  " on";
-			else return "killA" + " off";
+			if (ModuleManager.isModuleEnabled("autoCrystal")) return ChatFormatting.GREEN + "autoC" + " on";
+			else return "autoC" + " off";
 		}
 
 		@Override

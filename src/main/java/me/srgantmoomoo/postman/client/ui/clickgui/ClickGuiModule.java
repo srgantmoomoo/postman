@@ -36,7 +36,7 @@ public class ClickGuiModule extends Module {
 	
 	public BooleanSetting thinGui = new BooleanSetting("thinGui", this, false);
 	
-	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-text-transparent.png");
+	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
 	
 	public ClickGuiModule() {
 		super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
@@ -49,7 +49,7 @@ public class ClickGuiModule extends Module {
 		ScaledResolution sr = new ScaledResolution(mc);
 		if(event.getType() == RenderGameOverlayEvent.ElementType.BOSSHEALTH) {
 			mc.renderEngine.bindTexture(watermark);
-			Gui.drawScaledCustomSizeModalRect(-52, sr.getScaledHeight() - 125, 0, 0, 200, 200, 330, 200, 200, 200);
+			Gui.drawScaledCustomSizeModalRect(0, sr.getScaledHeight() - 80, 0, 0, 80, 80, 80, 80, 80, 80);
 		}
 	}
 

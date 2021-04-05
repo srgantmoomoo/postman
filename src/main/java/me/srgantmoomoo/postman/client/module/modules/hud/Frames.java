@@ -20,7 +20,7 @@ public class Frames extends HudModule {
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Frames() {
-		super("frames", "shows ur fps on ur hud.", new Point(-3,29), Category.HUD);
+		super("frames", "shows ur fps on ur hud.", new Point(-2,29), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	

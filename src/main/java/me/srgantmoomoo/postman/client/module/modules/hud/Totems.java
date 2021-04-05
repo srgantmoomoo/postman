@@ -23,7 +23,7 @@ public class Totems extends HudModule {
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Totems() {
-		super("totems", "shows how many totems u have on ur hud.", new Point(-3,11), Category.HUD);
+		super("totems", "shows how many totems u have on ur hud.", new Point(-2,11), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	

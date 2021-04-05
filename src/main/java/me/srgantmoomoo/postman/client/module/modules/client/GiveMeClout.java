@@ -9,11 +9,11 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 
-public class CrazyNewDupe extends Module {
+public class GiveMeClout extends Module {
 	public ModeSetting dupeMode = new ModeSetting("mode", this, "donate", "donate", "github", "discord");
 	
-	public CrazyNewDupe() {
-		super("postmanAppreciation", "crazyyyyyyy 0_0.", Keyboard.KEY_NONE, Category.CLIENT);
+	public GiveMeClout() {
+		super("giveMeClout", "crazyyyyyyy 0_0.", Keyboard.KEY_NONE, Category.CLIENT);
 		this.addSettings(dupeMode);
 	}
 	

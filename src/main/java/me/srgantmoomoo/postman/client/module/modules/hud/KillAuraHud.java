@@ -16,15 +16,16 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 
-public class SurroundInfo extends HudModule {
-	private SurroundInfoList list=new SurroundInfoList();
+public class KillAuraHud extends HudModule {
+	private KillAuraInfoList list=new KillAuraInfoList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-	public SurroundInfo() {
-		super("surroundInfo", "shows if surround is on or off.", new Point(-3,59), Category.HUD);
-		this.addSettings(sort, color);
+
+	public KillAuraHud() {
+		super("killAuraHud", "shows u if killAura is on or off.", new Point(-2, 49), Category.HUD);
+		this.addSettings(color, sort);
 	}
 	
 	@Override
@@ -32,7 +33,7 @@ public class SurroundInfo extends HudModule {
 		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
-	private class SurroundInfoList implements HUDList {
+	private class KillAuraInfoList implements HUDList {
 
 		@Override
 		public int getSize() {
@@ -41,8 +42,8 @@ public class SurroundInfo extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			if (ModuleManager.isModuleEnabled("surround")) return ChatFormatting.GREEN + "srnd" + " on";
-			else return "srnd" + " off";
+			if (ModuleManager.isModuleEnabled("killAura")) return ChatFormatting.GREEN + "killA" +  " on";
+			else return "killA" + " off";
 		}
 
 		@Override

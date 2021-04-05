@@ -21,7 +21,6 @@ import me.srgantmoomoo.postman.client.module.modules.movement.*;
 import me.srgantmoomoo.postman.client.module.modules.player.*;
 import me.srgantmoomoo.postman.client.module.modules.pvp.*;
 import me.srgantmoomoo.postman.client.module.modules.render.*;
-import me.srgantmoomoo.postman.client.ui.TabGui;
 import me.srgantmoomoo.postman.client.ui.clickgui.ClickGuiModule;
 import me.srgantmoomoo.postman.client.ui.clickgui.HudEditor;
 import net.minecraft.client.Minecraft;
@@ -125,9 +124,9 @@ public class ModuleManager {
 		modules.add(new Totems());
 		modules.add(new Ping());
 		modules.add(new Frames());
-		modules.add(new AutoCInfo());
-		modules.add(new KillAuraInfo());
-		modules.add(new SurroundInfo());
+		modules.add(new AutoCrystalHud());
+		modules.add(new KillAuraHud());
+		modules.add(new SurroundHud());
 		modules.add(new ArrayListt());
 		modules.add(new InventoryViewer());
 		modules.add(new PlayerModel());
@@ -135,15 +134,14 @@ public class ModuleManager {
 		modules.add(new ArmorHud());
 		modules.add(new HudEditor());
 		//client
-		//modules.add(new KeyStrokes());
 		modules.add(new ClientFont());
 		modules.add(new Capes());
 		modules.add(new DiscordRichPresence());
 		modules.add(new ClickGuiModule());
-	 	modules.add(new TabGui());
+	 	//modules.add(new TabGui());
 	 	modules.add(new MainMenuWatermark());
 		modules.add(new Esp2dHelper());
-		modules.add(new CrazyNewDupe());
+		modules.add(new GiveMeClout());
 	}
 	
 	public static void onUpdate() {

@@ -44,7 +44,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Explosion;
-import scala.actors.threadpool.Arrays;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -52,8 +51,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
-
-import com.google.common.collect.Lists;
 
 /**
  * @Author SrgantMooMoo
@@ -135,7 +132,7 @@ public class AutoCrystal extends Module {
 	public static boolean ghosting = false;;
 	public boolean active = false;
 	boolean offHand = false;
-	private static boolean togglePitch = false;
+	private boolean togglePitch = false;
 	
 	JTimer timer = new JTimer();
 	
@@ -357,6 +354,10 @@ public class AutoCrystal extends Module {
             timer.reset();
         }
 		
+	}
+	
+	private void antiGhost() {
+
 	}
 	
 	public void onWorldRender(RenderEvent event) {
