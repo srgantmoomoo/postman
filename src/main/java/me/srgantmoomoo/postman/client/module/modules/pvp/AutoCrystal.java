@@ -120,7 +120,7 @@ public class AutoCrystal extends Module {
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(breakCrystal, placeCrystal, switchHand, logic, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, highPing, antiGhost, raytrace, rotate,
+		this.addSettings(breakCrystal, placeCrystal, logic, switchHand, breakSpeed, breakType, breakMode, breakHand, breakRange, placeRange, highPing, antiGhost, raytrace, rotate,
 				spoofRotations, mode113, multiplace, multiplaceValue, multiplacePlus, antiSuicide, maxSelfDmg, antiSelfPop, minDmg, facePlaceValue, enemyRange, wallsRange, showDamage, outline, color);
 	}
 	
@@ -278,13 +278,16 @@ public class AutoCrystal extends Module {
                     mc.player.inventory.currentItem = crystalSlot;
                     resetRotation();
                     this.switchCooldown = true;
-            }else if(this.switchHand.is("detect")) {
-            	if(placing) {
+            }
+            
+            if(this.switchHand.is("detect")) {
+            	mc.player.inventory.currentItem = oldSlot;
+            	if(!findCrystalBlocks().isEmpty()) {
             		mc.player.inventory.currentItem = crystalSlot;
                     resetRotation();
                     this.switchCooldown = true;
             	}
-            }return;
+            }
         }
 		
 		for(Entity entity : entities) {
@@ -380,12 +383,6 @@ public class AutoCrystal extends Module {
             timer.reset();
         }
 		
-	}
-	
-	private void antiGhost() {
-		if(ghosting) {
-			
-		}
 	}
 	
 	public void onWorldRender(RenderEvent event) {
@@ -527,7 +524,6 @@ public class AutoCrystal extends Module {
     
     private List<BlockPos> findCrystalBlocks() {
         NonNullList<BlockPos> positions = NonNullList.create();
-        // positions.addAll(getSphere(loc, r, h, hollow, sphere, plus_y))
         positions.addAll(getSphere(getPlayerPos(), (float)placeRange.getValue(), (int)placeRange.getValue(), false, true, 0).stream().filter(this::canPlaceCrystal).collect(Collectors.toList()));
         return positions;
     }

@@ -141,6 +141,7 @@ public class Surround extends Module {
 	        }
 
 	        if (shiftOnly.isEnabled() && !mc.player.isSneaking()) {
+	        	mc.player.inventory.currentItem = oldSlot;
 	            return;
 	        }
 

@@ -37,7 +37,7 @@ public class Watermark extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return ChatFormatting.WHITE + Reference.NAME + " " + ChatFormatting.RESET + Reference.VERSION + " " + AutoCrystal.placing;
+			return ChatFormatting.WHITE + Reference.NAME + " " + ChatFormatting.RESET + Reference.VERSION;
 		}
 
 		@Override
