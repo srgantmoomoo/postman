@@ -45,12 +45,12 @@ public class ChestStealer extends Module {
     					if(mode.is("steal")) {
     						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.QUICK_MOVE, Module.mc.player);
     						this.timer.reset();
-    					if(mode.is("drop")) {  
-    						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.THROW, Module.mc.player);
-    						this.timer.reset();
+	    					if(mode.is("drop")) {  
+	    						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.THROW, Module.mc.player);
+	    						this.timer.reset();
+	    					}
     					}
-                }
-            }
+    				}
                 }
         }
     });

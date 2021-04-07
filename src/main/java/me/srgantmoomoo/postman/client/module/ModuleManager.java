@@ -48,7 +48,7 @@ public class ModuleManager {
 		modules.add(new AntiSwing());
 		modules.add(new AutoArmor());	
 		modules.add(new AutoClicker());
-		modules.add(new AutoCope()); // w i p
+		modules.add(new AutoCope());
 		modules.add(new AutoCrystal());
 		modules.add(new AutoDisconnect());
 		modules.add(new AutoGap());	
@@ -63,7 +63,6 @@ public class ModuleManager {
 		modules.add(new Backdoor2b2t());
 		modules.add(new Blink());	
 		modules.add(new CameraClip());	
-		//modules.add(new ChatBot());	// unstarted
 		modules.add(new ChatSuffix());
 		modules.add(new ChestStealer());
 		//modules.add(new CoordExploit());
@@ -106,7 +105,6 @@ public class ModuleManager {
 		modules.add(new ReverseStep());
 		modules.add(new SafeWalk());
 		//modules.add(new Scaffold());	// unstarted
-		//modules.add(new SmartHotbar()); // unstarted
 		modules.add(new SmartOffHand());	
 		//modules.add(new Sneak());    // unstarted
 		modules.add(new Speed());

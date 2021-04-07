@@ -26,7 +26,7 @@ public class AutoCope extends Module {
 	public BooleanSetting greenText = new BooleanSetting("greenText", this, true);
 	
 	public AutoCope() {
-		super("autoCope", "penis yes noa.", Keyboard.KEY_NONE, Category.PVP);
+		super("autoCope", "automatically makes ur opponent cope.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(msg, greenText);
 	}
 	int delay = 0;

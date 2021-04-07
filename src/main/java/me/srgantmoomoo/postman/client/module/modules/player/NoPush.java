@@ -20,10 +20,12 @@ public class NoPush extends Module {
 			event.cancel();
 	});
 	
+	@Override
 	public void onEnable() {
 		Main.EVENT_BUS.subscribe(this);
 	}
 	
+	@Override
 	public void onDisable() {
 		Main.EVENT_BUS.unsubscribe(this);
 	}

@@ -16,13 +16,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 
-public class Totems extends HudModule {
-	private TotemList list = new TotemList();
+public class ItemsCounter extends HudModule {
+	private ItemsCounterList list = new ItemsCounterList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-	public Totems() {
+	public ItemsCounter() {
 		super("totems", "shows how many totems u have on ur hud.", new Point(-2,11), Category.HUD);
 		this.addSettings(sort, color);
 	}
@@ -40,7 +40,7 @@ public class Totems extends HudModule {
 		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
-	private class TotemList implements HUDList {
+	private class ItemsCounterList implements HUDList {
 
 		public int totems = 0;
 		
