@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.api.mixin.mixins;
+package me.srgantmoomoo.mixin.mixins;
 
 import net.minecraft.block.BlockSlime;
 import net.minecraft.entity.Entity;

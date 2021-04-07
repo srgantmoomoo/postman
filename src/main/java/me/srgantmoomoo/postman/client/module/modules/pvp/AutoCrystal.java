@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
 import me.srgantmoomoo.Main;
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.JColor;
@@ -115,7 +116,7 @@ public class AutoCrystal extends Module {
 	
 	public BooleanSetting outline = new BooleanSetting("outline", this, false);
 	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
-	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 255));
+	public ColorSetting color = new ColorSetting("color", this, Reference.POSTMAN_COLOR);
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);

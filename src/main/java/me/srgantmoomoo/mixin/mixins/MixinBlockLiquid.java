@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.api.mixin.mixins;
+package me.srgantmoomoo.mixin.mixins;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;

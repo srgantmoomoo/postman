@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.api.mixin.mixins;
+package me.srgantmoomoo.mixin.mixins;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderRainEvent;

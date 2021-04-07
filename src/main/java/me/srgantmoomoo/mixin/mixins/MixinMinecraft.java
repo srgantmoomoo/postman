@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.api.mixin.mixins;
+package me.srgantmoomoo.mixin.mixins;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.postman.api.mixin.mixins.accessor.AccessorEntityPlayerSP;
+import me.srgantmoomoo.mixin.mixins.accessor.AccessorEntityPlayerSP;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 
 @Mixin(value = Minecraft.class)

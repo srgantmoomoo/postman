@@ -1,6 +1,5 @@
-package me.srgantmoomoo.postman.api.mixin.mixins;
-
-import net.minecraft.block.BlockWeb;
+package me.srgantmoomoo.mixin.mixins;
+import net.minecraft.block.BlockSoulSand;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
@@ -13,11 +12,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.module.modules.movement.NoSlow;
 
-@Mixin(BlockWeb.class)
-public class MixinBlockWeb {
-    @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
-    private void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn, CallbackInfo info) {
-		if (ModuleManager.isModuleEnabled("noSlow") && ((NoSlow)ModuleManager.getModuleByName("noSlow")).web.isEnabled())
-        	info.cancel();
-    }
+@Mixin(BlockSoulSand.class)
+public class MixinBlockSoulSand {
+	@Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn, CallbackInfo info) {
+		if (ModuleManager.isModuleEnabled("noSlow") && ((NoSlow)ModuleManager.getModuleByName("noSlow")).soulSand.isEnabled())
+			info.cancel();
+	}
 }

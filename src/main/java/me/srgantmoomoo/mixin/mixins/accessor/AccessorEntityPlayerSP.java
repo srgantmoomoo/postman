@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.api.mixin.mixins.accessor;
+package me.srgantmoomoo.mixin.mixins.accessor;
 
 import net.minecraft.client.entity.EntityPlayerSP;
 import org.spongepowered.asm.mixin.Mixin;

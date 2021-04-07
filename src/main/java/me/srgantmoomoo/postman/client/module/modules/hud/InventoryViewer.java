@@ -8,6 +8,7 @@ import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
@@ -19,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 public class InventoryViewer extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
+	public ColorSetting color = new ColorSetting("color", this, Reference.POSTMAN_COLOR); 
 	public ModeSetting sizee = new ModeSetting("size", this, "normal", "normal", "compact");
     
     public InventoryViewer() {

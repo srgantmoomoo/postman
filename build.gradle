@@ -33,7 +33,7 @@ minecraft {
 	version = project.forgeVersion
 	runDir = 'run'
 	mappings = project.mcpVersion
-	coreMod = 'me.srgantmoomoo.postman.api.mixin.MixinLoader'
+	coreMod = 'me.srgantmoomoo.mixin.MixinLoader'
 	makeObfSourceJar = false
 }
 
@@ -120,7 +120,7 @@ jar {
 				'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
 				'TweakOrder': 0,
 				'FMLCorePluginContainsFMLMod': 'true',
-				'FMLCorePlugin': 'me.srgantmoomoo.postman.api.mixin.MixinLoader',
+				'FMLCorePlugin': 'me.srgantmoomoo.mixin.MixinLoader',
 				'ForceLoadAsMod': 'true',
 				'FMLAT': 'postman_at.cfg'
 		)
