@@ -20,7 +20,7 @@ import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
 public class PlayerModel extends HudModule {
 	public BooleanSetting rect = new BooleanSetting("rect", this, true);
 	public NumberSetting size = new NumberSetting("size", this, 28, 10, 100, 1);
-	public ColorSetting color = new ColorSetting("rectColor", this, Reference.POSTMAN_COLOR); 
+	public ColorSetting color = new ColorSetting("rectColor", this, new JColor(Reference.POSTMAN_COLOR, 100)); 
 	
 	public PlayerModel() {
     	super("playerModel","shows ur player model on ur hud.", new Point(75, 2), Category.HUD);
@@ -35,17 +35,17 @@ public class PlayerModel extends HudModule {
 	private class PlayerModelComponent extends HUDComponent {
 
 		public PlayerModelComponent (Theme theme) {
-			super(getName(),theme.getPanelRenderer(),PlayerModel.this.position);
+			super(getName(), theme.getPanelRenderer(), PlayerModel.this.position);
 		}
 		
 		@Override
 		public void render (Context context) {
 			super.render(context);
 			if(rect.isEnabled()) {
-			Color bgcolor=new JColor(color.getValue(),100);
-			context.getInterface().fillRect(context.getRect(),bgcolor,bgcolor,bgcolor,bgcolor);
+			Color bgcolor = new JColor(color.getValue());
+			context.getInterface().fillRect(context.getRect(), bgcolor, bgcolor, bgcolor, bgcolor);
 			}
-			ClickGui.renderEntity(mc.player,new Point(context.getPos().x+22,context.getPos().y+58-(mc.player.isSneaking()?10:0)), (int) size.getValue());
+			ClickGui.renderEntity(mc.player, new Point(context.getPos().x + 22, context.getPos().y + 58 - (mc.player.isSneaking() ? 10 : 0)), (int) size.getValue());
 		}
 
 		@Override

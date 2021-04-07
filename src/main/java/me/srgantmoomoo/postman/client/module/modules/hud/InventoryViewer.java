@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 public class InventoryViewer extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, Reference.POSTMAN_COLOR); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 100)); 
 	public ModeSetting sizee = new ModeSetting("size", this, "normal", "normal", "compact");
     
     public InventoryViewer() {
@@ -36,26 +36,26 @@ public class InventoryViewer extends HudModule {
     private class InventoryViewerComponent extends HUDComponent {
 
 		public InventoryViewerComponent (Theme theme) {
-			super(getName(),theme.getPanelRenderer(),InventoryViewer.this.position);
+			super(getName(), theme.getPanelRenderer(), InventoryViewer.this.position);
 		}
 		
 		@Override
 		public void render (Context context) {
 			
 			super.render(context);
-			Color bgcolor=new JColor(color.getValue(),100);
-			context.getInterface().fillRect(context.getRect(),bgcolor,bgcolor,bgcolor,bgcolor);
+			Color bgcolor = new JColor(color.getValue());
+			context.getInterface().fillRect(context.getRect(), bgcolor, bgcolor, bgcolor, bgcolor);
 		
 	        NonNullList<ItemStack> items = Minecraft.getMinecraft().player.inventory.mainInventory;
 	        for (int size = items.size(), item = 9; item < size; ++item) {
 	        	if(sizee.is("normal")) {
 	            int slotX = context.getPos().x + 1 + item % 9 * 18;
 	            int slotY = context.getPos().y + 1 + (item / 9 - 1) * 18;
-				ClickGui.renderItem(items.get(item),new Point(slotX,slotY));
+				ClickGui.renderItem(items.get(item), new Point(slotX,slotY));
 	        	}else {
 	        		int slotX = context.getPos().x + 1 + item % 9 * 17;
 		            int slotY = context.getPos().y + 1 + (item / 9 - 1) * 17;
-					ClickGui.renderItem(items.get(item),new Point(slotX,slotY));
+					ClickGui.renderItem(items.get(item), new Point(slotX,slotY));
 	        	}
 	        }
 		}
