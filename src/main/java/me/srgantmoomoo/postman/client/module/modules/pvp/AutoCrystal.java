@@ -273,20 +273,12 @@ public class AutoCrystal extends Module {
 		if(!placeCrystal.isEnabled())
 			return;
 		
+		// switch system (onEnable)
 		if (!offHand && mc.player.inventory.currentItem != crystalSlot) {
             if (this.switchHand.is("onEnable")) {
                     mc.player.inventory.currentItem = crystalSlot;
                     resetRotation();
                     this.switchCooldown = true;
-            }
-            
-            if(this.switchHand.is("detect")) {
-            	mc.player.inventory.currentItem = oldSlot;
-            	if(!findCrystalBlocks().isEmpty()) {
-            		mc.player.inventory.currentItem = crystalSlot;
-                    resetRotation();
-                    this.switchCooldown = true;
-            	}
             }
         }
 		
@@ -364,6 +356,23 @@ public class AutoCrystal extends Module {
                         mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(blockPos1, EnumFacing.UP, offHand ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, 0, 0, 0));
                         placing = true;
                     }
+                    // switch system (detect)
+                    boolean switched = false;
+                    if (!offHand && mc.player.inventory.currentItem != crystalSlot) {
+	                    if(this.switchHand.is("detect")) {
+	                    	mc.player.inventory.currentItem = crystalSlot;
+	                        resetRotation();
+	                        this.switchCooldown = true;
+	                        switched = true;
+	                    }
+                    }
+                    /*if(!switched) {
+                    	mc.player.inventory.currentItem = oldSlot;
+                        resetRotation();
+                        this.switchCooldown = true;
+                        switched = false;
+                    }*/
+                    
                     mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                     PlacedCrystals.add(blockPos1);
                     
