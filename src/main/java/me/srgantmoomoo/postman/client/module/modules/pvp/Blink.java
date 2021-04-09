@@ -22,34 +22,33 @@ public class Blink extends Module {
 		super ("blink", "makes temporary player clone and stuff.", Keyboard.KEY_NONE, Category.PVP);
 	}
 	
-@EventHandler
-private final Listener<PacketEvent.Send> sendListener = new Listener<>(event -> {
-	if(mc.player == null || mc.world == null) return;
+	@EventHandler
+	private final Listener<PacketEvent.Send> sendListener = new Listener<>(event -> {
+		if(mc.player == null || mc.world == null) return;
+		
+		if (event.getPacket() instanceof CPacketPlayer) {
+	        event.cancel();
+	        packetQueue.add((CPacketPlayer) event.getPacket());
+	    }
+	});
 	
-	if (event.getPacket() instanceof CPacketPlayer) {
-        event.cancel();
-        packetQueue.add((CPacketPlayer) event.getPacket());
-    }
-});
-
-@Override
-public void onEnable() {
-	Main.EVENT_BUS.subscribe(this);
-    player = new EntityOtherPlayerMP(mc.world, mc.getSession().getProfile());
-    player.copyLocationAndAnglesFrom(mc.player);
-    player.rotationYawHead = mc.player.rotationYawHead;
-    mc.world.addEntityToWorld(-100, player);
-}
-
-@Override
-public void onDisable() {
-	Main.EVENT_BUS.unsubscribe(this);
-    while (!packetQueue.isEmpty()) mc.player.connection.sendPacket(packetQueue.poll());
-
-    if (mc.player != null)
-    {
-        mc.world.removeEntityFromWorld(-100);
-        player = null;
-    }
-}
+	@Override
+	public void onEnable() {
+		Main.EVENT_BUS.subscribe(this);
+	    player = new EntityOtherPlayerMP(mc.world, mc.getSession().getProfile());
+	    player.copyLocationAndAnglesFrom(mc.player);
+	    player.rotationYawHead = mc.player.rotationYawHead;
+	    mc.world.addEntityToWorld(-100, player);
+	}
+	
+	@Override
+	public void onDisable() {
+		Main.EVENT_BUS.unsubscribe(this);
+	    while (!packetQueue.isEmpty()) mc.player.connection.sendPacket(packetQueue.poll());
+	
+	    if (mc.player != null) {
+	        mc.world.removeEntityFromWorld(-100);
+	        player = null;
+	    }
+	}
 }

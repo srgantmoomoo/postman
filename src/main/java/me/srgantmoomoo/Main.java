@@ -75,6 +75,8 @@ public class Main {
 	}
 
 	private void loadCfg() {
+		saveLoad = new SaveLoad();
+		printLog("configs initialized.");
 	}
 
 	public void extClientInit() {
@@ -103,9 +105,6 @@ public class Main {
 
 		clickGui = new ClickGui();
 		printLog("clickGui initialized.");
-
-		saveLoad = new SaveLoad();
-		printLog("configs initialized.");
 		
 		clickGuiSave = new ClickGuiSave();
 		clickGuiLoad = new ClickGuiLoad();

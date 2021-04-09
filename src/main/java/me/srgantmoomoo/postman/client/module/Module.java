@@ -97,11 +97,7 @@ public class Module implements Toggleable {
 	
 	public void setToggled(boolean toggled) {
 		this.toggled = toggled;
-		if(this.toggled) {
-			this.onEnable();
-		}else {
-			this.onDisable();
-		}
+		toggled = true;
 		if(Main.saveLoad != null) {
 			Main.saveLoad.save();
 		}

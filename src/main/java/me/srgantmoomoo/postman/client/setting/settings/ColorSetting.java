@@ -19,12 +19,17 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 	
 	public JColor getValue() {
 		if (rainbow) {
-			JColor color =  JColor.fromHSB((System.currentTimeMillis()%(360*20))/(360f * 20),0.5f,1f);
-			return new JColor(color.getRed(), color.getBlue(), color.getGreen(), this.getColor().getAlpha());
+			return getRainbow(0, this.getColor().getAlpha());
 		}
 		return this.value;
 	}
-	
+
+	public static JColor getRainbow(int incr, int alpha) {
+		JColor color =  JColor.fromHSB(((System.currentTimeMillis() + incr * 200)%(360*20))/(360f * 20),0.5f,1f);
+		return new JColor(color.getRed(), color.getBlue(), color.getGreen(), alpha);
+	}
+
+
 	public void setValue (boolean rainbow, final JColor value) {
 		this.rainbow = rainbow;
 		this.value = value;
@@ -49,7 +54,7 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 
 	@Override
 	public void setValue(Color value) {
-		setValue(getRainbow(),new JColor(value));
+		setValue(getRainbow(), new JColor(value));
 	}
 
 	@Override
