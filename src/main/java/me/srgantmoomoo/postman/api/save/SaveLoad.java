@@ -74,7 +74,7 @@ public class SaveLoad {
 				
 				if(setting instanceof ColorSetting) {
 					ColorSetting color = (ColorSetting) setting;
-					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + color.toInteger());
+					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + color.toInteger() + ":" + color.getRainbow());
 				}
 			}
 		}
@@ -142,6 +142,7 @@ public class SaveLoad {
 						}
 						if(setting instanceof ColorSetting) {
 							((ColorSetting)setting).fromInteger(Integer.parseInt(args[3]));
+							((ColorSetting)setting).setRainbow(Boolean.parseBoolean(args[4]));
 						}
 					}
 				}

@@ -28,7 +28,7 @@ public class ClickGuiModule extends Module {
 	public ModeSetting scrollMode = new ModeSetting("scroll", this, "container", "container", "screen");
 	public ModeSetting description = new ModeSetting("description", this, "mouse", "mouse", "fixed");
 	public ColorSetting enabledColor = new ColorSetting("enabledColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); //(0, 157, 255, 255));
-	public ColorSetting backgroundColor = new ColorSetting("bgColor", this, new JColor(0, 0, 0, 255)); //(0, 121, 194, 255));
+	public ColorSetting backgroundColor = new ColorSetting("bgColor", this, new JColor(0, 0, 0, 200)); //(0, 121, 194, 255));
 	public ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", this, new JColor(0, 0, 0, 255));
 	public ColorSetting outlineColor = new ColorSetting("settingsHighlight", this, new JColor(255, 255, 255, 255));
 	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
@@ -40,7 +40,7 @@ public class ClickGuiModule extends Module {
 	
 	public ClickGuiModule() {
 		super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
-		this.addSettings(scrollMode,scrolls,description,animationSpeed,opacity,fontColor,enabledColor,backgroundColor,settingBackgroundColor,outlineColor);
+		this.addSettings(scrollMode, scrolls, description, animationSpeed, fontColor, enabledColor, backgroundColor, settingBackgroundColor, outlineColor);
 		INSTANCE = this;
 	}
 	

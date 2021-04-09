@@ -59,22 +59,22 @@ public class PostmanTheme implements Theme {
 
 		@Override
 		public void renderRect (Context context, String text, boolean focus, boolean active, Rectangle rectangle, boolean overlay) {
-			Color color=getMainColor(focus,active);
-			Color color2=getBackgroundColor(focus);
-			if (level==1 && !active)context.getInterface().fillRect(context.getRect(),color2,color2,color2,color2);
-			else context.getInterface().fillRect(rectangle,color,color,color,color);
+			Color color = getMainColor(focus,active);
+			Color color2 = getBackgroundColor(focus);
+			if (level == 1 && !active)context.getInterface().fillRect(context.getRect(), color2, color2, color2, color2);
+			else context.getInterface().fillRect(rectangle, color, color, color, color);
 			if (overlay) {
 				Color overlayColor;
 				if (context.isHovered()) {
-					overlayColor=new Color(255,255,255,64);
+					overlayColor = new Color(255,255,255,64);
 				} else {
-					overlayColor=new Color(255,255,255,0);
+					overlayColor = new Color(255,255,255,0);
 				}
-				context.getInterface().fillRect(context.getRect(),overlayColor,overlayColor,overlayColor,overlayColor);
+				context.getInterface().fillRect(context.getRect(), overlayColor, overlayColor, overlayColor, overlayColor);
 			}
-			Point stringPos=new Point(rectangle.getLocation());
+			Point stringPos = new Point(rectangle.getLocation());
 			stringPos.translate(0,border);
-			context.getInterface().drawString(stringPos,text,new JColor (255, 255, 255, 255));
+			context.getInterface().drawString(stringPos, text, new JColor(255, 255, 255, 255));
 		}
 
 
@@ -124,22 +124,22 @@ public class PostmanTheme implements Theme {
 		public Color getMainColor (boolean focus, boolean active) {
 			Color color;
 			// active modules
-			if (active && level>0) color=getColorScheme().getActiveColor();
+			if (active && level > 0) color = getColorScheme().getActiveColor();
 			// background
-			else color=getColorScheme().getBackgroundColor();
+			else color = getColorScheme().getBackgroundColor();
 			// inactive modules
-			if (!active && level<2) color=getColorScheme().getBackgroundColor();
+			if (!active && level < 2) color = getColorScheme().getBackgroundColor();
 			// category
-			if (active && level<1) color=getColorScheme().getFontColor();
-			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),getColorScheme().getOpacity());
+			if (active && level < 1) color = getColorScheme().getFontColor();
+			color = new Color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
 			return color;
 		}
 
 		@Override
 		public Color getBackgroundColor (boolean focus) {
 			Color color;
-			color=getColorScheme().getInactiveColor();
-			color=new Color(color.getRed(),color.getGreen(),color.getBlue(),200);
+			color = getColorScheme().getInactiveColor();
+			color = new Color(color.getRed(),color.getGreen(),color.getBlue(), color.getAlpha());
 			return color;
 		}
 
