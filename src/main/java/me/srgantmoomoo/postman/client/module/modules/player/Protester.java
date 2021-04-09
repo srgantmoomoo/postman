@@ -27,6 +27,9 @@ public class Protester extends Module {
     int tickDelay;
     
     public void onEnable() {
+    	clients.clear();
+    	respects.clear();
+    	
     	tickDelay = 0;
 
         clients.add("konas.... really? yikes.");
@@ -54,6 +57,7 @@ public class Protester extends Module {
     
     public void onDisable() {
     	clients.clear();
+    	respects.clear();
     }
     
     @Override
