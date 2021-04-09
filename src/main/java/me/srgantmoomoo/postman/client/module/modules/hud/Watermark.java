@@ -8,10 +8,8 @@ import com.lukflug.panelstudio.theme.Theme;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.Reference;
-import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
-import me.srgantmoomoo.postman.client.module.modules.pvp.AutoCrystal;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 
@@ -37,7 +35,7 @@ public class Watermark extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return ChatFormatting.WHITE + Reference.NAME + " " + ChatFormatting.RESET + Reference.VERSION + AutoCrystal.PlacedCrystals;
+			return ChatFormatting.WHITE + Reference.NAME + " " + ChatFormatting.RESET + Reference.VERSION;
 		}
 
 		@Override

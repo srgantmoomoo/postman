@@ -52,9 +52,9 @@ public class Esp extends Module {
 	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
 	
 	public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 100)); 
-	public ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 255)); 
-	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 255)); 
-	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 255)); 
+	public ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 100)); 
+	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 100)); 
+	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 100)); 
 	
 	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50));
 	public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50)); 
