@@ -120,12 +120,12 @@ public class SaveLoad {
 				Module m = Main.moduleManager.getModule(args[1]);
 				if(m != null) {
 					// hud modules
-					if(m.getName().equals("clickGui")) m.setToggled(!Boolean.parseBoolean(args[2]));
-					if(m.getName().equals("hudEditor")) m.setToggled(!Boolean.parseBoolean(args[2]));
+					if(m.getName().equals("clickGui")) m.setToggled(false);
+					if(m.getName().equals("hudEditor")) m.setToggled(false);
 					// normal modules that can cause crashes
-					if(m.getName().equals("protester")) m.setToggled(!Boolean.parseBoolean(args[2]));
-					if(m.getName().equals("blink")) m.setToggled(!Boolean.parseBoolean(args[2]));
-					if(m.getName().equals("autoDisconnect")) m.setToggled(!Boolean.parseBoolean(args[2]));
+					if(m.getName().equals("protester")) m.setToggled(false);
+					if(m.getName().equals("blink")) m.setToggled(false);
+					if(m.getName().equals("autoDisconnect")) m.setToggled(false);
 					
 					
 					if(!m.getName().equals("clickGui") && !m.getName().equals("hudEditor") && !m.getName().equals("protester")
