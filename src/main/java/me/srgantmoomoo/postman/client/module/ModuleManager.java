@@ -67,6 +67,7 @@ public class ModuleManager {
 		modules.add(new ChestStealer());
 		//modules.add(new CoordExploit());
 		modules.add(new Criticals());	
+		modules.add(new CrystalConfigBot());
 		modules.add(new DamageTiltCorrection());	
 		modules.add(new DeathCoords());	                             // --- integrate with notifications.
 		modules.add(new Dupe());	
