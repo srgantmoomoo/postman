@@ -126,6 +126,7 @@ public class SaveLoad {
 					if(m.getName().equals("protester")) m.setToggled(false);
 					if(m.getName().equals("blink")) m.setToggled(false);
 					if(m.getName().equals("autoDisconnect")) m.setToggled(false);
+					if(m.getName().equals("clientFont")) m.setToggled(false);
 					
 					
 					if(!m.getName().equals("clickGui") && !m.getName().equals("hudEditor") && !m.getName().equals("protester")

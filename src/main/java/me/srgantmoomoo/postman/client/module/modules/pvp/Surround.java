@@ -52,7 +52,7 @@ public class Surround extends Module {
 	    private boolean firstRun = false;
 
 	    private int oldSlot = -1;
-
+	    
 	    private int blocksPlaced;
 	    private int runTimeTicks = 0;
 	    private int delayTimeTicks = 0;
@@ -113,7 +113,7 @@ public class Surround extends Module {
 	        firstRun = true;
 	    }
 
-	    public void onUpdate(){
+	    public void onUpdate() {
 	        if (mc.player == null) {
 	            disable();
 	            return;
@@ -139,9 +139,8 @@ public class Surround extends Module {
 	                delayTimeTicks = 0;
 	            }
 	        }
-
+	        
 	        if (shiftOnly.isEnabled() && !mc.player.isSneaking()) {
-	        	mc.player.inventory.currentItem = oldSlot;
 	            return;
 	        }
 
