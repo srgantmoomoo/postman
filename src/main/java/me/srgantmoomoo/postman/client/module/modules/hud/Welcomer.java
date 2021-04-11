@@ -14,20 +14,20 @@ import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 
 
-public class Watermark extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR)); 
+public class Welcomer extends HudModule {
+	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 
-	public Watermark() {
-		super("watermark", "postman watermark!", new Point(-2, 1), Category.HUD);
+	public Welcomer() {
+		super("welcomer", "welcomes u to postman.", new Point(75, 70), Category.HUD);
 		this.addSettings(color);
 	}
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new WatermarkList());
+		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new WelcomerList());
 	}
 	
-	private class WatermarkList implements HUDList {
+	private class WelcomerList implements HUDList {
 
 		@Override
 		public int getSize() {
@@ -36,7 +36,7 @@ public class Watermark extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return ChatFormatting.WHITE + Reference.NAME + " " + ChatFormatting.RESET + Reference.VERSION;
+			return "welcome to postman, " + ChatFormatting.WHITE + mc.player.getName() + ChatFormatting.RESET + " :)";
 		}
 
 		@Override

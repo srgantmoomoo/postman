@@ -118,10 +118,11 @@ public class ModuleManager {
 		modules.add(new Tracers());
 		modules.add(new Velocity());	
 		modules.add(new ViewModel());	
+		modules.add(new World());
 		//modules.add(new Xray());    // unstarted						-------------------------
 		//hud
 		modules.add(new Watermark());
-		modules.add(new World());
+		modules.add(new Welcomer());
 		modules.add(new Totems());
 		modules.add(new Ping());
 		modules.add(new Frames());
