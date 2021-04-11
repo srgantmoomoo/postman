@@ -1,6 +1,5 @@
 package me.srgantmoomoo;
 
-import java.awt.Font;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -28,8 +27,6 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

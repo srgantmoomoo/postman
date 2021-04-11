@@ -9,15 +9,12 @@ import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
-import net.minecraft.client.gui.GuiDisconnected;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiScreenServerList;
 
 public class ClientFont extends Module {
 	public ModeSetting font = new ModeSetting("font", this, "Comic Sans Ms", "Comic Sans Ms", "Arial", "Verdana");
 	
 	public ClientFont() {
-		super ("clientFont", "crashes if u leave it on and quit.", Keyboard.KEY_NONE, Category.CLIENT);
+		super ("clientFont", "changes the font the client uses.", Keyboard.KEY_NONE, Category.CLIENT);
 		this.addSettings(font);
 	}
 	

@@ -75,6 +75,7 @@ public class ModuleManager {
 		//modules.add(new ElytraReplace());  // unstarted
 		modules.add(new Esp());
 		modules.add(new FastUse());
+		modules.add(new Fly());
 		modules.add(new FootExp());
 		modules.add(new Freecam());	
 		modules.add(new FullBright());	
@@ -103,6 +104,7 @@ public class ModuleManager {
 		modules.add(new PlayerClone());
 		modules.add(new PortalGodMode());
 		modules.add(new Protester());
+		modules.add(new Refill());
 		modules.add(new ReverseStep());
 		modules.add(new SafeWalk());
 		//modules.add(new Scaffold());	// unstarted
