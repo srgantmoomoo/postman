@@ -12,12 +12,13 @@ import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.client.setting.Setting;
 import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.common.MinecraftForge;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
-public class Module implements Toggleable {
+public abstract class Module implements Toggleable {
 	
 	protected static final Minecraft mc = Minecraft.getMinecraft();
 	public static ArrayList<Module> modules;
@@ -42,33 +43,17 @@ public class Module implements Toggleable {
 	
 	public void onWorldRender(RenderEvent event) {}
 	
-	public void onUpdate() {}
+	public void onUpdate(){}
 	
-	public void onRender() {}
+	public void onRender(){}
 	
-	public void enable() {
-		setToggled(true);
-	}
+	protected void enable(){}
 
-	public void disable() {
-		setToggled(false);
-	}
-	
-	protected void onEnable() {}
-
-	protected void onDisable() {}
+	protected void disable(){}
 	
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	
-	public Category getCategory() {
-		return this.category;
 	}
 	
 	public String getDescription() {
@@ -87,8 +72,8 @@ public class Module implements Toggleable {
 		this.keyCode.code = key;
 		
 		 if(Main.saveLoad != null) {
-			 Main.saveLoad.save();
-		 }
+				Main.saveLoad.save();
+			}
 	} 
 	
 	public boolean isToggled() {
@@ -97,7 +82,11 @@ public class Module implements Toggleable {
 	
 	public void setToggled(boolean toggled) {
 		this.toggled = toggled;
-		toggled = true;
+		if(this.toggled) {
+			this.onEnable();
+		}else {
+			this.onDisable();
+		}
 		if(Main.saveLoad != null) {
 			Main.saveLoad.save();
 		}
@@ -114,6 +103,26 @@ public class Module implements Toggleable {
 		if(Main.saveLoad != null) {
 			Main.saveLoad.save();
 		}
+	}
+	
+	protected void onEnable() {
+		MinecraftForge.EVENT_BUS.register(this);
+		Main.EVENT_BUS.subscribe(this);
+		enable();
+	}
+	
+	protected void onDisable() {
+		MinecraftForge.EVENT_BUS.register(this);
+		Main.EVENT_BUS.subscribe(this);
+		disable();
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public Category getCategory() {
+		return this.category;
 	}
 	
 	public final boolean isOn() {

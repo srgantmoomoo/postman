@@ -25,12 +25,12 @@ import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.postman.api.util.font.FontUtils;
-import me.srgantmoomoo.postman.api.util.render.ColorMain;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.module.modules.client.ColorMain;
 import me.srgantmoomoo.postman.client.setting.Setting;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
