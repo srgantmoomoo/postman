@@ -24,7 +24,7 @@ public class Crystals extends HudModule {
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Crystals() {
-		super("crystals", "shows how many crystals u have in ur inventory.", new Point(-2, 11), Category.HUD);
+		super("crystals", "shows how many crystals u have in ur inventory.", new Point(75, 82), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	

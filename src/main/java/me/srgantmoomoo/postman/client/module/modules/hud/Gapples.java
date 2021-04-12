@@ -24,7 +24,7 @@ public class Gapples extends HudModule {
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Gapples() {
-		super("gapples", "shows how many gapples u have in ur inventory.", new Point(-2, 11), Category.HUD);
+		super("gapples", "shows how many gapples u have in ur inventory.", new Point(134, 82), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	
