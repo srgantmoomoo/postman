@@ -7,6 +7,7 @@ import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
@@ -16,23 +17,23 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 
-public class Totems extends HudModule {
-	private TotemList list = new TotemList();
+public class Gapples extends HudModule {
+	private GapplesCounterList list = new GapplesCounterList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-	public Totems() {
-		super("totems", "shows how many totems u have in ur inventory.", new Point(-2, 11), Category.HUD);
+	public Gapples() {
+		super("gapples", "shows how many gapples u have in ur inventory.", new Point(-2, 11), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	
 	   public void onRender() {
-	    	list.totems = mc.player.inventory.mainInventory.stream()
-	    			.filter(itemStack -> itemStack.getItem() == Items.TOTEM_OF_UNDYING)
+	    	list.gapples = mc.player.inventory.mainInventory.stream()
+	    			.filter(itemStack -> itemStack.getItem() == Items.GOLDEN_APPLE)
 	    			.mapToInt(ItemStack::getCount).sum();
-	    	if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING)
-	    		list.totems++;
+	    	if (mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE)
+	    		list.gapples++;
 	    }
 	
 	@Override
@@ -40,9 +41,8 @@ public class Totems extends HudModule {
 		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
-	private class TotemList implements HUDList {
-
-		public int totems = 0;
+	private class GapplesCounterList implements HUDList {
+		public int gapples = 0;
 		
 		@Override
 		public int getSize() {
@@ -51,7 +51,7 @@ public class Totems extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return "" + totems;
+			return "gapples " + gapples;
 		}
 
 		@Override

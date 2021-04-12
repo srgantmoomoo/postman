@@ -65,9 +65,9 @@ public class ModuleManager {
 		modules.add(new CameraClip());	
 		modules.add(new ChatSuffix());
 		modules.add(new ChestStealer());
+		modules.add(new ConfigCrystal());
 		//modules.add(new CoordExploit());
 		modules.add(new Criticals());	
-		modules.add(new CrystalConfigBot());
 		modules.add(new DamageTiltCorrection());	
 		modules.add(new DeathCoords());	                             // --- integrate with notifications.
 		modules.add(new Dupe());	
@@ -124,6 +124,8 @@ public class ModuleManager {
 		modules.add(new Watermark());
 		modules.add(new Welcomer());
 		modules.add(new Totems());
+		modules.add(new Gapples());
+		modules.add(new Crystals());
 		modules.add(new Ping());
 		modules.add(new Frames());
 		modules.add(new AutoCrystalHud());

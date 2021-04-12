@@ -10,14 +10,14 @@ import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import me.srgantmoomoo.postman.client.module.modules.pvp.AutoCrystal;
 
-public class CrystalConfigBot extends Module {
+public class ConfigCrystal extends Module {
 	public BooleanSetting auto = new BooleanSetting("autoConfig", this, true); 
 	public ModeSetting server = new ModeSetting("server", this, "2b2tpvp", "2b2tpvp", ".cc", "other");
 	public NumberSetting ping = new NumberSetting("averagePing", this, 20, 0, 500, 1);
 	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false); 
 	
-	public CrystalConfigBot() {
-		super("crystalConfigBot", "configs based on server and ping.", Keyboard.KEY_NONE, Category.BOT);
+	public ConfigCrystal() {
+		super("configCrystal", "configs based on server and ping.", Keyboard.KEY_NONE, Category.BOT);
 		this.addSettings(auto, server, ping, multiplace);
 	}
 	

@@ -7,6 +7,7 @@ import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
@@ -16,23 +17,23 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 
-public class ItemsCounter extends HudModule {
-	private ItemsCounterList list = new ItemsCounterList();
+public class Crystals extends HudModule {
+	private CrystalsCounterList list = new CrystalsCounterList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-	public ItemsCounter() {
-		super("totems", "shows how many totems u have on ur hud.", new Point(-2,11), Category.HUD);
+	public Crystals() {
+		super("crystals", "shows how many crystals u have in ur inventory.", new Point(-2, 11), Category.HUD);
 		this.addSettings(sort, color);
 	}
 	
 	   public void onRender() {
-	    	list.totems = mc.player.inventory.mainInventory.stream()
-	    			.filter(itemStack -> itemStack.getItem() == Items.TOTEM_OF_UNDYING)
+	    	list.crystals = mc.player.inventory.mainInventory.stream()
+	    			.filter(itemStack -> itemStack.getItem() == Items.END_CRYSTAL)
 	    			.mapToInt(ItemStack::getCount).sum();
-	    	if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING)
-	    		list.totems++;
+	    	if (mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL)
+	    		list.crystals++;
 	    }
 	
 	@Override
@@ -40,9 +41,8 @@ public class ItemsCounter extends HudModule {
 		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
-	private class ItemsCounterList implements HUDList {
-
-		public int totems = 0;
+	private class CrystalsCounterList implements HUDList {
+		public int crystals = 0;
 		
 		@Override
 		public int getSize() {
@@ -51,7 +51,7 @@ public class ItemsCounter extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return "" + totems;
+			return "crystals " + crystals;
 		}
 
 		@Override
