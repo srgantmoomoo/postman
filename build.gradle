@@ -38,6 +38,9 @@ minecraft {
 }
 
 repositories {
+	jcenter()
+    mavenCentral()
+
 	maven {
 		name = 'spongepowered-repo'
 		url = 'https://repo.spongepowered.org/repository/maven-public/'
@@ -54,10 +57,16 @@ repositories {
 		name = 'lukflug'
 		url = 'https://lukflug.github.io/maven'
 	}
-	mavenCentral()
+	//for baritone
+	maven {
+        name = 'impactdevelopment-repo'
+        url = 'https://impactdevelopment.github.io/maven/'
+    }
 }
 
 dependencies {
+	implementation 'org.jetbrains:annotations:19.0.0'
+
 	compile("org.spongepowered:mixin:0.7.4-SNAPSHOT") {
 		exclude module: 'launchwrapper'
 		exclude module: 'guava'
@@ -70,6 +79,9 @@ dependencies {
 	compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
 	compile("com.lukflug:panelstudio:0.1.8")
 	compile("com.lukflug:panelstudio-mc12:0.1.8")
+	
+	compile 'com.github.cabaletta:baritone:1.2.14'
+    compile 'cabaletta:baritone-api:1.2'
 }
 
 processResources {
@@ -95,6 +107,7 @@ shadowJar {
 		include(dependency('club.minnced:java-discord-rpc:2.0.1'))
 		include(dependency('com.lukflug:panelstudio'))
 		include(dependency('com.lukflug:panelstudio-mc12'))
+		include(dependency('cabaletta:baritone-api'))
 	}
 	exclude 'dummyThing'
 	exclude 'LICENSE.txt'
@@ -116,7 +129,7 @@ reobf {
 jar {
 	manifest {
 		attributes(
-				'MixinConfigs': 'mixins.postman.json',
+				'MixinConfigs': 'mixins.postman.json', 'mixins.baritone.json',
 				'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
 				'TweakOrder': 0,
 				'FMLCorePluginContainsFMLMod': 'true',

@@ -144,6 +144,7 @@ public class AutoCrystal extends Module {
 		super.onEnable();
 		Main.EVENT_BUS.subscribe(this);
 		
+		if(mc.player == null || mc.world == null) return;
 		oldSlot = mc.player.inventory.currentItem;
 		
 		PlacedCrystals.clear();

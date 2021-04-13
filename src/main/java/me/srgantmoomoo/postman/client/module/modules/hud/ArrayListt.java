@@ -43,7 +43,7 @@ public class ArrayListt extends HudModule {
     	list.activeModules.clear();
     	for (Module module: ModuleManager.getModules()) {
     		if(!showHidden.isEnabled()) {
-    			if (module.isToggled() && !module.getCategory().equals(Category.HUD) && !module.getCategory().equals(Category.CLIENT)) {
+    			if (module.isToggled() && !module.getCategory().equals(Category.HUD) && !module.getCategory().equals(Category.CLIENT) && !module.getName().equals("baritone")) {
     				list.activeModules.add(module);
     			}
     		}else
