@@ -65,8 +65,6 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.jetbrains:annotations:19.0.0'
-
 	compile("org.spongepowered:mixin:0.7.4-SNAPSHOT") {
 		exclude module: 'launchwrapper'
 		exclude module: 'guava'
@@ -79,9 +77,7 @@ dependencies {
 	compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
 	compile("com.lukflug:panelstudio:0.1.8")
 	compile("com.lukflug:panelstudio-mc12:0.1.8")
-	
-	compile 'com.github.cabaletta:baritone:1.2.14'
-    compile 'cabaletta:baritone-api:1.2'
+	implementation 'com.github.cabaletta:baritone:1.2.14'
 }
 
 processResources {
@@ -107,7 +103,7 @@ shadowJar {
 		include(dependency('club.minnced:java-discord-rpc:2.0.1'))
 		include(dependency('com.lukflug:panelstudio'))
 		include(dependency('com.lukflug:panelstudio-mc12'))
-		include(dependency('cabaletta:baritone-api'))
+		include(dependency('com.github.cabaletta:baritone:1.2.14'))
 	}
 	exclude 'dummyThing'
 	exclude 'LICENSE.txt'
