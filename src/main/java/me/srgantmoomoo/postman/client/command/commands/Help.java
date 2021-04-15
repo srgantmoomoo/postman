@@ -20,11 +20,11 @@ public class Help extends Command {
 
 		ModuleManager.addChatMessage("prefix (p) - " + TextFormatting.ITALIC + "sets the command prefix. -> "  + CommandManager.prefix + "prefix <key>");
 		
-		ModuleManager.addChatMessage("baritone (b) - " + TextFormatting.ITALIC + "sets the command prefix. -> "  + CommandManager.prefix + "prefix <key>");
+		ModuleManager.addChatMessage("baritone (b) - " + TextFormatting.ITALIC + "use baritone api commands. - >"  + CommandManager.prefix + "baritone stop | baritone goto <x> <z> | baritone mine <block>");
 		
 		ModuleManager.addChatMessage("toggle (t) - " + TextFormatting.ITALIC + "toggles a module on or off. -> "  + CommandManager.prefix + "toggle <module>");
 		
-		ModuleManager.addChatMessage("bind (bo) - " + TextFormatting.ITALIC + "bind modules to specific keys. -> " + CommandManager.prefix + "bind <name> <key> | " + CommandManager.prefix + "bind clear");
+		ModuleManager.addChatMessage("bind (bi) - " + TextFormatting.ITALIC + "bind modules to specific keys. -> " + CommandManager.prefix + "bind <name> <key> | " + CommandManager.prefix + "bind clear");
 		
 		ModuleManager.addChatMessage("friend (f) - " + TextFormatting.ITALIC + "manage your friends. -> " + CommandManager.prefix + "friend list | " + CommandManager.prefix + "friend add <name> | " 
 				+ CommandManager.prefix + "friend remove <name> | " + CommandManager.prefix + "friend clear");
