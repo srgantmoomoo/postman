@@ -29,6 +29,6 @@ public class MobOwner extends Command {
 		        }else {
 		        	ModuleManager.addChatMessage("ridden entity is not compatible with this command");
 		        }
-		}else CommandManager.correctUsageMsg("", getName(), getSyntax());
+		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }

@@ -29,7 +29,7 @@ public class Toggle extends Command {
 			if(!moduleFound) {
 				ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
 			}
-		}else CommandManager.correctUsageMsg("", getName(), getSyntax());
+		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 
 }

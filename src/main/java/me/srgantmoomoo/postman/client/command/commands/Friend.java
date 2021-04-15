@@ -32,8 +32,8 @@ public class Friend extends Command {
 					FriendManager.removeFriend(args[1]);
 					ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "removed" + ChatFormatting.GRAY + " friend: " + args[1].toUpperCase());	
 				}else {
-					CommandManager.correctUsageMsg("", getName(), getSyntax());
+					CommandManager.correctUsageMsg(getName(), getSyntax());
 				}
-		}else CommandManager.correctUsageMsg("", getName(), getSyntax());
+		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }

@@ -34,6 +34,6 @@ public class Vanish extends Command {
 			    	 ModuleManager.addChatMessage("no entity is being ridden");
 			    }
 			}
-		}else CommandManager.correctUsageMsg("", getName(), getSyntax());
+		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }

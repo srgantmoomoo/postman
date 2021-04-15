@@ -28,8 +28,8 @@ public class Clip extends Command {
 				 entity.setPosition(Minecraft.getMinecraft().player.posX + faceDirection.x * Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ + faceDirection.z * Double.valueOf(args[1]));
 				ModuleManager.addChatMessage("horizontally clipped " + args[1] + " blocks");
 			}else
-				CommandManager.correctUsageMsg("", getName(), getSyntax());
-		}else CommandManager.correctUsageMsg("", getName(), getSyntax());
+				CommandManager.correctUsageMsg(getName(), getSyntax());
+		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 	
 	public static Vec3d direction(float yaw) {

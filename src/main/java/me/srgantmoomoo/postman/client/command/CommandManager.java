@@ -94,12 +94,12 @@ public class CommandManager {
         return prefix;
     }
 	
-	public static void correctUsageMsg(String message, String name, String syntax) {
+	public static void correctUsageMsg(String name, String syntax) {
 		// usage
 		String usage = "correct usage of " + name + " command -> " + prefix + syntax;
 				
 		// prefix
-		message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + usage;
+		String message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + usage;
 		
 		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
 	}

@@ -43,9 +43,9 @@ public class Bind extends Command {
 					module.keyCode.setKeyCode(Keyboard.KEY_NONE);
 				}
 				ModuleManager.addChatMessage("cleared all binds.");
-			} else CommandManager.correctUsageMsg("", getName(), getSyntax());
+			} else CommandManager.correctUsageMsg(getName(), getSyntax());
 		}
-		if(args.length == 0) CommandManager.correctUsageMsg("", getName(), getSyntax());
+		if(args.length == 0) CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 
 }
