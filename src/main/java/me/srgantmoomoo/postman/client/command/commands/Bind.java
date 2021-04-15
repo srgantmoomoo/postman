@@ -12,7 +12,7 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 public class Bind extends Command {
 	
 	public Bind() {
-		super("bind", "bind modules to specific keys.", "bind <name> <key> | bind clear", "b");
+		super("bind", "bind modules to specific keys.", "bind <name> <key> | bind clear", "bi");
 	}
 
 	@Override

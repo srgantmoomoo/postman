@@ -45,6 +45,11 @@ repositories {
 		name = 'spongepowered-repo'
 		url = 'https://repo.spongepowered.org/repository/maven-public/'
 	}
+	//for baritone
+	maven {
+        name = 'impactdevelopment-repo'
+        url = 'https://impactdevelopment.github.io/maven/'
+    }
 	maven {
 		name = 'swt-repo'
 		url = "http://maven-eclipse.github.io/maven"
@@ -57,11 +62,6 @@ repositories {
 		name = 'lukflug'
 		url = 'https://lukflug.github.io/maven'
 	}
-	//for baritone
-	maven {
-        name = 'impactdevelopment-repo'
-        url = 'https://impactdevelopment.github.io/maven/'
-    }
 }
 
 dependencies {
@@ -75,9 +75,9 @@ dependencies {
 	compile group: 'net.jodah', name: 'typetools', version: '0.5.0'
 	compile group: "com.googlecode.json-simple", name: "json-simple", version: "1.1.1"
 	compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
+	compile 'com.github.cabaletta:baritone:1.2.14'
 	compile("com.lukflug:panelstudio:0.1.8")
 	compile("com.lukflug:panelstudio-mc12:0.1.8")
-	implementation 'com.github.cabaletta:baritone:1.2.14'
 }
 
 processResources {
@@ -96,14 +96,26 @@ processResources {
 
 shadowJar {
 	dependencies {
+		// mixin
 		include(dependency('org.spongepowered:mixin'))
+		
+		// event 
 		include(dependency('com.github.ZeroMemes:Alpine'))
+		
+		// dependencies 
 		include(dependency('net.jodah:typetools'))
 		include(dependency('com.googlecode.json-simple:json-simple:1.1.1'))
+		
+		// rpc
 		include(dependency('club.minnced:java-discord-rpc:2.0.1'))
+		
+		// baritone
+		include(dependency('com.github.cabaletta:baritone:1.2.14'))
+		include(dependency('cabaletta:baritone-api'))
+		
+		// panelstudio
 		include(dependency('com.lukflug:panelstudio'))
 		include(dependency('com.lukflug:panelstudio-mc12'))
-		include(dependency('com.github.cabaletta:baritone:1.2.14'))
 	}
 	exclude 'dummyThing'
 	exclude 'LICENSE.txt'

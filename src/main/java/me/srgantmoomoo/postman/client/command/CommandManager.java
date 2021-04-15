@@ -43,6 +43,7 @@ public class CommandManager {
 		commands.add(new MobOwner());
 		commands.add(new Clip());
 		commands.add(new Vanish());
+		commands.add(new Baritone());
 	}
 	
 	@EventHandler
