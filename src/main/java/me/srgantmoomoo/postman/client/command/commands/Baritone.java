@@ -22,7 +22,7 @@ public class Baritone extends Command {
 				if(args.length == 1) {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().cancel();
 					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoal(null);
-					ModuleManager.addChatMessage("baritone had now " + ChatFormatting.GREEN + "stopped.");
+					ModuleManager.addChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped.");
 				}else CommandManager.correctUsageMsg("", getName(), getSyntax());
 			
 			}else if(starter.equalsIgnoreCase("goto")) {
@@ -36,8 +36,14 @@ public class Baritone extends Command {
 			}else if(starter.equalsIgnoreCase("mine")) {
 				if(args.length == 2) {
 					String block = args[1];
-					BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().mineByName(block);
-					ModuleManager.addChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ".");
+					
+					try {
+						BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().mineByName(block);
+						ModuleManager.addChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ".");
+					}catch (Exception e) {
+						ModuleManager.addChatMessage("baritone could not find that block. :(");
+					}
+					
 				}else CommandManager.correctUsageMsg("", getName(), getSyntax());
 			
 			}else if(starter.equalsIgnoreCase("farm")) {
