@@ -12,11 +12,11 @@ import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 
 public class Protester extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "clientShitter", "clientShitter", "postmanRespecter");
+	public ModeSetting mode = new ModeSetting("mode", this, "clientShitter", "clientShitter", "postmanRespecter", "customMsg");
 	public NumberSetting delay = new NumberSetting("delay", this, 20, 0, 100, 1);
 	
 	public Protester() {
-		super("protester", "protests about postmans greatness.", Keyboard.KEY_NONE, Category.PLAYER);
+		super("protester", "start your own protest!", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(mode, delay);
 	}
 	
@@ -25,6 +25,11 @@ public class Protester extends Module {
 
     Random random = new Random();
     int tickDelay;
+    
+    public static String customMsgArg = "";
+    public static void setMessage(String msg) {
+    	customMsgArg = msg;
+    }
     
     public void onEnable() {
     	clients.clear();
@@ -78,6 +83,15 @@ public class Protester extends Module {
             String message = respects.get(random.nextInt(respects.size()));
 
             mc.player.sendChatMessage(message);
+            
+            tickDelay = 0;
+    	}
+    	if(mode.is("customMsg")) {
+    		tickDelay++;
+            if (tickDelay < delay.getValue() * 10) return;
+
+            mc.player.sendChatMessage(customMsgArg);
+            
             tickDelay = 0;
     	}
     }

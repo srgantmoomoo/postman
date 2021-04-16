@@ -123,7 +123,6 @@ public class SaveLoad {
 					if(m.getName().equals("clickGui")) m.setToggled(false);
 					if(m.getName().equals("hudEditor")) m.setToggled(false);
 					// normal modules that can cause crashes
-					if(m.getName().equals("protester")) m.setToggled(false);
 					if(m.getName().equals("blink")) m.setToggled(false);
 					if(m.getName().equals("autoDisconnect")) m.setToggled(false);
 					if(m.getName().equals("discordRpc")) m.setToggled(false);
@@ -131,7 +130,6 @@ public class SaveLoad {
 					
 					if(!m.getName().equals("clickGui") 
 							&& !m.getName().equals("hudEditor") 
-							&& !m.getName().equals("protester")
 							&& !m.getName().equals("blink") 
 							&& !m.getName().equals("autoDisconnect")
 							&& !m.getName().equals("discordRpc")) {

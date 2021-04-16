@@ -18,7 +18,7 @@ public class ConfigCrystal extends Module {
 	
 	public ConfigCrystal() {
 		super("configCrystal", "configs based on server and ping.", Keyboard.KEY_NONE, Category.BOT);
-		this.addSettings(auto, server, ping, multiplace);
+		this.addSettings(server, ping, multiplace);
 	}
 	
 	@Override

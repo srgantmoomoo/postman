@@ -14,10 +14,19 @@ public class AutoCope extends Command {
     
 	@Override
 	public void onCommand(String[] args, String command) {
-		if(args.length == 1) {
-			String msg = args[0];
-			me.srgantmoomoo.postman.client.module.modules.pvp.AutoCope.setMessage(msg);
-			ModuleManager.addChatMessage("set autoCope message to " + ChatFormatting.GREEN + msg + ChatFormatting.GRAY + ".");
+		if(args.length >= 1) {
+			StringBuilder msg = new StringBuilder();
+            boolean flag = true;
+            for (String string : args) {
+                if (flag) {
+                    flag = false;
+                    continue;
+                }
+                msg.append(string).append(" ");
+            }
+			
+			me.srgantmoomoo.postman.client.module.modules.pvp.AutoCope.setMessage(args[0] + " " + msg.toString());
+			ModuleManager.addChatMessage("set autoCope message to " + ChatFormatting.GREEN + args[0] + " " + msg.toString() + ChatFormatting.GRAY + ".");
 		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }
