@@ -22,7 +22,7 @@ public class Baritone extends Command {
 				if(args.length == 1) {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().cancel();
 					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoal(null);
-					ModuleManager.addChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped.");
+					ModuleManager.addChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped" + ChatFormatting.GRAY + ".");
 				}else CommandManager.correctUsageMsg(getName(), getSyntax());
 			}
 			
@@ -31,7 +31,7 @@ public class Baritone extends Command {
 					String x = args[1];
 					String z = args[2];
 					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoalAndPath(new GoalXZ(Integer.parseInt(x), Integer.parseInt(z)));
-					ModuleManager.addChatMessage("baritone is now pathing to " + ChatFormatting.GREEN + x + " " + z + ".");
+					ModuleManager.addChatMessage("baritone is now pathing to " + ChatFormatting.GREEN + x + " " + z + ChatFormatting.GRAY + ".");
 				}else CommandManager.correctUsageMsg(getName(), getSyntax());
 			}
 			
@@ -40,7 +40,7 @@ public class Baritone extends Command {
 					String block = args[1];
 					try {
 						BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().mineByName(block);
-						ModuleManager.addChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ".");
+						ModuleManager.addChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ChatFormatting.GRAY + ".");
 					}catch (Exception e) {
 						ModuleManager.addChatMessage("baritone could not find that block. :(");
 					}
@@ -50,7 +50,7 @@ public class Baritone extends Command {
 			else if(starter.equalsIgnoreCase("farm")) {
 				if(args.length == 1) {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getFarmProcess().farm();
-					ModuleManager.addChatMessage("baritone is now " + ChatFormatting.GREEN + "farming.");
+					ModuleManager.addChatMessage("baritone is now " + ChatFormatting.GREEN + "farming" + ChatFormatting.GRAY + ".");
 				}else CommandManager.correctUsageMsg(getName(), getSyntax());
 			}
 			
