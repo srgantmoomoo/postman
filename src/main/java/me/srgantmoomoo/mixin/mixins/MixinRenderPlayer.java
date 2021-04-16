@@ -9,11 +9,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderEntityNameEvent;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 
 @Mixin(RenderPlayer.class)
 public class MixinRenderPlayer {
     @Inject(method = "renderEntityName", at = @At("HEAD"), cancellable = true)
     public void renderLivingLabel(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq, CallbackInfo info) {
+    	if(ModuleManager.getModuleByName("nametags").isToggled()) {
+    		info.cancel();
+    	}
+    	
         RenderEntityNameEvent event = new RenderEntityNameEvent(entityIn, x, y, z, name, distanceSq);
         Main.EVENT_BUS.post(event);
         if (event.isCancelled())

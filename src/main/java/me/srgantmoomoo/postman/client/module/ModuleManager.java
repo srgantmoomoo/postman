@@ -92,7 +92,7 @@ public class ModuleManager {
 		modules.add(new LowOffHand());
 		modules.add(new Mcf());
 		modules.add(new Multitask());
-		//modules.add(new Nametags());	// unstarted           									---------------------------
+		modules.add(new Nametags());	// unstarted           									---------------------------
 		//modules.add(new NewChunks());	// unstarted
 		modules.add(new NoFall());
 		modules.add(new NoHandShake());	

@@ -24,36 +24,37 @@ public class Baritone extends Command {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoal(null);
 					ModuleManager.addChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped.");
 				}else CommandManager.correctUsageMsg(getName(), getSyntax());
+			}
 			
-			}else if(starter.equalsIgnoreCase("goto")) {
+			else if(starter.equalsIgnoreCase("goto")) {
 				if(args.length == 3) {
 					String x = args[1];
 					String z = args[2];
 					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoalAndPath(new GoalXZ(Integer.parseInt(x), Integer.parseInt(z)));
 					ModuleManager.addChatMessage("baritone is now pathing to " + ChatFormatting.GREEN + x + " " + z + ".");
 				}else CommandManager.correctUsageMsg(getName(), getSyntax());
+			}
 			
-			}else if(starter.equalsIgnoreCase("mine")) {
+			else if(starter.equalsIgnoreCase("mine")) {
 				if(args.length == 2) {
 					String block = args[1];
-					
 					try {
 						BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().mineByName(block);
 						ModuleManager.addChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ".");
 					}catch (Exception e) {
 						ModuleManager.addChatMessage("baritone could not find that block. :(");
 					}
-					
 				}else CommandManager.correctUsageMsg(getName(), getSyntax());
+			}
 			
-			}else if(starter.equalsIgnoreCase("farm")) {
+			else if(starter.equalsIgnoreCase("farm")) {
 				if(args.length == 1) {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getFarmProcess().farm();
 					ModuleManager.addChatMessage("baritone is now " + ChatFormatting.GREEN + "farming.");
 				}else CommandManager.correctUsageMsg(getName(), getSyntax());
 			}
-			else CommandManager.correctUsageMsg(getName(), getSyntax());
 			
+			else CommandManager.correctUsageMsg(getName(), getSyntax());
 		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }

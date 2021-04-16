@@ -23,9 +23,13 @@ public class MobOwner extends Command {
 				 AbstractHorse horse = (AbstractHorse) Minecraft.getMinecraft().player.getRidingEntity();
 				 
 				 String ownerUUID = horse.getOwnerUniqueId() == null ? "entity has no owner" : horse.getOwnerUniqueId().toString();
-				 String ownerReplace = Objects.requireNonNull(EntityUtil.getNameFromUUID(ownerUUID)).replace("\"", "");
 				 
-			     ModuleManager.addChatMessage("mob owner is " + TextFormatting.GREEN + ownerReplace);
+				 try {
+					 String ownerReplace = Objects.requireNonNull(EntityUtil.getNameFromUUID(ownerUUID)).replace("\"", "");
+					 ModuleManager.addChatMessage("mob owner is " + TextFormatting.GREEN + ownerReplace);
+					}catch (Exception e) {
+						ModuleManager.addChatMessage("something went wrong, this entity may not have a real owner.");
+					}
 		        }else {
 		        	ModuleManager.addChatMessage("ridden entity is not compatible with this command");
 		        }
