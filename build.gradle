@@ -109,6 +109,7 @@ shadowJar {
 		// rpc
 		include(dependency('club.minnced:java-discord-rpc:2.0.1'))
 		
+		
 		// baritone
 		include(dependency('com.github.cabaletta:baritone:1.2.14'))
 		include(dependency('cabaletta:baritone-api'))
@@ -137,7 +138,7 @@ reobf {
 jar {
 	manifest {
 		attributes(
-				'MixinConfigs': 'mixins.postman.json', 'mixins.baritone.json',
+				'MixinConfigs': 'mixins.postman.json',
 				'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
 				'TweakOrder': 0,
 				'FMLCorePluginContainsFMLMod': 'true',

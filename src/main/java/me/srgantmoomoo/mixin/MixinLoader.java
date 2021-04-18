@@ -10,10 +10,10 @@ import javax.annotation.Nullable;
 import java.util.Map;
 public class MixinLoader implements IFMLLoadingPlugin {
 
-	public MixinLoader(){
+	public MixinLoader() {
 		Main.log.info("mixins initialized");
 		MixinBootstrap.init();
-		Mixins.addConfigurations("mixins.postman.json", "mixins.baritone.json");
+		Mixins.addConfiguration("mixins.postman.json");
 	}
 
 	@Override
