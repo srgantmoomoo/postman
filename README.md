@@ -24,6 +24,7 @@ thank you,
 3. click assets at the bottom of the release, then download the .jar file. <br />
 4. if you havent ran forge yet, do so, if you have already ran forge at least once, type %appdata% in ur windows search, enter, and navigate to .minecraft -> mods (if there is no mods folder than you can add it yourself) -> 1.12.2, "1.12.2" may not exist either, so you can create it yourself if needed. this process may vary depending on your device, so you may need to look it up. <br />
 5. drag the postman .jar file that you downloaded earlier into the 1.12.2 folder. <br />
+- you also need the [baritone api](https://github.com/cabaletta/baritone/releases/download/v1.2.14/baritone-api-forge-1.2.14.jar) in order to use postmans baritone integration, you can simply download it and drag it into your mods folder.
 
 **use**
 - prefix is "," (comma), this is customizable too.
