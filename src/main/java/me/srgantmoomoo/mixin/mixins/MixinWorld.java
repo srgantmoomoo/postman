@@ -2,6 +2,10 @@ package me.srgantmoomoo.mixin.mixins;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderRainEvent;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.module.modules.render.NoRender;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,4 +24,16 @@ public class MixinWorld {
             callback.setReturnValue(0.0f);
         }
     }
+    
+    @Inject(method = "checkLightFor", at = @At("HEAD"), cancellable = true)
+    private void updateLightmapHook(EnumSkyBlock lightType, BlockPos pos, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
+        NoRender noRender = (NoRender)ModuleManager.getModuleByName("noRender");
+        if (noRender.isToggled() && noRender.skylight.isEnabled()) {
+            if (lightType == EnumSkyBlock.SKY) {
+                callbackInfoReturnable.setReturnValue(true);
+                callbackInfoReturnable.cancel();
+            }
+        }
+    }
+    
 }
