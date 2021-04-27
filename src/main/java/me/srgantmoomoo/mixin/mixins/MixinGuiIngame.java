@@ -15,7 +15,7 @@ public class MixinGuiIngame {
 
 	@Inject(method = "renderPotionEffects", at = @At("HEAD"), cancellable = true)
 	protected void renderPotionEffectsHook(ScaledResolution scaledRes, CallbackInfo callbackInfo) {
-		if (ModuleManager.isModuleEnabled("noRender") && ((NoRender)ModuleManager.getModuleByName("noRender")).potionEffects.isEnabled()) {
+		if (ModuleManager.isModuleEnabled("noRender") && ((NoRender)ModuleManager.getModuleByName("noRender")).potionIndicators.isEnabled()) {
 			callbackInfo.cancel();
 		}
 	}

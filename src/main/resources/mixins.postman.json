@@ -25,6 +25,7 @@
     "MixinPlayerControllerMP",
     "MixinRender",
     "MixinRenderLivingBase",
+    "MixinRenderManager",
     "MixinRenderPlayer",
     "MixinWorld",
     "accessor.AccessorEntityPlayerSP"

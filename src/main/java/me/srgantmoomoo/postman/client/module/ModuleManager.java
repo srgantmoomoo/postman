@@ -146,7 +146,6 @@ public class ModuleManager {
 	 	//modules.add(new TabGui());
 	 	modules.add(new MainMenuWatermark());
 		modules.add(new Esp2dHelper());
-		modules.add(new GiveMeClout());
 	}
 	
 	public static void onUpdate() {

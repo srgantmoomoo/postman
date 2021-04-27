@@ -28,7 +28,7 @@ public class AutoGap extends Module {
 		Main.EVENT_BUS.subscribe(this);
 	}
 	
-	public void onDisable() {
+	public void onDisbale() {
 		Main.EVENT_BUS.unsubscribe(this);
 		
 		 if (wasEating) {

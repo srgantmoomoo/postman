@@ -30,6 +30,7 @@ public class Baritone extends Module {
 	public Baritone() {
 		super("baritone", "use <prefix>b for baritone commands.", Keyboard.KEY_NONE, Category.BOT);
 		this.addSettings(renderPath, pathColor, renderGoal, goalColor, placeBlocks, breakBlocks, avoidDanger, sprint, parkour, waterBucket, lava, water, downward, jumpAtBuildLimit);
+		toggled = true;
 	}
 
     @Override

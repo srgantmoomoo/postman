@@ -76,8 +76,8 @@ public class Fly extends Module {
 
             if (angle != -1 && (forward || left || right || back)) {
                 float yaw = mc.player.rotationYaw+angle;
-                mc.player.motionX = EntityUtil.getRelativeX(yaw)*0.2f;
-                mc.player.motionZ = EntityUtil.getRelativeZ(yaw)*0.2f;
+                mc.player.motionX = EntityUtil.getRelativeX(yaw) * 0.2f;
+                mc.player.motionZ = EntityUtil.getRelativeZ(yaw) * 0.2f;
             }
 
             mc.player.motionY = 0;
