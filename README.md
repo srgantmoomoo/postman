@@ -29,8 +29,8 @@ thank you,
 **use**
 - prefix is "," (comma), this is customizable too.
 - the inital keybind for the clickgui is rshift.
-- once your clickgui is opened you will see a bunch of categories, you can drag these, and right click to open them up.
-- each category has different modules you may enable by left clicking, or right clicking to open up their settings.
+- once your clickgui is opened you will see a bunch of categories, you can drag these around and right click them to open them.
+- each category has different modules you may enable by left clicking and right clicking to open up their settings.
 - the settings consist of booleans (enable or disable), numbers (sliders to change the value of something), and modes (switches modes). 
 - you can rebind each module in the settings by clicking keybind (at the bottom of each modules settings), and clicking the button you want to bind the module to.
 - esc to close the clickgui 0_0.
