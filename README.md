@@ -24,13 +24,13 @@ thank you,
 3. click assets at the bottom of the release, then download the .jar file. <br />
 4. if you havent ran forge yet, do so, if you have already ran forge at least once, type %appdata% in ur windows search, enter, and navigate to .minecraft -> mods (if there is no mods folder than you can add it yourself) -> 1.12.2, "1.12.2" may not exist either, so you can create it yourself if needed. this process may vary depending on your device, so you may need to look it up. <br />
 5. drag the postman .jar file that you downloaded earlier into the 1.12.2 folder. <br />
-- you also need the [baritone api](https://github.com/cabaletta/baritone/releases/download/v1.2.14/baritone-api-forge-1.2.14.jar) in order to use postmans baritone integration, you can simply download it and drag it into your mods folder.
+- if you want to take advantage of postman's baritone integration, you can download the [baritone api](https://github.com/cabaletta/baritone/releases/download/v1.2.14/baritone-api-forge-1.2.14.jar) and drag it into your mods folder along with postman.
 
 **use**
 - prefix is "," (comma), this is customizable too.
 - the inital keybind for the clickgui is rshift.
-- once your clickgui is opened you will see a bunch of categorys, right click to open them up.
-- each category has different modules you may enable by left clicking, or right clicking to open up their settings.
+- once your clickgui is opened you will see a bunch of categories, you can drag these around and right click them to open them.
+- each category has different modules you may enable by left clicking and right clicking to open up their settings.
 - the settings consist of booleans (enable or disable), numbers (sliders to change the value of something), and modes (switches modes). 
 - you can rebind each module in the settings by clicking keybind (at the bottom of each modules settings), and clicking the button you want to bind the module to.
 - esc to close the clickgui 0_0.
