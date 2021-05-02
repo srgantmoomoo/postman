@@ -110,7 +110,7 @@ public class ModuleManager {
 		modules.add(new SafeWalk());
 		//modules.add(new Scaffold());	// unstarted
 		modules.add(new SmartOffHand());	
-		//modules.add(new Sneak());    // unstarted
+		modules.add(new Sneak());
 		modules.add(new Speed());
 		modules.add(new Sprint());	
 		modules.add(new Step());
