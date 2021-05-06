@@ -40,7 +40,7 @@ public class World extends Module {
 	}	
 	
 	 @EventHandler
-	 private final Listener<PacketEvent.Send> listener = new Listener<>(event -> {
+	 private final Listener<PacketEvent.Receive> listener = new Listener<>(event -> {
 		 if (event.getPacket() instanceof SPacketTimeUpdate) event.cancel();
 	 });
 }
