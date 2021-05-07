@@ -41,11 +41,14 @@ thank you,
 (./gradlew for linux and mac users) <br />
 
 # credits
-**contributions**
-- lukflug, being helpful person. making panelstudio. helping me with panelstudio.
-- techale, adding multithreading to the main class. making postman website. helping me.
-- RECIOR, for postman bot.
-- some random guy idk named jacobtread, for giving proper credits to the MinnDevelopment java discord rpc.
+**really helpful people**
+- lukflug, being cool person. making panelstudio. helping me with panelstudio.
+- techale, adding multithreading to the main class. making postman website. helping me a lot :).
+- RECIOR, for postman bot, and being an extremly based individual.
+**contributors**
+- cattyngmd, fixing lighting updates in the world module.
+- mwahaha9, fixing the spelling in an onDisable method in autoGap.
+- jacobtread, giving proper credits to the MinnDevelopment java discord rpc.
 
 **base stuff**
 - mod api - *Forge* http://files.minecraftforge.net.
