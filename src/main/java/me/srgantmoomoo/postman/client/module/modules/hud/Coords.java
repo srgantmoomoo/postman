@@ -38,9 +38,9 @@ public class Coords extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			return ChatFormatting.RESET + "(x)" + ChatFormatting.WHITE + mc.player.getPosition().getX()
-					+ ChatFormatting.RESET + "(y)" + ChatFormatting.WHITE + mc.player.getPosition().getY()
-					+ ChatFormatting.RESET + "(z)" + ChatFormatting.WHITE + mc.player.getPosition().getZ();
+			return ChatFormatting.RESET + "(x)" + ChatFormatting.WHITE + String.format("%.1f", mc.player.posX)
+					+ ChatFormatting.RESET + "(y)" + ChatFormatting.WHITE + String.format("%.1f", mc.player.posY)
+					+ ChatFormatting.RESET + "(z)" + ChatFormatting.WHITE + String.format("%.1f", mc.player.posZ);
 		}
 
 		@Override

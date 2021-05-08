@@ -136,6 +136,7 @@ public class ModuleManager {
 		modules.add(new InventoryViewer());
 		modules.add(new PlayerModel());
 		modules.add(new Coords());
+		modules.add(new NetherCoords());
 		modules.add(new ArmorHud());
 		modules.add(new HudEditor());
 		//client
