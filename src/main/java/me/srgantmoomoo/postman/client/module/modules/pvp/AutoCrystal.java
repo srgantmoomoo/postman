@@ -28,6 +28,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketAnimation;
 import net.minecraft.network.play.client.CPacketPlayer;
@@ -159,7 +160,10 @@ public class AutoCrystal extends Module {
 		super.onDisable();
 		Main.EVENT_BUS.unsubscribe(this);
 		
-		if(switchHand.is("onEnable")) mc.player.inventory.currentItem = oldSlot;
+		if(switchHand.is("onEnable")) {
+			mc.player.inventory.currentItem = oldSlot;
+			mc.playerController.updateController();
+		}
 		
 		renderBlock = null;
         renderEnt = null;
@@ -278,6 +282,7 @@ public class AutoCrystal extends Module {
 		if (!offHand && mc.player.inventory.currentItem != crystalSlot) {
             if (this.switchHand.is("onEnable")) {
                     mc.player.inventory.currentItem = crystalSlot;
+                    mc.playerController.updateController();
                     resetRotation();
                     this.switchCooldown = true;
             }
@@ -347,6 +352,15 @@ public class AutoCrystal extends Module {
                 }
                 
                 if (blockPos1 != null) {
+                    if (!offHand && mc.player.inventory.currentItem != crystalSlot) {
+	                    if(this.switchHand.is("detect")) {
+	                    	mc.player.inventory.currentItem = crystalSlot;
+	                    	mc.playerController.updateController();
+	                        resetRotation();
+	                        this.switchCooldown = true;
+	                    }
+                    }
+                	if (mc.player.getHeldItemMainhand().getItem() != Items.END_CRYSTAL && mc.player.getHeldItemOffhand().getItem() != Items.END_CRYSTAL) return;
                     if (raytrace.isEnabled() && enumFacing != null) {
                         mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(blockPos1, enumFacing, offHand ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, 0, 0, 0));
                         placing = true;
@@ -358,15 +372,6 @@ public class AutoCrystal extends Module {
                         placing = true;
                     }
                     // switch system (detect)
-                    boolean switched = false;
-                    if (!offHand && mc.player.inventory.currentItem != crystalSlot) {
-	                    if(this.switchHand.is("detect")) {
-	                    	mc.player.inventory.currentItem = crystalSlot;
-	                        resetRotation();
-	                        this.switchCooldown = true;
-	                        switched = true;
-	                    }
-                    }
                     /*if(!switched) {
                     	mc.player.inventory.currentItem = oldSlot;
                         resetRotation();
