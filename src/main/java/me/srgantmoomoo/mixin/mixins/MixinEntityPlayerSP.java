@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.MoverType;
@@ -15,6 +16,8 @@ import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.PlayerMotionUpdateEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerMoveEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.module.modules.movement.Sprint;
 
 @Mixin(EntityPlayerSP.class)
 public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
@@ -53,4 +56,11 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
 		   Main.EVENT_BUS.post(moveEvent);
 		   super.move(type, moveEvent.x, moveEvent.y, moveEvent.z);
 	   }
+	   
+	    @Redirect(method={"onLivingUpdate"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/entity/EntityPlayerSP;setSprinting(Z)V", ordinal=2))
+	    public void onLivingUpdate(EntityPlayerSP entityPlayerSP, boolean sprinting) {
+	    	Sprint sprint = (Sprint)ModuleManager.getModuleByName("sprint");
+	        if (sprint.isToggled() && sprint.mode.is("sickomode") && (Minecraft.getMinecraft().player.movementInput.moveForward != 0.0f || Minecraft.getMinecraft().player.movementInput.moveStrafe != 0.0f)) entityPlayerSP.setSprinting(true);
+	        else entityPlayerSP.setSprinting(sprinting);
+	    }
 }
