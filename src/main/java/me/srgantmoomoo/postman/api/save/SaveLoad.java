@@ -148,7 +148,7 @@ public class SaveLoad {
 						if(setting instanceof NumberSetting) {
 							((NumberSetting)setting).setValue(Double.parseDouble(args[3]));
 						}
-						if(setting instanceof ModeSetting) {
+						if(setting instanceof ModeSetting && ((ModeSetting) setting).modes.toString().contains(args[3])) { // u have to make sure the mode getting loaded actually still exists or else u will have angry mob of ppl telling u ur config is fucking garbage... but actually yes ur config is fucking garbage because u wrote it when u were fucking monke and didn't know wtf u were doing, like seriously come on now, who the fuck writes a config in a normal fucking txt file, r u fucking stupid??????? like just do it in fucking json u fucking dumb cunt.
 							((ModeSetting)setting).setMode(args[3]);
 						}
 						if(setting instanceof ColorSetting) {

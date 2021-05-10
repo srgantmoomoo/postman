@@ -7,6 +7,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import net.minecraft.util.text.TextFormatting;
 
 public class Notification extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "hud", "hud", "chat");
@@ -31,8 +32,16 @@ public class Notification extends Module {
 	}
 	
 	public void ChatNotification() {
-		if(toggle.isEnabled()) {
-
+		
+		boolean sent = false;
+		
+		for (Module mod : ModuleManager.getModules()) {
+			if(!sent) {
+				if(mod.isToggled()) {
+					ModuleManager.addChatMessage(mod.getName() + TextFormatting.GREEN + " has been enabled.");
+					sent = true;
+				}
+			}
 		}
 	}
 	

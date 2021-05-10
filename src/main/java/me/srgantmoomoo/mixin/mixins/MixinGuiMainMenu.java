@@ -18,7 +18,7 @@ public class MixinGuiMainMenu extends GuiScreen {
 	public void drawText(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
 		if(ModuleManager.getModuleByName("mainMenuWatermark").isToggled()) {
 			FontRenderer fr = mc.fontRenderer;
-		    fr.drawStringWithShadow("you're using " + Reference.NAME + " right now :)", 2, 2, 0xffffffff); 
+		    fr.drawStringWithShadow("you're using " + Reference.NAME + " right now :')", 2, 2, 0xffffffff); 
 		}
 	}
 }
