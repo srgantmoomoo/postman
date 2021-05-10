@@ -14,7 +14,7 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
-import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
+import me.srgantmoomoo.postman.client.ui.clickgui.back.ClickGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;

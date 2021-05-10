@@ -15,7 +15,7 @@ import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
+import me.srgantmoomoo.postman.client.ui.clickgui.back.ClickGui;
 
 public class PlayerModel extends HudModule {
 	public BooleanSetting rect = new BooleanSetting("rect", this, true);

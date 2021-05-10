@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.ui.clickgui;
+package me.srgantmoomoo.postman.client.ui.clickgui.back;
 
 import java.awt.Point;
 import java.io.FileOutputStream;

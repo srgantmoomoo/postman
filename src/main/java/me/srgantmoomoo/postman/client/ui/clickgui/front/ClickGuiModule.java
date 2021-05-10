@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.ui.clickgui;
+package me.srgantmoomoo.postman.client.ui.clickgui.front;
 
 import org.lwjgl.input.Keyboard;
 

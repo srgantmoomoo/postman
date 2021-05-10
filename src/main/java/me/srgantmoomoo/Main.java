@@ -18,7 +18,7 @@ import me.srgantmoomoo.postman.client.friend.FriendManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.SettingManager;
-import me.srgantmoomoo.postman.client.ui.clickgui.ClickGui;
+import me.srgantmoomoo.postman.client.ui.clickgui.back.ClickGui;
 import me.zero.alpine.EventBus;
 import me.zero.alpine.EventManager;
 import net.minecraftforge.common.MinecraftForge;

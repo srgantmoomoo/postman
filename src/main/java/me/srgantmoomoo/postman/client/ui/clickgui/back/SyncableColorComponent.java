@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.ui.clickgui;
+package me.srgantmoomoo.postman.client.ui.clickgui.back;
 
 import com.lukflug.panelstudio.Animation;
 import com.lukflug.panelstudio.Context;
@@ -11,6 +11,7 @@ import com.lukflug.panelstudio.theme.Theme;
 
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import me.srgantmoomoo.postman.client.ui.clickgui.front.ClickGuiModule;
 import net.minecraft.util.text.TextFormatting;
 
 public class SyncableColorComponent extends ColorComponent {

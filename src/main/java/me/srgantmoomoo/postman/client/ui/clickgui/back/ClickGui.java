@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.client.ui.clickgui;
+package me.srgantmoomoo.postman.client.ui.clickgui.back;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -37,6 +37,7 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.ui.clickgui.front.ClickGuiModule;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
