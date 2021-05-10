@@ -36,7 +36,7 @@ thank you,
 - esc to close the clickgui 0_0.
 
 **building**
-1. gradlew setupDecompWorkspace <br />
+1. gradlew setupDecompWorkspace and gradlew clean build <br />
 2. gradlew eclipse (for eclipse) or gradlew genIntellijRuns (for intellij) <br />
 (./gradlew for linux and mac users) <br />
 
