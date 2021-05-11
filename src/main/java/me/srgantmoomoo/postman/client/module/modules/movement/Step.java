@@ -10,6 +10,7 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.block.Block;
@@ -22,12 +23,13 @@ import net.minecraft.util.math.MathHelper;
 
 public class Step extends Module {
 	public BooleanSetting entityStep = new BooleanSetting("entityStep", this, false);
-	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "delay");
+	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "delay", "vanilla");
 	public ModeSetting delayHeight = new ModeSetting("delayHeight", this, "one", "one", "two");
+	public NumberSetting vanillaHeight = new NumberSetting("vanillaHeight", this, 2.0, 0.1, 10.0, 0.1);
 
     public Step() {
 		super ("step", "steps up blocks lol.", Keyboard.KEY_NONE, Category.MOVEMENT);
-		this.addSettings(mode, delayHeight,entityStep);
+		this.addSettings(mode, delayHeight, vanillaHeight, entityStep);
 	}
     private byte cancelStage;
     private float prevEntityStep;
@@ -49,6 +51,10 @@ public class Step extends Module {
     @Override
     public void onDisable() {
         Main.EVENT_BUS.unsubscribe(this);
+        if (mc.player != null) {
+        	if(mc.player.isRiding()) mc.player.getRidingEntity().stepHeight = prevEntityStep;
+	        mc.player.stepHeight = 0.6f;
+        }
     }
 
     @EventHandler
@@ -126,6 +132,9 @@ public class Step extends Module {
               mc.player.setPosition(mc.player.posX, mc.player.posY+1, mc.player.posZ);
           }
   
-  } 	
+    	}
+    	if(mode.is("vanilla")) {
+    		mc.player.stepHeight = (float) vanillaHeight.getValue();
+    	}
     });
 }
