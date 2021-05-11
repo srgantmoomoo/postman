@@ -12,12 +12,11 @@ public class DiscordRichPresence extends Module {
 		super ("discordRpc", "shows ur playing postman on discord.", Keyboard.KEY_NONE, Category.CLIENT);
 	}
 	
-		public void onEnable() {
+	public void onEnable() {
 	    Discord.startRPC();
 	}
 	
 	public void onDisable() {
 	    Discord.stopRPC();
-		}
 	}
-	
+}
