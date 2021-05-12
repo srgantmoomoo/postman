@@ -52,7 +52,7 @@ public class SelfFill extends Module {
 		startSlot = mc.player.inventory.currentItem;
 		
 		if (intersectsWithEntity(startPos) || findBlockSlot() == -1) {
-            toggle();
+            disable();
             return;
         }
 		
@@ -76,7 +76,7 @@ public class SelfFill extends Module {
 				mc.playerController.updateController();
 			}
 			mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
-			if(autoDisable.isEnabled()) toggle();
+			if(autoDisable.isEnabled()) disable();
 		}
 		
 	}
@@ -108,7 +108,7 @@ public class SelfFill extends Module {
 					mc.playerController.updateController();
 				}
 				mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
-				if(autoDisable.isEnabled()) toggle();
+				if(autoDisable.isEnabled()) disable();
 			}
 		}
 	}
