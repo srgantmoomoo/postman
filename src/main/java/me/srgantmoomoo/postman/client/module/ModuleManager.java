@@ -108,6 +108,7 @@ public class ModuleManager {
 		modules.add(new Refill());
 		modules.add(new ReverseStep());
 		modules.add(new SafeWalk());
+		modules.add(new SelfFill());
 		//modules.add(new Scaffold());	// unstarted
 		modules.add(new SmartOffHand());	
 		modules.add(new Sneak());
