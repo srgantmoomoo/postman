@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketHeldItemChange;
 import net.minecraft.network.play.client.CPacketPlayer;
+import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -35,6 +36,7 @@ public class SelfFill extends Module {
 	public NumberSetting rubberbandDelay = new NumberSetting("delay", this, 13, 1, 30, 1);
 	public BooleanSetting autoDisable = new BooleanSetting("autoDisable", this, true);
 	
+	private double[] jump = {0.41999998688698D, 0.7531999805211997D, 1.00133597911214D, 1.16610926093821D};
 	private boolean placed;
 	private boolean jumped;
 	private BlockPos startPos;
@@ -61,30 +63,13 @@ public class SelfFill extends Module {
 			mc.playerController.updateController();
 		}
 		
-		if (mode.is("instant")) {
-			
-	        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.41999998688698D, mc.player.posZ, true));
-	        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.7531999805211997D, mc.player.posZ, true));
-	        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 1.00133597911214D, mc.player.posZ, true));
-	        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 1.16610926093821D, mc.player.posZ, true));
-			
-			placeBlock(startPos, rotations.isEnabled(), true);
-			mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + offset.getValue(), mc.player.posZ, true));
-			
-			if (autoSwitch.isEnabled()) {
-				mc.player.connection.sendPacket(new CPacketHeldItemChange(startSlot));
-				mc.playerController.updateController();
-			}
-			mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
-			if(autoDisable.isEnabled()) disable();
-		}
-		
 	}
 	
 	@Override 
 	public void onDisable() {
 		placed = false;
 		jumped = false;
+		ticks = 0;
 	}
 	
 	
@@ -96,20 +81,36 @@ public class SelfFill extends Module {
 			if (!jumped) {
 				mc.player.jump();
 				jumped = true;
-			}
-			if (ticks % rubberbandDelay.getValue() == 0 && !placed) {
-				placeBlock(startPos, rotations.isEnabled(), true);
-				placed = true;
-				mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + offset.getValue(), mc.player.posZ, true));
-				if(mode.is("jump")) mc.player.jump();
-				else mc.player.motionY = offset.getValue();
-				if (autoSwitch.isEnabled()) {
-					mc.player.connection.sendPacket(new CPacketHeldItemChange(startSlot));
-					mc.playerController.updateController();
+				if (ticks == rubberbandDelay.getValue() && !placed) {
+					placeBlock(startPos, rotations.isEnabled(), false, true);
+					placed = true;
+					if(mode.is("jump")) mc.player.jump();
+					else mc.player.motionY = offset.getValue();
+					if (autoSwitch.isEnabled()) {
+						mc.player.connection.sendPacket(new CPacketHeldItemChange(startSlot));
+						mc.player.inventory.currentItem = startSlot;
+						mc.playerController.updateController();
+					}
+					mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+					if(autoDisable.isEnabled()) this.setToggled(false);
 				}
-				mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
-				if(autoDisable.isEnabled()) disable();
 			}
+		}
+		else {
+			for (int i = 0; i < 4; ++i) {
+		        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + jump[i], mc.player.posZ, true));
+			}
+			
+			placeBlock(startPos, rotations.isEnabled(), true, false);
+			mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + offset.getValue(), mc.player.posZ, false));
+			
+			if (autoSwitch.isEnabled()) {
+				mc.player.connection.sendPacket(new CPacketHeldItemChange(startSlot));
+				mc.player.inventory.currentItem = startSlot;
+				mc.playerController.updateController();
+			}
+			mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+			if(autoDisable.isEnabled()) this.setToggled(false);
 		}
 	}
 	
@@ -122,7 +123,7 @@ public class SelfFill extends Module {
         return false;
     }
 	
-    private boolean placeBlock(BlockPos pos, boolean rotate, boolean isSneaking) {
+    private boolean placeBlock(BlockPos pos, boolean rotate, boolean packet, boolean isSneaking) {
         Block block = mc.world.getBlockState(pos).getBlock();
 
         if (!(block instanceof BlockAir) && !(block instanceof BlockLiquid)) {
@@ -161,7 +162,7 @@ public class SelfFill extends Module {
             faceVectorPacketInstant(hitVec);
         }
 
-        mc.playerController.processRightClickBlock(mc.player, mc.world, neighbour, opposite, hitVec, EnumHand.MAIN_HAND);
+        rightClickBlock(neighbour, hitVec, EnumHand.MAIN_HAND, opposite, true);
         mc.player.swingArm(EnumHand.MAIN_HAND);
         mc.rightClickDelayTimer = 4;
 
@@ -185,6 +186,19 @@ public class SelfFill extends Module {
             }
         }
         return slot;
+    }
+    
+    public static void rightClickBlock(BlockPos pos, Vec3d vec, EnumHand hand, EnumFacing direction, boolean packet) {
+        if (packet) {
+            float f = (float) (vec.x - (double) pos.getX());
+            float f1 = (float) (vec.y - (double) pos.getY());
+            float f2 = (float) (vec.z - (double) pos.getZ());
+            mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(pos, direction, hand, f, f1, f2));
+        } else {
+            mc.playerController.processRightClickBlock(mc.player, mc.world, pos, direction, vec, hand);
+        }
+        mc.player.swingArm(EnumHand.MAIN_HAND);
+        mc.rightClickDelayTimer = 4;
     }
     
 }
