@@ -40,17 +40,6 @@ public abstract class Module implements Toggleable {
 		this.category = category;
 		this.toggled = false;
 	}
-	
-	public void onWorldRender(RenderEvent event) {}
-	
-	public void onUpdate(){}
-	
-	public void onRender(){}
-	
-	protected void enable(){}
-
-	protected void disable(){}
-	
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
@@ -76,47 +65,6 @@ public abstract class Module implements Toggleable {
 			}
 	} 
 	
-	public boolean isToggled() {
-		return toggled;
-	}
-	
-	public void setToggled(boolean toggled) {
-		this.toggled = toggled;
-		if(this.toggled) {
-			this.onEnable();
-		}else {
-			this.onDisable();
-		}
-		if(Main.saveLoad != null) {
-			Main.saveLoad.save();
-		}
-	}
-	
-	public void toggle() {
-		this.toggled = !this.toggled;
-		
-		if(this.toggled) {
-			this.onEnable();
-		}else {
-			this.onDisable();
-		}
-		if(Main.saveLoad != null) {
-			Main.saveLoad.save();
-		}
-	}
-	
-	protected void onEnable() {
-		MinecraftForge.EVENT_BUS.register(this);
-		Main.EVENT_BUS.subscribe(this);
-		enable();
-	}
-	
-	protected void onDisable() {
-		MinecraftForge.EVENT_BUS.register(this);
-		Main.EVENT_BUS.subscribe(this);
-		disable();
-	}
-	
 	public String getName() {
 		return this.name;
 	}
@@ -127,5 +75,65 @@ public abstract class Module implements Toggleable {
 	
 	public final boolean isOn() {
 		return toggled;
+	}
+	
+	public void toggle() {
+		toggled = !toggled;
+		if(toggled) {
+			enable();
+		}else {
+			disable();
+		}
+		
+		if(Main.saveLoad != null) {
+			Main.saveLoad.save();
+		}
+	}
+	
+	public boolean isToggled() {
+		return toggled;
+	}
+	
+	public void setToggled(boolean toggled) {
+		this.toggled = toggled;
+		if(toggled) {
+			Main.EVENT_BUS.subscribe(this);
+		}else {
+			Main.EVENT_BUS.unsubscribe(this);
+		}
+		
+		if(Main.saveLoad != null) {
+			Main.saveLoad.save();
+		}
+	}
+	
+	protected void enable() {
+		onEnable();
+		setToggled(true);
+	}
+	
+	protected void disable() {
+		onDisable();
+		setToggled(false);
+	}
+	
+	protected void onEnable() {
+		
+	}
+	
+	protected void onDisable() {
+		
+	}
+	
+	public void onWorldRender(RenderEvent event) {
+		
+	}
+	
+	public void onUpdate() {
+		
+	}
+	
+	public void onRender() {
+		
 	}
 }

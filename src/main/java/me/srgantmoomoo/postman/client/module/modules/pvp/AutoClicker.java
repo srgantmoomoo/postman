@@ -19,6 +19,7 @@ public class AutoClicker extends Module {
 		super ("autoClicker", "clicks fast when holding down left click.", Keyboard.KEY_NONE, Category.PVP);
 	}
 
+	@Override
 	public void onUpdate() {
 		if(Mouse.isButtonDown(0)) {
 			if(System.currentTimeMillis() - lastClick > speed * 1000) {

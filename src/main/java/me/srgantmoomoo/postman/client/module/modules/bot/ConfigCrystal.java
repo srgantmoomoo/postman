@@ -22,11 +22,6 @@ public class ConfigCrystal extends Module {
 	}
 	
 	@Override
-	public void onEnable() {
-		
-	}
-	
-	@Override
 	public void onUpdate() {
 		
 		if(multiplace.isEnabled()) {

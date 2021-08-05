@@ -14,6 +14,7 @@ public class DeathCoords extends Module {
 		super ("deathCoords", "tells u ur coords after death occurs.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
+	@Override
 	public void onUpdate() {
 		if(mc.player.isDead) {
 			ModuleManager.addChatMessage(ChatFormatting.WHITE + "lol u just died loser" + 

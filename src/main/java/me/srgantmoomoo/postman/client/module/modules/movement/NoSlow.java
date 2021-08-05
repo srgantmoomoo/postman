@@ -21,13 +21,9 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 		this.addSettings(food, web, soulSand, slimeBlock);
 	}
 	
+	@Override
 	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
 		Blocks.DIRT.setLightOpacity(10);
-	}
-	
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
 	}
 	
 	@EventHandler

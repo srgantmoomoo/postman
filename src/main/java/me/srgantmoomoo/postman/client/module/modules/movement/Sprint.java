@@ -21,11 +21,11 @@ public class Sprint extends Module {
 	@Override
 	public void onUpdate() {
 			if(mode.is("normal")) {
-			if(mc.player.movementInput.moveForward > 0 && !mc.player.isSneaking() && !mc.player.collidedHorizontally) {
-				mc.player.setSprinting(true);
+				if(mc.player.movementInput.moveForward > 0 && !mc.player.isSneaking() && !mc.player.collidedHorizontally) {
+					mc.player.setSprinting(true);
 				}
 			}else if(mode.is("sickomode")) {
-					mc.player.setSprinting(true);
+				mc.player.setSprinting(true);
 			
 		}
 	}

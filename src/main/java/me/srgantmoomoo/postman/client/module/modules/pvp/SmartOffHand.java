@@ -39,13 +39,7 @@ public class SmartOffHand extends Module {
 	@Override
 	public void onEnable() {
 		if(mc.player == null || mc.world == null) return;
-		Main.EVENT_BUS.subscribe(this);
 		currentMode = mode.getMode();
-	}
-	
-	@Override
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
 	}
 	
 	private void SwitchOffHand(ModeSetting val) {

@@ -25,14 +25,6 @@ public class ChestStealer extends Module {
 
 	private JTimer timer = new JTimer();
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 
     @EventHandler
     private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {

@@ -34,6 +34,7 @@ public class Tracers extends Module {
 	}
 	private static final Minecraft mc = Wrapper.getMinecraft();
 
+	@Override
 	public void onWorldRender(RenderEvent event){
 		
 		if(!this.toggled)

@@ -21,14 +21,7 @@ public class World extends Module {
 		this.addSettings(weather, time);
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
+	@Override
 	public void onUpdate() {
 		// timeOfDay
 		mc.world.setWorldTime((long) time.getValue());

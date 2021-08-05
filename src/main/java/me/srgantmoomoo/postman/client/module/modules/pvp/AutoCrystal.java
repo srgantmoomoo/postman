@@ -142,7 +142,6 @@ public class AutoCrystal extends Module {
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		Main.EVENT_BUS.subscribe(this);
 		if(mc.player == null || mc.world == null) return;
 		oldSlot = mc.player.inventory.currentItem;
 		
@@ -156,8 +155,6 @@ public class AutoCrystal extends Module {
 	@Override
 	public void onDisable() {
 		super.onDisable();
-		Main.EVENT_BUS.unsubscribe(this);
-		
 		if(switchHand.is("onEnable")) {
 			mc.player.inventory.currentItem = oldSlot;
 			mc.playerController.updateController();
@@ -174,6 +171,7 @@ public class AutoCrystal extends Module {
         ghosting = false;
 	}
 	
+	@Override
 	public void onUpdate() {
 		if(PlacedCrystals.size() > 3) {
 			if(timer.getTimePassed() > 40L) {

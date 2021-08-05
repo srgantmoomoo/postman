@@ -56,17 +56,9 @@ public class NoRender extends Module {
 		super("noRender", "stops certain events from rendering.", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(rain, skylight, hurtCam, fire, portalEffect, potionIndicators, crystals, totemAnimation, enchantTables, armor, tnt, items, withers, skulls, fireworks);
 	}
-	
-	@Override
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
-	
+
 	@Override
 	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-		MinecraftForge.EVENT_BUS.unregister(this);
 		GuiIngameForge.renderPortal = true;
 	}
 	

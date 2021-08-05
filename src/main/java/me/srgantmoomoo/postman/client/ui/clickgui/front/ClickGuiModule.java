@@ -12,6 +12,7 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
+import me.zero.alpine.listener.EventHandler;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
@@ -34,35 +35,22 @@ public class ClickGuiModule extends Module {
 	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 	public NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
 	
-	public BooleanSetting thinGui = new BooleanSetting("thinGui", this, false);
-	
-	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
-	
 	public ClickGuiModule() {
 		super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
 		this.addSettings(scrollMode, scrolls, description, animationSpeed, fontColor, enabledColor, backgroundColor, settingBackgroundColor, outlineColor);
 		INSTANCE = this;
 	}
 	
-	@SubscribeEvent
-    public void renderOverlay(RenderGameOverlayEvent event) {
-		ScaledResolution sr = new ScaledResolution(mc);
-		if(event.getType() == RenderGameOverlayEvent.ElementType.BOSSHEALTH) {
-			mc.renderEngine.bindTexture(watermark);
-			Gui.drawScaledCustomSizeModalRect(0, sr.getScaledHeight() - 80, 0, 0, 80, 80, 80, 80, 80, 80);
-		}
-	}
-
 	public static Module getClickGuiModule() {
 		return INSTANCE;
 	}
-
+	
+	@Override
 	public void onEnable() {
-		super.onEnable();
-		MinecraftForge.EVENT_BUS.register(this);
 		Main.clickGui.enterGUI();
 	}
 
+	@Override
 	public void onUpdate() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			this.setToggled(!toggled);
@@ -73,8 +61,12 @@ public class ClickGuiModule extends Module {
 		
 	}
 	
-	public void onDisable() {
-		super.onDisable();
-		MinecraftForge.EVENT_BUS.unregister(this);
+	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
+	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
+	@Override
+	public void onRender() {
+		ScaledResolution sr = new ScaledResolution(mc);
+		mc.renderEngine.bindTexture(watermark);
+		Gui.drawScaledCustomSizeModalRect(0, sr.getScaledHeight() - 80, 0, 0, 80, 80, 80, 80, 80, 80);
 	}
 }

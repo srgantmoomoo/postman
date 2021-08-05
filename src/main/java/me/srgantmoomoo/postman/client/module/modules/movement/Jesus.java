@@ -22,14 +22,6 @@ public class Jesus extends Module {
 	}
 	public float offset = 0.5f;
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisbale() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	@EventHandler
     private final Listener<LiquidCollisionBBEvent> getLiquidCollisionBB = new Listener<>(event -> {
     	if(toggled) {

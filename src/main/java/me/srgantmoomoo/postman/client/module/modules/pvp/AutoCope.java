@@ -36,18 +36,6 @@ public class AutoCope extends Module {
     public static void setMessage(String msg) {
     	customMsgArg = msg;
     }
-    
-    @Override
-    public void onEnable() {
-    	Main.EVENT_BUS.subscribe(this);
-    	MinecraftForge.EVENT_BUS.register(this);
-    }
-    
-    @Override
-    public void onDisable() {
-    	Main.EVENT_BUS.unsubscribe(this);
-    	MinecraftForge.EVENT_BUS.unregister(this);
-    }
 
     @Override
     public void onUpdate() {

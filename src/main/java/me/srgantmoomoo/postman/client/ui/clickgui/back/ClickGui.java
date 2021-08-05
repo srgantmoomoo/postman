@@ -46,35 +46,39 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 public class ClickGui extends MinecraftHUDGUI {
-	public static final int WIDTH=ClickGuiModule.INSTANCE.thinGui.isEnabled() ? 80 : 100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
+	public static final int WIDTH = 100, HEIGHT = 12, DISTANCE = 10, HUD_BORDER = 2;
 	private final Toggleable colorToggle;
 	public final GUIInterface guiInterface;
-	public final HUDClickGUI gui;
 	private Theme theme;
+	public final HUDClickGUI gui;
 	
 	public ClickGui() {
-			theme = new PostmanTheme(new SettingsColorScheme(ClickGuiModule.INSTANCE.enabledColor, ClickGuiModule.INSTANCE.backgroundColor,ClickGuiModule.INSTANCE.settingBackgroundColor,
-					ClickGuiModule.INSTANCE.outlineColor,ClickGuiModule.INSTANCE.fontColor,ClickGuiModule.INSTANCE.opacity),HEIGHT,2);		
+		
+		colorToggle = new Toggleable() {
+			@Override
+			public void toggle() {
+				ColorMain.colorModel.increment();
+			}
 			
-			colorToggle = new Toggleable() {
-				@Override
-				public void toggle() {
-					ColorMain.colorModel.increment();
-				}
-				
-				@Override
-				public boolean isOn() {
-					return ColorMain.colorModel.is("RGB");
-				}
-			};
+			@Override
+			public boolean isOn() {
+				return ColorMain.colorModel.is("RGB");
+			}
+		};
+		
 		guiInterface = new GUIInterface(true) {
 			@Override
+			protected String getResourcePrefix() {
+				return "pst/textures/";
+			}
+			
+			@Override
 			public void drawString(Point pos, String s, Color c) {
-				GLInterface.end();
+				end();
 				int x=pos.x+2, y=pos.y+1;
 				if(ModuleManager.getModuleByName("clientFont").isToggled()) FontUtils.drawStringWithShadow(true, s, x, y, new JColor(c));
 				else FontUtils.drawStringWithShadow(false, s, x, y, new JColor(c));
-				GLInterface.begin();
+				begin();
 			}
 			
 			@Override
@@ -88,12 +92,13 @@ public class ClickGui extends MinecraftHUDGUI {
 				if(ModuleManager.isModuleEnabled("clientFont")) return Math.round(FontUtils.getFontHeight(true))+2;
 				else return Math.round(FontUtils.getFontHeight(false))+2;
 			}
-
-			@Override
-			protected String getResourcePrefix() {
-				return "pst/textures/";
-			}
 		};
+		
+		ClickGuiModule clickGui = ClickGuiModule.INSTANCE;
+		theme = new PostmanTheme(new SettingsColorScheme(clickGui.enabledColor, clickGui.backgroundColor, clickGui.settingBackgroundColor,
+				clickGui.outlineColor, clickGui.fontColor, clickGui.opacity), HEIGHT, 2);		
+		
+		
 		gui = new HUDClickGUI(guiInterface,ClickGuiModule.INSTANCE.description.is("mouse") ? new MouseDescription(new Point(5,0)) : new FixedDescription(new Point(0,0))) {
 			@Override
 			public void handleScroll (int diff) {
@@ -109,6 +114,7 @@ public class ClickGui extends MinecraftHUDGUI {
 				}
 			}
 		};
+		
 		Toggleable hudToggle=new Toggleable() {
 			@Override
 			public void toggle() {
@@ -127,6 +133,7 @@ public class ClickGui extends MinecraftHUDGUI {
 				gui.addHUDComponent(new HUDPanel(((HudModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),hudToggle,HUD_BORDER));
 			}
 		}
+		
 		Point pos = new Point(DISTANCE,DISTANCE);
 		for (Category category: Category.values()) {
 			DraggableContainer panel=new DraggableContainer(category.name,null,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),null,new Point(pos),WIDTH) {
@@ -149,20 +156,20 @@ public class ClickGui extends MinecraftHUDGUI {
 	private void addModule (CollapsibleContainer panel, Module module) {
 		CollapsibleContainer container=new CollapsibleContainer(module.getName(),module.getDescription(),theme.getContainerRenderer(),new SimpleToggleable(false),new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),module);
 		if(!module.getName().equals("Esp2dHelper")) {
-		panel.addComponent(container);
-		for (Setting property: module.settings) {
-			if (property instanceof BooleanSetting) {
-				container.addComponent(new BooleanComponent(property.name,null,theme.getComponentRenderer(),(BooleanSetting)property));
-			} else if (property instanceof NumberSetting) {
-				container.addComponent(new NumberComponent(property.name,null,theme.getComponentRenderer(),(NumberSetting)property,((NumberSetting)property).getMinimun(),((NumberSetting)property).getMaximum()));
-			}  else if (property instanceof ModeSetting) {
-				container.addComponent(new EnumComponent(property.name,null,theme.getComponentRenderer(),(ModeSetting)property));
-			}	else if (property instanceof ColorSetting) { 
-				container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed)));
-			} else if (property instanceof KeybindSetting) {
-				container.addComponent(new KeybindComponent(theme.getComponentRenderer(),(KeybindSetting)property));
+			panel.addComponent(container);
+			for (Setting property: module.settings) {
+				if (property instanceof BooleanSetting) {
+					container.addComponent(new BooleanComponent(property.name,null,theme.getComponentRenderer(),(BooleanSetting)property));
+				} else if (property instanceof NumberSetting) {
+					container.addComponent(new NumberComponent(property.name,null,theme.getComponentRenderer(),(NumberSetting)property,((NumberSetting)property).getMinimun(),((NumberSetting)property).getMaximum()));
+				}  else if (property instanceof ModeSetting) {
+					container.addComponent(new EnumComponent(property.name,null,theme.getComponentRenderer(),(ModeSetting)property));
+				}	else if (property instanceof ColorSetting) { 
+					container.addComponent(new SyncableColorComponent(theme,(ColorSetting)property,colorToggle,new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed)));
+				} else if (property instanceof KeybindSetting) {
+					container.addComponent(new KeybindComponent(theme.getComponentRenderer(),(KeybindSetting)property));
+				}
 			}
-		}
 		}
 	}
 	

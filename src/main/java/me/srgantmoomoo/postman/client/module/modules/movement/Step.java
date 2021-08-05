@@ -41,7 +41,6 @@ public class Step extends Module {
 
     @Override
     public void onEnable() {
-        Main.EVENT_BUS.subscribe(this);
         cancelStage = 0;
         
         if (mc.player != null && mc.player.isRiding())
@@ -50,7 +49,6 @@ public class Step extends Module {
 
     @Override
     public void onDisable() {
-        Main.EVENT_BUS.unsubscribe(this);
         if (mc.player != null) {
         	if(mc.player.isRiding()) mc.player.getRidingEntity().stepHeight = prevEntityStep;
 	        mc.player.stepHeight = 0.6f;

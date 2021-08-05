@@ -16,14 +16,6 @@ public class SafeWalk extends Module {
 		super ("safeWalk", "prevents falling off blocks.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	@EventHandler
     private Listener<PlayerMoveEvent> OnPlayerMove = new Listener<>(event -> {
         double x = event.getX();

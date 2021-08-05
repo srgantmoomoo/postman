@@ -17,14 +17,6 @@ public class NoFall extends Module {
 		super ("noFall", "yea no... fall.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	@EventHandler
 	private final Listener<NetworkPacketEvent> listener = new Listener<>(event -> {
 		if (event.getPacket() instanceof CPacketPlayer) {

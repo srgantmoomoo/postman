@@ -36,14 +36,4 @@ public class ViewModel extends Module {
 			GlStateManager.translate(LeftX.getValue(), LeftY.getValue(), LeftZ.getValue());
 		}
 	});
-
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
-
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-		MinecraftForge.EVENT_BUS.unregister(this);
-	}
 }
