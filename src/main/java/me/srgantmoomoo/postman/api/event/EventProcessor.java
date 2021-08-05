@@ -63,7 +63,7 @@ public class EventProcessor {
 	@SubscribeEvent
 	public void onRender(RenderGameOverlayEvent.Post event) {
 		Main.EVENT_BUS.post(event);
-		if(event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
+		if(event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
 			ModuleManager.onRender();
 		}
 	}

@@ -46,7 +46,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 public class ClickGui extends MinecraftHUDGUI {
-	public static final int WIDTH=ClickGuiModule.INSTANCE.thinGui.isEnabled() ? 80 : 100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
+	public static final int WIDTH = 100, HEIGHT = 12, DISTANCE = 10, HUD_BORDER = 2;
 	private final Toggleable colorToggle;
 	public final GUIInterface guiInterface;
 	public final HUDClickGUI gui;
