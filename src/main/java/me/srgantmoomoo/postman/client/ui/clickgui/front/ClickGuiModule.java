@@ -47,7 +47,6 @@ public class ClickGuiModule extends Module {
 	
 	@Override
 	public void onEnable() {
-		super.onEnable();
 		Main.clickGui.enterGUI();
 	}
 
@@ -62,6 +61,7 @@ public class ClickGuiModule extends Module {
 		
 	}
 	
+	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
 	@Override
 	public void onRender() {
