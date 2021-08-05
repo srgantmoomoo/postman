@@ -17,14 +17,6 @@ public class InventoryPlus extends Module {
 		super ("inventoryPlus", "lets u hold extra items in ur crafting gui.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	 @EventHandler
 	 private final Listener<PacketEvent.Send> listener = new Listener<>(event -> {
 		 if (event.getPacket() instanceof CPacketCloseWindow) {

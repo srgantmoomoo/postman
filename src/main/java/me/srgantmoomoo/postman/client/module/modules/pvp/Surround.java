@@ -62,16 +62,17 @@ public class Surround extends Module {
 	    
 	    public static Vec3d getInterpolatedPos(Entity entity, float ticks) {
 	        return (new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ)).add(getInterpolatedAmount(entity, ticks));
-	      }
+	    }
 	    
 	    public static Vec3d getInterpolatedAmount(Entity entity, double ticks) {
 	        return getInterpolatedAmount(entity, ticks, ticks, ticks);
-	      }
-	    
+	    }
+	   
 	    public static Vec3d getInterpolatedAmount(Entity entity, double x, double y, double z) {
 	        return new Vec3d((entity.posX - entity.lastTickPosX) * x, (entity.posY - entity.lastTickPosY) * y, (entity.posZ - entity.lastTickPosZ) * z);
-	      }
+	    }
 
+	    @Override
 	    public void onEnable() {
 	        if (mc.player == null) {
 	            disable();
@@ -92,6 +93,7 @@ public class Surround extends Module {
 	        }
 	    }
 
+	    @Override
 	    public void onDisable() {
 	        if (mc.player == null) {
 	            return;
@@ -113,6 +115,7 @@ public class Surround extends Module {
 	        firstRun = true;
 	    }
 
+	    @Override
 	    public void onUpdate() {
 	        if (mc.player == null) {
 	            disable();

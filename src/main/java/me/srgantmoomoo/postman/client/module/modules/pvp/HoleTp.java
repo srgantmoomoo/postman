@@ -27,6 +27,7 @@ public class HoleTp extends Module {
 	private boolean jumped;
 	private final double[] oneblockPositions = new double[]{ 0.42, 0.75};
 
+	@Override
 	public void onUpdate(){
 		if (HoleTp.mc.world == null || HoleTp.mc.player == null){
 			return;

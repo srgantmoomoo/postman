@@ -19,6 +19,7 @@ public class AutoUse extends Module {
 		else mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
 	}
 	
+	@Override
 	public void onDisable() {
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	}

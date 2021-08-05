@@ -15,14 +15,6 @@ public class CameraClip extends Module {
 		super ("cameraClip", "camera clips when in 3rd person.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	@EventHandler
     private Listener<RenderCameraEvent> onRenderCameraEvent = new Listener<>(event -> {
         event.cancel();

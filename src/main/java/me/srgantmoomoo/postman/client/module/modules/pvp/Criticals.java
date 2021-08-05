@@ -20,14 +20,6 @@ public class Criticals extends Module {
 		super ("criticals", "always land a critical hit.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(mode);
 	}
-	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-		
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
 
     @EventHandler
     private Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {

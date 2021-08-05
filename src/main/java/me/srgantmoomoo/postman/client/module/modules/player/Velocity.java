@@ -25,14 +25,6 @@ public class Velocity extends Module {
 		this.addSettings();
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	@EventHandler
 	private final Listener<PacketEvent.Receive> receiveListener = new Listener<>(event -> {
 		if (event.getPacket() instanceof SPacketEntityVelocity){

@@ -20,14 +20,6 @@ public class Mcf extends Module {
 		super("mcf", "middle click a player to friend them.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	@EventHandler
 	private final Listener<InputEvent.MouseInputEvent> listener = new Listener<>(event -> {
 		if (mc.objectMouseOver.typeOfHit.equals(RayTraceResult.Type.ENTITY) && mc.objectMouseOver.entityHit instanceof EntityPlayer && Mouse.isButtonDown(2)) {

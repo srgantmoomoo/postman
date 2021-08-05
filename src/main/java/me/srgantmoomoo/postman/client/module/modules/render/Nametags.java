@@ -38,6 +38,7 @@ public class Nametags extends Module {
 		this.addSettings(renderSelf, range, items, durability, protType, health, ping);
 	}
     
+    @Override
     public void onWorldRender(RenderEvent event) {
         if (mc.player == null || mc.world == null) return;
 

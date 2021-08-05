@@ -24,13 +24,8 @@ public class AutoGap extends Module {
 		this.addSettings(mode, health, disableOnSurround);;
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisbale() {
-		Main.EVENT_BUS.unsubscribe(this);
-		
+	@Override
+	public void onDisable() {
 		 if (wasEating) {
 			 wasEating = false;
 	            KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
@@ -39,6 +34,7 @@ public class AutoGap extends Module {
 	
 	private boolean wasEating = false;
 	
+	@Override
 	public void onUpdate() {
 		if(mode.is("always")) {
 				if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);

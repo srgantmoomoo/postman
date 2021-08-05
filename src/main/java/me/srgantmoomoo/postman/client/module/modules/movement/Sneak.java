@@ -20,11 +20,6 @@ public class Sneak extends Module {
 	}
 	
 	@Override
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	@Override
     public void onDisable() {
         if (mc.world != null && !mc.player.isSneaking()) {
             mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));

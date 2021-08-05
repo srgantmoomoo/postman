@@ -13,6 +13,7 @@ public class ReverseStep extends Module {
 		super ("reverseStep", "sucks u down when going down a block.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 
+	@Override
 	public void onUpdate() {
 		if (mc.world == null || mc.player == null || mc.player.isInWater() || mc.player.isInLava() || mc.player.isOnLadder() || mc.gameSettings.keyBindJump.isKeyDown()) {
 			return;

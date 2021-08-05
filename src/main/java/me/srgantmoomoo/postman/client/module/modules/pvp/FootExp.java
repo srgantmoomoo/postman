@@ -22,14 +22,6 @@ public class FootExp extends Module {
 		super ("footExp", "automatically throws xp bottles downwards.", Keyboard.KEY_NONE, Category.PVP);
 	}
 	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
-	
 	@EventHandler
 	public Listener<PacketEvent.Send> listener = new Listener<>(event -> {
 		if(event.getPacket() instanceof CPacketPlayerTryUseItem && mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle) {

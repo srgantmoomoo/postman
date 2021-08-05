@@ -11,6 +11,7 @@ public class AutoRespawn extends Module {
 		super("autoRespawn", "automatically respawns after death occurs.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
+	@Override
 	public void onUpdate() {
 		if(mc.player.isDead) {
 			mc.player.respawnPlayer();

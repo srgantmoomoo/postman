@@ -34,7 +34,6 @@ public class Blink extends Module {
 	
 	@Override
 	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
 	    player = new EntityOtherPlayerMP(mc.world, mc.getSession().getProfile());
 	    player.copyLocationAndAnglesFrom(mc.player);
 	    player.rotationYawHead = mc.player.rotationYawHead;
@@ -43,7 +42,6 @@ public class Blink extends Module {
 	
 	@Override
 	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
 	    while (!packetQueue.isEmpty()) mc.player.connection.sendPacket(packetQueue.poll());
 	
 	    if (mc.player != null) {

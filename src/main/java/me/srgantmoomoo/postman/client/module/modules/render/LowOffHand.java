@@ -20,7 +20,6 @@ import net.minecraft.client.renderer.ItemRenderer;
 		}
 		
 		ItemRenderer itemRenderer = mc.entityRenderer.itemRenderer;
-
 		
 		@Override
 		public void onUpdate(){

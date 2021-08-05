@@ -49,13 +49,5 @@ public class AutoReconnect extends Module {
             }
 		}
 	});
-	
-	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
-	}
-	
-	public void onDisbale() {
-		Main.EVENT_BUS.unsubscribe(this);
-	}
 
 }

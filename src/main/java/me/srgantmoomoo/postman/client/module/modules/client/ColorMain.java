@@ -9,7 +9,7 @@ import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import net.minecraft.util.text.TextFormatting;
 
-// this is from gs
+// this is from gs ... lol
 
 public class ColorMain extends Module {
 	
@@ -44,6 +44,7 @@ public class ColorMain extends Module {
 		models.add("HSB");
 	}
 
+	@Override
 	public void onEnable() {
 		this.disable();
 	}

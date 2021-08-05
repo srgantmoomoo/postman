@@ -31,6 +31,7 @@ public class Protester extends Module {
     	customMsgArg = msg;
     }
     
+    @Override
     public void onEnable() {
     	clients.clear();
     	respects.clear();
@@ -60,6 +61,7 @@ public class Protester extends Module {
         
     }
     
+    @Override
     public void onDisable() {
     	clients.clear();
     	respects.clear();

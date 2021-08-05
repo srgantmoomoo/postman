@@ -18,6 +18,7 @@ public class AutoMine extends Module {
 		else mc.playerController.isHittingBlock = true;
 	}
 	
+	@Override
 	public void onDisable() {
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindAttack.getKeyCode(), false);
 	}

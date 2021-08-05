@@ -14,6 +14,7 @@ public class GuiMove extends Module {
 	
 	private Minecraft mc = Minecraft.getMinecraft();
 
+	@Override
 	public void onUpdate(){
 		if (mc.currentScreen != null){
 			if (!(mc.currentScreen instanceof GuiChat)){

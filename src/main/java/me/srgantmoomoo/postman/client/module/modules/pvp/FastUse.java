@@ -35,7 +35,7 @@ public class FastUse extends Module {
 		if (xpBottle.isEnabled() && mc.player != null && (mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE || mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE)) {
 				mc.rightClickDelayTimer = 0; 
 		}
-		}
+	}
 	
 }
 

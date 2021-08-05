@@ -33,17 +33,18 @@ public class Speed extends Module {
 	private double playerSpeed;
 	private JTimer timer = new JTimer();
 	
+	@Override
 	public void onEnable() {
-		Main.EVENT_BUS.subscribe(this);
 		playerSpeed = EntityUtil.getBaseMoveSpeed();
 	}
 	
+	@Override
 	public void onDisable() {
-		Main.EVENT_BUS.unsubscribe(this);
 		timer.reset();
 		EntityUtil.resetTimer();
 	}
 	
+	@Override
 	public void onUpdate() {
 		if(mc.player == null || mc.world == null) {
 			disable();

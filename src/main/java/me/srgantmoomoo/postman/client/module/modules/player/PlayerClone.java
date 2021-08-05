@@ -20,11 +20,11 @@ public class PlayerClone extends Module {
 	public PlayerClone() {
 		super ("playerClone", "cloneeee.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
-	 private EntityOtherPlayerMP clonedPlayer;
+	private EntityOtherPlayerMP clonedPlayer;
 	
+	@Override
 	public void onEnable() { 
 		Minecraft mc = Minecraft.getMinecraft();
-
 
         if (mc.player == null || mc.player.isDead){
             disable();
@@ -42,6 +42,7 @@ public class PlayerClone extends Module {
         clonedPlayer.onLivingUpdate();
     }
 
+	@Override
     public void onDisable() {
 		Minecraft mc = Minecraft.getMinecraft();
 

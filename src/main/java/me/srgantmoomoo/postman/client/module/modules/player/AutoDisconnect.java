@@ -16,6 +16,7 @@ public class AutoDisconnect extends Module {
 		this.addSettings(health);
 	}
 	
+	@Override
 	public void onUpdate() {
 		if (mc.player == null || mc.world == null) return;
 		if (mc.player.getHealth() <= health.getValue()) {

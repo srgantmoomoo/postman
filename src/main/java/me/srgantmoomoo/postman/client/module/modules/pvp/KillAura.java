@@ -32,6 +32,7 @@ public class KillAura extends Module {
 		this.addSettings(range, targetFriends, switchA, swordOnly, players, passives, hostiles);
 	}
 
+	@Override
 	public void onUpdate() {
 		if (mc.player == null || mc.player.isDead) return;
 		List<Entity> targets = mc.world.loadedEntityList.stream()

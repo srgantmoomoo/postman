@@ -24,15 +24,11 @@ public class FullBright extends Module {
 
 	 @Override
 	 public void onEnable() {
-	     Main.EVENT_BUS.subscribe(this);
-	        
 	     lastGamma = mc.gameSettings.gammaSetting;
 	 }
 
 	 @Override
 	 public void onDisable() {
-	     Main.EVENT_BUS.unsubscribe(this);
-	           
 	     mc.gameSettings.gammaSetting = this.lastGamma;
 	 }
 
