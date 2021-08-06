@@ -9,44 +9,65 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.util.text.TextFormatting;
 
 public class Help extends Command {
+	public static Prefix prefix;
+	public static Toggle toggle;
+	public static Bind bind;
+	public static Baritone baritone;
+	public static Friend friend;
+	public static AutoCope autoCope;
+	public static Protester protester;
+	public static MobOwner mobOwner;
+	public static Clip clip;
+	public static Vanish vanish;
 	
 	public Help() {
 		super("help", "helps lol.", "help", "h");
 	}
 
+	TextFormatting LIGHT_PURPLE = TextFormatting.LIGHT_PURPLE;
+	TextFormatting WHITE = TextFormatting.WHITE;
+    TextFormatting GRAY = TextFormatting.GRAY;
+    TextFormatting AQUA = TextFormatting.AQUA;
+    TextFormatting BOLD = TextFormatting.BOLD;
+    TextFormatting ITALIC = TextFormatting.ITALIC;
+    TextFormatting RED = TextFormatting.RED;
+	
 	@Override
 	public void onCommand(String[] args, String command) {
 		String PREFIX = CommandManager.prefix;
+		
+		prefix = new Prefix();
+		toggle = new Toggle();
+		bind = new Bind();
+		baritone = new Baritone();
+		friend = new Friend();
+		autoCope = new AutoCope();
+		protester = new Protester();
+		mobOwner = new MobOwner();
+		clip = new Clip();
+		vanish = new Vanish();
 		
 		ModuleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
 		
 		ModuleManager.addChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!");
 
-		ModuleManager.addChatMessage("prefix (p) - " + TextFormatting.ITALIC + "sets the command prefix. -> "  + PREFIX + "prefix <key>");
-		
-		ModuleManager.addChatMessage("toggle (t) - " + TextFormatting.ITALIC + "toggles a module on or off. -> "  + PREFIX + "toggle <module>");
-		
-		ModuleManager.addChatMessage("bind (bi) - " + TextFormatting.ITALIC + "bind modules to specific keys. -> " + PREFIX + "bind <name> <key> | " + PREFIX + "bind clear");
-		
-		ModuleManager.addChatMessage("baritone (b) - " + TextFormatting.ITALIC + "use baritone api commands. - > "  + PREFIX + "baritone stop | " + PREFIX + 
-				"baritone goto <x> <z> | " + PREFIX + "baritone mine <block> | " + PREFIX + "baritone farm");
-		
-		ModuleManager.addChatMessage("friend (f) - " + TextFormatting.ITALIC + "manage your friends. -> " + PREFIX + "friend list | " + PREFIX + 
-				"friend add <name> | " + PREFIX + "friend remove <name> | " + PREFIX + "friend clear");
-		
-		ModuleManager.addChatMessage("autoCope (ac) - " + TextFormatting.ITALIC + "edit the autoCope msg. - > "  + PREFIX + "autoCope <msg>");
-		
-		ModuleManager.addChatMessage("protester (pr) - " + TextFormatting.ITALIC + "edit the protester msg. - > "  + PREFIX + "protester <msg>");
-		
-		ModuleManager.addChatMessage("mobOwner (mo) - " + TextFormatting.ITALIC + "check the owner of a ridden mob. -> " + PREFIX + "mobOwner"); // fixed lol
-		
-		ModuleManager.addChatMessage("clip (c) - " + TextFormatting.ITALIC + "clip horrizontally or vertically through blocks. -> " + PREFIX + "clip h <blocks> | " + PREFIX 
-				+ "clip v <blocks>");
-		
-		ModuleManager.addChatMessage("vanish (v) - " + TextFormatting.ITALIC + "vanish ridden entities. - > " + PREFIX + "vanish");
+		helpMessage(prefix.name, prefix.description, prefix.syntax);
+		helpMessage(toggle.name, toggle.description, toggle.syntax);
+		helpMessage(bind.name, bind.description, bind.syntax);
+		helpMessage(baritone.name, baritone.description, baritone.syntax);
+		helpMessage(friend.name, friend.description, friend.syntax);
+		helpMessage(autoCope.name, autoCope.description, autoCope.syntax);
+		helpMessage(protester.name, protester.description, protester.syntax);
+		helpMessage(mobOwner.name, mobOwner.description, mobOwner.syntax);
+		helpMessage(clip.name, clip.description, clip.syntax);
+		helpMessage(vanish.name, vanish.description, vanish.syntax);
 		
 		ModuleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
 
 	}
+	
+	private void helpMessage(String name, String desc, String syntax) {
+        ModuleManager.addChatMessage(WHITE + name + GRAY + " - " + desc + RED + ITALIC + " [ " + syntax + " ]");
+    }
 
 }
