@@ -92,7 +92,7 @@ public class SelfFill extends Module {
 						mc.playerController.updateController();
 					}
 					mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
-					if(autoDisable.isEnabled()) this.setToggled(false);
+					if(autoDisable.isEnabled()) this.disable();
 				}
 			}
 		}
@@ -110,7 +110,7 @@ public class SelfFill extends Module {
 				mc.playerController.updateController();
 			}
 			mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
-			if(autoDisable.isEnabled()) this.setToggled(false);
+			if(autoDisable.isEnabled()) this.disable();
 		}
 	}
 	

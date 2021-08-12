@@ -41,6 +41,7 @@ public class ClickGuiModule extends Module {
 		this.addSettings(blur, scrollMode, scrolls, description, animationSpeed, fontColor, enabledColor, backgroundColor, settingBackgroundColor, outlineColor);
 		INSTANCE = this;
 	}
+	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 	
 	public static Module getClickGuiModule() {
 		return INSTANCE;
@@ -69,7 +70,6 @@ public class ClickGuiModule extends Module {
 		
 	}
 	
-	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
 	@Override
 	public void onRender() {
