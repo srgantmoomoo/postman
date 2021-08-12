@@ -24,6 +24,7 @@ public class ClickGuiModule extends Module {
 	public static ClickGuiModule INSTANCE;
 	
 	public ModeSetting theme = new ModeSetting("theme", this, "new", "new", "old");
+	public BooleanSetting blur = new BooleanSetting("blur", this, true);
 	public NumberSetting animationSpeed = new NumberSetting("animation", this, 150, 0, 1000, 50);
 	public NumberSetting scrolls = new NumberSetting("scrollSpeed", this, 10, 0, 100, 1);
 	public ModeSetting scrollMode = new ModeSetting("scroll", this, "container", "container", "screen");
@@ -37,7 +38,7 @@ public class ClickGuiModule extends Module {
 	
 	public ClickGuiModule() {
 		super("clickGui", "classic hud", Keyboard.KEY_RSHIFT, Category.CLIENT);
-		this.addSettings(scrollMode, scrolls, description, animationSpeed, fontColor, enabledColor, backgroundColor, settingBackgroundColor, outlineColor);
+		this.addSettings(blur, scrollMode, scrolls, description, animationSpeed, fontColor, enabledColor, backgroundColor, settingBackgroundColor, outlineColor);
 		INSTANCE = this;
 	}
 	
@@ -48,15 +49,22 @@ public class ClickGuiModule extends Module {
 	@Override
 	public void onEnable() {
 		Main.clickGui.enterGUI();
+		if(blur.isEnabled()) 
+			mc.entityRenderer.loadShader(shader);
+	}
+	
+	@Override
+	public void onDisable() {
+		mc.entityRenderer.getShaderGroup().deleteShaderGroup();
 	}
 
 	@Override
 	public void onUpdate() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
-			this.setToggled(!toggled);
+			this.disable();
 		}
 		if(ModuleManager.getModuleByName("hudEditor").isToggled()) {
-			this.setToggled(!toggled);
+			this.disable();
 		}
 		
 	}
