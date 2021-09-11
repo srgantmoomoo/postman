@@ -1,9 +1,11 @@
+<img src="https://user-images.githubusercontent.com/69589624/132962368-25885f65-740e-4955-9b31-4a1cb899b660.png" alt="postman" width="175"/>
+
 # postman
+
 [![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
 [![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
-[![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE) <br>
-<hr>
+[![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE)
 
 ***if you are not apart of the discord and are not aware, postman is currently out of development. this is due to some personal things i have to take care of in life. i really do plan on returning if i find interest in it again, there are so many things i left unfinished in this client. but for now i just want to thank everyone who supported me, everyone who has helped me out directly and indirectly. i met so many awesome ppl with this project. thank u, i love you all :)***
 
