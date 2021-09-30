@@ -32,6 +32,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
+/*
+ * Hi -Fluffery
+ */
+
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
 	public static ArrayList<Module> modules;
