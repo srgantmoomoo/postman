@@ -1,6 +1,6 @@
 <img src="https://user-images.githubusercontent.com/69589624/132962368-25885f65-740e-4955-9b31-4a1cb899b660.png" alt="postman logo" width="175"/>
 
-# postman
+# postman reborn public
 
 [![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
 [![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
@@ -17,7 +17,7 @@ postman is a client that runs off Minecraft Forge 1.12.2, it is intended for use
 
 this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.5, PanelStudio 0.1.8, and is coded in 100% java.
 
-check out the postman website - https://techale.github.io/postman-website/. <br />
+check out the offical postman website - https://techale.github.io/postman-website/. <br />
 *postman archive* - this basically just holds all the old versions of postman, https://github.com/moomooooo/postman-archive. <br />
 
 thank you,
@@ -48,6 +48,7 @@ thank you,
 1. gradlew setupDecompWorkspace <br />
 2. gradlew eclipse (for eclipse) or gradlew genIntellijRuns (for intellij) <br />
 (./gradlew for linux and mac users) <br />
+3. gradlew build <br />
 
 # credits
 **really helpful people**
@@ -55,6 +56,7 @@ thank you,
 - techale, adding multithreading to the main class. making postman website. helping me a lot :).
 - RECIOR, for postman bot, and being an extremly based individual. <br>
 - cattyngmd, making pr's for a variety of fixes and modules. <br>
+- SrgantMooMoo, for making the oringal client <br>
 
 **contributors** <br>
 - mwahaha9, fixing the spelling in an onDisable method in autoGap.
@@ -73,4 +75,4 @@ thank you,
 - surround & holeTp - *Hoosier's Gamesense* https://github.com/IUDevman/gamesense-client. 0_0
 - 2dEsp - most of the code is from *finz0's Osiris* https://github.com/epicfacethe3rd/Osiris.
 
-... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. srgantmoomoo#1052
+... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. FLuffery#6988
