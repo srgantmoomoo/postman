@@ -3,7 +3,7 @@
 # postman reborn public
 
 [![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
-[![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
+[![Lines of code](https://img.shields.io/tokei/lines/github/flufferyautism/postman-reborn?color=79C1FF&style=flat-square)](https://github.com//postman-reborn/tree/master/src/main/java/me/srgantmoomoo)
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE)
 
@@ -14,6 +14,36 @@
 postman is a client that runs off Minecraft Forge 1.12.2, it is intended for use on servers which allow client-side modification. postman takes inpiration from many previous clients like osiris, kami, gamesense, and others. this client uses ZeroMemes's Alpine for an event system, lukflugs PanelStudio for the clickGui library, and Forge's 1.12.2 mod api. i intend for this project to be community driven and as open as possible, open access, open development, and open sourced. 
 <br>
 <br>
+
+#planned added features
+1. xray
+2. better ca placements
+3. surround rewrite
+4. fix outline esp's and walls rendering wrong (probably fix this in rewrite)
+5. chams
+6. notifications
+7. tabgui 
+8. json config save
+9. LongJump
+10. phase
+11. instant burrow
+12. autoBunny
+13. instantMine packetmine
+14. antiSpam
+15. elytra fly
+16. Wave array list
+17. CsgoGui - csgo cheat styled gui 
+18. fix smart ca fps drop
+19. elytra replace 
+20.fix nametags for friends
+21. it needs a better config system i swear 
+22. oh yea and friends also
+23 CustomEnchent
+24. rewrite shulkerpeek ui
+25. auto armor
+26. auto trap
+27. ui enchencements
+
 
 this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.5, PanelStudio 0.1.8, and is coded in 100% java.
 
