@@ -8,42 +8,13 @@
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE)
 
 **A continuation of where SrgantMooMoo left this client**
+By the Postman Community
 
 ***if you are not apart of the discord and are not aware, postman is currently out of development. this is due to some personal things i have to take care of in life. i really do plan on returning if i find interest in it again, there are so many things i left unfinished in this client. but for now i just want to thank everyone who supported me, everyone who has helped me out directly and indirectly. i met so many awesome ppl with this project. thank u, i love you all :)***
 
 postman is a client that runs off Minecraft Forge 1.12.2, it is intended for use on servers which allow client-side modification. postman takes inpiration from many previous clients like osiris, kami, gamesense, and others. this client uses ZeroMemes's Alpine for an event system, lukflugs PanelStudio for the clickGui library, and Forge's 1.12.2 mod api. i intend for this project to be community driven and as open as possible, open access, open development, and open sourced. 
 <br>
 <br>
-
-# planned added features
-1. xray
-2. better ca placements
-3. surround rewrite
-4. fix outline esp's and walls rendering wrong (probably fix this in rewrite)
-5. chams
-6. notifications
-7. tabgui 
-8. json config save
-9. LongJump
-10. phase
-11. instant burrow
-12. autoBunny
-13. instantMine packetmine
-14. antiSpam
-15. elytra fly
-16. Wave array list
-17. CsgoGui - csgo cheat styled gui 
-18. fix smart ca fps drop
-19. elytra replace 
-20.fix nametags for friends
-21. it needs a better config system i swear 
-22. oh yea and friends also
-23 CustomEnchent
-24. rewrite shulkerpeek ui
-25. auto armor
-26. auto trap
-27. ui enchencements
-
 
 this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.5, PanelStudio 0.1.8, and is coded in 100% java.
 
