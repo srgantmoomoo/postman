@@ -1,4 +1,4 @@
-//these scare me
+//I hate mixins 
 package me.srgantmoomoo.mixin;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
