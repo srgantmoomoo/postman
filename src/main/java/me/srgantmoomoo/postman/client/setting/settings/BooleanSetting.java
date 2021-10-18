@@ -8,6 +8,7 @@ import me.srgantmoomoo.postman.client.setting.Setting;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
+ * remember the file path dumbass, you will use this
  */
 
 public class BooleanSetting extends Setting implements Toggleable {
