@@ -20,6 +20,8 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+//og theme will be made into a different setting and i will make a new hud theme, maybe it will look nicer 
+
 public class ClickGuiModule extends Module {
 	public static ClickGuiModule INSTANCE;
 	
