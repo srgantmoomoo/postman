@@ -6,7 +6,7 @@ import me.srgantmoomoo.postman.api.util.render.JColor;
 
 public class Reference {
 	public static final String MOD_ID = "postman";
-	public static final String NAME = "postman";
+	public static final String NAME = "postman reborn";
 	public static final String VERSION = "2.111";
 	public static final String ACCEPTED_VERSIONS = "[1.12.2]";
 	public static final String CLIENT_PROXY_CLASS = "me.srgantmoomoo.postman.api.proxy.ClientProxy";
