@@ -42,7 +42,7 @@ public class SurroundHud extends HudModule {
 		@Override
 		public String getItem(int index) {
 			if (ModuleManager.isModuleEnabled("surround")) return ChatFormatting.GREEN + "srnd" + " on";
-			else return "srnd" + " off";
+			else return "SU" + " off";
 		}
 
 		@Override
