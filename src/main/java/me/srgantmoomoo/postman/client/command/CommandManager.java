@@ -25,7 +25,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 public class CommandManager {
 	
 	public List<Command> commands = new ArrayList<Command>();
-	public static String prefix = ",";
+	public static String prefix = "-";
 	public boolean commandFound = false;
 	
 	public CommandManager() {
@@ -46,6 +46,7 @@ public class CommandManager {
 		commands.add(new Baritone());
 		commands.add(new AutoCope());
 		commands.add(new Protester());
+		commands.add(new About());
 	}
 	
 	@EventHandler
