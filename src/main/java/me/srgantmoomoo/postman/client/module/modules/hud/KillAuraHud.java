@@ -43,7 +43,7 @@ public class KillAuraHud extends HudModule {
 		@Override
 		public String getItem(int index) {
 			if (ModuleManager.isModuleEnabled("killAura")) return ChatFormatting.GREEN + "killA" +  " on";
-			else return "killA" + " off";
+			else return "KA" + " off";
 		}
 
 		@Override
