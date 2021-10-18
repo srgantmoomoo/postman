@@ -9,6 +9,8 @@ public class AutoHut extends Module {
 	
 	public AutoHut() {
 		super ("autoHut", "automatically builds hut for u.", Keyboard.KEY_NONE, Category.PVP);
+
+		//coded but its throwing a shit ton of errors, i will fix it later
 	}
 
 }
