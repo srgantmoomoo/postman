@@ -52,6 +52,9 @@ public class Welcomer extends HudModule {
 		@Override
 		public boolean sortRight() {
 			return false;
+
+//stuff to add
+//christmas welcomer
 		}
 	}
 }
