@@ -69,7 +69,8 @@ public class ClickGuiModule extends Module {
 		}
 		
 	}
-	
+	// going to try and add christman detection to switch to chrisstmas-postman-logo
+	// ill think of a way ti di that and put it in later on
 	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
 	@Override
 	public void onRender() {
