@@ -7,6 +7,8 @@ import me.srgantmoomoo.Main;
 
 public class FriendManager {
 
+//could use a rewrite, as current is a little big buggy
+
 	public static List<Friend> friends;
 
 	public FriendManager(){
