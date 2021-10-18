@@ -1,3 +1,7 @@
+//ab08t this 
+//loads all needed files and apis 
+//dont mess with this unless your adding new apis 
+
 package me.srgantmoomoo;
 
 import java.util.ArrayList;
@@ -77,6 +81,8 @@ public class Main {
 	public void init (FMLInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(this);
 
+	log.info("Start debugging api's and event systems here, this is only for the postman mod");
+
 		eventProcessor = new EventProcessor();
 		log.info("postman event system initialized.");
 
@@ -105,6 +111,8 @@ public class Main {
 		log.info("configs initialized.");
 		
 		log.info("postman initialization finished.");
+		
+		log.info("Any issue past this is not a postman issue but there could still be conflicts with other mods, although unlikely")
 	
 	}
 }
