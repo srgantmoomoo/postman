@@ -11,6 +11,7 @@ public class About extends Command {
     public About() {
 		super("about", "tells you more about the client, "abt");
 	}
-// add more later, not really important atm	
+ModuleManager.addChatMessage("This is a filler for the time being");
+
 	}
 }
