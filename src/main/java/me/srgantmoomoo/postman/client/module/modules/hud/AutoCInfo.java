@@ -42,8 +42,8 @@ public class AutoCInfo extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			if (ModuleManager.isModuleEnabled("autoCrystal")) return ChatFormatting.GREEN + "autoC" + " on";
-			else return "AC" + " off";
+			if (ModuleManager.isModuleEnabled("autoCrystal")) return ChatFormatting.GREEN + "AC" + " ";
+			else return "AC" + " ";
 		}
 
 		@Override
