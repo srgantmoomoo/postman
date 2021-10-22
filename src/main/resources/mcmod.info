@@ -3,7 +3,7 @@
 	"modid": "postman",
 	"name": "postman reborn",
 	"description": "a minecraft client for 1.12.2 anarchy servers.",
-	"version": "2.111",
+	"version": "2.200",
 	"mcversion": "1.12.2",
 	"url": "https://github.com/moomooooo/postman",
 	"authorList": ["SrgantMooMoo", "lukflug", "techale for the oringal client, Modifications added by Fluffery"],
