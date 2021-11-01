@@ -12,7 +12,7 @@ By the Postman Community
 
 Time for shit coding
 
-***if you are not apart of the discord and are not aware, the main postman client is currently out of development. this is due to some personal things i have to take care of in life. i really do plan on returning if i find interest in it again, there are so many things i left unfinished in this client. but for now i just want to thank everyone who supported me, everyone who has helped me out directly and indirectly. i met so many awesome ppl with this project. thank u, i love you all :)***
+***if you are not apart of the discord and are not aware, the main postman client is currently out of development. this is due to some personal things i have to take care of in life. i really do plan on returning if i find interest in it again, there are so many things i left unfinished in this client. but for now i just want to thank everyone who supported me, everyone who has helped me out directly and indirectly. i met so many awesome ppl with this project. thank u, i love you all :))***
 
 postman is a client that runs off Minecraft Forge 1.12.2, it is intended for use on servers which allow client-side modification. postman takes inpiration from many previous clients like osiris, kami, gamesense, and others. this client uses ZeroMemes's Alpine for an event system, lukflugs PanelStudio for the clickGui library, and Forge's 1.12.2 mod api. i intend for this project to be community driven and as open as possible, open access, open development, and open sourced. 
 <br>
