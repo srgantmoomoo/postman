@@ -80,4 +80,4 @@ thank you,
 - surround & holeTp - *Hoosier's Gamesense* https://github.com/IUDevman/gamesense-client. 0_0
 - 2dEsp - most of the code is from *finz0's Osiris* https://github.com/epicfacethe3rd/Osiris.
 
-... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. FLuffery#6988
+... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. Fluffery#6215 or ping on the main postman discord
