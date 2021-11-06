@@ -1,12 +1,11 @@
 package me.srgantmoomoo.postman.client.ui.clickgui.front;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Keyboard;
 
 public class HudEditor extends Module {
 	public BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGui", this, true);
@@ -15,7 +14,7 @@ public class HudEditor extends Module {
 		super("hudEditor", "descrp", Keyboard.KEY_NONE, Category.HUD);
 		this.addSettings(exitToClickGui);
 	}
-	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
+	private final ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 	
 	@Override
 	public void onEnable() {

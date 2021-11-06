@@ -1,9 +1,9 @@
 package me.srgantmoomoo.postman.client.setting;
 
-import java.util.ArrayList;
-
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
+
+import java.util.ArrayList;
 
 /*
  * Written originally by @HeroCode.
@@ -12,10 +12,10 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 
 public class SettingManager {
 	
-	private ArrayList<Setting> settings;
+	private final ArrayList<Setting> settings;
 	
 	public SettingManager(){
-		this.settings = new ArrayList<Setting>();
+		this.settings = new ArrayList <>();
 	}
 	
 	public void rSetting(Setting in){
@@ -27,7 +27,7 @@ public class SettingManager {
 	}
 	
 	public ArrayList<Setting> getSettingsByMod(Module mod) {
-		ArrayList<Setting> out = new ArrayList<Setting>();
+		ArrayList<Setting> out = new ArrayList <>();
 		for(Setting s : getSettings()) {
 			if(s.parent.equals(mod)) {
 				out.add(s);

@@ -1,5 +1,8 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.api.event.events.PlayerJumpEvent;
+import me.srgantmoomoo.postman.api.event.events.WaterPushEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,10 +12,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.events.PlayerJumpEvent;
-import me.srgantmoomoo.postman.api.event.events.WaterPushEvent;
-
 @Mixin(EntityPlayer.class)
 public abstract class MixinEntityPlayer {
 
@@ -20,7 +19,7 @@ public abstract class MixinEntityPlayer {
 
 	@Inject(method = "jump", at = @At("HEAD"), cancellable = true)
 	public void onJump(CallbackInfo callbackInfo) {
-		if (Minecraft.getMinecraft().player.getName() == this.getName()) {
+		if (Minecraft.getMinecraft().player.getName().equals(this.getName())) {
 			Main.EVENT_BUS.post(new PlayerJumpEvent());
 		}
 	}

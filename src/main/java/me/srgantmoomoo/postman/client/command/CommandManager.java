@@ -1,13 +1,6 @@
 package me.srgantmoomoo.postman.client.command;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.lwjgl.input.Keyboard;
-
 import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.client.command.commands.*;
@@ -21,10 +14,15 @@ import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CommandManager {
 	
-	public List<Command> commands = new ArrayList<Command>();
+	public List<Command> commands = new ArrayList <>();
 	public static String prefix = "-";
 	public boolean commandFound = false;
 	
@@ -80,7 +78,8 @@ public class CommandManager {
             final char key = Keyboard.getEventCharacter();
             if (prefix.charAt(0) == key) {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiChat());
-                ((GuiChat) Minecraft.getMinecraft().currentScreen).inputField.setText(prefix);
+				assert Minecraft.getMinecraft().currentScreen != null;
+				((GuiChat) Minecraft.getMinecraft().currentScreen).inputField.setText(prefix);
             }
         }
 	}

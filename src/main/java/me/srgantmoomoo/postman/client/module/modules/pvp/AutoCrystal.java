@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
@@ -34,25 +33,16 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.CombatRules;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
 import net.minecraft.world.Explosion;
+import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
-
-import org.lwjgl.input.Keyboard;
 
 /**
  * @Author SrgantMooMoo
@@ -129,9 +119,9 @@ public class AutoCrystal extends Module {
 	private EnumFacing enumFacing;
 	private Entity renderEnt;
 	
-	public static final ArrayList<BlockPos> PlacedCrystals = new ArrayList<BlockPos>();
-	public static boolean ghosting = false;;
-	public boolean active = false;
+	public static final ArrayList<BlockPos> PlacedCrystals = new ArrayList <>();
+	public static boolean ghosting = false;
+    public boolean active = false;
 	boolean offHand = false;
 	private boolean togglePitch = false;
 	int oldSlot;
@@ -200,7 +190,7 @@ public class AutoCrystal extends Module {
 		 EntityEnderCrystal crystal = mc.world.loadedEntityList.stream()
                  .filter(entity -> entity instanceof EntityEnderCrystal)
                  .filter(e -> mc.player.getDistance(e) <= breakRange.getValue())
-                 .filter(e -> crystalCheck(e))
+                 .filter(this::crystalCheck)
                  .map(entity -> (EntityEnderCrystal) entity)
                  .min(Comparator.comparing(c -> mc.player.getDistance(c)))
                  .orElse(null);
@@ -253,9 +243,8 @@ public class AutoCrystal extends Module {
 				 }
 			 }
 		 }
-		 
-		 if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) offHand = true;
-		 else offHand = false;
+
+        offHand = mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL;
 		 
 		 if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) {
 			 offHand = true;
@@ -264,9 +253,8 @@ public class AutoCrystal extends Module {
 		 }
 		 
 		List<BlockPos> blocks = findCrystalBlocks();
-		List<Entity> entities = new ArrayList<>();
-		
-		entities.addAll(mc.world.playerEntities.stream().collect(Collectors.toList()));
+
+        List <Entity> entities = new ArrayList <>(new ArrayList <>(mc.world.playerEntities));
 		
 		BlockPos blockPos1 = null;
 		double damage = 0.5D;
@@ -493,7 +481,7 @@ public class AutoCrystal extends Module {
         boolean crystal = mc.world.loadedEntityList.stream()
                 .filter(entity -> entity instanceof EntityEnderCrystal)
                 .filter(e -> mc.player.getDistance(e) <= breakRange.getValue())
-                .filter(e -> crystalCheck(e))
+                .filter(this::crystalCheck)
                 .map(entity -> (EntityEnderCrystal) entity)
                 .min(Comparator.comparing(c -> mc.player.getDistance(c)))
                 .orElse(null) != null;
@@ -593,9 +581,9 @@ public class AutoCrystal extends Module {
     
     private EntityLivingBase GetNearTarget(Entity distanceTarget) {
         return mc.world.loadedEntityList.stream()
-                .filter(entity -> validTarget(entity))
+                .filter(this::validTarget)
                 .map(entity -> (EntityLivingBase) entity)
-                .min(Comparator.comparing(entity -> distanceTarget.getDistance(entity)))
+                .min(Comparator.comparing(distanceTarget::getDistance))
                 .orElse(null);
     }
 	
@@ -629,7 +617,7 @@ public class AutoCrystal extends Module {
             float f = MathHelper.clamp(k, 0.0F, 20.0F);
             damage *= 1.0F - f / 25.0F;
 
-            if (entity.isPotionActive(Potion.getPotionById(11))) {
+            if (entity.isPotionActive(Objects.requireNonNull(Potion.getPotionById(11)))) {
                 damage = damage - (damage / 4);
             }
             damage = Math.max(damage, 0.0F);

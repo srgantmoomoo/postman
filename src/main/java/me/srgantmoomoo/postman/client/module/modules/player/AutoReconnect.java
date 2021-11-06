@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.util.world.JTimer;
@@ -15,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.network.EnumConnectionState;
 import net.minecraft.network.handshake.client.C00Handshake;
+import org.lwjgl.input.Keyboard;
 
 public class AutoReconnect extends Module {
 	public NumberSetting delay = new NumberSetting("delay", this, 5, 1, 20, 1);
@@ -26,7 +24,7 @@ public class AutoReconnect extends Module {
 	private String lastIp;
     private int lastPort;
     private boolean reconnect;
-    private JTimer timer = new JTimer();
+    private final JTimer timer = new JTimer();
 	
 	@EventHandler
 	private final Listener<PacketEvent.Send> sendPacketEventPre = new Listener<>(event -> {

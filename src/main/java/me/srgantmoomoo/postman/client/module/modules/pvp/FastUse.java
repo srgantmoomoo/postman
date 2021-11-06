@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
@@ -10,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.network.play.client.CPacketPlayerDigging;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 import net.minecraft.util.math.BlockPos;
+import org.lwjgl.input.Keyboard;
 
 public class FastUse extends Module {
 	
@@ -21,7 +20,7 @@ public class FastUse extends Module {
 		super ("fastUse", "lol bow and xp bottle go brrrrrrrr.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(xpBottle, bow);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	
 	@Override
 	public void onUpdate() {

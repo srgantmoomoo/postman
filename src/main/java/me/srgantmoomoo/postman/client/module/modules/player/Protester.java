@@ -1,15 +1,14 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
+import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Protester extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "clientShitter", "clientShitter", "postmanRespecter", "customMsg");

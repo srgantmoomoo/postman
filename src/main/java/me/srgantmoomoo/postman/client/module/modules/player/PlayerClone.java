@@ -1,16 +1,14 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import java.util.UUID;
-
-import org.lwjgl.input.Keyboard;
-
 import com.mojang.authlib.GameProfile;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.world.GameType;
+import org.lwjgl.input.Keyboard;
+
+import java.util.UUID;
 
 /*
  * Taken from gamesense, edited a little by @SrgantMooMoo on November 6th, 2020.

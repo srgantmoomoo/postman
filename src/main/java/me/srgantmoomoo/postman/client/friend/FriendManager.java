@@ -1,9 +1,9 @@
 package me.srgantmoomoo.postman.client.friend;
 
+import me.srgantmoomoo.Main;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import me.srgantmoomoo.Main;
 
 public class FriendManager {
 

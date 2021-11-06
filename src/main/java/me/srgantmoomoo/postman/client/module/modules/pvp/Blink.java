@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -8,11 +7,10 @@ import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.network.play.client.CPacketPlayer;
+import org.lwjgl.input.Keyboard;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
-import org.lwjgl.input.Keyboard;
 
 public class Blink extends Module {
 	  private final Queue<CPacketPlayer> packetQueue = new LinkedList<>();

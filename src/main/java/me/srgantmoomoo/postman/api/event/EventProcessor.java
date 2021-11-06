@@ -1,19 +1,6 @@
 package me.srgantmoomoo.postman.api.event;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
-
-import net.minecraftforge.client.event.*;
-import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-import org.lwjgl.input.Mouse;
-
 import com.google.common.collect.Maps;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerJoinEvent;
@@ -23,6 +10,7 @@ import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.SPacketPlayerListItem;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -33,6 +21,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+import org.lwjgl.input.Mouse;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Map;
 
 public class EventProcessor {
 

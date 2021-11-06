@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -12,6 +9,7 @@ import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumHand;
+import org.lwjgl.input.Keyboard;
 
 public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
@@ -21,7 +19,7 @@ public class AutoGap extends Module {
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode, health, disableOnSurround);;
+		this.addSettings(mode, health, disableOnSurround);
 	}
 	
 	@Override

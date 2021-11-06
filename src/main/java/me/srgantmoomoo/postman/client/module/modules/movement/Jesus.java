@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.LiquidCollisionBBEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateMoveStateEvent;
@@ -14,6 +11,7 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.AxisAlignedBB;
+import org.lwjgl.input.Keyboard;
 
 public class Jesus extends Module {
 	
@@ -62,11 +60,7 @@ public class Jesus extends Module {
             }
         }
 
-        if (mc.player.fallDistance >= 3.0f) {
-            return false;
-        }
-
-        return true;
-    }
+		return !(mc.player.fallDistance >= 3.0f);
+	}
 
 }

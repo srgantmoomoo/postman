@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.NetworkPacketEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -12,6 +9,7 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketUseEntity;
+import org.lwjgl.input.Keyboard;
 
 public class Criticals extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "packet", "packet", "jump");
@@ -22,7 +20,7 @@ public class Criticals extends Module {
 	}
 
     @EventHandler
-    private Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
+    private final Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
         if (event.getPacket() instanceof CPacketUseEntity) {
             CPacketUseEntity packet = (CPacketUseEntity)event.getPacket();
             

@@ -1,18 +1,16 @@
 package me.srgantmoomoo.postman.client.module;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
 import com.lukflug.panelstudio.settings.Toggleable;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.client.setting.Setting;
 import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.common.MinecraftForge;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -29,7 +27,7 @@ public abstract class Module implements Toggleable {
 	public boolean toggled;
 	public boolean expanded;
 	public int index;
-	public List<Setting> settings = new ArrayList<Setting>();
+	public List<Setting> settings = new ArrayList <>();
 	
 	public Module(String name, String description, int key, Category category) {
 		super();

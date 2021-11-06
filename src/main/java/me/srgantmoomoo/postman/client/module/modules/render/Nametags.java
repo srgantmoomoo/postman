@@ -1,7 +1,6 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import org.lwjgl.input.Keyboard;
-
+import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
@@ -19,9 +18,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-
-import com.mojang.realmsclient.gui.ChatFormatting;
 
 public class Nametags extends Module {
 	

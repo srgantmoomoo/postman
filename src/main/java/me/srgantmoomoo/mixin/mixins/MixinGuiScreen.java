@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -17,8 +18,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import me.srgantmoomoo.postman.client.module.ModuleManager;
 
 import java.awt.*;
 

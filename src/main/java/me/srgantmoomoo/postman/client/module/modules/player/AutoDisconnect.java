@@ -1,11 +1,10 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.gui.GuiMainMenu;
+import org.lwjgl.input.Keyboard;
 
 public class AutoDisconnect extends Module {
 	public NumberSetting health = new NumberSetting("health", this, 10, 1, 30, 1);

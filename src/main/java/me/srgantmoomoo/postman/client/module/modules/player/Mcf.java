@@ -1,9 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.friend.FriendManager;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -13,6 +9,8 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
 public class Mcf extends Module {
 	

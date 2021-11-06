@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.util.world.JTimer;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -12,6 +10,7 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.ItemStack;
+import org.lwjgl.input.Keyboard;
 
 public class Refill extends Module {
 	public NumberSetting delay = new NumberSetting("delay", this, 500.0f, 0.0f, 2000.0f, 1.0f);
@@ -40,8 +39,7 @@ public class Refill extends Module {
 	}
 	
     private int getHalfStack(EntityPlayerSP player) {
-    	if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) offHand = true;
-		else offHand = false;
+        offHand = mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE;
         if (offHand) {
             if (player.getHeldItemOffhand().getItem() != Items.AIR && player.getHeldItemOffhand().getCount() < player.getHeldItemOffhand().getMaxStackSize()
                     && (double) player.getHeldItemOffhand().getCount() / player.getHeldItemOffhand().getMaxStackSize() <= (50 / 100.0)) {

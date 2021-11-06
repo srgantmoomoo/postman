@@ -1,9 +1,10 @@
 {
-"required": true,
-"compatibilityLevel": "JAVA_8",
-"package": "me.srgantmoomoo.mixin.mixins",
-"refmap": "mixins.postman.refmap.json",
-"mixins": [
+    "required": true,
+    "compatibilityLevel": "JAVA_8",
+    "package": "me.srgantmoomoo.mixin.mixins",
+    "refmap": "mixins.postman.refmap.json",
+    "minVersion": "0.7.11",
+    "mixins": [
     "MixinAbstractClientPlayer",
     "MixinBlockLiquid",
     "MixinBlockSlimeBlock",

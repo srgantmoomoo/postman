@@ -1,13 +1,9 @@
 package me.srgantmoomoo.postman.client.module.modules.hud;
 
-import java.awt.Color;
-import java.awt.Point;
-
 import com.lukflug.panelstudio.Context;
 import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
@@ -16,6 +12,8 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import me.srgantmoomoo.postman.client.ui.clickgui.back.ClickGui;
+
+import java.awt.*;
 
 public class PlayerModel extends HudModule {
 	public BooleanSetting rect = new BooleanSetting("rect", this, true);

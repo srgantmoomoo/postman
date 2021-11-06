@@ -1,12 +1,8 @@
 package me.srgantmoomoo.postman.client.module.modules.hud;
 
-import java.awt.Color;
-import java.awt.Point;
-
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
@@ -16,9 +12,11 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import java.awt.*;
+
 
 public class Gapples extends HudModule {
-	private GapplesCounterList list = new GapplesCounterList();
+	private final GapplesCounterList list = new GapplesCounterList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);

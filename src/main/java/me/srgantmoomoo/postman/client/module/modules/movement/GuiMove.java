@@ -1,18 +1,17 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
+import org.lwjgl.input.Keyboard;
 public class GuiMove extends Module {
 	
 	public GuiMove() {
 		super ("guiMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
 	
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 
 	@Override
 	public void onUpdate(){

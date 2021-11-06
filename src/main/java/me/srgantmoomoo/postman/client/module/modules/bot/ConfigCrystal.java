@@ -1,14 +1,13 @@
 package me.srgantmoomoo.postman.client.module.modules.bot;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.module.modules.pvp.AutoCrystal;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import me.srgantmoomoo.postman.client.module.modules.pvp.AutoCrystal;
+import org.lwjgl.input.Keyboard;
 
 public class ConfigCrystal extends Module {
 	public BooleanSetting auto = new BooleanSetting("autoConfig", this, true); 
@@ -53,10 +52,10 @@ public class ConfigCrystal extends Module {
 			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).breakType.setMode("packet");
 		}
 		if(ping.getValue() <= 5) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).highPing.setEnabled(false);;
-		}else if(ping.getValue() > 5) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).highPing.setEnabled(true);;
-		}
+			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).highPing.setEnabled(false);
+        }else if(ping.getValue() > 5) {
+			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).highPing.setEnabled(true);
+        }
 	}
 
 }

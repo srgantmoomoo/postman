@@ -1,18 +1,12 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import static me.srgantmoomoo.postman.api.util.world.BlockUtils.faceVectorPacketInstant;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.util.world.BlockUtils;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import me.srgantmoomoo.postman.client.setting.settings.*;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
-import net.minecraft.block.BlockEnderChest;
-import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.BlockObsidian;
+import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
+import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemBlock;
@@ -26,6 +20,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.input.Keyboard;
+
+import static me.srgantmoomoo.postman.api.util.world.BlockUtils.faceVectorPacketInstant;
 
 public class SelfFill extends Module {
 
@@ -36,7 +33,7 @@ public class SelfFill extends Module {
 	public NumberSetting rubberbandDelay = new NumberSetting("delay", this, 13, 1, 30, 1);
 	public BooleanSetting autoDisable = new BooleanSetting("autoDisable", this, true);
 	
-	private double[] jump = {0.41999998688698D, 0.7531999805211997D, 1.00133597911214D, 1.16610926093821D};
+	private final double[] jump = {0.41999998688698D, 0.7531999805211997D, 1.00133597911214D, 1.16610926093821D};
 	private boolean placed;
 	private boolean jumped;
 	private BlockPos startPos;
@@ -139,7 +136,7 @@ public class SelfFill extends Module {
         BlockPos neighbour = pos.offset(side);
         EnumFacing opposite = side.getOpposite();
 
-        if (!BlockUtils.canBeClicked(neighbour)) {
+        if (BlockUtils.canBeClicked(neighbour)) {
             return false;
         }
 

@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.PlayerMotionUpdateEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateMoveStateEvent;
@@ -20,6 +17,9 @@ import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.input.Keyboard;
+
+import java.util.Objects;
 
 public class Step extends Module {
 	public BooleanSetting entityStep = new BooleanSetting("entityStep", this, false);
@@ -44,29 +44,29 @@ public class Step extends Module {
         cancelStage = 0;
         
         if (mc.player != null && mc.player.isRiding())
-            prevEntityStep = mc.player.getRidingEntity().stepHeight;
+            prevEntityStep = Objects.requireNonNull(mc.player.getRidingEntity()).stepHeight;
     }
 
     @Override
     public void onDisable() {
         if (mc.player != null) {
-        	if(mc.player.isRiding()) mc.player.getRidingEntity().stepHeight = prevEntityStep;
+        	if(mc.player.isRiding()) Objects.requireNonNull(mc.player.getRidingEntity()).stepHeight = prevEntityStep;
 	        mc.player.stepHeight = 0.6f;
         }
     }
 
     @EventHandler
-    private Listener<PlayerUpdateMoveStateEvent> onInputUpdate = new Listener<>(event -> {
+    private final Listener<PlayerUpdateMoveStateEvent> onInputUpdate = new Listener<>(event -> {
         if (cancelStage != 0)
             mc.player.movementInput.jump = false;
         
         if (entityStep.isEnabled() && mc.player.isRiding()) {
-            mc.player.getRidingEntity().stepHeight = 256f;
+            Objects.requireNonNull(mc.player.getRidingEntity()).stepHeight = 256f;
         }
     });
     
     @EventHandler
-    private Listener<PlayerMotionUpdateEvent> OnMotionUpdate = new Listener<>(event -> {
+    private final Listener<PlayerMotionUpdateEvent> OnMotionUpdate = new Listener<>(event -> {
     	
     	if(mode.is("delay")) {
     	if (event.getEra() == Era.PRE) {

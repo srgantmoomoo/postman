@@ -1,13 +1,11 @@
 package me.srgantmoomoo.postman.client.module;
 
-import java.awt.Point;
-
-import org.lwjgl.input.Keyboard;
-
 import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.Main;
+import org.lwjgl.input.Keyboard;
+
+import java.awt.*;
 
 /**
  * @author lukflug

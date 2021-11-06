@@ -1,15 +1,8 @@
 package me.srgantmoomoo.postman.client.module.modules.hud;
 
-import java.awt.Color;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
@@ -20,8 +13,13 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 public class ArrayListt extends HudModule {
-	private ModuleArrayList list=new ModuleArrayList();
+	private final ModuleArrayList list=new ModuleArrayList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 255, 255, 255));
 	public ModeSetting sortHeight = new ModeSetting("sortHeight", this, "betic", "betic", "up", "down");
@@ -56,7 +54,7 @@ public class ArrayListt extends HudModule {
 
     private class ModuleArrayList implements HUDList {
 
-		public List<Module> activeModules=new ArrayList<Module>();
+		public List<Module> activeModules= new ArrayList <>();
 		
 		@Override
 		public int getSize() {

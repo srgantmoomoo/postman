@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -9,6 +7,7 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
+import org.lwjgl.input.Keyboard;
 
 public class AutoTotem extends Module {
 	

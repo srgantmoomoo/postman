@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -12,11 +9,12 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.network.play.server.SPacketExplosion;
+import org.lwjgl.input.Keyboard;
 
 public class Velocity extends Module {
 	public NumberSetting percent = new NumberSetting("percent", this, 0, 0, 100, 10);
 	
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	
 	public boolean on;
 	

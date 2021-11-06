@@ -1,20 +1,18 @@
 package me.srgantmoomoo.postman.client.module;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.lwjgl.input.Keyboard;
-
 import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
-import me.srgantmoomoo.postman.client.module.modules.bot.*;
-import me.srgantmoomoo.postman.client.module.modules.client.*;
+import me.srgantmoomoo.postman.client.module.modules.bot.Baritone;
+import me.srgantmoomoo.postman.client.module.modules.bot.ConfigCrystal;
+import me.srgantmoomoo.postman.client.module.modules.bot.OffHandBot;
+import me.srgantmoomoo.postman.client.module.modules.client.Capes;
+import me.srgantmoomoo.postman.client.module.modules.client.ClientFont;
+import me.srgantmoomoo.postman.client.module.modules.client.DiscordRichPresence;
+import me.srgantmoomoo.postman.client.module.modules.client.MainMenuWatermark;
 import me.srgantmoomoo.postman.client.module.modules.exploits.*;
 import me.srgantmoomoo.postman.client.module.modules.hud.*;
 import me.srgantmoomoo.postman.client.module.modules.movement.*;
@@ -29,6 +27,11 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*
  * Written by @SrgantMooMoo 11/17/20.
@@ -166,7 +169,7 @@ public class ModuleManager {
 		RenderEvent e = new RenderEvent(event.getPartialTicks());
 		Minecraft.getMinecraft().profiler.endSection();
 
-		modules.stream().filter(module -> module.isToggled()).forEach(module -> {
+		modules.stream().filter(Module::isToggled).forEach(module -> {
 			Minecraft.getMinecraft().profiler.startSection(module.getName());
 			module.onWorldRender(e);
 			Minecraft.getMinecraft().profiler.endSection();
@@ -205,6 +208,7 @@ public class ModuleManager {
 	
 	public static boolean isModuleEnabled(String name){
 		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+		assert m != null;
 		return m.isToggled();
 	}
 	
@@ -222,7 +226,7 @@ public class ModuleManager {
 	}
 	
 	public static List<Module> getModulesByCategory(Category c) {
-		List<Module> modules = new ArrayList<Module>();
+		List<Module> modules = new ArrayList <>();
 		
 		for(Module m : ModuleManager.modules) {
 			if(!m.getName().equals("Esp2dHelper")) {
@@ -235,12 +239,10 @@ public class ModuleManager {
 	
 	// this works best with panelstudio for whatever reason, ill delete one of these soon.
 	public static ArrayList<Module> getModulesInCategory(Category c){
-		ArrayList<Module> list = (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
-		return list;
+		return (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
 	}
 	
 	public static Module getModuleByName(String name){
-		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
-		return m;
+		return modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
 }

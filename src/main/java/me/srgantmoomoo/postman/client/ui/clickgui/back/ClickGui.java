@@ -1,10 +1,5 @@
 package me.srgantmoomoo.postman.client.ui.clickgui.back;
 
-import java.awt.Color;
-import java.awt.Point;
-
-import org.lwjgl.opengl.GL11;
-
 import com.lukflug.panelstudio.CollapsibleContainer;
 import com.lukflug.panelstudio.DraggableContainer;
 import com.lukflug.panelstudio.FixedComponent;
@@ -13,17 +8,11 @@ import com.lukflug.panelstudio.hud.HUDClickGUI;
 import com.lukflug.panelstudio.hud.HUDPanel;
 import com.lukflug.panelstudio.mc12.GLInterface;
 import com.lukflug.panelstudio.mc12.MinecraftHUDGUI;
-import com.lukflug.panelstudio.settings.BooleanComponent;
-import com.lukflug.panelstudio.settings.EnumComponent;
-import com.lukflug.panelstudio.settings.KeybindComponent;
-import com.lukflug.panelstudio.settings.NumberComponent;
-import com.lukflug.panelstudio.settings.SimpleToggleable;
-import com.lukflug.panelstudio.settings.Toggleable;
+import com.lukflug.panelstudio.settings.*;
 import com.lukflug.panelstudio.theme.FixedDescription;
 import com.lukflug.panelstudio.theme.MouseDescription;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.postman.api.util.font.FontUtils;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
@@ -32,11 +21,10 @@ import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.module.modules.client.ColorMain;
 import me.srgantmoomoo.postman.client.setting.Setting;
-import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.KeybindSetting;
-import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
+import me.srgantmoomoo.postman.client.setting.settings.*;
 import me.srgantmoomoo.postman.client.ui.clickgui.front.ClickGuiModule;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -44,12 +32,15 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import org.lwjgl.opengl.GL11;
+
+import java.awt.*;
 
 public class ClickGui extends MinecraftHUDGUI {
 	public static final int WIDTH = 100, HEIGHT = 12, DISTANCE = 10, HUD_BORDER = 2;
 	private final Toggleable colorToggle;
 	public final GUIInterface guiInterface;
-	private Theme theme;
+	private final Theme theme;
 	public final HUDClickGUI gui;
 	
 	public ClickGui() {
@@ -76,8 +67,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			public void drawString(Point pos, String s, Color c) {
 				end();
 				int x=pos.x+2, y=pos.y+1;
-				if(ModuleManager.getModuleByName("clientFont").isToggled()) FontUtils.drawStringWithShadow(true, s, x, y, new JColor(c));
-				else FontUtils.drawStringWithShadow(false, s, x, y, new JColor(c));
+				FontUtils.drawStringWithShadow(ModuleManager.getModuleByName("clientFont").isToggled(), s, x, y, new JColor(c));
 				begin();
 			}
 			

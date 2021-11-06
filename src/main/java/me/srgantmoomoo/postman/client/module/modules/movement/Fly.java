@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -9,6 +7,7 @@ import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.client.CPacketPlayer;
+import org.lwjgl.input.Keyboard;
 
 /*
  * this is as basic as it gets, im taking this from an old jackiehack release lol.

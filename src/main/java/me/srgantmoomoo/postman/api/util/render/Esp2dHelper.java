@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.api.util.render;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -14,6 +11,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 /*
  * original code in this is from finz0's Osiris.

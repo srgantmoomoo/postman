@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.bot;
 
-import org.lwjgl.input.Keyboard;
-
 import baritone.api.BaritoneAPI;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
@@ -9,6 +7,7 @@ import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import org.lwjgl.input.Keyboard;
 
 public class Baritone extends Module {
 	public BooleanSetting renderPath = new BooleanSetting("renderPath", this, true);

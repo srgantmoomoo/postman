@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraft.client.Minecraft;
@@ -11,13 +9,14 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import org.lwjgl.input.Keyboard;
 
 public class AutoArmor extends Module {
 	
 	public AutoArmor() {
 		super("autoArmor", "automatically applies the best armor.", Keyboard.KEY_NONE, Category.PVP);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	
 	@Override
 	public void onUpdate() {

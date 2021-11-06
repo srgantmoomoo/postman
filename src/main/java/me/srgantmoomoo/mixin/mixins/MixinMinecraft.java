@@ -1,5 +1,7 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.mixin.mixins.accessor.AccessorEntityPlayerSP;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
@@ -8,9 +10,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import me.srgantmoomoo.mixin.mixins.accessor.AccessorEntityPlayerSP;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
 
 @Mixin(value = Minecraft.class)
 public class MixinMinecraft {

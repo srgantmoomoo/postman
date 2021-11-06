@@ -1,10 +1,10 @@
 package me.srgantmoomoo.postman.client.setting.settings;
 
-import java.awt.Color;
-
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.Setting;
+
+import java.awt.*;
 
 public class ColorSetting extends Setting implements com.lukflug.panelstudio.settings.ColorSetting {
 
@@ -36,11 +36,11 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 	}
 
 	public long toInteger() {
-		return this.value.getRGB() & (0xFFFFFFFF);
+		return this.value.getRGB();
 	}
 
 	public void fromInteger (long number) {
-		this.value = new JColor(Math.toIntExact(number & 0xFFFFFFFF),true);
+		this.value = new JColor(Math.toIntExact(number),true);
 	}
 	
 	public JColor getColor() {

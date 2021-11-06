@@ -1,11 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.Wrapper;
 import me.srgantmoomoo.postman.api.util.render.JColor;
@@ -20,6 +14,11 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
+import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /*
  * Originally written by someone at gamesense.
@@ -126,12 +125,8 @@ public class HoleEsp extends Module {
 			return;
 		}
 		
-		safeHoles.forEach((blockPos, isBedrock) -> {
-			drawBox(blockPos,1, isBedrock);
-		});
-		safeHoles.forEach((blockPos, isBedrock) -> {
-			drawOutline(blockPos,2,isBedrock);
-		});
+		safeHoles.forEach((blockPos, isBedrock) -> drawBox(blockPos,1, isBedrock));
+		safeHoles.forEach((blockPos, isBedrock) -> drawOutline(blockPos,2,isBedrock));
 	}
 
 	private JColor getColor (boolean isBedrock) {

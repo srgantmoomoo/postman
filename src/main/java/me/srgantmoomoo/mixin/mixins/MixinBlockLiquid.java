@@ -1,14 +1,13 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.api.event.events.CanCollideCheckEvent;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.events.CanCollideCheckEvent;
 
 @Mixin(BlockLiquid.class)
 public class MixinBlockLiquid {

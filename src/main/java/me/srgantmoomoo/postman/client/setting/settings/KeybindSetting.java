@@ -1,11 +1,9 @@
 package me.srgantmoomoo.postman.client.setting.settings;
 
-import org.lwjgl.input.Keyboard;
-
 import com.lukflug.panelstudio.theme.Renderer;
-
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.Setting;
+import org.lwjgl.input.Keyboard;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

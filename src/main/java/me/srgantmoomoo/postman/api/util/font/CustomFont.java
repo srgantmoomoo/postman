@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  */
 
 public class CustomFont {
-    private float imgSize = 512;
+    private final float imgSize = 512;
     protected CharData[] charData = new CharData[256];
     protected Font font;
     protected boolean antiAlias;
@@ -153,7 +153,8 @@ public class CustomFont {
         tex = setupTexture(font, this.antiAlias, this.fractionalMetrics, this.charData);
     }
 
-    protected class CharData {
+    protected static
+    class CharData {
         public int width;
         public int height;
         public int storedX;

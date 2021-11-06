@@ -1,13 +1,5 @@
 package me.srgantmoomoo.postman.api.save;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.client.command.CommandManager;
@@ -20,14 +12,17 @@ import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 
+import java.io.*;
+import java.util.ArrayList;
+
 /*
  * Written by @SrgantMooMoo on 11/30/20 with inspiration taken from @SebSb.
  */
 
 public class SaveLoad {
 
-	private File dir;
-	private File dataFile;
+	private final File dir;
+	private final File dataFile;
 	   
 	public SaveLoad() {
 		dir = new File(Minecraft.getMinecraft().gameDir, Reference.NAME);
@@ -45,7 +40,7 @@ public class SaveLoad {
 	}
 	
 	public void save() {
-		ArrayList<String> toSave = new ArrayList<String>();
+		ArrayList<String> toSave = new ArrayList <>();
 		
 		// modules and keybinds
 		for(Module mod : ModuleManager.modules) {
@@ -100,7 +95,7 @@ public class SaveLoad {
 	}
 	
 	public void load() {
-		ArrayList<String> lines = new ArrayList<String>();
+		ArrayList<String> lines = new ArrayList <>();
 		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(this.dataFile));

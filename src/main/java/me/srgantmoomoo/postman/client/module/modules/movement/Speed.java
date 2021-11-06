@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PlayerMoveEvent;
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.api.util.world.JTimer;
@@ -14,6 +11,9 @@ import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.init.MobEffects;
+import org.lwjgl.input.Keyboard;
+
+import java.util.Objects;
 
 /*
  * strafe is iffy rn, vanilla obvi doesn't work in most cases, strafe utils 
@@ -31,7 +31,7 @@ public class Speed extends Module {
 	}
 	private boolean slowDown;
 	private double playerSpeed;
-	private JTimer timer = new JTimer();
+	private final JTimer timer = new JTimer();
 	
 	@Override
 	public void onEnable() {
@@ -71,7 +71,7 @@ public class Speed extends Module {
 			if(mc.player.onGround && EntityUtil.isMoving(mc.player) && timer.hasReached(300)) {
 				EntityUtil.setTimer((float)timerSpeed.getValue());
 				if(mc.player.isPotionActive(MobEffects.JUMP_BOOST)) {
-					heightY += (mc.player.getActivePotionEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.1f;
+					heightY += (Objects.requireNonNull(mc.player.getActivePotionEffect(MobEffects.JUMP_BOOST)).getAmplifier() + 1) * 0.1f;
 				}
 				event.setY(mc.player.motionY = heightY);
 				playerSpeed = EntityUtil.getBaseMoveSpeed() * (EntityUtil.isColliding(0, -0.5, 0) instanceof BlockLiquid && !EntityUtil.isInLiquid() ? 0.9 : 1.901);

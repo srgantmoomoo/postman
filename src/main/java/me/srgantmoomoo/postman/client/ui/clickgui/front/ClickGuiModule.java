@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.ui.clickgui.front;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
@@ -12,13 +10,10 @@ import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
-import me.zero.alpine.listener.EventHandler;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.input.Keyboard;
 
 //og theme will be made into a different setting and i will make a new hud theme, maybe it will look nicer 
 
@@ -43,7 +38,7 @@ public class ClickGuiModule extends Module {
 		this.addSettings(blur, scrollMode, scrolls, description, animationSpeed, fontColor, enabledColor, backgroundColor, settingBackgroundColor, outlineColor);
 		INSTANCE = this;
 	}
-	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
+	private final ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 	
 	public static Module getClickGuiModule() {
 		return INSTANCE;

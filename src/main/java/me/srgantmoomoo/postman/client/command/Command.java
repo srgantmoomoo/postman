@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class Command {
 	public String name, description, syntax;
-	public List<String> aliases = new ArrayList<String>();
+	public List<String> aliases = new ArrayList <>();
 	
 	public Command(String name, String description, String syntax, String... aliases) {
 		this.name = name;

@@ -1,10 +1,9 @@
 package me.srgantmoomoo.postman.api.util.font;
 
+import me.srgantmoomoo.postman.api.util.render.JColor;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import org.lwjgl.opengl.GL11;
-
-import me.srgantmoomoo.postman.api.util.render.JColor;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class CustomFontRenderer extends CustomFont {
 					try {
 						colorIndex = "0123456789abcdefklmnor".indexOf(text.charAt(i + 1));
 					}
-					catch (Exception e) {
+					catch (Exception ignored) {
 
 					}
 					if (colorIndex < 16) {
@@ -226,9 +225,9 @@ public class CustomFontRenderer extends CustomFont {
     protected DynamicTexture texItalicBold;
 
     private void setupBoldItalicIDs() {
-        texBold = setupTexture(this.font.deriveFont(1), this.antiAlias, this.fractionalMetrics, this.boldChars);
-        texItalic = setupTexture(this.font.deriveFont(2), this.antiAlias, this.fractionalMetrics, this.italicChars);
-        texItalicBold = setupTexture(this.font.deriveFont(3), this.antiAlias, this.fractionalMetrics, this.boldItalicChars);
+        texBold = setupTexture(this.font.deriveFont(Font.BOLD), this.antiAlias, this.fractionalMetrics, this.boldChars);
+        texItalic = setupTexture(this.font.deriveFont(Font.ITALIC), this.antiAlias, this.fractionalMetrics, this.italicChars);
+        texItalicBold = setupTexture(this.font.deriveFont(Font.BOLD | Font.ITALIC), this.antiAlias, this.fractionalMetrics, this.boldItalicChars);
     }
 
     private void drawLine(double x, double y, double x1, double y1, float width) {
@@ -245,7 +244,7 @@ public class CustomFontRenderer extends CustomFont {
         List finalWords = new ArrayList();
         if (getStringWidth(text) > width) {
             String[] words = text.split(" ");
-            String currentWord = "";
+            StringBuilder currentWord = new StringBuilder();
             char lastColorCode = 65535;
 
             for (String word : words) {
@@ -257,18 +256,17 @@ public class CustomFontRenderer extends CustomFont {
                     }
                 }
                 if (getStringWidth(currentWord + word + " ") < width) {
-                    currentWord = currentWord + word + " ";
+                    currentWord.append(word).append(" ");
                 } else {
-                    finalWords.add(currentWord);
-                    currentWord = "\u00A7" + lastColorCode + word + " ";
+                    finalWords.add(currentWord.toString());
+                    currentWord = new StringBuilder("\u00A7" + lastColorCode + word + " ");
                 }
             }
-            if (currentWord.length() > 0) if (getStringWidth(currentWord) < width) {
+            if (currentWord.length() > 0) if (getStringWidth(currentWord.toString()) < width) {
                 finalWords.add("\u00A7" + lastColorCode + currentWord + " ");
-                currentWord = "";
+                currentWord = new StringBuilder();
             } else {
-                for (String s : formatString(currentWord, width))
-                    finalWords.add(s);
+                finalWords.addAll(formatString(currentWord.toString(), width));
             }
         } else {
             finalWords.add(text);
@@ -278,7 +276,7 @@ public class CustomFontRenderer extends CustomFont {
 
     public List<String> formatString(String string, double width) {
         List finalWords = new ArrayList();
-        String currentWord = "";
+        StringBuilder currentWord = new StringBuilder();
         char lastColorCode = 65535;
         char[] chars = string.toCharArray();
         for (int i = 0; i < chars.length; i++) {
@@ -288,16 +286,16 @@ public class CustomFontRenderer extends CustomFont {
                 lastColorCode = chars[(i + 1)];
             }
 
-            if (getStringWidth(currentWord + c) < width) {
-                currentWord = currentWord + c;
+            if (getStringWidth(currentWord.toString() + c) < width) {
+                currentWord.append(c);
             } else {
-                finalWords.add(currentWord);
-                currentWord = "\u00A7" + lastColorCode + String.valueOf(c);
+                finalWords.add(currentWord.toString());
+                currentWord = new StringBuilder("\u00A7" + lastColorCode + c);
             }
         }
 
         if (currentWord.length() > 0) {
-            finalWords.add(currentWord);
+            finalWords.add(currentWord.toString());
         }
 
         return finalWords;
@@ -308,7 +306,7 @@ public class CustomFontRenderer extends CustomFont {
             int noClue = (index >> 3 & 0x1) * 85;
             int red = (index >> 2 & 0x1) * 170 + noClue;
             int green = (index >> 1 & 0x1) * 170 + noClue;
-            int blue = (index >> 0 & 0x1) * 170 + noClue;
+            int blue = (index & 0x1) * 170 + noClue;
 
             if (index == 6) {
                 red += 85;

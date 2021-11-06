@@ -1,10 +1,5 @@
 package me.srgantmoomoo.postman.api.util.render;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL32;
-import org.lwjgl.util.glu.GLU;
-import org.lwjgl.util.glu.Sphere;
-
 import me.srgantmoomoo.postman.api.util.Wrapper;
 import me.srgantmoomoo.postman.api.util.font.FontUtils;
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
@@ -18,6 +13,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL32;
+import org.lwjgl.util.glu.GLU;
+import org.lwjgl.util.glu.Sphere;
 
 //Credit 086 for Kami base Tessellator, heavily rewrote/modified by lukflug and others
 
@@ -371,8 +370,8 @@ public class JTessellator {
 			/*if (Nametags.customColor.getValue()) {
 				bcolor = Nametags.borderColor.getValue();
 			}*/
-			for (int i = 0; i < text.length; i++) {
-				double w= FontUtils.getStringWidth(false,text[i])/2;
+			for (String s : text) {
+				double w = FontUtils.getStringWidth(false, s) / 2;
 				if (w > width) {
 					width = w;
 				}

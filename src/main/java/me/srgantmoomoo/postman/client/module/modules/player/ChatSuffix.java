@@ -1,9 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.player;
 
-import java.util.Arrays;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
@@ -11,6 +7,9 @@ import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.input.Keyboard;
+
+import java.util.Arrays;
 
 public class ChatSuffix extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "fucked lol");

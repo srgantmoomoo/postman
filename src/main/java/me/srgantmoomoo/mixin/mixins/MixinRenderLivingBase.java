@@ -1,5 +1,9 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.api.util.render.OutlineUtils;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.client.module.modules.render.Esp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -12,11 +16,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import me.srgantmoomoo.postman.api.util.render.JColor;
-import me.srgantmoomoo.postman.api.util.render.OutlineUtils;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.module.modules.render.Esp;
 
 import java.awt.*;
 

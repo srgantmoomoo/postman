@@ -21,11 +21,13 @@ public class Clip extends Command {
 			final Vec3d faceDirection = direction(Minecraft.getMinecraft().player.rotationYaw);
 			
 			if(start.equalsIgnoreCase("v")) {
-				entity.setPosition(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY + Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posZ);
+                assert entity != null;
+                entity.setPosition(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY + Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posZ);
 				ModuleManager.addChatMessage("vertically clipped " + args[1] + " blocks");
 				
 			}else if(start.equalsIgnoreCase("h")) {
-				 entity.setPosition(Minecraft.getMinecraft().player.posX + faceDirection.x * Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ + faceDirection.z * Double.valueOf(args[1]));
+                assert entity != null;
+                entity.setPosition(Minecraft.getMinecraft().player.posX + faceDirection.x * Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ + faceDirection.z * Double.parseDouble(args[1]));
 				ModuleManager.addChatMessage("horizontally clipped " + args[1] + " blocks");
 			}else
 				CommandManager.correctUsageMsg(getName(), getSyntax());

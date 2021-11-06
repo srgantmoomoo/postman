@@ -1,12 +1,8 @@
 package me.srgantmoomoo.postman.client.module.modules.hud;
 
-import java.awt.Color;
-import java.awt.Point;
-
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
@@ -15,9 +11,11 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import java.awt.*;
+
 
 public class Totems extends HudModule {
-	private TotemList list = new TotemList();
+	private final TotemList list = new TotemList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);

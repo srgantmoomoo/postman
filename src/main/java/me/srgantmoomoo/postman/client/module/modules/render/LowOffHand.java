@@ -1,11 +1,10 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import net.minecraft.client.renderer.ItemRenderer;
+import org.lwjgl.input.Keyboard;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

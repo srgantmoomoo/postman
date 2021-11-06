@@ -1,17 +1,14 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.util.damagetilt.MessageUpdateAttackYaw;
 import me.srgantmoomoo.postman.api.util.damagetilt.PacketHandler;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.input.Keyboard;
 
 public class DamageTiltCorrection extends Module {
 	
@@ -25,7 +22,7 @@ public class DamageTiltCorrection extends Module {
 	    	EntityPlayer player = (EntityPlayer)event.getEntityLiving();
 	    	if (player.world.isRemote)
 	    		return; 
-	    	PacketHandler.instance.sendTo(new MessageUpdateAttackYaw((EntityLivingBase)player), (EntityPlayerMP)player);
+	    	PacketHandler.instance.sendTo(new MessageUpdateAttackYaw(player), (EntityPlayerMP)player);
 	    }
 	}
 	

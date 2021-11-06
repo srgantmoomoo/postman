@@ -1,7 +1,6 @@
 package me.srgantmoomoo.postman.client.command.commands;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.postman.client.command.Command;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
@@ -25,8 +24,8 @@ public class Protester extends Command {
                 msg.append(string).append(" ");
             }
 			
-			me.srgantmoomoo.postman.client.module.modules.player.Protester.setMessage(args[0] + " " + msg.toString());
-			ModuleManager.addChatMessage("set protester message to " + ChatFormatting.GREEN + args[0] + " " + msg.toString() + ChatFormatting.GRAY + ".");
+			me.srgantmoomoo.postman.client.module.modules.player.Protester.setMessage(args[0] + " " + msg);
+			ModuleManager.addChatMessage("set protester message to " + ChatFormatting.GREEN + args[0] + " " + msg + ChatFormatting.GRAY + ".");
 		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }

@@ -1,14 +1,12 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PlayerMoveEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
+import org.lwjgl.input.Keyboard;
 
 public class SafeWalk extends Module {
 	
@@ -17,7 +15,7 @@ public class SafeWalk extends Module {
 	}
 	
 	@EventHandler
-    private Listener<PlayerMoveEvent> OnPlayerMove = new Listener<>(event -> {
+    private final Listener<PlayerMoveEvent> OnPlayerMove = new Listener<>(event -> {
         double x = event.getX();
         double y = event.getY();
         double z = event.getZ();
@@ -33,7 +31,7 @@ public class SafeWalk extends Module {
                     x += increment;
                 }
             }
-            for (; z != 0.0D && isOffsetBBEmpty(0.0D, -1, z); ) {
+            while (z != 0.0D && isOffsetBBEmpty(0.0D, -1, z)) {
                 if (z < increment && z >= -increment) {
                     z = 0.0D;
                 } else if (z > 0.0D) {
@@ -42,7 +40,7 @@ public class SafeWalk extends Module {
                     z += increment;
                 }
             }
-            for (; x != 0.0D && z != 0.0D && isOffsetBBEmpty(x, -1, z); ) {
+            while (x != 0.0D && z != 0.0D && isOffsetBBEmpty(x, -1, z)) {
                 if (x < increment && x >= -increment) {
                     x = 0.0D;
                 } else if (x > 0.0D) {

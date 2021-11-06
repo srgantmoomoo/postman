@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.hud;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraft.client.Minecraft;
@@ -12,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.input.Keyboard;
 
 public class ArmorHud extends Module {
 	public boolean on;
@@ -19,7 +18,7 @@ public class ArmorHud extends Module {
 	public ArmorHud() {
 		super ("armorHud", "shows ur armor values on top of hotbar", Keyboard.KEY_NONE, Category.HUD);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 
 	
 	 private static final RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();

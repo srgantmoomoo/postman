@@ -1,10 +1,9 @@
 package me.srgantmoomoo.postman.client.module.modules.client;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.util.misc.Discord;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
+import org.lwjgl.input.Keyboard;
 
 public class DiscordRichPresence extends Module {
 	

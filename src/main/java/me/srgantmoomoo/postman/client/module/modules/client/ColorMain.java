@@ -1,13 +1,12 @@
 package me.srgantmoomoo.postman.client.module.modules.client;
 
-import java.util.ArrayList;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import net.minecraft.util.text.TextFormatting;
+import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
 
 // this is from gs ... lol
 

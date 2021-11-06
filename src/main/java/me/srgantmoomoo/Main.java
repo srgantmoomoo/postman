@@ -4,11 +4,6 @@
 
 package me.srgantmoomoo;
 
-import java.util.ArrayList;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import me.srgantmoomoo.postman.api.event.EventProcessor;
 import me.srgantmoomoo.postman.api.proxy.CommonProxy;
 import me.srgantmoomoo.postman.api.save.ClickGuiLoad;
@@ -31,6 +26,10 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

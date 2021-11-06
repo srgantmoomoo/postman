@@ -1,9 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import static me.srgantmoomoo.postman.api.util.world.BlockUtils.faceVectorPacketInstant;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.util.world.BlockUtils;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -25,12 +21,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.input.Keyboard;
+
+import static me.srgantmoomoo.postman.api.util.world.BlockUtils.faceVectorPacketInstant;
 
 /*
  * Almost completely stolen from gamesense. @Srgantmoomoo November 6th, 2020
  */
 public class Surround extends Module {
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 
 	public BooleanSetting triggerSurround = new BooleanSetting("trigger", this, false);
 	public BooleanSetting shiftOnly = new BooleanSetting("onShift", this, false);
@@ -208,13 +207,9 @@ public class Surround extends Module {
 	            BlockPos offsetPos = new BlockPos(offsetPattern[offsetSteps]);
 	            BlockPos targetPos = new BlockPos(mc.player.getPositionVector()).add(offsetPos.getX(), offsetPos.getY(), offsetPos.getZ());
 
-	            boolean tryPlacing = true;
+	            boolean tryPlacing = mc.world.getBlockState(targetPos).getMaterial().isReplaceable();
 
-	            if (!mc.world.getBlockState(targetPos).getMaterial().isReplaceable()) {
-	                tryPlacing = false;
-	            }
-
-	            for (Entity entity : mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(targetPos))) {
+				for (Entity entity : mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(targetPos))) {
 	                if (entity instanceof EntityPlayer) {
 	                    tryPlacing = false;
 	                    break;
@@ -270,7 +265,7 @@ public class Surround extends Module {
 	        BlockPos neighbour = pos.offset(side);
 	        EnumFacing opposite = side.getOpposite();
 
-	        if (!BlockUtils.canBeClicked(neighbour)) {
+	        if (BlockUtils.canBeClicked(neighbour)) {
 	            return false;
 	        }
 

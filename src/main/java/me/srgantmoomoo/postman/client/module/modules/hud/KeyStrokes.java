@@ -1,31 +1,19 @@
 package me.srgantmoomoo.postman.client.module.modules.hud;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-import org.lwjgl.opengl.GL11;
-
-import me.srgantmoomoo.postman.client.module.Category;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
-
-/*
- * Written by @SrgantMooMoo on November 7th, 2020.
- * Rewritten by @SrgantMooMoo on January 10th, 2021.
- */
-
-import java.awt.Point;
-import java.awt.Rectangle;
-
 import com.lukflug.panelstudio.Context;
 import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.postman.api.util.render.JColor;
+import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.HudModule;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.settings.KeyBinding;
+import org.lwjgl.opengl.GL11;
+
+import java.awt.*;
 
 public class KeyStrokes extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
@@ -40,7 +28,8 @@ public class KeyStrokes extends HudModule {
     	component = new KeyStrokesComponent(theme);
     }
     
-	public static enum KeyStrokesMode {
+	public
+    enum KeyStrokesMode {
 		
 		WASD(Key.W, Key.A, Key.S, Key.D),
 		WASD_SHFT(Key.W, Key.A, Key.S, Key.D, Key.SHFT, Key.JMP);
@@ -49,7 +38,7 @@ public class KeyStrokes extends HudModule {
 		private int width;
 		private int height;
 
-		private KeyStrokesMode(Key... keysIn) {
+		KeyStrokesMode(Key... keysIn) {
 			this.keys = keysIn;
 			
 			for(Key key : keys) {
@@ -110,7 +99,7 @@ public class KeyStrokes extends HudModule {
 		}
 	}
 	
-	private KeyStrokesMode mode = KeyStrokesMode.WASD_SHFT;
+	private final KeyStrokesMode mode = KeyStrokesMode.WASD_SHFT;
 
     private class KeyStrokesComponent extends HUDComponent {
 

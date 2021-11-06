@@ -1,10 +1,6 @@
 package me.srgantmoomoo.postman.api.util.world;
 
-import java.io.IOException;
-import java.net.URL;
-
 import com.google.gson.JsonParser;
-
 import me.srgantmoomoo.postman.api.util.Wrapper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -17,12 +13,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.passive.EntityAmbientCreature;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntitySquid;
-import net.minecraft.entity.passive.EntityTameable;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
@@ -31,6 +22,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
 
 /**
  * @Author 086/KAMI
@@ -44,7 +39,7 @@ public class EntityUtil {
 
 	public static boolean isPassive(Entity e) {
 		if (e instanceof EntityWolf && ((EntityWolf) e).isAngry()) return false;
-		if (e instanceof EntityAnimal || e instanceof EntityAgeable || e instanceof EntityTameable || e instanceof EntityAmbientCreature || e instanceof EntitySquid)
+		if (e instanceof EntityAgeable || e instanceof EntityTameable || e instanceof EntityAmbientCreature || e instanceof EntitySquid)
 			return true;
 		return e instanceof EntityIronGolem && ((EntityIronGolem) e).getRevengeTarget() == null;
 	}
@@ -73,7 +68,7 @@ public class EntityUtil {
 			JsonParser parser = new JsonParser();
 
 			return parser.parse(jsonUrl).getAsJsonArray().get(parser.parse(jsonUrl).getAsJsonArray().size() - 1).getAsJsonObject().get("name").toString();
-		} catch (IOException ex) {
+		} catch (IOException ignored) {
 		}
 		return null;
 	}
@@ -94,8 +89,8 @@ public class EntityUtil {
 
 	public static double getBaseMoveSpeed() {
 		double baseSpeed = 0.2873;
-		if (mc.player != null && mc.player.isPotionActive(Potion.getPotionById(1))) {
-			final int amplifier = mc.player.getActivePotionEffect(Potion.getPotionById(1)).getAmplifier();
+		if (mc.player != null && mc.player.isPotionActive(Objects.requireNonNull(Potion.getPotionById(1)))) {
+			final int amplifier = Objects.requireNonNull(Objects.requireNonNull(mc.player.getActivePotionEffect(Objects.requireNonNull(Potion.getPotionById(1))))).getAmplifier();
 			baseSpeed *= 1.0 + 0.2 * (amplifier + 1);
 		}
 		return baseSpeed;

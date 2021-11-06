@@ -1,11 +1,10 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import net.minecraft.client.settings.KeyBinding;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
 public class AutoClicker extends Module {
 	

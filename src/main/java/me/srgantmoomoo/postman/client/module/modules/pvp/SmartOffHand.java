@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PlayerUpdateEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -18,6 +15,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import org.lwjgl.input.Keyboard;
 /*
  * i looked at a bit of salhack for some of the stuff used here o_0
  * SrgantMooMoo feb 14 2021 (valentines day, and im all a fucking lone :stronk_tone6: :')
@@ -83,7 +81,7 @@ public class SmartOffHand extends Module {
     }
 
     @EventHandler
-    private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
+    private final Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
     	
     	if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
             return;
@@ -147,7 +145,7 @@ public class SmartOffHand extends Module {
     	if(val.is("crystal")) return Items.END_CRYSTAL;
     	if(val.is("gap")) return Items.GOLDEN_APPLE;
     	if(val.is("totem")) return Items.TOTEM_OF_UNDYING;
-        
+
         return Items.TOTEM_OF_UNDYING;
     }
 

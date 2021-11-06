@@ -1,13 +1,9 @@
 package me.srgantmoomoo.postman.client.module.modules.hud;
 
-import java.awt.Color;
-import java.awt.Point; 
-
 import com.lukflug.panelstudio.Context;
 import com.lukflug.panelstudio.Interface;
 import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.api.util.render.JColor;
 import me.srgantmoomoo.postman.client.module.Category;
@@ -18,6 +14,8 @@ import me.srgantmoomoo.postman.client.ui.clickgui.back.ClickGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+
+import java.awt.*;
 
 public class InventoryViewer extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 100)); 

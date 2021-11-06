@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.Wrapper;
 import me.srgantmoomoo.postman.api.util.render.JTessellator;
@@ -15,6 +13,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.input.Keyboard;
 
 /*
  * written by @SrgantMooMoo on November 1st, 2020. hbd peep!

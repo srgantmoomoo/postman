@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerMoveEvent;
 import me.srgantmoomoo.postman.client.module.Category;
@@ -16,7 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketInput;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraftforge.client.event.PlayerSPPushOutOfBlocksEvent;
-import net.minecraftforge.common.MinecraftForge;
+import org.lwjgl.input.Keyboard;
 
 /*
  * Originally written by someone at gamesense, i can't quite figure it out rn lol.

@@ -7,9 +7,9 @@ import me.srgantmoomoo.Reference;
 import net.minecraft.client.Minecraft;
 
 public class Discord {
-    private static String discordID = "772234731882151946";
-    private static DiscordRichPresence discordRichPresence = new DiscordRichPresence();
-    private static DiscordRPC discordRPC = DiscordRPC.INSTANCE;
+    private static final String discordID = "772234731882151946";
+    private static final DiscordRichPresence discordRichPresence = new DiscordRichPresence();
+    private static final DiscordRPC discordRPC = DiscordRPC.INSTANCE;
 
     public static void startRPC() {
         DiscordEventHandlers eventHandlers = new DiscordEventHandlers();

@@ -1,16 +1,15 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
 import net.minecraft.client.Minecraft;
+import org.lwjgl.input.Keyboard;
 
 public class Sprint extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "sickomode");
 	
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	public boolean on;
 	
 	public Sprint() {

@@ -1,11 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -18,8 +12,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketChatMessage;
 import net.minecraft.network.play.client.CPacketUseEntity;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import org.lwjgl.input.Keyboard;
+
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class AutoCope extends Module {
 	public ModeSetting msg = new ModeSetting("msg", this, "cope&seethe", "cope&seethe", "u suck", "ez pz", "gg", "customMsg");
@@ -30,7 +27,7 @@ public class AutoCope extends Module {
 		this.addSettings(msg, greenText);
 	}
 	int delay = 0;
-    private static final ConcurrentHashMap<Object, Integer> targetedPlayers = new ConcurrentHashMap<Object, Integer>();
+    private static final ConcurrentHashMap<Object, Integer> targetedPlayers = new ConcurrentHashMap <>();
 
     public static String customMsgArg = "";
     public static void setMessage(String msg) {
@@ -52,10 +49,10 @@ public class AutoCope extends Module {
         }
 
         targetedPlayers.forEach((name, timeout) -> {
-            if ((int)timeout <= 0) {
+            if (timeout <= 0) {
             	targetedPlayers.remove(name);
             } else {
-            	targetedPlayers.put(name, (int)timeout - 1);
+            	targetedPlayers.put(name, timeout - 1);
             }
 
         });
@@ -65,7 +62,7 @@ public class AutoCope extends Module {
     } 
     
     @EventHandler
-    private Listener<PacketEvent.Send> sendListener = new Listener<>(event -> {
+    private final Listener<PacketEvent.Send> sendListener = new Listener<>(event -> {
 
         if (mc.player == null) return;
 
@@ -82,7 +79,7 @@ public class AutoCope extends Module {
     });
 
     @EventHandler
-    private Listener<LivingDeathEvent> livingDeathListener = new Listener<>(event -> {
+    private final Listener<LivingDeathEvent> livingDeathListener = new Listener<>(event -> {
 
         if (mc.player == null) return;
 

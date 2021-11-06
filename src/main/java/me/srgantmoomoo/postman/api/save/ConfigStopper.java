@@ -1,8 +1,8 @@
 package me.srgantmoomoo.postman.api.save;
 
-import java.io.IOException;
-
 import me.srgantmoomoo.Main;
+
+import java.io.IOException;
 
 public class ConfigStopper extends Thread {
 

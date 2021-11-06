@@ -1,13 +1,12 @@
 package me.srgantmoomoo.postman.client.setting.settings;
 
-import java.util.Arrays;
-import java.util.List;
-
 import com.lukflug.panelstudio.settings.EnumSetting;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.Setting;
+
+import java.util.Arrays;
+import java.util.List;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.

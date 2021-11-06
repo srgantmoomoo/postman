@@ -1,7 +1,6 @@
 package me.srgantmoomoo.postman.client.command.commands;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.postman.client.command.Command;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.friend.FriendManager;

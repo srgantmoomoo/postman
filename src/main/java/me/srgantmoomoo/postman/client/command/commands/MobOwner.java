@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.command.commands;
 
-import java.util.Objects;
-
 import me.srgantmoomoo.postman.api.util.world.EntityUtil;
 import me.srgantmoomoo.postman.client.command.Command;
 import me.srgantmoomoo.postman.client.command.CommandManager;
@@ -9,6 +7,8 @@ import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.util.text.TextFormatting;
+
+import java.util.Objects;
 
 public class MobOwner extends Command {
 	

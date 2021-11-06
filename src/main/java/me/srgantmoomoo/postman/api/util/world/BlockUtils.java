@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.api.util.world;
 
+import me.srgantmoomoo.postman.api.util.Wrapper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -13,8 +14,6 @@ import net.minecraft.util.math.Vec3d;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import me.srgantmoomoo.postman.api.util.Wrapper;
 
 public class BlockUtils{
 	public static final List blackList;
@@ -59,7 +58,7 @@ public class BlockUtils{
 
 	public static boolean canBeClicked(BlockPos pos)
 	{
-		return getBlock(pos).canCollideCheck(getState(pos), false);
+		return !getBlock(pos).canCollideCheck(getState(pos), false);
 	}
 
 	public static void faceVectorPacketInstant(Vec3d vec){
@@ -95,7 +94,7 @@ public class BlockUtils{
 	}
 
 	public static List<BlockPos> getCircle(final BlockPos loc, final int y, final float r, final boolean hollow){
-		final List<BlockPos> circleblocks = new ArrayList<BlockPos>();
+		final List<BlockPos> circleblocks = new ArrayList <>();
 		final int cx = loc.getX();
 		final int cz = loc.getZ();
 		for (int x = cx - (int)r; x <= cx + r; x++){

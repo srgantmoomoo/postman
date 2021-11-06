@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.pvp;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.events.PacketEvent;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
@@ -11,6 +8,7 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.item.ItemExpBottle;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
+import org.lwjgl.input.Keyboard;
 
 /*
  * I originally got this idea from olliem5, it was done in his "past" client. not sure where he got it, but that's where i got it :)

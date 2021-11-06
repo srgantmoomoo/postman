@@ -1,13 +1,11 @@
 package me.srgantmoomoo.postman.client.command.commands;
 
-import org.lwjgl.input.Keyboard;
-
 import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.postman.client.command.Command;
 import me.srgantmoomoo.postman.client.command.CommandManager;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.module.ModuleManager;
+import org.lwjgl.input.Keyboard;
 
 public class Bind extends Command {
 	
@@ -26,8 +24,8 @@ public class Bind extends Command {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.keyCode.setKeyCode(Keyboard.getKeyIndex(keyName.toUpperCase()));
 					
-					ModuleManager.addChatMessage(String.format(ChatFormatting.GREEN + "%s " + ChatFormatting.GRAY + "was bound to" + ChatFormatting.GREEN + " %s", module.name, Keyboard.getKeyName(module.getKey())));;
-					moduleFound = true;
+					ModuleManager.addChatMessage(String.format(ChatFormatting.GREEN + "%s " + ChatFormatting.GRAY + "was bound to" + ChatFormatting.GREEN + " %s", module.name, Keyboard.getKeyName(module.getKey())));
+                    moduleFound = true;
 					break;
 				}
 			}

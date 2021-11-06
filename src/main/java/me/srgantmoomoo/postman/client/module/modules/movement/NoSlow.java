@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
-import org.lwjgl.input.Keyboard;
 
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.BooleanSetting;
@@ -9,6 +7,7 @@ import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.InputUpdateEvent;
+import org.lwjgl.input.Keyboard;
 
 	public class NoSlow extends Module {
 	public BooleanSetting food = new BooleanSetting("food", this, true);

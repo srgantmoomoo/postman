@@ -1,5 +1,8 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.api.event.events.PlayerUpdateMoveStateEvent;
+import me.srgantmoomoo.postman.client.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.settings.KeyBinding;
@@ -12,11 +15,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.events.PlayerUpdateMoveStateEvent;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.module.modules.movement.GuiMove;
-
 @Mixin(value = MovementInputFromOptions.class, priority = 10000)
 public abstract class MixinMovementInputFromOptions extends MovementInput {
 	
@@ -27,7 +25,7 @@ public abstract class MixinMovementInputFromOptions extends MovementInput {
 
 	@Redirect(method = "updatePlayerMoveState", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/settings/KeyBinding;isKeyDown()Z"))
 	public boolean isKeyPressed(KeyBinding keyBinding) {
-		if (ModuleManager.isModuleEnabled("guiMove") && ((GuiMove)ModuleManager.getModuleByName("guiMove")).isToggled()
+		if (ModuleManager.isModuleEnabled("guiMove") && ModuleManager.getModuleByName("guiMove").isToggled()
 				&& Minecraft.getMinecraft().currentScreen != null
 				&& !(Minecraft.getMinecraft().currentScreen instanceof GuiChat)
 				&& Minecraft.getMinecraft().player != null) {

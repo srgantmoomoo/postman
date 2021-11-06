@@ -8,7 +8,6 @@ import com.lukflug.panelstudio.settings.ColorComponent;
 import com.lukflug.panelstudio.settings.Toggleable;
 import com.lukflug.panelstudio.theme.Renderer;
 import com.lukflug.panelstudio.theme.Theme;
-
 import me.srgantmoomoo.postman.client.module.ModuleManager;
 import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.ui.clickgui.front.ClickGuiModule;

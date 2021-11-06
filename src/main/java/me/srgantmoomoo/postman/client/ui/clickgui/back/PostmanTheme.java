@@ -1,18 +1,10 @@
 package me.srgantmoomoo.postman.client.ui.clickgui.back;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-
 import com.lukflug.panelstudio.Context;
-import com.lukflug.panelstudio.theme.ColorScheme;
-import com.lukflug.panelstudio.theme.DescriptionRenderer;
-import com.lukflug.panelstudio.theme.Renderer;
-import com.lukflug.panelstudio.theme.RendererBase;
-import com.lukflug.panelstudio.theme.Theme;
-
+import com.lukflug.panelstudio.theme.*;
 import me.srgantmoomoo.postman.api.util.render.JColor;
+
+import java.awt.*;
 /**
  * @author SrgantMooMoo
  */

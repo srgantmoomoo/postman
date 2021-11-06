@@ -1,10 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.render;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.postman.api.event.events.RenderEvent;
 import me.srgantmoomoo.postman.api.util.Wrapper;
 import me.srgantmoomoo.postman.api.util.render.JColor;
@@ -25,15 +20,12 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.tileentity.TileEntityDispenser;
-import net.minecraft.tileentity.TileEntityDropper;
-import net.minecraft.tileentity.TileEntityEnderChest;
-import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.tileentity.TileEntityHopper;
-import net.minecraft.tileentity.TileEntityShulkerBox;
+import net.minecraft.tileentity.*;
 import net.minecraft.util.math.BlockPos;
+import org.lwjgl.input.Keyboard;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
@@ -146,7 +138,7 @@ public class Esp extends Module {
         });
         
         if (storage.is("outline")) {
-            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(chestColor.getValue(), 255);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
@@ -167,7 +159,7 @@ public class Esp extends Module {
         }
         
         if (storage.is("both")) {
-            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(chestColor.getValue(), 255);
                     containerBox = new JColor(chestColor.getValue());
@@ -196,7 +188,7 @@ public class Esp extends Module {
         }
         
         if (storage.is("fill")) {
-            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                 	containerBox = new JColor(chestColor.getValue());
                     drawStorageBox(tileEntity.getPos(), 1, containerBox);

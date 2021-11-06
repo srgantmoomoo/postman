@@ -1,8 +1,5 @@
 package me.srgantmoomoo.postman.client.module.modules.movement;
 
-import org.lwjgl.input.Keyboard;
-
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.event.Event.Era;
 import me.srgantmoomoo.postman.api.event.events.NetworkPacketEvent;
 import me.srgantmoomoo.postman.api.event.events.PlayerMotionUpdateEvent;
@@ -12,6 +9,7 @@ import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
+import org.lwjgl.input.Keyboard;
 
 public class Sneak extends Module {
 	
@@ -27,7 +25,7 @@ public class Sneak extends Module {
     }
 
     @EventHandler
-    private Listener<PlayerMotionUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
+    private final Listener<PlayerMotionUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
         if (event.getEra() != Era.PRE)
             return;
         
@@ -35,7 +33,7 @@ public class Sneak extends Module {
     });
 
     @EventHandler
-    private Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
+    private final Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
         if (event.getPacket() instanceof CPacketPlayerTryUseItemOnBlock && !mc.player.isSneaking()) {
             mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         }

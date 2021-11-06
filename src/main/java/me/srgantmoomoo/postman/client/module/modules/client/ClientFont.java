@@ -1,14 +1,13 @@
 package me.srgantmoomoo.postman.client.module.modules.client;
 
-import java.awt.Font;
-
-import org.lwjgl.input.Keyboard;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.api.util.font.CustomFontRenderer;
 import me.srgantmoomoo.postman.client.module.Category;
 import me.srgantmoomoo.postman.client.module.Module;
 import me.srgantmoomoo.postman.client.setting.settings.ModeSetting;
+import org.lwjgl.input.Keyboard;
+
+import java.awt.*;
 
 public class ClientFont extends Module {
 	public ModeSetting font = new ModeSetting("font", this, "Comic Sans Ms", "Comic Sans Ms", "Arial", "Verdana");
