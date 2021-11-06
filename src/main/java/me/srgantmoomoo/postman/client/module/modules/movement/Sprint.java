@@ -7,7 +7,7 @@ import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 
 public class Sprint extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "sickomode");
+	public final ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "sickomode");
 	
 	private final Minecraft mc = Minecraft.getMinecraft();
 	public boolean on;

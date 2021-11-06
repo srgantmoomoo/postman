@@ -15,8 +15,8 @@ import java.util.Objects;
 
 
 public class Ping extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Ping() {
 		super("ping", "shows ur ping on ur hud.", new Point(-2,19), Category.HUD);

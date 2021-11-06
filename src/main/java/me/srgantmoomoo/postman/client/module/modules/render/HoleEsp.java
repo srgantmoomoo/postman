@@ -27,11 +27,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class HoleEsp extends Module {
-	public NumberSetting size = new NumberSetting("size", this, 0.1, 0.0, 1.0, 0.1);
-	public BooleanSetting outline = new BooleanSetting("outline", this, true);
+	public final NumberSetting size = new NumberSetting("size", this, 0.1, 0.0, 1.0, 0.1);
+	public final BooleanSetting outline = new BooleanSetting("outline", this, true);
 
-	public ColorSetting obbyColor = new ColorSetting("obbyColor", this, new JColor(0, 121, 194, 50));
-	public ColorSetting bedrockColor = new ColorSetting("bedrockColor", this, new JColor(0, 200, 255, 50));
+	public final ColorSetting obbyColor = new ColorSetting("obbyColor", this, new JColor(0, 121, 194, 50));
+	public final ColorSetting bedrockColor = new ColorSetting("bedrockColor", this, new JColor(0, 200, 255, 50));
 	
 	public HoleEsp() {
 		super ("holeEsp", "shows an esp inobby and bedrock holes.", Keyboard.KEY_NONE, Category.RENDER);

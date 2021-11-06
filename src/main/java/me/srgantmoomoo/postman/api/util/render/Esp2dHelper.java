@@ -25,7 +25,7 @@ public class Esp2dHelper extends Module {
 		super("Esp2dHelper", "eeeeeeeEsp2dHelper", Keyboard.KEY_NONE, Category.CLIENT);
 		toggled = true;
 	}
-	public Esp esp = (Esp)ModuleManager.getModuleByName("esp's");
+	public final Esp esp = (Esp)ModuleManager.getModuleByName("esp's");
 	
 	JColor ppColor;
 	int opacityGradient;

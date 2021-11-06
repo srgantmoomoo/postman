@@ -21,17 +21,17 @@ public class ClickGuiModule extends Module {
 	public static ClickGuiModule INSTANCE;
 	
 	public ModeSetting theme = new ModeSetting("theme", this, "new", "new", "old");
-	public BooleanSetting blur = new BooleanSetting("blur", this, true);
-	public NumberSetting animationSpeed = new NumberSetting("animation", this, 150, 0, 1000, 50);
-	public NumberSetting scrolls = new NumberSetting("scrollSpeed", this, 10, 0, 100, 1);
-	public ModeSetting scrollMode = new ModeSetting("scroll", this, "container", "container", "screen");
-	public ModeSetting description = new ModeSetting("description", this, "mouse", "mouse", "fixed");
-	public ColorSetting enabledColor = new ColorSetting("enabledColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); //(0, 157, 255, 255));
-	public ColorSetting backgroundColor = new ColorSetting("bgColor", this, new JColor(0, 0, 0, 200)); //(0, 121, 194, 255));
-	public ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", this, new JColor(0, 0, 0, 255));
-	public ColorSetting outlineColor = new ColorSetting("settingsHighlight", this, new JColor(255, 255, 255, 255));
-	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
-	public NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
+	public final BooleanSetting blur = new BooleanSetting("blur", this, true);
+	public final NumberSetting animationSpeed = new NumberSetting("animation", this, 150, 0, 1000, 50);
+	public final NumberSetting scrolls = new NumberSetting("scrollSpeed", this, 10, 0, 100, 1);
+	public final ModeSetting scrollMode = new ModeSetting("scroll", this, "container", "container", "screen");
+	public final ModeSetting description = new ModeSetting("description", this, "mouse", "mouse", "fixed");
+	public final ColorSetting enabledColor = new ColorSetting("enabledColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); //(0, 157, 255, 255));
+	public final ColorSetting backgroundColor = new ColorSetting("bgColor", this, new JColor(0, 0, 0, 200)); //(0, 121, 194, 255));
+	public final ColorSetting settingBackgroundColor = new ColorSetting("settinBgColor", this, new JColor(0, 0, 0, 255));
+	public final ColorSetting outlineColor = new ColorSetting("settingsHighlight", this, new JColor(255, 255, 255, 255));
+	public final ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(Reference.POSTMAN_COLOR, 255));
+	public final NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
 	
 	public ClickGuiModule() {
 		super("clickGui", "classic hud", Keyboard.KEY_RCONTROL, Category.CLIENT);

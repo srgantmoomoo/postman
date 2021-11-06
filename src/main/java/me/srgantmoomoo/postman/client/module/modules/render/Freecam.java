@@ -21,7 +21,7 @@ import org.lwjgl.input.Keyboard;
  */
 
 public class Freecam extends Module  {
-	public NumberSetting speed = new NumberSetting("speed", this, 5, 0, 20, 1);
+	public final NumberSetting speed = new NumberSetting("speed", this, 5, 0, 20, 1);
 	
 	public Freecam() {
 		super ("freecam", "gives an out of body expirience 0_0", Keyboard.KEY_NONE, Category.RENDER);

@@ -20,7 +20,7 @@ public class HoleTp extends Module {
 		this.addSettings();
 	}
 
-	public static Minecraft mc = Minecraft.getMinecraft();
+	public static final Minecraft mc = Minecraft.getMinecraft();
 	
 	private int packets;
 	private boolean jumped;

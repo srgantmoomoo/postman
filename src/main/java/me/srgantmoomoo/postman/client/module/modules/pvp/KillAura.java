@@ -18,13 +18,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class KillAura extends Module {
-	public NumberSetting range = new NumberSetting("range", this, 4, 1, 6, 0.5);
-	public BooleanSetting targetFriends = new BooleanSetting("targetFriends", this, false);
-	public BooleanSetting switchA = new BooleanSetting("switch", this, false);
-	public BooleanSetting swordOnly = new BooleanSetting("swordOnly", this, false);
-	public BooleanSetting players = new BooleanSetting("players", this, true);
-	public BooleanSetting passives = new BooleanSetting("passives", this, false);
-	public BooleanSetting hostiles = new BooleanSetting("hostiles", this, false);
+	public final NumberSetting range = new NumberSetting("range", this, 4, 1, 6, 0.5);
+	public final BooleanSetting targetFriends = new BooleanSetting("targetFriends", this, false);
+	public final BooleanSetting switchA = new BooleanSetting("switch", this, false);
+	public final BooleanSetting swordOnly = new BooleanSetting("swordOnly", this, false);
+	public final BooleanSetting players = new BooleanSetting("players", this, true);
+	public final BooleanSetting passives = new BooleanSetting("passives", this, false);
+	public final BooleanSetting hostiles = new BooleanSetting("hostiles", this, false);
 	
 	public KillAura() {
 		super ("killAura", "automatically hits anything near u.", Keyboard.KEY_NONE, Category.PVP);

@@ -18,7 +18,7 @@ public class Jesus extends Module {
 	public Jesus() {
 		super ("jesus", "lets u walk on water.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
-	public float offset = 0.5f;
+	public final float offset = 0.5f;
 	
 	@EventHandler
     private final Listener<LiquidCollisionBBEvent> getLiquidCollisionBB = new Listener<>(event -> {

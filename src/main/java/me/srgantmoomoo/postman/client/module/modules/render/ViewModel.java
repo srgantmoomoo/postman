@@ -13,12 +13,12 @@ import org.lwjgl.input.Keyboard;
 
 public class ViewModel extends Module {
 	public BooleanSetting cancelEating = new BooleanSetting("noEat", this, false);
-	public NumberSetting LeftX = new NumberSetting("LeftX", this, 0, -2, 2, 0.1);
-	public NumberSetting LeftY = new NumberSetting("LeftY", this, 0, -2, 2, 0.1);
-	public NumberSetting LeftZ = new NumberSetting("LeftZ", this, 0, -2, 2, 0.1);
-	public NumberSetting RightX = new NumberSetting("RightX", this, 0, -2, 2, 0.1);
-	public NumberSetting RightY = new NumberSetting("RightY", this, 0, -2, 2, 0.1);
-	public NumberSetting RightZ = new NumberSetting("RightZ", this, 0, -2, 2, 0.1);
+	public final NumberSetting LeftX = new NumberSetting("LeftX", this, 0, -2, 2, 0.1);
+	public final NumberSetting LeftY = new NumberSetting("LeftY", this, 0, -2, 2, 0.1);
+	public final NumberSetting LeftZ = new NumberSetting("LeftZ", this, 0, -2, 2, 0.1);
+	public final NumberSetting RightX = new NumberSetting("RightX", this, 0, -2, 2, 0.1);
+	public final NumberSetting RightY = new NumberSetting("RightY", this, 0, -2, 2, 0.1);
+	public final NumberSetting RightZ = new NumberSetting("RightZ", this, 0, -2, 2, 0.1);
 	
 	public ViewModel() {
 		super("viewModel", "allows u to change how ur model look in 1st person.", Keyboard.KEY_NONE, Category.RENDER);

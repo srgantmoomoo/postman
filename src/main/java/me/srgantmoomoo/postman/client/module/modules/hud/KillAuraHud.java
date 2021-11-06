@@ -17,8 +17,8 @@ import java.awt.*;
 public class KillAuraHud extends HudModule {
 	private final KillAuraInfoList list=new KillAuraInfoList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 
 	public KillAuraHud() {

@@ -6,7 +6,7 @@ import me.srgantmoomoo.postman.client.setting.settings.NumberSetting;
 import org.lwjgl.input.Keyboard;
 
 public class ReverseStep extends Module {
-	public NumberSetting height = new NumberSetting("height", this, 2.5, 0.5, 10, 0.5);
+	public final NumberSetting height = new NumberSetting("height", this, 2.5, 0.5, 10, 0.5);
 	
 	public ReverseStep() {
 		super ("reverseStep", "sucks u down when going down a block.", Keyboard.KEY_NONE, Category.MOVEMENT);

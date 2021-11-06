@@ -33,25 +33,25 @@ import java.util.stream.Collectors;
 
 public class Esp extends Module {
 	
-	public BooleanSetting chams = new BooleanSetting("walls", this, false);
-	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2dEsp", "glow", "off");
-	public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "both", "off");
-	public ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
+	public final BooleanSetting chams = new BooleanSetting("walls", this, false);
+	public final ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2dEsp", "glow", "off");
+	public final ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "both", "off");
+	public final ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
 	
-	public BooleanSetting mob = new BooleanSetting("mob", this, false);
-	public BooleanSetting item = new BooleanSetting("item", this, true);
-	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
-	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
+	public final BooleanSetting mob = new BooleanSetting("mob", this, false);
+	public final BooleanSetting item = new BooleanSetting("item", this, true);
+	public final NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
+	public final NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
 	
-	public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 100)); 
-	public ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 100)); 
-	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 100)); 
-	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 100)); 
+	public final ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 100));
+	public final ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 100));
+	public final ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 100));
+	public final ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 100));
 	
-	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50));
-	public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50)); 
-	public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50)); 
-	public ColorSetting otherColor = new ColorSetting("other", this, new JColor(150, 150, 150, 50)); 
+	public final ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50));
+	public final ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50));
+	public final ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50));
+	public final ColorSetting otherColor = new ColorSetting("other", this, new JColor(150, 150, 150, 50));
 	
 	public Esp() {
 		super ("esp's", "draws esp around players and storage blocks.", Keyboard.KEY_NONE, Category.RENDER);

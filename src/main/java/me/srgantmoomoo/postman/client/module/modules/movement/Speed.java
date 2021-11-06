@@ -20,10 +20,10 @@ import java.util.Objects;
  */
 
 public class Speed extends Module {
-	public NumberSetting timerSpeed = new NumberSetting("timerSpeed", this, 1.15, 1, 1.5, 0.01);
-	public NumberSetting jumpHeight = new NumberSetting("jumpHeight", this, 0.41, 0, 1, 0.01);
-	public NumberSetting vanillaSpeed = new NumberSetting("vanillaSpeed", this, 1.0, 0.1, 3.0, 0.1); 
-	public ModeSetting mode = new ModeSetting("mode", this, "strafe", "strafe", "vanilla");
+	public final NumberSetting timerSpeed = new NumberSetting("timerSpeed", this, 1.15, 1, 1.5, 0.01);
+	public final NumberSetting jumpHeight = new NumberSetting("jumpHeight", this, 0.41, 0, 1, 0.01);
+	public final NumberSetting vanillaSpeed = new NumberSetting("vanillaSpeed", this, 1.0, 0.1, 3.0, 0.1);
+	public final ModeSetting mode = new ModeSetting("mode", this, "strafe", "strafe", "vanilla");
 	
 	public Speed() {
 		super ("speed", "speeeeeeeeddddyyy.", Keyboard.KEY_NONE, Category.MOVEMENT);

@@ -22,10 +22,10 @@ import org.lwjgl.input.Keyboard;
 import java.util.Objects;
 
 public class Step extends Module {
-	public BooleanSetting entityStep = new BooleanSetting("entityStep", this, false);
-	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "delay", "vanilla");
-	public ModeSetting delayHeight = new ModeSetting("delayHeight", this, "one", "one", "two");
-	public NumberSetting vanillaHeight = new NumberSetting("vanillaHeight", this, 2.0, 0.1, 10.0, 0.1);
+	public final BooleanSetting entityStep = new BooleanSetting("entityStep", this, false);
+	public final ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "delay", "vanilla");
+	public final ModeSetting delayHeight = new ModeSetting("delayHeight", this, "one", "one", "two");
+	public final NumberSetting vanillaHeight = new NumberSetting("vanillaHeight", this, 2.0, 0.1, 10.0, 0.1);
 
     public Step() {
 		super ("step", "steps up blocks lol.", Keyboard.KEY_NONE, Category.MOVEMENT);

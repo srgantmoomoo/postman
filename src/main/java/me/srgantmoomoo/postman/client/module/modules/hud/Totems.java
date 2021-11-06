@@ -17,8 +17,8 @@ import java.awt.*;
 public class Totems extends HudModule {
 	private final TotemList list = new TotemList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Totems() {
 		super("totems", "shows how many totems u have in ur inventory.", new Point(-2, 11), Category.HUD);

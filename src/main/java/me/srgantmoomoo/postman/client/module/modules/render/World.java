@@ -11,8 +11,8 @@ import net.minecraft.network.play.server.SPacketTimeUpdate;
 import org.lwjgl.input.Keyboard;
 
 public class World extends Module {
-	public ModeSetting weather = new ModeSetting("weather", this, "clear", "clear", "rain", "thunderStorm");
-	public NumberSetting time = new NumberSetting("time", this, 0.0D, 0.0D, 24000.0D, 1.0D);
+	public final ModeSetting weather = new ModeSetting("weather", this, "clear", "clear", "rain", "thunderStorm");
+	public final NumberSetting time = new NumberSetting("time", this, 0.0D, 0.0D, 24000.0D, 1.0D);
 	
 	public World() {
 		super("world", "change world shit.", Keyboard.KEY_NONE, Category.RENDER);

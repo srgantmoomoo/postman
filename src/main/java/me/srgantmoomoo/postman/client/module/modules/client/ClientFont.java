@@ -10,7 +10,7 @@ import org.lwjgl.input.Keyboard;
 import java.awt.*;
 
 public class ClientFont extends Module {
-	public ModeSetting font = new ModeSetting("font", this, "Comic Sans Ms", "Comic Sans Ms", "Arial", "Verdana");
+	public final ModeSetting font = new ModeSetting("font", this, "Comic Sans Ms", "Comic Sans Ms", "Arial", "Verdana");
 	
 	public ClientFont() {
 		super ("clientFont", "changes the font the client uses.", Keyboard.KEY_NONE, Category.CLIENT);

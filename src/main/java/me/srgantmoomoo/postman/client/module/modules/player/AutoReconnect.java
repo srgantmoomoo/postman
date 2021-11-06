@@ -15,7 +15,7 @@ import net.minecraft.network.handshake.client.C00Handshake;
 import org.lwjgl.input.Keyboard;
 
 public class AutoReconnect extends Module {
-	public NumberSetting delay = new NumberSetting("delay", this, 5, 1, 20, 1);
+	public final NumberSetting delay = new NumberSetting("delay", this, 5, 1, 20, 1);
 	
 	public AutoReconnect() {
 		super("autoReconnect", "automatically reconnects to a server.", Keyboard.KEY_NONE, Category.PLAYER);

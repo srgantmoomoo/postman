@@ -20,12 +20,12 @@ import org.lwjgl.input.Keyboard;
  */
 
 public class Tracers extends Module {
-	public BooleanSetting hostileMobs = new BooleanSetting("hostiles", this, false);
-	public BooleanSetting passiveMobs = new BooleanSetting("passives", this, false);
-	public BooleanSetting players = new BooleanSetting("players", this, true);
-	public NumberSetting pRed = new NumberSetting("pRed", this, 0.0, 0.0, 1.0, 0.1);
-	public NumberSetting pGreen = new NumberSetting("pGreen", this, 0.6, 0.0, 1.0, 0.1);
-	public NumberSetting pBlue = new NumberSetting("pBlue", this, 1.0, 0.0, 1.0, 0.1);
+	public final BooleanSetting hostileMobs = new BooleanSetting("hostiles", this, false);
+	public final BooleanSetting passiveMobs = new BooleanSetting("passives", this, false);
+	public final BooleanSetting players = new BooleanSetting("players", this, true);
+	public final NumberSetting pRed = new NumberSetting("pRed", this, 0.0, 0.0, 1.0, 0.1);
+	public final NumberSetting pGreen = new NumberSetting("pGreen", this, 0.6, 0.0, 1.0, 0.1);
+	public final NumberSetting pBlue = new NumberSetting("pBlue", this, 1.0, 0.0, 1.0, 0.1);
 	
 	public Tracers() {
 		super ("tracers", "draws line to entitys.", Keyboard.KEY_NONE, Category.RENDER);

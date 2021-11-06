@@ -18,8 +18,8 @@ import net.minecraft.util.NonNullList;
 import java.awt.*;
 
 public class InventoryViewer extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 100)); 
-	public ModeSetting sizee = new ModeSetting("size", this, "normal", "normal", "compact");
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 100));
+	public final ModeSetting sizee = new ModeSetting("size", this, "normal", "normal", "compact");
     
     public InventoryViewer() {
     	super("inventoryViewer","shows ur inventory on ur hud.", new Point(122, 2), Category.HUD);

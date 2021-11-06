@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class Cape {
 
-	List<UUID> uuids = new ArrayList<>();
+	final List<UUID> uuids = new ArrayList<>();
 
 	public Cape() {
 		try {

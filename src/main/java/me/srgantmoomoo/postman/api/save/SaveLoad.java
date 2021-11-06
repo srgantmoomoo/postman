@@ -21,11 +21,10 @@ import java.util.ArrayList;
 
 public class SaveLoad {
 
-	private final File dir;
 	private final File dataFile;
 	   
 	public SaveLoad() {
-		dir = new File(Minecraft.getMinecraft().gameDir, Reference.NAME);
+		File dir = new File(Minecraft.getMinecraft().gameDir, Reference.NAME);
 		if(!dir.exists()) {
 			dir.mkdir();
 		}

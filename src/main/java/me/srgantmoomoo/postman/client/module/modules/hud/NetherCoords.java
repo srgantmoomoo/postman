@@ -14,8 +14,8 @@ import java.awt.*;
 
 public class NetherCoords extends HudModule{
 
-	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 72, 72, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(255, 72, 72, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 	
 	public NetherCoords() {
 		super("netherCoords", "shows ur coords in nether on ur hud.", new Point(122, 50), Category.HUD);

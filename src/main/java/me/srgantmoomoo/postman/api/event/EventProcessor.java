@@ -35,7 +35,7 @@ import java.util.Map;
 public class EventProcessor {
 
 	public static EventProcessor instance;
-	Minecraft mc = Minecraft.getMinecraft();
+	final Minecraft mc = Minecraft.getMinecraft();
 
 	public EventProcessor() {
 		instance = this;

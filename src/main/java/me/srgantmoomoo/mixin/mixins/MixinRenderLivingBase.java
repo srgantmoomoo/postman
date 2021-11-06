@@ -26,7 +26,7 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
     protected ModelBase mainModel;
 
     // chams
-    @Inject(method = "doRender", at = @At("HEAD"))
+    @Inject(method = "doRender*", at = @At("HEAD"))
     private <T extends EntityLivingBase> void injectChamsPre(final T a, final double b, final double c, final double d, final float e, final float f, final CallbackInfo g) {
         if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
             GL11.glEnable(32823);
@@ -34,7 +34,7 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
         }
     }
 
-    @Inject(method = "doRender", at = @At("RETURN"))
+    @Inject(method = "doRender*", at = @At("RETURN"))
     private <T extends EntityLivingBase> void injectChamsPost(final T a, final double b, final double c, final double d, final float e, final float f, final CallbackInfo g) {
         if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
             GL11.glPolygonOffset(1.0f, 1000000.0f);

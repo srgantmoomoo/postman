@@ -14,7 +14,7 @@ import java.awt.*;
 public abstract class HudModule extends Module {
 
 	protected FixedComponent component;
-	protected Point position;
+	protected final Point position;
 	
 	public HudModule (String title, String description, Point defaultPos, Category category) {
 		super(title, description, Keyboard.KEY_NONE, category);

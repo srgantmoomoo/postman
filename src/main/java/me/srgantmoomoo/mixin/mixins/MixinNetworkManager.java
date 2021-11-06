@@ -34,7 +34,7 @@ public class MixinNetworkManager {
 		}
 	}
 
-	@Inject(method = "channelRead0", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "channelRead0*", at = @At("HEAD"), cancellable = true)
 	private void preChannelRead(ChannelHandlerContext context, Packet<?> packet, CallbackInfo callbackInfo) {
 		PacketEvent.Receive event = new PacketEvent.Receive(packet);
 		Main.EVENT_BUS.post(event);
@@ -54,7 +54,7 @@ public class MixinNetworkManager {
 		}
 	}
 
-	@Inject(method = "channelRead0", at = @At("TAIL"), cancellable = true)
+	@Inject(method = "channelRead0*", at = @At("TAIL"), cancellable = true)
 	private void postChannelRead(ChannelHandlerContext context, Packet<?> packet, CallbackInfo callbackInfo) {
 		PacketEvent.PostReceive event = new PacketEvent.PostReceive(packet);
 		Main.EVENT_BUS.post(event);

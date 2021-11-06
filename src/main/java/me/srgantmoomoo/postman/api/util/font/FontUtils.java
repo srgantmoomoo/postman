@@ -8,12 +8,13 @@ public class FontUtils {
 
 	private static final Minecraft mc = Minecraft.getMinecraft();
 	
-	public static float drawStringWithShadow(boolean customFont, String text, int x, int y, JColor color) {
+	public static
+	void drawStringWithShadow(boolean customFont, String text, int x, int y, JColor color) {
 		if(customFont) {
-			return Main.customFontRenderer.drawStringWithShadow(text, x, y, color);
+			Main.customFontRenderer.drawStringWithShadow(text, x, y, color);
 		}
 		else {
-			return mc.fontRenderer.drawStringWithShadow(text, x, y, color.getRGB());
+			mc.fontRenderer.drawStringWithShadow(text, x, y, color.getRGB());
 		}
 	}
 

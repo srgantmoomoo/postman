@@ -21,14 +21,14 @@ public class ClickGuiLoad {
         }
     }
 
-    String fileName = "postman/";
-    String mainName = "clickGui/";
+    final String fileName = "postman/";
+    final String mainName = "clickGui/";
 
     public void clickGuiLoad() throws IOException {
         loadClickGUIPositions();
     }
 
-    public void loadClickGUIPositions() throws IOException {
+    public void loadClickGUIPositions() {
 		Main.clickGui.gui.loadConfig(new ClickGuiConfig(fileName+mainName));
     }
 }

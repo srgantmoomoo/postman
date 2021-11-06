@@ -15,8 +15,8 @@ import java.awt.*;
 
 
 public class Frames extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Frames() {
 		super("frames", "shows ur fps on ur hud.", new Point(-2,29), Category.HUD);

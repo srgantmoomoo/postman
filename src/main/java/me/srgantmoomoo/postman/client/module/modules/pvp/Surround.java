@@ -31,14 +31,14 @@ import static me.srgantmoomoo.postman.api.util.world.BlockUtils.faceVectorPacket
 public class Surround extends Module {
 	private final Minecraft mc = Minecraft.getMinecraft();
 
-	public BooleanSetting triggerSurround = new BooleanSetting("trigger", this, false);
-	public BooleanSetting shiftOnly = new BooleanSetting("onShift", this, false);
-	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
-	public BooleanSetting disableOnJump = new BooleanSetting("offJump", this, false);
-	public BooleanSetting centerPlayer = new BooleanSetting("autoCenter", this, true);
-	public NumberSetting tickDelay = new NumberSetting("tickDelay", this, 5, 0, 10, 1);
-	public NumberSetting timeOutTicks = new NumberSetting("timeOutTicks", this, 40, 1, 100, 10);
-	public NumberSetting blocksPerTick = new NumberSetting("blocksPerTick", this, 4, 0, 8, 1);
+	public final BooleanSetting triggerSurround = new BooleanSetting("trigger", this, false);
+	public final BooleanSetting shiftOnly = new BooleanSetting("onShift", this, false);
+	public final BooleanSetting rotate = new BooleanSetting("rotate", this, true);
+	public final BooleanSetting disableOnJump = new BooleanSetting("offJump", this, false);
+	public final BooleanSetting centerPlayer = new BooleanSetting("autoCenter", this, true);
+	public final NumberSetting tickDelay = new NumberSetting("tickDelay", this, 5, 0, 10, 1);
+	public final NumberSetting timeOutTicks = new NumberSetting("timeOutTicks", this, 40, 1, 100, 10);
+	public final NumberSetting blocksPerTick = new NumberSetting("blocksPerTick", this, 4, 0, 8, 1);
 	
 	public Surround() {
 		super ("surround", "automatically surrounds u in obby.", Keyboard.KEY_NONE, Category.PVP);
@@ -51,9 +51,8 @@ public class Surround extends Module {
 	    private boolean firstRun = false;
 
 	    private int oldSlot = -1;
-	    
-	    private int blocksPlaced;
-	    private int runTimeTicks = 0;
+
+	private int runTimeTicks = 0;
 	    private int delayTimeTicks = 0;
 	    private int offsetSteps = 0;
 
@@ -192,7 +191,7 @@ public class Surround extends Module {
 	            return;
 	        }
 
-	        blocksPlaced = 0;
+			int blocksPlaced = 0;
 
 	        while (blocksPlaced <= blocksPerTick.getValue()) {
 	            Vec3d[] offsetPattern;

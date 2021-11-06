@@ -62,51 +62,51 @@ import java.util.stream.Collectors;
 public class AutoCrystal extends Module {
 	
 	// rewrite
-	public BooleanSetting breakCrystal = new BooleanSetting("breakCrystal", this, true);
-	public BooleanSetting placeCrystal = new BooleanSetting("placeCrystal", this, true);
+	public final BooleanSetting breakCrystal = new BooleanSetting("breakCrystal", this, true);
+	public final BooleanSetting placeCrystal = new BooleanSetting("placeCrystal", this, true);
 	
-	public ModeSetting switchHand = new ModeSetting("switch", this, "off", "off", "onEnable", "detect");
+	public final ModeSetting switchHand = new ModeSetting("switch", this, "off", "off", "onEnable", "detect");
 	
-	public ModeSetting logic = new ModeSetting("logic", this, "break, place", "break, place", "place, break");
+	public final ModeSetting logic = new ModeSetting("logic", this, "break, place", "break, place", "place, break");
 	
-	public NumberSetting breakSpeed = new NumberSetting("breakSpeed", this, 20, 0, 20, 1);
-	public ModeSetting breakType = new ModeSetting("breakType", this, "packet", "swing", "packet");
-	public ModeSetting breakHand = new ModeSetting("breakHand", this, "both", "main", "offhand", "both");
-	public ModeSetting breakMode = new ModeSetting("breakMode", this, "all", "all", "smart", "own");
-	public NumberSetting breakRange = new NumberSetting("breakRange", this, 4.4, 0.0, 10.0, 0.1);
+	public final NumberSetting breakSpeed = new NumberSetting("breakSpeed", this, 20, 0, 20, 1);
+	public final ModeSetting breakType = new ModeSetting("breakType", this, "packet", "swing", "packet");
+	public final ModeSetting breakHand = new ModeSetting("breakHand", this, "both", "main", "offhand", "both");
+	public final ModeSetting breakMode = new ModeSetting("breakMode", this, "all", "all", "smart", "own");
+	public final NumberSetting breakRange = new NumberSetting("breakRange", this, 4.4, 0.0, 10.0, 0.1);
 	
-	public NumberSetting placeRange = new NumberSetting("placeRange", this, 4.4, 0.0, 6.0, 0.1);
+	public final NumberSetting placeRange = new NumberSetting("placeRange", this, 4.4, 0.0, 6.0, 0.1);
 	
-	public NumberSetting facePlaceValue = new NumberSetting("facePlcVal", this, 8, 0, 36, 1);
+	public final NumberSetting facePlaceValue = new NumberSetting("facePlcVal", this, 8, 0, 36, 1);
 	
-	public BooleanSetting highPing = new BooleanSetting("highPing", this, true);
+	public final BooleanSetting highPing = new BooleanSetting("highPing", this, true);
 	
-	public BooleanSetting antiGhost = new BooleanSetting("antiGhosting", this, true);
+	public final BooleanSetting antiGhost = new BooleanSetting("antiGhosting", this, true);
 	
-	public BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
+	public final BooleanSetting raytrace = new BooleanSetting("raytrace", this, true);
 	
-	public BooleanSetting rotate = new BooleanSetting("rotate", this, true);
-	public BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);
+	public final BooleanSetting rotate = new BooleanSetting("rotate", this, true);
+	public final BooleanSetting spoofRotations = new BooleanSetting("spoofRotations", this, true);
 	
-	public NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
+	public final NumberSetting minDmg = new NumberSetting("minDmg", this, 5, 0, 36, 1);
 	
-	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
-	public NumberSetting multiplaceValue = new NumberSetting("multiplaceValue", this, 2, 1, 10, 1);
-	public BooleanSetting multiplacePlus = new BooleanSetting("multiplacePlus", this, true);
+	public final BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
+	public final NumberSetting multiplaceValue = new NumberSetting("multiplaceValue", this, 2, 1, 10, 1);
+	public final BooleanSetting multiplacePlus = new BooleanSetting("multiplacePlus", this, true);
 	
-	public BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
-	public NumberSetting maxSelfDmg = new NumberSetting("antiSuicideValue", this, 10, 0, 36, 1);
+	public final BooleanSetting antiSuicide = new BooleanSetting("antiSuicide", this, false);
+	public final NumberSetting maxSelfDmg = new NumberSetting("antiSuicideValue", this, 10, 0, 36, 1);
 	
-	public BooleanSetting antiSelfPop = new BooleanSetting("antiSelfPop", this, true);
+	public final BooleanSetting antiSelfPop = new BooleanSetting("antiSelfPop", this, true);
 	
-	public NumberSetting enemyRange = new NumberSetting("range", this, 6.0, 0.0, 16.0, 1.0);
-	public NumberSetting wallsRange = new NumberSetting("wallsRange", this, 3.5, 0.0, 10.0, 0.1);
+	public final NumberSetting enemyRange = new NumberSetting("range", this, 6.0, 0.0, 16.0, 1.0);
+	public final NumberSetting wallsRange = new NumberSetting("wallsRange", this, 3.5, 0.0, 10.0, 0.1);
 	
-	public BooleanSetting mode113 = new BooleanSetting("1.13place", this, false);
+	public final BooleanSetting mode113 = new BooleanSetting("1.13place", this, false);
 	
-	public BooleanSetting outline = new BooleanSetting("outline", this, false);
-	public BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
-	public ColorSetting color = new ColorSetting("color", this, Reference.POSTMAN_COLOR);
+	public final BooleanSetting outline = new BooleanSetting("outline", this, false);
+	public final BooleanSetting showDamage = new BooleanSetting("showDamage", this, true);
+	public final ColorSetting color = new ColorSetting("color", this, Reference.POSTMAN_COLOR);
 
 	public AutoCrystal() {
 		super ("autoCrystal", "best ca on the block.", Keyboard.KEY_NONE, Category.PVP);
@@ -127,7 +127,7 @@ public class AutoCrystal extends Module {
 	int oldSlot;
 	public static boolean placing = false;
 	
-	JTimer timer = new JTimer();
+	final JTimer timer = new JTimer();
 	
 	@Override
 	public void onEnable() {

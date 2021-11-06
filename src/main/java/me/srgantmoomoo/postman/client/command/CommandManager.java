@@ -22,7 +22,7 @@ import java.util.List;
 
 public class CommandManager {
 	
-	public List<Command> commands = new ArrayList <>();
+	public final List<Command> commands = new ArrayList <>();
 	public static String prefix = "-";
 	public boolean commandFound = false;
 	

@@ -14,7 +14,7 @@ import java.awt.*;
 
 
 public class Welcomer extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255));
 
 	public Welcomer() {
 		super("welcomer", "welcomes u to postman.", new Point(75, 70), Category.HUD);

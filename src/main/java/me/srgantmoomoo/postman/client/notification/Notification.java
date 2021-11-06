@@ -9,11 +9,11 @@ import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 
 public class Notification extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "hud", "hud", "chat");
-	public BooleanSetting toggle = new BooleanSetting("toggle", this, true);
-	public BooleanSetting enemyTotemPops = new BooleanSetting("enemyTotemPops", this, true);
-	public BooleanSetting selfTotemPops = new BooleanSetting("selfTotemPops", this, true);
-	public BooleanSetting lowHealth = new BooleanSetting("lowHealth", this, true);
+	public final ModeSetting mode = new ModeSetting("mode", this, "hud", "hud", "chat");
+	public final BooleanSetting toggle = new BooleanSetting("toggle", this, true);
+	public final BooleanSetting enemyTotemPops = new BooleanSetting("enemyTotemPops", this, true);
+	public final BooleanSetting selfTotemPops = new BooleanSetting("selfTotemPops", this, true);
+	public final BooleanSetting lowHealth = new BooleanSetting("lowHealth", this, true);
 	
 	public Notification() {
 		super ("notification", "client notifications.", Keyboard.KEY_NONE, Category.CLIENT);

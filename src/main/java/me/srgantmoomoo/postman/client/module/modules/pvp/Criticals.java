@@ -12,7 +12,7 @@ import net.minecraft.network.play.client.CPacketUseEntity;
 import org.lwjgl.input.Keyboard;
 
 public class Criticals extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "packet", "packet", "jump");
+	public final ModeSetting mode = new ModeSetting("mode", this, "packet", "packet", "jump");
 	
 	public Criticals() {
 		super ("criticals", "always land a critical hit.", Keyboard.KEY_NONE, Category.PVP);

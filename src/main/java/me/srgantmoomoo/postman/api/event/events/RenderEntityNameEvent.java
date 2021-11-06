@@ -5,12 +5,12 @@ import net.minecraft.client.entity.AbstractClientPlayer;
 
 public class RenderEntityNameEvent extends Event {
 	
-	public AbstractClientPlayer Entity;
+	public final AbstractClientPlayer Entity;
     public double X;
     public double Y;
     public double Z;
-    public String Name;
-    public double DistanceSq;
+    public final String Name;
+    public final double DistanceSq;
 
     public RenderEntityNameEvent(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq) {
         Entity = entityIn;

@@ -13,8 +13,8 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import java.awt.*;
 
 public class Coords extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 
 	public Coords() {

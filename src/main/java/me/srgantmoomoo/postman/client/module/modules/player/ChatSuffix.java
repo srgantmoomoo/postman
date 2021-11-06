@@ -12,7 +12,7 @@ import org.lwjgl.input.Keyboard;
 import java.util.Arrays;
 
 public class ChatSuffix extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "fucked lol");
+	public final ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "fucked lol");
 	public BooleanSetting discludePercent = new BooleanSetting("disclude%", this, true);
 	
 	public ChatSuffix() {

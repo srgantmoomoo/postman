@@ -11,9 +11,9 @@ import org.lwjgl.input.Keyboard;
 
 public class ConfigCrystal extends Module {
 	public BooleanSetting auto = new BooleanSetting("autoConfig", this, true); 
-	public ModeSetting server = new ModeSetting("server", this, "2b2tpvp", "2b2tpvp", ".cc", "other");
-	public NumberSetting ping = new NumberSetting("averagePing", this, 20, 0, 500, 1);
-	public BooleanSetting multiplace = new BooleanSetting("multiplace", this, false); 
+	public final ModeSetting server = new ModeSetting("server", this, "2b2tpvp", "2b2tpvp", ".cc", "other");
+	public final NumberSetting ping = new NumberSetting("averagePing", this, 20, 0, 500, 1);
+	public final BooleanSetting multiplace = new BooleanSetting("multiplace", this, false);
 	
 	public ConfigCrystal() {
 		super("configCrystal", "configs based on server and ping.", Keyboard.KEY_NONE, Category.BOT);

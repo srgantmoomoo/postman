@@ -16,7 +16,7 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 
 public class KeyStrokes extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100));
     
     public KeyStrokes() {
     	super("keyStrokes","key strooookkkesss", new Point(0,10), Category.HUD);

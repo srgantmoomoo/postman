@@ -13,8 +13,8 @@ import net.minecraft.inventory.ContainerChest;
 import org.lwjgl.input.Keyboard;
 
 public class ChestStealer extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "steal", "steal", "drop");
-	public NumberSetting delay = new NumberSetting("delay", this, 1, 0, 10, 1);
+	public final ModeSetting mode = new ModeSetting("mode", this, "steal", "steal", "drop");
+	public final NumberSetting delay = new NumberSetting("delay", this, 1, 0, 10, 1);
 	
 	public ChestStealer() {
 		super ("chestStealer", "automatically steals from inventory gui's.", Keyboard.KEY_NONE, Category.PLAYER);

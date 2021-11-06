@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
 public class Refill extends Module {
-	public NumberSetting delay = new NumberSetting("delay", this, 500.0f, 0.0f, 2000.0f, 1.0f);
+	public final NumberSetting delay = new NumberSetting("delay", this, 500.0f, 0.0f, 2000.0f, 1.0f);
 
 	public Refill() {
 		super("refill", "automatically refills stacks in ur hotbar and offHand.", Keyboard.KEY_NONE, Category.PVP);

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ColorMain extends Module {
 	
 	private static final Module ColorMain = null;
-	public static ModeSetting colorModel = new ModeSetting("penis right?", ColorMain, "HSB", "RGB", "HSB");
+	public static final ModeSetting colorModel = new ModeSetting("penis right?", ColorMain, "HSB", "RGB", "HSB");
 	
 	public ColorMain() {
 		super ("colorMain", "world of colors", Keyboard.KEY_NONE, Category.CLIENT);

@@ -13,8 +13,8 @@ import org.lwjgl.input.Keyboard;
 public class FastUse extends Module {
 	
 	public boolean plswork;
-	public BooleanSetting xpBottle = new BooleanSetting("xpBottle", this, true);
-	public BooleanSetting bow = new BooleanSetting("bow", this, true);
+	public final BooleanSetting xpBottle = new BooleanSetting("xpBottle", this, true);
+	public final BooleanSetting bow = new BooleanSetting("bow", this, true);
 	
 	public FastUse() {
 		super ("fastUse", "lol bow and xp bottle go brrrrrrrr.", Keyboard.KEY_NONE, Category.PVP);

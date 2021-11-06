@@ -18,9 +18,8 @@ public class PlayerClone extends Module {
 	public PlayerClone() {
 		super ("playerClone", "cloneeee.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
-	private EntityOtherPlayerMP clonedPlayer;
-	
-	@Override
+
+    @Override
 	public void onEnable() { 
 		Minecraft mc = Minecraft.getMinecraft();
 
@@ -29,7 +28,7 @@ public class PlayerClone extends Module {
             return;
         }
 
-    	clonedPlayer = new EntityOtherPlayerMP(mc.world, new GameProfile(UUID.fromString("fdee323e-7f0c-4c15-8d1c-0f277442342a"), "ThePostman"));
+        EntityOtherPlayerMP clonedPlayer = new EntityOtherPlayerMP(mc.world, new GameProfile(UUID.fromString("fdee323e-7f0c-4c15-8d1c-0f277442342a"), "ThePostman"));
         clonedPlayer.copyLocationAndAnglesFrom(mc.player);
         clonedPlayer.rotationYawHead = mc.player.rotationYawHead;
         clonedPlayer.rotationYaw = mc.player.rotationYaw;

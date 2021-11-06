@@ -17,7 +17,7 @@ public abstract class MixinEntityPlayer {
 
 	@Shadow public abstract String getName();
 
-	@Inject(method = "jump", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "jump", at = @At("HEAD"))
 	public void onJump(CallbackInfo callbackInfo) {
 		if (Minecraft.getMinecraft().player.getName().equals(this.getName())) {
 			Main.EVENT_BUS.post(new PlayerJumpEvent());

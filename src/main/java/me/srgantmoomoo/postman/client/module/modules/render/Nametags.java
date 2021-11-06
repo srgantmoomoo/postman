@@ -23,13 +23,13 @@ import org.lwjgl.opengl.GL11;
 
 public class Nametags extends Module {
 	
-	BooleanSetting renderSelf = new BooleanSetting("self", this, true);
-	NumberSetting range = new NumberSetting("Range", this, 100, 10, 260, 1);
-    BooleanSetting items = new BooleanSetting("items", this, true);
-    BooleanSetting durability = new BooleanSetting("durability", this, true);
-    BooleanSetting protType = new BooleanSetting("protType", this, true);
-    BooleanSetting health = new BooleanSetting("health", this, true);
-    BooleanSetting ping = new BooleanSetting("ping", this, true);
+	final BooleanSetting renderSelf = new BooleanSetting("self", this, true);
+	final NumberSetting range = new NumberSetting("Range", this, 100, 10, 260, 1);
+    final BooleanSetting items = new BooleanSetting("items", this, true);
+    final BooleanSetting durability = new BooleanSetting("durability", this, true);
+    final BooleanSetting protType = new BooleanSetting("protType", this, true);
+    final BooleanSetting health = new BooleanSetting("health", this, true);
+    final BooleanSetting ping = new BooleanSetting("ping", this, true);
 
     public Nametags() {
 		super ("nametags", "gives more info on a persons nametag.", Keyboard.KEY_NONE, Category.RENDER);

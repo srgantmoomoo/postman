@@ -12,10 +12,10 @@ import net.minecraft.util.EnumHand;
 import org.lwjgl.input.Keyboard;
 
 public class AutoGap extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
-	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
+	public final ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
+	public final NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
 	public ModeSetting disableOn = new ModeSetting("disableOn", this, "switchToCrystal", "switchToCrystal", "autoCrystalEnabled");
-	public BooleanSetting disableOnSurround = new BooleanSetting("disableOnSurround", this, false);
+	public final BooleanSetting disableOnSurround = new BooleanSetting("disableOnSurround", this, false);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);

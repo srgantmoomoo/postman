@@ -24,12 +24,12 @@ public class Help extends Command {
 	}
 
 	TextFormatting LIGHT_PURPLE = TextFormatting.LIGHT_PURPLE;
-	TextFormatting WHITE = TextFormatting.WHITE;
-    TextFormatting GRAY = TextFormatting.GRAY;
+	final TextFormatting WHITE = TextFormatting.WHITE;
+    final TextFormatting GRAY = TextFormatting.GRAY;
     TextFormatting AQUA = TextFormatting.AQUA;
     TextFormatting BOLD = TextFormatting.BOLD;
-    TextFormatting ITALIC = TextFormatting.ITALIC;
-    TextFormatting RED = TextFormatting.RED;
+    final TextFormatting ITALIC = TextFormatting.ITALIC;
+    final TextFormatting RED = TextFormatting.RED;
 	
 	@Override
 	public void onCommand(String[] args, String command) {

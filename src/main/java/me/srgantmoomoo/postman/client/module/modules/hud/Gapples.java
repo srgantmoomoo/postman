@@ -18,8 +18,8 @@ import java.awt.*;
 public class Gapples extends HudModule {
 	private final GapplesCounterList list = new GapplesCounterList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Gapples() {
 		super("gapples", "shows how many gapples u have in ur inventory.", new Point(134, 82), Category.HUD);

@@ -24,9 +24,9 @@ import java.awt.*;
 @Mixin (GuiScreen.class)
 public class MixinGuiScreen {
 
-	RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
+	final RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
 	ResourceLocation resource;
-	FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
+	final FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
 
 	@Inject(method = "renderToolTip", at = @At("HEAD"), cancellable = true)
 	public void renderToolTip(ItemStack stack, int x, int y, CallbackInfo info){

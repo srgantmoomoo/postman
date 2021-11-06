@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 
 public class ModuleManager {
 	
-	public static ArrayList<Module> modules = new ArrayList<>();
+	public static final ArrayList<Module> modules = new ArrayList<>();
 	
 	public ModuleManager() { 
 		MinecraftForge.EVENT_BUS.register(this);

@@ -13,12 +13,12 @@ import java.awt.image.BufferedImage;
 
 public class CustomFont {
     private final float imgSize = 512;
-    protected CharData[] charData = new CharData[256];
+    protected final CharData[] charData = new CharData[256];
     protected Font font;
     protected boolean antiAlias;
     protected boolean fractionalMetrics;
     protected int fontHeight = -1;
-    protected int charOffset = 0;
+    protected final int charOffset = 0;
     protected DynamicTexture tex;
 
     public CustomFont(Font font, boolean antiAlias, boolean fractionalMetrics) {

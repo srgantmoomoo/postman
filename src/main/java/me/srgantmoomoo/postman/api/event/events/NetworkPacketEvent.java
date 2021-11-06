@@ -5,7 +5,7 @@ import net.minecraft.network.Packet;
 
 public class NetworkPacketEvent extends Event {
 	
-	public Packet m_Packet;
+	public final Packet m_Packet;
 	
 	    
 	public NetworkPacketEvent(Packet p_Packet) {

@@ -11,14 +11,14 @@ import org.lwjgl.input.Keyboard;
  */
 
 	public class LowOffHand extends Module {
-		public NumberSetting lowness = new NumberSetting("lowness", this, 0.7, 0, 1, 0.1);
+		public final NumberSetting lowness = new NumberSetting("lowness", this, 0.7, 0, 1, 0.1);
 		
 		public LowOffHand() {
 			super ("lowOffHand", "lowers the offhand.", Keyboard.KEY_NONE, Category.RENDER);
 			this.addSettings(lowness);
 		}
 		
-		ItemRenderer itemRenderer = mc.entityRenderer.itemRenderer;
+		final ItemRenderer itemRenderer = mc.entityRenderer.itemRenderer;
 		
 		@Override
 		public void onUpdate(){

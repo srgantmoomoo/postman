@@ -14,7 +14,7 @@ import java.awt.*;
 
 
 public class Watermark extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR)); 
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR));
 
 	public Watermark() {
 		super("watermark", "postman watermark!", new Point(-2, 1), Category.HUD);

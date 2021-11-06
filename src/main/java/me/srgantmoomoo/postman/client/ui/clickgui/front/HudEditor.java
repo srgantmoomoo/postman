@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 
 public class HudEditor extends Module {
-	public BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGui", this, true);
+	public final BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGui", this, true);
 	
 	public HudEditor() {
 		super("hudEditor", "descrp", Keyboard.KEY_NONE, Category.HUD);

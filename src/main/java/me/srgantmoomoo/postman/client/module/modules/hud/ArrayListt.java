@@ -21,11 +21,11 @@ import java.util.List;
 public class ArrayListt extends HudModule {
 	private final ModuleArrayList list=new ModuleArrayList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 255, 255, 255));
-	public ModeSetting sortHeight = new ModeSetting("sortHeight", this, "betic", "betic", "up", "down");
-	public ModeSetting sortLength = new ModeSetting("sortLength", this, "left", "left", "right");
-	public BooleanSetting forgeHax = new BooleanSetting("forgeHax", this, true);
-	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(255, 255, 255, 255));
+	public final ModeSetting sortHeight = new ModeSetting("sortHeight", this, "betic", "betic", "up", "down");
+	public final ModeSetting sortLength = new ModeSetting("sortLength", this, "left", "left", "right");
+	public final BooleanSetting forgeHax = new BooleanSetting("forgeHax", this, true);
+	public final BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 
 	public ArrayListt() {
 		super("arrayList", "shows currently enabled modules.", new Point(-2, 69), Category.HUD);
@@ -54,7 +54,7 @@ public class ArrayListt extends HudModule {
 
     private class ModuleArrayList implements HUDList {
 
-		public List<Module> activeModules= new ArrayList <>();
+		public final List<Module> activeModules= new ArrayList <>();
 		
 		@Override
 		public int getSize() {

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({GuiMainMenu.class})
 public class MixinGuiMainMenu extends GuiScreen {
-	@Inject(method = {"drawScreen"}, at = {@At("TAIL")}, cancellable = true)
+	@Inject(method = {"drawScreen"}, at = {@At("TAIL")})
 	public void drawText(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
 		if(ModuleManager.getModuleByName("mainMenuWatermark").isToggled()) {
 			FontRenderer fr = mc.fontRenderer;

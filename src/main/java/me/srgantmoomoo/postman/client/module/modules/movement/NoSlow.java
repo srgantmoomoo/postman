@@ -10,10 +10,10 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 import org.lwjgl.input.Keyboard;
 
 	public class NoSlow extends Module {
-	public BooleanSetting food = new BooleanSetting("food", this, true);
-	public BooleanSetting web = new BooleanSetting("web", this, true);
-	public BooleanSetting soulSand = new BooleanSetting("soulSand", this, true);
-	public BooleanSetting slimeBlock = new BooleanSetting("slimeBlock", this, true);
+	public final BooleanSetting food = new BooleanSetting("food", this, true);
+	public final BooleanSetting web = new BooleanSetting("web", this, true);
+	public final BooleanSetting soulSand = new BooleanSetting("soulSand", this, true);
+	public final BooleanSetting slimeBlock = new BooleanSetting("slimeBlock", this, true);
 	
 	public NoSlow() {
 		super ("noSlow", "slow? no.", Keyboard.KEY_NONE, Category.MOVEMENT);

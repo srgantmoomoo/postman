@@ -19,8 +19,8 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AutoCope extends Module {
-	public ModeSetting msg = new ModeSetting("msg", this, "cope&seethe", "cope&seethe", "u suck", "ez pz", "gg", "customMsg");
-	public BooleanSetting greenText = new BooleanSetting("greenText", this, true);
+	public final ModeSetting msg = new ModeSetting("msg", this, "cope&seethe", "cope&seethe", "u suck", "ez pz", "gg", "customMsg");
+	public final BooleanSetting greenText = new BooleanSetting("greenText", this, true);
 	
 	public AutoCope() {
 		super("autoCope", "automatically makes ur opponent cope.", Keyboard.KEY_NONE, Category.PVP);

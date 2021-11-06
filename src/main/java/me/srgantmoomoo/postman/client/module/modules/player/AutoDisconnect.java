@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiMainMenu;
 import org.lwjgl.input.Keyboard;
 
 public class AutoDisconnect extends Module {
-	public NumberSetting health = new NumberSetting("health", this, 10, 1, 30, 1);
+	public final NumberSetting health = new NumberSetting("health", this, 10, 1, 30, 1);
 
 	
 	public AutoDisconnect() {

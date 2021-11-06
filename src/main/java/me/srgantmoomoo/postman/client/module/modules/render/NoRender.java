@@ -24,21 +24,21 @@ import net.minecraftforge.client.event.RenderBlockOverlayEvent.OverlayType;
 import org.lwjgl.input.Keyboard;
 
 public class NoRender extends Module {
-	public BooleanSetting rain = new BooleanSetting("rain", this, false);
-	public BooleanSetting skylight = new BooleanSetting("skylightUpdates", this, false);
-	public ModeSetting hurtCam = new ModeSetting("hurtCam", this, "yesHurtCam", "yesHurtCam", "noHurtCam", "penis");
-	public BooleanSetting fire = new BooleanSetting("fire", this, false);
-	public BooleanSetting portalEffect = new BooleanSetting("portalEffect", this, false);
-	public BooleanSetting potionIndicators = new BooleanSetting("potionIndicators", this, false);
-	public BooleanSetting crystals = new BooleanSetting("crystals", this, false);
-	public BooleanSetting totemAnimation = new BooleanSetting("totemAnimation", this, false);
-	public BooleanSetting enchantTables = new BooleanSetting("encahtTables", this, false);
-	public BooleanSetting armor = new BooleanSetting("armor", this, false);
-	public BooleanSetting tnt = new BooleanSetting("tnt", this, false);
-	public BooleanSetting items = new BooleanSetting("items", this, false);
-	public BooleanSetting withers = new BooleanSetting("withers", this, false);
-	public BooleanSetting skulls = new BooleanSetting("skulls", this, false);
-	public BooleanSetting fireworks = new BooleanSetting("fireworks", this, false);
+	public final BooleanSetting rain = new BooleanSetting("rain", this, false);
+	public final BooleanSetting skylight = new BooleanSetting("skylightUpdates", this, false);
+	public final ModeSetting hurtCam = new ModeSetting("hurtCam", this, "yesHurtCam", "yesHurtCam", "noHurtCam", "penis");
+	public final BooleanSetting fire = new BooleanSetting("fire", this, false);
+	public final BooleanSetting portalEffect = new BooleanSetting("portalEffect", this, false);
+	public final BooleanSetting potionIndicators = new BooleanSetting("potionIndicators", this, false);
+	public final BooleanSetting crystals = new BooleanSetting("crystals", this, false);
+	public final BooleanSetting totemAnimation = new BooleanSetting("totemAnimation", this, false);
+	public final BooleanSetting enchantTables = new BooleanSetting("encahtTables", this, false);
+	public final BooleanSetting armor = new BooleanSetting("armor", this, false);
+	public final BooleanSetting tnt = new BooleanSetting("tnt", this, false);
+	public final BooleanSetting items = new BooleanSetting("items", this, false);
+	public final BooleanSetting withers = new BooleanSetting("withers", this, false);
+	public final BooleanSetting skulls = new BooleanSetting("skulls", this, false);
+	public final BooleanSetting fireworks = new BooleanSetting("fireworks", this, false);
 	
 	public BooleanSetting particles = new BooleanSetting("particles", this, false);
 	public BooleanSetting signs = new BooleanSetting("signs", this, false);

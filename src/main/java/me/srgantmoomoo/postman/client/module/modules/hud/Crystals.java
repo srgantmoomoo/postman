@@ -18,8 +18,8 @@ import java.awt.*;
 public class Crystals extends HudModule {
 	private final CrystalsCounterList list = new CrystalsCounterList();
 	
-	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
-	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
+	public final ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255));
+	public final BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Crystals() {
 		super("crystals", "shows how many crystals u have in ur inventory.", new Point(75, 82), Category.HUD);

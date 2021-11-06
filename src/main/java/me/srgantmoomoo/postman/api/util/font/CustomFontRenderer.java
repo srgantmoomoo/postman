@@ -14,9 +14,9 @@ import java.util.List;
  */
 
 public class CustomFontRenderer extends CustomFont {
-    protected CharData[] boldChars = new CharData[256];
-    protected CharData[] italicChars = new CharData[256];
-    protected CharData[] boldItalicChars = new CharData[256];
+    protected final CharData[] boldChars = new CharData[256];
+    protected final CharData[] italicChars = new CharData[256];
+    protected final CharData[] boldItalicChars = new CharData[256];
 
     private final int[] colorCode = new int[32];
     private final String colorcodeIdentifiers = "0123456789abcdefklmnor";

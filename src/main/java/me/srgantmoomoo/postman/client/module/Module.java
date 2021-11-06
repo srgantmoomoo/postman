@@ -21,13 +21,14 @@ public abstract class Module implements Toggleable {
 	protected static final Minecraft mc = Minecraft.getMinecraft();
 	public static ArrayList<Module> modules;
 	
-	public String name, description;
-	public KeybindSetting keyCode = new KeybindSetting(0);
-	public Category category;
+	public final String name;
+    public String description;
+	public final KeybindSetting keyCode = new KeybindSetting(0);
+	public final Category category;
 	public boolean toggled;
 	public boolean expanded;
 	public int index;
-	public List<Setting> settings = new ArrayList <>();
+	public final List<Setting> settings = new ArrayList <>();
 	
 	public Module(String name, String description, int key, Category category) {
 		super();

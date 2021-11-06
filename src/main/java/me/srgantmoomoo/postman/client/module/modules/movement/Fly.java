@@ -14,8 +14,8 @@ import org.lwjgl.input.Keyboard;
  */
 
 public class Fly extends Module {
-	public NumberSetting speed = new NumberSetting("speed", this, 10, 1, 20, 1);
-	public ModeSetting mode = new ModeSetting("mode", this, "vanilla", "vanilla", "packet");
+	public final NumberSetting speed = new NumberSetting("speed", this, 10, 1, 20, 1);
+	public final ModeSetting mode = new ModeSetting("mode", this, "vanilla", "vanilla", "packet");
 	
 	public Fly() {
 		super("fly", "its a bird, its a plane!", Keyboard.KEY_NONE, Category.MOVEMENT);

@@ -10,21 +10,21 @@ import me.srgantmoomoo.postman.client.setting.settings.ColorSetting;
 import org.lwjgl.input.Keyboard;
 
 public class Baritone extends Module {
-	public BooleanSetting renderPath = new BooleanSetting("renderPath", this, true);
-	public ColorSetting pathColor = new ColorSetting("pathColor", this, new JColor(Reference.POSTMAN_COLOR, 255));
-	public BooleanSetting renderGoal = new BooleanSetting("renderGoal", this, true);
-	public ColorSetting goalColor = new ColorSetting("goalColor", this, new JColor(Reference.POSTMAN_COLOR, 255));
+	public final BooleanSetting renderPath = new BooleanSetting("renderPath", this, true);
+	public final ColorSetting pathColor = new ColorSetting("pathColor", this, new JColor(Reference.POSTMAN_COLOR, 255));
+	public final BooleanSetting renderGoal = new BooleanSetting("renderGoal", this, true);
+	public final ColorSetting goalColor = new ColorSetting("goalColor", this, new JColor(Reference.POSTMAN_COLOR, 255));
 	
-	public BooleanSetting placeBlocks = new BooleanSetting("placeBlocks", this, true);
-	public BooleanSetting breakBlocks = new BooleanSetting("breakBlocks", this, true);
-	public BooleanSetting avoidDanger = new BooleanSetting("avoidDanger", this, true);
-	public BooleanSetting sprint = new BooleanSetting("sprint", this, true);
-	public BooleanSetting parkour = new BooleanSetting("parkour", this, true);
-	public BooleanSetting waterBucket = new BooleanSetting("waterBucket", this, true);
-	public BooleanSetting lava = new BooleanSetting("lava", this, false);
-	public BooleanSetting water = new BooleanSetting("water", this, true);
-	public BooleanSetting downward = new BooleanSetting("downward", this, true);
-	public BooleanSetting jumpAtBuildLimit = new BooleanSetting("jumpAtBuildLimit", this, true);
+	public final BooleanSetting placeBlocks = new BooleanSetting("placeBlocks", this, true);
+	public final BooleanSetting breakBlocks = new BooleanSetting("breakBlocks", this, true);
+	public final BooleanSetting avoidDanger = new BooleanSetting("avoidDanger", this, true);
+	public final BooleanSetting sprint = new BooleanSetting("sprint", this, true);
+	public final BooleanSetting parkour = new BooleanSetting("parkour", this, true);
+	public final BooleanSetting waterBucket = new BooleanSetting("waterBucket", this, true);
+	public final BooleanSetting lava = new BooleanSetting("lava", this, false);
+	public final BooleanSetting water = new BooleanSetting("water", this, true);
+	public final BooleanSetting downward = new BooleanSetting("downward", this, true);
+	public final BooleanSetting jumpAtBuildLimit = new BooleanSetting("jumpAtBuildLimit", this, true);
 	
 	public Baritone() {
 		super("baritone", "use <prefix>b for baritone commands.", Keyboard.KEY_NONE, Category.BOT);

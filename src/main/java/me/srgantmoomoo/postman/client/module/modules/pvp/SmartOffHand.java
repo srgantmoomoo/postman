@@ -24,9 +24,9 @@ import org.lwjgl.input.Keyboard;
 // rewritten by SrgantMooMoo on 03/24/2021 and 03/25/2021.
 
 public class SmartOffHand extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal", "totem");
-	public NumberSetting health = new NumberSetting("health", this, 14, 0, 20, 1);
-	public BooleanSetting check = new BooleanSetting("crystalCheck", this, true);
+	public final ModeSetting mode = new ModeSetting("mode", this, "gap", "gap", "crystal", "totem");
+	public final NumberSetting health = new NumberSetting("health", this, 14, 0, 20, 1);
+	public final BooleanSetting check = new BooleanSetting("crystalCheck", this, true);
 	
 	public SmartOffHand() {
 		super("smartOffHand", "smart, off. HAND.", Keyboard.KEY_NONE, Category.PVP);

@@ -9,8 +9,10 @@ import java.awt.*;
  * @author SrgantMooMoo
  */
 public class PostmanTheme implements Theme {
-	protected ColorScheme scheme;
-	protected Renderer componentRenderer,containerRenderer,panelRenderer;
+	protected final ColorScheme scheme;
+	protected final Renderer componentRenderer;
+    protected final Renderer containerRenderer;
+    protected final Renderer panelRenderer;
 	protected DescriptionRenderer descriptionRenderer;
 	
 	public PostmanTheme (ColorScheme scheme, int height, int border) {

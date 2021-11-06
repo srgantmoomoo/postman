@@ -25,7 +25,7 @@ public class ClickGuiSave {
     }
 
     public static final String fileName = "postman/";
-    String mainName = "clickGui/";
+    final String mainName = "clickGui/";
 
     public void clickGuiSave() throws IOException {
         if (!Files.exists(Paths.get(fileName))) {
