@@ -44,7 +44,7 @@ public class CommandManager {
 		commands.add(new Baritone());
 		commands.add(new AutoCope());
 		commands.add(new Protester());
-		commands.add(new About());
+		//commands.add(new About());
 	}
 	
 	@EventHandler

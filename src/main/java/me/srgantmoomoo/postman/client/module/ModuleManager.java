@@ -63,7 +63,7 @@ public class ModuleManager {
 		//modules.add(new AutoTrap());   // unstarted
 		modules.add(new AutoUse());	
 		modules.add(new AutoWalk());
-		modules.add(new Backdoor2b2t());
+		modules.add(new NoCom());
 		modules.add(new Baritone());                       // baritone
 		modules.add(new Blink());	
 		modules.add(new CameraClip());	
