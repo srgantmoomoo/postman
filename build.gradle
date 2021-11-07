@@ -3,7 +3,7 @@ buildscript {
 		jcenter()
 		maven {
 			name = 'forge'
-			url = 'http://files.minecraftforge.net/maven'
+			url = 'https://files.minecraftforge.net/maven'
 		}
 		maven {
 			name = 'SpongePowered'
@@ -52,7 +52,7 @@ repositories {
     }
 	maven {
 		name = 'swt-repo'
-		url = "http://maven-eclipse.github.io/maven"
+		url = "https://maven-eclipse.github.io/maven"
 	}
 	maven {
 		name = "jitpack.io"
@@ -72,7 +72,7 @@ dependencies {
 		exclude module: 'commons-io'
 	}
 	compile "com.github.ZeroMemes:Alpine:1.5"
-	compile group: 'net.jodah', name: 'typetools', version: '0.5.0'
+	compile group: 'net.jodah', name: 'typetools', version: '0.6.3'
 	compile group: "com.googlecode.json-simple", name: "json-simple", version: "1.1.1"
 	compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
 	compile 'com.github.cabaletta:baritone:1.2.14'
@@ -118,8 +118,7 @@ shadowJar {
 		include(dependency('com.lukflug:panelstudio'))
 		include(dependency('com.lukflug:panelstudio-mc12'))
 	}
-	exclude 'dummyThing'
-	exclude 'LICENSE.txt'
+	exclude 'dummyThing', 'LICENSE.txt', 'org/**/*.html', 'META-INF/maven/**' // Removes unneeded files that are legit just useless text files - Perry on reborn
 	classifier = 'release'
 }
 
