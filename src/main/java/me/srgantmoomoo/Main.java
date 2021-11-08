@@ -27,6 +27,7 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import org.apache.logging.log4j.LogManager;
+//import me.autism.autism.autism.autism;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
