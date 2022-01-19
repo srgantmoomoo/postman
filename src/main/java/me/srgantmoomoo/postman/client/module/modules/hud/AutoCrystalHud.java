@@ -40,7 +40,7 @@ public class AutoCrystalHud extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			if (ModuleManager.isModuleEnabled("autoCrystal")) return ChatFormatting.GREEN + "autoC" + " on";
+			if (ModuleManager.isModuleEnabled("autoCrystal")) return ChatFormatting.GREEN + "AC" + " on";
 			else return "AC" + " off";
 		}
 
