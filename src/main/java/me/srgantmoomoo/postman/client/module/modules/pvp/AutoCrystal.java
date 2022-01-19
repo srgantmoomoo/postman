@@ -59,9 +59,14 @@ import java.util.stream.Collectors;
  * rewritten on 3/15/21 by SrgantMooMoo
  */
 
+/*
+* rewritten/modified by Fluffery on 1/19/2022
+*/
+
 public class AutoCrystal extends Module {
 	
 	// rewrite
+	// i am retarded ill fix this at home 
 	public final BooleanSetting breakCrystal = new BooleanSetting("breakCrystal", this, true);
 	public final BooleanSetting placeCrystal = new BooleanSetting("placeCrystal", this, true);
 	
