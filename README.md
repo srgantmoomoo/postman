@@ -7,10 +7,12 @@
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE)
 
+**Building is currently broken, Please eait for me to unfuck it**
+
 **A continuation of where SrgantMooMoo left this client**
 By the Postman Community
 
-Time for shit coding
+Time for shit coding, Code updates are far apart, but work is still being done, I have a life and cannot code 24/7, maybe over the summer 
 
 ***if you are not apart of the discord and are not aware, the main postman client is currently out of development. this is due to some personal things i have to take care of in life. i really do plan on returning if i find interest in it again, there are so many things i left unfinished in this client. but for now i just want to thank everyone who supported me, everyone who has helped me out directly and indirectly. i met so many awesome ppl with this project. thank u, i love you all :))***
 
