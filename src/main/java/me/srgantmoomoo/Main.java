@@ -154,6 +154,8 @@ public class Main {
 		log.info("postman initialization finished.");
 		
 		log.info("Any issue past this is not a postman issue but there could still be conflicts with other mods, although unlikely");
+
+		log.info("postman loading has finished :: temp added for debug purposes");
 	
 	}
 }
