@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.framework.friend.FriendManager;
@@ -57,7 +58,7 @@ public class KillAura extends Module {
 	
 	private boolean attackCheck(Entity entity) {
 		if (players.isEnabled() && entity instanceof EntityPlayer) {
-			if(!targetFriends.isEnabled() && !FriendManager.isFriend(entity.getName())) {
+			if(!targetFriends.isEnabled() && !Main.INSTANCE.friendManager.isFriend(entity.getName())) {
 				if (((EntityPlayer) entity).getHealth() > 0) { 
 					return true;
 				}

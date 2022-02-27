@@ -23,11 +23,11 @@ public class Mcf extends Module {
 	@EventHandler
 	private final Listener<InputEvent.MouseInputEvent> listener = new Listener<>(event -> {
 		if (mc.objectMouseOver.typeOfHit.equals(RayTraceResult.Type.ENTITY) && mc.objectMouseOver.entityHit instanceof EntityPlayer && Mouse.isButtonDown(2)) {
-			if (FriendManager.isFriend(mc.objectMouseOver.entityHit.getName())) {
-				FriendManager.removeFriend(mc.objectMouseOver.entityHit.getName());
+			if (Main.INSTANCE.friendManager.isFriend(mc.objectMouseOver.entityHit.getName())) {
+				Main.INSTANCE.friendManager.removeFriend(mc.objectMouseOver.entityHit.getName());
 				Main.INSTANCE.moduleManager.addChatMessage("removed friend: " + mc.objectMouseOver.entityHit.getName());
 			}else {
-				FriendManager.addFriend(mc.objectMouseOver.entityHit.getName());
+				Main.INSTANCE.friendManager.addFriend(mc.objectMouseOver.entityHit.getName());
 				Main.INSTANCE.moduleManager.addChatMessage("added friend: " + mc.objectMouseOver.entityHit.getName());
 			}
 		}

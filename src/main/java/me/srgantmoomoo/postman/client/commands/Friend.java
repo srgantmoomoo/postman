@@ -20,15 +20,15 @@ public class Friend extends Command {
 			String start = args[0];
 			
 			if(start.equalsIgnoreCase("list")) {
-				Main.INSTANCE.moduleManager.addChatMessage("friends: " + FriendManager.getFriendsByName());
+				Main.INSTANCE.moduleManager.addChatMessage("friends: " + Main.INSTANCE.friendManager.getFriendsByName());
 			}else if(start.equalsIgnoreCase("clear")) {
 				Main.INSTANCE.moduleManager.addChatMessage("cleared all friends");
 			}else
-				if (start.equalsIgnoreCase("add") && !FriendManager.isFriend(args[1])) {
-					FriendManager.addFriend(args[1]);
+				if (start.equalsIgnoreCase("add") && !Main.INSTANCE.friendManager.isFriend(args[1])) {
+					Main.INSTANCE.friendManager.addFriend(args[1]);
 					Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.GREEN + "added" + ChatFormatting.GRAY + " friend: " + args[1].toUpperCase());
-				}else if (start.equalsIgnoreCase("remove") && FriendManager.isFriend(args[1])) {
-					FriendManager.removeFriend(args[1]);
+				}else if (start.equalsIgnoreCase("remove") && Main.INSTANCE.friendManager.isFriend(args[1])) {
+					Main.INSTANCE.friendManager.removeFriend(args[1]);
 					Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.DARK_RED + "removed" + ChatFormatting.GRAY + " friend: " + args[1].toUpperCase());
 				}else {
 					CommandManager.correctUsageMsg(getName(), getSyntax());
