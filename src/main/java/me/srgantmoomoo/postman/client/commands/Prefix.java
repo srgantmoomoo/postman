@@ -16,11 +16,11 @@ public class Prefix extends Command {
 	public void onCommand(String[] args, String command) {
 		if(args.length == 1) {
 			String key = args[0];
-			CommandManager.setCommandPrefix(key);
-			Main.INSTANCE.moduleManager.addChatMessage(String.format(ChatFormatting.GREEN + "command prefix " + ChatFormatting.GRAY + "was set to " + ChatFormatting.GREEN + CommandManager.prefix));
+			Main.INSTANCE.commandManager.setCommandPrefix(key);
+			Main.INSTANCE.moduleManager.addChatMessage(String.format(ChatFormatting.GREEN + "command prefix " + ChatFormatting.GRAY + "was set to " + ChatFormatting.GREEN + Main.INSTANCE.commandManager.prefix));
 		}
 		
-		if(args.length == 0) CommandManager.correctUsageMsg(getName(), getSyntax());
+		if(args.length == 0) Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
 	}
 
 }

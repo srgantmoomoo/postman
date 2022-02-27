@@ -24,7 +24,7 @@ public class Baritone extends Command {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().cancel();
 					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoal(null);
 					Main.INSTANCE.moduleManager.addChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped" + ChatFormatting.GRAY + ".");
-				}else CommandManager.correctUsageMsg(getName(), getSyntax());
+				}else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
 			}
 			
 			else if(starter.equalsIgnoreCase("goto")) {
@@ -33,7 +33,7 @@ public class Baritone extends Command {
 					String z = args[2];
 					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoalAndPath(new GoalXZ(Integer.parseInt(x), Integer.parseInt(z)));
 					Main.INSTANCE.moduleManager.addChatMessage("baritone is now pathing to " + ChatFormatting.GREEN + x + " " + z + ChatFormatting.GRAY + ".");
-				}else CommandManager.correctUsageMsg(getName(), getSyntax());
+				}else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
 			}
 			
 			else if(starter.equalsIgnoreCase("mine")) {
@@ -45,17 +45,17 @@ public class Baritone extends Command {
 					}catch (Exception e) {
 						Main.INSTANCE.moduleManager.addChatMessage("baritone could not find that block. :(");
 					}
-				}else CommandManager.correctUsageMsg(getName(), getSyntax());
+				}else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
 			}
 			
 			else if(starter.equalsIgnoreCase("farm")) {
 				if(args.length == 1) {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getFarmProcess().farm();
 					Main.INSTANCE.moduleManager.addChatMessage("baritone is now " + ChatFormatting.GREEN + "farming" + ChatFormatting.GRAY + ".");
-				}else CommandManager.correctUsageMsg(getName(), getSyntax());
+				}else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
 			}
 			
-			else CommandManager.correctUsageMsg(getName(), getSyntax());
-		}else CommandManager.correctUsageMsg(getName(), getSyntax());
+			else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
+		}else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }

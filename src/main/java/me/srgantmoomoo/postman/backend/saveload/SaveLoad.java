@@ -80,7 +80,7 @@ public class SaveLoad {
 		}
 		
 		// command prefix
-		toSave.add("COMMANDPREFIX:" + CommandManager.prefix);
+		toSave.add("COMMANDPREFIX:" + Main.INSTANCE.commandManager.prefix);
 		
 		/* friends
 		List<String> friends = FriendManager.getFriendsByName();
@@ -156,7 +156,7 @@ public class SaveLoad {
 					}
 				}
 			}else if(s.toLowerCase().startsWith("commandprefix:")) {
-				CommandManager.setCommandPrefix(args[1]);
+				Main.INSTANCE.commandManager.setCommandPrefix(args[1]);
 			}/*else if(s.toLowerCase().startsWith("friends:")) {
 				FriendManager.addFriend(args[1]);
 			}*/

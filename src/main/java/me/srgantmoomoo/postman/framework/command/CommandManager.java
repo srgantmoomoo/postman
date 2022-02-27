@@ -25,7 +25,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 public class CommandManager {
 	
 	public List<Command> commands = new ArrayList<Command>();
-	public static String prefix = ",";
+	public String prefix = ",";
 	public boolean commandFound = false;
 	
 	public CommandManager() {
@@ -84,7 +84,7 @@ public class CommandManager {
         }
 	}
 	
-	public static void setCommandPrefix(String pre) {
+	public void setCommandPrefix(String pre) {
         prefix = pre;
         
         if(Main.INSTANCE.saveLoad != null) {
@@ -92,11 +92,11 @@ public class CommandManager {
 		}
     }
 	
-	public static String getCommandPrefix(String name) {
+	public String getCommandPrefix(String name) {
         return prefix;
     }
 	
-	public static void correctUsageMsg(String name, String syntax) {
+	public void correctUsageMsg(String name, String syntax) {
 		// usage
 		String usage = "correct usage of " + name + " command -> " + prefix + syntax;
 				

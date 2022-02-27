@@ -35,7 +35,7 @@ public class Help extends Command {
 	
 	@Override
 	public void onCommand(String[] args, String command) {
-		String PREFIX = CommandManager.prefix;
+		String PREFIX = Main.INSTANCE.commandManager.prefix;
 		
 		prefix = new Prefix();
 		toggle = new Toggle();
