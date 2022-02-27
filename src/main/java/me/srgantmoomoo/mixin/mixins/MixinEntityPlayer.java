@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.events.PlayerJumpEvent;
-import me.srgantmoomoo.postman.api.event.events.WaterPushEvent;
+import me.srgantmoomoo.postman.backend.event.events.PlayerJumpEvent;
+import me.srgantmoomoo.postman.backend.event.events.WaterPushEvent;
 
 @Mixin(EntityPlayer.class)
 public abstract class MixinEntityPlayer {

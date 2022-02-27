@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.events.RenderEntityEvent;
+import me.srgantmoomoo.postman.backend.event.events.RenderEntityEvent;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;

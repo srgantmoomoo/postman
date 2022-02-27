@@ -4,8 +4,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.module.modules.render.NoRender;
+import me.srgantmoomoo.postman.framework.module.ModuleManager;
+import me.srgantmoomoo.postman.client.modules.render.NoRender;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.inventory.EntityEquipmentSlot;

@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.postman.api.util.render.JColor;
-import me.srgantmoomoo.postman.api.util.render.OutlineUtils;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.module.modules.render.Esp;
+import me.srgantmoomoo.postman.backend.util.render.JColor;
+import me.srgantmoomoo.postman.backend.util.render.OutlineUtils;
+import me.srgantmoomoo.postman.framework.module.ModuleManager;
+import me.srgantmoomoo.postman.client.modules.render.Esp;
 
 import java.awt.*;
 

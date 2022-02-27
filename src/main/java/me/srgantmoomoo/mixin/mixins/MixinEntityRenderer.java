@@ -12,9 +12,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.events.RenderCameraEvent;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
-import me.srgantmoomoo.postman.client.module.modules.render.NoRender;
+import me.srgantmoomoo.postman.backend.event.events.RenderCameraEvent;
+import me.srgantmoomoo.postman.framework.module.ModuleManager;
+import me.srgantmoomoo.postman.client.modules.render.NoRender;
 
 @Mixin(EntityRenderer.class)
 public class MixinEntityRenderer {

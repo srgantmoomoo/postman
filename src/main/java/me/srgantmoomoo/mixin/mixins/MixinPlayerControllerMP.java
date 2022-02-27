@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
 @Mixin(PlayerControllerMP.class)
 public abstract class MixinPlayerControllerMP {

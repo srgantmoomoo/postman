@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.api.event.events.RenderEntityNameEvent;
-import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.backend.event.events.RenderEntityNameEvent;
+import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
 @Mixin(RenderPlayer.class)
 public class MixinRenderPlayer {

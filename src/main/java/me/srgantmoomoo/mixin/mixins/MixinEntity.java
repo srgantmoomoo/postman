@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import me.srgantmoomoo.postman.client.module.ModuleManager;
+import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
 @Mixin(Entity.class)
 public abstract class MixinEntity {
