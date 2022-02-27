@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.backend.util.damagetilt;
 
 import io.netty.buffer.ByteBuf;
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -36,7 +37,7 @@ public class MessageUpdateAttackYaw implements IMessage {
     
     @SideOnly(Side.CLIENT)
     public static void fromMessage(MessageUpdateAttackYaw message) {
-      if (!ModuleManager.getModuleByName("damageTilt").isToggled())
+      if (!Main.INSTANCE.moduleManager.getModuleByName("damageTilt").isToggled())
         return; 
       (Minecraft.getMinecraft()).player.attackedAtYaw = message.attackedAtYaw;
     }

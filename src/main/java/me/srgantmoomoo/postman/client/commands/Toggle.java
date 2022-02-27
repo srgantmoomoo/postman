@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.client.commands;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.command.CommandManager;
 import me.srgantmoomoo.postman.framework.module.Module;
@@ -18,16 +19,16 @@ public class Toggle extends Command {
 		if(args.length > 0) {
 			String moduleName = args[0];
 			boolean moduleFound = false;
-			for(Module module : ModuleManager.modules) {
+			for(Module module : Main.INSTANCE.moduleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.toggle();
-					ModuleManager.addChatMessage(module.name + " " + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.RED + "disabled" + ChatFormatting.GRAY + "."));
+					Main.INSTANCE.moduleManager.addChatMessage(module.name + " " + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.RED + "disabled" + ChatFormatting.GRAY + "."));
 					moduleFound = true;
 					break;
 				}
 			}
 			if(!moduleFound) {
-				ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
+				Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
 			}
 		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}

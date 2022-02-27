@@ -68,7 +68,7 @@ public class CommandManager {
         		}
         	}
         	if(!commandFound) {
-        		ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "command does not exist, use " + ChatFormatting.ITALIC + prefix + "help " + ChatFormatting.RESET + "" + ChatFormatting.DARK_RED + "for help.");
+				Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.DARK_RED + "command does not exist, use " + ChatFormatting.ITALIC + prefix + "help " + ChatFormatting.RESET + "" + ChatFormatting.DARK_RED + "for help.");
         	}
         }
     });

@@ -1,4 +1,5 @@
 package me.srgantmoomoo.mixin.mixins;
+import me.srgantmoomoo.Main;
 import net.minecraft.block.BlockSoulSand;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -16,7 +17,7 @@ import me.srgantmoomoo.postman.client.modules.movement.NoSlow;
 public class MixinBlockSoulSand {
 	@Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn, CallbackInfo info) {
-		if (ModuleManager.isModuleEnabled("noSlow") && ((NoSlow)ModuleManager.getModuleByName("noSlow")).soulSand.isEnabled())
+		if (Main.INSTANCE.moduleManager.isModuleEnabled("noSlow") && ((NoSlow)Main.INSTANCE.moduleManager.getModuleByName("noSlow")).soulSand.isEnabled())
 			info.cancel();
 	}
 }

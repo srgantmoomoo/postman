@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.client.commands;
 
 import java.util.Objects;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.backend.util.world.EntityUtil;
 import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.command.CommandManager;
@@ -25,14 +26,14 @@ public class MobOwner extends Command {
 				 String ownerUUID = horse.getOwnerUniqueId() == null ? "entity has no owner" : horse.getOwnerUniqueId().toString();
 				 
 				 try {
-					 String ownerReplace = Objects.requireNonNull(EntityUtil.getNameFromUUID(ownerUUID)).replace("\"", "");
-					 ModuleManager.addChatMessage("mob owner is " + TextFormatting.GREEN + ownerReplace);
+						 String ownerReplace = Objects.requireNonNull(EntityUtil.getNameFromUUID(ownerUUID)).replace("\"", "");
+						 Main.INSTANCE.moduleManager.addChatMessage("mob owner is " + TextFormatting.GREEN + ownerReplace);
 					}catch (Exception e) {
-						ModuleManager.addChatMessage("something went wrong, this entity may not have a real owner.");
+						 Main.INSTANCE.moduleManager.addChatMessage("something went wrong, this entity may not have a real owner.");
 					}
-		        }else {
-		        	ModuleManager.addChatMessage("ridden entity is not compatible with this command");
-		        }
+			 }else {
+				 Main.INSTANCE.moduleManager.addChatMessage("ridden entity is not compatible with this command");
+			 }
 		}else CommandManager.correctUsageMsg(getName(), getSyntax());
 	}
 }

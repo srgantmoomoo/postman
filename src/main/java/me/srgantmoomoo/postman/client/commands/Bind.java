@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.commands;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.input.Keyboard;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
@@ -22,27 +23,27 @@ public class Bind extends Command {
 			String keyName = args[1];
 			boolean moduleFound = false;
 			
-			for(Module module : ModuleManager.modules) {
+			for(Module module : Main.INSTANCE.moduleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.keyCode.setKeyCode(Keyboard.getKeyIndex(keyName.toUpperCase()));
-					
-					ModuleManager.addChatMessage(String.format(ChatFormatting.GREEN + "%s " + ChatFormatting.GRAY + "was bound to" + ChatFormatting.GREEN + " %s", module.name, Keyboard.getKeyName(module.getKey())));;
+
+					Main.INSTANCE.moduleManager.addChatMessage(String.format(ChatFormatting.GREEN + "%s " + ChatFormatting.GRAY + "was bound to" + ChatFormatting.GREEN + " %s", module.name, Keyboard.getKeyName(module.getKey())));;
 					moduleFound = true;
 					break;
 				}
 			}
 			if(!moduleFound) {
-				ModuleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
+				Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
 			}
 		}
 		
 		if(args.length == 1) {
 			String clear = args[0];
 			if(clear.equalsIgnoreCase("clear")) {
-				for(Module module : ModuleManager.modules) {
+				for(Module module : Main.INSTANCE.moduleManager.modules) {
 					module.keyCode.setKeyCode(Keyboard.KEY_NONE);
 				}
-				ModuleManager.addChatMessage("cleared all binds.");
+				Main.INSTANCE.moduleManager.addChatMessage("cleared all binds.");
 			} else CommandManager.correctUsageMsg(getName(), getSyntax());
 		}
 		if(args.length == 0) CommandManager.correctUsageMsg(getName(), getSyntax());

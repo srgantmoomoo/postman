@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.commands;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.command.CommandManager;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
@@ -22,11 +23,11 @@ public class Clip extends Command {
 			
 			if(start.equalsIgnoreCase("v")) {
 				entity.setPosition(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY + Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posZ);
-				ModuleManager.addChatMessage("vertically clipped " + args[1] + " blocks");
+				Main.INSTANCE.moduleManager.addChatMessage("vertically clipped " + args[1] + " blocks");
 				
 			}else if(start.equalsIgnoreCase("h")) {
 				 entity.setPosition(Minecraft.getMinecraft().player.posX + faceDirection.x * Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ + faceDirection.z * Double.valueOf(args[1]));
-				ModuleManager.addChatMessage("horizontally clipped " + args[1] + " blocks");
+				Main.INSTANCE.moduleManager.addChatMessage("horizontally clipped " + args[1] + " blocks");
 			}else
 				CommandManager.correctUsageMsg(getName(), getSyntax());
 		}else CommandManager.correctUsageMsg(getName(), getSyntax());

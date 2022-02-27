@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,7 +14,7 @@ public abstract class MixinPlayerControllerMP {
 	//author cookiedragon234
 	@Inject(method = "resetBlockRemoving", at = @At("HEAD"), cancellable = true)
 	private void resetBlock(CallbackInfo callbackInfo) {
-		if (ModuleManager.isModuleEnabled("multitask")) {
+		if (Main.INSTANCE.moduleManager.isModuleEnabled("multitask")) {
 			callbackInfo.cancel();
 		}
 	}

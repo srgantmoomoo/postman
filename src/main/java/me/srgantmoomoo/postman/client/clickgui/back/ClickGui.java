@@ -3,6 +3,7 @@ package me.srgantmoomoo.postman.client.clickgui.back;
 import java.awt.Color;
 import java.awt.Point;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.opengl.GL11;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
@@ -76,20 +77,20 @@ public class ClickGui extends MinecraftHUDGUI {
 			public void drawString(Point pos, String s, Color c) {
 				end();
 				int x=pos.x+2, y=pos.y+1;
-				if(ModuleManager.getModuleByName("clientFont").isToggled()) FontUtils.drawStringWithShadow(true, s, x, y, new JColor(c));
+				if(Main.INSTANCE.moduleManager.getModuleByName("clientFont").isToggled()) FontUtils.drawStringWithShadow(true, s, x, y, new JColor(c));
 				else FontUtils.drawStringWithShadow(false, s, x, y, new JColor(c));
 				begin();
 			}
 			
 			@Override
 			public int getFontWidth(String s) {
-				if(ModuleManager.isModuleEnabled("clientFont")) return Math.round(FontUtils.getStringWidth(true,s))+4;
+				if(Main.INSTANCE.moduleManager.isModuleEnabled("clientFont")) return Math.round(FontUtils.getStringWidth(true,s))+4;
 				else return Math.round(FontUtils.getStringWidth(false,s))+4;
 			}
 
 			@Override
 			public int getFontHeight() {
-				if(ModuleManager.isModuleEnabled("clientFont")) return Math.round(FontUtils.getFontHeight(true))+2;
+				if(Main.INSTANCE.moduleManager.isModuleEnabled("clientFont")) return Math.round(FontUtils.getFontHeight(true))+2;
 				else return Math.round(FontUtils.getFontHeight(false))+2;
 			}
 		};
@@ -127,7 +128,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			}
 		};
 		
-		for (Module module: ModuleManager.getModules()) {
+		for (Module module: Main.INSTANCE.moduleManager.getModules()) {
 			if (module instanceof HudModule) {
 				((HudModule)module).populate(theme);
 				gui.addHUDComponent(new HUDPanel(((HudModule)module).getComponent(),theme.getPanelRenderer(),module,new SettingsAnimation(ClickGuiModule.INSTANCE.animationSpeed),hudToggle,HUD_BORDER));
@@ -147,7 +148,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			};
 			gui.addComponent(panel);
 			pos.translate(0,HEIGHT + DISTANCE);
-			for (Module module: ModuleManager.getModulesInCategory(category)) {
+			for (Module module: Main.INSTANCE.moduleManager.getModulesInCategory(category)) {
 				addModule(panel,module);
 			}
 		}

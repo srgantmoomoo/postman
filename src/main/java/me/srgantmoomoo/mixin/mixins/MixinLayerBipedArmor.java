@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,7 +17,7 @@ public class MixinLayerBipedArmor {
 
     @Inject(method = "setModelSlotVisible", at = @At(value = "HEAD"), cancellable = true)
     protected void setModelSlotVisible(ModelBiped model, EntityEquipmentSlot slot, CallbackInfo callbackInfo) {
-        NoRender noRender = (NoRender)ModuleManager.getModuleByName("noRender");
+        NoRender noRender = (NoRender) Main.INSTANCE.moduleManager.getModuleByName("noRender");
         if (noRender.isToggled() && noRender.armor.isEnabled()) {
             callbackInfo.cancel();
             switch (slot) {

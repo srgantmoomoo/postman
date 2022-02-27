@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.commands;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.command.CommandManager;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
@@ -21,17 +22,17 @@ public class Vanish extends Command {
 				
 			    Minecraft.getMinecraft().player.dismountRidingEntity();
 			    Minecraft.getMinecraft().world.removeEntityFromWorld(ridden.getEntityId());
-			    ModuleManager.addChatMessage("entity " + ridden.getName() + " removed.");
+				Main.INSTANCE.moduleManager.addChatMessage("entity " + ridden.getName() + " removed.");
 			}else {
 			    if (ridden != null) {
 			    	ridden.isDead = false;
 			    	
 			        Minecraft.getMinecraft().world.addEntityToWorld(ridden.getEntityId(), ridden);
 			        Minecraft.getMinecraft().player.startRiding(ridden, true);
-			        ModuleManager.addChatMessage("entity " + ridden.getName() + " created.");
+					Main.INSTANCE.moduleManager.addChatMessage("entity " + ridden.getName() + " created.");
 			        ridden = null;
 			    }else {
-			    	 ModuleManager.addChatMessage("no entity is being ridden");
+					Main.INSTANCE.moduleManager.addChatMessage("no entity is being ridden");
 			    }
 			}
 		}else CommandManager.correctUsageMsg(getName(), getSyntax());

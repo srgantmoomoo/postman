@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.modules.player;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.framework.module.Category;
@@ -30,8 +31,8 @@ public class AutoTotem extends Module {
             }
 
             if (mc.player.getHeldItemOffhand().getItem() == Items.AIR || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE
-            		&& !ModuleManager.getModuleByName("SmartOffHand").isToggled()
-            		|| mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL && !ModuleManager.getModuleByName("SmartOffHand").isToggled()) {
+            		&& !Main.INSTANCE.moduleManager.getModuleByName("SmartOffHand").isToggled()
+            		|| mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL && !Main.INSTANCE.moduleManager.getModuleByName("SmartOffHand").isToggled()) {
             	swapTotem(getTotem(), 0);
             }
 

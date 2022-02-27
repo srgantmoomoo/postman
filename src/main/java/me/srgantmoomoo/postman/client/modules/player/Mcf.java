@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.modules.player;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -24,10 +25,10 @@ public class Mcf extends Module {
 		if (mc.objectMouseOver.typeOfHit.equals(RayTraceResult.Type.ENTITY) && mc.objectMouseOver.entityHit instanceof EntityPlayer && Mouse.isButtonDown(2)) {
 			if (FriendManager.isFriend(mc.objectMouseOver.entityHit.getName())) {
 				FriendManager.removeFriend(mc.objectMouseOver.entityHit.getName());
-				ModuleManager.addChatMessage("removed friend: " + mc.objectMouseOver.entityHit.getName());	
+				Main.INSTANCE.moduleManager.addChatMessage("removed friend: " + mc.objectMouseOver.entityHit.getName());
 			}else {
 				FriendManager.addFriend(mc.objectMouseOver.entityHit.getName());
-				ModuleManager.addChatMessage("added friend: " + mc.objectMouseOver.entityHit.getName());
+				Main.INSTANCE.moduleManager.addChatMessage("added friend: " + mc.objectMouseOver.entityHit.getName());
 			}
 		}
 	});

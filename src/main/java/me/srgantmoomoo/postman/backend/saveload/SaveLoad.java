@@ -48,13 +48,13 @@ public class SaveLoad {
 		ArrayList<String> toSave = new ArrayList<String>();
 		
 		// modules and keybinds
-		for(Module mod : ModuleManager.modules) {
+		for(Module mod : Main.INSTANCE.moduleManager.modules) {
 			if(!mod.getName().equals("tabGui"))
 			toSave.add("MOD:" + mod.getName() + ":" + mod.isToggled() + ":" + mod.getKey());
 		}
 		
 		// settings
-		for(Module mod : ModuleManager.modules) {
+		for(Module mod : Main.INSTANCE.moduleManager.modules) {
 			for(Setting setting : mod.settings) {
 				
 				if(setting instanceof BooleanSetting) {

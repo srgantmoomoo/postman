@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.framework.module.setting;
 
 import java.util.ArrayList;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
@@ -40,7 +41,7 @@ public class SettingManager {
 	}
 	
 	public Setting getSettingByName(Module mod, String name) {
-		for (Module m : ModuleManager.modules) {
+		for (Module m : Main.INSTANCE.moduleManager.modules) {
 			for (Setting set : m.settings) {
 					if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
 						return set;

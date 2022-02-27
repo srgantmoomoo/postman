@@ -48,7 +48,7 @@ public class EventProcessor {
 	@SubscribeEvent
 	public void onTick(TickEvent.ClientTickEvent event) {
 		if (mc.player != null) {
-			ModuleManager.onUpdate();
+			Main.INSTANCE.moduleManager.onUpdate();
 		}
 	}
 
@@ -57,14 +57,14 @@ public class EventProcessor {
 		if (event.isCanceled()) {
 			return;
 		}
-		ModuleManager.onWorldRender(event);
+		Main.INSTANCE.moduleManager.onWorldRender(event);
 	}
 
 	@SubscribeEvent
 	public void onRender(RenderGameOverlayEvent.Post event) {
 		Main.EVENT_BUS.post(event);
 		if(event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
-			ModuleManager.onRender();
+			Main.INSTANCE.moduleManager.onRender();
 		}
 	}
 

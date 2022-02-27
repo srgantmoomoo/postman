@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.client.commands;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.command.CommandManager;
@@ -46,10 +47,10 @@ public class Help extends Command {
 		mobOwner = new MobOwner();
 		clip = new Clip();
 		vanish = new Vanish();
-		
-		ModuleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
-		
-		ModuleManager.addChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!");
+
+		Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
+
+		Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!");
 
 		helpMessage(prefix.name, prefix.description, prefix.syntax);
 		helpMessage(toggle.name, toggle.description, toggle.syntax);
@@ -61,13 +62,13 @@ public class Help extends Command {
 		helpMessage(mobOwner.name, mobOwner.description, mobOwner.syntax);
 		helpMessage(clip.name, clip.description, clip.syntax);
 		helpMessage(vanish.name, vanish.description, vanish.syntax);
-		
-		ModuleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
+
+		Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
 
 	}
 	
 	private void helpMessage(String name, String desc, String syntax) {
-        ModuleManager.addChatMessage(WHITE + name + GRAY + " - " + desc + RED + ITALIC + " [ " + syntax + " ]");
+		Main.INSTANCE.moduleManager.addChatMessage(WHITE + name + GRAY + " - " + desc + RED + ITALIC + " [ " + syntax + " ]");
     }
 
 }

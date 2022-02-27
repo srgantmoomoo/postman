@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.modules.pvp;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.framework.module.Category;
@@ -50,10 +51,10 @@ public class AutoGap extends Module {
 		}
 		
 		if(disableOnSurround.isEnabled()) {
-			if(((Surround)ModuleManager.getModuleByName("surround")).shiftOnly.isEnabled()) {
+			if(((Surround)Main.INSTANCE.moduleManager.getModuleByName("surround")).shiftOnly.isEnabled()) {
 				if(mc.player.isSneaking()) toggle();
 			}else {
-				if(ModuleManager.isModuleEnabled("surround")) toggle();
+				if(Main.INSTANCE.moduleManager.isModuleEnabled("surround")) toggle();
 			}
 		}
 	}

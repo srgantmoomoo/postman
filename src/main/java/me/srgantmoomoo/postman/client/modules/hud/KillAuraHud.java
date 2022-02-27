@@ -8,6 +8,7 @@ import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.backend.util.render.JColor;
 import me.srgantmoomoo.postman.framework.module.Category;
 import me.srgantmoomoo.postman.framework.module.HudModule;
@@ -42,7 +43,7 @@ public class KillAuraHud extends HudModule {
 
 		@Override
 		public String getItem(int index) {
-			if (ModuleManager.isModuleEnabled("killAura")) return ChatFormatting.GREEN + "killA" +  " on";
+			if (Main.INSTANCE.moduleManager.isModuleEnabled("killAura")) return ChatFormatting.GREEN + "killA" +  " on";
 			else return "killA" + " off";
 		}
 

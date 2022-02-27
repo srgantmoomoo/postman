@@ -27,7 +27,7 @@ public abstract class MixinMovementInputFromOptions extends MovementInput {
 
 	@Redirect(method = "updatePlayerMoveState", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/settings/KeyBinding;isKeyDown()Z"))
 	public boolean isKeyPressed(KeyBinding keyBinding) {
-		if (ModuleManager.isModuleEnabled("guiMove") && ((GuiMove)ModuleManager.getModuleByName("guiMove")).isToggled()
+		if (Main.INSTANCE.moduleManager.isModuleEnabled("guiMove") && ((GuiMove)Main.INSTANCE.moduleManager.getModuleByName("guiMove")).isToggled()
 				&& Minecraft.getMinecraft().currentScreen != null
 				&& !(Minecraft.getMinecraft().currentScreen instanceof GuiChat)
 				&& Minecraft.getMinecraft().player != null) {

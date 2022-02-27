@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.modules.pvp;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.backend.event.events.PacketEvent;
 import me.srgantmoomoo.postman.backend.event.events.RenderEvent;
@@ -377,7 +378,7 @@ public class AutoCrystal extends Module {
                     mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                     PlacedCrystals.add(blockPos1);
                     
-                    if (ModuleManager.isModuleEnabled("autoCope")) AutoCope.addTarget(renderEnt.getName());
+                    if (Main.INSTANCE.moduleManager.isModuleEnabled("autoCope")) AutoCope.addTarget(renderEnt.getName());
                 }
                 
                 if (isSpoofingAngles) {

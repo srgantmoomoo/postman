@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -29,7 +30,7 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
     // chams
     @Inject(method = "doRender", at = @At("HEAD"))
     private <T extends EntityLivingBase> void injectChamsPre(final T a, final double b, final double c, final double d, final float e, final float f, final CallbackInfo g) {
-        if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
+        if (Main.INSTANCE.moduleManager.getModuleByName("esp's") != null && Main.INSTANCE.moduleManager.getModuleByName("esp's").isToggled() && ((Esp)Main.INSTANCE.moduleManager.getModuleByName("esp's")).chams.isEnabled()) {
             GL11.glEnable(32823);
             GL11.glPolygonOffset(1.0f, -1000000.0f);
         }
@@ -37,7 +38,7 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
 
     @Inject(method = "doRender", at = @At("RETURN"))
     private <T extends EntityLivingBase> void injectChamsPost(final T a, final double b, final double c, final double d, final float e, final float f, final CallbackInfo g) {
-        if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled() && ((Esp)ModuleManager.getModuleByName("esp's")).chams.isEnabled()) {
+        if (Main.INSTANCE.moduleManager.getModuleByName("esp's") != null && Main.INSTANCE.moduleManager.getModuleByName("esp's").isToggled() && ((Esp)Main.INSTANCE.moduleManager.getModuleByName("esp's")).chams.isEnabled()) {
             GL11.glPolygonOffset(1.0f, 1000000.0f);
             GL11.glDisable(32823);
         }
@@ -67,12 +68,12 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                 GlStateManager.alphaFunc(516, 0.003921569F);
             }
 
-            if (ModuleManager.getModuleByName("esp's") != null && ModuleManager.getModuleByName("esp's").isToggled()) {
-                if (entitylivingbaseIn instanceof EntityPlayer && entitylivingbaseIn != Minecraft.getMinecraft().player && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.is("outline")) {
-                    Color n = new JColor(((Esp) ModuleManager.getModuleByName("esp's")).playerColor.getValue());
+            if (Main.INSTANCE.moduleManager.getModuleByName("esp's") != null && Main.INSTANCE.moduleManager.getModuleByName("esp's").isToggled()) {
+                if (entitylivingbaseIn instanceof EntityPlayer && entitylivingbaseIn != Minecraft.getMinecraft().player && ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).entityMode.is("outline")) {
+                    Color n = new JColor(((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).playerColor.getValue());
                     OutlineUtils.setColor(n);
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
-                    OutlineUtils.renderOne((float) ((Esp) ModuleManager.getModuleByName("esp's")).lineWidth.getValue());
+                    OutlineUtils.renderOne((float) ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).lineWidth.getValue());
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderTwo();
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
@@ -82,10 +83,10 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderFive();
                     OutlineUtils.setColor(Color.WHITE);
-                } else if (((Esp) ModuleManager.getModuleByName("esp's")).mob.isEnabled() && ((Esp) ModuleManager.getModuleByName("esp's")).entityMode.is("outline")) {
+                } else if (((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).mob.isEnabled() && ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).entityMode.is("outline")) {
                     GL11.glLineWidth(5.0F);
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
-                    OutlineUtils.renderOne((float) ((Esp) ModuleManager.getModuleByName("esp's")).lineWidth.getValue());
+                    OutlineUtils.renderOne((float) ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).lineWidth.getValue());
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderTwo();
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);

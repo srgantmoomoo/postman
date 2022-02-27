@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 
@@ -15,7 +16,7 @@ public abstract class MixinEntity {
 
 	@Redirect(method = "applyEntityCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;addVelocity(DDD)V"))
 	public void velocity(Entity entity, double x, double y, double z) {
-		if (!ModuleManager.isModuleEnabled("noPush")) {
+		if (!Main.INSTANCE.moduleManager.isModuleEnabled("noPush")) {
 			entity.motionX += x;
 			entity.motionY += y;
 			entity.motionZ += z;

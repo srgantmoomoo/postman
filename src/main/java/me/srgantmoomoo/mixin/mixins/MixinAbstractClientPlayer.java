@@ -25,7 +25,7 @@ public abstract class MixinAbstractClientPlayer {
 	@Inject(method = "getLocationCape", at = @At("HEAD"), cancellable = true)
 	public void getLocationCape(CallbackInfoReturnable<ResourceLocation> callbackInfoReturnable) {
 		UUID uuid = getPlayerInfo().getGameProfile().getId();
-		if (ModuleManager.isModuleEnabled("capes") && Main.INSTANCE.cape.hasCape(uuid)) {
+		if (Main.INSTANCE.moduleManager.isModuleEnabled("capes") && Main.INSTANCE.cape.hasCape(uuid)) {
 			callbackInfoReturnable.setReturnValue(new ResourceLocation(Reference.MOD_ID, "textures/postman-cape.png"));
 		}
 	}

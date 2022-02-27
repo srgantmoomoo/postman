@@ -36,7 +36,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 public class ModuleManager {
 	
-	public static ArrayList<Module> modules = new ArrayList<>();
+	public ArrayList<Module> modules = new ArrayList<>();
 	
 	public ModuleManager() { 
 		MinecraftForge.EVENT_BUS.register(this);
@@ -147,19 +147,19 @@ public class ModuleManager {
 		modules.add(new ClickGuiModule());
 	 	//modules.add(new TabGui());
 	 	modules.add(new MainMenuWatermark());
-		modules.add(new Esp2dHelper());
+		//modules.add(new Esp2dHelper()); //TODO not wokring.
 	}
 	
-	public static void onUpdate() {
+	public void onUpdate() {
 		modules.stream().filter(Module::isToggled).forEach(Module::onUpdate);
 	}
 	
-	public static void onRender() {
+	public void onRender() {
 		modules.stream().filter(Module::isToggled).forEach(Module::onRender);
 		Main.INSTANCE.clickGui.render();
 	}
 	
-	public static void onWorldRender(RenderWorldLastEvent event) {
+	public void onWorldRender(RenderWorldLastEvent event) {
 		Minecraft.getMinecraft().profiler.startSection("postman");
 		Minecraft.getMinecraft().profiler.startSection("setup");
 		JTessellator.prepare();
@@ -188,7 +188,7 @@ public class ModuleManager {
 					int keyCode = Keyboard.getEventKey();
 					if(keyCode <= 0)
 						return;
-					for(Module m : ModuleManager.modules) {
+					for(Module m : modules) {
 						if(m.getKey() == keyCode && keyCode > 0) {
 							m.toggle();
 						}
@@ -198,18 +198,18 @@ public class ModuleManager {
 		} catch (Exception q) { q.printStackTrace(); }
 	}
 	
-	public static void addChatMessage(String message) {
+	public void addChatMessage(String message) {
 		message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + message;
 		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
 	}
 	
-	public static boolean isModuleEnabled(String name){
+	public boolean isModuleEnabled(String name){
 		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 		return m.isToggled();
 	}
 	
 	public Module getModule (String name) {
-		for (Module m : ModuleManager.modules) {
+		for (Module m : modules) {
 			if(m.getName().equalsIgnoreCase(name)) {
 				return m;
 			}
@@ -217,14 +217,14 @@ public class ModuleManager {
 		return null;
 	}
 	
-	public static ArrayList<Module> getModules() {
+	public ArrayList<Module> getModules() {
 		return modules;
 	}
 	
-	public static List<Module> getModulesByCategory(Category c) {
+	public List<Module> getModulesByCategory(Category c) {
 		List<Module> modules = new ArrayList<Module>();
 		
-		for(Module m : ModuleManager.modules) {
+		for(Module m : modules) {
 			if(!m.getName().equals("Esp2dHelper")) {
 			if(m.getCategory() == c)
 				modules.add(m);
@@ -234,12 +234,12 @@ public class ModuleManager {
 	}
 	
 	// this works best with panelstudio for whatever reason, ill delete one of these soon.
-	public static ArrayList<Module> getModulesInCategory(Category c){
+	public ArrayList<Module> getModulesInCategory(Category c){
 		ArrayList<Module> list = (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
 		return list;
 	}
 	
-	public static Module getModuleByName(String name){
+	public Module getModuleByName(String name){
 		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 		return m;
 	}

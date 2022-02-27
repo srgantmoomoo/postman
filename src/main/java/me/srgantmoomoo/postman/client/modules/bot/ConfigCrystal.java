@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.client.modules.bot;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.framework.module.Category;
@@ -25,37 +26,37 @@ public class ConfigCrystal extends Module {
 	public void onUpdate() {
 		
 		if(multiplace.isEnabled()) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).multiplace.setEnabled(true);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).multiplace.setEnabled(true);
 
-			if(ping.getValue() <= 1) ((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).multiplacePlus.setEnabled(false);
-			else if(ping.getValue() > 1) ((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).multiplacePlus.setEnabled(true);
+			if(ping.getValue() <= 1) ((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).multiplacePlus.setEnabled(false);
+			else if(ping.getValue() > 1) ((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).multiplacePlus.setEnabled(true);
 			
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).highPing.setEnabled(false);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).highPing.setEnabled(false);
 			return;
 		}
 		
 		if(server.is("2b2tpvp")) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).rotate.setEnabled(true);
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).spoofRotations.setEnabled(true);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).rotate.setEnabled(true);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).spoofRotations.setEnabled(true);
 		}
 		if(server.is(".cc")) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).rotate.setEnabled(false);
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).spoofRotations.setEnabled(false);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).rotate.setEnabled(false);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).spoofRotations.setEnabled(false);
 		}
 		if(server.is("other")) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).rotate.setEnabled(false);
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).spoofRotations.setEnabled(false);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).rotate.setEnabled(false);
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).spoofRotations.setEnabled(false);
 		}
 		
 		if(ping.getValue() <= 20) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).breakType.setMode("swing");
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).breakType.setMode("swing");
 		}else if(ping.getValue() > 20) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).breakType.setMode("packet");
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).breakType.setMode("packet");
 		}
 		if(ping.getValue() <= 5) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).highPing.setEnabled(false);;
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).highPing.setEnabled(false);;
 		}else if(ping.getValue() > 5) {
-			((AutoCrystal) ModuleManager.getModuleByName("autoCrystal")).highPing.setEnabled(true);;
+			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).highPing.setEnabled(true);;
 		}
 	}
 

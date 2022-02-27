@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.backend.util.render;
 
+import me.srgantmoomoo.Main;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
@@ -26,7 +27,7 @@ public class Esp2dHelper extends Module {
 		super("Esp2dHelper", "eeeeeeeEsp2dHelper", Keyboard.KEY_NONE, Category.CLIENT);
 		toggled = true;
 	}
-	public Esp esp = (Esp)ModuleManager.getModuleByName("esp's");
+	public Esp esp = (Esp)Main.INSTANCE.moduleManager.getModuleByName("esp's");
 	
 	JColor ppColor;
 	int opacityGradient;
@@ -34,7 +35,7 @@ public class Esp2dHelper extends Module {
 	 public void onWorldRender(RenderEvent event) {
 			Minecraft mc = Minecraft.getMinecraft();
 	    	//add mobs and items to 2dEsp
-		  if (ModuleManager.getModuleByName("esp's") != null && esp.isToggled() && esp.entityMode.is("2dEsp")) {
+		  if (Main.INSTANCE.moduleManager.getModuleByName("esp's") != null && esp.isToggled() && esp.entityMode.is("2dEsp")) {
 	       	 if ((mc.getRenderManager()).options == null)
 	  		      return; 
 	       	 float viewerYaw = (mc.getRenderManager()).playerViewY;
@@ -47,7 +48,7 @@ public class Esp2dHelper extends Module {
 	  		     GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
 	  		          GL11.glEnable(2848);
 	  		          if (e instanceof net.minecraft.entity.player.EntityPlayer) {
-	  		        	  ppColor = new JColor(((Esp) ModuleManager.getModuleByName("esp's")).playerColor.getValue());
+	  		        	  ppColor = new JColor(((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).playerColor.getValue());
 	  		        	  GlStateManager.glLineWidth((float) esp.lineWidth.getValue());
 	  		        	  ppColor.glColor();
 	  		        	  GL11.glBegin(2);

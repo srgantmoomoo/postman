@@ -20,7 +20,6 @@ import net.minecraft.client.Minecraft;
 public abstract class Module implements Toggleable {
 	
 	protected static final Minecraft mc = Minecraft.getMinecraft();
-	public static ArrayList<Module> modules;
 	
 	public String name, description;
 	public KeybindSetting keyCode = new KeybindSetting(0);

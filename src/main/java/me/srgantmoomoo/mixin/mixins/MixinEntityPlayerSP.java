@@ -59,7 +59,7 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
 	   
 	    @Redirect(method={"onLivingUpdate"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/entity/EntityPlayerSP;setSprinting(Z)V", ordinal=2))
 	    public void onLivingUpdate(EntityPlayerSP entityPlayerSP, boolean sprinting) {
-	    	Sprint sprint = (Sprint)ModuleManager.getModuleByName("sprint");
+	    	Sprint sprint = (Sprint)Main.INSTANCE.moduleManager.getModuleByName("sprint");
 	        if (sprint.isToggled() && sprint.mode.is("sickomode") && (Minecraft.getMinecraft().player.movementInput.moveForward != 0.0f || Minecraft.getMinecraft().player.movementInput.moveStrafe != 0.0f)) entityPlayerSP.setSprinting(true);
 	        else entityPlayerSP.setSprinting(sprinting);
 	    }

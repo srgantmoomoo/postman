@@ -9,6 +9,7 @@ import com.lukflug.panelstudio.settings.Toggleable;
 import com.lukflug.panelstudio.theme.Renderer;
 import com.lukflug.panelstudio.theme.Theme;
 
+import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.client.clickgui.front.ClickGuiModule;
@@ -17,7 +18,7 @@ import net.minecraft.util.text.TextFormatting;
 public class SyncableColorComponent extends ColorComponent {
 	public SyncableColorComponent (Theme theme, ColorSetting setting, Toggleable colorToggle, Animation animation) {
 		super(TextFormatting.BOLD+setting.name,null,theme.getContainerRenderer(),animation,theme.getComponentRenderer(),setting,true,true,colorToggle);
-		if (setting!=((ClickGuiModule) ModuleManager.getModuleByName("clickGui")).enabledColor) addComponent(new SyncButton(theme.getComponentRenderer()));
+		if (setting!=((ClickGuiModule) Main.INSTANCE.moduleManager.getModuleByName("clickGui")).enabledColor) addComponent(new SyncButton(theme.getComponentRenderer()));
 	}
 	
 	private class SyncButton extends FocusableComponent {
@@ -37,8 +38,8 @@ public class SyncableColorComponent extends ColorComponent {
 		public void handleButton (Context context, int button) {
 			super.handleButton(context,button);
 			if (button==Interface.LBUTTON && context.isClicked()) {
-				setting.setValue(((ClickGuiModule) ModuleManager.getModuleByName("clickGui")).enabledColor.getColor());
-				setting.setRainbow(((ClickGuiModule) ModuleManager.getModuleByName("clickGui")).enabledColor.getRainbow());
+				setting.setValue(((ClickGuiModule) Main.INSTANCE.moduleManager.getModuleByName("clickGui")).enabledColor.getColor());
+				setting.setRainbow(((ClickGuiModule) Main.INSTANCE.moduleManager.getModuleByName("clickGui")).enabledColor.getRainbow());
 			}
 		}
 	}

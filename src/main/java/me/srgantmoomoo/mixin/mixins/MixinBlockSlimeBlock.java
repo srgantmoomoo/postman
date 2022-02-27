@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
 import net.minecraft.block.BlockSlime;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
@@ -16,7 +17,7 @@ import me.srgantmoomoo.postman.client.modules.movement.NoSlow;
 public class MixinBlockSlimeBlock {
     @Inject(method = "onEntityWalk", at = @At("HEAD"), cancellable = true)
     private void onSteppedOn(World world, BlockPos pos, Entity entity, CallbackInfo info) {
-    	if (ModuleManager.isModuleEnabled("noSlow") && ((NoSlow)ModuleManager.getModuleByName("noSlow")).slimeBlock.isEnabled())
+    	if (Main.INSTANCE.moduleManager.isModuleEnabled("noSlow") && ((NoSlow)Main.INSTANCE.moduleManager.getModuleByName("noSlow")).slimeBlock.isEnabled())
         	info.cancel();
     }
 }
