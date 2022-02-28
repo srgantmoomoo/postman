@@ -129,6 +129,7 @@ public class ModuleManager {
 		modules.add(new ArrayListt());
 		modules.add(new InventoryViewer());
 		modules.add(new PlayerModel());
+		modules.add(new TargetHud());
 		modules.add(new Coords());
 		modules.add(new NetherCoords());
 		modules.add(new ArmorHud());

@@ -13,7 +13,6 @@ import me.srgantmoomoo.postman.framework.module.Category;
 import me.srgantmoomoo.postman.framework.module.HudModule;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
-
 public class Watermark extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR)); 
 
@@ -23,7 +22,7 @@ public class Watermark extends HudModule {
 	}
 	
 	@Override
-	public void populate (Theme theme) {
+	public void populate(Theme theme) {
 		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new WatermarkList());
 	}
 	
