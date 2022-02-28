@@ -30,4 +30,5 @@ public class Protester extends Command {
 			Main.INSTANCE.commandManager.sendClientChatMessage("set protester message to " + ChatFormatting.GREEN + args[0] + " " + msg.toString() + ChatFormatting.GRAY + ".", true);
 		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}
+
 }

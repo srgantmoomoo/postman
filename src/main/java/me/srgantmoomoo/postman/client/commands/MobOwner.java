@@ -26,14 +26,15 @@ public class MobOwner extends Command {
 				 String ownerUUID = horse.getOwnerUniqueId() == null ? "entity has no owner" : horse.getOwnerUniqueId().toString();
 				 
 				 try {
-						 String ownerReplace = Objects.requireNonNull(EntityUtil.getNameFromUUID(ownerUUID)).replace("\"", "");
-						 Main.INSTANCE.commandManager.sendClientChatMessage("mob owner is " + TextFormatting.GREEN + ownerReplace, true);
-					}catch (Exception e) {
-						 Main.INSTANCE.commandManager.sendClientChatMessage("something went wrong, this entity may not have a real owner.", true);
-					}
+					 String ownerReplace = Objects.requireNonNull(EntityUtil.getNameFromUUID(ownerUUID)).replace("\"", "");
+					 Main.INSTANCE.commandManager.sendClientChatMessage("mob owner is " + TextFormatting.GREEN + ownerReplace, true);
+				 }catch (Exception e) {
+					 Main.INSTANCE.commandManager.sendClientChatMessage("something went wrong, this entity may not have a real owner.", true);
+				 }
 			 }else {
 				 Main.INSTANCE.commandManager.sendClientChatMessage("ridden entity is not compatible with this command", true);
 			 }
 		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}
+
 }

@@ -16,46 +16,41 @@ public class Baritone extends Command {
     
 	@Override
 	public void onCommand(String[] args, String command) {
-		if(args.length > 0) {
-			String starter = args[0];
-		
-			if(starter.equalsIgnoreCase("stop")) {
-				if(args.length == 1) {
-					BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().cancel();
-					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoal(null);
-					Main.INSTANCE.commandManager.sendClientChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped" + ChatFormatting.GRAY + ".", true);
-				}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
-			}
-			
-			else if(starter.equalsIgnoreCase("goto")) {
-				if(args.length == 3) {
-					String x = args[1];
-					String z = args[2];
-					BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoalAndPath(new GoalXZ(Integer.parseInt(x), Integer.parseInt(z)));
-					Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now pathing to " + ChatFormatting.GREEN + x + " " + z + ChatFormatting.GRAY + ".", true);
-				}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
-			}
-			
-			else if(starter.equalsIgnoreCase("mine")) {
-				if(args.length == 2) {
-					String block = args[1];
-					try {
-						BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().mineByName(block);
-						Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ChatFormatting.GRAY + ".", true);
-					}catch (Exception e) {
-						Main.INSTANCE.commandManager.sendClientChatMessage("baritone could not find that block. :(", true);
-					}
-				}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
-			}
-			
-			else if(starter.equalsIgnoreCase("farm")) {
-				if(args.length == 1) {
-					BaritoneAPI.getProvider().getPrimaryBaritone().getFarmProcess().farm();
-					Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now " + ChatFormatting.GREEN + "farming" + ChatFormatting.GRAY + ".", true);
-				}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
-			}
-			
-			else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
-		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+
+		if(args.length == 1) {
+			if(args[0].equalsIgnoreCase("stop")) {
+				BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().cancel();
+				BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoal(null);
+				Main.INSTANCE.commandManager.sendClientChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped" + ChatFormatting.WHITE + ".", true);
+			}else if(args[0].equalsIgnoreCase("farm")) {
+				BaritoneAPI.getProvider().getPrimaryBaritone().getFarmProcess().farm();
+				Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now " + ChatFormatting.GREEN + "farming" + ChatFormatting.WHITE + ".", true);
+			}else
+				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+
+		}else if(args.length == 2) {
+			if(args[0].equalsIgnoreCase("mine")) {
+				String block = args[1];
+				try {
+					BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().mineByName(block);
+					Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ChatFormatting.WHITE + ".", true);
+				}catch (Exception e) {
+					Main.INSTANCE.commandManager.sendClientChatMessage("baritone could not find that block. :(", true);
+				}
+			}else
+				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+
+		}else if(args.length == 3) {
+			if(args[0].equalsIgnoreCase("goto")) {
+				String x = args[1];
+				String z = args[2];
+				BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoalAndPath(new GoalXZ(Integer.parseInt(x), Integer.parseInt(z)));
+				Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now pathing to " + ChatFormatting.GREEN + x + " " + z + ChatFormatting.WHITE + ".", true);
+			}else
+				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+		}else
+			Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+
 	}
+
 }

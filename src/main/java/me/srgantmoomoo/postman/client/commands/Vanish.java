@@ -31,10 +31,10 @@ public class Vanish extends Command {
 			        Minecraft.getMinecraft().player.startRiding(ridden, true);
 					Main.INSTANCE.commandManager.sendClientChatMessage("entity " + ridden.getName() + " created.", true);
 			        ridden = null;
-			    }else {
+			    }else
 					Main.INSTANCE.commandManager.sendClientChatMessage("no entity is being ridden", true);
-			    }
 			}
-		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+		}else
+			Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}
 }

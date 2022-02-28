@@ -27,7 +27,7 @@ public class Bind extends Command {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.keyCode.setKeyCode(Keyboard.getKeyIndex(keyName.toUpperCase()));
 
-					Main.INSTANCE.commandManager.sendClientChatMessage(String.format(ChatFormatting.GREEN + "%s " + ChatFormatting.GRAY + "was bound to" + ChatFormatting.GREEN + " %s", module.name, Keyboard.getKeyName(module.getKey())), true);;
+					Main.INSTANCE.commandManager.sendClientChatMessage(module.getName() + " bound to " + ChatFormatting.GREEN + Keyboard.getKeyName(module.getKey()), true);;
 					moduleFound = true;
 					break;
 				}
@@ -35,18 +35,16 @@ public class Bind extends Command {
 			if(!moduleFound) {
 				Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.DARK_RED + "module not found.", true);
 			}
-		}
-		
-		if(args.length == 1) {
-			String clear = args[0];
-			if(clear.equalsIgnoreCase("clear")) {
+		}else if(args.length == 1) {
+			if(args[0].equalsIgnoreCase("clear")) {
 				for(Module module : Main.INSTANCE.moduleManager.modules) {
 					module.keyCode.setKeyCode(Keyboard.KEY_NONE);
 				}
-				Main.INSTANCE.commandManager.sendClientChatMessage("cleared all binds.", true);
-			} else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
-		}
-		if(args.length == 0) Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+				Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.GREEN + "cleared all binds" + ChatFormatting.WHITE + ".", true);
+			} else
+				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+		}else
+			Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}
 
 }

@@ -28,6 +28,8 @@ public class AutoCope extends Command {
 			
 			me.srgantmoomoo.postman.client.modules.pvp.AutoCope.setMessage(args[0] + " " + msg.toString());
 			Main.INSTANCE.commandManager.sendClientChatMessage("set autoCope message to " + ChatFormatting.GREEN + args[0] + " " + msg.toString() + ChatFormatting.GRAY + ".", true);
-		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+		}else
+			Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}
+
 }

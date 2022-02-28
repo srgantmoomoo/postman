@@ -57,10 +57,10 @@ public class CommandManager {
         if(message.split(" ").length > 0) {
         	boolean commandFound = false;
         	String commandName = message.split(" ")[0];
-			if(commandName.equals("")) {
-				TextFormatting GRAY = TextFormatting.GRAY;
-				TextFormatting BOLD = TextFormatting.BOLD;
-				TextFormatting RESET = TextFormatting.RESET;
+			if(commandName.equals("") || commandName.equals("help")) {
+				ChatFormatting GRAY = ChatFormatting.GRAY;
+				ChatFormatting BOLD = ChatFormatting.BOLD;
+				ChatFormatting RESET = ChatFormatting.RESET;
 				sendClientChatMessage("\n" + GRAY + "" + BOLD + "i love postman <3" + "\n" + RESET, false);
 				sendCommandDescriptions();
 				sendClientChatMessage("\n" + RESET + GRAY + BOLD + "i hate postman." + "\n", false);
@@ -81,9 +81,9 @@ public class CommandManager {
 
 	//TODO find a better color for syntax or something lol.
 	private void sendCommandDescriptions() {
-		TextFormatting GRAY = TextFormatting.GRAY;
-		TextFormatting RED = TextFormatting.RED;
-		TextFormatting ITALIC = TextFormatting.ITALIC;
+		ChatFormatting GRAY = ChatFormatting.GRAY;
+		ChatFormatting RED = ChatFormatting.RED;
+		ChatFormatting ITALIC = ChatFormatting.ITALIC;
 		for(Command c : Main.INSTANCE.commandManager.commands) {
 			sendClientChatMessage(c.name + " - " + GRAY + c.description + RED + ITALIC + " [" + c.syntax + "]", false);
 		}
