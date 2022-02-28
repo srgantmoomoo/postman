@@ -3,7 +3,7 @@ package me.srgantmoomoo.postman.backend.saveload;
 import java.io.IOException;
 
 import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.client.clickgui.back.ClickGuiConfig;
+import me.srgantmoomoo.postman.impl.clickgui.back.ClickGuiConfig;
 
 /**
  * @author Hoosiers

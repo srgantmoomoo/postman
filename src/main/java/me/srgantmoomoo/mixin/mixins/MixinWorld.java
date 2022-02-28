@@ -2,8 +2,7 @@ package me.srgantmoomoo.mixin.mixins;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.backend.event.events.RenderRainEvent;
-import me.srgantmoomoo.postman.framework.module.ModuleManager;
-import me.srgantmoomoo.postman.client.modules.render.NoRender;
+import me.srgantmoomoo.postman.impl.modules.render.NoRender;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;

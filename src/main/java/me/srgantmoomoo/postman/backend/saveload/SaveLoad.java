@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.framework.command.CommandManager;
+import me.srgantmoomoo.postman.framework.friend.Friend;
 import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
 import me.srgantmoomoo.postman.framework.module.setting.Setting;
@@ -20,15 +21,17 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ModeSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.NumberSetting;
 import net.minecraft.client.Minecraft;
 
-/*
- * Written by @SrgantMooMoo on 11/30/20 with inspiration taken from @SebSb.
+/**
+ * inspiration taken from SebSb
+ * @author SrgantMooMoo
+ * @since 2/28/22
  */
 
 public class SaveLoad {
 
 	private File dir;
 	private File dataFile;
-	   
+
 	public SaveLoad() {
 		dir = new File(Minecraft.getMinecraft().gameDir, Reference.NAME);
 		if(!dir.exists()) {
@@ -40,54 +43,60 @@ public class SaveLoad {
 				dataFile.createNewFile();
 			} catch (IOException e) {e.printStackTrace();}
 		}
-		
+
 		this.load();
 	}
-	
+
 	public void save() {
 		ArrayList<String> toSave = new ArrayList<String>();
-		
+
 		// modules and keybinds
+		toSave.add("modname:toggled:keybind");
+
 		for(Module mod : Main.INSTANCE.moduleManager.modules) {
-			if(!mod.getName().equals("tabGui"))
-			toSave.add("MOD:" + mod.getName() + ":" + mod.isToggled() + ":" + mod.getKey());
+			toSave.add("MODULE:" + mod.getName() + ":" + mod.isToggled() + ":" + mod.getKey());
 		}
-		
+
 		// settings
+		toSave.add("\nmodname:settingname:value (:rainbow for color settings)");
+
 		for(Module mod : Main.INSTANCE.moduleManager.modules) {
 			for(Setting setting : mod.settings) {
-				
+
 				if(setting instanceof BooleanSetting) {
 					BooleanSetting bool = (BooleanSetting) setting;
-					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + bool.isEnabled());
-					}
-				
+					toSave.add("SETTING:" + mod.getName() + ":" + setting.name + ":" + bool.isEnabled());
+				}
+
 				if(setting instanceof NumberSetting) {
 					NumberSetting numb = (NumberSetting) setting;
-					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + numb.getValue());
+					toSave.add("SETTING:" + mod.getName() + ":" + setting.name + ":" + numb.getValue());
 				}
-				
+
 				if(setting instanceof ModeSetting) {
 					ModeSetting mode = (ModeSetting) setting;
-					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
+					toSave.add("SETTING:" + mod.getName() + ":" + setting.name + ":" + mode.getMode());
 				}
-				
+
 				if(setting instanceof ColorSetting) {
 					ColorSetting color = (ColorSetting) setting;
-					toSave.add("SET:" + mod.getName() + ":" + setting.name + ":" + color.toInteger() + ":" + color.getRainbow());
+					toSave.add("SETTING:" + mod.getName() + ":" + setting.name + ":" + color.toInteger() + ":" + color.getRainbow());
 				}
 			}
 		}
-		
+
+		// friends
+		toSave.add("");
+
+		for(Friend friend : Main.INSTANCE.friendManager.friends) {
+			toSave.add("FRIEND:" + friend.getName());
+		}
+
 		// command prefix
+		toSave.add("");
+
 		toSave.add("COMMANDPREFIX:" + Main.INSTANCE.commandManager.prefix);
-		
-		/* friends
-		List<String> friends = FriendManager.getFriendsByName();
-		String friendsReplace = friends.toString();
-		String friendsReep = friendsReplace.replaceAll("[]", "");
-		toSave.add("FRIENDS:" + friendsReep);*/
-		
+
 		try {
 			PrintWriter pw = new PrintWriter(this.dataFile);
 			for(String str : toSave) {
@@ -98,10 +107,10 @@ public class SaveLoad {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void load() {
 		ArrayList<String> lines = new ArrayList<String>();
-		
+
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(this.dataFile));
 			String line = reader.readLine();
@@ -112,30 +121,29 @@ public class SaveLoad {
 			reader.close();
 		} catch(Exception e) {
 			e.printStackTrace();
-			}
-		
+		}
+
 		for(String s : lines) {
 			String[] args = s.split(":");
-			if(s.toLowerCase().startsWith("mod:")) {
+			if(s.startsWith("MODULE:")) {
 				Module m = Main.INSTANCE.moduleManager.getModule(args[1]);
 				if(m != null) {
+					if(!m.getName().equals("clickGui") && !m.getName().equals("hudEditor") && !m.getName().equals("blink") && !m.getName().equals("autoDisconnect") && !m.getName().equals("clientFont") && !m.getName().equals("protester")) {
+						m.setToggled(Boolean.parseBoolean(args[2]));
+						m.setKey(Integer.parseInt(args[3]));
+					}
+
 					// hud modules
 					if(m.getName().equals("clickGui")) m.setToggled(false);
 					if(m.getName().equals("hudEditor")) m.setToggled(false);
 					// normal modules that can cause crashes
 					if(m.getName().equals("blink")) m.setToggled(false);
 					if(m.getName().equals("autoDisconnect")) m.setToggled(false);
-					
-					
-					if(!m.getName().equals("clickGui") 
-							&& !m.getName().equals("hudEditor") 
-							&& !m.getName().equals("blink") 
-							&& !m.getName().equals("autoDisconnect")) {
-						m.setToggled(Boolean.parseBoolean(args[2]));
-						m.setKey(Integer.parseInt(args[3]));
-					}
+					if(m.getName().equals("clientFont")) m.setToggled(false);
+					if(m.getName().equals("protester")) m.setToggled(false);
+					//TODO fix these
 				}
-			}else if(s.toLowerCase().startsWith("set:")) {
+			}else if(s.startsWith("SETTING:")) {
 				Module m = Main.INSTANCE.moduleManager.getModule(args[1]);
 				if(m != null) {
 					Setting setting = Main.INSTANCE.settingManager.getSettingByName(m,args[2]);
@@ -155,11 +163,11 @@ public class SaveLoad {
 						}
 					}
 				}
-			}else if(s.toLowerCase().startsWith("commandprefix:")) {
+			}else if(s.startsWith("FRIEND:")) {
+				Main.INSTANCE.friendManager.addFriend(args[1]);
+			}else if(s.startsWith("COMMANDPREFIX:")) {
 				Main.INSTANCE.commandManager.setCommandPrefix(args[1]);
-			}/*else if(s.toLowerCase().startsWith("friends:")) {
-				FriendManager.addFriend(args[1]);
-			}*/
+			}
 		}
 	}
 }

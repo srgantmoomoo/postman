@@ -11,8 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.postman.framework.module.ModuleManager;
-import me.srgantmoomoo.postman.client.modules.movement.NoSlow;
+import me.srgantmoomoo.postman.impl.modules.movement.NoSlow;
 
 @Mixin(BlockWeb.class)
 public class MixinBlockWeb {

@@ -16,8 +16,7 @@ import me.srgantmoomoo.postman.backend.event.Event.Era;
 import me.srgantmoomoo.postman.backend.event.events.PlayerMotionUpdateEvent;
 import me.srgantmoomoo.postman.backend.event.events.PlayerMoveEvent;
 import me.srgantmoomoo.postman.backend.event.events.PlayerUpdateEvent;
-import me.srgantmoomoo.postman.framework.module.ModuleManager;
-import me.srgantmoomoo.postman.client.modules.movement.Sprint;
+import me.srgantmoomoo.postman.impl.modules.movement.Sprint;
 
 @Mixin(EntityPlayerSP.class)
 public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {

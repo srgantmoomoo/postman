@@ -1,30 +1,24 @@
 package me.srgantmoomoo.postman.framework.module;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.Main;
-import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.backend.event.events.RenderEvent;
-import me.srgantmoomoo.postman.backend.util.render.Esp2dHelper;
 import me.srgantmoomoo.postman.backend.util.render.JTessellator;
-import me.srgantmoomoo.postman.client.modules.bot.*;
-import me.srgantmoomoo.postman.client.modules.client.*;
-import me.srgantmoomoo.postman.client.modules.exploits.*;
-import me.srgantmoomoo.postman.client.modules.hud.*;
-import me.srgantmoomoo.postman.client.modules.movement.*;
-import me.srgantmoomoo.postman.client.modules.player.*;
-import me.srgantmoomoo.postman.client.modules.pvp.*;
-import me.srgantmoomoo.postman.client.modules.render.*;
-import me.srgantmoomoo.postman.client.clickgui.front.ClickGuiModule;
-import me.srgantmoomoo.postman.client.clickgui.front.HudEditor;
+import me.srgantmoomoo.postman.impl.modules.bot.*;
+import me.srgantmoomoo.postman.impl.modules.client.*;
+import me.srgantmoomoo.postman.impl.modules.exploits.*;
+import me.srgantmoomoo.postman.impl.modules.hud.*;
+import me.srgantmoomoo.postman.impl.modules.movement.*;
+import me.srgantmoomoo.postman.impl.modules.player.*;
+import me.srgantmoomoo.postman.impl.modules.pvp.*;
+import me.srgantmoomoo.postman.impl.modules.render.*;
+import me.srgantmoomoo.postman.impl.clickgui.front.ClickGuiModule;
+import me.srgantmoomoo.postman.impl.clickgui.front.HudEditor;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

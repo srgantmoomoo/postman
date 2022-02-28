@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.client.clickgui.back.ClickGuiConfig;
+import me.srgantmoomoo.postman.impl.clickgui.back.ClickGuiConfig;
 
 /**
  * @author Hoosiers

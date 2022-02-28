@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
-import me.srgantmoomoo.postman.client.commands.*;
-import me.srgantmoomoo.postman.framework.module.ModuleManager;
+import me.srgantmoomoo.postman.impl.commands.*;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
