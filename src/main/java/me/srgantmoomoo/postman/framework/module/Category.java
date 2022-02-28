@@ -3,11 +3,9 @@ package me.srgantmoomoo.postman.framework.module;
 public enum Category {
 	PLAYER("player"), RENDER("render"), PVP("pvp"), EXPLOITS("exploits"), MOVEMENT("movement"), HUD("hud"), CLIENT("client"), BOT("bot");
 	
-	public String name;
-	public int moduleIndex;
+	public final String name;
 	
 	Category(String name) {
 		this.name = name;
 	}
-
 }

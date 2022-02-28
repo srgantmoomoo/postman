@@ -35,7 +35,6 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
  */
 
 public class ModuleManager {
-	
 	public ArrayList<Module> modules = new ArrayList<>();
 	
 	public ModuleManager() { 
@@ -166,7 +165,7 @@ public class ModuleManager {
 		RenderEvent e = new RenderEvent(event.getPartialTicks());
 		Minecraft.getMinecraft().profiler.endSection();
 
-		modules.stream().filter(module -> module.isToggled()).forEach(module -> {
+		modules.stream().filter(Module::isToggled).forEach(module -> {
 			Minecraft.getMinecraft().profiler.startSection(module.getName());
 			module.onWorldRender(e);
 			Minecraft.getMinecraft().profiler.endSection();
@@ -215,27 +214,12 @@ public class ModuleManager {
 	public ArrayList<Module> getModules() {
 		return modules;
 	}
-	
-	public List<Module> getModulesByCategory(Category c) {
-		List<Module> modules = new ArrayList<Module>();
-		
-		for(Module m : modules) {
-			if(!m.getName().equals("Esp2dHelper")) {
-			if(m.getCategory() == c)
-				modules.add(m);
-			}
-		}
-		return modules;
-	}
-	
-	// this works best with panelstudio for whatever reason, ill delete one of these soon.
+
 	public ArrayList<Module> getModulesInCategory(Category c){
-		ArrayList<Module> list = (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
-		return list;
+		return (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
 	}
 	
 	public Module getModuleByName(String name){
-		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
-		return m;
+		return modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
 }

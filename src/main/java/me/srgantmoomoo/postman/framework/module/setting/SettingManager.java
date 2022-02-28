@@ -13,7 +13,7 @@ import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
 public class SettingManager {
 	
-	private ArrayList<Setting> settings;
+	private final ArrayList<Setting> settings;
 	
 	public SettingManager(){
 		this.settings = new ArrayList<Setting>();

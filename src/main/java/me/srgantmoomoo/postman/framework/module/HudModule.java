@@ -14,7 +14,6 @@ import me.srgantmoomoo.Main;
  */
 
 public abstract class HudModule extends Module {
-
 	protected FixedComponent component;
 	protected Point position;
 	

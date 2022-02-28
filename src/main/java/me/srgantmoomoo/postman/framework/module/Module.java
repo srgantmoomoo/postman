@@ -18,7 +18,6 @@ import net.minecraft.client.Minecraft;
  */
 
 public abstract class Module implements Toggleable {
-	
 	protected static final Minecraft mc = Minecraft.getMinecraft();
 	
 	public String name, description;
