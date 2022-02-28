@@ -25,10 +25,10 @@ public class Mcf extends Module {
 		if (mc.objectMouseOver.typeOfHit.equals(RayTraceResult.Type.ENTITY) && mc.objectMouseOver.entityHit instanceof EntityPlayer && Mouse.isButtonDown(2)) {
 			if (Main.INSTANCE.friendManager.isFriend(mc.objectMouseOver.entityHit.getName())) {
 				Main.INSTANCE.friendManager.removeFriend(mc.objectMouseOver.entityHit.getName());
-				Main.INSTANCE.moduleManager.addChatMessage("removed friend: " + mc.objectMouseOver.entityHit.getName());
+				Main.INSTANCE.commandManager.sendClientChatMessage("removed friend: " + mc.objectMouseOver.entityHit.getName(), true);
 			}else {
 				Main.INSTANCE.friendManager.addFriend(mc.objectMouseOver.entityHit.getName());
-				Main.INSTANCE.moduleManager.addChatMessage("added friend: " + mc.objectMouseOver.entityHit.getName());
+				Main.INSTANCE.commandManager.sendClientChatMessage("added friend: " + mc.objectMouseOver.entityHit.getName(), true);
 			}
 		}
 	});

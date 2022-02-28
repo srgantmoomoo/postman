@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
@@ -31,10 +32,7 @@ public class CommandManager {
 	public CommandManager() {
 		MinecraftForge.EVENT_BUS.register(this);
 		Main.EVENT_BUS.subscribe(this);
-		register();
-	}
-	
-	public void register() {
+
 		commands.add(new Toggle());
 		commands.add(new Bind());
 		commands.add(new Help());
@@ -68,18 +66,19 @@ public class CommandManager {
         		}
         	}
         	if(!commandFound) {
-				Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.DARK_RED + "command does not exist, use " + ChatFormatting.ITALIC + prefix + "help " + ChatFormatting.RESET + "" + ChatFormatting.DARK_RED + "for help.");
+				sendClientChatMessage(ChatFormatting.DARK_RED + "command does not exist, use " + ChatFormatting.ITALIC + prefix + "help " + ChatFormatting.RESET + "" + ChatFormatting.DARK_RED + "for help.", true);
         	}
         }
     });
 	
 	@SubscribeEvent
-	public void key(KeyInputEvent e) {
+	public void openChatScreen(KeyInputEvent e) {
 		if (prefix.length() == 1) {
             final char key = Keyboard.getEventCharacter();
             if (prefix.charAt(0) == key) {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiChat());
-                ((GuiChat) Minecraft.getMinecraft().currentScreen).inputField.setText(prefix);
+				assert Minecraft.getMinecraft().currentScreen != null;
+				((GuiChat) Minecraft.getMinecraft().currentScreen).inputField.setText(prefix);
             }
         }
 	}
@@ -91,29 +90,21 @@ public class CommandManager {
 			Main.INSTANCE.saveLoad.save();
 		}
     }
+
+	public void sendClientChatMessage(String message, boolean prefix) {
+		String messageWithPrefix = message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.RESET + ": " + message;
+
+		if(prefix)
+			Minecraft.getMinecraft().player.sendMessage(new TextComponentString(messageWithPrefix));
+		else
+			Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
+	}
 	
-	public String getCommandPrefix(String name) {
-        return prefix;
-    }
-	
-	public void correctUsageMsg(String name, String syntax) {
-		// usage
-		String usage = "correct usage of " + name + " command -> " + prefix + syntax;
-				
-		// prefix
-		String message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + usage;
+	public void sendCorrectionMessage(String name, String syntax) {
+		String correction = "correct usage of " + name + " command -> " + prefix + syntax;
+		String message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + correction;
 		
 		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
 	}
-	
-	/*public static void helpMsg(String message) {
-		// prefix
-		message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + syntax;
-		
-		// helpMsg
-		syntax = 
-		
-		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
-	}*/
 	
 }

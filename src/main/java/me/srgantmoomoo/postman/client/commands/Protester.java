@@ -27,7 +27,7 @@ public class Protester extends Command {
             }
 			
 			me.srgantmoomoo.postman.client.modules.player.Protester.setMessage(args[0] + " " + msg.toString());
-			Main.INSTANCE.moduleManager.addChatMessage("set protester message to " + ChatFormatting.GREEN + args[0] + " " + msg.toString() + ChatFormatting.GRAY + ".");
-		}else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
+			Main.INSTANCE.commandManager.sendClientChatMessage("set protester message to " + ChatFormatting.GREEN + args[0] + " " + msg.toString() + ChatFormatting.GRAY + ".", true);
+		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}
 }

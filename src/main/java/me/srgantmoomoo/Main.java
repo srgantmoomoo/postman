@@ -1,7 +1,5 @@
 package me.srgantmoomoo;
 
-import java.util.ArrayList;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +13,6 @@ import me.srgantmoomoo.postman.backend.util.font.CustomFontRenderer;
 import me.srgantmoomoo.postman.backend.util.Cape;
 import me.srgantmoomoo.postman.framework.command.CommandManager;
 import me.srgantmoomoo.postman.framework.friend.FriendManager;
-import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
 import me.srgantmoomoo.postman.framework.module.setting.SettingManager;
 import me.srgantmoomoo.postman.client.clickgui.back.ClickGui;

@@ -48,9 +48,9 @@ public class Help extends Command {
 		clip = new Clip();
 		vanish = new Vanish();
 
-		Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
+		Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.GREEN + "-------------------", true);
 
-		Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!");
+		Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.BOLD + Reference.NAME + " " + Reference.VERSION + "!", true);
 
 		helpMessage(prefix.name, prefix.description, prefix.syntax);
 		helpMessage(toggle.name, toggle.description, toggle.syntax);
@@ -63,12 +63,12 @@ public class Help extends Command {
 		helpMessage(clip.name, clip.description, clip.syntax);
 		helpMessage(vanish.name, vanish.description, vanish.syntax);
 
-		Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.GREEN + "-------------------");
+		Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.GREEN + "-------------------", true);
 
 	}
 	
 	private void helpMessage(String name, String desc, String syntax) {
-		Main.INSTANCE.moduleManager.addChatMessage(WHITE + name + GRAY + " - " + desc + RED + ITALIC + " [ " + syntax + " ]");
+		Main.INSTANCE.commandManager.sendClientChatMessage(WHITE + name + GRAY + " - " + desc + RED + ITALIC + " [ " + syntax + " ]", true);
     }
 
 }

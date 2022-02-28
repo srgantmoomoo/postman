@@ -22,15 +22,15 @@ public class Toggle extends Command {
 			for(Module module : Main.INSTANCE.moduleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.toggle();
-					Main.INSTANCE.moduleManager.addChatMessage(module.name + " " + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.RED + "disabled" + ChatFormatting.GRAY + "."));
+					Main.INSTANCE.commandManager.sendClientChatMessage(module.name + " " + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.RED + "disabled" + ChatFormatting.GRAY + "."), true);
 					moduleFound = true;
 					break;
 				}
 			}
 			if(!moduleFound) {
-				Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.DARK_RED + "module not found.");
+				Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.DARK_RED + "module not found.", true);
 			}
-		}else Main.INSTANCE.commandManager.correctUsageMsg(getName(), getSyntax());
+		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}
 
 }

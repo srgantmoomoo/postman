@@ -18,8 +18,8 @@ public class DeathCoords extends Module {
 	@Override
 	public void onUpdate() {
 		if(mc.player.isDead) {
-			Main.INSTANCE.moduleManager.addChatMessage(ChatFormatting.WHITE + "lol u just died loser" +
-					ChatFormatting.GRAY + " (x)" + mc.player.getPosition().x + " (y)" + mc.player.getPosition().y + " (z)" + mc.player.getPosition().z);
+			Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.WHITE + "lol u just died loser" +
+					ChatFormatting.GRAY + " (x)" + mc.player.getPosition().x + " (y)" + mc.player.getPosition().y + " (z)" + mc.player.getPosition().z, true);
 			toggled = false;
 		}
 	}

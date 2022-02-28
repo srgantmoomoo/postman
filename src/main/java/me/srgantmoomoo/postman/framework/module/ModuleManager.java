@@ -198,11 +198,6 @@ public class ModuleManager {
 		} catch (Exception q) { q.printStackTrace(); }
 	}
 	
-	public void addChatMessage(String message) {
-		message = ChatFormatting.AQUA + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.GRAY + ": " + message;
-		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
-	}
-	
 	public boolean isModuleEnabled(String name){
 		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 		return m.isToggled();
