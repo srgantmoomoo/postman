@@ -14,7 +14,7 @@ public class Toggle extends Command {
 
 	@Override
 	public void onCommand(String[] args, String command) {
-		if(args.length > 0) {
+		if(args.length == 2) {
 			String moduleName = args[0];
 			boolean moduleFound = false;
 			for(Module module : Main.INSTANCE.moduleManager.modules) {
