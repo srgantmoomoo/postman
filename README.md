@@ -11,7 +11,7 @@ postman is a [**Forge**](https://files.minecraftforge.net/net/minecraftforge/for
 <br>
 
 check out the [**postman website**](https://techale.github.io/postman-website/) by techale! <br>
-check ou the [**postman archive**](https://github.com/moomooooo/postman-archive) for pre-github releases of postman.
+check out the [**postman archive**](https://github.com/moomooooo/postman-archive) for pre-github releases of postman.
 
 thank you,
 
