@@ -28,7 +28,6 @@ import net.minecraft.client.Minecraft;
  */
 
 public class SaveLoad {
-
 	private File dir;
 	private File dataFile;
 
@@ -159,7 +158,7 @@ public class SaveLoad {
 						}
 						if(setting instanceof ColorSetting) {
 							((ColorSetting)setting).fromInteger(Integer.parseInt(args[3]));
-							((ColorSetting)setting).setRainbow(Boolean.parseBoolean(args[4]));
+							((ColorSetting)setting).setRainbow(Boolean.parseBoolean(args[4])); //TODO theres some config issues with this.
 						}
 					}
 				}

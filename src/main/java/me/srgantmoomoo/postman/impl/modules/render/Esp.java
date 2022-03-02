@@ -47,46 +47,52 @@ import net.minecraft.util.math.BlockPos;
  */
 
 public class Esp extends Module {
-	
-	public BooleanSetting chams = new BooleanSetting("walls", this, false);
-	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2desp", "glow", "off");
-	public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "both", "off");
-	public ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
-	
-	public BooleanSetting mob = new BooleanSetting("mob", this, false);
-	public BooleanSetting item = new BooleanSetting("item", this, true);
-	public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
-	public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
-	
-	public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 100)); 
-	public ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 100)); 
-	public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 100)); 
-	public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 100)); 
-	
-	public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50));
-	public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50)); 
-	public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50)); 
-	public ColorSetting otherColor = new ColorSetting("other", this, new JColor(150, 150, 150, 50)); 
-	
-	public Esp() {
-		super ("esp's", "draws esp around players and storage blocks.", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(entityMode, storage, crystalMode, mob, item, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor
-				, enderChestColor, shulkerBoxColor, otherColor);
-	}
-	private static final Minecraft mc = Wrapper.getMinecraft();
+    public BooleanSetting chams = new BooleanSetting("walls", this, false);
+    public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2desp", "glow", "off");
+    public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "both", "off");
+    public ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
 
-	List<Entity> entities;
-	
+    public BooleanSetting mobs = new BooleanSetting("mobs", this, false);
+    public BooleanSetting items = new BooleanSetting("items", this, true);
+    public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
+    public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
+
+    public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 100));
+    public ColorSetting hostileMobColor = new ColorSetting("hostileMob", this, new JColor(255, 0, 0, 100));
+    public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 100));
+    public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 100));
+
+    public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50));
+    public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50));
+    public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50));
+    public ColorSetting otherColor = new ColorSetting("otherContainers", this, new JColor(150, 150, 150, 50));
+
+    public Esp() {
+        super ("esp's", "draws esp's around things.", Keyboard.KEY_NONE, Category.RENDER);
+        this.addSettings(entityMode, storage, crystalMode, mobs, items, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor
+                , enderChestColor, shulkerBoxColor, otherColor);
+    }
+
+    List<Entity> entities;
+
     JColor playerFillColor;
     JColor playerOutlineColor;
     JColor hostileMobFillColor;
     JColor hostileMobOutlineColor;
     JColor passiveMobFillColor;
     JColor passiveMobOutlineColor;
+    JColor itemFillColor;
+    JColor itemOutlineColor;
     JColor mainIntColor;
     JColor containerColor;
     JColor containerBox;
     int opacityGradient;
+
+    public void onDisable() {
+        if (entities != mc.player) {
+            entities.forEach(p -> p.setGlowing(false));
+        }
+    }
 
     @Override
     public void onWorldRender(RenderEvent event) {
@@ -98,9 +104,9 @@ public class Esp extends Module {
             // readable code :thumbs_up:
             // glow esp disabling stuff.
             if(entityMode.is("glow")) {
-                if(!mob.isEnabled() && entity instanceof EntityCreature || entity instanceof EntityAnimal || entity instanceof EntitySlime)
+                if(!mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntityAnimal || entity instanceof EntitySlime))
                     entity.setGlowing(false);
-                if(!item.isEnabled() && entity instanceof EntityItem)
+                if(!items.isEnabled() && entity instanceof EntityItem)
                     entity.setGlowing(false);
             }else {
                 if(!(entity instanceof EntityEnderCrystal))
@@ -114,7 +120,7 @@ public class Esp extends Module {
                 if(entity instanceof EntityPlayer) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerOutlineColor);
                 }
-                if(mob.isEnabled()) {
+                if(mobs.isEnabled()) {
                     if(mc.world.getDifficulty().equals(EnumDifficulty.PEACEFUL))
                         return;
                     if(entity instanceof EntityAnimal) {
@@ -123,11 +129,14 @@ public class Esp extends Module {
                         JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), hostileMobOutlineColor);
                     }
                 }
+                if(items.isEnabled() && entity instanceof EntityItem) {
+                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, itemOutlineColor);
+                }
             }else if(entityMode.is("highlight")) {
                 if(entity instanceof EntityPlayer) {
                     JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerFillColor, GeometryMasks.Quad.ALL);
                 }
-                if(mob.isEnabled()) {
+                if(mobs.isEnabled()) {
                     if(mc.world.getDifficulty().equals(EnumDifficulty.PEACEFUL))
                         return;
                     if(entity instanceof EntityAnimal) {
@@ -135,13 +144,16 @@ public class Esp extends Module {
                     }else if(entity instanceof EntityCreature || entity instanceof EntitySlime) {
                         JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), hostileMobFillColor, GeometryMasks.Quad.ALL);
                     }
+                }
+                if(items.isEnabled() && entity instanceof EntityItem) {
+                    JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), itemFillColor, GeometryMasks.Quad.ALL);
                 }
             }else if(entityMode.is("box+highlight")) {
                 if(entity instanceof EntityPlayer) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerOutlineColor);
                     JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerFillColor, GeometryMasks.Quad.ALL);
                 }
-                if(mob.isEnabled()) {
+                if(mobs.isEnabled()) {
                     if(mc.world.getDifficulty().equals(EnumDifficulty.PEACEFUL))
                         return;
                     if(entity instanceof EntityAnimal) {
@@ -152,31 +164,25 @@ public class Esp extends Module {
                         JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), hostileMobFillColor, GeometryMasks.Quad.ALL);
                     }
                 }
+                if(items.isEnabled() && entity instanceof EntityItem) {
+                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), itemOutlineColor);
+                    JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), itemFillColor, GeometryMasks.Quad.ALL);
+                }
+            }else if(entityMode.is("glow")) {
+                if(entity instanceof EntityPlayer)
+                    entity.setGlowing(true);
+                if(entity instanceof EntityCreature || entity instanceof EntitySlime)
+                    entity.setGlowing(true);
+                if(entity instanceof EntityEnderCrystal)
+                    entity.setGlowing(true);
+                if(mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal))
+                    entity.setGlowing(true);
+                if(items.isEnabled() && entity instanceof EntityItem)
+                    entity.setGlowing(true);
             }
 
-            // glow esp's
-            if (entityMode.is("glow") && entity instanceof EntityPlayer) {
-            	entity.setGlowing(true);
-            }
-            if (entityMode.is("glow") && mob.isEnabled() &&  entity instanceof EntityCreature || entity instanceof EntitySlime) {
-            	entity.setGlowing(true);
-            }
-            if (entityMode.is("glow") && mob.isEnabled() && entity instanceof EntityAnimal) {
-            	entity.setGlowing(true);
-            }
-            if (entityMode.is("glow") && item.isEnabled() && entity instanceof EntityItem) {
-            	entity.setGlowing(true);
-            }
-            if (crystalMode.is("glow") && entity instanceof EntityEnderCrystal) {
-            	entity.setGlowing(true);
-            }
-            
-            // items
-            if (item.isEnabled() && !entityMode.is("off") && !entityMode.is("glow") && entity instanceof EntityItem) {
-            	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
-            }
-
-            // 2d esp is under me/srgantmoomoo/postman/api/util/render/Esp2dHelper
+            // 2d esp is under Esp2dHelper.
+            // outline esp is under MixinRendererLivingBase.
         });
         
         if (storage.is("outline")) {
@@ -198,9 +204,7 @@ public class Esp extends Module {
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
             });
-        }
-        
-        if (storage.is("both")) {
+        }else if (storage.is("both")) {
             mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(chestColor.getValue(), 255);
@@ -227,10 +231,8 @@ public class Esp extends Module {
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }
             });
-        }
-        
-        if (storage.is("fill")) {
-            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+        }else if (storage.is("fill")) {
+            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                 	containerBox = new JColor(chestColor.getValue());
                     drawStorageBox(tileEntity.getPos(), 1, containerBox);
@@ -249,12 +251,6 @@ public class Esp extends Module {
                 }
             });
         }
-        
-        // crystal csgo
-        
-        if(crystalMode.is("csgo")) {
-        	
-        }
     }
     
     private void drawStorageBox(BlockPos blockPos, int width, JColor color) {
@@ -264,12 +260,6 @@ public class Esp extends Module {
     private void drawBox(BlockPos blockPos, int width, JColor color) {
 		JTessellator.drawBox(blockPos, 1, color, GeometryMasks.Quad.ALL);
    }
-
-    public void onDisable() {
-        if (entities != mc.player) {
-        	entities.forEach(p -> p.setGlowing(false));
-        }
-    }
 
     private void defineEntityColors(Entity entity) {
         if (entity instanceof EntityPlayer) {
@@ -288,6 +278,11 @@ public class Esp extends Module {
         else {
             passiveMobFillColor = new JColor(passiveMobColor.getValue());
             passiveMobOutlineColor = new JColor(passiveMobColor.getValue(), 255);
+        }
+
+        if(entity instanceof EntityItem) {
+            itemFillColor = new JColor(itemColor.getValue());
+            itemOutlineColor = new JColor(itemColor.getValue(), 255);
         }
 
         if(entity != null) {
