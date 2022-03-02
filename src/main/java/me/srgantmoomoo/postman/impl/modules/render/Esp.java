@@ -3,6 +3,7 @@ package me.srgantmoomoo.postman.impl.modules.render;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import net.minecraft.world.EnumDifficulty;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.backend.event.events.RenderEvent;
@@ -39,10 +40,16 @@ import net.minecraft.util.math.BlockPos;
  * Written by @SrgantMooMoo on 11/17/20.
  */
 
+/**
+ * rewritten
+ * @author SrgantMooMoo
+ * @since 3/1/22
+ */
+
 public class Esp extends Module {
 	
 	public BooleanSetting chams = new BooleanSetting("walls", this, false);
-	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2dEsp", "glow", "off");
+	public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2desp", "glow", "off");
 	public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "both", "off");
 	public ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
 	
@@ -70,10 +77,12 @@ public class Esp extends Module {
 
 	List<Entity> entities;
 	
-    JColor playerC;
-    JColor playerCOutline;
-    JColor hostileMobC;
-    JColor passiveMobC;
+    JColor playerFillColor;
+    JColor playerOutlineColor;
+    JColor hostileMobFillColor;
+    JColor hostileMobOutlineColor;
+    JColor passiveMobFillColor;
+    JColor passiveMobOutlineColor;
     JColor mainIntColor;
     JColor containerColor;
     JColor containerBox;
@@ -81,34 +90,70 @@ public class Esp extends Module {
 
     @Override
     public void onWorldRender(RenderEvent event) {
-    	
-    	entities = mc.world.loadedEntityList.stream()
-                .filter(entity -> entity != mc.player)
-                .collect(Collectors.toList());
+    	entities = mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).collect(Collectors.toList());
+
         entities.forEach(entity -> {
             defineEntityColors(entity);
-            
-            if(!entityMode.is("glow") && !(entity instanceof EntityEnderCrystal)) entity.setGlowing(false);
-            if(entityMode.is("glow") && !mob.isEnabled() && entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal) entity.setGlowing(false);
-            if(entityMode.is("glow") && !item.isEnabled() && entity instanceof EntityItem) entity.setGlowing(false);
-            
-            if(!crystalMode.is("glow") && entity instanceof EntityEnderCrystal) entity.setGlowing(false);
-            
-            
-            // players - box
-            if (entityMode.is("box") && entity instanceof EntityPlayer) {
-            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerCOutline);
+
+            // readable code :thumbs_up:
+            // glow esp disabling stuff.
+            if(entityMode.is("glow")) {
+                if(!mob.isEnabled() && entity instanceof EntityCreature || entity instanceof EntityAnimal || entity instanceof EntitySlime)
+                    entity.setGlowing(false);
+                if(!item.isEnabled() && entity instanceof EntityItem)
+                    entity.setGlowing(false);
+            }else {
+                if(!(entity instanceof EntityEnderCrystal))
+                    entity.setGlowing(false);
             }
-            // player - highlight
-            if (entityMode.is("highlight") && entity instanceof EntityPlayer) {
-            	JTessellator.drawPlayerBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerC, GeometryMasks.Quad.ALL);
+            if(!crystalMode.is("glow") && entity instanceof EntityEnderCrystal)
+                entity.setGlowing(false);
+
+            // entity esp's
+            if(entityMode.is("box")) {
+                if(entity instanceof EntityPlayer) {
+                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerOutlineColor);
+                }
+                if(mob.isEnabled()) {
+                    if(mc.world.getDifficulty().equals(EnumDifficulty.PEACEFUL))
+                        return;
+                    if(entity instanceof EntityAnimal) {
+                        JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), passiveMobOutlineColor);
+                    }else if(entity instanceof EntityCreature || entity instanceof EntitySlime) {
+                        JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), hostileMobOutlineColor);
+                    }
+                }
+            }else if(entityMode.is("highlight")) {
+                if(entity instanceof EntityPlayer) {
+                    JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerFillColor, GeometryMasks.Quad.ALL);
+                }
+                if(mob.isEnabled()) {
+                    if(mc.world.getDifficulty().equals(EnumDifficulty.PEACEFUL))
+                        return;
+                    if(entity instanceof EntityAnimal) {
+                        JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), passiveMobFillColor, GeometryMasks.Quad.ALL);
+                    }else if(entity instanceof EntityCreature || entity instanceof EntitySlime) {
+                        JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), hostileMobFillColor, GeometryMasks.Quad.ALL);
+                    }
+                }
+            }else if(entityMode.is("box+highlight")) {
+                if(entity instanceof EntityPlayer) {
+                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerOutlineColor);
+                    JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerFillColor, GeometryMasks.Quad.ALL);
+                }
+                if(mob.isEnabled()) {
+                    if(mc.world.getDifficulty().equals(EnumDifficulty.PEACEFUL))
+                        return;
+                    if(entity instanceof EntityAnimal) {
+                        JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), passiveMobOutlineColor);
+                        JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), passiveMobFillColor, GeometryMasks.Quad.ALL);
+                    }else if(entity instanceof EntityCreature || entity instanceof EntitySlime) {
+                        JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), hostileMobOutlineColor);
+                        JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), hostileMobFillColor, GeometryMasks.Quad.ALL);
+                    }
+                }
             }
-            // players - box+highlight
-            if (entityMode.is("box+highlight") && entity instanceof EntityPlayer) {
-            	JTessellator.playerEsp(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerCOutline);
-            	JTessellator.drawPlayerBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerC, GeometryMasks.Quad.ALL);
-            }
-            
+
             // glow esp's
             if (entityMode.is("glow") && entity instanceof EntityPlayer) {
             	entity.setGlowing(true);
@@ -126,22 +171,11 @@ public class Esp extends Module {
             	entity.setGlowing(true);
             }
             
-            // hostiles and passives - box
-            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("glow") && !entityMode.is("off")){
-                if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
-                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, hostileMobC);
-                }
-            }
-            if (mob.isEnabled() && !entityMode.is("outline") && !entityMode.is("glow") && !entityMode.is("off")){
-                if (entity instanceof EntityAnimal) {
-                    JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, passiveMobC);
-                }
-            }
-            
             // items
-            if (item.isEnabled() && !entityMode.is("off") && !entityMode.is("glow") && entity instanceof EntityItem){
+            if (item.isEnabled() && !entityMode.is("off") && !entityMode.is("glow") && entity instanceof EntityItem) {
             	JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, mainIntColor);
             }
+
             // 2d esp is under me/srgantmoomoo/postman/api/util/render/Esp2dHelper
         });
         
@@ -239,29 +273,27 @@ public class Esp extends Module {
 
     private void defineEntityColors(Entity entity) {
         if (entity instanceof EntityPlayer) {
-             playerC = new JColor(playerColor.getValue());
-             playerCOutline = new JColor(playerColor.getValue(), 255);
+            playerFillColor = new JColor(playerColor.getValue());
+            playerOutlineColor = new JColor(playerColor.getValue(), 255);
         }
 
-        if (entity instanceof EntityMob) {
-        	hostileMobC = new JColor(hostileMobColor.getValue());
+        if(entity instanceof EntityMob || entity instanceof EntitySlime) {
+            hostileMobFillColor = new JColor(hostileMobColor.getColor());
+            hostileMobOutlineColor = new JColor(hostileMobColor.getValue(), 255);
         }
         else if (entity instanceof EntityAnimal) {
-        	passiveMobC = new JColor(passiveMobColor.getValue());
+            passiveMobFillColor = new JColor(passiveMobColor.getValue());
+        	passiveMobOutlineColor = new JColor(passiveMobColor.getValue(), 255);
         }
         else {
-        	passiveMobC = new JColor(passiveMobColor.getValue());
+            passiveMobFillColor = new JColor(passiveMobColor.getValue());
+            passiveMobOutlineColor = new JColor(passiveMobColor.getValue(), 255);
         }
 
-        if (entity instanceof EntitySlime) {
-        	hostileMobC = new JColor(hostileMobColor.getValue());
-        }
-
-        if (entity != null) {
+        if(entity != null) {
             mainIntColor = new JColor(itemColor.getValue());
         }
     }
-    //boolean range check and opacity gradient
 
     private boolean rangeTileCheck(TileEntity tileEntity) {
         //the range value has to be squared for this

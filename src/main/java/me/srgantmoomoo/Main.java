@@ -30,8 +30,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  * @since 11/17/2020
  */
 
-//TODO mob esp crashes.
-
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
 	int strong;
