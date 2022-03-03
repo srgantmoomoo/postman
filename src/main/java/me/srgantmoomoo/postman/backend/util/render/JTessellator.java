@@ -1,5 +1,10 @@
 package me.srgantmoomoo.postman.backend.util.render;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.impl.modules.pvp.Surround;
+import me.srgantmoomoo.postman.impl.modules.render.Esp;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL32;
 
@@ -190,6 +195,46 @@ public class JTessellator {
 			vertex(x+w,y+h,z+d,bufferbuilder);
 		}
 		tessellator.draw();
+	}
+
+	public static void draw2dEsp(Entity e, float viewerYaw, float lineWidth, JColor color) {
+		JTessellator.prepare();
+		GlStateManager.pushMatrix();
+		Vec3d pos = Surround.getInterpolatedPos(e, mc.getRenderPartialTicks());
+		GlStateManager.translate(pos.x - (mc.getRenderManager()).renderPosX, pos.y - (mc.getRenderManager()).renderPosY, pos.z - (mc.getRenderManager()).renderPosZ);
+		GlStateManager.glNormal3f(0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
+		GL11.glEnable(2848);
+		if (e instanceof net.minecraft.entity.player.EntityPlayer) {
+			GlStateManager.glLineWidth((float) lineWidth);
+			color.glColor();
+			GL11.glBegin(2);
+			GL11.glVertex2d(-e.width, 0.0D);
+			GL11.glVertex2d(-e.width, (e.height / 4.0F));
+			GL11.glVertex2d(-e.width, 0.0D);
+			GL11.glVertex2d((-e.width / 4.0F * 2.0F), 0.0D);
+			GL11.glEnd();
+			GL11.glBegin(2);
+			GL11.glVertex2d(-e.width, e.height);
+			GL11.glVertex2d((-e.width / 4.0F * 2.0F), e.height);
+			GL11.glVertex2d(-e.width, e.height);
+			GL11.glVertex2d(-e.width, (e.height / 2.5F * 2.0F));
+			GL11.glEnd();
+			GL11.glBegin(2);
+			GL11.glVertex2d(e.width, e.height);
+			GL11.glVertex2d((e.width / 4.0F * 2.0F), e.height);
+			GL11.glVertex2d(e.width, e.height);
+			GL11.glVertex2d(e.width, (e.height / 2.5F * 2.0F));
+			GL11.glEnd();
+			GL11.glBegin(2);
+			GL11.glVertex2d(e.width, 0.0D);
+			GL11.glVertex2d((e.width / 4.0F * 2.0F), 0.0D);
+			GL11.glVertex2d(e.width, 0.0D);
+			GL11.glVertex2d(e.width, (e.height / 4.0F));
+			GL11.glEnd();
+		}
+		JTessellator.release();
+		GlStateManager.popMatrix();
 	}
 
 	public static void drawLine(double posx, double posy, double posz, double posx2, double posy2, double posz2, float red, float green, float blue, float alpha){

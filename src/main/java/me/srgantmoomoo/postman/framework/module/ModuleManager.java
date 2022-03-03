@@ -141,7 +141,6 @@ public class ModuleManager {
 		modules.add(new ClickGuiModule());
 	 	//modules.add(new TabGui());
 	 	modules.add(new MainMenuWatermark());
-		//modules.add(new Esp2dHelper()); //TODO not wokring.
 	}
 	
 	public void onUpdate() {

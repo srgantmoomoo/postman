@@ -51,7 +51,8 @@ public class ClickGuiModule extends Module {
 	
 	@Override
 	public void onDisable() {
-		mc.entityRenderer.getShaderGroup().deleteShaderGroup();
+		if(blur.isEnabled())
+			mc.entityRenderer.getShaderGroup().deleteShaderGroup();
 	}
 
 	@Override

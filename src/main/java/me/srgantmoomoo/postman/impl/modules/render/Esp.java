@@ -46,6 +46,7 @@ import net.minecraft.util.math.BlockPos;
  * @since 3/1/22
  */
 
+//TODO 2d esp's and outline esp's.
 public class Esp extends Module {
     public BooleanSetting chams = new BooleanSetting("walls", this, false);
     public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2desp", "glow", "off");
@@ -168,25 +169,34 @@ public class Esp extends Module {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), itemOutlineColor);
                     JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), itemFillColor, GeometryMasks.Quad.ALL);
                 }
+            }else if(entityMode.is("2desp")) { //TODO 2d fucks with nametags. & only works for players.
+                if(entity instanceof EntityPlayer)
+                    JTessellator.draw2dEsp(entity, (mc.getRenderManager()).playerViewY, (float)lineWidth.getValue(), playerFillColor);
+                if(entity instanceof EntityAnimal)
+                    JTessellator.draw2dEsp(entity, (mc.getRenderManager()).playerViewY, (float)lineWidth.getValue(), passiveMobFillColor);
+                if(entity instanceof EntityCreature || entity instanceof EntitySlime)
+                    JTessellator.draw2dEsp(entity, (mc.getRenderManager()).playerViewY, (float)lineWidth.getValue(), hostileMobFillColor);
+                if(entity instanceof EntityItem)
+                    JTessellator.draw2dEsp(entity, (mc.getRenderManager()).playerViewY, (float)lineWidth.getValue(), itemFillColor);
             }else if(entityMode.is("glow")) {
                 if(entity instanceof EntityPlayer)
                     entity.setGlowing(true);
-                if(entity instanceof EntityCreature || entity instanceof EntitySlime)
-                    entity.setGlowing(true);
-                if(entity instanceof EntityEnderCrystal)
-                    entity.setGlowing(true);
-                if(mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal))
+                if(mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal)) // don't need to seperate hostile and passive cause they all glow the same color.
                     entity.setGlowing(true);
                 if(items.isEnabled() && entity instanceof EntityItem)
                     entity.setGlowing(true);
             }
 
-            // 2d esp is under Esp2dHelper.
+            if(entity instanceof EntityEnderCrystal) {
+                if(crystalMode.is("glow"))
+                    entity.setGlowing(true);
+            }
+
             // outline esp is under MixinRendererLivingBase.
         });
         
         if (storage.is("outline")) {
-            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(chestColor.getValue(), 255);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
@@ -205,7 +215,7 @@ public class Esp extends Module {
                 }
             });
         }else if (storage.is("both")) {
-            mc.world.loadedTileEntityList.stream().filter(tileEntity -> rangeTileCheck(tileEntity)).forEach(tileEntity -> {
+            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
                 if (tileEntity instanceof TileEntityChest){
                     containerColor = new JColor(chestColor.getValue(), 255);
                     containerBox = new JColor(chestColor.getValue());
