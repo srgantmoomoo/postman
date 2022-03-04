@@ -41,17 +41,17 @@ public class ClickGuiModule extends Module {
 	public static Module getClickGuiModule() {
 		return INSTANCE;
 	}
-	
+
 	@Override
 	public void onEnable() {
 		Main.INSTANCE.clickGui.enterGUI();
-		if(blur.isEnabled()) 
+		if(blur.isEnabled())
 			mc.entityRenderer.loadShader(shader);
 	}
 	
 	@Override
 	public void onDisable() {
-		if(blur.isEnabled())
+		if(mc.entityRenderer.getShaderGroup() != null)
 			mc.entityRenderer.getShaderGroup().deleteShaderGroup();
 	}
 

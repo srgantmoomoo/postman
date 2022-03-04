@@ -237,11 +237,11 @@ public class JTessellator {
 		GlStateManager.popMatrix();
 	}
 
-	public static void drawLine(double posx, double posy, double posz, double posx2, double posy2, double posz2, float red, float green, float blue, float alpha){
+	public static void drawLine(double posx, double posy, double posz, double posx2, double posy2, double posz2, JColor color){
 		GlStateManager.glLineWidth(1.0f);
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferbuilder = tessellator.getBuffer();
-		GL11.glColor4f(red, green, blue, alpha);
+		color.glColor();
 		bufferbuilder.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION);
 		vertex(posx,posy,posz,bufferbuilder);
 		vertex(posx2,posy2,posz2,bufferbuilder);
