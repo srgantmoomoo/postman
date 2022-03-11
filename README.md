@@ -7,7 +7,7 @@
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE)
 
-**Building is currently broken, Please eait for me to unfuck it**
+Im sorry to everyone, but ill very rarely will update this repo in the future
 
 **A continuation of where SrgantMooMoo left this client**
 By the Postman Community
@@ -21,6 +21,7 @@ postman is a client that runs off Minecraft Forge 1.12.2, it is intended for use
 <br>
 
 This is where Postman Reborn steps in, This client is a fork of the oringal postman, mainly intended to add features, bug fixes and more to the client
+Thanks for keeping an eye
 
 this client is on Minecraft 1.12.2, Forge version 1.12.2-14.23.5.2768, Alpine 1.5, PanelStudio 0.1.8, and is coded in 100% java.
 
