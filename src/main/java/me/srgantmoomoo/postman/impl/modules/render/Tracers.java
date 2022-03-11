@@ -57,14 +57,14 @@ public class Tracers extends Module {
 		entities.forEach(entity -> {
 			Vec3d eyes = ActiveRenderInfo.getCameraPosition().add(mc.getRenderManager().viewerPosX, mc.getRenderManager().viewerPosY, mc.getRenderManager().viewerPosZ);
 
-			if (entity instanceof EntityPlayer) {
+			if (entity instanceof EntityPlayer && players.isEnabled()) {
 				JTessellator.drawLine(eyes.x, eyes.y, eyes.z, interpolate(entity.posX, entity.lastTickPosX), interpolate(entity.posY, entity.lastTickPosY), interpolate(entity.posZ, entity.lastTickPosZ), playerColor.getValue());
-			} else if (entity instanceof EntityAnimal) {
+			} else if (entity instanceof EntityAnimal && passiveMobs.isEnabled()) {
 				JTessellator.drawLine(eyes.x, eyes.y, eyes.z, interpolate(entity.posX, entity.lastTickPosX), interpolate(entity.posY, entity.lastTickPosY), interpolate(entity.posZ, entity.lastTickPosZ), hostileMobColor.getValue());
-			} else if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
+			} else if ((entity instanceof EntityCreature || entity instanceof EntitySlime) && hostileMobs.isEnabled()) {
 				JTessellator.drawLine(eyes.x, eyes.y, eyes.z, interpolate(entity.posX, entity.lastTickPosX), interpolate(entity.posY, entity.lastTickPosY), interpolate(entity.posZ, entity.lastTickPosZ), passiveMobColor.getValue());
 			}
-		});
+		}); 
 	}
 
 	// this was taken from gamesnse.
