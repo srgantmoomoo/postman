@@ -70,10 +70,9 @@ public class Esp extends Module {
 
     public Esp() {
         super ("esp's", "draws esp's around things.", Keyboard.KEY_NONE, Category.RENDER);
-        this.addSettings(entityMode, storage, crystalMode, mobs, items, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor
-                , enderChestColor, shulkerBoxColor, otherColor);
+        this.addSettings(entityMode, storage, crystalMode, mobs, items, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor,
+                enderChestColor, shulkerBoxColor, otherColor);
     }
-
     List<Entity> entities;
 
     JColor playerFillColor;

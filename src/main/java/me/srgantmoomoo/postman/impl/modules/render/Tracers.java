@@ -2,6 +2,11 @@ package me.srgantmoomoo.postman.impl.modules.render;
 
 import me.srgantmoomoo.postman.backend.util.render.JColor;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySlime;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.backend.event.events.RenderEvent;
@@ -18,83 +23,52 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /*
  * written by @SrgantMooMoo on November 1st, 2020. hbd peep!
  */
 
+/**
+ * rewrite interpolate taken from gs.
+ * @author SrgantMooMoo
+ * @since 3/10/2022
+ */
+
 public class Tracers extends Module {
+	public BooleanSetting players = new BooleanSetting("players", this, true);
 	public BooleanSetting hostileMobs = new BooleanSetting("hostiles", this, false);
 	public BooleanSetting passiveMobs = new BooleanSetting("passives", this, false);
-	public BooleanSetting players = new BooleanSetting("players", this, true);
 	public ColorSetting playerColor = new ColorSetting("playerColor", this, new JColor(255, 255, 255, 255));
-	
+	public ColorSetting hostileMobColor = new ColorSetting("hostileMobColor", this, new JColor(255, 000, 000, 255));
+	public ColorSetting passiveMobColor = new ColorSetting("passiveMobColor", this, new JColor(000, 255, 000, 255));
+
 	public Tracers() {
-		super ("tracers", "draws line to entitys.", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(players, hostileMobs, passiveMobs, playerColor);
+		super("tracers", "draws line to entitys.", Keyboard.KEY_NONE, Category.RENDER);
+		this.addSettings(players, hostileMobs, passiveMobs, playerColor, hostileMobColor, passiveMobColor);
 	}
-	private static final Minecraft mc = Wrapper.getMinecraft();
+	List<Entity> entities;
 
 	@Override
-	public void onWorldRender(RenderEvent event){
+	public void onWorldRender(RenderEvent event) {
+		entities = mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).collect(Collectors.toList());
 
-		if(!this.toggled)
-			return;
+		entities.forEach(entity -> {
+			Vec3d eyes = ActiveRenderInfo.getCameraPosition().add(mc.getRenderManager().viewerPosX, mc.getRenderManager().viewerPosY, mc.getRenderManager().viewerPosZ);
 
-		for(Object theObject : mc.world.loadedEntityList) {
-			if(!(theObject instanceof EntityLivingBase))
-				continue;
-
-			EntityLivingBase entity = (EntityLivingBase) theObject;
-
-			if(entity instanceof EntityPlayer) {
-				if(entity != mc.player)
-					player(entity);
-					continue;
+			if (entity instanceof EntityPlayer) {
+				JTessellator.drawLine(eyes.x, eyes.y, eyes.z, interpolate(entity.posX, entity.lastTickPosX), interpolate(entity.posY, entity.lastTickPosY), interpolate(entity.posZ, entity.lastTickPosZ), playerColor.getValue());
+			} else if (entity instanceof EntityAnimal) {
+				JTessellator.drawLine(eyes.x, eyes.y, eyes.z, interpolate(entity.posX, entity.lastTickPosX), interpolate(entity.posY, entity.lastTickPosY), interpolate(entity.posZ, entity.lastTickPosZ), hostileMobColor.getValue());
+			} else if (entity instanceof EntityCreature || entity instanceof EntitySlime) {
+				JTessellator.drawLine(eyes.x, eyes.y, eyes.z, interpolate(entity.posX, entity.lastTickPosX), interpolate(entity.posY, entity.lastTickPosY), interpolate(entity.posZ, entity.lastTickPosZ), passiveMobColor.getValue());
 			}
-			if(entity instanceof EntityAnimal) {
-				passive(entity);
-				continue;
-			}
-			hostile(entity);
-		}
-
-			super.onWorldRender(event);
-
-	}
-	
-	public void player(EntityLivingBase entity) {
-		if(players.isEnabled()) {
-			double xPos = (entity.posX);
-			double yPos = (entity.posY);
-			double zPos = (entity.posZ);
-
-			render(xPos, yPos, zPos);
-		}
-	}
-	
-	public void passive(EntityLivingBase entity) {
-		if(passiveMobs.isEnabled()) {
-			double xPos = (entity.posX);
-			double yPos = (entity.posY);
-			double zPos = (entity.posZ);
-
-			render(xPos, yPos, zPos);
-		}
+		});
 	}
 
-	public void hostile(EntityLivingBase entity) {
-		if(hostileMobs.isEnabled()) {
-			double xPos = (entity.posX);
-			double yPos = (entity.posY);
-			double zPos = (entity.posZ);
-
-			render(xPos, yPos, zPos);
-		}
-	}
-
-	
-	public void render(double posx, double posy, double posz) {
-		Vec3d eyes=ActiveRenderInfo.getCameraPosition().add(mc.getRenderManager().viewerPosX,mc.getRenderManager().viewerPosY,mc.getRenderManager().viewerPosZ);
-		JTessellator.drawLine(eyes.x, eyes.y, eyes.z, posx, posy + 1.2, posz, playerColor.getValue());
+	// this was taken from gamesnse.
+	private double interpolate(double now, double then) {
+		return then + (now - then) * mc.getRenderPartialTicks();
 	}
 }
