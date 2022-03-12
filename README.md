@@ -7,8 +7,6 @@
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE)
 
-Im sorry to everyone, but ill very rarely will update this repo in the future
-
 **A continuation of where SrgantMooMoo left this client**
 By the Postman Community
 
