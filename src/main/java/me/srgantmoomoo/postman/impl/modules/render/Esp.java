@@ -41,7 +41,7 @@ import net.minecraft.util.math.BlockPos;
  */
 
 /**
- * rewritten
+ * rewritten... some utils are used from gamesnse. i'm starting to realize there is more gamesense skid in this client then actually thought.
  * @author SrgantMooMoo
  * @since 3/1/22
  */
@@ -83,7 +83,6 @@ public class Esp extends Module {
     JColor passiveMobOutlineColor;
     JColor itemFillColor;
     JColor itemOutlineColor;
-    JColor mainIntColor;
     JColor containerColor;
     JColor containerBox;
     int opacityGradient;
@@ -96,9 +95,8 @@ public class Esp extends Module {
 
     @Override
     public void onWorldRender(RenderEvent event) {
-    	entities = mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).collect(Collectors.toList());
 
-        entities.forEach(entity -> {
+        mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(this::rangeEntityCheck).forEach(entity -> {
             defineEntityColors(entity);
 
             // readable code :thumbs_up:
@@ -193,110 +191,129 @@ public class Esp extends Module {
 
             // outline esp is under MixinRendererLivingBase.
         });
-        
-        if (storage.is("outline")) {
-            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
-                if (tileEntity instanceof TileEntityChest){
-                    containerColor = new JColor(chestColor.getValue(), 255);
+
+        //TODO i really don't feeling like rewriting this hell right now... so i'll save it for another time. i'll tweak it a little bit for now tho... just some easy stuff.
+        mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
+
+            if(storage.is("outline")) {
+                if(tileEntity instanceof TileEntityChest) {
+                    containerColor = new JColor(chestColor.getValue(), opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
-                if (tileEntity instanceof TileEntityEnderChest){
-                    containerColor = new JColor(enderChestColor.getValue(), 255);
+                if(tileEntity instanceof TileEntityEnderChest) {
+                    containerColor = new JColor(enderChestColor.getValue(), opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
-                if (tileEntity instanceof TileEntityShulkerBox){
-                    containerColor = new JColor(shulkerBoxColor.getValue(), 255);
+                if(tileEntity instanceof TileEntityShulkerBox) {
+                    containerColor = new JColor(shulkerBoxColor.getValue(), opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
-                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
-                    containerColor = new JColor(otherColor.getValue(), 255);
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper) {
+                    containerColor = new JColor(otherColor.getValue(), opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
-            });
-        }else if (storage.is("both")) {
-            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
-                if (tileEntity instanceof TileEntityChest){
-                    containerColor = new JColor(chestColor.getValue(), 255);
+            }else if(storage.is("both")) {
+                if(tileEntity instanceof TileEntityChest) {
+                    containerColor = new JColor(chestColor.getValue(), opacityGradient);
                     containerBox = new JColor(chestColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawStorageBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if (tileEntity instanceof TileEntityEnderChest){
-                	containerColor = new JColor(enderChestColor.getValue(), 255);
-                	containerBox = new JColor(enderChestColor.getValue());
+                if(tileEntity instanceof TileEntityEnderChest) {
+                    containerColor = new JColor(enderChestColor.getValue(), opacityGradient);
+                    containerBox = new JColor(enderChestColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawStorageBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if (tileEntity instanceof TileEntityShulkerBox){
-                	containerColor = new JColor(shulkerBoxColor.getValue(), 255);
-                	containerBox = new JColor(shulkerBoxColor.getValue());
+                if(tileEntity instanceof TileEntityShulkerBox) {
+                    containerColor = new JColor(shulkerBoxColor.getValue(), opacityGradient);
+                    containerBox = new JColor(shulkerBoxColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
-                	containerColor = new JColor(otherColor.getValue(), 255);
-                	containerBox = new JColor(otherColor.getValue());
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper) {
+                    containerColor = new JColor(otherColor.getValue(), opacityGradient);
+                    containerBox = new JColor(otherColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }
-            });
-        }else if (storage.is("fill")) {
-            mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
-                if (tileEntity instanceof TileEntityChest){
-                	containerBox = new JColor(chestColor.getValue());
+            }else if(storage.is("fill")) {
+                if(tileEntity instanceof TileEntityChest) {
+                    containerBox = new JColor(chestColor.getValue());
                     drawStorageBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if (tileEntity instanceof TileEntityEnderChest){
-                	containerBox = new JColor(enderChestColor.getValue());
+                if(tileEntity instanceof TileEntityEnderChest) {
+                    containerBox = new JColor(enderChestColor.getValue());
                     drawStorageBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if (tileEntity instanceof TileEntityShulkerBox){
-                	containerBox = new JColor(shulkerBoxColor.getValue());
+                if(tileEntity instanceof TileEntityShulkerBox) {
+                    containerBox = new JColor(shulkerBoxColor.getValue());
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper){
-                	containerBox = new JColor(otherColor.getValue());
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper) {
+                    containerBox = new JColor(otherColor.getValue());
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }
-            });
-        }
+            }
+        });
     }
-    
+
     private void drawStorageBox(BlockPos blockPos, int width, JColor color) {
 		JTessellator.drawStorageBox(blockPos, 0.88, color, GeometryMasks.Quad.ALL);
     }
-    
+
     private void drawBox(BlockPos blockPos, int width, JColor color) {
 		JTessellator.drawBox(blockPos, 1, color, GeometryMasks.Quad.ALL);
    }
 
+   // these r from gamesense.
     private void defineEntityColors(Entity entity) {
         if (entity instanceof EntityPlayer) {
             playerFillColor = new JColor(playerColor.getValue());
-            playerOutlineColor = new JColor(playerColor.getValue(), 255);
+            playerOutlineColor = new JColor(playerColor.getValue(), opacityGradient);
         }
 
         if(entity instanceof EntityMob || entity instanceof EntitySlime) {
             hostileMobFillColor = new JColor(hostileMobColor.getColor());
-            hostileMobOutlineColor = new JColor(hostileMobColor.getValue(), 255);
+            hostileMobOutlineColor = new JColor(hostileMobColor.getValue(), opacityGradient);
         }
         else if (entity instanceof EntityAnimal) {
             passiveMobFillColor = new JColor(passiveMobColor.getValue());
-        	passiveMobOutlineColor = new JColor(passiveMobColor.getValue(), 255);
+        	passiveMobOutlineColor = new JColor(passiveMobColor.getValue(), opacityGradient);
         }
         else {
             passiveMobFillColor = new JColor(passiveMobColor.getValue());
-            passiveMobOutlineColor = new JColor(passiveMobColor.getValue(), 255);
+            passiveMobOutlineColor = new JColor(passiveMobColor.getValue(), opacityGradient);
         }
 
         if(entity instanceof EntityItem) {
             itemFillColor = new JColor(itemColor.getValue());
-            itemOutlineColor = new JColor(itemColor.getValue(), 255);
+            itemOutlineColor = new JColor(itemColor.getValue(), opacityGradient);
+        }
+    }
+
+    private boolean rangeEntityCheck(Entity entity) {
+        if (entity.getDistance(mc.player) > range.getValue()) {
+            return false;
         }
 
-        if(entity != null) {
-            mainIntColor = new JColor(itemColor.getValue());
+        if (entity.getDistance(mc.player) >= 180) {
+            opacityGradient = 50;
         }
+        else if (entity.getDistance(mc.player) >= 130 && entity.getDistance(mc.player) < 180) {
+            opacityGradient = 100;
+        }
+        else if (entity.getDistance(mc.player) >= 80 && entity.getDistance(mc.player) < 130) {
+            opacityGradient = 150;
+        }
+        else if (entity.getDistance(mc.player) >= 30 && entity.getDistance(mc.player) < 80) {
+            opacityGradient = 200;
+        }
+        else {
+            opacityGradient = 255;
+        }
+
+        return true;
     }
 
     private boolean rangeTileCheck(TileEntity tileEntity) {
