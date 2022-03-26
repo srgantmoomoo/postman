@@ -49,13 +49,13 @@ import net.minecraft.util.math.BlockPos;
 //TODO 2d esp's and outline esp's.
 public class Esp extends Module {
     public BooleanSetting chams = new BooleanSetting("walls", this, false);
-    public ModeSetting entityMode = new ModeSetting("entity", this, "box", "box", "highlight", "box+highlight", "outline", "2desp", "glow", "off");
-    public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "both", "off");
+    public ModeSetting entityMode = new ModeSetting("entity", this, "outline", "outline", "fill", "outline & fill", "trace", "fake2d", "glow", "off");
+    public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "outline & fill", "off");
     public ModeSetting crystalMode = new ModeSetting("crystal", this, "pretty", "pretty", "glow", "off");
 
     public BooleanSetting mobs = new BooleanSetting("mobs", this, false);
     public BooleanSetting items = new BooleanSetting("items", this, true);
-    public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 10);
+    public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 1);
     public NumberSetting lineWidth = new NumberSetting("lineWidth", this, 3, 0, 10, 1);
 
     public ColorSetting playerColor = new ColorSetting("player", this, new JColor(0, 121, 194, 100));
@@ -89,7 +89,7 @@ public class Esp extends Module {
 
     public void onDisable() {
         if (entities != mc.player) {
-            entities.forEach(p -> p.setGlowing(false));
+            entities.forEach(e -> e.setGlowing(false));
         }
     }
 
@@ -114,7 +114,7 @@ public class Esp extends Module {
                 entity.setGlowing(false);
 
             // entity esp's
-            if(entityMode.is("box")) {
+            if(entityMode.is("outline")) {
                 if(entity instanceof EntityPlayer) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerOutlineColor);
                 }
@@ -130,7 +130,7 @@ public class Esp extends Module {
                 if(items.isEnabled() && entity instanceof EntityItem) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), 2, itemOutlineColor);
                 }
-            }else if(entityMode.is("highlight")) {
+            }else if(entityMode.is("fill")) {
                 if(entity instanceof EntityPlayer) {
                     JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerFillColor, GeometryMasks.Quad.ALL);
                 }
@@ -146,7 +146,7 @@ public class Esp extends Module {
                 if(items.isEnabled() && entity instanceof EntityItem) {
                     JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), itemFillColor, GeometryMasks.Quad.ALL);
                 }
-            }else if(entityMode.is("box+highlight")) {
+            }else if(entityMode.is("outline & fill")) {
                 if(entity instanceof EntityPlayer) {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), playerOutlineColor);
                     JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), playerFillColor, GeometryMasks.Quad.ALL);
@@ -166,7 +166,7 @@ public class Esp extends Module {
                     JTessellator.drawBoundingBox(entity.getEntityBoundingBox(), (float) lineWidth.getValue(), itemOutlineColor);
                     JTessellator.drawFillBox(entity.getEntityBoundingBox(), (float)lineWidth.getValue(), itemFillColor, GeometryMasks.Quad.ALL);
                 }
-            }else if(entityMode.is("2desp")) { //TODO 2d fucks with nametags. & only works for players.
+            }else if(entityMode.is("fake2d")) { //TODO 2d fucks with nametags. & only works for players.
                 if(entity instanceof EntityPlayer)
                     JTessellator.draw2dEsp(entity, (mc.getRenderManager()).playerViewY, (float)lineWidth.getValue(), playerFillColor);
                 if(entity instanceof EntityAnimal)
@@ -212,7 +212,7 @@ public class Esp extends Module {
                     containerColor = new JColor(otherColor.getValue(), opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
-            }else if(storage.is("both")) {
+            }else if(storage.is("outline & fill")) {
                 if(tileEntity instanceof TileEntityChest) {
                     containerColor = new JColor(chestColor.getValue(), opacityGradient);
                     containerBox = new JColor(chestColor.getValue());

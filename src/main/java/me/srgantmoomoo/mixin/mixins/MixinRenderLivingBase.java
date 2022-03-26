@@ -68,7 +68,7 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
             }
 
             if (Main.INSTANCE.moduleManager.getModuleByName("esp's") != null && Main.INSTANCE.moduleManager.getModuleByName("esp's").isToggled()) {
-                if (entitylivingbaseIn instanceof EntityPlayer && entitylivingbaseIn != Minecraft.getMinecraft().player && ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).entityMode.is("outline")) {
+                if (entitylivingbaseIn instanceof EntityPlayer && entitylivingbaseIn != Minecraft.getMinecraft().player && ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).entityMode.is("trace")) {
                     Color n = new JColor(((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).playerColor.getValue());
                     OutlineUtils.setColor(n);
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
@@ -82,7 +82,7 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderFive();
                     OutlineUtils.setColor(Color.WHITE);
-                } else if (((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).mobs.isEnabled() && ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).entityMode.is("outline")) {
+                } else if (((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).mobs.isEnabled() && ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).entityMode.is("trace")) {
                     GL11.glLineWidth(5.0F);
                     mainModel.render(entitylivingbaseIn, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, scaleFactor);
                     OutlineUtils.renderOne((float) ((Esp) Main.INSTANCE.moduleManager.getModuleByName("esp's")).lineWidth.getValue());
