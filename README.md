@@ -68,4 +68,4 @@ thank you,
 - surround & holeTp - [**Hoosier's Gamesense**](https://github.com/IUDevman/gamesense-client). 0_0
 - 2dEsp - [**FINZ0's Osiris**](https://github.com/epicfacethe3rd/Osiris).
 
-... for more depth, the necessary modules are credited. if anyone has an issue with crediting please lmk. srgantmoomoo#1052
+... for more depth, the necessary modules are credited. if anyone has an issue with crediting please let me know. srgantmoomoo#1052
