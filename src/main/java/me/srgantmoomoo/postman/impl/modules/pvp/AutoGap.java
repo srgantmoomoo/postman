@@ -1,6 +1,8 @@
 package me.srgantmoomoo.postman.impl.modules.pvp;
 
-import me.srgantmoomoo.Main;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockObsidian;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
@@ -18,22 +20,33 @@ public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
 	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
 	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, false);
+	public ModeSetting switchToGap = new ModeSetting("switchToGap", this, "off", "off", "fullSwitch", "tempSwitch");
+	public BooleanSetting switchToGapB = new BooleanSetting("switchToGap", this, false);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode, health, cancelInMenu);
+		this.addSettings(mode, health, switchToGap, cancelInMenu);
 	}
 	private boolean wasSetFalse;
 	private boolean wasSetFalse2;
+	private int oldSlot = 0;
 
 	@Override
 	public void onDisable() {
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	}
-	
+
+	@Override
+	public void onEnable() {
+		oldSlot = mc.player.inventory.currentItem;
+
+		//if( )
+	}
+
 	@Override
 	public void onUpdate() {
 		if(mode.is("always")) {
+			if(!switchToGap.is("off")) mc.player.inventory.currentItem = findGappleSlot();
 			eatGap();
 		}
 		
@@ -58,8 +71,23 @@ public class AutoGap extends Module {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 				wasSetFalse = true;
 			}
-		}else if(cancelInMenu.isEnabled()) {
+		}else if(!cancelInMenu.isEnabled()) {
 			mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
 		}
+	}
+
+	private int findGappleSlot() {
+		int slot = -1;
+
+		for(int i = 0; i < 9; i++) {
+			ItemStack stack = mc.player.inventory.getStackInSlot(i);
+
+			if(stack.getItem() == Items.GOLDEN_APPLE) {
+				slot = i;
+				break;
+			}
+		}
+
+		return slot;
 	}
 }

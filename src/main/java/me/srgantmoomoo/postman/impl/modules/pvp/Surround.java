@@ -238,7 +238,7 @@ public class Surround extends Module {
 	    private int findObsidianSlot() {
 	        int slot = -1;
 
-	        for (int i = 0; i < 9; i++){
+	        for (int i = 0; i < 9; i++) {
 	            ItemStack stack = mc.player.inventory.getStackInSlot(i);
 
 	            if (stack == ItemStack.EMPTY || !(stack.getItem() instanceof ItemBlock)) {
