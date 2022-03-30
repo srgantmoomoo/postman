@@ -37,7 +37,6 @@ public class AutoCope extends Module {
 
     @Override
     public void onUpdate() {
-
         for (Entity entity : mc.world.getLoadedEntityList()) {
             if (entity instanceof EntityPlayer) {
             	EntityPlayer player = (EntityPlayer) entity;

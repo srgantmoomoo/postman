@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.impl.modules.pvp;
 
 import me.srgantmoomoo.Main;
+import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.framework.module.Category;
@@ -12,60 +13,53 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumHand;
 
+//TODO menu problems.
 public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
 	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
-	public ModeSetting disableOn = new ModeSetting("disableOn", this, "switchToCrystal", "switchToCrystal", "autoCrystalEnabled");
-	public BooleanSetting disableOnSurround = new BooleanSetting("disableOnSurround", this, false);
+	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, false);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
-		this.addSettings(mode, health, disableOnSurround);;
+		this.addSettings(mode, health, cancelInMenu);
 	}
-	
+	private boolean wasSetFalse;
+	private boolean wasSetFalse2;
+
 	@Override
 	public void onDisable() {
-		 if (wasEating) {
-			 wasEating = false;
-	            KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
-		 }
+		KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	}
-	
-	private boolean wasEating = false;
 	
 	@Override
 	public void onUpdate() {
 		if(mode.is("always")) {
-				if(mc.gameSettings.keyBindSprint.isKeyDown()) mc.player.setSprinting(true);
-				eatGap();
+			eatGap();
 		}
 		
 		if(mode.is("smart")) {
-			if(mc.player.getHealth() <= health.getValue()) eatGap();
-			
-			if (wasEating && mc.player.getHealth() >= health.getValue()) {
-				wasEating = false;
-	            KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
-	        }
-		}
-		
-		if(disableOnSurround.isEnabled()) {
-			if(((Surround)Main.INSTANCE.moduleManager.getModuleByName("surround")).shiftOnly.isEnabled()) {
-				if(mc.player.isSneaking()) toggle();
-			}else {
-				if(Main.INSTANCE.moduleManager.isModuleEnabled("surround")) toggle();
+			if(mc.player.getHealth() <= health.getValue()) {
+				eatGap();
+				wasSetFalse2 = false;
+			}else if(!wasSetFalse2) {
+				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
+				wasSetFalse2 = true;
 			}
 		}
 	}
 	
 	public void eatGap() {
-			if(mc.player.getHeldItemMainhand().getItem() == Items.GOLDEN_APPLE || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) {
-				if(mc.currentScreen == null) {
-					KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
-					wasEating = true;
-				}else {
-		            mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
-				}
+		if(mc.currentScreen == null) {
+			if(mc.player.getHeldItemMainhand().getItem().equals(Items.GOLDEN_APPLE) || mc.player.getHeldItemOffhand().getItem().equals(Items.GOLDEN_APPLE)) {
+				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
+				wasSetFalse = false;
 			}
+			else if(!wasSetFalse){
+				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
+				wasSetFalse = true;
+			}
+		}else if(cancelInMenu.isEnabled()) {
+			mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
+		}
 	}
 }
