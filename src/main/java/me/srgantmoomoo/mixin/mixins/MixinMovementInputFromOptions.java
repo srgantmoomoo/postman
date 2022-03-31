@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.backend.event.events.PlayerUpdateMoveStateEvent;
-import me.srgantmoomoo.postman.impl.modules.movement.GuiMove;
+import me.srgantmoomoo.postman.impl.modules.player.GuiMove;
 
 @Mixin(value = MovementInputFromOptions.class, priority = 10000)
 public abstract class MixinMovementInputFromOptions extends MovementInput {

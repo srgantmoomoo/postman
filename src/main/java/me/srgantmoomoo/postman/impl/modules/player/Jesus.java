@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.impl.modules.movement;
+package me.srgantmoomoo.postman.impl.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
@@ -17,7 +17,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 public class Jesus extends Module {
 	
 	public Jesus() {
-		super ("jesus", "lets u walk on water.", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("jesus", "lets u walk on water.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	public float offset = 0.5f;
 	

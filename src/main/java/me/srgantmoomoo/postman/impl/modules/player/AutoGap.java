@@ -1,8 +1,5 @@
-package me.srgantmoomoo.postman.impl.modules.pvp;
+package me.srgantmoomoo.postman.impl.modules.player;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockObsidian;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
@@ -29,10 +26,10 @@ public class AutoGap extends Module {
 	public BooleanSetting switchToGap = new BooleanSetting("switchToGap", this, false);
 	
 	public AutoGap() {
-		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
+		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(mode, health, switchToGap, cancelInMenu);
 	}
-	private boolean wasSetFalse;
+	private boolean wasSetFalse; // using these wasSetFalse booleans to avoid the players hand being constantly set to not clicking, disallowing the player to click.
 	private boolean wasSetFalse2;
 	private int oldSlot = 0;
 
@@ -48,6 +45,7 @@ public class AutoGap extends Module {
 	}
 
 	private boolean ran = false;
+	private boolean isEating = false;
 	@Override
 	public void onUpdate() {
 		if(mode.is("always")) {

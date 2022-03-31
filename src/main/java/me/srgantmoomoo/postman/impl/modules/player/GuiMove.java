@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.impl.modules.movement;
+package me.srgantmoomoo.postman.impl.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiChat;
 public class GuiMove extends Module {
 	
 	public GuiMove() {
-		super ("guiMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.MOVEMENT);
+		super ("guiMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 	
 	private Minecraft mc = Minecraft.getMinecraft();

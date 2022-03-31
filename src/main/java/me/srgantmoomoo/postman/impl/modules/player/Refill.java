@@ -1,4 +1,4 @@
-package me.srgantmoomoo.postman.impl.modules.pvp;
+package me.srgantmoomoo.postman.impl.modules.player;
 
 import org.lwjgl.input.Keyboard;
 
@@ -17,7 +17,7 @@ public class Refill extends Module {
 	public NumberSetting delay = new NumberSetting("delay", this, 500.0f, 0.0f, 2000.0f, 1.0f);
 
 	public Refill() {
-		super("refill", "automatically refills stacks in ur hotbar and offHand.", Keyboard.KEY_NONE, Category.PVP);
+		super("refill", "automatically refills stacks in ur hotbar and offHand.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(delay);
 	}
 	private final JTimer timer = new JTimer();
