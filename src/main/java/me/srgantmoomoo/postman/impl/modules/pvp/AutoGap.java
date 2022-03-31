@@ -15,13 +15,18 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumHand;
 
+/**
+ * @author SrgantMooMoo
+ * @since 3/30/22
+ */
+
 //TODO menu problems.
+//TODO do stuff with isEating();
 public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
 	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
 	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, false);
-	public ModeSetting switchToGap = new ModeSetting("switchToGap", this, "off", "off", "fullSwitch", "tempSwitch");
-	public BooleanSetting switchToGapB = new BooleanSetting("switchToGap", this, false);
+	public BooleanSetting switchToGap = new BooleanSetting("switchToGap", this, false);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PVP);
@@ -32,29 +37,38 @@ public class AutoGap extends Module {
 	private int oldSlot = 0;
 
 	@Override
+	public void onEnable() {
+		if(mode.is("always")) oldSlot = mc.player.inventory.currentItem;
+	}
+
+	@Override
 	public void onDisable() {
+		if(mode.is("always")) mc.player.inventory.currentItem = oldSlot;
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	}
 
-	@Override
-	public void onEnable() {
-		oldSlot = mc.player.inventory.currentItem;
-
-		//if( )
-	}
-
+	private boolean ran = false;
 	@Override
 	public void onUpdate() {
 		if(mode.is("always")) {
-			if(!switchToGap.is("off")) mc.player.inventory.currentItem = findGappleSlot();
+			if(switchToGap.isEnabled()) mc.player.inventory.currentItem = findGappleSlot();
 			eatGap();
 		}
 		
 		if(mode.is("smart")) {
 			if(mc.player.getHealth() <= health.getValue()) {
+				if(switchToGap.isEnabled()) {
+					if(!ran) {
+						oldSlot = mc.player.inventory.currentItem;
+						ran = true;
+					}
+					mc.player.inventory.currentItem = findGappleSlot();
+				}
 				eatGap();
 				wasSetFalse2 = false;
 			}else if(!wasSetFalse2) {
+				mc.player.inventory.currentItem = oldSlot;
+				ran = false;
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 				wasSetFalse2 = true;
 			}
