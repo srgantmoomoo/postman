@@ -78,13 +78,15 @@ public class AutoGap extends Module {
 			if(mc.player.getHeldItemMainhand().getItem().equals(Items.GOLDEN_APPLE) || mc.player.getHeldItemOffhand().getItem().equals(Items.GOLDEN_APPLE)) {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
 				wasSetFalse = false;
-			}
-			else if(!wasSetFalse){
+			}else if(!wasSetFalse) {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 				wasSetFalse = true;
 			}
 		}else if(!cancelInMenu.isEnabled()) {
-			mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
+			if(mc.player.getHeldItemMainhand().getItem().equals(Items.GOLDEN_APPLE) || mc.player.getHeldItemOffhand().getItem().equals(Items.GOLDEN_APPLE)) {
+				mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
+				wasSetFalse = false;
+			}
 		}
 	}
 
