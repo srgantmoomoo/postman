@@ -83,10 +83,8 @@ public class AutoGap extends Module {
 				wasSetFalse = true;
 			}
 		}else if(!cancelInMenu.isEnabled()) {
-			if(mc.player.getHeldItemMainhand().getItem().equals(Items.GOLDEN_APPLE) || mc.player.getHeldItemOffhand().getItem().equals(Items.GOLDEN_APPLE)) {
+			if(mc.player.getHeldItemMainhand().getItem().equals(Items.GOLDEN_APPLE) || mc.player.getHeldItemOffhand().getItem().equals(Items.GOLDEN_APPLE))
 				mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
-				wasSetFalse = false;
-			}
 		}
 	}
 
