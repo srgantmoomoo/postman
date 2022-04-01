@@ -37,7 +37,6 @@ public abstract class Module implements Toggleable {
 		this.toggled = false;
 	}
 	
-	@SafeVarargs
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
