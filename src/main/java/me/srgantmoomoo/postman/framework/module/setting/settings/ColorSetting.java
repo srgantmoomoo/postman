@@ -7,7 +7,6 @@ import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.setting.Setting;
 
 public class ColorSetting extends Setting implements com.lukflug.panelstudio.settings.ColorSetting {
-
 	private boolean rainbow;
 	private JColor value;
 
@@ -28,7 +27,6 @@ public class ColorSetting extends Setting implements com.lukflug.panelstudio.set
 		JColor color =  JColor.fromHSB(((System.currentTimeMillis() + incr * 200)%(360*20))/(360f * 20),0.5f,1f);
 		return new JColor(color.getRed(), color.getBlue(), color.getGreen(), alpha);
 	}
-
 
 	public void setValue (boolean rainbow, final JColor value) {
 		this.rainbow = rainbow;

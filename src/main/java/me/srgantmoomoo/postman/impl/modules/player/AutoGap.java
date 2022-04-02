@@ -1,5 +1,7 @@
 package me.srgantmoomoo.postman.impl.modules.player;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.srgantmoomoo.postman.impl.modules.client.NotificationModule;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
@@ -31,6 +33,8 @@ public class AutoGap extends Module {
 	}
 	private boolean wasSetFalse; // using these wasSetFalse booleans to avoid the players hand being constantly set to not clicking, disallowing the player to click.
 	private boolean wasSetFalse2;
+	private boolean notified;
+	private boolean notified2;
 	private int oldSlot = 0;
 
 	@Override
@@ -42,6 +46,8 @@ public class AutoGap extends Module {
 	public void onDisable() {
 		if(mode.is("always")) mc.player.inventory.currentItem = oldSlot;
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
+		notified = false;
+		notified2 = false;
 	}
 
 	private boolean ran = false;
@@ -49,25 +55,39 @@ public class AutoGap extends Module {
 	@Override
 	public void onUpdate() {
 		if(mode.is("always")) {
-			if(switchToGap.isEnabled()) mc.player.inventory.currentItem = findGappleSlot();
+			if(switchToGap.isEnabled()) {
+				if(findGappleSlot() != -1) {
+					mc.player.inventory.currentItem = findGappleSlot();
+					notified = false;
+				}else if(!notified) {
+					NotificationModule.INSTANCE.sendNoti(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
+					notified = true;
+				}
+			}
 			eatGap();
 		}
 		
 		if(mode.is("smart")) {
 			if(mc.player.getHealth() <= health.getValue()) {
 				if(switchToGap.isEnabled()) {
-					if(!ran) {
-						oldSlot = mc.player.inventory.currentItem;
-						ran = true;
+					if(findGappleSlot() != -1) {
+						if (!ran) {
+							oldSlot = mc.player.inventory.currentItem;
+							ran = true;
+						}
+						mc.player.inventory.currentItem = findGappleSlot();
+						notified2 = false;
+					}else if(!notified2) {
+						NotificationModule.INSTANCE.sendNoti(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
+						notified2 = true;
 					}
-					mc.player.inventory.currentItem = findGappleSlot();
 				}
 				eatGap();
 				wasSetFalse2 = false;
 			}else if(!wasSetFalse2) {
 				mc.player.inventory.currentItem = oldSlot;
 				ran = false;
-				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
+				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false); // this goes false when health is false.
 				wasSetFalse2 = true;
 			}
 		}
@@ -79,7 +99,7 @@ public class AutoGap extends Module {
 				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), true);
 				wasSetFalse = false;
 			}else if(!wasSetFalse) {
-				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
+				KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false); // this goes false when hand is false.
 				wasSetFalse = true;
 			}
 		}else if(!cancelInMenu.isEnabled()) {
@@ -99,7 +119,6 @@ public class AutoGap extends Module {
 				break;
 			}
 		}
-
 		return slot;
 	}
 }

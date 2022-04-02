@@ -6,7 +6,6 @@ import java.util.List;
 import me.srgantmoomoo.Main;
 
 public class FriendManager {
-
 	public List<Friend> friends;
 
 	public FriendManager(){

@@ -6,19 +6,14 @@ import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
-/*
- * Written originally by @HeroCode.
- * Edited by @SrgantMooMoo on 11/17/20 with inspiration taken from @Sebsb.
+/**
+ * @author SrgantMooMoo
+ * @since 4/2/2022
  */
 
 public class SettingManager {
-	
 	private final ArrayList<Setting> settings = new ArrayList<>();
-	
-	public void rSetting(Setting in){
-		this.settings.add(in);
-	}
-	
+  
 	public ArrayList<Setting> getSettings() {
 		return this.settings;
 	}

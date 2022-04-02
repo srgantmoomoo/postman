@@ -12,16 +12,11 @@ import me.srgantmoomoo.postman.framework.module.setting.Setting;
  */
 
 public class KeybindSetting extends Setting implements com.lukflug.panelstudio.settings.KeybindSetting {
-	
 	public int code;
 	
 	public KeybindSetting(int code) {
 		this.name = "KeyBind";
 		this.code = code;
-	}
-	
-	public KeybindSetting(Renderer componentRenderer, Module module) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getKeyCode() {
@@ -46,5 +41,4 @@ public class KeybindSetting extends Setting implements com.lukflug.panelstudio.s
 	public void setKey(int key) {
 		code=key;
 	}
-
 }

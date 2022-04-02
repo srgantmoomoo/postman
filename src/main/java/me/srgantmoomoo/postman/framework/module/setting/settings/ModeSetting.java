@@ -14,9 +14,7 @@ import me.srgantmoomoo.postman.framework.module.setting.Setting;
  */
 
 public class ModeSetting extends Setting implements EnumSetting {
-	
 	public int index;
-  
 	public List<String> modes;
   
 	public ModeSetting(String name, Module parent, String defaultMode, String... modes) {
