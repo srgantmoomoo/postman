@@ -46,10 +46,6 @@ public abstract class Module implements Toggleable {
 		return description;
 	}
 	
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 	public int getKey() {
 		return keyCode.code;
 	}

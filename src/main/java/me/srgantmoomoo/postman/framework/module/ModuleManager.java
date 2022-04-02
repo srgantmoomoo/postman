@@ -31,64 +31,64 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 public class ModuleManager {
 	public ArrayList<Module> modules = new ArrayList<>();
 	
-	public ModuleManager() { 
+	public ModuleManager() {
 		MinecraftForge.EVENT_BUS.register(this);
-		
+
 		//alphabetic
 		//modules.add(new AimBot());	// unstarted
 		modules.add(new AntiHunger());
 		//modules.add(new AntiNick());	// w i p
 		modules.add(new AntiSwing());
-		modules.add(new AutoArmor());	
+		modules.add(new AutoArmor());
 		modules.add(new AutoClicker());
 		modules.add(new AutoCope());
 		modules.add(new AutoCrystal());
 		modules.add(new AutoDisconnect());
-		modules.add(new AutoGap());	
+		modules.add(new AutoGap());
 		//modules.add(new AutoHut());   // unstarted
-		modules.add(new AutoMine());	
-		modules.add(new AutoReconnect());	
-		modules.add(new AutoRespawn());	
-		modules.add(new AutoTotem());	
+		modules.add(new AutoMine());
+		modules.add(new AutoReconnect());
+		modules.add(new AutoRespawn());
+		modules.add(new AutoTotem());
 		//modules.add(new AutoTrap());   // unstarted
-		modules.add(new AutoUse());	
+		modules.add(new AutoUse());
 		modules.add(new AutoWalk());
 		modules.add(new Backdoor2b2t());
-		modules.add(new Baritone());                       // baritone
-		modules.add(new Blink());	
-		modules.add(new CameraClip());	
+		modules.add(new Baritone());
+		modules.add(new Blink());
+		modules.add(new CameraClip());
 		modules.add(new ChatSuffix());
 		modules.add(new ChestStealer());
 		modules.add(new ConfigCrystal());
 		//modules.add(new CoordExploit());
-		modules.add(new Criticals());	
-		modules.add(new DamageTiltCorrection());	
+		modules.add(new Criticals());
+		modules.add(new DamageTiltCorrection());
 		modules.add(new DeathCoords());	                             // --- integrate with notifications.
-		modules.add(new Dupe());	
+		modules.add(new Dupe());
 		//modules.add(new ElytraFly());   // unstarted
 		//modules.add(new ElytraReplace());  // unstarted
 		modules.add(new Esp());
 		modules.add(new FastUse());
 		modules.add(new Fly());
 		modules.add(new FootExp());
-		modules.add(new Freecam());	
-		modules.add(new FullBright());	
+		modules.add(new Freecam());
+		modules.add(new FullBright());
 		modules.add(new GuiMove());
 		modules.add(new HoleEsp());
 		modules.add(new HoleTp());
-		modules.add(new InventoryPlus());	
-		modules.add(new Jesus());	
-		modules.add(new KillAura());	
+		modules.add(new InventoryPlus());
+		modules.add(new Jesus());
+		modules.add(new KillAura());
 		modules.add(new LiquidPlace());
 		//modules.add(new LogOutSpot());  // unstarted
 		//modules.add(new LongJump());   // unstarted
 		modules.add(new LowOffHand());
 		modules.add(new Mcf());
 		modules.add(new Multitask());
-		modules.add(new Nametags());	// unstarted           									---------------------------
+		modules.add(new Nametags());
 		//modules.add(new NewChunks());	// unstarted
 		modules.add(new NoFall());
-		modules.add(new NoHandShake());	
+		modules.add(new NoHandShake());
 		modules.add(new NoPush());
 		modules.add(new NoRender());
 		modules.add(new NoSlow());
@@ -103,18 +103,18 @@ public class ModuleManager {
 		modules.add(new SafeWalk());
 		modules.add(new SelfFill());
 		//modules.add(new Scaffold());	// unstarted
-		modules.add(new SmartOffHand());	
+		modules.add(new SmartOffHand());
 		modules.add(new Sneak());
 		modules.add(new Speed());
-		modules.add(new Sprint());	
+		modules.add(new Sprint());
 		modules.add(new Step());
 		modules.add(new Surround());
-		modules.add(new Timer());	
+		modules.add(new Timer());
 		modules.add(new Tracers());
-		modules.add(new Velocity());	
-		modules.add(new ViewModel());	
+		modules.add(new Velocity());
+		modules.add(new ViewModel());
 		modules.add(new World());
-		//modules.add(new Xray());    // unstarted						-------------------------
+		//modules.add(new Xray());    // unstarted
 		//hud
 		modules.add(new Watermark());
 		modules.add(new Welcomer());
@@ -139,8 +139,9 @@ public class ModuleManager {
 		modules.add(new Capes());
 		modules.add(new DiscordRichPresence());
 		modules.add(new ClickGuiModule());
-	 	//modules.add(new TabGui());
-	 	modules.add(new MainMenuWatermark());
+		//modules.add(new TabGui());
+		modules.add(new MainMenuWatermark());
+		modules.add(new NotificationModule());
 	}
 	
 	public void onUpdate() {
