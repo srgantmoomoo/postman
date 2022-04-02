@@ -20,7 +20,7 @@ import net.minecraft.client.Minecraft;
 public abstract class Module implements Toggleable {
 	protected static final Minecraft mc = Minecraft.getMinecraft();
 	
-	public String name, description;
+	public final String name, description;
 	public KeybindSetting keyCode = new KeybindSetting(0);
 	public Category category;
 	public boolean toggled;
@@ -29,14 +29,14 @@ public abstract class Module implements Toggleable {
 	public List<Setting> settings = new ArrayList<Setting>();
 	
 	public Module(String name, String description, int key, Category category) {
-		super();
 		this.name = name;
 		this.description = description;
-		keyCode.code = key;
+		this.keyCode.code = key;
 		this.addSettings(keyCode);
 		this.category = category;
 		this.toggled = false;
 	}
+	
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
@@ -55,7 +55,7 @@ public abstract class Module implements Toggleable {
 		
 		 if(Main.INSTANCE.saveLoad != null) {
 				Main.INSTANCE.saveLoad.save();
-			}
+		}
 	} 
 	
 	public String getName() {
@@ -74,7 +74,7 @@ public abstract class Module implements Toggleable {
 		toggled = !toggled;
 		if(toggled) {
 			enable();
-		}else {
+		} else {
 			disable();
 		}
 		
@@ -89,9 +89,10 @@ public abstract class Module implements Toggleable {
 	
 	public void setToggled(boolean toggled) {
 		this.toggled = toggled;
+		
 		if(toggled) {
 			Main.EVENT_BUS.subscribe(this);
-		}else {
+		} else {
 			Main.EVENT_BUS.unsubscribe(this);
 		}
 		
@@ -110,23 +111,13 @@ public abstract class Module implements Toggleable {
 		setToggled(false);
 	}
 	
-	protected void onEnable() {
-		
-	}
+	protected void onEnable() {}
 	
-	protected void onDisable() {
-		
-	}
+	protected void onDisable() {}
 	
-	public void onWorldRender(RenderEvent event) {
-		
-	}
+	public void onWorldRender(RenderEvent event) {}
 	
-	public void onUpdate() {
-		
-	}
+	public void onUpdate() {}
 	
-	public void onRender() {
-		
-	}
+	public void onRender() {}
 }

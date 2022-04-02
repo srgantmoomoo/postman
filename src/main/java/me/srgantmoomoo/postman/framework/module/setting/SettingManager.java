@@ -8,16 +8,12 @@ import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
 /**
  * @author SrgantMooMoo
- * @since 4/1/2022
+ * @since 4/2/2022
  */
 
 public class SettingManager {
-	private final ArrayList<Setting> settings;
-	
-	public SettingManager(){
-		this.settings = new ArrayList<Setting>();
-	}
-
+	private final ArrayList<Setting> settings = new ArrayList<>();
+  
 	public ArrayList<Setting> getSettings() {
 		return this.settings;
 	}
@@ -29,9 +25,6 @@ public class SettingManager {
 				out.add(s);
 			}
 		}
-		if(out.isEmpty()) {
-			return null;
-		}
 		return out;
 	}
 	
@@ -41,9 +34,10 @@ public class SettingManager {
 					if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
 						return set;
 					}
-				}
 			}
-			System.err.println("[postman] Error Setting NOT found: '" + name +"'!");
+		}
+		
+		System.err.println("[postman] Error Setting NOT found: '" + name +"'!");
 		return null;
 	}
 }
