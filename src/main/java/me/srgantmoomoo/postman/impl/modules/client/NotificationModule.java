@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 
 /**
  * @author SrgantMooMoo
- * @since 4/1/22
+ * @since 4/2/22
  */
 
 public class NotificationModule extends Module {
@@ -22,10 +22,12 @@ public class NotificationModule extends Module {
     }
 
     public void sendNoti(String message) {
-        if(mode.is("chat"))
-            Main.INSTANCE.commandManager.sendClientChatMessage(message, true);
-        else
-            System.out.println("this is a hud message");
+        if(this.isToggled()) {
+            if (mode.is("chat"))
+                Main.INSTANCE.commandManager.sendClientChatMessage(message, true);
+            else
+                System.out.println("this is a hud message");
+        }
     }
 
 }
