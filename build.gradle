@@ -38,7 +38,6 @@ minecraft {
 }
 
 repositories {
-	mavenCentral()
     mavenCentral()
 
 	maven {
