@@ -36,7 +36,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 //TODO step rewrite.
 //TODO jesus rewrite.
 //TODO autoc rewrite.
-//TODO add xray. 
+//TODO add xray.
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
 	int strong;

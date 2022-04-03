@@ -63,10 +63,10 @@ public class Esp extends Module {
     public ColorSetting passiveMobColor = new ColorSetting("passiveMob", this, new JColor(0, 255, 0, 100));
     public ColorSetting itemColor = new ColorSetting("item", this, new JColor(0, 121, 194, 100));
 
-    public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 50));
-    public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 50));
-    public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 50));
-    public ColorSetting otherColor = new ColorSetting("otherContainers", this, new JColor(150, 150, 150, 50));
+    public ColorSetting chestColor = new ColorSetting("chest", this, new JColor(255, 255, 0, 100));
+    public ColorSetting enderChestColor = new ColorSetting("enderChest", this, new JColor(255, 70, 200, 100));
+    public ColorSetting shulkerBoxColor = new ColorSetting("shulkerBox", this, new JColor(255, 182, 193, 100));
+    public ColorSetting otherColor = new ColorSetting("otherContainers", this, new JColor(150, 150, 150, 100));
 
     public Esp() {
         super ("esp's", "draws esp's around things.", Keyboard.KEY_NONE, Category.RENDER);
