@@ -6,11 +6,7 @@ import java.util.List;
 import me.srgantmoomoo.Main;
 
 public class FriendManager {
-	public List<Friend> friends;
-
-	public FriendManager(){
-		friends = new ArrayList<>();
-	}
+	public final List<Friend> friends = new ArrayList<>();
 
 	public List<String> getFriendsByName() {
 		ArrayList<String> friendsName = new ArrayList<>();
@@ -20,26 +16,23 @@ public class FriendManager {
 	}
 
 	public boolean isFriend(String name) {
-		boolean b = false;
-		for (Friend f : friends) {
-			if (f.getName().equalsIgnoreCase(name)) {
-				b = true;
-				break;
+		for (Friend friend : friends) {
+			if (friend.getName().toLowerCase().equals(name)) {
+				return true;
 			}
 		}
 
-		return b;
+		return false;
 	}
 
 	public Friend getFriendByName(String name) {
-		Friend fr = null;
-		for (Friend f : friends) {
-			if (f.getName().equalsIgnoreCase(name)) {
-				fr = f;
+		for (Friend friend : friends) {
+			if (friend.getName().equalsIgnoreCase(name)) {
+				return friend
 			}
 		}
 
-		return fr;
+		return null;
 	}
 
 	public void addFriend(String name) {
