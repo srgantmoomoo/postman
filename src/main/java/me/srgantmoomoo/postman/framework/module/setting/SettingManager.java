@@ -31,9 +31,9 @@ public class SettingManager {
 	public Setting getSettingByName(Module mod, String name) {
 		for (Module m : Main.INSTANCE.moduleManager.modules) {
 			for (Setting set : m.settings) {
-					if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
-						return set;
-					}
+				if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
+					return set;
+				}
 			}
 		}
 		
