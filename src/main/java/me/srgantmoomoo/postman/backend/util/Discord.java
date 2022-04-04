@@ -18,7 +18,7 @@ public class Discord {
         
         if(Minecraft.getMinecraft().player != null && Minecraft.getMinecraft().world != null) {
         	discordRichPresence.details = Minecraft.getMinecraft().player.getName();
-        }else discordRichPresence.details = "in da menus";
+        } else discordRichPresence.details = "in da menus";
         
         discordRichPresence.startTimestamp = System.currentTimeMillis() / 1000L;
         discordRichPresence.largeImageKey = "postmanlogo";
