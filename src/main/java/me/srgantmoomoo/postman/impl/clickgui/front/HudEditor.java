@@ -11,11 +11,12 @@ import net.minecraft.util.ResourceLocation;
 public class HudEditor extends Module {
 	public BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGui", this, true);
 	
+	private static ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
+	
 	public HudEditor() {
 		super("hudEditor", "descrp", Keyboard.KEY_NONE, Category.HUD);
 		this.addSettings(exitToClickGui);
 	}
-	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 	
 	@Override
 	public void onEnable() {
@@ -30,11 +31,10 @@ public class HudEditor extends Module {
 			if(exitToClickGui.isEnabled()) {
 				this.disable(); 
 				Main.INSTANCE.clickGui.enterGUI();
-			}else {
+			} else {
 				this.disable();
 			}
 		}
-		
 	}
 	
 	@Override
