@@ -1,8 +1,7 @@
 package me.srgantmoomoo.postman.framework.friend;
 
 public class Friend {
-
-	String name;
+	private final String name;
 
 	public Friend(String name) {
 		this.name = name;
