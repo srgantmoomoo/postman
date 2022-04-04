@@ -6,7 +6,8 @@ import java.util.List;
 
 public abstract class Command {
 	public String name, description, syntax;
-	public List<String> aliases = new ArrayList<String>();
+	
+	public final List<String> aliases = new ArrayList<String>();
 	
 	public Command(String name, String description, String syntax, String... aliases) {
 		this.name = name;
@@ -18,7 +19,7 @@ public abstract class Command {
 	public abstract void onCommand(String[] args, String command);
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -42,7 +43,7 @@ public abstract class Command {
 	}
 
 	public List<String> getAliases() {
-		return aliases;
+		return this.aliases;
 	}
 
 	public void setAliases(List<String> aliases) {
