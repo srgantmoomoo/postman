@@ -31,12 +31,14 @@ public class ClickGuiModule extends Module {
 	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 	public NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
 	
+	private static ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
+	private static ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
+	
 	public ClickGuiModule() {
 		super("clickGui", "click gui.", Keyboard.KEY_RSHIFT, Category.CLIENT);
 		this.addSettings(blur, scrollMode, scrolls, description, animationSpeed, fontColor, enabledColor, backgroundColor, settingBackgroundColor, outlineColor);
 		INSTANCE = this;
 	}
-	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 
 	@Override
 	public void onEnable() {
@@ -58,11 +60,9 @@ public class ClickGuiModule extends Module {
 		}
 		if(Main.INSTANCE.moduleManager.getModuleByName("hudEditor").isToggled()) {
 			this.disable();
-		}
-		
+		}	
 	}
 	
-	private final ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
 	@Override
 	public void onRender() {
 		ScaledResolution sr = new ScaledResolution(mc);
