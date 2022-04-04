@@ -53,8 +53,7 @@ public class ClickGui extends MinecraftHUDGUI {
 	public final HUDClickGUI gui;
 	
 	public ClickGui() {
-		
-		colorToggle = new Toggleable() {
+		this.colorToggle = new Toggleable() {
 			@Override
 			public void toggle() {
 				ColorMain.colorModel.increment();
@@ -66,7 +65,7 @@ public class ClickGui extends MinecraftHUDGUI {
 			}
 		};
 		
-		guiInterface = new GUIInterface(true) {
+		this.guiInterface = new GUIInterface(true) {
 			@Override
 			protected String getResourcePrefix() {
 				return "pst/textures/";
@@ -95,27 +94,37 @@ public class ClickGui extends MinecraftHUDGUI {
 		};
 		
 		ClickGuiModule clickGui = ClickGuiModule.INSTANCE;
-		theme = new PostmanTheme(new SettingsColorScheme(clickGui.enabledColor, clickGui.backgroundColor, clickGui.settingBackgroundColor,
-				clickGui.outlineColor, clickGui.fontColor, clickGui.opacity), HEIGHT, 2);		
+		this.theme = new PostmanTheme(
+			new SettingsColorScheme(
+				clickGui.enabledColor,
+				clickGui.backgroundColor, 
+				clickGui.settingBackgroundColor,
+				clickGui.outlineColor, 
+				clickGui.fontColor, 
+				clickGui.opacity
+			), 
+			HEIGHT, 
+			2
+		);		
 		
 		
-		gui = new HUDClickGUI(guiInterface,ClickGuiModule.INSTANCE.description.is("mouse") ? new MouseDescription(new Point(5,0)) : new FixedDescription(new Point(0,0))) {
+		this.gui = new HUDClickGUI(guiInterface,ClickGuiModule.INSTANCE.description.is("mouse") ? new MouseDescription(new Point(5,0)) : new FixedDescription(new Point(0,0))) {
 			@Override
 			public void handleScroll (int diff) {
 				super.handleScroll(diff);
 				if (ClickGuiModule.INSTANCE.scrollMode.is("screen")) {
 					for (FixedComponent component: components) {
-		        		if (!hudComponents.contains(component)) {
-			        		Point p=component.getPosition(guiInterface);
-			        		p.translate(0,-diff);
-			        		component.setPosition(guiInterface,p);
-		        		}
-		        	}
+						if (!hudComponents.contains(component)) {
+							Point p=component.getPosition(guiInterface);
+							p.translate(0,-diff);
+							component.setPosition(guiInterface,p);
+						}
+					}
 				}
 			}
 		};
 		
-		Toggleable hudToggle=new Toggleable() {
+		Toggleable hudToggle = new Toggleable() {
 			@Override
 			public void toggle() {
 				render();
@@ -184,12 +193,12 @@ public class ClickGui extends MinecraftHUDGUI {
 		GlStateManager.disableAlpha();
 		GlStateManager.pushMatrix();
 		Minecraft.getMinecraft().getRenderItem().zLevel = -150.0f;
-        RenderHelper.enableGUIStandardItemLighting();
-        Minecraft.getMinecraft().getRenderItem().renderItemAndEffectIntoGUI(item,pos.x,pos.y);
-        Minecraft.getMinecraft().getRenderItem().renderItemOverlays(Minecraft.getMinecraft().fontRenderer,item,pos.x,pos.y);
-        RenderHelper.disableStandardItemLighting();
-        Minecraft.getMinecraft().getRenderItem().zLevel = 0.0F;
-        GlStateManager.popMatrix();
+		RenderHelper.enableGUIStandardItemLighting();
+		Minecraft.getMinecraft().getRenderItem().renderItemAndEffectIntoGUI(item,pos.x,pos.y);
+		Minecraft.getMinecraft().getRenderItem().renderItemOverlays(Minecraft.getMinecraft().fontRenderer,item,pos.x,pos.y);
+		RenderHelper.disableStandardItemLighting();
+		Minecraft.getMinecraft().getRenderItem().zLevel = 0.0F;
+		GlStateManager.popMatrix();
 		GlStateManager.disableDepth();
 		GlStateManager.depthMask(false);
 		GLInterface.begin();
@@ -204,10 +213,10 @@ public class ClickGui extends MinecraftHUDGUI {
 		GL11.glPopAttrib();
 		GlStateManager.enableDepth();
 		GlStateManager.disableAlpha();
-        GlStateManager.pushMatrix();
-        GlStateManager.color(1,1,1,1);
-        GuiInventory.drawEntityOnScreen(pos.x,pos.y,scale,28,60,entity);
-        GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		GlStateManager.color(1,1,1,1);
+		GuiInventory.drawEntityOnScreen(pos.x,pos.y,scale,28,60,entity);
+		GlStateManager.popMatrix();
 		GlStateManager.disableDepth();
 		GlStateManager.depthMask(false);
 		GLInterface.begin();
@@ -215,12 +224,12 @@ public class ClickGui extends MinecraftHUDGUI {
 	
 	@Override
 	protected HUDClickGUI getHUDGUI() {
-		return gui;
+		return this.gui;
 	}
 
 	@Override
 	protected GUIInterface getInterface() {
-		return guiInterface;
+		return this.guiInterface;
 	}
 
 	@Override
