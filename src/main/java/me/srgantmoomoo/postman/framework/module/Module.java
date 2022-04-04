@@ -23,8 +23,7 @@ public abstract class Module implements Toggleable {
 	public final String name, description;
 	public KeybindSetting keyCode = new KeybindSetting(0);
 	public Category category;
-	public boolean toggled;
-	public boolean expanded;
+	public boolean toggled = false, expanded;
 	public int index;
 	public List<Setting> settings = new ArrayList<Setting>();
 	
@@ -39,22 +38,22 @@ public abstract class Module implements Toggleable {
 	
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));
-		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
+		this.settings.sort(Comparator.comparingInt(setting -> setting == this.keyCode ? 1 : 0));
 	}
 	
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 	
 	public int getKey() {
-		return keyCode.code;
+		return this.keyCode.code;
 	}
 	
 	public void setKey(int key) {
 		this.keyCode.code = key;
 		
-		 if(Main.INSTANCE.saveLoad != null) {
-				Main.INSTANCE.saveLoad.save();
+		if(Main.INSTANCE.saveLoad != null) {
+			Main.INSTANCE.saveLoad.save();
 		}
 	} 
 	
@@ -67,7 +66,7 @@ public abstract class Module implements Toggleable {
 	}
 	
 	public final boolean isOn() {
-		return toggled;
+		return this.toggled;
 	}
 	
 	public void toggle() {
@@ -102,13 +101,13 @@ public abstract class Module implements Toggleable {
 	}
 	
 	protected void enable() {
-		onEnable();
-		setToggled(true);
+		this.onEnable();
+		this.setToggled(true);
 	}
 	
 	protected void disable() {
-		onDisable();
-		setToggled(false);
+		this.onDisable();
+		this.setToggled(false);
 	}
 	
 	protected void onEnable() {}
