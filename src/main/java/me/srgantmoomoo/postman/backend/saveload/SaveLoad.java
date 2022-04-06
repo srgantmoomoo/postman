@@ -28,11 +28,10 @@ import net.minecraft.client.Minecraft;
  */
 
 public class SaveLoad {
-	private File dir;
-	private File dataFile;
+	private final File dataFile;
 
 	public SaveLoad() {
-		dir = new File(Minecraft.getMinecraft().gameDir, Reference.NAME);
+		File dir = new File(Minecraft.getMinecraft().gameDir, Reference.NAME);
 		if(!dir.exists()) {
 			dir.mkdir();
 		}
@@ -125,7 +124,7 @@ public class SaveLoad {
 		for(String s : lines) {
 			String[] args = s.split(":");
 			if(s.startsWith("MODULE:")) {
-				Module m = Main.INSTANCE.moduleManager.getModule(args[1]);
+				Module m = Main.INSTANCE.moduleManager.getModuleByName(args[1]);
 				if(m != null) {
 					if(!m.getName().equals("clickGui") && !m.getName().equals("hudEditor") && !m.getName().equals("blink") && !m.getName().equals("autoDisconnect") && !m.getName().equals("clientFont") && !m.getName().equals("protester")) {
 						m.setToggled(Boolean.parseBoolean(args[2]));
@@ -143,7 +142,7 @@ public class SaveLoad {
 					//TODO fix these
 				}
 			}else if(s.startsWith("SETTING:")) {
-				Module m = Main.INSTANCE.moduleManager.getModule(args[1]);
+				Module m = Main.INSTANCE.moduleManager.getModuleByName(args[1]);
 				if(m != null) {
 					Setting setting = Main.INSTANCE.settingManager.getSettingByName(m,args[2]);
 					if(setting != null) {

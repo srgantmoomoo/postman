@@ -171,50 +171,40 @@ public class ModuleManager {
 		Minecraft.getMinecraft().profiler.endSection();
 		Minecraft.getMinecraft().profiler.endSection();
 	}
-	
+
 	@SubscribeEvent
 	public void key(KeyInputEvent e) {
 		if(Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null)
 			return;
+
 		try {
-			if(Keyboard.isCreated()) {
-				if(Keyboard.getEventKeyState()) {
-					int keyCode = Keyboard.getEventKey();
-					if(keyCode <= 0)
-						return;
-					for(Module m : modules) {
-						if(m.getKey() == keyCode && keyCode > 0) {
-							m.toggle();
-						}
-					}
+			if(Keyboard.isCreated() && Keyboard.getEventKeyState()) {
+				int keyCode = Keyboard.getEventKey();
+				if(keyCode <= 0)
+					return;
+				for(Module m : modules) {
+					if(m.getKey() == keyCode)
+						m.toggle();
 				}
 			}
-		} catch (Exception q) { q.printStackTrace(); }
+		}catch (Exception c) { c.printStackTrace(); }
 	}
 	
-	public boolean isModuleEnabled(String name){
-		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+	public boolean isModuleEnabled(String name) {
+		Module m = modules.stream().filter(module -> module.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+		assert m != null;
 		return m.isToggled();
 	}
-	
-	public Module getModule (String name) {
-		for (Module m : modules) {
-			if(m.getName().equalsIgnoreCase(name)) {
-				return m;
-			}
-		}
-		return null;
-	}
-	
+
 	public ArrayList<Module> getModules() {
 		return modules;
 	}
 
-	public ArrayList<Module> getModulesInCategory(Category c){
+	public ArrayList<Module> getModulesInCategory(Category c) {
 		return (ArrayList<Module>) getModules().stream().filter(m -> m.getCategory().equals(c)).collect(Collectors.toList());
 	}
 	
-	public Module getModuleByName(String name){
-		return modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+	public Module getModuleByName(String name) {
+		return modules.stream().filter(m -> m.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
 }
