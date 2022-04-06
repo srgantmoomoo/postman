@@ -97,5 +97,4 @@ public class Protester extends Module {
             tickDelay = 0;
     	}
     }
-    
 }

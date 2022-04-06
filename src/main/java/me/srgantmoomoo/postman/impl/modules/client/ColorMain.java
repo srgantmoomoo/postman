@@ -9,7 +9,7 @@ import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ModeSetting;
 import net.minecraft.util.text.TextFormatting;
 
-// this is from gs ... lol
+// this is from gs
 
 public class ColorMain extends Module {
 	

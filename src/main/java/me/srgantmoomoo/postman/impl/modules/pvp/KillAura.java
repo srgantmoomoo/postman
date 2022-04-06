@@ -64,16 +64,8 @@ public class KillAura extends Module {
 			}
 		}
 
-		if (passives.isEnabled() && entity instanceof EntityAnimal) {
-			if (entity instanceof EntityTameable) {
-				return false;
-			}else {
-				return true;
-			}
-		}
-		if (hostiles.isEnabled() && entity instanceof EntityMob) {
-			return true;
-		}
-		return false;
+		if (passives.isEnabled() && entity instanceof EntityAnimal)
+			return !(entity instanceof EntityTameable);
+		return hostiles.isEnabled() && entity instanceof EntityMob;
 	}
 }

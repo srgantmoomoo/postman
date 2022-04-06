@@ -109,5 +109,4 @@ public class Speed extends Module {
 		var1 *= 0.017453292f;
 		return var1;
 	}
-	
 }

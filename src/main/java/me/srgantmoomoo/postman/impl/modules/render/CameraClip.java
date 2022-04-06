@@ -15,7 +15,7 @@ public class CameraClip extends Module {
 	}
 	
 	@EventHandler
-    private Listener<RenderCameraEvent> onRenderCameraEvent = new Listener<>(event -> {
+    private final Listener<RenderCameraEvent> onRenderCameraEvent = new Listener<>(event -> {
         event.cancel();
     });
 

@@ -16,7 +16,7 @@ public class SafeWalk extends Module {
 	}
 	
 	@EventHandler
-    private Listener<PlayerMoveEvent> OnPlayerMove = new Listener<>(event -> {
+    private final Listener<PlayerMoveEvent> OnPlayerMove = new Listener<>(event -> {
         double x = event.getX();
         double y = event.getY();
         double z = event.getZ();
@@ -66,4 +66,5 @@ public class SafeWalk extends Module {
     private boolean isOffsetBBEmpty(double x, double y, double z) {
         return Minecraft.getMinecraft().world.getCollisionBoxes(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getEntityBoundingBox().offset(x, y, z)).isEmpty();
     }
+
 }

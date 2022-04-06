@@ -76,7 +76,7 @@ public class NoRender extends Module {
 	
 	// rain
 	@EventHandler
-	private Listener<RenderRainEvent> onRain = new Listener<>(event -> {
+	private final Listener<RenderRainEvent> onRain = new Listener<>(event -> {
 		if(rain.isEnabled()) {
 		    if (mc.world == null)
 		        return;
@@ -86,7 +86,7 @@ public class NoRender extends Module {
 	
 	// totem animation
 	@EventHandler
-    private Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
+    private final Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
         if (mc.world == null || mc.player == null) return;
         if (event.getPacket() instanceof SPacketEntityStatus) {
             SPacketEntityStatus packet = (SPacketEntityStatus)event.getPacket();
@@ -99,14 +99,14 @@ public class NoRender extends Module {
 	
 	// fire
 	@EventHandler
-    private Listener<RenderBlockOverlayEvent> OnBlockOverlayEvent = new Listener<>(event -> {
+    private final Listener<RenderBlockOverlayEvent> OnBlockOverlayEvent = new Listener<>(event -> {
         if (fire.isEnabled() && event.getOverlayType() == OverlayType.FIRE) event.setCanceled(true);
     });
 	
 	// crystals, tnt, items, withers, skulls, and fireworks
 	
 	@EventHandler
-	private Listener<PacketEvent.Receive> onReceivePacket = new Listener<>(event -> {	
+	private final Listener<PacketEvent.Receive> onReceivePacket = new Listener<>(event -> {
 		 if (event.getEra() == Era.PRE) {
 	            if (event.getPacket() instanceof SPacketSpawnMob) {
 	                final SPacketSpawnMob packet = (SPacketSpawnMob) event.getPacket();
@@ -121,7 +121,7 @@ public class NoRender extends Module {
 	});
 	
 	@EventHandler
-	private Listener<RenderEntityEvent> onRenderEntity = new Listener<>(event -> {
+	private final Listener<RenderEntityEvent> onRenderEntity = new Listener<>(event -> {
 			if(crystals.isEnabled()) {
 				if (event.getEntity() instanceof EntityEnderCrystal) event.cancel();
 			}
@@ -148,7 +148,7 @@ public class NoRender extends Module {
         
 	});
 	@EventHandler
-	private Listener<SpawnEffectEvent> onSpawnEffectParticle = new Listener<>(event -> {
+	private final Listener<SpawnEffectEvent> onSpawnEffectParticle = new Listener<>(event -> {
 		if (fireworks.isEnabled()) {
             if (event.getParticleID() == EnumParticleTypes.FIREWORKS_SPARK.getParticleID() || event.getParticleID() == EnumParticleTypes.EXPLOSION_HUGE.getParticleID() ||
             		event.getParticleID() == EnumParticleTypes.EXPLOSION_LARGE.getParticleID() || event.getParticleID() == EnumParticleTypes.EXPLOSION_NORMAL.getParticleID()) {
@@ -158,7 +158,7 @@ public class NoRender extends Module {
 	});
 	
 	@EventHandler
-	private Listener<AddEntityEvent> onEntityAdd = new Listener<>(event -> {
+	private final Listener<AddEntityEvent> onEntityAdd = new Listener<>(event -> {
 		if (fireworks.isEnabled()) {
             if (event.getEntity() instanceof EntityFireworkRocket) {
                 event.cancel();

@@ -8,7 +8,6 @@ import me.srgantmoomoo.postman.framework.module.Module;
 import net.minecraft.client.settings.KeyBinding;
 
 public class AutoClicker extends Module {
-	
 	private long lastClick;
 	private long hold;
 	
@@ -35,5 +34,4 @@ public class AutoClicker extends Module {
 				}
 			}
 	}
-
 }

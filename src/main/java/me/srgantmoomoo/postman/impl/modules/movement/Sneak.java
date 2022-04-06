@@ -26,7 +26,7 @@ public class Sneak extends Module {
     }
 
     @EventHandler
-    private Listener<PlayerMotionUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
+    private final Listener<PlayerMotionUpdateEvent> onPlayerUpdate = new Listener<>(event -> {
         if (event.getEra() != Era.PRE)
             return;
         
@@ -34,9 +34,10 @@ public class Sneak extends Module {
     });
 
     @EventHandler
-    private Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
+    private final Listener<NetworkPacketEvent> packetEvent = new Listener<>(event -> {
         if (event.getPacket() instanceof CPacketPlayerTryUseItemOnBlock && !mc.player.isSneaking()) {
             mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         }
     });
+
 }

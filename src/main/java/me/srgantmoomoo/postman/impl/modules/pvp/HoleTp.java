@@ -55,13 +55,13 @@ public class HoleTp extends Module {
 			}
 		}
 
-	private boolean isInHole(){
+	private boolean isInHole() {
 		final BlockPos blockPos = new BlockPos(HoleTp.mc.player.posX, HoleTp.mc.player.posY, HoleTp.mc.player.posZ);
 		final IBlockState blockState = HoleTp.mc.world.getBlockState(blockPos);
 		return this.isBlockValid(blockState, blockPos);
 	}
 
-	private double getNearestBlockBelow(){
+	private double getNearestBlockBelow() {
 		for (double y = HoleTp.mc.player.posY; y > 0.0; y -= 0.001){
 			if (!(HoleTp.mc.world.getBlockState(new BlockPos(HoleTp.mc.player.posX, y, HoleTp.mc.player.posZ)).getBlock() instanceof BlockSlab) && HoleTp.mc.world.getBlockState(new BlockPos(HoleTp.mc.player.posX, y, HoleTp.mc.player.posZ)).getBlock().getDefaultState().getCollisionBoundingBox(HoleTp.mc.world, new BlockPos(0, 0, 0)) != null){
 				return y;
@@ -74,7 +74,7 @@ public class HoleTp extends Module {
 		return blockState.getBlock() == Blocks.AIR && HoleTp.mc.player.getDistanceSq(blockPos) >= 1.0 && HoleTp.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR && HoleTp.mc.world.getBlockState(blockPos.up(2)).getBlock() == Blocks.AIR && (this.isBedrockHole(blockPos) || this.isObbyHole(blockPos) || this.isBothHole(blockPos) || this.isElseHole(blockPos));
 	}
 
-	private boolean isObbyHole(final BlockPos blockPos){
+	private boolean isObbyHole(final BlockPos blockPos) {
 		final BlockPos[] array;
 		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
@@ -86,7 +86,7 @@ public class HoleTp extends Module {
 		return true;
 	}
 
-	private boolean isBedrockHole(final BlockPos blockPos){
+	private boolean isBedrockHole(final BlockPos blockPos) {
 		final BlockPos[] array;
 		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
@@ -98,7 +98,7 @@ public class HoleTp extends Module {
 		return true;
 	}
 
-	private boolean isBothHole(final BlockPos blockPos){
+	private boolean isBothHole(final BlockPos blockPos) {
 		final BlockPos[] array;
 		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
@@ -110,7 +110,7 @@ public class HoleTp extends Module {
 		return true;
 	}
 
-	private boolean isElseHole(final BlockPos blockPos){
+	private boolean isElseHole(final BlockPos blockPos) {
 		final BlockPos[] array;
 		array = new BlockPos[]{ blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west(), blockPos.down()};
 		for (final BlockPos touching : array){
@@ -122,7 +122,7 @@ public class HoleTp extends Module {
 		return true;
 	}
 
-	private boolean isOnLiquid(){
+	private boolean isOnLiquid() {
 		final double y = HoleTp.mc.player.posY - 0.03;
 		for (int x = MathHelper.floor(HoleTp.mc.player.posX); x < MathHelper.ceil(HoleTp.mc.player.posX); x++){
 			for (int z = MathHelper.floor(HoleTp.mc.player.posZ); z < MathHelper.ceil(HoleTp.mc.player.posZ); z++){
@@ -135,7 +135,7 @@ public class HoleTp extends Module {
 		return false;
 	}
 
-	private boolean isInLiquid(){
+	private boolean isInLiquid() {
 		final double y = HoleTp.mc.player.posY + 0.01;
 		for (int x = MathHelper.floor(HoleTp.mc.player.posX); x < MathHelper.ceil(HoleTp.mc.player.posX); x++){
 			for (int z = MathHelper.floor(HoleTp.mc.player.posZ); z < MathHelper.ceil(HoleTp.mc.player.posZ); z++){

@@ -21,7 +21,7 @@ public class Criticals extends Module {
 	}
 
     @EventHandler
-    private Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
+    private final Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
         if (event.getPacket() instanceof CPacketUseEntity) {
             CPacketUseEntity packet = (CPacketUseEntity)event.getPacket();
             

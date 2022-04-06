@@ -27,5 +27,3 @@ import net.minecraft.client.renderer.ItemRenderer;
 		}
 	
 }
-
-

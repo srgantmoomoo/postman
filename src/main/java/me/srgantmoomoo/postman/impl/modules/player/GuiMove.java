@@ -11,8 +11,6 @@ public class GuiMove extends Module {
 	public GuiMove() {
 		super ("guiMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
-	
-	private Minecraft mc = Minecraft.getMinecraft();
 
 	@Override
 	public void onUpdate(){
@@ -39,4 +37,5 @@ public class GuiMove extends Module {
 			}
 		}
 	}
+
 }

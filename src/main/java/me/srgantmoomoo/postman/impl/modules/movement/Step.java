@@ -55,7 +55,7 @@ public class Step extends Module {
     }
 
     @EventHandler
-    private Listener<PlayerUpdateMoveStateEvent> onInputUpdate = new Listener<>(event -> {
+    private final Listener<PlayerUpdateMoveStateEvent> onInputUpdate = new Listener<>(event -> {
         if (cancelStage != 0)
             mc.player.movementInput.jump = false;
         
@@ -65,7 +65,7 @@ public class Step extends Module {
     });
     
     @EventHandler
-    private Listener<PlayerMotionUpdateEvent> OnMotionUpdate = new Listener<>(event -> {
+    private final Listener<PlayerMotionUpdateEvent> onMotionUpdate = new Listener<>(event -> {
     	
     	if(mode.is("delay")) {
     	if (event.getEra() == Era.PRE) {

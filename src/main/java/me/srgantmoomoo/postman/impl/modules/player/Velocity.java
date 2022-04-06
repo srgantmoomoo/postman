@@ -15,10 +15,6 @@ import net.minecraft.network.play.server.SPacketExplosion;
 public class Velocity extends Module {
 	public NumberSetting percent = new NumberSetting("percent", this, 0, 0, 100, 10);
 	
-	private Minecraft mc = Minecraft.getMinecraft();
-	
-	public boolean on;
-	
 	public Velocity() {
 		super ("velocity", "take no knockback when hit.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings();

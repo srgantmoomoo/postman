@@ -23,4 +23,5 @@ public class AutoUse extends Module {
 	public void onDisable() {
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	}
+
 }

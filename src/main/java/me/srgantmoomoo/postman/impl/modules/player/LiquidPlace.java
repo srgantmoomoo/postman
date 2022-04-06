@@ -15,7 +15,7 @@ public class LiquidPlace extends Module {
 	}
 	
 	@EventHandler
-	private Listener<CanCollideCheckEvent> CanCollid = new Listener<>(event -> {
+	private final Listener<CanCollideCheckEvent> CanCollid = new Listener<>(event -> {
 		event.cancel();
 	});
 }

@@ -26,7 +26,7 @@ public class ChestStealer extends Module {
 	
 
     @EventHandler
-    private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
+    private final Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
 
         if((Module.mc.player.openContainer != null) && ((Module.mc.player.openContainer instanceof ContainerChest))) {
         	ContainerChest chest = (ContainerChest) Module.mc.player.openContainer;
