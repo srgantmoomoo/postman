@@ -18,7 +18,6 @@ public class Coords extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
-
 	public Coords() {
 		super("coords", "shows ur coords on ur hud.", new Point(122, 57), Category.HUD);
 		this.addSettings(sort, color);

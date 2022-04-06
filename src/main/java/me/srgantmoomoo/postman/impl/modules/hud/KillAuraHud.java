@@ -17,7 +17,7 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
 
 public class KillAuraHud extends HudModule {
-	private KillAuraInfoList list=new KillAuraInfoList();
+	private KillAuraInfoList list = new KillAuraInfoList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);

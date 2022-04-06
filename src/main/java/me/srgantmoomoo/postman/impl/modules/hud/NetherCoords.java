@@ -15,7 +15,6 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
 public class NetherCoords extends HudModule{
-
 	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 72, 72, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 	
@@ -63,5 +62,4 @@ public class NetherCoords extends HudModule{
 			return sort.isEnabled();
 		}
 	}
-	
 }

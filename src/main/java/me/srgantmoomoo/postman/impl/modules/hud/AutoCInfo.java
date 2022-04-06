@@ -17,7 +17,7 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
 
 public class AutoCInfo extends HudModule {
-	private AutoCInfoList list=new AutoCInfoList();
+	private AutoCInfoList list = new AutoCInfoList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
