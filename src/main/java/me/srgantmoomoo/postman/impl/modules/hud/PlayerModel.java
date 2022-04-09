@@ -58,5 +58,4 @@ public class PlayerModel extends HudModule {
 			context.setHeight(64);
 		}
 	}
-
 }

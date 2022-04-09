@@ -82,7 +82,7 @@ public class SmartOffHand extends Module {
     }
 
     @EventHandler
-    private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
+    private final Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
     	
     	if (mc.currentScreen != null && (!(mc.currentScreen instanceof GuiInventory)))
             return;
@@ -149,5 +149,4 @@ public class SmartOffHand extends Module {
         
         return Items.TOTEM_OF_UNDYING;
     }
-
 }

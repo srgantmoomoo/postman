@@ -14,13 +14,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ArmorHud extends Module {
-	public boolean on;
 	
 	public ArmorHud() {
 		super ("armorHud", "shows ur armor values on top of hotbar", Keyboard.KEY_NONE, Category.HUD);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
-
 	
 	 private static final RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
 

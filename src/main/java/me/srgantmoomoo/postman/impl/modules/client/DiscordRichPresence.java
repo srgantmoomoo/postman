@@ -21,4 +21,5 @@ public class DiscordRichPresence extends Module {
 	public void onDisable() {
 	    Discord.stopRPC();
 	}
+
 }

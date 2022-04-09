@@ -29,5 +29,4 @@ public class NotificationModule extends Module {
                 System.out.println("this is a hud message");
         }
     }
-
 }

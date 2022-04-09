@@ -40,8 +40,7 @@ public class Refill extends Module {
 	}
 	
     private int getHalfStack(EntityPlayerSP player) {
-    	if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE) offHand = true;
-		else offHand = false;
+        offHand = mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL || mc.player.getHeldItemOffhand().getItem() == Items.GOLDEN_APPLE;
         if (offHand) {
             if (player.getHeldItemOffhand().getItem() != Items.AIR && player.getHeldItemOffhand().getCount() < player.getHeldItemOffhand().getMaxStackSize()
                     && (double) player.getHeldItemOffhand().getCount() / player.getHeldItemOffhand().getMaxStackSize() <= (50 / 100.0)) {

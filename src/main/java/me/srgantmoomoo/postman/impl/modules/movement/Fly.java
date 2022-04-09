@@ -90,5 +90,4 @@ public class Fly extends Module {
     public double[] moveLooking() {
         return new double[] { mc.player.rotationYaw * 360.0F / 360.0F * 180.0F / 180.0F, 0.0D };
     }
-
 }

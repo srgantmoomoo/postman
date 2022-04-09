@@ -48,5 +48,4 @@ public class AutoReconnect extends Module {
             }
 		}
 	});
-
 }

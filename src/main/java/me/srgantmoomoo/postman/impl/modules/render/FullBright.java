@@ -32,7 +32,7 @@ public class FullBright extends Module {
 	 }
 
 	 @EventHandler
-	 private Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(p_Event -> {
+	 private final Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(p_Event -> {
 	     mc.gameSettings.gammaSetting = 1000;
          mc.player.removePotionEffect(MobEffects.NIGHT_VISION);
 	 });

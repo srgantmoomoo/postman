@@ -73,5 +73,5 @@ public class AutoTotem extends Module {
 
         mc.playerController.updateController();
     }
-}
 
+}

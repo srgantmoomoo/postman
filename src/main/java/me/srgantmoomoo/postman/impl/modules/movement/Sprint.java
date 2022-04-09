@@ -10,9 +10,6 @@ import net.minecraft.client.Minecraft;
 public class Sprint extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "sickomode");
 	
-	private Minecraft mc = Minecraft.getMinecraft();
-	public boolean on;
-	
 	public Sprint() {
 		super ("sprint", "now u cant walk, good going.", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(mode);
@@ -29,5 +26,4 @@ public class Sprint extends Module {
 			
 		}
 	}
-
 }
