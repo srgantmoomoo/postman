@@ -4,14 +4,12 @@ import me.srgantmoomoo.postman.backend.event.Event;
 import net.minecraft.entity.MoverType;
 
 public class PlayerMoveEvent extends Event {
-
 	MoverType type;
 	public double x;
 	public double y;
 	public double z;
 
 	public PlayerMoveEvent(MoverType moverType, double x, double y, double z) {
-		super();
 		this.type = moverType;
 		this.x = x;
 		this.y = y;

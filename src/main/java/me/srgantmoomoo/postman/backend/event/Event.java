@@ -9,12 +9,12 @@ public class Event extends Cancellable {
     private final float partialTicks;
 
     public Event() {
-        partialTicks = Wrapper.getMinecraft().getRenderPartialTicks();
+        this.partialTicks = Wrapper.getMinecraft().getRenderPartialTicks();
     }
     
-    public Event(Era p_Era) {
-        partialTicks = Wrapper.getMinecraft().getRenderPartialTicks();
-        era = p_Era;
+    public Event(Era era) {
+        this.partialTicks = Wrapper.getMinecraft().getRenderPartialTicks();
+        this.era = era;
     }
 
     public Era getEra() {

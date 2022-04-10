@@ -23,9 +23,9 @@ public abstract class Module implements Toggleable {
 	public final String name, description;
 	public KeybindSetting keyCode = new KeybindSetting(0);
 	public Category category;
-	public boolean toggled = false, expanded;
+	public boolean toggled;
 	public int index;
-	public List<Setting> settings = new ArrayList<Setting>();
+	public List<Setting> settings = new ArrayList<>();
 	
 	public Module(String name, String description, int key, Category category) {
 		this.name = name;

@@ -9,7 +9,6 @@ import me.srgantmoomoo.Main;
 import javax.annotation.Nullable;
 import java.util.Map;
 public class MixinLoader implements IFMLLoadingPlugin {
-
 	public MixinLoader() {
 		Main.log.info("mixins initialized");
 		MixinBootstrap.init();
@@ -33,8 +32,7 @@ public class MixinLoader implements IFMLLoadingPlugin {
 	}
 
 	@Override
-	public void injectData(Map<String, Object> data) {
-	}
+	public void injectData(Map<String, Object> data) {}
 
 	@Override
 	public String getAccessTransformerClass() {

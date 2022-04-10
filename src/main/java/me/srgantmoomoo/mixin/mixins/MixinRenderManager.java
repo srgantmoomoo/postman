@@ -12,16 +12,13 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 
 @Mixin(RenderManager.class)
-public class MixinRenderManager
-{
+public class MixinRenderManager {
     @Inject(method = "shouldRender", at = @At("HEAD"), cancellable = true)
-    public void isPotionActive(Entity entityIn, ICamera camera, double camX, double camY, double camZ, final CallbackInfoReturnable<Boolean> callback)
-    {
-        RenderEntityEvent event = new RenderEntityEvent(entityIn, camera, camX, camY, camZ);
+    public void isPotionActive(Entity entityIn, ICamera camera, double camX, double camY, double camZ, final CallbackInfoReturnable<Boolean> callback) {
+        RenderEntityEvent event = new RenderEntityEvent(entityIn);
         Main.EVENT_BUS.post(event);
 
         if (event.isCancelled())
             callback.setReturnValue(false);
     }
-    
 }

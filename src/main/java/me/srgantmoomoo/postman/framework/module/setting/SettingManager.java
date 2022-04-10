@@ -30,7 +30,7 @@ public class SettingManager {
 	public Setting getSettingByName(Module mod, String name) {
 		for (Module m : Main.INSTANCE.moduleManager.modules) {
 			for (Setting set : m.settings) {
-				if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
+				if (set.name.toLowerCase().equals(name) && set.parent == mod) {
 					return set;
 				}
 			}

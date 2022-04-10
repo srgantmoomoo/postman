@@ -11,8 +11,6 @@ import me.srgantmoomoo.postman.impl.clickgui.back.ClickGuiConfig;
  */
 
 public class ClickGuiLoad {
-    String fileName = "postman/", mainName = "clickGui/";
-
     public ClickGuiLoad() {
         try {
         	this.clickGuiLoad();
@@ -23,10 +21,10 @@ public class ClickGuiLoad {
     }
 
     public void clickGuiLoad() throws IOException {
-        loadClickGUIPositions();
+        this.loadClickGUIPositions();
     }
 
     public void loadClickGUIPositions() throws IOException {
-	Main.INSTANCE.clickGui.gui.loadConfig(new ClickGuiConfig(fileName+mainName));
+        Main.INSTANCE.clickGui.gui.loadConfig(new ClickGuiConfig("postman/clickGui/"));
     }
 }

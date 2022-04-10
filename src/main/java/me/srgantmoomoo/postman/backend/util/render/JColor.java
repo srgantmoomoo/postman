@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.GlStateManager;
 // this is taken from gs from a while ago lol - SrgantMooMoo
 
 public class JColor extends Color {
-	
 	private static final long serialVersionUID = 1L;
 
 	public JColor (int rgb) {

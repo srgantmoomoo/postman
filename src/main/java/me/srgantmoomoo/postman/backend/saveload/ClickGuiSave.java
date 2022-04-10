@@ -14,7 +14,6 @@ import me.srgantmoomoo.postman.impl.clickgui.back.ClickGuiConfig;
  */
 
 public class ClickGuiSave {
-
     public ClickGuiSave() {
         try {
         	clickGuiSave();

@@ -4,21 +4,17 @@ import me.srgantmoomoo.postman.backend.event.Event;
 import net.minecraft.client.entity.AbstractClientPlayer;
 
 public class RenderEntityNameEvent extends Event {
-	
-	public AbstractClientPlayer Entity;
-    public double X;
-    public double Y;
-    public double Z;
-    public String Name;
-    public double DistanceSq;
+	public AbstractClientPlayer entity;
+    public double x, y, z;
+    public String name;
+    public double distanceSq;
 
-    public RenderEntityNameEvent(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq) {
-        Entity = entityIn;
-        x = X;
-        y = Y;
-        z = Z;
-        Name = name;
-        DistanceSq = distanceSq;
+    public RenderEntityNameEvent(AbstractClientPlayer entity, double x, double y, double z, String name, double distanceSq) {
+        this.entity = entity;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.name = name;
+        this.distanceSq = distanceSq;
     }
-
 }

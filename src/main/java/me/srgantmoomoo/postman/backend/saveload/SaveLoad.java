@@ -46,7 +46,7 @@ public class SaveLoad {
 	}
 
 	public void save() {
-		ArrayList<String> toSave = new ArrayList<String>();
+		ArrayList<String> toSave = new ArrayList<>();
 
 		// modules and keybinds
 		toSave.add("modname:toggled:keybind");
@@ -107,7 +107,7 @@ public class SaveLoad {
 	}
 
 	public void load() {
-		ArrayList<String> lines = new ArrayList<String>();
+		ArrayList<String> lines = new ArrayList<>();
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(this.dataFile));

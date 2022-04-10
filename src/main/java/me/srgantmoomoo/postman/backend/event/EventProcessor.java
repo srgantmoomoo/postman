@@ -35,9 +35,9 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EventProcessor {
-
 	public static EventProcessor instance;
-	Minecraft mc = Minecraft.getMinecraft();
+
+	private final Minecraft mc = Minecraft.getMinecraft();
 
 	public EventProcessor() {
 		instance = this;

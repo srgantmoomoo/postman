@@ -4,7 +4,6 @@ import me.srgantmoomoo.postman.backend.event.Event;
 import net.minecraft.util.EnumHandSide;
 
 public class TransformSideFirstPersonEvent extends Event {
-
 	private final EnumHandSide enumHandSide;
 
 	public TransformSideFirstPersonEvent(EnumHandSide enumHandSide){

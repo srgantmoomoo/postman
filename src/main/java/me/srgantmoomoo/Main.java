@@ -93,7 +93,9 @@ public class Main {
 		
 		clickGuiSave = new ClickGuiSave();
 		clickGuiLoad = new ClickGuiLoad();
+
 		Runtime.getRuntime().addShutdownHook(new ConfigStopper());
+
 		saveLoad = new SaveLoad();
 		log.info("configs initialized.");
 		

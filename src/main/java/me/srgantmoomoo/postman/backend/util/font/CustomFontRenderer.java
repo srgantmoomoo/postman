@@ -38,11 +38,11 @@ public class CustomFontRenderer extends CustomFont {
 	}
 
 	public float drawCenteredStringWithShadow(String text, float x, float y, JColor color) {
-		return drawStringWithShadow(text, x - getStringWidth(text) / 2, y, color);
+		return drawStringWithShadow(text, x - getStringWidth(text) / 2f, y, color);
 	}
 
 	public float drawCenteredString(String text, float x, float y, JColor color) {
-		return drawString(text, x - getStringWidth(text) / 2, y, color);
+		return drawString(text, x - getStringWidth(text) / 2f, y, color);
 	}
 
 	public float drawString(String text, double x, double y, JColor gsColor, boolean shadow) {
@@ -80,9 +80,8 @@ public class CustomFontRenderer extends CustomFont {
 					try {
 						colorIndex = "0123456789abcdefklmnor".indexOf(text.charAt(i + 1));
 					}
-					catch (Exception e) {
+					catch (Exception ignored) {}
 
-					}
 					if (colorIndex < 16) {
 						bold = false;
 						italic = false;

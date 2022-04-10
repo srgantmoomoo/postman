@@ -5,7 +5,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
 public class DamageBlockEvent extends Event {
-
 	private BlockPos blockPos;
 	private EnumFacing enumFacing;
 

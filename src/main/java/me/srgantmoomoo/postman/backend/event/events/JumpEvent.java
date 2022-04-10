@@ -4,7 +4,6 @@ import me.srgantmoomoo.postman.backend.event.Event;
 import me.srgantmoomoo.postman.backend.util.world.Location;
 
 public class JumpEvent extends Event {
-
 	private Location location;
 
 	public JumpEvent(Location location) {

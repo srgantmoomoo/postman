@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.UUID;
 
 public class Cape {
-
-	List<UUID> uuids = new ArrayList<>();
+	private static final List<UUID> uuids = new ArrayList<>();
 
 	public Cape() {
 		try {
 			URL capesList = new URL("https://pastebin.com/raw/2K1zmXZc");
 			BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
 			String inputLine;
+			
 			while ((inputLine = in.readLine()) != null) {
 				uuids.add(UUID.fromString(inputLine));
 			}
