@@ -15,7 +15,7 @@ public class Cape {
 			URL capesList = new URL("https://pastebin.com/raw/2K1zmXZc");
 			BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
 			String inputLine;
-			
+
 			while ((inputLine = in.readLine()) != null) {
 				uuids.add(UUID.fromString(inputLine));
 			}
