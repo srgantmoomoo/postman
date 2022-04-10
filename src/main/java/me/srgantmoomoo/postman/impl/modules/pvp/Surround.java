@@ -30,7 +30,7 @@ import net.minecraft.util.math.Vec3d;
  * Almost completely stolen from gamesense. @Srgantmoomoo November 6th, 2020
  */
 public class Surround extends Module {
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 
 	public BooleanSetting triggerSurround = new BooleanSetting("trigger", this, false);
 	public BooleanSetting shiftOnly = new BooleanSetting("onShift", this, false);
@@ -53,7 +53,6 @@ public class Surround extends Module {
 
 	private int oldSlot = -1;
 
-	private int blocksPlaced;
 	private int runTimeTicks = 0;
 	private int delayTimeTicks = 0;
 	private int offsetSteps = 0;
@@ -193,7 +192,7 @@ public class Surround extends Module {
 			return;
 		}
 
-		blocksPlaced = 0;
+		int blocksPlaced = 0;
 
 		while (blocksPlaced <= blocksPerTick.getValue()) {
 			Vec3d[] offsetPattern;
@@ -208,11 +207,7 @@ public class Surround extends Module {
 			BlockPos offsetPos = new BlockPos(offsetPattern[offsetSteps]);
 			BlockPos targetPos = new BlockPos(mc.player.getPositionVector()).add(offsetPos.getX(), offsetPos.getY(), offsetPos.getZ());
 
-			boolean tryPlacing = true;
-
-			if (!mc.world.getBlockState(targetPos).getMaterial().isReplaceable()) {
-				tryPlacing = false;
-			}
+			boolean tryPlacing = mc.world.getBlockState(targetPos).getMaterial().isReplaceable();
 
 			for (Entity entity : mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(targetPos))) {
 				if (entity instanceof EntityPlayer) {
@@ -306,7 +301,6 @@ public class Surround extends Module {
 	}
 
 	private Vec3d getCenterOfBlock(double playerX, double playerY, double playerZ) {
-
 		double newX = Math.floor(playerX) + 0.5;
 		double newY = Math.floor(playerY);
 		double newZ = Math.floor(playerZ) + 0.5;
@@ -316,14 +310,14 @@ public class Surround extends Module {
 
 	private static class Offsets {
 		private static final Vec3d[] SURROUND = {
-				new Vec3d(1, 0, 0),
-				new Vec3d(0, 0, 1),
-				new Vec3d(-1, 0, 0),
-				new Vec3d(0, 0, -1),
-				new Vec3d(1, -1, 0),
-				new Vec3d(0, -1, 1),
-				new Vec3d(-1, -1, 0),
-				new Vec3d(0, -1, -1)
+			new Vec3d(1, 0, 0),
+			new Vec3d(0, 0, 1),
+			new Vec3d(-1, 0, 0),
+			new Vec3d(0, 0, -1),
+			new Vec3d(1, -1, 0),
+			new Vec3d(0, -1, 1),
+			new Vec3d(-1, -1, 0),
+			new Vec3d(0, -1, -1)
 		};
 	}
 }

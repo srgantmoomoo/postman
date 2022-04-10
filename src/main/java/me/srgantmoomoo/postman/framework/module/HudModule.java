@@ -19,7 +19,7 @@ public abstract class HudModule extends Module {
 	
 	public HudModule (String title, String description, Point defaultPos, Category category) {
 		super(title, description, Keyboard.KEY_NONE, category);
-		position = defaultPos;
+		this.position = defaultPos;
 	}
 	
 	public abstract void populate (Theme theme);

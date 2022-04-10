@@ -46,15 +46,14 @@ public class PostmanTheme implements Theme {
 	public DescriptionRenderer getDescription() {
 		return descriptionRenderer;
 	}
-
 	
 	protected class ComponentRenderer extends RendererBase {
-		protected final int level,border;
+		protected final int level, border;
 		
 		public ComponentRenderer (int level, int height, int border) {
 			super(height+1,0,0,0,0);
-			this.level=level;
-			this.border=border;
+			this.level = level;
+			this.border = border;
 		}
 
 		@Override

@@ -28,7 +28,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
 public class SelfFill extends Module {
-
 	public ModeSetting mode = new ModeSetting("mode", this, "instant", "instant", "jump", "tp");
 	public BooleanSetting autoSwitch = new BooleanSetting("autoSwitch", this, true);
 	public BooleanSetting rotations = new BooleanSetting("rotate", this, false);
@@ -36,7 +35,7 @@ public class SelfFill extends Module {
 	public NumberSetting rubberbandDelay = new NumberSetting("delay", this, 13, 1, 30, 1);
 	public BooleanSetting autoDisable = new BooleanSetting("autoDisable", this, true);
 	
-	private double[] jump = {0.41999998688698D, 0.7531999805211997D, 1.00133597911214D, 1.16610926093821D};
+	private final double[] jump = {0.41999998688698D, 0.7531999805211997D, 1.00133597911214D, 1.16610926093821D};
 	private boolean placed;
 	private boolean jumped;
 	private BlockPos startPos;
@@ -71,7 +70,6 @@ public class SelfFill extends Module {
 		jumped = false;
 		ticks = 0;
 	}
-	
 	
 	@Override
 	public void onUpdate() {
@@ -123,24 +121,24 @@ public class SelfFill extends Module {
         return false;
     }
 	
-    private boolean placeBlock(BlockPos pos, boolean rotate, boolean packet, boolean isSneaking) {
+    private void placeBlock(BlockPos pos, boolean rotate, boolean packet, boolean isSneaking) {
         Block block = mc.world.getBlockState(pos).getBlock();
 
         if (!(block instanceof BlockAir) && !(block instanceof BlockLiquid)) {
-            return false;
+            return;
         }
 
         EnumFacing side = BlockUtils.getPlaceableSide(pos);
 
         if (side == null){
-            return false;
+            return;
         }
 
         BlockPos neighbour = pos.offset(side);
         EnumFacing opposite = side.getOpposite();
 
         if (!BlockUtils.canBeClicked(neighbour)) {
-            return false;
+            return;
         }
 
         Vec3d hitVec = new Vec3d(neighbour).add(0.5, 0.5, 0.5).add(new Vec3d(opposite.getDirectionVec()).scale(0.5));
@@ -166,8 +164,7 @@ public class SelfFill extends Module {
         mc.player.swingArm(EnumHand.MAIN_HAND);
         mc.rightClickDelayTimer = 4;
 
-        return true;
-    }
+	}
 
     private int findBlockSlot() {
         int slot = -1;
@@ -200,5 +197,4 @@ public class SelfFill extends Module {
         mc.player.swingArm(EnumHand.MAIN_HAND);
         mc.rightClickDelayTimer = 4;
     }
-    
 }

@@ -182,5 +182,4 @@ public class NoRender extends Module {
 	// potionEffect = mixin... some sorta overlay idk
 	// skylight = MixinWorld
 	// armor = MixinLayerBipedArmor
-	
 }

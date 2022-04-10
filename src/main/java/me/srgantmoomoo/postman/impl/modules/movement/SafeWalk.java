@@ -10,7 +10,6 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
 
 public class SafeWalk extends Module {
-	
 	public SafeWalk() {
 		super ("safeWalk", "prevents falling off blocks.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
@@ -32,7 +31,7 @@ public class SafeWalk extends Module {
                     x += increment;
                 }
             }
-            for (; z != 0.0D && isOffsetBBEmpty(0.0D, -1, z); ) {
+            while (z != 0.0D && isOffsetBBEmpty(0.0D, -1, z)) {
                 if (z < increment && z >= -increment) {
                     z = 0.0D;
                 } else if (z > 0.0D) {
@@ -41,7 +40,7 @@ public class SafeWalk extends Module {
                     z += increment;
                 }
             }
-            for (; x != 0.0D && z != 0.0D && isOffsetBBEmpty(x, -1, z); ) {
+            while (x != 0.0D && z != 0.0D && isOffsetBBEmpty(x, -1, z)) {
                 if (x < increment && x >= -increment) {
                     x = 0.0D;
                 } else if (x > 0.0D) {
@@ -66,5 +65,4 @@ public class SafeWalk extends Module {
     private boolean isOffsetBBEmpty(double x, double y, double z) {
         return Minecraft.getMinecraft().world.getCollisionBoxes(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getEntityBoundingBox().offset(x, y, z)).isEmpty();
     }
-
 }

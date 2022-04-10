@@ -88,7 +88,7 @@ public class Esp extends Module {
     int opacityGradient;
 
     public void onDisable() {
-        if (entities != mc.player) {
+        if (!entities.contains(mc.player)) {
             entities.forEach(e -> e.setGlowing(false));
         }
     }
@@ -102,7 +102,7 @@ public class Esp extends Module {
             // readable code :thumbs_up:
             // glow esp disabling stuff.
             if(entityMode.is("glow")) {
-                if(!mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntityAnimal || entity instanceof EntitySlime))
+                if(!mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntitySlime))
                     entity.setGlowing(false);
                 if(!items.isEnabled() && entity instanceof EntityItem)
                     entity.setGlowing(false);
@@ -178,7 +178,7 @@ public class Esp extends Module {
             }else if(entityMode.is("glow")) {
                 if(entity instanceof EntityPlayer)
                     entity.setGlowing(true);
-                if(mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntitySlime || entity instanceof EntityAnimal)) // don't need to seperate hostile and passive cause they all glow the same color.
+                if(mobs.isEnabled() && (entity instanceof EntityCreature || entity instanceof EntitySlime)) // don't need to seperate hostile and passive cause they all glow the same color.
                     entity.setGlowing(true);
                 if(items.isEnabled() && entity instanceof EntityItem)
                     entity.setGlowing(true);
@@ -188,13 +188,11 @@ public class Esp extends Module {
                 if(crystalMode.is("glow"))
                     entity.setGlowing(true);
             }
-
             // outline esp is under MixinRendererLivingBase.
         });
 
         //TODO i really don't feeling like rewriting this hell right now... so i'll save it for another time. i'll tweak it a little bit for now tho... just some easy stuff.
         mc.world.loadedTileEntityList.stream().filter(this::rangeTileCheck).forEach(tileEntity -> {
-
             if(storage.is("outline")) {
                 if(tileEntity instanceof TileEntityChest) {
                     containerColor = new JColor(chestColor.getValue(), opacityGradient);
@@ -208,7 +206,7 @@ public class Esp extends Module {
                     containerColor = new JColor(shulkerBoxColor.getValue(), opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
-                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper) {
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper) {
                     containerColor = new JColor(otherColor.getValue(), opacityGradient);
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                 }
@@ -231,7 +229,7 @@ public class Esp extends Module {
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper) {
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper) {
                     containerColor = new JColor(otherColor.getValue(), opacityGradient);
                     containerBox = new JColor(otherColor.getValue());
                     JTessellator.drawBoundingBox(mc.world.getBlockState(tileEntity.getPos()).getSelectedBoundingBox(mc.world, tileEntity.getPos()), 2, containerColor);
@@ -250,7 +248,7 @@ public class Esp extends Module {
                     containerBox = new JColor(shulkerBoxColor.getValue());
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }
-                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDropper) {
+                if(tileEntity instanceof TileEntityDispenser || tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper) {
                     containerBox = new JColor(otherColor.getValue());
                     drawBox(tileEntity.getPos(), 1, containerBox);
                 }

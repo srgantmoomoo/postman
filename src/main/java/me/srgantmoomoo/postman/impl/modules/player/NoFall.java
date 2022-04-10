@@ -11,7 +11,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.client.CPacketPlayer;
 
 public class NoFall extends Module {
-	
 	public NoFall() {
 		super ("noFall", "yea no... fall.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
@@ -25,5 +24,4 @@ public class NoFall extends Module {
 			}
 		}
 	});
-
 }

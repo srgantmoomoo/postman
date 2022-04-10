@@ -31,8 +31,7 @@ public class ClickGuiModule extends Module {
 	public ColorSetting fontColor = new ColorSetting("categoryColor", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 	public NumberSetting opacity = new NumberSetting("opacity", this, 255, 0, 255, 5);
 	
-	private static ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
-	private static ResourceLocation watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
+	private static final ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json"), watermark = new ResourceLocation(Reference.MOD_ID, "textures/postman-logo-transparent.png");
 	
 	public ClickGuiModule() {
 		super("clickGui", "click gui.", Keyboard.KEY_RSHIFT, Category.CLIENT);
@@ -49,8 +48,7 @@ public class ClickGuiModule extends Module {
 	
 	@Override
 	public void onDisable() {
-		if(mc.entityRenderer.getShaderGroup() != null)
-			mc.entityRenderer.getShaderGroup().deleteShaderGroup();
+		mc.entityRenderer.getShaderGroup().deleteShaderGroup();
 	}
 
 	@Override

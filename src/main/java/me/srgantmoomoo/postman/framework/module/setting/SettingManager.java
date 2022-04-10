@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.module.Module;
-import me.srgantmoomoo.postman.framework.module.ModuleManager;
 
 /**
  * @author SrgantMooMoo

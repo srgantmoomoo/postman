@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.impl.modules.render;
 
+import me.zero.alpine.type.Cancellable;
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.backend.event.events.RenderCameraEvent;
@@ -9,14 +10,10 @@ import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 
 public class CameraClip extends Module {
-	
 	public CameraClip() {
 		super ("cameraClip", "camera clips when in 3rd person.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 	
 	@EventHandler
-    private final Listener<RenderCameraEvent> onRenderCameraEvent = new Listener<>(event -> {
-        event.cancel();
-    });
-
+    private final Listener<RenderCameraEvent> onRenderCameraEvent = new Listener<>(Cancellable::cancel);
 }

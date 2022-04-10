@@ -28,7 +28,7 @@ public class FriendManager {
 	public Friend getFriendByName(String name) {
 		for (Friend friend : friends) {
 			if (friend.getName().equalsIgnoreCase(name)) {
-				return friend
+				return friend;
 			}
 		}
 

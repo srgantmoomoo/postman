@@ -13,11 +13,10 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 public class AutoArmor extends Module {
-	
 	public AutoArmor() {
 		super("autoArmor", "automatically applies the best armor.", Keyboard.KEY_NONE, Category.PVP);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	
 	@Override
 	public void onUpdate() {
@@ -32,26 +31,23 @@ public class AutoArmor extends Module {
 		int[] bestArmorValues = new int[4];
 
 		// initialize with currently equipped armor
-		for (int armorType = 0; armorType < 4; armorType++)
-		{
+		for (int armorType = 0; armorType < 4; armorType++) {
 			ItemStack oldArmor = mc.player.inventory.armorItemInSlot(armorType);
 
-			if (oldArmor != null && oldArmor.getItem() instanceof ItemArmor)
-				bestArmorValues[armorType] =
-						((ItemArmor)oldArmor.getItem()).damageReduceAmount;
+			if (oldArmor.getItem() instanceof ItemArmor)
+				bestArmorValues[armorType] = ((ItemArmor)oldArmor.getItem()).damageReduceAmount;
 
 			bestArmorSlots[armorType] = -1;
 		}
 
 		// search inventory for better armor
-		for (int slot = 0; slot < 36; slot++)
-		{
+		for (int slot = 0; slot < 36; slot++) {
 			ItemStack stack = mc.player.inventory.getStackInSlot(slot);
 
 			if (stack.getCount() > 1)
 				continue;
 
-			if (stack == null || !(stack.getItem() instanceof ItemArmor))
+			if (!(stack.getItem() instanceof ItemArmor))
 				continue;
 
 			ItemArmor armor = (ItemArmor)stack.getItem();
@@ -79,9 +75,7 @@ public class AutoArmor extends Module {
 			// check if armor can be swapped
 			// needs 1 free slot where it can put the old armor
 			ItemStack oldArmor = mc.player.inventory.armorItemInSlot(armorType);
-			if (oldArmor == null || oldArmor != ItemStack.EMPTY
-					|| mc.player.inventory.getFirstEmptyStack() != -1)
-			{
+			if (oldArmor != ItemStack.EMPTY || mc.player.inventory.getFirstEmptyStack() != -1) {
 				// hotbar fix
 				if (slot < 9)
 					slot += 36;

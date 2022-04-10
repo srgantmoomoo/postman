@@ -44,7 +44,7 @@ public class CommandManager {
 	
 	@EventHandler
 	public Listener<ClientChatEvent> listener = new Listener<>(event -> {
-	    var message = event.getMessage();
+	    String message = event.getMessage();
 
 	    if(!message.startsWith(prefix))
 		return;

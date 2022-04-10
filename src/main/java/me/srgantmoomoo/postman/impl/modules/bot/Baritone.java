@@ -57,5 +57,4 @@ public class Baritone extends Module {
         BaritoneAPI.getSettings().allowDownward.value = downward.isEnabled();
         BaritoneAPI.getSettings().allowJumpAt256.value = jumpAtBuildLimit.isEnabled();
     }
-
 }

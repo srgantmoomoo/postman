@@ -9,7 +9,6 @@ import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.module.Module;
 
 public class Bind extends Command {
-	
 	public Bind() {
 		super("bind", "bind modules to specific keys.", "bind <name> <key> | bind clear", "bi");
 	}
@@ -17,8 +16,7 @@ public class Bind extends Command {
 	@Override
 	public void onCommand(String[] args, String command) {
 		if(args.length == 2) {
-			String moduleName = args[0];
-			String keyName = args[1];
+			String moduleName = args[0], keyName = args[1];
 			boolean moduleFound = false;
 			
 			for(Module module : Main.INSTANCE.moduleManager.modules) {

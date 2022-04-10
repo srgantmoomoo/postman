@@ -152,5 +152,4 @@ public class HoleEsp extends Module {
 			JTessellator.drawBoundingBox(blockPos, size.getValue(), width, color);
 		}
 	}
-
 }

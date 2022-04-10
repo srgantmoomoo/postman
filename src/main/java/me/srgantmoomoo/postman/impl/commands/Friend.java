@@ -6,7 +6,6 @@ import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 
 public class Friend extends Command {
-	
     public Friend() {
 		super("friend", "manage your friends.", "friend list | friend add <name> | friend remove <name> | friend clear", "f");
 	}

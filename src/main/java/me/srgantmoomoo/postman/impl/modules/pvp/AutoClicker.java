@@ -23,15 +23,18 @@ public class AutoClicker extends Module {
 		if(Mouse.isButtonDown(0)) {
 			if(System.currentTimeMillis() - lastClick > speed * 1000) {
 				lastClick = System.currentTimeMillis();
+
 				if(hold < lastClick) {
 					hold = lastClick;
 				}
-						int key = mc.gameSettings.keyBindAttack.getKeyCode();
-						KeyBinding.setKeyBindState(key, true);
-						KeyBinding.onTick(key);
-					} else if (System.currentTimeMillis() - hold > holdLength * 1000) {
-						KeyBinding.setKeyBindState(mc.gameSettings.keyBindAttack.getKeyCode(), false);
-				}
+
+				int key = mc.gameSettings.keyBindAttack.getKeyCode();
+
+				KeyBinding.setKeyBindState(key, true);
+				KeyBinding.onTick(key);
+			}else if (System.currentTimeMillis() - hold > holdLength * 1000) {
+				KeyBinding.setKeyBindState(mc.gameSettings.keyBindAttack.getKeyCode(), false);
 			}
+		}
 	}
 }

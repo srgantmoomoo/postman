@@ -2,9 +2,6 @@ package me.srgantmoomoo.postman.framework.module.setting.settings;
 
 import org.lwjgl.input.Keyboard;
 
-import com.lukflug.panelstudio.theme.Renderer;
-
-import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.setting.Setting;
 
 /*

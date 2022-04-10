@@ -16,11 +16,9 @@ import net.minecraft.world.GameType;
  * Taken from gamesense, edited a little by @SrgantMooMoo on November 6th, 2020.
  */
 public class PlayerClone extends Module {
-	
-	public PlayerClone() {
+    public PlayerClone() {
 		super ("playerClone", "cloneeee.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
-	private EntityOtherPlayerMP clonedPlayer;
 	
 	@Override
 	public void onEnable() { 
@@ -31,7 +29,8 @@ public class PlayerClone extends Module {
             return;
         }
 
-    	clonedPlayer = new EntityOtherPlayerMP(mc.world, new GameProfile(UUID.fromString("fdee323e-7f0c-4c15-8d1c-0f277442342a"), "ThePostman"));
+        EntityOtherPlayerMP clonedPlayer = new EntityOtherPlayerMP(mc.world, new GameProfile(UUID.fromString("fdee323e-7f0c-4c15-8d1c-0f277442342a"), "ThePostman"));
+
         clonedPlayer.copyLocationAndAnglesFrom(mc.player);
         clonedPlayer.rotationYawHead = mc.player.rotationYawHead;
         clonedPlayer.rotationYaw = mc.player.rotationYaw;

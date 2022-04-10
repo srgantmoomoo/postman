@@ -15,7 +15,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
 public class HoleTp extends Module {
-	
 	public HoleTp() {
 		super ("holeTp", "sucks u in holes.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings();

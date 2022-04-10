@@ -11,7 +11,7 @@ public class Baritone extends Command {
     public Baritone() {
         super("baritone", "use baritone api commands.", "baritone stop | baritone goto <x> <z> | baritone mine <block> | baritone farm", "b");
     }
-    
+
 	@Override
 	public void onCommand(String[] args, String command) {
 		if(args.length == 1) {
@@ -47,7 +47,5 @@ public class Baritone extends Command {
 				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 		}else
 			Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
-
 	}
-
 }

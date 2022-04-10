@@ -13,7 +13,6 @@ import me.srgantmoomoo.postman.framework.module.Category;
 import me.srgantmoomoo.postman.framework.module.HudModule;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
-
 public class Welcomer extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 

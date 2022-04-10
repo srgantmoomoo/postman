@@ -8,7 +8,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.EnumHand;
 
 public class AutoUse extends Module {
-	
 	public AutoUse() {
 		super("autoUse", "automatically uses whatever u r holding.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
@@ -23,5 +22,4 @@ public class AutoUse extends Module {
 	public void onDisable() {
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
 	}
-
 }

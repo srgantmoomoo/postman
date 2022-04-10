@@ -19,8 +19,8 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ModeSetting;
 
-public class ArrayListt extends HudModule {
-	private ModuleArrayList list = new ModuleArrayList();
+public class ModuleList extends HudModule {
+	private final ModuleArrayList list = new ModuleArrayList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 255, 255, 255));
 	public ModeSetting sortHeight = new ModeSetting("sortHeight", this, "betic", "betic", "up", "down");
@@ -28,7 +28,7 @@ public class ArrayListt extends HudModule {
 	public BooleanSetting forgeHax = new BooleanSetting("forgeHax", this, true);
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 
-	public ArrayListt() {
+	public ModuleList() {
 		super("arrayList", "shows currently enabled modules.", new Point(-2, 69), Category.HUD);
 		this.addSettings(color, sortHeight, sortLength, showHidden, forgeHax);
 	}

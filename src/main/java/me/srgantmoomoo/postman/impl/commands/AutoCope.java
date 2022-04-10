@@ -6,7 +6,6 @@ import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 
 public class AutoCope extends Command {
-	
     public AutoCope() {
 		super("autoCope", "edit the autoCope msg.", "autoCope <msg>", "ac");
 	}

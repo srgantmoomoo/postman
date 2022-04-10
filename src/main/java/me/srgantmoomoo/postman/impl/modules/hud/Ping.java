@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.impl.modules.hud;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.util.Objects;
 
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
@@ -14,7 +15,6 @@ import me.srgantmoomoo.postman.framework.module.HudModule;
 import me.srgantmoomoo.postman.framework.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
-
 public class Ping extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
@@ -26,7 +26,7 @@ public class Ping extends HudModule {
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new PingList());
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, new PingList());
 	}
 	
 	private static int getPing () {
@@ -35,8 +35,9 @@ public class Ping extends HudModule {
             p = -1;
         }
         else {
-            p = mc.getConnection().getPlayerInfo(mc.player.getName()).getResponseTime();
+            p = Objects.requireNonNull(mc.getConnection().getPlayerInfo(mc.player.getName())).getResponseTime();
         }
+
         return p;
     }
 	

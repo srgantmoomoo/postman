@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 public class HudEditor extends Module {
 	public BooleanSetting exitToClickGui = new BooleanSetting("exitToClickGui", this, true);
 	
-	private static ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
+	private static final ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
 	
 	public HudEditor() {
 		super("hudEditor", "descrp", Keyboard.KEY_NONE, Category.HUD);

@@ -14,7 +14,6 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 import net.minecraft.client.Minecraft;
 
-
 public class Frames extends HudModule {
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
@@ -26,7 +25,7 @@ public class Frames extends HudModule {
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new FramesList());
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, new FramesList());
 	}
 	
 	private class FramesList implements HUDList {

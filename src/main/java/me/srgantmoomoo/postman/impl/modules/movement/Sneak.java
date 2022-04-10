@@ -13,7 +13,6 @@ import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 
 public class Sneak extends Module {
-	
 	public Sneak() {
 		super ("sneak", "pretends you're sneaking when you're not", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
@@ -39,5 +38,4 @@ public class Sneak extends Module {
             mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         }
     });
-
 }

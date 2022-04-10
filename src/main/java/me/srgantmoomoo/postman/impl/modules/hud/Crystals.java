@@ -16,9 +16,8 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-
 public class Crystals extends HudModule {
-	private CrystalsCounterList list = new CrystalsCounterList();
+	private final CrystalsCounterList list = new CrystalsCounterList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(Reference.POSTMAN_COLOR, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
@@ -27,23 +26,24 @@ public class Crystals extends HudModule {
 		super("crystals", "shows how many crystals u have in ur inventory.", new Point(75, 82), Category.HUD);
 		this.addSettings(sort, color);
 	}
-	
-	   public void onRender() {
-	    	list.crystals = mc.player.inventory.mainInventory.stream()
-	    			.filter(itemStack -> itemStack.getItem() == Items.END_CRYSTAL)
-	    			.mapToInt(ItemStack::getCount).sum();
-	    	if (mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL)
-	    		list.crystals++;
-	    }
-	
+
 	@Override
-	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
-	}
-	
+    public void onRender() {
+	   this.list.crystals = mc.player.inventory.mainInventory.stream()
+			   .filter(itemStack -> itemStack.getItem() == Items.END_CRYSTAL)
+			   .mapToInt(ItemStack::getCount).sum();
+	   if (mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL)
+		   list.crystals++;
+    }
+
+    @Override
+    public void populate (Theme theme) {
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
+    }
+
 	private class CrystalsCounterList implements HUDList {
 		public int crystals = 0;
-		
+
 		@Override
 		public int getSize() {
 			return 1;

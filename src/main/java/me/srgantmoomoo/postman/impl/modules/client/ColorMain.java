@@ -12,7 +12,6 @@ import net.minecraft.util.text.TextFormatting;
 // this is from gs
 
 public class ColorMain extends Module {
-	
 	private static final Module ColorMain = null;
 	public static ModeSetting colorModel = new ModeSetting("penis right?", ColorMain, "HSB", "RGB", "HSB");
 	

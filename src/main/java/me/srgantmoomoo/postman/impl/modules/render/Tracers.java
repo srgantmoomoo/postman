@@ -48,11 +48,10 @@ public class Tracers extends Module {
 		super("tracers", "draws line to entitys.", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(players, hostileMobs, passiveMobs, playerColor, hostileMobColor, passiveMobColor);
 	}
-	List<Entity> entities;
 
 	@Override
 	public void onWorldRender(RenderEvent event) {
-		entities = mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).collect(Collectors.toList());
+		List<Entity> entities = mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).collect(Collectors.toList());
 
 		entities.forEach(entity -> {
 			Vec3d eyes = ActiveRenderInfo.getCameraPosition().add(mc.getRenderManager().viewerPosX, mc.getRenderManager().viewerPosY, mc.getRenderManager().viewerPosZ);

@@ -17,15 +17,16 @@ import net.minecraft.network.handshake.client.C00Handshake;
 
 public class AutoReconnect extends Module {
 	public NumberSetting delay = new NumberSetting("delay", this, 5, 1, 20, 1);
+
+	private String lastIp;
+	private int lastPort;
+	private boolean reconnect;
+	private final JTimer timer = new JTimer();
 	
 	public AutoReconnect() {
 		super("autoReconnect", "automatically reconnects to a server.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(delay);
 	}
-	private String lastIp;
-    private int lastPort;
-    private boolean reconnect;
-    private JTimer timer = new JTimer();
 	
 	@EventHandler
 	private final Listener<PacketEvent.Send> sendPacketEventPre = new Listener<>(event -> {

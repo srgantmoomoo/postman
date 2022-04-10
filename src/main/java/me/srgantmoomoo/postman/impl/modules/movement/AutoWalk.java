@@ -7,7 +7,6 @@ import me.srgantmoomoo.postman.framework.module.Module;
 import net.minecraft.client.settings.KeyBinding;
 
 public class AutoWalk extends Module {
-	
 	public AutoWalk() {
 		super ("autoWalk", "automatically walks for u, u lazy fuck.", Keyboard.KEY_NONE, Category.MOVEMENT);
 	}
@@ -23,5 +22,4 @@ public class AutoWalk extends Module {
 			KeyBinding.setKeyBindState(mc.gameSettings.keyBindForward.getKeyCode(), true);
 		}
 	}
-
 }

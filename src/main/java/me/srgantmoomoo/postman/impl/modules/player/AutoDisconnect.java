@@ -20,7 +20,7 @@ public class AutoDisconnect extends Module {
 	public void onUpdate() {
 		if (mc.player == null || mc.world == null) return;
 		if (mc.player.getHealth() <= health.getValue()) {
-			toggled = false;
+			this.toggled = false;
 			mc.world.sendQuittingDisconnectingPacket();
 			mc.loadWorld(null);
 			mc.displayGuiScreen(new GuiMainMenu());

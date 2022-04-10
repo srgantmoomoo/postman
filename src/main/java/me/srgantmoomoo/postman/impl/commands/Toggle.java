@@ -7,7 +7,6 @@ import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.module.Module;
 
 public class Toggle extends Command {
-	
 	public Toggle() {
 		super("toggle", "toggles a module on or off.", "toggle <module>", "t");
 	}

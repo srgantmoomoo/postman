@@ -15,11 +15,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.AxisAlignedBB;
 
 public class Jesus extends Module {
-	
+	public float offset = 0.5f;
+
 	public Jesus() {
 		super ("jesus", "lets u walk on water.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
-	public float offset = 0.5f;
 	
 	@EventHandler
     private final Listener<LiquidCollisionBBEvent> getLiquidCollisionBB = new Listener<>(event -> {
@@ -30,10 +30,10 @@ public class Jesus extends Module {
 	                    event.setBoundingBox(new AxisAlignedBB(0, 0, 0, 1, 1 - this.offset, 1));
 	                } else {
 	                        event.setBoundingBox(Block.FULL_BLOCK_AABB);
-	                    }
-	                }
-	                event.cancel();
-	            }
+					}
+				}
+				event.cancel();
+			}
     	}
     });
 	
@@ -61,11 +61,6 @@ public class Jesus extends Module {
             }
         }
 
-        if (mc.player.fallDistance >= 3.0f) {
-            return false;
-        }
-
-        return true;
-    }
-
+		return !(mc.player.fallDistance >= 3.0f);
+	}
 }

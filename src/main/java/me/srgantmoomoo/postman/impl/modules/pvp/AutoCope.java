@@ -22,15 +22,17 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 public class AutoCope extends Module {
 	public ModeSetting msg = new ModeSetting("msg", this, "cope&seethe", "cope&seethe", "u suck", "ez pz", "gg", "customMsg");
 	public BooleanSetting greenText = new BooleanSetting("greenText", this, true);
+
+    int delay = 0;
+    private static final ConcurrentHashMap<Object, Integer> targetedPlayers = new ConcurrentHashMap<>();
+
+    public static String customMsgArg = "";
 	
 	public AutoCope() {
 		super("autoCope", "automatically makes ur opponent cope.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(msg, greenText);
 	}
-	int delay = 0;
-    private static final ConcurrentHashMap<Object, Integer> targetedPlayers = new ConcurrentHashMap<Object, Integer>();
 
-    public static String customMsgArg = "";
     public static void setMessage(String msg) {
     	customMsgArg = msg;
     }
@@ -42,7 +44,7 @@ public class AutoCope extends Module {
             	EntityPlayer player = (EntityPlayer) entity;
                 if (player.getHealth() <= 0) {
                     if (targetedPlayers.containsKey(player.getName())) {
-                        announce(player.getName());
+                        this.announce(player.getName());
                     }
                 }
             }

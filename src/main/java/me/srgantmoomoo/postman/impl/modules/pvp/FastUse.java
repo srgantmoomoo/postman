@@ -19,7 +19,7 @@ public class FastUse extends Module {
 		super ("fastUse", "lol bow and xp bottle go brrrrrrrr.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(xpBottle, bow);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	
 	@Override
 	public void onUpdate() {
@@ -27,10 +27,10 @@ public class FastUse extends Module {
 			mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, mc.player.getHorizontalFacing()));
 			mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(mc.player.getActiveHand()));
 			mc.player.stopActiveHand();
-			}
+		}
 		
 		if (xpBottle.isEnabled() && mc.player != null && (mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE || mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE)) {
-				mc.rightClickDelayTimer = 0; 
+			mc.rightClickDelayTimer = 0;
 		}
 	}
 }

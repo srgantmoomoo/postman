@@ -22,6 +22,7 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.NumberSetting;
 import me.srgantmoomoo.postman.impl.clickgui.back.ClickGui;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
+import me.zero.alpine.type.Cancellable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,8 +33,6 @@ public class TargetHud extends HudModule {
     public ColorSetting background = new ColorSetting("backgroundColor", this, new JColor(0, 0, 0, 150));
     public ColorSetting text = new ColorSetting("textColor", this, Reference.POSTMAN_COLOR);
     public NumberSetting range = new NumberSetting("range", this, 100, 10, 260, 1);
-
-    private EntityPlayer targetPlayer;
 
     public TargetHud() {
         super("targetHud", "gives you a hud of your target opponent.", new Point(0,70), Category.HUD);
@@ -49,9 +48,7 @@ public class TargetHud extends HudModule {
     }
 
     @EventHandler
-    private Listener<RenderEntityNameEvent> OnDamageBlock = new Listener<>(event -> {
-        event.cancel();
-    });
+    private final Listener<RenderEntityNameEvent> OnDamageBlock = new Listener<>(Cancellable::cancel);
 
     @Override
     public void populate(Theme theme) {
@@ -77,7 +74,6 @@ public class TargetHud extends HudModule {
     }
 
     private class TargetHUDComponent extends HUDComponent {
-
         public TargetHUDComponent (Theme theme) {
             super(getName(), theme.getPanelRenderer(), TargetHud.this.position);
         }
@@ -99,7 +95,7 @@ public class TargetHud extends HudModule {
                     context.getInterface().fillRect(context.getRect(),bgcolor,bgcolor,bgcolor,bgcolor);
 
                     // Render player
-                    targetPlayer = entityPlayer;
+                    EntityPlayer targetPlayer = entityPlayer;
                     ClickGui.renderEntity(entityPlayer,new Point(context.getPos().x + 20, context.getPos().y + 50 - (entityPlayer.isSneaking()?10:0)), 23);
                     targetPlayer = null;
 

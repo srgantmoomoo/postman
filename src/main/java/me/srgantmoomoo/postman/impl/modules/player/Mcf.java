@@ -13,7 +13,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 
 public class Mcf extends Module {
-	
 	public Mcf() {
 		super("mcf", "middle click a player to friend them.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
@@ -30,5 +29,4 @@ public class Mcf extends Module {
 			}
 		}
 	});
-
 }

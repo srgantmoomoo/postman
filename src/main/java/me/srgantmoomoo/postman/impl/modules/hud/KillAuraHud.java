@@ -15,13 +15,11 @@ import me.srgantmoomoo.postman.framework.module.HudModule;
 import me.srgantmoomoo.postman.framework.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
-
 public class KillAuraHud extends HudModule {
-	private KillAuraInfoList list = new KillAuraInfoList();
+	private final KillAuraInfoList list = new KillAuraInfoList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
-
 
 	public KillAuraHud() {
 		super("killAuraHud", "shows u if killAura is on or off.", new Point(-2, 49), Category.HUD);
@@ -30,7 +28,7 @@ public class KillAuraHud extends HudModule {
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
 	private class KillAuraInfoList implements HUDList {

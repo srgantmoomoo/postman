@@ -14,19 +14,20 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.NumberSetting;
 public class Protester extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "clientShitter", "clientShitter", "postmanRespecter", "customMsg");
 	public NumberSetting delay = new NumberSetting("delay", this, 20, 0, 100, 1);
+
+    List<String> clients = new ArrayList<>();
+    List<String> respects = new ArrayList<>();
+
+    Random random = new Random();
+    int tickDelay;
+
+    public static String customMsgArg = "";
 	
 	public Protester() {
 		super("protester", "start your own protest!", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(mode, delay);
 	}
-	
-	List<String> clients = new ArrayList<>();
-	List<String> respects = new ArrayList<>();
 
-    Random random = new Random();
-    int tickDelay;
-    
-    public static String customMsgArg = "";
     public static void setMessage(String msg) {
     	customMsgArg = msg;
     }

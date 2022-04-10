@@ -11,19 +11,16 @@ import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 
 public class AutoTotem extends Module {
-	
+    private boolean switching = false;
+    private int lastSlot;
+
 	public AutoTotem() {
 		super ("autoTotem", "automatically places totem in ur offhand.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
-	
-	private boolean switching = false;
-    private int lastSlot;
 
     @Override
     public void onUpdate() {
-
         if (mc.currentScreen == null || mc.currentScreen instanceof GuiInventory) {
-
             if (switching) {
             	swapTotem(lastSlot, 2);
                 return;
@@ -34,9 +31,7 @@ public class AutoTotem extends Module {
             		|| mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL && !Main.INSTANCE.moduleManager.getModuleByName("SmartOffHand").isToggled()) {
             	swapTotem(getTotem(), 0);
             }
-
         }
-
     }
 
     private int getTotem() {
@@ -73,5 +68,4 @@ public class AutoTotem extends Module {
 
         mc.playerController.updateController();
     }
-
 }

@@ -23,7 +23,7 @@ public class Watermark extends HudModule {
 	
 	@Override
 	public void populate(Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new WatermarkList());
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, new WatermarkList());
 	}
 	
 	private class WatermarkList implements HUDList {

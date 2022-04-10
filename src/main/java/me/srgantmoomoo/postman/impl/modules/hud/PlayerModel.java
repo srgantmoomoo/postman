@@ -29,11 +29,10 @@ public class PlayerModel extends HudModule {
 	
 	@Override
     public void populate (Theme theme) {
-    	component = new PlayerModelComponent(theme);
+    	this.component = new PlayerModelComponent(theme);
     }
 	
 	private class PlayerModelComponent extends HUDComponent {
-
 		public PlayerModelComponent (Theme theme) {
 			super(getName(), theme.getPanelRenderer(), PlayerModel.this.position);
 		}

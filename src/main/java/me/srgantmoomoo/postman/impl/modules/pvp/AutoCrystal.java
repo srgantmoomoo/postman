@@ -181,7 +181,7 @@ public class AutoCrystal extends Module {
 		
 		if(mc.player == null || mc.world == null)
 			return;
-		implementLogic();
+		this.implementLogic();
 	}
 	
 	private void implementLogic() {
@@ -198,16 +198,16 @@ public class AutoCrystal extends Module {
 		 EntityEnderCrystal crystal = mc.world.loadedEntityList.stream()
                  .filter(entity -> entity instanceof EntityEnderCrystal)
                  .filter(e -> mc.player.getDistance(e) <= breakRange.getValue())
-                 .filter(e -> crystalCheck(e))
+                 .filter(this::crystalCheck)
                  .map(entity -> (EntityEnderCrystal) entity)
                  .min(Comparator.comparing(c -> mc.player.getDistance(c)))
                  .orElse(null);
 		 
-		 if(breakCrystal.isEnabled() && crystal !=null) {
+		 if(breakCrystal.isEnabled() && crystal != null) {
 			 if (!mc.player.canEntityBeSeen(crystal) && mc.player.getDistance(crystal) > wallsRange.getValue()) 
 				 return;
 
-			 if(timer.getTimePassed() / 50 >= 20 - breakSpeed.getValue()) {
+			 if(timer.getTimePassed() / 50.0 >= 20 - breakSpeed.getValue()) {
 				 timer.reset();
 				 active = true;
 				 
@@ -227,7 +227,7 @@ public class AutoCrystal extends Module {
 	                    crystal.setDead();
 	                    mc.world.removeAllEntities();
 	                    mc.world.getLoadedEntityList();
-	                }
+                 }
 				 
 				 active = false;
 			 }
@@ -240,31 +240,29 @@ public class AutoCrystal extends Module {
 	}
 	
 	private void placeLogic() {
-		 int crystalSlot = mc.player.getHeldItemMainhand().getItem() == Items.END_CRYSTAL ? mc.player.inventory.currentItem : -1;
-		 if (crystalSlot == -1) {
-			 for (int l = 0; l < 9; ++l) {
-				 if (mc.player.inventory.getStackInSlot(l).getItem() == Items.END_CRYSTAL) {
-					 if (mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.END_CRYSTAL) {
-						 crystalSlot = l;
-						 break;
-					 }
-				 }
-			 }
-		 }
+        int crystalSlot = mc.player.getHeldItemMainhand().getItem() == Items.END_CRYSTAL ? mc.player.inventory.currentItem : -1;
+        if (crystalSlot == -1) {
+            for (int l = 0; l < 9; ++l) {
+                if (mc.player.inventory.getStackInSlot(l).getItem() == Items.END_CRYSTAL) {
+                    if (mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.END_CRYSTAL) {
+                        crystalSlot = l;
+                        break;
+                    }
+                }
+            }
+        }
+
+        offHand = mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL;
 		 
-		 if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) offHand = true;
-		 else offHand = false;
-		 
-		 if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) {
-			 offHand = true;
-		 }else if (crystalSlot == -1) {
-			 return;
-		 }
+        if(mc.player.getHeldItemOffhand().getItem() == Items.END_CRYSTAL) {
+            offHand = true;
+        }else if (crystalSlot == -1) {
+            return;
+        }
 		 
 		List<BlockPos> blocks = findCrystalBlocks();
-		List<Entity> entities = new ArrayList<>();
-		
-		entities.addAll(mc.world.playerEntities.stream().collect(Collectors.toList()));
+
+        List<Entity> entities = new ArrayList<>(mc.world.playerEntities);
 		
 		BlockPos blockPos1 = null;
 		double damage = 0.5D;
@@ -275,15 +273,14 @@ public class AutoCrystal extends Module {
 		// switch system (onEnable)
 		if (!offHand && mc.player.inventory.currentItem != crystalSlot) {
             if (this.switchHand.is("onEnable")) {
-                    mc.player.inventory.currentItem = crystalSlot;
-                    mc.playerController.updateController();
-                    resetRotation();
-                    this.switchCooldown = true;
+                mc.player.inventory.currentItem = crystalSlot;
+                mc.playerController.updateController();
+                resetRotation();
+                this.switchCooldown = true;
             }
         }
 		
 		for(Entity entity : entities) {
-			
 			if(entity == mc.player || Main.INSTANCE.friendManager.isFriend(entity.getName()) || ((EntityLivingBase)entity).getHealth() <= 0) continue;
 			
 			for(BlockPos blockPos : blocks) {
@@ -321,7 +318,7 @@ public class AutoCrystal extends Module {
 		
 		renderBlock = blockPos1;
 
-		if(timer.getTimePassed() / 50 >= 20 - breakSpeed.getValue()) {
+		if(timer.getTimePassed() / 50.0 >= 20 - breakSpeed.getValue()) {
 
                 if (rotate.isEnabled()) {
                     lookAtPacket(blockPos1.getX() + 0.5D, blockPos1.getY() - 0.5D, blockPos1.getZ() + 0.5D, mc.player);

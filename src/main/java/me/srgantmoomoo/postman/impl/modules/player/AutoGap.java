@@ -26,16 +26,17 @@ public class AutoGap extends Module {
 	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
 	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, false);
 	public BooleanSetting switchToGap = new BooleanSetting("switchToGap", this, false);
-	
-	public AutoGap() {
-		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PLAYER);
-		this.addSettings(mode, health, switchToGap, cancelInMenu);
-	}
+
 	private boolean wasSetFalse; // using these wasSetFalse booleans to avoid the players hand being constantly set to not clicking, disallowing the player to click.
 	private boolean wasSetFalse2;
 	private boolean notified;
 	private boolean notified2;
 	private int oldSlot = 0;
+	
+	public AutoGap() {
+		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PLAYER);
+		this.addSettings(mode, health, switchToGap, cancelInMenu);
+	}
 
 	@Override
 	public void onEnable() {
@@ -51,7 +52,8 @@ public class AutoGap extends Module {
 	}
 
 	private boolean ran = false;
-	private boolean isEating = false;
+	private final boolean isEating = false;
+
 	@Override
 	public void onUpdate() {
 		if(mode.is("always")) {

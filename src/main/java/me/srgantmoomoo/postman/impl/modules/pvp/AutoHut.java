@@ -6,9 +6,7 @@ import me.srgantmoomoo.postman.framework.module.Category;
 import me.srgantmoomoo.postman.framework.module.Module;
 
 public class AutoHut extends Module {
-	
 	public AutoHut() {
 		super ("autoHut", "automatically builds hut for u.", Keyboard.KEY_NONE, Category.PVP);
 	}
-
 }

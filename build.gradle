@@ -136,13 +136,13 @@ reobf {
 jar {
 	manifest {
 		attributes(
-				'MixinConfigs': 'mixins.postman.json',
-				'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
-				'TweakOrder': 0,
-				'FMLCorePluginContainsFMLMod': 'true',
-				'FMLCorePlugin': 'me.srgantmoomoo.mixin.MixinLoader',
-				'ForceLoadAsMod': 'true',
-				'FMLAT': 'postman_at.cfg'
+			'MixinConfigs': 'mixins.postman.json',
+			'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+			'TweakOrder': 0,
+			'FMLCorePluginContainsFMLMod': 'true',
+			'FMLCorePlugin': 'me.srgantmoomoo.mixin.MixinLoader',
+			'ForceLoadAsMod': 'true',
+			'FMLAT': 'postman_at.cfg'
 		)
 	}
 }

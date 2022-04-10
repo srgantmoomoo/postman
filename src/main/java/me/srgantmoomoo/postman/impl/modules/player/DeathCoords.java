@@ -9,7 +9,6 @@ import me.srgantmoomoo.postman.framework.module.Category;
 import me.srgantmoomoo.postman.framework.module.Module;
 
 public class DeathCoords extends Module {
-	
 	public DeathCoords() {
 		super ("deathCoords", "tells u ur coords after death occurs.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
@@ -22,5 +21,4 @@ public class DeathCoords extends Module {
 			toggled = false;
 		}
 	}
-
 }

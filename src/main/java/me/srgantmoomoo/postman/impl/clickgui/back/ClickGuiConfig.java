@@ -21,7 +21,7 @@ import com.lukflug.panelstudio.PanelConfig;
 
 public class ClickGuiConfig implements ConfigList {
 	private final String fileLocation;
-	private JsonObject panelObject=null;
+	private JsonObject panelObject;
 	
 	public ClickGuiConfig (String fileLocation) {
 		this.fileLocation=fileLocation;

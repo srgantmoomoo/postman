@@ -7,7 +7,6 @@ import me.srgantmoomoo.postman.framework.module.Module;
 import net.minecraft.client.settings.KeyBinding;
 
 public class AutoMine extends Module {
-	
 	public AutoMine() {
 		super("autoMine", "automatically mines.", Keyboard.KEY_NONE, Category.PLAYER);
 	}

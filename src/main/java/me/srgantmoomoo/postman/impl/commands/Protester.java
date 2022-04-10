@@ -6,7 +6,6 @@ import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 
 public class Protester extends Command {
-	
     public Protester() {
 		super("protester", "edit the protester msg.", "protester <msg>", "pr");
 	}

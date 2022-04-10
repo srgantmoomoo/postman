@@ -28,7 +28,9 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 import net.minecraft.client.gui.ScaledResolution;
 
 public class KeyStrokes extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100)); 
+	private final KeyStrokesMode mode = KeyStrokesMode.WASD_SHFT;
+
+	public ColorSetting color = new ColorSetting("color", this, new JColor(121, 193, 255, 100));
     
     public KeyStrokes() {
     	super("keyStrokes","key strooookkkesss", new Point(0,10), Category.HUD);
@@ -40,7 +42,7 @@ public class KeyStrokes extends HudModule {
     	component = new KeyStrokesComponent(theme);
     }
     
-	public static enum KeyStrokesMode {
+	public enum KeyStrokesMode {
 		
 		WASD(Key.W, Key.A, Key.S, Key.D),
 		WASD_SHFT(Key.W, Key.A, Key.S, Key.D, Key.SHFT, Key.JMP);
@@ -109,8 +111,6 @@ public class KeyStrokes extends HudModule {
 			return y;
 		}
 	}
-	
-	private KeyStrokesMode mode = KeyStrokesMode.WASD_SHFT;
 
     private class KeyStrokesComponent extends HUDComponent {
 
@@ -120,10 +120,8 @@ public class KeyStrokes extends HudModule {
 		
 		@Override
 		public void render (Context context) {
-			new ScaledResolution(mc);
-			
 			super.render(context);
-			Color colors=new JColor(color.getValue(),100);
+			Color colors = new JColor(color.getValue(),100);
 			
 			GL11.glPushMatrix();
 			
@@ -132,27 +130,24 @@ public class KeyStrokes extends HudModule {
 			GL11.glDisable(GL11.GL_BLEND);
 			
 			for(Key key : mode.getKeys()) { 
-			context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(key.getWidth(),key.getHeight())),colors,colors,colors,colors);
+				context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(key.getWidth(),key.getHeight())),colors,colors,colors,colors);
 			}
-			
 
 			if(blend) {
 				GL11.glEnable(GL11.GL_BLEND);
 			}
 			
 			GL11.glPopMatrix();
-			
 		}
 
 		@Override
 		public int getWidth (Interface inter) {
 			return 56;
-			}
+		}
 
 		@Override
 		public void getHeight(Context context) {
 			context.setHeight(54);
-			
 		}
 	}
 }

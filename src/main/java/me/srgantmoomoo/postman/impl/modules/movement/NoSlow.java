@@ -1,4 +1,5 @@
 package me.srgantmoomoo.postman.impl.modules.movement;
+
 import org.lwjgl.input.Keyboard;
 
 import me.srgantmoomoo.postman.framework.module.Category;
@@ -9,7 +10,7 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.InputUpdateEvent;
 
-	public class NoSlow extends Module {
+public class NoSlow extends Module {
 	public BooleanSetting food = new BooleanSetting("food", this, true);
 	public BooleanSetting web = new BooleanSetting("web", this, true);
 	public BooleanSetting soulSand = new BooleanSetting("soulSand", this, true);
@@ -27,9 +28,9 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 	
 	@EventHandler
 	private final Listener<InputUpdateEvent> eventListener = new Listener<>(event -> {
-			if (mc.player.isHandActive() && !mc.player.isRiding() && food.isEnabled()) {
-				event.getMovementInput().moveStrafe *= 5;
-				event.getMovementInput().moveForward *= 5;
+		if (mc.player.isHandActive() && !mc.player.isRiding() && food.isEnabled()) {
+			event.getMovementInput().moveStrafe *= 5;
+			event.getMovementInput().moveForward *= 5;
 		}
 	});
 }

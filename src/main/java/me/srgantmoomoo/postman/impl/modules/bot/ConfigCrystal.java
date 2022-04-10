@@ -23,7 +23,6 @@ public class ConfigCrystal extends Module {
 	
 	@Override
 	public void onUpdate() {
-		
 		if(multiplace.isEnabled()) {
 			((AutoCrystal) Main.INSTANCE.moduleManager.getModuleByName("autoCrystal")).multiplace.setEnabled(true);
 

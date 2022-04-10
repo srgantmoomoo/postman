@@ -25,7 +25,7 @@ public class NetherCoords extends HudModule{
 
 	@Override
 	public void populate(Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new NetherCoordsList());
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, new NetherCoordsList());
 	}
 	
 	private class NetherCoordsList implements HUDList {

@@ -126,7 +126,7 @@ public class ModuleManager {
 		modules.add(new AutoCrystalHud());
 		modules.add(new KillAuraHud());
 		modules.add(new SurroundHud());
-		modules.add(new ArrayListt());
+		modules.add(new ModuleList());
 		modules.add(new InventoryViewer());
 		modules.add(new PlayerModel());
 		modules.add(new TargetHud());

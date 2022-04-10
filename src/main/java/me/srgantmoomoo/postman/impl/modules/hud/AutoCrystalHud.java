@@ -15,13 +15,11 @@ import me.srgantmoomoo.postman.framework.module.HudModule;
 import me.srgantmoomoo.postman.framework.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
-
 public class AutoCrystalHud extends HudModule {
-	private AutoCInfoList list = new AutoCInfoList();
+	private final AutoCInfoList list = new AutoCInfoList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(230, 0, 0, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
-
 
 	public AutoCrystalHud() {
 		super("autoCrystalHud", "shows u if autoCrystal is on or off.", new Point(-2, 39), Category.HUD);
@@ -30,7 +28,7 @@ public class AutoCrystalHud extends HudModule {
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
 	}
 	
 	private class AutoCInfoList implements HUDList {

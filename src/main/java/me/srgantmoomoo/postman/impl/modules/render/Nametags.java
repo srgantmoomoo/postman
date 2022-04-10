@@ -1,7 +1,6 @@
 package me.srgantmoomoo.postman.impl.modules.render;
 
-import org.lwjgl.input.Keyboard;
-
+import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.postman.backend.event.events.RenderEvent;
 import me.srgantmoomoo.postman.backend.util.render.JColor;
 import me.srgantmoomoo.postman.backend.util.render.JTessellator;
@@ -19,14 +18,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 public class Nametags extends Module {
-	
-	BooleanSetting renderSelf = new BooleanSetting("self", this, true);
-	NumberSetting range = new NumberSetting("Range", this, 100, 10, 260, 1);
+    BooleanSetting renderSelf = new BooleanSetting("self", this, true);
+    NumberSetting range = new NumberSetting("Range", this, 100, 10, 260, 1);
     BooleanSetting items = new BooleanSetting("items", this, true);
     BooleanSetting durability = new BooleanSetting("durability", this, true);
     BooleanSetting protType = new BooleanSetting("protType", this, true);
@@ -34,10 +31,10 @@ public class Nametags extends Module {
     BooleanSetting ping = new BooleanSetting("ping", this, true);
 
     public Nametags() {
-		super ("nametags", "gives more info on a persons nametag.", Keyboard.KEY_NONE, Category.RENDER);
-		this.addSettings(renderSelf, range, items, durability, protType, health, ping);
-	}
-    
+        super("nametags", "gives more info on a persons nametag.", Keyboard.KEY_NONE, Category.RENDER);
+        this.addSettings(renderSelf, range, items, durability, protType, health, ping);
+    }
+
     @Override
     public void onWorldRender(RenderEvent event) {
         if (mc.player == null || mc.world == null) return;
@@ -47,7 +44,7 @@ public class Nametags extends Module {
             renderNameTags(entityPlayer, vec3d.x, vec3d.y, vec3d.z);
         });
     }
-    
+
     private void renderNameTags(EntityPlayer entityPlayer, double posX, double posY, double posZ) {
         double adjustedY = posY + (entityPlayer.isSneaking() ? 1.9 : 2.1);
 
@@ -79,29 +76,30 @@ public class Nametags extends Module {
     private double balancePosition(double newPosition, double oldPosition) {
         return oldPosition + (newPosition - oldPosition) * mc.timer.renderPartialTicks;
     }
-    
+
     private TextFormatting healthColor(int health) {
         if (health <= 0) {
             return TextFormatting.DARK_RED;
-        }else if (health <= 5) {
+        } else if (health <= 5) {
             return TextFormatting.RED;
-        }else if (health <= 10) {
+        } else if (health <= 10) {
             return TextFormatting.GOLD;
-        }else if (health <= 15) {
+        } else if (health <= 15) {
             return TextFormatting.YELLOW;
-        }else if (health <= 20) {
+        } else if (health <= 20) {
             return TextFormatting.DARK_GREEN;
         }
         return TextFormatting.GREEN;
     }
-    
+
     // render text
     private String buildEntityNameString(EntityPlayer entityPlayer) {
         String name = entityPlayer.getName();
         if (ping.isEnabled()) {
             int value = 0;
 
-            if (mc.getConnection() != null && mc.getConnection().getPlayerInfo(entityPlayer.getUniqueID()) != null) {
+            if (mc.getConnection() != null) {
+                mc.getConnection().getPlayerInfo(entityPlayer.getUniqueID());
                 value = mc.getConnection().getPlayerInfo(entityPlayer.getUniqueID()).getResponseTime();
             }
             name = name + " " + value + "ms";
@@ -116,7 +114,7 @@ public class Nametags extends Module {
         return name;
     }
 
-    
+
     // render items
     private void renderItem(ItemStack itemStack, int posX, int posY, int posY2) {
         GlStateManager.enableTexture2D();
@@ -173,7 +171,7 @@ public class Nametags extends Module {
                     posY = size;
                 }
             }
-            armorCount --;
+            armorCount--;
         }
 
         if (!mainHandItem.isEmpty() && (items.isEnabled() || durability.isEnabled() && offHandItem.isItemStackDamageable())) {
@@ -199,7 +197,7 @@ public class Nametags extends Module {
                 armorY -= 32;
             }
             if (durability.isEnabled() && mainHandItem.isItemStackDamageable()) {
-            	renderItemDurability(mainHandItem, posX, armorY);
+                renderItemDurability(mainHandItem, posX, armorY);
             }
             armorY -= (mc.fontRenderer.FONT_HEIGHT);
             if (items.isEnabled() || (durability.isEnabled() && mainHandItem.isItemStackDamageable())) {
@@ -218,7 +216,7 @@ public class Nametags extends Module {
                     armorY -= 32;
                 }
                 if (durability.isEnabled() && itemStack.isItemStackDamageable()) {
-                	renderItemDurability(itemStack, posX, armorY);
+                    renderItemDurability(itemStack, posX, armorY);
                 }
                 posX += 16;
             }
@@ -232,10 +230,11 @@ public class Nametags extends Module {
                 armorY -= 32;
             }
             if (durability.isEnabled() && offHandItem.isItemStackDamageable()) {
-            	renderItemDurability(offHandItem, posX, armorY);
+                renderItemDurability(offHandItem, posX, armorY);
             }
         }
     }
+
     private int findArmorY(int posY) {
         int posY2 = durability.isEnabled() ? -26 : -27;
         if (posY > 4) {
@@ -244,9 +243,9 @@ public class Nametags extends Module {
 
         return posY2;
     }
-    
+
     // enchantment
-    
+
     private void renderEnchants(ItemStack itemStack, int posX, int posY) {
         GlStateManager.enableTexture2D();
 
@@ -254,17 +253,17 @@ public class Nametags extends Module {
             if (enchantment == null) {
                 continue;
             }
-            
-            if(protType.isEnabled()) {
-            	int level = EnchantmentHelper.getEnchantmentLevel(enchantment, itemStack);
-                if(enchantment.equals(Enchantments.BLAST_PROTECTION) || enchantment.equals(Enchantments.PROTECTION))
-                mc.fontRenderer.drawStringWithShadow(ChatFormatting.BOLD + findStringForEnchants(enchantment, level), posX * 2 + 13, posY + 18, 0xffffffff);
+
+            if (protType.isEnabled()) {
+                int level = EnchantmentHelper.getEnchantmentLevel(enchantment, itemStack);
+                if (enchantment.equals(Enchantments.BLAST_PROTECTION) || enchantment.equals(Enchantments.PROTECTION))
+                    mc.fontRenderer.drawStringWithShadow(ChatFormatting.BOLD + findStringForEnchants(enchantment, level), posX * 2 + 13, posY + 18, 0xffffffff);
             }
         }
 
         GlStateManager.disableTexture2D();
     }
-    
+
     private String findStringForEnchants(Enchantment enchantment, int level) {
         ResourceLocation resourceLocation = Enchantment.REGISTRY.getNameForObject(enchantment);
 
@@ -278,5 +277,4 @@ public class Nametags extends Module {
 
         return string.substring(0, 1).toUpperCase() + string.substring(1) + ((level > 1) ? level : "");
     }
-	
 }

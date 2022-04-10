@@ -15,9 +15,8 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-
 public class Totems extends HudModule {
-	private TotemList list = new TotemList();
+	private final TotemList list = new TotemList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(218, 165, 32, 255)); 
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
@@ -26,22 +25,22 @@ public class Totems extends HudModule {
 		super("totems", "shows how many totems u have in ur inventory.", new Point(-2, 11), Category.HUD);
 		this.addSettings(sort, color);
 	}
-	
-	   public void onRender() {
-	    	list.totems = mc.player.inventory.mainInventory.stream()
-	    			.filter(itemStack -> itemStack.getItem() == Items.TOTEM_OF_UNDYING)
-	    			.mapToInt(ItemStack::getCount).sum();
-	    	if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING)
-	    		list.totems++;
-	    }
+
+	@Override
+	public void onRender() {
+		this.list.totems = mc.player.inventory.mainInventory.stream()
+				.filter(itemStack -> itemStack.getItem() == Items.TOTEM_OF_UNDYING)
+				.mapToInt(ItemStack::getCount).sum();
+		if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING)
+			this.list.totems++;
+	}
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, list);
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, this.list);
 	}
 	
 	private class TotemList implements HUDList {
-
 		public int totems = 0;
 		
 		@Override

@@ -16,12 +16,13 @@ import net.minecraft.item.ItemStack;
 public class Refill extends Module {
 	public NumberSetting delay = new NumberSetting("delay", this, 500.0f, 0.0f, 2000.0f, 1.0f);
 
+    private final JTimer timer = new JTimer();
+    public boolean offHand;
+
 	public Refill() {
 		super("refill", "automatically refills stacks in ur hotbar and offHand.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(delay);
 	}
-	private final JTimer timer = new JTimer();
-	public boolean offHand;
 	
 	@Override
 	public void onUpdate() {

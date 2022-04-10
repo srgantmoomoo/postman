@@ -10,7 +10,6 @@ import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.util.text.TextFormatting;
 
 public class MobOwner extends Command {
-	
     public MobOwner() {
 		super("mobOwner", "check the owner of a ridden mob.", "mobOwner", "mo");
 	}

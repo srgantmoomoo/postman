@@ -16,7 +16,6 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
  */
 
 public class FootExp extends Module {
-	
 	public FootExp() {
 		super ("footExp", "automatically throws xp bottles downwards.", Keyboard.KEY_NONE, Category.PVP);
 	}

@@ -16,33 +16,33 @@ import net.minecraft.inventory.ContainerChest;
 public class ChestStealer extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "steal", "steal", "drop");
 	public NumberSetting delay = new NumberSetting("delay", this, 1, 0, 10, 1);
+
+	private final JTimer timer = new JTimer();
 	
 	public ChestStealer() {
 		super ("chestStealer", "automatically steals from inventory gui's.", Keyboard.KEY_NONE, Category.PLAYER);
 		this.addSettings(mode,delay);
 	}
-
-	private JTimer timer = new JTimer();
 	
 
     @EventHandler
     private final Listener<PlayerUpdateEvent> OnPlayerUpdate = new Listener<>(event -> {
-
-        if((Module.mc.player.openContainer != null) && ((Module.mc.player.openContainer instanceof ContainerChest))) {
+        if(((Module.mc.player.openContainer instanceof ContainerChest))) {
         	ContainerChest chest = (ContainerChest) Module.mc.player.openContainer;
                 
-                for(int i = 0; i < chest.getLowerChestInventory().getSizeInventory(); i++) {
-    				if((chest.getLowerChestInventory().getStackInSlot(i) != null) && (this.timer.hasReached(40L))) {
-    					if(mode.is("steal")) {
-    						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.QUICK_MOVE, Module.mc.player);
-    						this.timer.reset();
-	    					if(mode.is("drop")) {  
-	    						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.THROW, Module.mc.player);
-	    						this.timer.reset();
-	    					}
-    					}
-    				}
-                }
+			for(int i = 0; i < chest.getLowerChestInventory().getSizeInventory(); i++) {
+				chest.getLowerChestInventory().getStackInSlot(i);
+				if(this.timer.hasReached(40L)) {
+					if(mode.is("steal")) {
+						Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.QUICK_MOVE, Module.mc.player);
+						this.timer.reset();
+						if(mode.is("drop")) {
+							Module.mc.playerController.windowClick(chest.windowId, i, 0, ClickType.THROW, Module.mc.player);
+							this.timer.reset();
+						}
+					}
+				}
+			}
         }
     });
 }

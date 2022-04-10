@@ -15,7 +15,7 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 
 public class Coords extends HudModule {
-	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255)); 
+	public ColorSetting color = new ColorSetting("color", this, new JColor(172, 172, 172, 255));
 	public BooleanSetting sort = new BooleanSetting("sortRight", this, false);
 
 	public Coords() {
@@ -25,7 +25,7 @@ public class Coords extends HudModule {
 	
 	@Override
 	public void populate (Theme theme) {
-		component = new ListComponent(getName(), theme.getPanelRenderer(), position, new CoordsList());
+		this.component = new ListComponent(getName(), theme.getPanelRenderer(), position, new CoordsList());
 	}
 	
 	private class CoordsList implements HUDList {

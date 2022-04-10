@@ -102,9 +102,7 @@ public class SmartOffHand extends Module {
     	}else if (getHealthWithAbsorption() <= health.getValue()) {
         	mode.setMode("totem");
         	SwitchOffHandTotem();
-            return;
         }
-    		
     });
     
     private boolean crystalCheck() {
@@ -145,8 +143,9 @@ public class SmartOffHand extends Module {
     public Item getItem(ModeSetting val) {
     	if(val.is("crystal")) return Items.END_CRYSTAL;
     	if(val.is("gap")) return Items.GOLDEN_APPLE;
-    	if(val.is("totem")) return Items.TOTEM_OF_UNDYING;
-        
+
+        val.is("totem");
+
         return Items.TOTEM_OF_UNDYING;
     }
 }
