@@ -41,8 +41,8 @@ public class PlayerModel extends HudModule {
 		public void render (Context context) {
 			super.render(context);
 			if(rect.isEnabled()) {
-			Color bgcolor = new JColor(color.getValue());
-			context.getInterface().fillRect(context.getRect(), bgcolor, bgcolor, bgcolor, bgcolor);
+				Color bgcolor = new JColor(color.getValue());
+				context.getInterface().fillRect(context.getRect(), bgcolor, bgcolor, bgcolor, bgcolor);
 			}
 			ClickGui.renderEntity(mc.player, new Point(context.getPos().x + 22, context.getPos().y + 58 - (mc.player.isSneaking() ? 10 : 0)), (int) size.getValue());
 		}

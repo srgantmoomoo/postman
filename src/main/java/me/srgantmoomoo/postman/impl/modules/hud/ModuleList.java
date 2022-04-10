@@ -29,13 +29,13 @@ public class ModuleList extends HudModule {
 	public BooleanSetting showHidden = new BooleanSetting("showHidden", this, false);
 
 	public ModuleList() {
-		super("arrayList", "shows currently enabled modules.", new Point(-2, 69), Category.HUD);
+		super("module-list", "shows currently enabled modules.", new Point(-2, 69), Category.HUD);
 		this.addSettings(color, sortHeight, sortLength, showHidden, forgeHax);
 	}
     
     @Override
     public void populate (Theme theme) {
-    	component = new ListComponent(getName(),theme.getPanelRenderer(),position,list);
+    	this.component = new ListComponent(getName(),theme.getPanelRenderer(),position,list);
     }
 
     public void onRender() {
@@ -49,13 +49,12 @@ public class ModuleList extends HudModule {
     			if (module.isToggled() && !module.getName().equalsIgnoreCase("Esp2dHelper")) list.activeModules.add(module);
     	}
     	if(sortHeight.is("up") || sortHeight.is("down")) {
-    	list.activeModules.sort(Comparator.comparing(module -> -Main.INSTANCE.clickGui.guiInterface.getFontWidth(module.getName())));
+    		list.activeModules.sort(Comparator.comparing(module -> -Main.INSTANCE.clickGui.guiInterface.getFontWidth(module.getName())));
     	}
     }
 
     private class ModuleArrayList implements HUDList {
-
-		public List<Module> activeModules=new ArrayList<Module>();
+		public List<Module> activeModules=new ArrayList<>();
 		
 		@Override
 		public int getSize() {

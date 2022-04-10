@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.framework.module;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
@@ -205,6 +206,6 @@ public class ModuleManager {
 	}
 	
 	public Module getModuleByName(String name) {
-		return modules.stream().filter(m -> m.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+		return modules.stream().filter(m -> m.getName().toLowerCase().equals(name)).findFirst().orElse(null);
 	}
 }

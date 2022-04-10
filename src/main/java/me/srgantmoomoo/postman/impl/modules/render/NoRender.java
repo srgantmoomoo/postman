@@ -107,46 +107,46 @@ public class NoRender extends Module {
 	
 	@EventHandler
 	private final Listener<PacketEvent.Receive> onReceivePacket = new Listener<>(event -> {
-		 if (event.getEra() == Era.PRE) {
-	            if (event.getPacket() instanceof SPacketSpawnMob) {
-	                final SPacketSpawnMob packet = (SPacketSpawnMob) event.getPacket();
+		if (event.getEra() == Era.PRE) {
+			if (event.getPacket() instanceof SPacketSpawnMob) {
+				final SPacketSpawnMob packet = (SPacketSpawnMob) event.getPacket();
 
-	                if (this.skulls.isEnabled()) {
-	                    if (packet.getEntityType() == 19) {
-	                        event.cancel();
-	                    }
-	                }
-	            }
-		 }
+				if (this.skulls.isEnabled()) {
+					if (packet.getEntityType() == 19) {
+						event.cancel();
+					}
+				}
+			}
+		}
 	});
 	
 	@EventHandler
 	private final Listener<RenderEntityEvent> onRenderEntity = new Listener<>(event -> {
-			if(crystals.isEnabled()) {
-				if (event.getEntity() instanceof EntityEnderCrystal) event.cancel();
-			}
-			
-			if(tnt.isEnabled()) {
-				if (event.getEntity() instanceof EntityTNTPrimed) event.cancel();
-			}
-			
-			if(items.isEnabled()) {
-				if (event.getEntity() instanceof EntityItem) event.cancel();
-			}
-			
-			if(withers.isEnabled()) {
-				if (event.getEntity() instanceof EntityWither) event.cancel();
-			}
-			
-			if(skulls.isEnabled()) {
-				if (event.getEntity() instanceof EntityWitherSkull) event.cancel();
-			}
-			
-			if(fireworks.isEnabled()) {
-				if (event.getEntity() instanceof EntityFireworkRocket) event.cancel();
-			}		
-        
+		if(crystals.isEnabled()) {
+			if (event.getEntity() instanceof EntityEnderCrystal) event.cancel();
+		}
+
+		if(tnt.isEnabled()) {
+			if (event.getEntity() instanceof EntityTNTPrimed) event.cancel();
+		}
+
+		if(items.isEnabled()) {
+			if (event.getEntity() instanceof EntityItem) event.cancel();
+		}
+
+		if(withers.isEnabled()) {
+			if (event.getEntity() instanceof EntityWither) event.cancel();
+		}
+
+		if(skulls.isEnabled()) {
+			if (event.getEntity() instanceof EntityWitherSkull) event.cancel();
+		}
+
+		if(fireworks.isEnabled()) {
+			if (event.getEntity() instanceof EntityFireworkRocket) event.cancel();
+		}
 	});
+
 	@EventHandler
 	private final Listener<SpawnEffectEvent> onSpawnEffectParticle = new Listener<>(event -> {
 		if (fireworks.isEnabled()) {

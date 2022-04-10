@@ -52,7 +52,7 @@ public class TargetHud extends HudModule {
 
     @Override
     public void populate(Theme theme) {
-        component = new TargetHUDComponent(theme);
+        this.component = new TargetHUDComponent(theme);
     }
 
     private Color getNameColor(String playerName) {
@@ -95,9 +95,7 @@ public class TargetHud extends HudModule {
                     context.getInterface().fillRect(context.getRect(),bgcolor,bgcolor,bgcolor,bgcolor);
 
                     // Render player
-                    EntityPlayer targetPlayer = entityPlayer;
                     ClickGui.renderEntity(entityPlayer,new Point(context.getPos().x + 20, context.getPos().y + 50 - (entityPlayer.isSneaking()?10:0)), 23);
-                    targetPlayer = null;
 
                     // Render name
                     String playerName = entityPlayer.getName();
