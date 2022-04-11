@@ -1,20 +1,20 @@
 buildscript {
-	repositories {
-		mavenCentral()
-		maven {
-			name = 'forge'
-			url = 'https://files.minecraftforge.net/maven'
-		}
-		maven {
-			name = 'SpongePowered'
-			url = 'https://repo.spongepowered.org/repository/maven-public/'
-		}
-	}
-	dependencies {
-		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.4'
-		classpath 'org.spongepowered:mixingradle:0.4-SNAPSHOT'
-		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
-	}
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'forge'
+            url = 'https://files.minecraftforge.net/maven'
+        }
+        maven {
+            name = 'SpongePowered'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.4'
+        classpath 'org.spongepowered:mixingradle:0.4-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -26,117 +26,117 @@ group project.modGroup // http://maven.apache.org/guides/mini/guide-naming-conve
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 compileJava {
-	sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 minecraft {
-	version = project.forgeVersion
-	runDir = 'run'
-	mappings = project.mcpVersion
-	coreMod = 'me.srgantmoomoo.mixin.MixinLoader'
-	makeObfSourceJar = false
+    version = project.forgeVersion
+    runDir = 'run'
+    mappings = project.mcpVersion
+    coreMod = 'me.srgantmoomoo.mixin.MixinLoader'
+    makeObfSourceJar = false
 }
 
 repositories {
     mavenCentral()
 
-	maven {
-		name = 'spongepowered-repo'
-		url = 'https://repo.spongepowered.org/repository/maven-public/'
-	}
-	//for baritone
-	maven {
+    maven {
+        name = 'spongepowered-repo'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+    //for baritone
+    maven {
         name = 'impactdevelopment-repo'
         url = 'https://impactdevelopment.github.io/maven/'
     }
-	maven {
-		name = 'swt-repo'
-		url = "https://maven-eclipse.github.io/maven"
-	}
-	maven {
-		name = "jitpack.io"
-		url = "https://jitpack.io"
-	}
-	maven {
-		name = 'lukflug'
-		url = 'https://lukflug.github.io/maven'
-	}
+    maven {
+        name = 'swt-repo'
+        url = "https://maven-eclipse.github.io/maven"
+    }
+    maven {
+        name = "jitpack.io"
+        url = "https://jitpack.io"
+    }
+    maven {
+        name = 'lukflug'
+        url = 'https://lukflug.github.io/maven'
+    }
 }
 
 dependencies {
-	compile("org.spongepowered:mixin:0.7.4-SNAPSHOT") {
-		exclude module: 'launchwrapper'
-		exclude module: 'guava'
-		exclude module: 'gson'
-		exclude module: 'commons-io'
-	}
-	compile "com.github.ZeroMemes:Alpine:1.5"
-	compile group: 'net.jodah', name: 'typetools', version: '0.5.0'
-	compile group: "com.googlecode.json-simple", name: "json-simple", version: "1.1.1"
-	compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
-	compile 'com.github.cabaletta:baritone:1.2.14'
-	compile("com.lukflug:panelstudio:0.1.8")
-	compile("com.lukflug:panelstudio-mc12:0.1.8")
+    compile('org.spongepowered:mixin:0.7.4-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+        exclude module: 'guava'
+        exclude module: 'gson'
+        exclude module: 'commons-io'
+    }
+    compile 'com.github.ZeroMemes:Alpine:1.5'
+    compile group: 'net.jodah', name: 'typetools', version: '0.5.0'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
+    compile 'com.github.cabaletta:baritone:1.2.14'
+    compile 'com.lukflug:panelstudio:0.1.8'
+    compile 'com.lukflug:panelstudio-mc12:0.1.8'
 }
 
 processResources {
-	inputs.property 'version', project.version
-	inputs.property 'mcversion', project.minecraft.version
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
 
-	from(sourceSets.main.resources.srcDirs) {
-		include 'mcmod.info'
-		expand 'version': project.version, 'mcversion': project.minecraft.version
-	}
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'mcmod.info'
-	}
-	rename '(.+_at.cfg)', 'META-INF/$1'
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 shadowJar {
-	dependencies {
-		// mixin
-		include(dependency('org.spongepowered:mixin'))
-		
-		// event 
-		include(dependency('com.github.ZeroMemes:Alpine'))
-		
-		// dependencies 
-		include(dependency('net.jodah:typetools'))
-		include(dependency('com.googlecode.json-simple:json-simple:1.1.1'))
-		
-		// rpc
-		include(dependency('club.minnced:java-discord-rpc:2.0.1'))
-		
-		
-		// baritone
-		include(dependency('com.github.cabaletta:baritone:1.2.14'))
-		include(dependency('cabaletta:baritone-api'))
-		
-		// panelstudio
-		include(dependency('com.lukflug:panelstudio'))
-		include(dependency('com.lukflug:panelstudio-mc12'))
-	}
-	exclude 'dummyThing', 'LICENSE.txt', 'org/**/*.html', 'META-INF/maven/**' // Removes unneeded files that are legit just useless text files - Perry on reborn
-	classifier = 'release'
+    dependencies {
+        // mixin
+        include(dependency('org.spongepowered:mixin'))
+
+        // event
+        include(dependency('com.github.ZeroMemes:Alpine'))
+
+        // dependencies
+        include(dependency('net.jodah:typetools'))
+        include(dependency('com.googlecode.json-simple:json-simple:1.1.1'))
+
+        // rpc
+        include(dependency('club.minnced:java-discord-rpc:2.0.1'))
+
+
+        // baritone
+        include(dependency('com.github.cabaletta:baritone:1.2.14'))
+        include(dependency('cabaletta:baritone-api'))
+
+        // panelstudio
+        include(dependency('com.lukflug:panelstudio'))
+        include(dependency('com.lukflug:panelstudio-mc12'))
+    }
+    exclude 'dummyThing', 'LICENSE.txt', 'org/**/*.html', 'META-INF/maven/**'
+    // Removes unneeded files that are legit just useless text files - Perry on reborn
+    classifier = 'release'
 }
 
 mixin {
-	defaultObfuscationEnv searge
-	add sourceSets.main, 'mixins.postman.refmap.json'
+    defaultObfuscationEnv searge
+    add sourceSets.main, 'mixins.postman.refmap.json'
 }
 
 reobf {
-	shadowJar {
-		mappingType = 'SEARGE'
-		classpath = sourceSets.main.compileClasspath
-	}
+    shadowJar {
+        mappingType = 'SEARGE'
+        classpath = sourceSets.main.compileClasspath
+    }
 }
 
 jar {
-	manifest {
-		attributes(
-			'MixinConfigs': 'mixins.postman.json',
+    manifest {
+        attributes('MixinConfigs': 'mixins.postman.json',
 			'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
 			'TweakOrder': 0,
 			'FMLCorePluginContainsFMLMod': 'true',
@@ -144,7 +144,7 @@ jar {
 			'ForceLoadAsMod': 'true',
 			'FMLAT': 'postman_at.cfg'
 		)
-	}
+    }
 }
 
 build.dependsOn(shadowJar)

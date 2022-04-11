@@ -8,9 +8,11 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ModeSetting;
 import net.minecraft.client.Minecraft;
 
 public class Sprint extends Module {
+	public static final Sprint INSTANCE = new Sprint();
+
 	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "sickomode");
 	
-	public Sprint() {
+	private Sprint() {
 		super ("sprint", "now u cant walk, good going.", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(mode);
 	}

@@ -30,15 +30,17 @@ import net.minecraftforge.client.event.RenderBlockOverlayEvent;
 import net.minecraftforge.client.event.RenderBlockOverlayEvent.OverlayType;
 
 public class NoRender extends Module {
+	public static final NoRender INSTANCE = new NoRender();
+
 	public BooleanSetting rain = new BooleanSetting("rain", this, false);
 	public BooleanSetting skylight = new BooleanSetting("skylightUpdates", this, false);
-	public ModeSetting hurtCam = new ModeSetting("hurtCam", this, "yesHurtCam", "yesHurtCam", "noHurtCam", "penis");
+	public ModeSetting hurtCam = new ModeSetting("hurtCam", this, "normal", "yesHurtCam", "noHurtCam", "penis");
 	public BooleanSetting fire = new BooleanSetting("fire", this, false);
 	public BooleanSetting portalEffect = new BooleanSetting("portalEffect", this, false);
 	public BooleanSetting potionIndicators = new BooleanSetting("potionIndicators", this, false);
 	public BooleanSetting crystals = new BooleanSetting("crystals", this, false);
 	public BooleanSetting totemAnimation = new BooleanSetting("totemAnimation", this, false);
-	public BooleanSetting enchantTables = new BooleanSetting("encahtTables", this, false);
+	public BooleanSetting enchantTables = new BooleanSetting("enchantTables", this, false);
 	public BooleanSetting armor = new BooleanSetting("armor", this, false);
 	public BooleanSetting tnt = new BooleanSetting("tnt", this, false);
 	public BooleanSetting items = new BooleanSetting("items", this, false);
@@ -50,7 +52,7 @@ public class NoRender extends Module {
 	public BooleanSetting signs = new BooleanSetting("signs", this, false);
 	public BooleanSetting pistons = new BooleanSetting("pistons", this, false);
 		
-	public NoRender() {
+	protected NoRender() {
 		super("noRender", "stops certain events from rendering.", Keyboard.KEY_NONE, Category.RENDER);
 		this.addSettings(rain, skylight, hurtCam, fire, portalEffect, potionIndicators, crystals, totemAnimation, enchantTables, armor, tnt, items, withers, skulls, fireworks);
 	}

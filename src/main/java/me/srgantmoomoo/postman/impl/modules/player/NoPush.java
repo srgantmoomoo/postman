@@ -10,7 +10,9 @@ import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 
 public class NoPush extends Module {
-	public NoPush() {
+	public static final NoPush INSTANCE = new NoPush();
+
+	private NoPush() {
 		super ("noPush", "u cant get pushed, and u cant push.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 

@@ -1,6 +1,7 @@
 package me.srgantmoomoo.mixin.mixins;
 
 import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.impl.modules.render.Peek;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -19,25 +20,22 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.postman.framework.module.ModuleManager;
-
 import java.awt.*;
 
-@Mixin (GuiScreen.class)
+@Mixin(GuiScreen.class)
 public class MixinGuiScreen {
 
-	RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
-	ResourceLocation resource;
-	FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
+	private final RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
+	private final FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
+	private final ResourceLocation resource = new ResourceLocation("textures/gui/container/shulker_box.png");
 
 	@Inject(method = "renderToolTip", at = @At("HEAD"), cancellable = true)
 	public void renderToolTip(ItemStack stack, int x, int y, CallbackInfo info){
-		resource = new ResourceLocation("textures/gui/container/shulker_box.png");
-		if (Main.INSTANCE.moduleManager.isModuleEnabled("peek") && stack.getItem() instanceof ItemShulkerBox){
+		if (Peek.INSTANCE.isToggled() && stack.getItem() instanceof ItemShulkerBox) {
 			NBTTagCompound tagCompound = stack.getTagCompound();
-			if (tagCompound != null && tagCompound.hasKey("BlockEntityTag", 10)){
+			if (tagCompound != null && tagCompound.hasKey("BlockEntityTag", 10)) {
 				NBTTagCompound blockEntityTag = tagCompound.getCompoundTag("BlockEntityTag");
-				if (blockEntityTag.hasKey("Items", 9)){
+				if (blockEntityTag.hasKey("Items", 9)) {
 					info.cancel();
 
 					NonNullList<ItemStack> nonnulllist = NonNullList.withSize(27, ItemStack.EMPTY);

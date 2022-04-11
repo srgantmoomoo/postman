@@ -13,7 +13,9 @@ import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class DamageTiltCorrection extends Module {
-	public DamageTiltCorrection() {
+	public static final DamageTiltCorrection INSTANCE = new DamageTiltCorrection();
+
+	private DamageTiltCorrection() {
 		super ("damageTilt", "fixes minecraft's age old damage tilt bug.", Keyboard.KEY_NONE, Category.RENDER);
 	}
 	

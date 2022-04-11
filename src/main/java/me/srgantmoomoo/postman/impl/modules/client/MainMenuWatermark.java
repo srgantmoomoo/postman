@@ -6,7 +6,9 @@ import me.srgantmoomoo.postman.framework.module.Category;
 import me.srgantmoomoo.postman.framework.module.Module;
 
 public class MainMenuWatermark extends Module {
-	public MainMenuWatermark() {
+	public static final MainMenuWatermark INSTANCE = new MainMenuWatermark();
+
+	protected MainMenuWatermark() {
 		super("mainMenuWatermark", "shows postman on minecrafts main menu screen.", Keyboard.KEY_NONE, Category.CLIENT);
 		toggled = true;
 	}

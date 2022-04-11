@@ -38,6 +38,8 @@ import java.util.List;
 
 //TODO 2d esp's and outline esp's.
 public class Esp extends Module {
+    public static final Esp INSTANCE = new Esp();
+
     public BooleanSetting chams = new BooleanSetting("walls", this, false);
     public ModeSetting entityMode = new ModeSetting("entity", this, "outline", "outline", "fill", "outline & fill", "trace", "fake2d", "glow", "off");
     public ModeSetting storage = new ModeSetting("storage", this, "outline", "outline", "fill", "outline & fill", "off");
@@ -71,7 +73,7 @@ public class Esp extends Module {
     JColor containerBox;
     int opacityGradient;
 
-    public Esp() {
+    private Esp() {
         super("esp's", "draws esp's around things.", Keyboard.KEY_NONE, Category.RENDER);
         this.addSettings(entityMode, storage, crystalMode, mobs, items, chams, range, lineWidth, playerColor, passiveMobColor, hostileMobColor, itemColor, chestColor,
                 enderChestColor, shulkerBoxColor, otherColor);

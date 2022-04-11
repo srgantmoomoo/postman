@@ -7,8 +7,10 @@ import me.srgantmoomoo.postman.framework.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 public class GuiMove extends Module {
-	public GuiMove() {
-		super ("guiMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.PLAYER);
+	public static final GuiMove INSTANCE = new GuiMove();
+
+	private GuiMove() {
+		super("guiMove", "lets you move while in ur a gui screen.", Keyboard.KEY_NONE, Category.PLAYER);
 	}
 
 	@Override

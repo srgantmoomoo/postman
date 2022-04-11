@@ -13,12 +13,11 @@ public class MixinGuiPlayerTabOverlay{
 
 	@Inject(method = "getPlayerName", at = @At("HEAD"), cancellable = true)
 	public void getPlayerName(NetworkPlayerInfo networkPlayerInfoIn, CallbackInfoReturnable<String> returnable){
-			returnable.cancel();
-			returnable.setReturnValue(getPlayerName(networkPlayerInfoIn));
+		returnable.cancel();
+		returnable.setReturnValue(getPlayerName(networkPlayerInfoIn));
 	}
 
 	public String getPlayerName(NetworkPlayerInfo networkPlayerInfoIn){
-		String dname = networkPlayerInfoIn.getDisplayName() != null ? networkPlayerInfoIn.getDisplayName().getFormattedText() : ScorePlayerTeam.formatPlayerName(networkPlayerInfoIn.getPlayerTeam(), networkPlayerInfoIn.getGameProfile().getName());
-		return dname;
+		return networkPlayerInfoIn.getDisplayName() != null ? networkPlayerInfoIn.getDisplayName().getFormattedText() : ScorePlayerTeam.formatPlayerName(networkPlayerInfoIn.getPlayerTeam(), networkPlayerInfoIn.getGameProfile().getName());
 	}
 }

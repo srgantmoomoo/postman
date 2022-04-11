@@ -38,7 +38,7 @@ public class ColorMain extends Module {
 		tab.add("Aqua");
 		tab.add("Light Purple");
 		tab.add("White");
-		ArrayList<String> models=new ArrayList<>();
+		ArrayList<String> models = new ArrayList<>();
 		models.add("RGB");
 		models.add("HSB");
 	}
@@ -49,11 +49,14 @@ public class ColorMain extends Module {
 	}
 	
 	private static TextFormatting settingToFormatting () {
-			return TextFormatting.AQUA;
+		return TextFormatting.AQUA;
 	}
 
-	public static TextFormatting getEnabledColor() { return settingToFormatting(); }
+	public static TextFormatting getEnabledColor() {
+		return settingToFormatting();
+	}
 
-	public static TextFormatting getDisabledColor() { return settingToFormatting(); }
-
+	public static TextFormatting getDisabledColor() {
+		return settingToFormatting();
+	}
 }

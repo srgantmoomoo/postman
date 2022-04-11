@@ -1,6 +1,5 @@
 package me.srgantmoomoo.mixin.mixins;
 
-import me.srgantmoomoo.Main;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.ScaledResolution;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +14,7 @@ public class MixinGuiIngame {
 
 	@Inject(method = "renderPotionEffects", at = @At("HEAD"), cancellable = true)
 	protected void renderPotionEffectsHook(ScaledResolution scaledRes, CallbackInfo callbackInfo) {
-		if (Main.INSTANCE.moduleManager.isModuleEnabled("noRender") && ((NoRender)Main.INSTANCE.moduleManager.getModuleByName("noRender")).potionIndicators.isEnabled()) {
+		if (NoRender.INSTANCE.isToggled() && NoRender.INSTANCE.potionIndicators.isEnabled()) {
 			callbackInfo.cancel();
 		}
 	}

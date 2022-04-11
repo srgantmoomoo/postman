@@ -21,10 +21,10 @@ public abstract class Module implements Toggleable {
 	protected static final Minecraft mc = Minecraft.getMinecraft();
 	
 	public final String name, description;
-	public KeybindSetting keyCode = new KeybindSetting(0);
-	public Category category;
-	public boolean toggled;
-	public int index;
+	public final KeybindSetting keyCode = new KeybindSetting(0);
+	public final Category category;
+	protected boolean toggled;
+	private int index;
 	public List<Setting> settings = new ArrayList<>();
 	
 	public Module(String name, String description, int key, Category category) {
@@ -83,7 +83,7 @@ public abstract class Module implements Toggleable {
 	}
 	
 	public boolean isToggled() {
-		return toggled;
+		return this.toggled;
 	}
 	
 	public void setToggled(boolean toggled) {

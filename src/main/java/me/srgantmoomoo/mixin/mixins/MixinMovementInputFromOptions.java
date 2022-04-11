@@ -1,5 +1,8 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.backend.event.events.PlayerUpdateMoveStateEvent;
+import me.srgantmoomoo.postman.impl.modules.player.GuiMove;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.settings.KeyBinding;
@@ -12,26 +15,22 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.srgantmoomoo.Main;
-import me.srgantmoomoo.postman.backend.event.events.PlayerUpdateMoveStateEvent;
-import me.srgantmoomoo.postman.impl.modules.player.GuiMove;
-
 @Mixin(value = MovementInputFromOptions.class, priority = 10000)
 public abstract class MixinMovementInputFromOptions extends MovementInput {
-	
-	@Inject(method = "updatePlayerMoveState", at = @At("RETURN"))
+
+    @Inject(method = "updatePlayerMoveState", at = @At("RETURN"))
     public void updatePlayerMoveStateReturn(CallbackInfo callback) {
         Main.EVENT_BUS.post(new PlayerUpdateMoveStateEvent());
     }
 
-	@Redirect(method = "updatePlayerMoveState", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/settings/KeyBinding;isKeyDown()Z"))
-	public boolean isKeyPressed(KeyBinding keyBinding) {
-		if (Main.INSTANCE.moduleManager.isModuleEnabled("guiMove") && ((GuiMove)Main.INSTANCE.moduleManager.getModuleByName("guiMove")).isToggled()
-				&& Minecraft.getMinecraft().currentScreen != null
-				&& !(Minecraft.getMinecraft().currentScreen instanceof GuiChat)
-				&& Minecraft.getMinecraft().player != null) {
-			return Keyboard.isKeyDown(keyBinding.getKeyCode());
-		}
-		return keyBinding.isKeyDown();
-	}
+    @Redirect(method = "updatePlayerMoveState", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/settings/KeyBinding;isKeyDown()Z"))
+    public boolean isKeyPressed(KeyBinding keyBinding) {
+        if (GuiMove.INSTANCE.isToggled()
+                && Minecraft.getMinecraft().currentScreen != null
+                && !(Minecraft.getMinecraft().currentScreen instanceof GuiChat)
+                && Minecraft.getMinecraft().player != null) {
+            return Keyboard.isKeyDown(keyBinding.getKeyCode());
+        }
+        return keyBinding.isKeyDown();
+    }
 }

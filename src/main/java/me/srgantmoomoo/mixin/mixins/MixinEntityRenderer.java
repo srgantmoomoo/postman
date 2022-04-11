@@ -20,7 +20,7 @@ public class MixinEntityRenderer {
 
 	@Inject(method = "hurtCameraEffect", at = @At("HEAD"), cancellable = true)
 	public void hurtCameraEffect(float ticks, CallbackInfo info) {
-		if (Main.INSTANCE.moduleManager.isModuleEnabled("noRender") && ((NoRender)Main.INSTANCE.moduleManager.getModuleByName("noRender")).hurtCam.is("normal"))
+		if (NoRender.INSTANCE.isToggled() && NoRender.INSTANCE.hurtCam.is("normal"))
 			info.cancel();
 	}
 	

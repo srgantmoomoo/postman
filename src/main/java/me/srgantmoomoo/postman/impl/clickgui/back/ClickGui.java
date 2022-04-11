@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Point;
 
 import me.srgantmoomoo.Main;
+import me.srgantmoomoo.postman.impl.modules.client.ClientFont;
 import org.lwjgl.opengl.GL11;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
@@ -75,20 +76,19 @@ public class ClickGui extends MinecraftHUDGUI {
 			public void drawString(Point pos, String s, Color c) {
 				end();
 				int x=pos.x+2, y=pos.y+1;
-				if(Main.INSTANCE.moduleManager.getModuleByName("clientFont").isToggled()) FontUtils.drawStringWithShadow(true, s, x, y, new JColor(c));
-				else FontUtils.drawStringWithShadow(false, s, x, y, new JColor(c));
+				FontUtils.drawStringWithShadow(ClientFont.INSTANCE.isToggled(), s, x, y, new JColor(c));
 				begin();
 			}
 			
 			@Override
 			public int getFontWidth(String s) {
-				if(Main.INSTANCE.moduleManager.isModuleEnabled("clientFont")) return Math.round(FontUtils.getStringWidth(true,s))+4;
+				if(ClientFont.INSTANCE.isToggled()) return Math.round(FontUtils.getStringWidth(true,s))+4;
 				else return Math.round(FontUtils.getStringWidth(false,s))+4;
 			}
 
 			@Override
 			public int getFontHeight() {
-				if(Main.INSTANCE.moduleManager.isModuleEnabled("clientFont")) return Math.round(FontUtils.getFontHeight(true))+2;
+				if(ClientFont.INSTANCE.isToggled()) return Math.round(FontUtils.getFontHeight(true))+2;
 				else return Math.round(FontUtils.getFontHeight(false))+2;
 			}
 		};

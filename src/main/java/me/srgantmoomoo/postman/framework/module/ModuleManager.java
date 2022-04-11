@@ -63,18 +63,18 @@ public class ModuleManager {
 		modules.add(new ConfigCrystal());
 		//modules.add(new CoordExploit());
 		modules.add(new Criticals());
-		modules.add(new DamageTiltCorrection());
+		modules.add(DamageTiltCorrection.INSTANCE);
 		modules.add(new DeathCoords());	                             // --- integrate with notifications.
 		modules.add(new Dupe());
 		//modules.add(new ElytraFly());   // unstarted
 		//modules.add(new ElytraReplace());  // unstarted
-		modules.add(new Esp());
+		modules.add(Esp.INSTANCE);
 		modules.add(new FastUse());
 		modules.add(new Fly());
 		modules.add(new FootExp());
 		modules.add(new Freecam());
 		modules.add(new FullBright());
-		modules.add(new GuiMove());
+		modules.add(GuiMove.INSTANCE);
 		modules.add(new HoleEsp());
 		modules.add(new HoleTp());
 		modules.add(new InventoryPlus());
@@ -85,17 +85,17 @@ public class ModuleManager {
 		//modules.add(new LongJump());   // unstarted
 		modules.add(new LowOffHand());
 		modules.add(new Mcf());
-		modules.add(new Multitask());
-		modules.add(new Nametags());
+		modules.add(Multitask.INSTANCE);
+		modules.add(Nametags.INSTANCE);
 		//modules.add(new NewChunks());	// unstarted
 		modules.add(new NoFall());
 		modules.add(new NoHandShake());
-		modules.add(new NoPush());
-		modules.add(new NoRender());
-		modules.add(new NoSlow());
+		modules.add(NoPush.INSTANCE);
+		modules.add(NoRender.INSTANCE);
+		modules.add(NoSlow.INSTANCE);
 		modules.add(new OffHandBot());
 		modules.add(new PacketCancellor());
-		modules.add(new Peek());
+		modules.add(Peek.INSTANCE);
 		modules.add(new PlayerClone());
 		modules.add(new PortalGodMode());
 		modules.add(new Protester());
@@ -107,7 +107,7 @@ public class ModuleManager {
 		modules.add(new SmartOffHand());
 		modules.add(new Sneak());
 		modules.add(new Speed());
-		modules.add(new Sprint());
+		modules.add(Sprint.INSTANCE);
 		modules.add(new Step());
 		modules.add(new Surround());
 		modules.add(new Timer());
@@ -136,12 +136,12 @@ public class ModuleManager {
 		modules.add(new ArmorHud());
 		modules.add(new HudEditor());
 		//client
-		modules.add(new ClientFont());
-		modules.add(new Capes());
+		modules.add(ClientFont.INSTANCE);
+		modules.add(Capes.INSTANCE);
 		modules.add(new DiscordRichPresence());
 		modules.add(new ClickGuiModule());
 		//modules.add(new TabGui());
-		modules.add(new MainMenuWatermark());
+		modules.add(MainMenuWatermark.INSTANCE);
 		modules.add(new NotificationModule());
 	}
 	
@@ -183,16 +183,18 @@ public class ModuleManager {
 				int keyCode = Keyboard.getEventKey();
 				if(keyCode <= 0)
 					return;
-				for(Module m : modules) {
+				for(Module m : this.modules) {
 					if(m.getKey() == keyCode)
 						m.toggle();
 				}
 			}
-		}catch (Exception c) { c.printStackTrace(); }
+		} catch (Exception c) {
+			c.printStackTrace();
+		}
 	}
 	
 	public boolean isModuleEnabled(String name) {
-		Module m = modules.stream().filter(module -> module.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+		Module m = this.modules.stream().filter(module -> module.getName().toLowerCase().equals(name)).findFirst().orElse(null);
 		assert m != null;
 		return m.isToggled();
 	}

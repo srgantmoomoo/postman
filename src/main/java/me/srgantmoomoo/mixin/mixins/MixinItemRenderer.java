@@ -24,5 +24,4 @@ public class MixinItemRenderer {
 		TransformSideFirstPersonEvent event = new TransformSideFirstPersonEvent(hand);
 		Main.EVENT_BUS.post(event);
 	}
-
 }

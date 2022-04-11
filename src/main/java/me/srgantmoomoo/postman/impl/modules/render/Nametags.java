@@ -22,6 +22,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 public class Nametags extends Module {
+    public static final Nametags INSTANCE = new Nametags();
+
     BooleanSetting renderSelf = new BooleanSetting("self", this, true);
     NumberSetting range = new NumberSetting("Range", this, 100, 10, 260, 1);
     BooleanSetting items = new BooleanSetting("items", this, true);
@@ -30,8 +32,8 @@ public class Nametags extends Module {
     BooleanSetting health = new BooleanSetting("health", this, true);
     BooleanSetting ping = new BooleanSetting("ping", this, true);
 
-    public Nametags() {
-        super("nametags", "gives more info on a persons nametag.", Keyboard.KEY_NONE, Category.RENDER);
+    private Nametags() {
+        super("nametags", "gives more info on a persons name tag.", Keyboard.KEY_NONE, Category.RENDER);
         this.addSettings(renderSelf, range, items, durability, protType, health, ping);
     }
 
@@ -52,7 +54,7 @@ public class Nametags extends Module {
         name[0] = buildEntityNameString(entityPlayer);
 
         JTessellator.drawNametag(posX, adjustedY, posZ, name, new JColor(255, 255, 255, 255), 2);
-        renderItemsPos(entityPlayer, 0, 0);
+        this.renderItemsPos(entityPlayer, 0, 0);
         GlStateManager.popMatrix();
     }
 

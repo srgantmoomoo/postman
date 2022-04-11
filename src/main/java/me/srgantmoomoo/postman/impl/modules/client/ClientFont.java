@@ -11,9 +11,11 @@ import me.srgantmoomoo.postman.framework.module.Module;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ModeSetting;
 
 public class ClientFont extends Module {
+	public static final ClientFont INSTANCE = new ClientFont();
+
 	public ModeSetting font = new ModeSetting("font", this, "Comic Sans Ms", "Comic Sans Ms", "Arial", "Verdana");
 	
-	public ClientFont() {
+	private ClientFont() {
 		super ("clientFont", "changes the font the client uses.", Keyboard.KEY_NONE, Category.CLIENT);
 		this.addSettings(font);
 	}

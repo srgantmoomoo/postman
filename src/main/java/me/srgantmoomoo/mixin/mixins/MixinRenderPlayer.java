@@ -1,5 +1,6 @@
 package me.srgantmoomoo.mixin.mixins;
 
+import me.srgantmoomoo.postman.impl.modules.render.Nametags;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +16,7 @@ import me.srgantmoomoo.postman.framework.module.ModuleManager;
 public class MixinRenderPlayer {
     @Inject(method = "renderEntityName", at = @At("HEAD"), cancellable = true)
     public void renderLivingLabel(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq, CallbackInfo info) {
-    	if(Main.INSTANCE.moduleManager.getModuleByName("nametags").isToggled()) {
+    	if(Nametags.INSTANCE.isToggled()) {
     		info.cancel();
     	}
     	

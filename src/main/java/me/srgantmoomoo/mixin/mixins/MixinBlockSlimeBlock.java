@@ -16,7 +16,7 @@ import me.srgantmoomoo.postman.impl.modules.movement.NoSlow;
 public class MixinBlockSlimeBlock {
     @Inject(method = "onEntityWalk", at = @At("HEAD"), cancellable = true)
     private void onSteppedOn(World world, BlockPos pos, Entity entity, CallbackInfo info) {
-    	if (Main.INSTANCE.moduleManager.isModuleEnabled("noSlow") && ((NoSlow)Main.INSTANCE.moduleManager.getModuleByName("noSlow")).slimeBlock.isEnabled())
+    	if (NoSlow.INSTANCE.isToggled() && NoSlow.INSTANCE.slimeBlock.isEnabled())
         	info.cancel();
     }
 }

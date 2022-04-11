@@ -11,12 +11,14 @@ import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.InputUpdateEvent;
 
 public class NoSlow extends Module {
+	public static final NoSlow INSTANCE = new NoSlow();
+
 	public BooleanSetting food = new BooleanSetting("food", this, true);
 	public BooleanSetting web = new BooleanSetting("web", this, true);
 	public BooleanSetting soulSand = new BooleanSetting("soulSand", this, true);
 	public BooleanSetting slimeBlock = new BooleanSetting("slimeBlock", this, true);
 	
-	public NoSlow() {
+	protected NoSlow() {
 		super ("noSlow", "slow? no.", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(food, web, soulSand, slimeBlock);
 	}
