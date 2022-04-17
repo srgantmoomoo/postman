@@ -78,8 +78,7 @@ public abstract class Module implements Toggleable {
 	}
 	
 	public void toggle() {
-		toggled = !toggled;
-		if(toggled) {
+		if(!toggled) {
 			enable();
 		} else {
 			disable();
