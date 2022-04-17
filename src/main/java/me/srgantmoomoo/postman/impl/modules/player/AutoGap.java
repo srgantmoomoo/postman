@@ -24,8 +24,8 @@ import net.minecraft.util.EnumHand;
 public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
 	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
-	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, false);
-	public BooleanSetting switchToGap = new BooleanSetting("switchToGap", this, false);
+	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, true);
+	public BooleanSetting switchToGap = new BooleanSetting("switchToGap", this, true);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PLAYER);
