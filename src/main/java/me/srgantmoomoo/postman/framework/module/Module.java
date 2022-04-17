@@ -9,12 +9,19 @@ import com.lukflug.panelstudio.settings.Toggleable;
 
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.backend.event.events.RenderEvent;
+import me.srgantmoomoo.postman.backend.event.events.postman.PostmanModuleDisableEvent;
+import me.srgantmoomoo.postman.backend.event.events.postman.PostmanModuleEnableEvent;
 import me.srgantmoomoo.postman.framework.module.setting.Setting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.KeybindSetting;
 import net.minecraft.client.Minecraft;
 
 /*
  * Written by @SrgantMooMoo on 11/17/20.
+ */
+
+/**
+ * @author SrgantMooMoo
+ * @since 4/16/22
  */
 
 public abstract class Module implements Toggleable {
@@ -104,11 +111,13 @@ public abstract class Module implements Toggleable {
 	protected void enable() {
 		onEnable();
 		setToggled(true);
+		Main.EVENT_BUS.post(new PostmanModuleEnableEvent(this));
 	}
 	
 	protected void disable() {
 		onDisable();
 		setToggled(false);
+		Main.EVENT_BUS.post(new PostmanModuleDisableEvent(this));
 	}
 	
 	protected void onEnable() {}

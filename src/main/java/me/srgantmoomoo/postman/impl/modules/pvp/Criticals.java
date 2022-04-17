@@ -21,9 +21,9 @@ public class Criticals extends Module {
 	}
 
     @EventHandler
-    private final Listener<NetworkPacketEvent> PacketEvent = new Listener<>(event -> {
+    private final Listener<NetworkPacketEvent> packetEvent = new Listener<>(event -> {
         if (event.getPacket() instanceof CPacketUseEntity) {
-            CPacketUseEntity packet = (CPacketUseEntity)event.getPacket();
+            CPacketUseEntity packet = (CPacketUseEntity) event.getPacket();
             
             if (packet.getAction() == CPacketUseEntity.Action.ATTACK) {
                 if (packet.getEntityFromWorld(mc.world) instanceof EntityLivingBase && mc.player.onGround && !mc.gameSettings.keyBindJump.isKeyDown()) {

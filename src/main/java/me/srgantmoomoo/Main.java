@@ -29,7 +29,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  * @author SrgantMooMoo
  * @since 11/17/2020
  */
+
 //soir
+
 //TODO surround rewrite.
 //TODO update panel studio.
 //TODO update alpine maybe?
@@ -37,6 +39,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 //TODO jesus rewrite.
 //TODO autoc rewrite.
 //TODO add xray.
+
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
 	int strong;
@@ -67,7 +70,7 @@ public class Main {
 	public ClickGuiLoad clickGuiLoad;
 	
 	@EventHandler
-	public void init (FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(this);
 
 		eventProcessor = new EventProcessor();
