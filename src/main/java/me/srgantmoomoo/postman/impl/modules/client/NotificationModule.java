@@ -24,11 +24,12 @@ import org.lwjgl.input.Keyboard;
 public class NotificationModule extends Module {
     public ModeSetting mode = new ModeSetting("mode", this, "chat", "chat", "hud");
     public BooleanSetting toggles = new BooleanSetting("moduleToggles", this, true);
+    public BooleanSetting coordsOnDeath = new BooleanSetting("coordsOnDeath", this, false);
     public static NotificationModule INSTANCE;
 
     public NotificationModule() {
         super("notification", "send notifications.", Keyboard.KEY_NONE, Category.CLIENT);
-        this.addSettings(mode, toggles);
+        this.addSettings(mode, toggles, coordsOnDeath);
         INSTANCE = this;
     }
 
@@ -38,7 +39,7 @@ public class NotificationModule extends Module {
             return;
         if(event.mod.getName().equalsIgnoreCase("clickGui"))
             return;
-        sendNoti(event.mod.getName() + ChatFormatting.GREEN + " enabled" + ChatFormatting.GRAY + ".");
+        sendNotification(event.mod.getName() + ChatFormatting.GREEN + " enabled" + ChatFormatting.GRAY + ".");
     });
 
     @EventHandler
@@ -47,10 +48,25 @@ public class NotificationModule extends Module {
             return;
         if(event.mod.getName().equalsIgnoreCase("clickGui"))
             return;
-        sendNoti(event.mod.getName() + ChatFormatting.DARK_RED + " disabled" + ChatFormatting.GRAY + ".");
+        sendNotification(event.mod.getName() + ChatFormatting.DARK_RED + " disabled" + ChatFormatting.GRAY + ".");
     });
 
-    public void sendNoti(String message) {
+    boolean run = true;
+    @Override
+    public void onUpdate() {
+        if(coordsOnDeath.isEnabled()) {
+            if(mc.player.isDead) {
+                if(run)
+                    sendNotification(ChatFormatting.WHITE + "lol u just died loser" + ChatFormatting.GRAY + " (x)" + mc.player.getPosition().x + " (y)" + mc.player.getPosition().y + " (z)" + mc.player.getPosition().z);
+                run = false;
+            }
+            if(!mc.player.isDead) {
+                run = true;
+            }
+        }
+    }
+
+    public void sendNotification(String message) {
         if(this.isToggled()) {
             if (mode.is("chat"))
                 Main.INSTANCE.commandManager.sendClientChatMessage(message, true);

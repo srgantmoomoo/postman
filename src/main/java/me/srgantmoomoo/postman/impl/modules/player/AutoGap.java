@@ -24,8 +24,8 @@ import net.minecraft.util.EnumHand;
 public class AutoGap extends Module {
 	public ModeSetting mode = new ModeSetting("mode", this, "always", "always", "smart");
 	public NumberSetting health = new NumberSetting("health", this, 16, 1, 20, 1);
-	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, true);
-	public BooleanSetting switchToGap = new BooleanSetting("switchToGap", this, true);
+	public BooleanSetting cancelInMenu = new BooleanSetting("cancelInMenu", this, false);
+	public BooleanSetting switchToGap = new BooleanSetting("switchToGap", this, false);
 	
 	public AutoGap() {
 		super("autoGap", "automattically eat any gapples in ur hand.", Keyboard.KEY_NONE, Category.PLAYER);
@@ -60,7 +60,7 @@ public class AutoGap extends Module {
 					mc.player.inventory.currentItem = findGappleSlot();
 					notified = false;
 				}else if(!notified) {
-					NotificationModule.INSTANCE.sendNoti(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
+					NotificationModule.INSTANCE.sendNotification(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
 					notified = true;
 				}
 			}
@@ -78,7 +78,7 @@ public class AutoGap extends Module {
 						mc.player.inventory.currentItem = findGappleSlot();
 						notified2 = false;
 					}else if(!notified2) {
-						NotificationModule.INSTANCE.sendNoti(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
+						NotificationModule.INSTANCE.sendNotification(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
 						notified2 = true;
 					}
 				}

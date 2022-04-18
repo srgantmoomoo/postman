@@ -31,7 +31,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  */
 
 //soir
-
 //TODO surround rewrite.
 //TODO update panel studio.
 //TODO update alpine maybe?
@@ -39,6 +38,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 //TODO jesus rewrite.
 //TODO autoc rewrite.
 //TODO add xray.
+//TODO finish notifications. (hud)
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
