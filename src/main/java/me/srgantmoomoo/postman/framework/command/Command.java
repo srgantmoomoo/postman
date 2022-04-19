@@ -1,5 +1,8 @@
 package me.srgantmoomoo.postman.framework.command;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.client.Minecraft;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,6 +10,13 @@ import java.util.List;
 public abstract class Command {
 	public String name, description, syntax;
 	public List<String> aliases = new ArrayList<String>();
+
+	protected static final Minecraft mc = Minecraft.getMinecraft();
+	protected static final ChatFormatting WHITE = ChatFormatting.WHITE;
+	protected static final ChatFormatting GRAY = ChatFormatting.GRAY;
+	protected static final ChatFormatting RED = ChatFormatting.RED;
+	protected static final ChatFormatting GREEN = ChatFormatting.GREEN;
+	protected static final ChatFormatting AQUA = ChatFormatting.AQUA;
 	
 	public Command(String name, String description, String syntax, String... aliases) {
 		this.name = name;

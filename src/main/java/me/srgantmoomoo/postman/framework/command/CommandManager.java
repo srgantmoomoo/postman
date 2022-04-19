@@ -32,6 +32,7 @@ public class CommandManager {
 
 		commands.add(new Prefix());
 		commands.add(new Toggle());
+		commands.add(new Setting());
 		commands.add(new Bind());
 		commands.add(new Baritone());
 		commands.add(new Friend());
@@ -62,7 +63,7 @@ public class CommandManager {
 				sendClientChatMessage("\n" + GRAY + "" + BOLD + "i love postman <3" + "\n" + RESET, false);
 				sendCommandDescriptions();
 				sendClientChatMessage("\n" + RESET + GRAY + BOLD + "i hate postman." + "\n", false);
-			} else {
+			}else {
 				for (Command c : commands) {
 					if (c.aliases.contains(commandName) || c.name.equalsIgnoreCase(commandName)) {
 						c.onCommand(Arrays.copyOfRange(message.split(" "), 1, message.split(" ").length), message);
@@ -117,7 +118,7 @@ public class CommandManager {
 	}
 	
 	public void sendCorrectionMessage(String name, String syntax) {
-		String correction = "correct usage of $name command -> $prefix$syntax.";
+		String correction = "correct usage of " + ChatFormatting.GRAY + name + ChatFormatting.WHITE + " command -> " + ChatFormatting.GRAY + prefix + syntax + ChatFormatting.WHITE + ".";
 		String message = ChatFormatting.GRAY + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.RESET + ": " + correction;
 		
 		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
