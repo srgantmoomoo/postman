@@ -5,6 +5,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 import me.srgantmoomoo.postman.framework.module.Module;
+import me.srgantmoomoo.postman.impl.modules.client.NotificationModule;
 
 public class Toggle extends Command {
 	public Toggle() {
@@ -19,7 +20,9 @@ public class Toggle extends Command {
 			for(Module module : Main.INSTANCE.moduleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.toggle();
-					Main.INSTANCE.commandManager.sendClientChatMessage(module.name + " " + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.DARK_RED + "disabled" + ChatFormatting.GRAY + "."), true);
+					if(!Main.INSTANCE.moduleManager.getModuleByName("notification").isToggled() || !NotificationModule.INSTANCE.toggles.isEnabled()) {
+						Main.INSTANCE.commandManager.sendClientChatMessage(module.name + " " + (module.isToggled() ? ChatFormatting.GREEN + "enabled" + ChatFormatting.GRAY + "." : ChatFormatting.DARK_RED + "disabled" + ChatFormatting.GRAY + "."), true);
+					}
 					moduleFound = true;
 					break;
 				}

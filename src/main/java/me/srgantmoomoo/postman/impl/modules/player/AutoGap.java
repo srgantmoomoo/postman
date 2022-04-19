@@ -62,7 +62,7 @@ public class AutoGap extends Module {
 					mc.player.inventory.currentItem = findGappleSlot();
 					notified = false;
 				}else if(!notified) {
-					NotificationModule.INSTANCE.sendNoti(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
+					NotificationModule.INSTANCE.sendNotification(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
 					notified = true;
 				}
 			}
@@ -80,7 +80,7 @@ public class AutoGap extends Module {
 						mc.player.inventory.currentItem = findGappleSlot();
 						notified2 = false;
 					}else if(!notified2) {
-						NotificationModule.INSTANCE.sendNoti(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
+						NotificationModule.INSTANCE.sendNotification(ChatFormatting.RED + "autoGap cannot find a golden apple in the hotbar or offhand.");
 						notified2 = true;
 					}
 				}

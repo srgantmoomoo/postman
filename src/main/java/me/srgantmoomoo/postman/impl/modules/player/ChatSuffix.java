@@ -13,12 +13,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatSuffix extends Module {
-	public ModeSetting mode = new ModeSetting("mode", this, "normal", "normal", "fucked lol");
-	public BooleanSetting discludePercent = new BooleanSetting("disclude%", this, true);
 	
 	public ChatSuffix() {
 		super ("chatSuffix", "adds postman suffix to all of ur chat msg's.", Keyboard.KEY_NONE, Category.PLAYER);
-		this.addSettings(mode);
+		this.addSettings();
 	}
 
 	@SubscribeEvent
@@ -28,6 +26,7 @@ public class ChatSuffix extends Module {
 				if (event.getMessage().startsWith(s)) return;
 			}
 		}
+		event.setMessage(event.getMessage() + " :) i love postman <3");
 	}
 	
 	@Override

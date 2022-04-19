@@ -43,7 +43,7 @@ public class SelfFill extends Module {
 	private int startSlot;
 	
 	public SelfFill() {
-		super("selfFill", "kek", Keyboard.KEY_NONE, Category.PVP);
+		super("selfFill", "fill the whole u r standing in with obby.", Keyboard.KEY_NONE, Category.PVP);
 		this.addSettings(mode, autoSwitch, rotations, offset, autoDisable, rubberbandDelay);
 	}
 	
