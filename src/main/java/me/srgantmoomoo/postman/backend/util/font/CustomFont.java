@@ -153,7 +153,7 @@ public class CustomFont {
         tex = setupTexture(font, this.antiAlias, this.fractionalMetrics, this.charData);
     }
 
-    protected class CharData {
+    protected static class CharData {
         public int width;
         public int height;
         public int storedX;

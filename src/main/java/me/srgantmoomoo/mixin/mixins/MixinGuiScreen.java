@@ -1,6 +1,5 @@
 package me.srgantmoomoo.mixin.mixins;
 
-import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.impl.modules.render.Peek;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

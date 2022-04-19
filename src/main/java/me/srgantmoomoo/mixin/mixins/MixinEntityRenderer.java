@@ -17,7 +17,6 @@ import me.srgantmoomoo.postman.impl.modules.render.NoRender;
 
 @Mixin(EntityRenderer.class)
 public class MixinEntityRenderer {
-
 	@Inject(method = "hurtCameraEffect", at = @At("HEAD"), cancellable = true)
 	public void hurtCameraEffect(float ticks, CallbackInfo info) {
 		if (NoRender.INSTANCE.isToggled() && NoRender.INSTANCE.hurtCam.is("normal"))

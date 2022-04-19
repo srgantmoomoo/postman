@@ -29,7 +29,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  * @author SrgantMooMoo
  * @since 11/17/2020
  */
-//soir
 //TODO surround rewrite.
 //TODO update panel studio.
 //TODO update alpine maybe?

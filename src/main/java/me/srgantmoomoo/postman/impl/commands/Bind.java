@@ -21,7 +21,7 @@ public class Bind extends Command {
 			
 			for(Module module : Main.INSTANCE.moduleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
-					module.keyCode.setKeyCode(Keyboard.getKeyIndex(keyName.toUpperCase()));
+					module.keyCode.setKey(Keyboard.getKeyIndex(keyName.toUpperCase()));
 
 					Main.INSTANCE.commandManager.sendClientChatMessage(module.getName() + " bound to " + ChatFormatting.GREEN + Keyboard.getKeyName(module.getKey()), true);;
 					moduleFound = true;
@@ -34,7 +34,7 @@ public class Bind extends Command {
 		}else if(args.length == 1) {
 			if(args[0].equalsIgnoreCase("clear")) {
 				for(Module module : Main.INSTANCE.moduleManager.modules) {
-					module.keyCode.setKeyCode(Keyboard.KEY_NONE);
+					module.keyCode.setKey(Keyboard.KEY_NONE);
 				}
 				Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.GREEN + "cleared all binds" + ChatFormatting.WHITE + ".", true);
 			} else

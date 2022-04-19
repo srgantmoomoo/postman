@@ -30,7 +30,7 @@ public abstract class Module implements Toggleable {
 	public Module(String name, String description, int key, Category category) {
 		this.name = name;
 		this.description = description;
-		this.keyCode.code = key;
+		this.keyCode.setKey(key);
 		this.addSettings(keyCode);
 		this.category = category;
 		this.toggled = false;
@@ -46,11 +46,11 @@ public abstract class Module implements Toggleable {
 	}
 	
 	public int getKey() {
-		return this.keyCode.code;
+		return this.keyCode.getKey();
 	}
 	
 	public void setKey(int key) {
-		this.keyCode.code = key;
+		this.keyCode.setKey(key);
 		
 		if(Main.INSTANCE.saveLoad != null) {
 			Main.INSTANCE.saveLoad.save();
@@ -64,11 +64,13 @@ public abstract class Module implements Toggleable {
 	public Category getCategory() {
 		return this.category;
 	}
-	
+
+	@Override
 	public final boolean isOn() {
 		return this.toggled;
 	}
-	
+
+	@Override
 	public void toggle() {
 		toggled = !toggled;
 		if(toggled) {

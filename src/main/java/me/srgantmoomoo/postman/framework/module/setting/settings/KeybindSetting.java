@@ -9,33 +9,25 @@ import me.srgantmoomoo.postman.framework.module.setting.Setting;
  */
 
 public class KeybindSetting extends Setting implements com.lukflug.panelstudio.settings.KeybindSetting {
-	public int code;
+	private int key;
 	
-	public KeybindSetting(int code) {
+	public KeybindSetting(int key) {
 		this.name = "KeyBind";
-		this.code = code;
-	}
-
-	public int getKeyCode() {
-		return this.code;
-	}
-	
-	public void setKeyCode(int code) {
-		this.code = code;
+		this.key = key;
 	}
 
 	@Override
 	public int getKey() {
-		return code;
+		return key;
 	}
 
 	@Override
 	public String getKeyName() {
-		return Keyboard.getKeyName(code);
+		return Keyboard.getKeyName(key);
 	}
 
 	@Override
 	public void setKey(int key) {
-		code=key;
+		this.key = key;
 	}
 }

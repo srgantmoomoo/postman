@@ -12,7 +12,6 @@ import me.srgantmoomoo.postman.backend.event.events.CanCollideCheckEvent;
 
 @Mixin(BlockLiquid.class)
 public class MixinBlockLiquid {
-	
 	@Inject(method = "canCollideCheck", at = @At("HEAD"), cancellable = true)
     public void canCollideCheck(final IBlockState blockState, final boolean b, final CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
         CanCollideCheckEvent event = new CanCollideCheckEvent();

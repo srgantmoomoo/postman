@@ -16,7 +16,6 @@ import me.srgantmoomoo.postman.impl.modules.movement.NoSlow;
 public class MixinBlockWeb {
     @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
     private void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn, CallbackInfo info) {
-		if (NoSlow.INSTANCE.isToggled() && NoSlow.INSTANCE.web.isEnabled())
-        	info.cancel();
+		if (NoSlow.INSTANCE.isToggled() && NoSlow.INSTANCE.web.isEnabled()) info.cancel();
     }
 }
