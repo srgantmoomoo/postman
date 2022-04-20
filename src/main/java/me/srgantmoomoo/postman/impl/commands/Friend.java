@@ -16,21 +16,21 @@ public class Friend extends Command {
 		if(args.length == 2) {
 			if(args[0].equalsIgnoreCase("add")) {
 				Main.INSTANCE.friendManager.addFriend(args[1]);
-				Main.INSTANCE.commandManager.sendClientChatMessage("added friend: " + ChatFormatting.GREEN + args[1].toUpperCase(), true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("added friend " + WHITE + args[1].toUpperCase() + GRAY + ".", true);
 			}else if(args[0].equalsIgnoreCase("remove")) {
 				if(Main.INSTANCE.friendManager.isFriend(args[1])) {
 					Main.INSTANCE.friendManager.removeFriend(args[1]);
-					Main.INSTANCE.commandManager.sendClientChatMessage("removed friend: " + ChatFormatting.DARK_RED + args[1].toUpperCase(), true);
+					Main.INSTANCE.commandManager.sendClientChatMessage("removed friend: " + WHITE + args[1].toUpperCase() + GRAY + ".", true);
 				}else
-					Main.INSTANCE.commandManager.sendClientChatMessage("friend " + ChatFormatting.DARK_RED + args[1] + ChatFormatting.RESET + " is not on your friends list.", true);
+					Main.INSTANCE.commandManager.sendClientChatMessage("player " + WHITE + args[1] + GRAY + " is not on your friends list.", true);
 			}else
 				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 		}else if(args.length == 1) {
 			if(args[0].equalsIgnoreCase("list")) {
-				Main.INSTANCE.commandManager.sendClientChatMessage("friends: " + Main.INSTANCE.friendManager.getFriendsByName(), true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("friends: " + WHITE + Main.INSTANCE.friendManager.getFriendsByName() + GRAY + ".", true);
 			}else if(args[0].equalsIgnoreCase("clear")) {
 				Main.INSTANCE.friendManager.clearFriends();
-				Main.INSTANCE.commandManager.sendClientChatMessage("cleared all friends", true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("cleared all friends.", true);
 			}else
 				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 		}else

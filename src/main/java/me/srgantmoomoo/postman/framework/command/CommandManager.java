@@ -109,7 +109,7 @@ public class CommandManager {
     }
 
 	public void sendClientChatMessage(String message, boolean prefix) {
-		String messageWithPrefix = ChatFormatting.GRAY + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.RESET + ": " + message;
+		String messageWithPrefix = ChatFormatting.LIGHT_PURPLE + "" + ChatFormatting.ITALIC + "@" + Reference.NAME + ChatFormatting.RESET + "" + ChatFormatting.GRAY + ": " + message;
 
 		if(prefix)
 			Minecraft.getMinecraft().player.sendMessage(new TextComponentString(messageWithPrefix));

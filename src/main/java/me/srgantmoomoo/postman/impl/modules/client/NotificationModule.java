@@ -48,7 +48,7 @@ public class NotificationModule extends Module {
             return;
         if(event.mod.getName().equalsIgnoreCase("clickGui"))
             return;
-        sendNotification(event.mod.getName() + ChatFormatting.DARK_RED + " disabled" + ChatFormatting.GRAY + ".");
+        sendNotification(event.mod.getName() + ChatFormatting.RED + " disabled" + ChatFormatting.GRAY + ".");
     });
 
     boolean run = true;

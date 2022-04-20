@@ -31,12 +31,12 @@ public class Setting extends Command {
         me.srgantmoomoo.postman.framework.module.setting.Setting setting = Main.INSTANCE.settingManager.getSettingByName(module, settingNameInput);
 
         if(module == null) {
-            Main.INSTANCE.commandManager.sendClientChatMessage("the module" + RED + moduleInput + GRAY + " does not exist.", true);
+            Main.INSTANCE.commandManager.sendClientChatMessage("the module " + RED + moduleInput + GRAY + " was not found.", true);
             return;
         }
 
         if(setting == null) {
-            Main.INSTANCE.commandManager.sendClientChatMessage("the setting" + RED + settingNameInput + GRAY + " does not exist for the module " + WHITE + moduleInput + GRAY + ".", true);
+            Main.INSTANCE.commandManager.sendClientChatMessage("the setting " + RED + settingNameInput + GRAY + " was not found for the module " + WHITE + moduleInput + GRAY + ".", true);
             return;
         }
 

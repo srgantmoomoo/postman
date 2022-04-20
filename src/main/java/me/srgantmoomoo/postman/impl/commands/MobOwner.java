@@ -25,12 +25,12 @@ public class MobOwner extends Command {
 				 
 				 try {
 					 String ownerReplace = Objects.requireNonNull(EntityUtil.getNameFromUUID(ownerUUID)).replace("\"", "");
-					 Main.INSTANCE.commandManager.sendClientChatMessage("mob owner is " + TextFormatting.GREEN + ownerReplace, true);
+					 Main.INSTANCE.commandManager.sendClientChatMessage("mob owner is " + WHITE + ownerReplace  + GRAY + ".", true);
 				 }catch (Exception e) {
 					 Main.INSTANCE.commandManager.sendClientChatMessage("something went wrong, this entity may not have a real owner.", true);
 				 }
 			 }else {
-				 Main.INSTANCE.commandManager.sendClientChatMessage("ridden entity is not compatible with this command", true);
+				 Main.INSTANCE.commandManager.sendClientChatMessage("ridden entity is not compatible with this command.", true);
 			 }
 		}else Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 	}

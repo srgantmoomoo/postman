@@ -22,10 +22,10 @@ public class Clip extends Command {
 			assert entity != null;
 			if(start.equalsIgnoreCase("v")) {
 				entity.setPosition(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY + Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posZ);
-				Main.INSTANCE.commandManager.sendClientChatMessage("vertically clipped " + args[1] + " blocks", true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("vertically clipped " + WHITE + args[1] + GRAY +" blocks.", true);
 			}else if(start.equalsIgnoreCase("h")) {
-				entity.setPosition(Minecraft.getMinecraft().player.posX + faceDirection.x * Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ + faceDirection.z * Double.valueOf(args[1]));
-				Main.INSTANCE.commandManager.sendClientChatMessage("horizontally clipped " + args[1] + " blocks", true);
+				entity.setPosition(Minecraft.getMinecraft().player.posX + faceDirection.x * Double.parseDouble(args[1]), Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ + faceDirection.z * Double.parseDouble(args[1]));
+				Main.INSTANCE.commandManager.sendClientChatMessage("horizontally clipped " + WHITE + args[1] + GRAY + " blocks.", true);
 			}else
 				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 		}else

@@ -11,7 +11,7 @@ import me.srgantmoomoo.postman.framework.module.Module;
 public class Bind extends Command {
 	
 	public Bind() {
-		super("bind", "bind modules to specific keys.", "bind <name> <key> | bind clear", "bi");
+		super("bind", "bind modules to specific keys.", "bind <module> <key> | bind clear", "bi");
 	}
 
 	@Override
@@ -24,22 +24,21 @@ public class Bind extends Command {
 			for(Module module : Main.INSTANCE.moduleManager.modules) {
 				if(module.name.equalsIgnoreCase(moduleName)) {
 					module.keyCode.setKeyCode(Keyboard.getKeyIndex(keyName.toUpperCase()));
-
-					Main.INSTANCE.commandManager.sendClientChatMessage(module.getName() + " bound to " + ChatFormatting.GREEN + Keyboard.getKeyName(module.getKey()), true);;
+					Main.INSTANCE.commandManager.sendClientChatMessage(module.getName() + " was bound to " + WHITE + Keyboard.getKeyName(module.getKey()) + GRAY + ".", true);
 					moduleFound = true;
 					break;
 				}
 			}
 			if(!moduleFound) {
-				Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.DARK_RED + "module not found.", true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("the module " + WHITE + moduleName + GRAY + " was not found.", true);
 			}
 		}else if(args.length == 1) {
 			if(args[0].equalsIgnoreCase("clear")) {
 				for(Module module : Main.INSTANCE.moduleManager.modules) {
 					module.keyCode.setKeyCode(Keyboard.KEY_NONE);
 				}
-				Main.INSTANCE.commandManager.sendClientChatMessage(ChatFormatting.GREEN + "cleared all binds" + ChatFormatting.WHITE + ".", true);
-			} else
+				Main.INSTANCE.commandManager.sendClientChatMessage("cleared all binds" + GRAY + ".", true);
+			}else
 				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 		}else
 			Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());

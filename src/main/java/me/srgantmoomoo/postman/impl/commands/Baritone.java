@@ -18,10 +18,10 @@ public class Baritone extends Command {
 			if(args[0].equalsIgnoreCase("stop")) {
 				BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().cancel();
 				BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoal(null);
-				Main.INSTANCE.commandManager.sendClientChatMessage("baritone has now " + ChatFormatting.GREEN + "stopped" + ChatFormatting.WHITE + ".", true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("baritone has now " + RED + "stopped" + GRAY + ".", true);
 			}else if(args[0].equalsIgnoreCase("farm")) {
 				BaritoneAPI.getProvider().getPrimaryBaritone().getFarmProcess().farm();
-				Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now " + ChatFormatting.GREEN + "farming" + ChatFormatting.WHITE + ".", true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now " + GREEN + "farming" + GRAY + ".", true);
 			}else
 				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 
@@ -30,7 +30,7 @@ public class Baritone extends Command {
 				String block = args[1];
 				try {
 					BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().mineByName(block);
-					Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now mining " + ChatFormatting.GREEN + block + ChatFormatting.WHITE + ".", true);
+					Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now mining " + GREEN + block + GRAY + ".", true);
 				}catch (Exception e) {
 					Main.INSTANCE.commandManager.sendClientChatMessage("baritone could not find that block. :(", true);
 				}
@@ -42,7 +42,7 @@ public class Baritone extends Command {
 				String x = args[1];
 				String z = args[2];
 				BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().setGoalAndPath(new GoalXZ(Integer.parseInt(x), Integer.parseInt(z)));
-				Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now pathing to " + ChatFormatting.GREEN + x + " " + z + ChatFormatting.WHITE + ".", true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("baritone is now pathing to " + GREEN + x + " " + z + GRAY + ".", true);
 			}else
 				Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
 		}else

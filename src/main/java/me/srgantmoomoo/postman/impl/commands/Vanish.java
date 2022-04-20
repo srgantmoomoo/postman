@@ -20,14 +20,14 @@ public class Vanish extends Command {
 				
 			    Minecraft.getMinecraft().player.dismountRidingEntity();
 			    Minecraft.getMinecraft().world.removeEntityFromWorld(ridden.getEntityId());
-				Main.INSTANCE.commandManager.sendClientChatMessage("entity " + ridden.getName() + " removed.", true);
+				Main.INSTANCE.commandManager.sendClientChatMessage("entity " + WHITE + ridden.getName() + GRAY + " removed.", true);
 			}else {
 			    if (ridden != null) {
 			    	ridden.isDead = false;
 			    	
 			        Minecraft.getMinecraft().world.addEntityToWorld(ridden.getEntityId(), ridden);
 			        Minecraft.getMinecraft().player.startRiding(ridden, true);
-					Main.INSTANCE.commandManager.sendClientChatMessage("entity " + ridden.getName() + " created.", true);
+					Main.INSTANCE.commandManager.sendClientChatMessage("entity " + WHITE + ridden.getName() + GRAY + " created.", true);
 			        ridden = null;
 			    }else
 					Main.INSTANCE.commandManager.sendClientChatMessage("no entity is being ridden", true);
