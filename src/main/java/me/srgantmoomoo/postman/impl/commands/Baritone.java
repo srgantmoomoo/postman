@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.impl.commands;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 import baritone.api.BaritoneAPI;
 import baritone.api.pathing.goals.GoalXZ;
 import me.srgantmoomoo.Main;

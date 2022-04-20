@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.impl.commands;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.framework.command.Command;
 

@@ -109,7 +109,7 @@ public class CommandManager {
     }
 
 	public void sendClientChatMessage(String message, boolean prefix) {
-		String messageWithPrefix = ChatFormatting.LIGHT_PURPLE + "" + ChatFormatting.ITALIC + "@" + Reference.NAME + ChatFormatting.RESET + "" + ChatFormatting.GRAY + ": " + message;
+		String messageWithPrefix = ChatFormatting.WHITE + "" + ChatFormatting.ITALIC + "@" + Reference.NAME + ": " + ChatFormatting.RESET + ChatFormatting.GRAY + message;
 
 		if(prefix)
 			Minecraft.getMinecraft().player.sendMessage(new TextComponentString(messageWithPrefix));
@@ -118,9 +118,7 @@ public class CommandManager {
 	}
 	
 	public void sendCorrectionMessage(String name, String syntax) {
-		String correction = "correct usage of " + ChatFormatting.GRAY + name + ChatFormatting.WHITE + " command -> " + ChatFormatting.GRAY + prefix + syntax + ChatFormatting.WHITE + ".";
-		String message = ChatFormatting.GRAY + "@" + ChatFormatting.ITALIC + Reference.NAME + ChatFormatting.RESET + ": " + correction;
-		
-		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
+		String correction = "correct usage of " + ChatFormatting.WHITE + name + ChatFormatting.GRAY + " command -> " + ChatFormatting.WHITE + prefix + syntax + ChatFormatting.GRAY + ".";
+		sendClientChatMessage(correction, true);
 	}
 }
