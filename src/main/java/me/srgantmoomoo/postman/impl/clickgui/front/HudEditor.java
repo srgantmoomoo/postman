@@ -39,6 +39,7 @@ public class HudEditor extends Module {
 	
 	@Override
 	public void onDisable() {
-		mc.entityRenderer.getShaderGroup().deleteShaderGroup();
+		if(mc.entityRenderer.getShaderGroup() != null)
+			mc.entityRenderer.getShaderGroup().deleteShaderGroup();
 	}
 }
