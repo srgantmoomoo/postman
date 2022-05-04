@@ -88,15 +88,14 @@ public class Esp extends Module {
     int opacityGradient;
 
     public void onDisable() {
-        if (entities != mc.player) {
+        if (entities != mc.player)
             entities.forEach(e -> e.setGlowing(false));
-        }
     }
 
     @Override
     public void onWorldRender(RenderEvent event) {
-
-        mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).filter(this::rangeEntityCheck).forEach(entity -> {
+        entities = mc.world.loadedEntityList.stream().filter(entity -> entity != mc.player).collect(Collectors.toList());
+        entities.forEach(entity -> {
             defineEntityColors(entity);
 
             // readable code :thumbs_up:
@@ -188,7 +187,6 @@ public class Esp extends Module {
                 if(crystalMode.is("glow"))
                     entity.setGlowing(true);
             }
-
             // outline esp is under MixinRendererLivingBase.
         });
 

@@ -16,12 +16,19 @@ public class HudEditor extends Module {
 		this.addSettings(exitToClickGui);
 	}
 	private ResourceLocation shader = new ResourceLocation("minecraft", "shaders/post/blur" + ".json");
-	
+
+
 	@Override
 	public void onEnable() {
 		Main.INSTANCE.clickGui.enterHUDEditor();
 		if(ClickGuiModule.INSTANCE.blur.isEnabled()) 
 			mc.entityRenderer.loadShader(shader);
+	}
+
+	@Override
+	public void onDisable() {
+		if(mc.entityRenderer.getShaderGroup() != null)
+			mc.entityRenderer.getShaderGroup().deleteShaderGroup();
 	}
 	
 	@Override
@@ -35,11 +42,5 @@ public class HudEditor extends Module {
 			}
 		}
 		
-	}
-	
-	@Override
-	public void onDisable() {
-		if(mc.entityRenderer.getShaderGroup() != null)
-			mc.entityRenderer.getShaderGroup().deleteShaderGroup();
 	}
 }
