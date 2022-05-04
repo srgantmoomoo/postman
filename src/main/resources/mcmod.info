@@ -3,11 +3,11 @@
 	"modid": "pst",
 	"name": "postman",
 	"description": "a minecraft client for 1.12.2 anarchy servers.",
-	"version": "3.0",
+	"version": "3.001",
 	"mcversion": "1.12.2",
 	"url": "https://github.com/moomooooo/postman",
 	"authorList": ["SrgantMooMoo", "lukflug", "techale"],
-	"credits": "lukflug for PanelStudio click gui library. ZeroMemes for Alpine event system.",
+	"credits": "lukflug for PanelStudio click gui library. ZeroMemes for Alpine event system. all the postman contributors :)",
 	"logoFile": "postman-forge-logo.png",
 	"screenshots": [],
 	"dependencies": []
