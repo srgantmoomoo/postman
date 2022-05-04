@@ -9,7 +9,6 @@ import net.minecraft.client.gui.GuiMainMenu;
 
 public class AutoDisconnect extends Module {
 	public NumberSetting health = new NumberSetting("health", this, 10, 1, 30, 1);
-
 	
 	public AutoDisconnect() {
 		super ("autoDisconnect", "automatically disconnects at desired health.", Keyboard.KEY_NONE, Category.PLAYER);

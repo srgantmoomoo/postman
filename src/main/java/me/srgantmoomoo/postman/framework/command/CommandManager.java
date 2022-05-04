@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import me.srgantmoomoo.postman.backend.event.listener.EventHandler;
+import me.srgantmoomoo.postman.backend.event.listener.Listener;
 import org.lwjgl.input.Keyboard;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
@@ -11,8 +13,6 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.srgantmoomoo.Main;
 import me.srgantmoomoo.Reference;
 import me.srgantmoomoo.postman.impl.commands.*;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.util.text.TextComponentString;
@@ -28,7 +28,7 @@ public class CommandManager {
 	
 	public CommandManager() {
 		MinecraftForge.EVENT_BUS.register(this);
-		Main.EVENT_BUS.subscribe(this);
+		Main.EVENT_BUS.register(this);
 
 		commands.add(new Prefix());
 		commands.add(new Toggle());

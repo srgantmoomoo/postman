@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 
+import me.srgantmoomoo.postman.backend.event.listener.EventHandler;
+import me.srgantmoomoo.postman.backend.event.listener.Listener;
 import net.minecraftforge.client.event.*;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONArray;
@@ -18,9 +20,6 @@ import me.srgantmoomoo.Main;
 import me.srgantmoomoo.postman.backend.event.events.PacketEvent;
 import me.srgantmoomoo.postman.backend.event.events.PlayerJoinEvent;
 import me.srgantmoomoo.postman.backend.event.events.PlayerLeaveEvent;
-import me.srgantmoomoo.postman.framework.module.ModuleManager;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.SPacketPlayerListItem;
 import net.minecraftforge.common.MinecraftForge;
@@ -41,7 +40,7 @@ public class EventProcessor {
 
 	public EventProcessor() {
 		instance = this;
-		Main.EVENT_BUS.subscribe(this);
+		Main.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

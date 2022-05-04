@@ -14,7 +14,7 @@ import net.minecraft.client.gui.GuiScreen;
 
 @Mixin({GuiMainMenu.class})
 public class MixinGuiMainMenu extends GuiScreen {
-	@Inject(method = {"drawScreen"}, at = {@At("TAIL")}, cancellable = true)
+	@Inject(method = "drawScreen", at = @At("TAIL"))
 	public void drawText(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
 		if(Main.INSTANCE.moduleManager.getModuleByName("mainMenuWatermark").isToggled()) {
 			FontRenderer fr = mc.fontRenderer;

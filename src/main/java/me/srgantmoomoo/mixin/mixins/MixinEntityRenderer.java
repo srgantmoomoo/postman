@@ -31,5 +31,5 @@ public class MixinEntityRenderer {
 	    if (event.isCancelled())
 	        return null;
 	    else return worldClient.rayTraceBlocks(start, end);
-	    }
+	}
 }

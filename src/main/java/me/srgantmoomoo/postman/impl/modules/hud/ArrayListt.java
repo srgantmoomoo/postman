@@ -20,7 +20,7 @@ import me.srgantmoomoo.postman.framework.module.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.framework.module.setting.settings.ModeSetting;
 
 public class ArrayListt extends HudModule {
-	private ModuleArrayList list = new ModuleArrayList();
+	private final ModuleArrayList list = new ModuleArrayList();
 	
 	public ColorSetting color = new ColorSetting("color", this, new JColor(255, 255, 255, 255));
 	public ModeSetting sortHeight = new ModeSetting("sortHeight", this, "betic", "betic", "up", "down");

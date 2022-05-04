@@ -39,13 +39,11 @@ public class KillAura extends Module {
 				.filter(entity -> entity != mc.player)
 				.filter(entity -> mc.player.getDistance(entity) <= range.getValue())
 				.filter(entity -> !entity.isDead)
-				.filter(entity -> attackCheck(entity))
+				.filter(this::attackCheck)
 				.sorted(Comparator.comparing(s -> mc.player.getDistance(s)))
 				.collect(Collectors.toList());
 
-		targets.forEach(target -> {
-			attack(target);
-		});
+		targets.forEach(this::attack);
 	}
 
 	public void attack(Entity e) {

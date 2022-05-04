@@ -33,7 +33,7 @@ public abstract class Module implements Toggleable {
 	public boolean toggled;
 	public boolean expanded;
 	public int index;
-	public List<Setting> settings = new ArrayList<Setting>();
+	public List<Setting> settings = new ArrayList<>();
 	
 	public Module(String name, String description, int key, Category category) {
 		this.name = name;
@@ -97,9 +97,9 @@ public abstract class Module implements Toggleable {
 		this.toggled = toggled;
 		
 		if(toggled) {
-			Main.EVENT_BUS.subscribe(this);
+			Main.EVENT_BUS.register(this);
 		} else {
-			Main.EVENT_BUS.unsubscribe(this);
+			Main.EVENT_BUS.register(this);
 		}
 		
 		if(Main.INSTANCE.saveLoad != null) {

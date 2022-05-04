@@ -258,7 +258,7 @@ public class Nametags extends Module {
             if(protType.isEnabled()) {
             	int level = EnchantmentHelper.getEnchantmentLevel(enchantment, itemStack);
                 if(enchantment.equals(Enchantments.BLAST_PROTECTION) || enchantment.equals(Enchantments.PROTECTION))
-                mc.fontRenderer.drawStringWithShadow(ChatFormatting.BOLD + findStringForEnchants(enchantment, level), posX * 2 + 13, posY + 18, 0xffffffff);
+                    mc.fontRenderer.drawStringWithShadow(ChatFormatting.BOLD + findStringForEnchants(enchantment, level), posX * 2 + 13, posY + 18, 0xffffffff);
             }
         }
 

@@ -1,5 +1,6 @@
 package me.srgantmoomoo;
 
+import me.srgantmoomoo.postman.backend.event.bus.EventBus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,8 +17,6 @@ import me.srgantmoomoo.postman.framework.friend.FriendManager;
 import me.srgantmoomoo.postman.framework.module.ModuleManager;
 import me.srgantmoomoo.postman.framework.module.setting.SettingManager;
 import me.srgantmoomoo.postman.impl.clickgui.back.ClickGui;
-import me.zero.alpine.EventBus;
-import me.zero.alpine.EventManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -46,7 +45,7 @@ public class Main {
 	int postman = strong;
 	
 	public static final Logger log = LogManager.getLogger("postman");
-	public static final EventBus EVENT_BUS = new EventManager();
+	public static final EventBus EVENT_BUS = new EventBus();
 
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;

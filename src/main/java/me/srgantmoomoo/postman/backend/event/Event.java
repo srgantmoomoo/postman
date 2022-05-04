@@ -1,20 +1,20 @@
 package me.srgantmoomoo.postman.backend.event;
 
 import me.srgantmoomoo.postman.backend.util.Wrapper;
-import me.zero.alpine.type.Cancellable;
 
-public class Event extends Cancellable {
+public class Event {
 	
 	private Era era = Era.PRE;
     private final float partialTicks;
+    private boolean cancelled = false;
 
     public Event() {
         partialTicks = Wrapper.getMinecraft().getRenderPartialTicks();
     }
     
-    public Event(Era p_Era) {
+    public Event(Era era) {
         partialTicks = Wrapper.getMinecraft().getRenderPartialTicks();
-        era = p_Era;
+        this.era = era;
     }
 
     public Era getEra() {
@@ -23,6 +23,14 @@ public class Event extends Cancellable {
 
     public float getPartialTicks() {
         return partialTicks;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void cancel() {
+        cancelled = true;
     }
     
     public enum Era {

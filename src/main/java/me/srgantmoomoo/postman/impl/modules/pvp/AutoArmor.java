@@ -17,7 +17,7 @@ public class AutoArmor extends Module {
 	public AutoArmor() {
 		super("autoArmor", "automatically applies the best armor.", Keyboard.KEY_NONE, Category.PVP);
 	}
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	
 	@Override
 	public void onUpdate() {

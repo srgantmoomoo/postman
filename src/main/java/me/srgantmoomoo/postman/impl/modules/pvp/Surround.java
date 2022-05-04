@@ -30,7 +30,7 @@ import net.minecraft.util.math.Vec3d;
  * Almost completely stolen from gamesense. @Srgantmoomoo November 6th, 2020
  */
 public class Surround extends Module {
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 
 	public BooleanSetting triggerSurround = new BooleanSetting("trigger", this, false);
 	public BooleanSetting shiftOnly = new BooleanSetting("onShift", this, false);
