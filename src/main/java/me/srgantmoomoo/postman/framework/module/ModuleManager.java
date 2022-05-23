@@ -120,6 +120,7 @@ public class ModuleManager {
 		modules.add(new Totems());
 		modules.add(new Gapples());
 		modules.add(new Crystals());
+		modules.add(new Dubs());
 		modules.add(new Ping());
 		modules.add(new Frames());
 		modules.add(new AutoCrystalHud());
