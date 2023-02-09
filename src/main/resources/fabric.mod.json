@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "postman",
+  "version": "4.0",
+
+  "name": "postman",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "SrgantMooMoo",
+    "TechAle",
+    "lukflug",
+    "cattyn",
+    "fluffery",
+    "MWA",
+    "The-Forecaster",
+    "probably some other people"
+
+  ],
+  "contact": {
+    "homepage": "https://techale.github.io/postman-website/",
+    "sources": "https://github.com/srgantmoomoo/postman"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "me.srgantmoomoo.postman.Main"
+    ]
+  },
+  "mixins": [
+    "postman.mixins.json"
+  ],
+
+  "accessWidener" : "postman.aw",
+
+  "depends": {
+    "fabricloader": ">=0.14.11",
+    "fabric-api": "*",
+    "minecraft": "~1.19.3",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
