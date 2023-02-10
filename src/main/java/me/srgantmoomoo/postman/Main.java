@@ -4,9 +4,9 @@ import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.module.setting.SettingManager;
 import net.fabricmc.api.ModInitializer;
 
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+//soir
 public class Main implements ModInitializer {
     int strong;
     int postman = strong;
