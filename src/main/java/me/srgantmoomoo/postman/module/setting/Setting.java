@@ -10,7 +10,15 @@ public class Setting {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Module getParent() {
         return parent;
+    }
+
+    public void setParent(Module parent) {
+        this.parent = parent;
     }
 }
