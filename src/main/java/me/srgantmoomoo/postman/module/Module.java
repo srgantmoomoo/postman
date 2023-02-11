@@ -1,5 +1,9 @@
 package me.srgantmoomoo.postman.module;
 
+import com.lukflug.panelstudio.base.IBoolean;
+import com.lukflug.panelstudio.base.IToggleable;
+import com.lukflug.panelstudio.setting.IModule;
+import com.lukflug.panelstudio.setting.ISetting;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.KeybindSetting;
@@ -8,8 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class Module {
+public class Module implements IModule {
 
     private final String name;
     private final String description;
@@ -32,8 +37,13 @@ public class Module {
         this.settings.sort(Comparator.comparingInt(s -> s == key ? 1 : 0));
     }
 
-    public List<Setting> getSettings() {
+    public List<Setting> getModuleSettings() {
         return settings;
+    }
+
+    @Override
+    public Stream<ISetting<?>> getSettings() {
+        return settings.stream().filter(setting->setting instanceof ISetting).sorted((a,b)->a.getName().compareTo(b.getName())).map(setting->(ISetting<?>)setting);
     }
 
     public int getKey() {
@@ -48,6 +58,12 @@ public class Module {
         return name;
     }
 
+    @Override
+    public String getDisplayName() {
+        return name;
+    }
+
+    @Override
     public String getDescription() {
         return description;
     }
@@ -56,8 +72,23 @@ public class Module {
         return category;
     }
 
-    public boolean isEnabled() {
+    public boolean isModuleEnabled() {
         return enabled;
+    }
+
+    @Override
+    public IToggleable isEnabled() {
+        return new IToggleable() {
+            @Override
+            public boolean isOn() {
+                return enabled;
+            }
+
+            @Override
+            public void toggle() {
+                enabled=!enabled;
+            }
+        };
     }
 
     public void setEnabled(boolean enabled) {
@@ -93,6 +124,11 @@ public class Module {
         onDisable();
         setEnabled(false);
         //un subscribe
+    }
+
+    @Override
+    public IBoolean isVisible() {
+        return ()->true;
     }
 
 }

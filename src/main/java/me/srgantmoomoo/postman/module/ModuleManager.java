@@ -17,7 +17,7 @@ public class ModuleManager {
 
     public void onEvent(Event e) {
         for(Module module : getModules()) {
-            if(!module.isEnabled())
+            if(!module.isModuleEnabled())
                 continue;
             module.onEvent(e);
         }

@@ -18,7 +18,7 @@ public class SettingManager {
 
     public Setting getSetting(Module module, String name) {
         for(Module m : Main.INSTANCE.moduleManager.getModules()) {
-            for(Setting s : m.getSettings()) {
+            for(Setting s : m.getModuleSettings()) {
                 if(s.getName().equalsIgnoreCase(name) && s.getParent() == module)
                     return s;
             }

@@ -1,9 +1,17 @@
 package me.srgantmoomoo.postman.module;
 
-public enum Category {
+import com.lukflug.panelstudio.setting.ICategory;
+import com.lukflug.panelstudio.setting.IModule;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+public enum Category implements ICategory {
     PLAYER("player"), RENDER("render"), PVP("pvp"), EXPLOITS("exploits"), MOVEMENT("movement"), HUD("hud"), CLIENT("client"), BOT("bot");
 
     private final String name;
+    private final List<Module> modules = new ArrayList<Module>();
 
     Category(String name) {
         this.name = name;
@@ -11,5 +19,15 @@ public enum Category {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getDisplayName() {
+        return name;
+    }
+
+    @Override
+    public Stream<IModule> getModules() {
+        return modules.stream().map(module->module);
     }
 }
