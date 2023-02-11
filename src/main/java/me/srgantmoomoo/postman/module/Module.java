@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.module;
 
+import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.KeybindSetting;
 
@@ -79,6 +80,8 @@ public class Module {
     public void onEnable() {}
 
     public void onDisable() {}
+
+    public void onEvent(Event e) {}
 
     public void enable() {
         onEnable();

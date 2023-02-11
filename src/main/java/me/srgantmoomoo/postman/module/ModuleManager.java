@@ -1,9 +1,8 @@
 package me.srgantmoomoo.postman.module;
 
+import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.InputUtil;
-import org.lwjgl.glfw.GLFW;
+import me.srgantmoomoo.postman.module.modules.Example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,15 @@ public class ModuleManager {
 
     public ModuleManager() {
         // instantiate modules
+        modules.add(new Example());
+    }
+
+    public void onEvent(Event e) {
+        for(Module module : getModules()) {
+            if(!module.isEnabled())
+                continue;
+            module.onEvent(e);
+        }
     }
 
     // for key binds, called in MixinKeyboard.
