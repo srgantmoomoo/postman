@@ -1,9 +1,10 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
+import com.lukflug.panelstudio.setting.INumberSetting;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
-public class NumberSetting extends Setting {
+public class NumberSetting extends Setting implements INumberSetting {
     private double value;
     private double minimum;
     private double maximum;
@@ -53,5 +54,30 @@ public class NumberSetting extends Setting {
 
     public void setIncrement(double increment) {
         this.increment = increment;
+    }
+
+    @Override
+    public double getNumber() {
+        return getValue();
+    }
+
+    @Override
+    public void setNumber (double value) {
+        setValue(value);
+    }
+
+    @Override
+    public double getMaximumValue() {
+        return getMaximum();
+    }
+
+    @Override
+    public double getMinimumValue() {
+        return getMinimum();
+    }
+
+    @Override
+    public int getPrecision() {
+        return 2;
     }
 }

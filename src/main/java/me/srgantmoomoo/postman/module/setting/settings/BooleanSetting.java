@@ -1,9 +1,10 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
+import com.lukflug.panelstudio.setting.IBooleanSetting;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
-public class BooleanSetting extends Setting {
+public class BooleanSetting extends Setting implements IBooleanSetting {
     private boolean enabled;
 
     public BooleanSetting(String name, Module parent, boolean enabled) {
@@ -20,7 +21,13 @@ public class BooleanSetting extends Setting {
         this.enabled = enabled;
     }
 
+    @Override
     public void toggle() {
-        this.enabled = !this.enabled;
+        setEnabled(!isEnabled());
+    }
+
+    @Override
+    public boolean isOn() {
+        return isEnabled();
     }
 }

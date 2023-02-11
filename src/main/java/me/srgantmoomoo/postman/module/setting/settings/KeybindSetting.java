@@ -1,8 +1,11 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
+import com.lukflug.panelstudio.setting.IKeybindSetting;
 import me.srgantmoomoo.postman.module.setting.Setting;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.text.TranslatableTextContent;
 
-public class KeybindSetting extends Setting {
+public class KeybindSetting extends Setting implements IKeybindSetting {
     private int key;
 
     public KeybindSetting(int key) { // no parent.
@@ -10,11 +13,21 @@ public class KeybindSetting extends Setting {
         this.key = key;
     }
 
+    @Override
     public int getKey() {
         return key;
     }
 
-    public void setKey(int key) {
+    @Override
+    public void setKey (int key) {
         this.key = key;
+    }
+
+    @Override
+    public String getKeyName() {
+        String translationKey= InputUtil.Type.KEYSYM.createFromCode(getKey()).getTranslationKey();
+        String translation=new TranslatableTextContent(translationKey).toString();
+        if (!translation.equals(translationKey)) return translation;
+        return InputUtil.Type.KEYSYM.createFromCode(getKey()).getLocalizedText().getString();
     }
 }
