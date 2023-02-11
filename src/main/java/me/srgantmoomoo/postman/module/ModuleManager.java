@@ -1,5 +1,10 @@
 package me.srgantmoomoo.postman.module;
 
+import me.srgantmoomoo.postman.event.events.EventKeyPress;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.InputUtil;
+import org.lwjgl.glfw.GLFW;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +13,12 @@ public class ModuleManager {
 
     public ModuleManager() {
         // instantiate modules
+    }
+
+    // for key binds, called in MixinKeyboard.
+    public void keyPress(int key, int scanCode) {
+        EventKeyPress e = new EventKeyPress(key, scanCode);
+        modules.stream().filter(m -> m.getKey() == e.getKey()).forEach(Module::toggle);
     }
 
     public ArrayList<Module> getModules() {

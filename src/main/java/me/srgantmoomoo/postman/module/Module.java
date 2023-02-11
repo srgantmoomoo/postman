@@ -22,6 +22,7 @@ public class Module {
         this.description = description;
         this.category = category;
         this.enabled = false;
+        this.key.setKey(key);
         addSettings(this.key);
     }
 
@@ -32,6 +33,14 @@ public class Module {
 
     public List<Setting> getSettings() {
         return settings;
+    }
+
+    public int getKey() {
+        return key.getKey();
+    }
+
+    public void setKey(int key) {
+        this.key.setKey(key);
     }
 
     public String getName() {
