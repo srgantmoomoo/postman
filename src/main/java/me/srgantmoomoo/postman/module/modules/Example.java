@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFW;
 public class Example extends Module {
 
     public Example() {
-        super("example", "kms", Category.CLIENT, GLFW.GLFW_KEY_Y);
+        super("example", "kms.", Category.CLIENT, GLFW.GLFW_KEY_Y);
     }
 
     @Override

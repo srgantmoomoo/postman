@@ -25,10 +25,12 @@ public class Main implements ModInitializer {
 
     public ModuleManager moduleManager;
     public SettingManager settingManager;
+    public ClickGui clickGui;
 
     @Override
     public void onInitialize() {
         moduleManager = new ModuleManager();
         settingManager = new SettingManager();
+        clickGui = new ClickGui();
     }
 }
