@@ -10,7 +10,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		//classpath "net.fabricmc:fabric-loom:${loomVersion}"
+		classpath "net.fabricmc:fabric-loom:${loom_version}"
 		classpath "gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0"
 	}
 }
@@ -67,30 +67,4 @@ shadowJar {
 remapJar {
 	dependsOn shadowJar
 	inputFile = shadowJar.archiveFile
-}
-
-tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
-}
-
-java {
-	withSourcesJar()
-}
-
-jar {
-	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
-	}
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-	}
-
-	repositories {
-
-	}
 }
