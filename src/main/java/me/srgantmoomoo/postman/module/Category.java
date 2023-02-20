@@ -1,9 +1,11 @@
 package me.srgantmoomoo.postman.module;
 
 import com.lukflug.panelstudio.setting.ICategory;
+import com.lukflug.panelstudio.setting.IClient;
 import com.lukflug.panelstudio.setting.IModule;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -30,4 +32,14 @@ public enum Category implements ICategory {
     public Stream<IModule> getModules() {
         return modules.stream().map(module->module);
     }
+
+    public static IClient getClient() {
+        return new IClient() {
+            @Override
+            public Stream<ICategory> getCategories() {
+                return Arrays.stream(Category.values());
+            }
+        };
+    }
+
 }

@@ -15,7 +15,9 @@ import com.lukflug.panelstudio.setting.*;
 import com.lukflug.panelstudio.theme.*;
 import com.lukflug.panelstudio.widget.*;
 import me.srgantmoomoo.postman.module.Category;
+import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.modules.ClickGuiModule;
+import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
@@ -30,10 +32,11 @@ public class ClickGui extends MinecraftHUDGUI {
     private HUDGUI gui;
     private static final int WIDTH = 120, HEIGHT = 12, DISTANCE = 6, BORDER = 2;
 
-    ClickGuiModule clickGuiModule = (ClickGuiModule) Main.INSTANCE.moduleManager.getModule("clickGuiiModule");
+    ClickGuiModule clickGuiModule;
 
     public ClickGui() {
-        IClient client = ()-> Arrays.stream(Category.values());
+        clickGuiModule = (ClickGuiModule) Main.INSTANCE.moduleManager.getModule("clickGuiModule");
+        IClient client = Category.getClient();
         inter = new GUIInterface(true) {
             @Override
             protected String getResourcePrefix() {
@@ -240,10 +243,7 @@ public class ClickGui extends MinecraftHUDGUI {
     private class ThemeScheme implements IColorScheme {
         @Override
         public void createSetting (ITheme theme, String name, String description, boolean hasAlpha, boolean allowsRainbow, Color color, boolean rainbow) {
-            /*clickGuiModule.registerColorSetting(
-                    name, name, description, ()->true, hasAlpha, allowsRainbow, color, rainbow
-            );*/
-            return;
+            clickGuiModule.addSettings(new ColorSetting(name,clickGuiModule, color, allowsRainbow));
         }
 
         @Override
@@ -251,4 +251,5 @@ public class ClickGui extends MinecraftHUDGUI {
             return clickGuiModule.getSettings().filter(s -> s.getDisplayName().equals(name)).filter(s -> s instanceof ColorSetting).map(s -> (ColorSetting) s).findFirst().orElse(null).getValue();
         }
     }
+
 }
