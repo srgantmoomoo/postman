@@ -26,7 +26,7 @@ public class ModuleManager {
     }
 
     // for key binds, called in MixinKeyboard.
-    public void keyPress(int key, int scanCode) {
+    public void onKeyPress(int key, int scanCode) {
         EventKeyPress e = new EventKeyPress(key, scanCode);
         modules.stream().filter(m -> m.getKey() == e.getKey()).forEach(Module::toggle);
     }
