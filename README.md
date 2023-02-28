@@ -20,12 +20,20 @@ thank you :),
 ![image](https://user-images.githubusercontent.com/69589624/129431288-d6a1c2db-7a68-488d-b885-901b86ca02f7.png)
 
 # instructions
+***this version of postman is currently under development, the following instructions guide you on downloading the [***legacy***](https://github.com/srgantmoomoo/postman/tree/legacy) version of postman.***
+
 **download**
-1. postman uses forge in order to run so, if you havent already, go [**here**](http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html) and download the latest or recommended version of forge 1.12.2 (make sure you run this download of forge in minecraft at least once before continuing). <br />
-2. head to the [**releases**](https://github.com/srgantmoomoo/postman/releases) section of this repositroy; select the latest version (or your preferred version), find assets at the bottom of the release, then download the .jar file. <br />
+1. postman uses forge in order to run so, if you havent already, go [**here**](http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html) and download the latest or recommended version of forge 1.12.2 (make sure you run this download of forge in minecraft at least once before continuing).
+2. head to the [**releases**](https://github.com/srgantmoomoo/postman/releases) section of this repositroy; select the latest version (or your preferred version), find assets at the bottom of the release, then download the .jar file.
 3. find the location of your .minecraft directory. for windows users, type %appdata% in your windows search and hit enter. open the .minecraft directory and open the mods directory (if there is no mods folder than you can create one yourself). open the 1.12.2 directory (once again you can create your own if needed).
-5. drag the postman .jar file that you downloaded earlier into the 1.12.2 folder. <br />
+4. drag the postman .jar file that you downloaded earlier into the 1.12.2 folder.
 - if you want to take advantage of postman's baritone integration, you can download the [**baritone api**](https://github.com/cabaletta/baritone/releases/download/v1.2.14/baritone-api-forge-1.2.14.jar) and drag it into your mods folder along with postman.
+
+***the following instructions are for the latest version of postman and have no real application as of yet, please disregard :).***
+1. postman uses the Fabric mod loader to run. if you have not already, please head to [**FabricMC**](https://fabricmc.net/) and follow their directions on downloading the Fabric mod loader. you will also need to download the [**Fabric API**](https://www.curseforge.com/minecraft/mc-mods/fabric-api) and add it to your mods folder (i'll go over the mod folder in a second).
+2. head to the [**releases**](https://github.com/srgantmoomoo/postman/releases) part of this repository; select the latest version (or preferred version), find the assets section at the bottom, then download the .jar file.
+3. navigate to your .minecraft directory (for windows users, type %appdata% into your windows search and hit enter, it should be there). open the mods directory (if there is no mods directory then you can create it yourself).
+4. drag the postman .jar file you downloaded earlier into the mods folder, as well as that fabric api from earlier if you have not done that already.
 
 **use**
 - prefix is "," (comma) by default.
@@ -38,9 +46,8 @@ thank you :),
 - esc to close the clickgui 0_0.
 
 **development**
-- jdk 8 required.
-- gradlew setupDecompWorkspace should be ran before anything (if your using intellij, it should take care of it for you).
-- gradlew eclipse (for eclipse users) or gradlew genIntellijRuns (for intellij users).
+- jdk 17 required.
+- make sure to run the genSources gradle command.
 
 # credits
 **really helpful people**
