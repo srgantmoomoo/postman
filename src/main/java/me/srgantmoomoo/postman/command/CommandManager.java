@@ -26,6 +26,7 @@ public class CommandManager {
         if(!input.startsWith(prefix))
             return;
 
+        input = input.substring(input.length());
         if(input.split(" ").length > 0) {
             boolean commandFound = false;
             String commandName = input.split(" ")[0];
@@ -69,7 +70,7 @@ public class CommandManager {
 
     public void sendClientChatMessage(String message, boolean prefix) {
         String messagePrefix = Formatting.WHITE + "" + Formatting.ITALIC + "@" + Main.INSTANCE.NAME + ": " + Formatting.RESET;
-        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : "")));
+        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : message))); // Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : "")
     }
 
     public void sendCorrectionMessage(String name, String syntax) {
