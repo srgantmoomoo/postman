@@ -15,6 +15,7 @@ public class MixinKeyboard {
     public void onKeyPressed(long window, int key, int scanCode, int action, int modifiers, CallbackInfo info) {
         Main.INSTANCE.moduleManager.onKeyPress(key, scanCode);
         Main.INSTANCE.commandManager.onKeyPress();
+
         EventKeyPress e = new EventKeyPress(key, scanCode);
         e.setType(Type.PRE);
         Main.INSTANCE.moduleManager.onEvent(e);
