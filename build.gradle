@@ -46,6 +46,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
+
 	shadow "com.lukflug:panelstudio:${panelstudio_version}"
 	shadow "com.lukflug:panelstudio-mc19:${panelstudio_versionmc}"
 }

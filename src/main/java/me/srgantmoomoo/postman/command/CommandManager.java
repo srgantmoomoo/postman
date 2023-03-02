@@ -16,6 +16,11 @@ public class CommandManager {
 
     }
 
+    public String getPrefix() {
+        return prefix;
+    }
+
+    // called in MixinClientConnection.
     public void onClientChat(String input) {
         if(!input.startsWith(prefix))
             return;
@@ -42,7 +47,7 @@ public class CommandManager {
     }
 
     // opens chat when prefix is pressed, called in MixinKeyboard.
-    public void openChatScreen() {
+    public void onKeyPress() {
         if(InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), prefix.charAt(0))) {
             if(prefix.length() == 1) {
                 MinecraftClient.getInstance().setScreen(new ChatScreen(""));
