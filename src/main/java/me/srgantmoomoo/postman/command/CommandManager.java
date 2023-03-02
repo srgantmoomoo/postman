@@ -26,8 +26,9 @@ public class CommandManager {
         if(!input.startsWith(prefix))
             return;
 
-        input = input.substring(input.length());
+        input = input.substring(prefix.length());
         if(input.split(" ").length > 0) {
+            //TODO fix this fucking shit.
             boolean commandFound = false;
             String commandName = input.split(" ")[0];
             if(commandName.equals("") || commandName.equals("help")) {
