@@ -56,16 +56,7 @@ thank you :),
 - jacobtread, giving proper credits to the MinnDevelopment java discord rpc.
 -->
 **base stuff**
-- [**modding api**](http://files.minecraftforge.net) - *Forge*.
-- [**event system**](https://github.com/ZeroMemes/Alpine) - *ZeroMemes, Alpine*.
+- [**modding api**](https://fabricmc.net/) - *Fabric*.
 - [**clickGui library**](https://github.com/lukflug/PanelStudio/tree/main) - *Lukflug, PanelStudio*.
-- [**discord rpc**](https://github.com/MinnDevelopment/java-discord-rpc) - *MinnDevelopment, java discord rpc*.
-- [**mixins**](https://www.spongepowered.org/downloads/spongeforge/stable/1.12.2) - *SpongePowered, SpongeForge*.
-- [**font renderer**](https://github.com/zeroeightysix/KAMI) - *086, KAMI*.
 
-**everything that is skidded as of now**
-- outline esp utils - [**superblaubeere27**](https://www.youtube.com/channel/UCtRhisaTkICo72ZI8Z2yWNg).
-- surround & holeTp - [**Hoosier's Gamesense**](https://github.com/IUDevman/gamesense-client). 0_0
-- 2dEsp - [**FINZ0's Osiris**](https://github.com/epicfacethe3rd/Osiris).
-
-... for more depth, the necessary modules are credited. if anyone has an issue with crediting please let me know. srgantmoomoo#1052
+... if anyone has an issue with crediting please let me know. srgantmoomoo#1052
