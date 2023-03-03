@@ -1,7 +1,7 @@
 package me.srgantmoomoo.postman.command;
 
 import me.srgantmoomoo.postman.Main;
-import me.srgantmoomoo.postman.command.commands.Example;
+import me.srgantmoomoo.postman.command.commands.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.util.InputUtil;
@@ -17,6 +17,7 @@ public class CommandManager {
 
     public CommandManager() {
         commands.add(new Example());
+        commands.add(new Prefix());
     }
 
     // called in MixinClientConnection.
@@ -74,11 +75,11 @@ public class CommandManager {
     }
 
     public void sendClientChatMessage(String message, boolean prefix) {
-        String messagePrefix = Formatting.WHITE + "" + Formatting.ITALIC + "@" + Main.INSTANCE.NAME + ": " + Formatting.RESET;
+        String messagePrefix = Formatting.GRAY + "" + Formatting.ITALIC + "@" + Main.INSTANCE.NAME + ": " + Formatting.RESET;
         MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal((prefix ? messagePrefix + Formatting.GRAY + message : Formatting.GRAY + message))); // Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : "")
     }
 
-    public void sendCorrectionMessage(String name, String syntax) {
-        sendClientChatMessage("correct usage of " + Formatting.WHITE + name + Formatting.GRAY + " command -> " + Formatting.WHITE + prefix + syntax + Formatting.GRAY + ".", true);
+    public void sendCorrectionMessage(Command command) {
+        sendClientChatMessage("correct usage of " + Formatting.WHITE + command.getName() + Formatting.GRAY + " command -> " + Formatting.WHITE + prefix + command.getSyntax() + Formatting.GRAY + ".", true);
     }
 }

@@ -12,7 +12,7 @@ public class Example extends Command {
     @Override
     public void onCommand(String[] args, String command) {
         if(args.length > 0) {
-            Main.INSTANCE.commandManager.sendCorrectionMessage(getName(), getSyntax());
+            Main.INSTANCE.commandManager.sendCorrectionMessage(this);
             return;
         }
 

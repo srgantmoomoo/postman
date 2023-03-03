@@ -12,8 +12,8 @@ public class ModuleManager {
     private final ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
-        modules.add(new Example());
         modules.add(new ClickGuiModule());
+        modules.add(new Example());
     }
 
     public void onEvent(Event e) {
