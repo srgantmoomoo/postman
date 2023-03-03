@@ -5,14 +5,11 @@ import me.srgantmoomoo.postman.command.commands.Example;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class CommandManager {
     public ArrayList<Command> commands = new ArrayList<Command>();
@@ -68,6 +65,12 @@ public class CommandManager {
 
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     public void sendClientChatMessage(String message, boolean prefix) {

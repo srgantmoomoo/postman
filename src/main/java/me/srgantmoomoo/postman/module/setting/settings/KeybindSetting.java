@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
 import com.lukflug.panelstudio.setting.IKeybindSetting;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.TranslatableTextContent;
@@ -21,6 +22,12 @@ public class KeybindSetting extends Setting implements IKeybindSetting {
     @Override
     public void setKey (int key) {
         this.key = key;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override

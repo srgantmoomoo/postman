@@ -4,6 +4,7 @@ import com.lukflug.panelstudio.base.IBoolean;
 import com.lukflug.panelstudio.base.IToggleable;
 import com.lukflug.panelstudio.setting.IModule;
 import com.lukflug.panelstudio.setting.ISetting;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.KeybindSetting;
@@ -93,12 +94,18 @@ public class Module implements IModule {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-        if(enabled)
+        /*if(enabled)
             // subscribe
             return;
         else
             // un subscribe
-            return;
+            return;*/
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     public void toggle() {
@@ -106,6 +113,12 @@ public class Module implements IModule {
             disable();
         else
             enable();
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     public void onEnable() {}

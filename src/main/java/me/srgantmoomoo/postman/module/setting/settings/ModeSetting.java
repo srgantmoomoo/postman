@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.module.setting.settings;
 
 import com.lukflug.panelstudio.setting.IEnumSetting;
 import com.lukflug.panelstudio.setting.ILabeled;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
@@ -39,6 +40,12 @@ public class ModeSetting extends Setting implements IEnumSetting {
 
     public void setMode(String mode) {
         this.index = this.modes.indexOf(mode);
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     public boolean is(String mode) {
@@ -50,6 +57,12 @@ public class ModeSetting extends Setting implements IEnumSetting {
             index++;
         else
             this.index = 0;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override
@@ -59,6 +72,12 @@ public class ModeSetting extends Setting implements IEnumSetting {
         }else {
             this.index = 0;
         }
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override
@@ -67,6 +86,12 @@ public class ModeSetting extends Setting implements IEnumSetting {
             this.index--;
         }else {
             this.index = this.modes.size() - 1;
+        }
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
         }
     }
 
@@ -83,6 +108,12 @@ public class ModeSetting extends Setting implements IEnumSetting {
     @Override
     public void setValueIndex(int index) {
         this.index = index;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override

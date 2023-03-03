@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.module.setting.settings;
 
 import com.lukflug.panelstudio.setting.IColorSetting;
 import com.lukflug.panelstudio.theme.ITheme;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
@@ -38,6 +39,12 @@ public class ColorSetting extends Setting implements IColorSetting {
     @Override
     public void setValue(Color value) {
         this.value = value;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override
@@ -53,6 +60,12 @@ public class ColorSetting extends Setting implements IColorSetting {
     @Override
     public void setRainbow (boolean rainbow) {
         this.rainbow=rainbow;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override

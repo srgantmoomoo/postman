@@ -1,6 +1,8 @@
 package me.srgantmoomoo.postman;
 
 import me.srgantmoomoo.postman.command.CommandManager;
+import me.srgantmoomoo.postman.config.Load;
+import me.srgantmoomoo.postman.config.Save;
 import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.module.setting.SettingManager;
 import net.fabricmc.api.ModInitializer;
@@ -28,6 +30,8 @@ public class Main implements ModInitializer {
     public SettingManager settingManager;
     public CommandManager commandManager;
     public ClickGui clickGui;
+    public Save save;
+    public Load load;
 
     @Override
     public void onInitialize() {
@@ -35,5 +39,8 @@ public class Main implements ModInitializer {
         settingManager = new SettingManager();
         commandManager = new CommandManager();
         clickGui = new ClickGui();
+
+        save = new Save();
+        load = new Load();
     }
 }

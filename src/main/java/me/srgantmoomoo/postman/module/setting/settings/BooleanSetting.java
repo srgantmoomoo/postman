@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
 import com.lukflug.panelstudio.setting.IBooleanSetting;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
@@ -19,6 +20,12 @@ public class BooleanSetting extends Setting implements IBooleanSetting {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
 import com.lukflug.panelstudio.setting.INumberSetting;
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
@@ -26,26 +27,30 @@ public class NumberSetting extends Setting implements INumberSetting {
     public void setValue(double value) {
         double percision = 1.0D / increment;
         this.value = Math.round(Math.max(this.minimum, Math.min(this.maximum, value)) * percision) / percision;
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     public void increment(boolean positive) {
         setValue(getValue() + (positive ? 1 : -1) * increment);
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     public double getMinimum() {
         return minimum;
     }
 
-    public void setMinimum(double minimum) {
-        this.minimum = minimum;
-    }
-
     public double getMaximum() {
         return maximum;
-    }
-
-    public void setMaximum(double maximum) {
-        this.maximum = maximum;
     }
 
     public double getIncrement() {
@@ -64,6 +69,12 @@ public class NumberSetting extends Setting implements INumberSetting {
     @Override
     public void setNumber (double value) {
         setValue(value);
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception e) {}
+        }
     }
 
     @Override
