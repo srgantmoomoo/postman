@@ -29,6 +29,10 @@ public class ModeSetting extends Setting implements IEnumSetting {
         }).toArray(ILabeled[]::new);
     }
 
+    public List<String> getModes() {
+        return modes;
+    }
+
     public String getMode() {
         return this.modes.get(this.index);
     }
