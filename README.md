@@ -28,6 +28,8 @@ thank you :),
 3. navigate to your .minecraft directory (for windows users, type %appdata% into your windows search and hit enter, it should be there). open the mods directory (if there is no mods directory then you can create it yourself).
 4. drag the postman .jar file you downloaded earlier into the mods folder, as well as that fabric api from earlier if you have not done so already.
 
+*please, if you have used the forge vairiant of postman before, delete that config file before using this.*
+
 **use**
 - prefix is "," (comma) by default.
 - clickgui is bound to rshift by default.
