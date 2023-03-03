@@ -12,7 +12,6 @@ public class ModuleManager {
     private final ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
-        // instantiate modules
         modules.add(new Example());
         modules.add(new ClickGuiModule());
     }

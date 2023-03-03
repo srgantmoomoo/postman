@@ -1,6 +1,7 @@
 package me.srgantmoomoo.postman.command;
 
 import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.command.commands.Example;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.util.InputUtil;
@@ -18,7 +19,7 @@ public class CommandManager {
     private String prefix = ",";
 
     public CommandManager() {
-
+        commands.add(new Example());
     }
 
     // called in MixinClientConnection.
@@ -34,7 +35,7 @@ public class CommandManager {
             if(commandName.equals("") || commandName.equals("help")) {
                 sendClientChatMessage("\n" + Formatting.GRAY + Formatting.BOLD + "i love postman <3" + "\n" + Formatting.RESET, false);
                 for(Command c : commands) {
-                    sendClientChatMessage(c.getName() + Formatting.WHITE + " - " + Formatting.AQUA + Formatting.ITALIC + " [" + c.getSyntax() + "]" + Formatting.RESET + Formatting.GRAY + ".", false);
+                    sendClientChatMessage(c.getName() + Formatting.WHITE + " - " + c.getDescription() + Formatting.AQUA + Formatting.ITALIC + " [" + c.getSyntax() + "]" + Formatting.RESET + Formatting.GRAY + ".", false);
                 }
                 sendClientChatMessage("\n" + Formatting.RESET + Formatting.GRAY + Formatting.BOLD + "i hate postman." + "\n", false);
             }else {
@@ -71,7 +72,7 @@ public class CommandManager {
 
     public void sendClientChatMessage(String message, boolean prefix) {
         String messagePrefix = Formatting.WHITE + "" + Formatting.ITALIC + "@" + Main.INSTANCE.NAME + ": " + Formatting.RESET;
-        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : message))); // Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : "")
+        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal((prefix ? messagePrefix + Formatting.GRAY + message : Formatting.GRAY + message))); // Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : "")
     }
 
     public void sendCorrectionMessage(String name, String syntax) {
