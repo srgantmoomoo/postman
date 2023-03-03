@@ -30,7 +30,7 @@ public enum Category implements ICategory {
 
     @Override
     public Stream<IModule> getModules() {
-        return modules.stream().map(module->module);
+        return modules.stream().map(module->module); //TODO this
     }
 
     public static IClient getClient() {

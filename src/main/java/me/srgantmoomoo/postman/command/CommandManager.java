@@ -45,8 +45,7 @@ public class CommandManager {
                     }
                 }
                 if(!commandFound)
-                    // help msggs.
-                    return;
+                    sendClientChatMessage(Formatting.DARK_RED + "command does not exist, use " + Formatting.ITALIC + Formatting.WHITE + prefix + "help " + Formatting.RESET + Formatting.DARK_RED + "for help.", true);
             }
         }
     }
@@ -76,7 +75,7 @@ public class CommandManager {
 
     public void sendClientChatMessage(String message, boolean prefix) {
         String messagePrefix = Formatting.GRAY + "" + Formatting.ITALIC + "@" + Main.INSTANCE.NAME + ": " + Formatting.RESET;
-        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal((prefix ? messagePrefix + Formatting.GRAY + message : Formatting.GRAY + message))); // Text.literal(Formatting.GRAY + (prefix ? messagePrefix + message : "")
+        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal((prefix ? messagePrefix + Formatting.GRAY + message : Formatting.GRAY + message)));
     }
 
     public void sendCorrectionMessage(Command command) {
