@@ -27,6 +27,14 @@ public class ColorSetting extends Setting implements IColorSetting {
         else return value;
     }
 
+    public long toInteger() {
+        return this.value.getRGB() & (0xFFFFFFFF);
+    }
+
+    public void fromInteger (long number) {
+        this.value = new Color(Math.toIntExact(number & 0xFFFFFFFF),true);
+    }
+
     @Override
     public void setValue(Color value) {
         this.value = value;

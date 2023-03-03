@@ -12,7 +12,7 @@ public class ClickGuiModule extends Module {
     public NumberSetting animationSpeed = new NumberSetting("animationSpeed", this, 10, 0, 100, 1);
 
     public ClickGuiModule() {
-        super("clickGuiModule", "kms.", Category.CLIENT, GLFW.GLFW_KEY_RIGHT_SHIFT);
+        super("clickGui", "kms.", Category.CLIENT, GLFW.GLFW_KEY_RIGHT_SHIFT);
     }
 
     @Override

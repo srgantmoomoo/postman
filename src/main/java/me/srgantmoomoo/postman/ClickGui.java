@@ -35,7 +35,7 @@ public class ClickGui extends MinecraftHUDGUI {
     ClickGuiModule clickGuiModule;
 
     public ClickGui() {
-        clickGuiModule = (ClickGuiModule) Main.INSTANCE.moduleManager.getModule("clickGuiModule");
+        clickGuiModule = (ClickGuiModule) Main.INSTANCE.moduleManager.getModule("clickGui");
         IClient client = Category.getClient();
         inter = new GUIInterface(true) {
             @Override
