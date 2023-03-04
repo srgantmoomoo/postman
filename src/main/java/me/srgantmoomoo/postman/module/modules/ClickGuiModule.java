@@ -14,7 +14,7 @@ public class ClickGuiModule extends Module {
     public ClickGuiModule() {
         super("clickGui", "kms.", Category.CLIENT, GLFW.GLFW_KEY_RIGHT_SHIFT);
     }
-
+    //TODO esc disabling module.
     @Override
     public void onEnable() {
         Main.INSTANCE.clickGui.enterGUI();
