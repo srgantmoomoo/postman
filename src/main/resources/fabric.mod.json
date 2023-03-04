@@ -12,17 +12,15 @@
     "cattyn",
     "fluffery",
     "MWA",
-    "The-Forecaster",
     "recior",
-    "probably some other people"
-
+    "many others for their help :)"
   ],
   "contact": {
     "homepage": "https://techale.github.io/postman-website/",
     "sources": "https://github.com/srgantmoomoo/postman"
   },
 
-  "license": "MIT",
+  "license": "MIT license",
   "icon": "assets/modid/icon.png",
 
   "environment": "client",
@@ -38,7 +36,7 @@
   "accessWidener" : "postman.aw",
 
   "depends": {
-    "fabricloader": ">=0.14.11",
+    "fabricloader": ">=0.14.14",
     "fabric-api": "*",
     "minecraft": "~1.19.3",
     "java": ">=17"
