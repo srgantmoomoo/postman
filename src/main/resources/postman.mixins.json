@@ -8,6 +8,7 @@
   "client": [
     "MixinClientConnection",
     "MixinClientWorld",
+    "MixinGameRenderer",
     "MixinKeyboard"
   ],
   "injectors": {
