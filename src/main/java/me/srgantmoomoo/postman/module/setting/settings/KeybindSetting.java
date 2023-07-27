@@ -30,11 +30,15 @@ public class KeybindSetting extends Setting implements IKeybindSetting {
         }
     }
 
+    //TODO fix this.
     @Override
     public String getKeyName() {
+        /*
         String translationKey= InputUtil.Type.KEYSYM.createFromCode(getKey()).getTranslationKey();
         String translation=new TranslatableTextContent(translationKey).toString();
         if (!translation.equals(translationKey)) return translation;
         return InputUtil.Type.KEYSYM.createFromCode(getKey()).getLocalizedText().getString();
+         */
+        return null;
     }
 }

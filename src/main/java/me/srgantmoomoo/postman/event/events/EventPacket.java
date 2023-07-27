@@ -1,7 +1,7 @@
 package me.srgantmoomoo.postman.event.events;
 
 import me.srgantmoomoo.postman.event.Event;
-import net.minecraft.network.Packet;
+import net.minecraft.network.packet.Packet;
 
 public class EventPacket extends Event<EventPacket> {
     private final Packet packet;
