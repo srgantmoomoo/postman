@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.command.commands;
 
-import com.sun.jna.platform.unix.X11;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.command.Command;
 import me.srgantmoomoo.postman.module.Category;

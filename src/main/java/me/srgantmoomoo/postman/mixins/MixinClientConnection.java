@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.mixins;
 
-
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import me.srgantmoomoo.postman.Main;
