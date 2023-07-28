@@ -20,8 +20,7 @@ public class ListModules extends Command {
             return;
         }
 
-        for(int i = 0; i < 8; i++) {
-            Category category = Category.values()[i];
+        for(Category category : Category.values()) {
             Main.INSTANCE.commandManager.sendClientChatMessage(Formatting.BOLD + category.getName() + " modules", false);
             for(Module module : Main.INSTANCE.moduleManager.getModulesInCategory(category)) {
                 Main.INSTANCE.commandManager.sendClientChatMessage((module.isModuleEnabled() ? Formatting.GREEN : Formatting.RED) + module.getName() + Formatting.GRAY + " - " + module.getDescription() + "\n", false);
