@@ -7,6 +7,7 @@ import me.srgantmoomoo.postman.module.Module;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import org.lwjgl.glfw.GLFW;
 
 //TODO add gamma option
 public class FullBright extends Module {

@@ -7,6 +7,7 @@ import me.srgantmoomoo.postman.event.events.EventRender3d;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import net.minecraft.util.Identifier;
+import org.lwjgl.glfw.GLFW;
 
 public class VibrantShader extends Module {
 

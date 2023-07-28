@@ -9,7 +9,6 @@ import net.fabricmc.api.ModInitializer;
 
 import java.util.logging.Logger;
 
-//TODO event packet shit b iffy.
 //TODO clicck gui.
 
 //soir
