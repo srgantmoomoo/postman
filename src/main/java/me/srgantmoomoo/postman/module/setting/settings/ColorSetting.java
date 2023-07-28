@@ -43,7 +43,7 @@ public class ColorSetting extends Setting implements IColorSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -64,7 +64,7 @@ public class ColorSetting extends Setting implements IColorSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 

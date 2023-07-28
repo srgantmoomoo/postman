@@ -31,7 +31,7 @@ public class NumberSetting extends Setting implements INumberSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -41,7 +41,7 @@ public class NumberSetting extends Setting implements INumberSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -73,7 +73,7 @@ public class NumberSetting extends Setting implements INumberSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 

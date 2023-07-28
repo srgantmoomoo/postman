@@ -24,7 +24,7 @@ public class BooleanSetting extends Setting implements IBooleanSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 

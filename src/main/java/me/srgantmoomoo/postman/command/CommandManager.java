@@ -18,6 +18,7 @@ public class CommandManager {
     public CommandManager() {
         commands.add(new Example());
         commands.add(new Prefix());
+        commands.add(new ListModules());
     }
 
     // called in MixinClientConnection.

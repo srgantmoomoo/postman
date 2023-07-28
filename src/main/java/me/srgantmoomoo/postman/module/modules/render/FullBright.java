@@ -13,7 +13,7 @@ import org.lwjgl.glfw.GLFW;
 public class FullBright extends Module {
 
     public FullBright() {
-        super("fullBright", "light up the world.", Category.RENDER, 0);
+        super("fullBright", "light up the world.", Category.RENDER, GLFW.GLFW_KEY_R);
     }
 
     @Override

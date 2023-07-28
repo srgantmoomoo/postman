@@ -103,8 +103,8 @@ public class Module implements IModule {
 
         if(Main.INSTANCE.save != null) {
             try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+                Main.INSTANCE.save.save();
+            } catch (Exception ignored) {}
         }
     }
 
@@ -113,12 +113,6 @@ public class Module implements IModule {
             disable();
         else
             enable();
-
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
-        }
     }
 
     public void onEnable() {}
@@ -131,12 +125,24 @@ public class Module implements IModule {
         onEnable();
         setEnabled(true);
         // subscribe
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.save();
+            } catch (Exception ignored) {}
+        }
     }
 
     public void disable() {
         onDisable();
         setEnabled(false);
         //un subscribe
+
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.save();
+            } catch (Exception ignored) {}
+        }
     }
 
     @Override

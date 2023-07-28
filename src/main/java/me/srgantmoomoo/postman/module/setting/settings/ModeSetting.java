@@ -44,7 +44,7 @@ public class ModeSetting extends Setting implements IEnumSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -61,7 +61,7 @@ public class ModeSetting extends Setting implements IEnumSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -76,7 +76,7 @@ public class ModeSetting extends Setting implements IEnumSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -91,7 +91,7 @@ public class ModeSetting extends Setting implements IEnumSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -112,7 +112,7 @@ public class ModeSetting extends Setting implements IEnumSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 

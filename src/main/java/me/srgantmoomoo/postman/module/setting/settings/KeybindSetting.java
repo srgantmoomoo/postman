@@ -26,7 +26,7 @@ public class KeybindSetting extends Setting implements IKeybindSetting {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 

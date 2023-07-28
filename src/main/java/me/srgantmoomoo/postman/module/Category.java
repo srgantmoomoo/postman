@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public enum Category implements ICategory {
-    PLAYER("player"), RENDER("render"), PVP("pvp"), EXPLOITS("exploits"), MOVEMENT("movement"), HUD("hud"), CLIENT("client"), BOT("bot");
+    PLAYER("player"), MOVEMENT("movement"), PVP("pvp"), EXPLOITS("exploits"), RENDER("render"), HUD("hud"), CLIENT("client"), BOT("bot");
 
     private final String name;
     private final List<Module> modules = new ArrayList<Module>();
