@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 //TODO clicck gui.
 
 //soir
-public class cd Main implements ModInitializer {
+public class Main implements ModInitializer {
     int strong;
     int postman = strong;
 
