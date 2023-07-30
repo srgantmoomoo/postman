@@ -20,6 +20,7 @@ public class CommandManager {
         commands.add(new Clear());
         commands.add(new ListModules());
         commands.add(new Prefix());
+        commands.add(new Setting());
         commands.add(new Toggle());
     }
 
