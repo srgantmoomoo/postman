@@ -22,7 +22,7 @@ public class ListModules extends Command {
         for(Category category : Category.values()) {
             Main.INSTANCE.commandManager.sendClientChatMessage(Formatting.BOLD + category.getName() + " modules", false);
             for(Module module : Main.INSTANCE.moduleManager.getModulesInCategory(category)) {
-                Main.INSTANCE.commandManager.sendClientChatMessage((module.isModuleEnabled() ? Formatting.GREEN : Formatting.RED) + module.getName() + Formatting.GRAY + " - " + module.getDescription() + "\n", false);
+                Main.INSTANCE.commandManager.sendClientChatMessage((module.isModuleEnabled() ? Formatting.GREEN : Formatting.RED) + module.getName() + Formatting.WHITE + " - " + module.getDescription().substring(0, module.getDescription().length() - 1) + Formatting.GRAY + ".", false);
             }
         }
     }

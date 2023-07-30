@@ -12,7 +12,7 @@ import org.lwjgl.glfw.GLFW;
 public class VibrantShader extends Module {
 
     public VibrantShader() {
-        super("vibrantShader", "applies a vibrant shader to minecraft :o.", Category.RENDER, GLFW.GLFW_KEY_K);
+        super("vibrantShader", "applies a vibrant shader to minecraft :o.", Category.RENDER, 0);
     }
 
     ManagedShaderEffect shader = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/color_convolve" + ".json"));
