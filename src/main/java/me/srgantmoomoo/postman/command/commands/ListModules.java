@@ -4,6 +4,7 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.command.Command;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Formatting;
 
 public class ListModules extends Command {

@@ -2,21 +2,21 @@ package me.srgantmoomoo.postman.command.commands;
 
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.command.Command;
+import net.minecraft.client.MinecraftClient;
 
-public class Example extends Command {
+public class Clear extends Command {
 
-    public Example() {
-        super("example", "asfdgkhjasf.", "example", "ex");
+    public Clear() {
+        super("clear", "clears the chat.", "clear", "c");
     }
 
     @Override
     public void onCommand(String[] args, String command) {
-        if(args.length > 0) {
+        if(args.length != 0) {
             Main.INSTANCE.commandManager.sendCorrectionMessage(this);
             return;
         }
 
-        Main.INSTANCE.commandManager.sendClientChatMessage("helllooooo worrrlllddd!!!", true);
+        MinecraftClient.getInstance().inGameHud.getChatHud().clear(true);
     }
-
 }

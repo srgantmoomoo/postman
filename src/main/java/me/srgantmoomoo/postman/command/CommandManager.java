@@ -16,9 +16,10 @@ public class CommandManager {
     private String prefix = ",";
 
     public CommandManager() {
-        commands.add(new Example());
-        commands.add(new Prefix());
+        commands.add(new Clear());
         commands.add(new ListModules());
+        commands.add(new Prefix());
+        commands.add(new Toggle());
     }
 
     // called in MixinClientConnection.
@@ -70,7 +71,7 @@ public class CommandManager {
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.saveSettings();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -80,6 +81,6 @@ public class CommandManager {
     }
 
     public void sendCorrectionMessage(Command command) {
-        sendClientChatMessage("correct usage of " + Formatting.WHITE + command.getName() + Formatting.GRAY + " command -> " + Formatting.WHITE + prefix + command.getSyntax() + Formatting.GRAY + ".", true);
+        sendClientChatMessage("correct usage of " + Formatting.WHITE + command.getName() + Formatting.GRAY + " command -> " + Formatting.AQUA + Formatting.ITALIC + prefix + command.getSyntax() + Formatting.GRAY + ".", true);
     }
 }
