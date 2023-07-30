@@ -16,6 +16,7 @@ public class CommandManager {
     private String prefix = ",";
 
     public CommandManager() {
+        commands.add(new Bind());
         commands.add(new Clear());
         commands.add(new ListModules());
         commands.add(new Prefix());
@@ -35,7 +36,8 @@ public class CommandManager {
             if(commandName.equals("") || commandName.equals("help")) {
                 sendClientChatMessage("\n" + Formatting.GRAY + Formatting.BOLD + "i love postman <3" + "\n" + Formatting.RESET, false);
                 for(Command c : commands) {
-                    sendClientChatMessage(c.getName() + Formatting.WHITE + " - " + c.getDescription() + Formatting.AQUA + Formatting.ITALIC + " [" + c.getSyntax() + "]" + Formatting.RESET + Formatting.GRAY + ".", false);
+                    String dividers = c.getSyntax().replace("|", Formatting.GRAY + "" + Formatting. ITALIC + "|" + Formatting.AQUA + "" + Formatting.ITALIC); // turns dividers grey for better look :)
+                    sendClientChatMessage(c.getName() + Formatting.WHITE + " - " + c.getDescription() + Formatting.AQUA + Formatting.ITALIC + " [" + dividers + "]" + Formatting.RESET + Formatting.GRAY + ".", false);
                 }
                 sendClientChatMessage("\n" + Formatting.RESET + Formatting.GRAY + Formatting.BOLD + "i hate postman." + "\n", false);
             }else {
@@ -81,6 +83,7 @@ public class CommandManager {
     }
 
     public void sendCorrectionMessage(Command command) {
-        sendClientChatMessage("correct usage of " + Formatting.WHITE + command.getName() + Formatting.GRAY + " command -> " + Formatting.AQUA + Formatting.ITALIC + prefix + command.getSyntax() + Formatting.GRAY + ".", true);
+        String dividers = command.getSyntax().replace("|", Formatting.GRAY + "" + Formatting. ITALIC + "|" + Formatting.AQUA + "" + Formatting.ITALIC); // turns dividers grey for better look :)
+        sendClientChatMessage("correct usage of " + Formatting.WHITE + command.getName() + Formatting.GRAY + " command -> " + Formatting.AQUA + Formatting.ITALIC + prefix + dividers + Formatting.GRAY + ".", true);
     }
 }

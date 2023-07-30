@@ -5,8 +5,6 @@ import me.srgantmoomoo.postman.command.Command;
 import me.srgantmoomoo.postman.module.Module;
 import net.minecraft.util.Formatting;
 
-import java.text.Format;
-
 public class Toggle extends Command {
 
     public Toggle() {
@@ -32,6 +30,6 @@ public class Toggle extends Command {
             }
         }
 
-        if(!found) Main.INSTANCE.commandManager.sendClientChatMessage("the module " + Formatting.WHITE + userInput + Formatting.GRAY + " could not be found.", true);
+        if(!found) Main.INSTANCE.commandManager.sendClientChatMessage("the module " + Formatting.RED + userInput + Formatting.GRAY + " could not be found.", true);
     }
 }
