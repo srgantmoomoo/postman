@@ -10,6 +10,7 @@
 postman is a [**Minecraft**](https://minecraft.net) client intended for use on servers which allow client-side modification. postman is written in 100% java (very based programming language) for the latest version of [**Fabric**](https://fabricmc.net/). the current version of the client is heavily based off it's [***legacy***](https://github.com/srgantmoomoo/postman/tree/legacy) version which was written for [**Forge**](https://files.minecraftforge.net/net/minecraftforge/forge/) 1.12.2. i intend for this project to be heavily community driven, open source, open access, open development, and available to all for free!
 <br>
 
+join the [**postman discord**](https://discord.gg/Jd8EmEuhb5) for frequent updates, support, and a strong community :) <br>
 check out the [**postman website**](https://techale.github.io/postman-website/) by techale! <br>
 check out the [**postman archive**](https://github.com/moomooooo/postman-archive) for pre-github releases of postman.
 
