@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.module;
 
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
+import me.srgantmoomoo.postman.module.modules.ClickGuiModule;
 import me.srgantmoomoo.postman.module.modules.Example;
 import me.srgantmoomoo.postman.module.modules.render.*;
 
@@ -12,7 +13,7 @@ public class ModuleManager {
     private final ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
-        //modules.add(new ClickGuiModule());
+        modules.add(new ClickGuiModule());
         modules.add(new Example());
         modules.add(new FullBright());
         modules.add(new VibrantShader());

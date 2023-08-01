@@ -74,7 +74,7 @@ public class CommandManager {
 
         if(Main.INSTANCE.save != null) {
             try {
-                Main.INSTANCE.save.saveSettings();
+                Main.INSTANCE.save.savePrefix();
             } catch (Exception ignored) {}
         }
     }

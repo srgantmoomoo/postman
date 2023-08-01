@@ -19,12 +19,6 @@ public class Prefix extends Command {
 
         Main.INSTANCE.commandManager.setPrefix(args[0]);
         Main.INSTANCE.commandManager.sendClientChatMessage(Formatting.WHITE + "prefix " + Formatting.GRAY + "is now set to " + Formatting.GREEN + args[0], true);
-
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.savePrefix();
-            } catch (Exception ignored) {}
-        }
     }
 
 }
