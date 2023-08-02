@@ -58,5 +58,10 @@ public class Bind extends Command {
                 Main.INSTANCE.commandManager.sendClientChatMessage("all binds are now " + Formatting.RED + "cleared" + Formatting.GRAY + ".", true);
             }
         }
+        if(Main.INSTANCE.save != null) {
+            try {
+                Main.INSTANCE.save.saveSettings();
+            } catch (Exception ignored) {}
+        }
     }
 }
