@@ -28,7 +28,7 @@ public enum Category implements ICategory {
 
     @Override
     public Stream<IModule> getModules() {
-        return Main.INSTANCE.moduleManager.getModules().stream().map(module->module);
+        return Main.INSTANCE.moduleManager.getModules().stream().filter(module -> module.getCategory() == this).map(module -> module);
     }
 
     public static IClient getClient() {

@@ -9,8 +9,6 @@ import net.fabricmc.api.ModInitializer;
 
 import java.util.logging.Logger;
 
-//TODO clicck gui.
-
 //soir
 public class Main implements ModInitializer {
     int strong;

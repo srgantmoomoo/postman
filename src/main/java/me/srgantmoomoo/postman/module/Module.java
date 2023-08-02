@@ -87,7 +87,10 @@ public class Module implements IModule {
 
             @Override
             public void toggle() {
-                enabled=!enabled;
+                if(enabled)
+                    disable();
+                else
+                    enable();
             }
         };
     }
