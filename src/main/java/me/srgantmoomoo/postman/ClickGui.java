@@ -41,16 +41,14 @@ public class ClickGui extends MinecraftHUDGUI {
                 return "postman";
             }
         };
-        //ITheme theme=new OptimizedTheme(new GameSenseTheme(new ThemeScheme(),9,4,5,": "+Formatting.GRAY));
-        //ITheme theme=new OptimizedTheme(new ImpactTheme(new ThemeScheme(), 9, 4));
+
         ITheme theme=new OptimizedTheme(new ClearTheme(new ThemeScheme(), ()->false, 9,4,5,": "+Formatting.GRAY));
-        // ITheme theme=new OptimizedTheme(new ThemeSelector(inter));
-        //ITheme theme=new ImpactTheme(,9,4);
 
         IToggleable guiToggle=new SimpleToggleable(false);
         IToggleable hudToggle=new SimpleToggleable(false);
 
         gui=new HUDGUI(inter,theme.getDescriptionRenderer(),(IPopupPositioner)new MousePositioner(new Point(10,10)),guiToggle,hudToggle);
+
         Supplier<Animation> animation=()->new SettingsAnimation(() -> 5, inter::getTime);
 
         BiFunction<Context,Integer,Integer> scrollHeight=(context, componentHeight)->Math.min(componentHeight,Math.max(HEIGHT*4,ClickGui.this.height-context.getPos().y-HEIGHT));
@@ -80,7 +78,7 @@ public class ClickGui extends MinecraftHUDGUI {
                 // no resizing
             }
         };
-        // Defining scroll behavior ...
+
         Function<IResizable,IScrollSize> resizableHeight= size->new IScrollSize() {
             @Override
             public int getScrollHeight (Context context, int componentHeight) {
@@ -238,14 +236,22 @@ public class ClickGui extends MinecraftHUDGUI {
     }
 
     private class ThemeScheme implements IColorScheme {
+        private String camelCase(String name) {
+            String firstLetter = name.substring(0, 1).toLowerCase();
+            name = name.substring(1);
+            name = firstLetter + name;
+            name = name.replaceAll(" ", "");
+            return name;
+        }
+
         @Override
         public void createSetting (ITheme theme, String name, String description, boolean hasAlpha, boolean allowsRainbow, Color color, boolean rainbow) {
-            clickGuiModule.addSettings(new ColorSetting(name,clickGuiModule, color, allowsRainbow));
+            clickGuiModule.addSettings(new ColorSetting(camelCase(name), clickGuiModule, color, rainbow));
         }
 
         @Override
         public Color getColor (String name) {
-            return clickGuiModule.getSettings().filter(s -> s.getDisplayName().equals(name)).filter(s -> s instanceof ColorSetting).map(s -> (ColorSetting) s).findFirst().orElse(null).getValue();
+            return clickGuiModule.getSettings().filter(s -> s.getDisplayName().equals(camelCase(name))).filter(s -> s instanceof ColorSetting).map(s -> (ColorSetting) s).findFirst().orElse(null).getValue();
         }
     }
 
