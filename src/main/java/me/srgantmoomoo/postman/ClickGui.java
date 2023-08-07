@@ -1,5 +1,7 @@
 package me.srgantmoomoo.postman;
 
+import com.lukflug.panelstudio.config.IConfigList;
+import com.lukflug.panelstudio.config.IPanelConfig;
 import com.lukflug.panelstudio.layout.ChildUtil.ChildMode;
 
 import com.lukflug.panelstudio.base.*;
@@ -39,8 +41,10 @@ public class ClickGui extends MinecraftHUDGUI {
                 return "postman";
             }
         };
-        ITheme theme=new OptimizedTheme(new GameSenseTheme(new ThemeScheme(),9,4,5,": "+Formatting.GRAY));
-        //ITheme theme=new OptimizedTheme(new ThemeSelector(inter));
+        //ITheme theme=new OptimizedTheme(new GameSenseTheme(new ThemeScheme(),9,4,5,": "+Formatting.GRAY));
+        //ITheme theme=new OptimizedTheme(new ImpactTheme(new ThemeScheme(), 9, 4));
+        ITheme theme=new OptimizedTheme(new ClearTheme(new ThemeScheme(), ()->false, 9,4,5,": "+Formatting.GRAY));
+        // ITheme theme=new OptimizedTheme(new ThemeSelector(inter));
         //ITheme theme=new ImpactTheme(,9,4);
 
         IToggleable guiToggle=new SimpleToggleable(false);
@@ -73,10 +77,7 @@ public class ClickGui extends MinecraftHUDGUI {
 
             @Override
             public void setSize (Dimension size) {
-                this.size.width=size.width;
-                this.size.height=size.height;
-                if (size.width<75) this.size.width=75;
-                if (size.height<50) this.size.height=50;
+                // no resizing
             }
         };
         // Defining scroll behavior ...
