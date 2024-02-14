@@ -44,15 +44,12 @@ public class QuickThrow extends Module {
     }
 
     private boolean isHoldingThrowable(List<Item> throwables) {
-        assert MinecraftClient.getInstance().player != null;
-
-        if(throwables.isEmpty()) {
+        if(throwables.isEmpty())
             return false;
-        }else {
+        else {
             if(MinecraftClient.getInstance().player.isHolding(throwables.get(0))) return true;
             else isHoldingThrowable(throwables.subList(1, throwables.size()));
         }
-
         return false;
     }
 
