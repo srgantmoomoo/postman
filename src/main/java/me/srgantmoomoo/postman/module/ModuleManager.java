@@ -4,6 +4,8 @@ import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
 import me.srgantmoomoo.postman.module.modules.ClickGuiModule;
 import me.srgantmoomoo.postman.module.modules.Example;
+import me.srgantmoomoo.postman.module.modules.player.QuickPlace;
+import me.srgantmoomoo.postman.module.modules.player.QuickThrow;
 import me.srgantmoomoo.postman.module.modules.render.*;
 
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ public class ModuleManager {
         modules.add(new ClickGuiModule());
         modules.add(new Example());
         modules.add(new FullBright());
+        modules.add(new QuickPlace());
+        modules.add(new QuickThrow());
         modules.add(new VibrantShader());
     }
 

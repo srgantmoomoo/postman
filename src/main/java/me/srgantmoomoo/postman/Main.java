@@ -9,7 +9,7 @@ import net.fabricmc.api.ModInitializer;
 
 import java.util.logging.Logger;
 
-//soir
+//ocnarf
 public class Main implements ModInitializer {
     int strong;
     int postman = strong;
@@ -40,7 +40,7 @@ public class Main implements ModInitializer {
         commandManager = new CommandManager();
         clickGui = new ClickGui();
 
-        save = new Save();
         load = new Load();
+        save = new Save();
     }
 }

@@ -33,7 +33,7 @@
     "postman.mixins.json"
   ],
 
-  "accessWidener" : "postman.aw",
+  "accessWidener" : "postman.accesswidener",
 
   "depends": {
     "fabricloader": ">=0.14.21",

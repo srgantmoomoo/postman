@@ -3,7 +3,7 @@
 # postman
 
 [![GitHub all releases](https://img.shields.io/github/downloads/moomooooo/postman/total?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/releases)
-[![Lines of code](https://img.shields.io/tokei/lines/github/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
+[![Github Languages](https://img.shields.io/github/languages/top/srgantmoomoo/postman?style=flat-square&color=79C1FF)](https://github.com/moomooooo/postman/tree/master/src/main/java/me/srgantmoomoo)
 [![Discord](https://img.shields.io/discord/760964236779716648?color=79C1FF&label=discord&style=flat-square)](https://discord.gg/Jd8EmEuhb5)
 [![GitHub](https://img.shields.io/github/license/moomooooo/postman?color=79C1FF&style=flat-square)](https://github.com/moomooooo/postman/blob/master/LICENSE)
 
@@ -48,9 +48,7 @@ thank you :),
 # credits
 **really helpful people**
 - lukflug, being cool person. making panelstudio. helping me with panelstudio.
-- techale, adding multithreading to the main class. making postman website. helping me a lot :).
-- RECIOR, for postman bot, and being an extremly based individual. <br>
-- cattyngmd, making pr's for a variety of fixes and modules. <br>
+- techale, RECIOR, fluffery, theforecaster, and cattyngmd for being big postman legacy contributors and/or contributing to postman reborn. i will always be thankful for them :)<br>
 
 <!--
 **contributors**

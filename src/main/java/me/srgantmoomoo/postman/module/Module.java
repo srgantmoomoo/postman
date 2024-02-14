@@ -128,24 +128,12 @@ public class Module implements IModule {
         onEnable();
         setEnabled(true);
         // subscribe
-
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.save();
-            } catch (Exception ignored) {}
-        }
     }
 
     public void disable() {
         onDisable();
         setEnabled(false);
         //un subscribe
-
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.save();
-            } catch (Exception ignored) {}
-        }
     }
 
     @Override

@@ -46,7 +46,9 @@ repositories {
 	}
 }
 
-loom{}
+loom{
+	accessWidenerPath = file("src/main/resources/postman.accesswidener")
+}
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"

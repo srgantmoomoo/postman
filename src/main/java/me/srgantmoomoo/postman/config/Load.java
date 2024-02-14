@@ -65,7 +65,7 @@ public class Load {
 
                 Module module = Main.INSTANCE.moduleManager.getModule(moduleName);
                 if(module != null) {
-                    if (!settingName.equals("KeyBind")) {
+                    if (!settingName.equalsIgnoreCase("keybind")) {
                         Setting setting = Main.INSTANCE.settingManager.getSetting(module, settingName);
                         if (setting instanceof BooleanSetting) {
                             ((BooleanSetting) setting).setEnabled(Boolean.parseBoolean(value));
