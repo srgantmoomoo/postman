@@ -15,7 +15,7 @@ import java.util.List;
 public class QuickPlace extends Module {
 
     public QuickPlace() {
-        super("quickPlace", "desc", Category.PLAYER, 0);
+        super("quickPlace", "place blocks quickly.", Category.PLAYER, 0);
         throwables.add(Items.EXPERIENCE_BOTTLE);
         throwables.add(Items.SPLASH_POTION);
         throwables.add(Items.LINGERING_POTION);
@@ -28,6 +28,7 @@ public class QuickPlace extends Module {
     private final List<Item> throwables = new ArrayList<>();
 
     // the reverse of quickthrow lol
+    @Override
     public void onEvent(Event e) {
         if(MinecraftClient.getInstance().player == null)
             return;

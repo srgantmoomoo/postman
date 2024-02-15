@@ -15,7 +15,7 @@ import java.util.List;
 public class QuickThrow extends Module {
 
     public QuickThrow() {
-        super("quickThrow", "throw items faster than normal.", Category.PLAYER, 0);
+        super("quickThrow", "throw items like potions or xp bottles quickly.", Category.PLAYER, 0);
         throwables.add(Items.EXPERIENCE_BOTTLE);
         throwables.add(Items.SPLASH_POTION);
         throwables.add(Items.LINGERING_POTION);
