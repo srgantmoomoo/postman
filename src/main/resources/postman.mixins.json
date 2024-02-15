@@ -8,6 +8,8 @@
   "client": [
     "MixinClientConnection",
     "MixinClientWorld",
+    "MixinEntity",
+    "MixinFluidState",
     "MixinGameRenderer",
     "MixinKeyboard"
   ],
