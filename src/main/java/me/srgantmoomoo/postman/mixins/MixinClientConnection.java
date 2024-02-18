@@ -19,7 +19,7 @@ public class MixinClientConnection {
     @Shadow
     private Channel channel;
 
-    @Inject(method = "send(Lnet/minecraft/network/Packet;)V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "send(Lnet/minecraft/network/packet/Packet;)V", at = @At("HEAD"), cancellable = true)
     public void send(Packet<?> packet, CallbackInfo info) {
         EventPacket.Send e = new EventPacket.Send(packet);
         e.setType(Type.PRE);

@@ -13,8 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public class MixinGameRenderer {
-    public MatrixStack matrixStack;
-    @Inject(at = @At("HEAD"), method = "renderHand", cancellable = true)
+    @Inject(method = "renderHand", at = @At("HEAD"), cancellable = true)
     private void renderHand(MatrixStack matrixStack, Camera camera, float f, CallbackInfo info) {
         EventRender3d e = new EventRender3d(f, matrixStack);
         e.setType(Type.PRE);

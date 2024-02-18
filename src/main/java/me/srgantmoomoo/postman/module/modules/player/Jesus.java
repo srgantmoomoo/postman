@@ -30,9 +30,8 @@ public class Jesus extends Module {
         if(e instanceof EventCollisionShape) {
             if (isBlockFluid(((EventCollisionShape) e).getPos())
                     && !MinecraftClient.getInstance().player.isTouchingWater()
-                    && MinecraftClient.getInstance().player.getY() >= ((EventCollisionShape) e).getPos().getY() + 0.9) {
+                    && MinecraftClient.getInstance().player.getY() >= ((EventCollisionShape) e).getPos().getY() + 0.9)
                 ((EventCollisionShape) e).setShape(VoxelShapes.fullCube());
-            }
         }
 
         if(e instanceof EventTick) {
