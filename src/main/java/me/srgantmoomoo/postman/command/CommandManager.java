@@ -16,13 +16,13 @@ public class CommandManager {
     private String prefix = ",";
 
     public CommandManager() {
+        commands.add(new Prefix());
         commands.add(new Bind());
-        commands.add(new Clear());
         commands.add(new ListModules());
         commands.add(new ListSettings());
-        commands.add(new Prefix());
-        commands.add(new Setting());
         commands.add(new Toggle());
+        commands.add(new Setting());
+        commands.add(new Clear());
     }
 
     // called in MixinClientConnection.

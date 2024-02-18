@@ -12,7 +12,7 @@ public class NoPush extends Module {
     public BooleanSetting fluid = new BooleanSetting("fluid", this, true);
 
     public NoPush() {
-        super("noPush", "prevents you from being pushed by, or pushing other entities", Category.PLAYER, 0);
+        super("noPush", "prevents you from being pushed by, or pushing other entities.", Category.PLAYER, 0);
         this.addSettings(entities, fluid);
     }
 
