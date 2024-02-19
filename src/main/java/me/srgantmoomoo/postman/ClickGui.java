@@ -1,11 +1,8 @@
 package me.srgantmoomoo.postman;
 
-import com.lukflug.panelstudio.config.IConfigList;
-import com.lukflug.panelstudio.config.IPanelConfig;
 import com.lukflug.panelstudio.layout.ChildUtil.ChildMode;
 
 import com.lukflug.panelstudio.base.*;
-import com.lukflug.panelstudio.component.IComponent;
 import com.lukflug.panelstudio.component.IResizable;
 import com.lukflug.panelstudio.component.IScrollSize;
 import com.lukflug.panelstudio.hud.HUDGUI;
@@ -42,7 +39,7 @@ public class ClickGui extends MinecraftHUDGUI {
             }
         };
 
-        ITheme theme=new OptimizedTheme(new ClearTheme(new ThemeScheme(), ()->false, 9,4,5,": "+Formatting.GRAY));
+        ITheme theme=new OptimizedTheme(new RainbowTheme(new ThemeScheme(), ()->false,()->false,()->150,9,3,": "+Formatting.GRAY));
 
         IToggleable guiToggle=new SimpleToggleable(false);
         IToggleable hudToggle=new SimpleToggleable(false);
@@ -53,12 +50,6 @@ public class ClickGui extends MinecraftHUDGUI {
 
         BiFunction<Context,Integer,Integer> scrollHeight=(context, componentHeight)->Math.min(componentHeight,Math.max(HEIGHT*4,ClickGui.this.height-context.getPos().y-HEIGHT));
         PopupTuple popupType=new PopupTuple(new PanelPositioner(new Point(0,0)),false,new IScrollSize() {
-            @Override
-            public int getScrollHeight (Context context, int componentHeight) {
-                return scrollHeight.apply(context,componentHeight);
-            }
-        });
-        PopupTuple colorPopup=new PopupTuple(new CenteredPositioner(()->new Rectangle(new Point(0,0),inter.getWindowSize())),true,new IScrollSize() {
             @Override
             public int getScrollHeight (Context context, int componentHeight) {
                 return scrollHeight.apply(context,componentHeight);
@@ -149,60 +140,6 @@ public class ClickGui extends MinecraftHUDGUI {
 
         // Normal generator
         IComponentGenerator generator=new ComponentGenerator(keybindKey,charFilter,keys);
-        // Use cycle switches instead of buttons
-        IComponentGenerator cycleGenerator=new ComponentGenerator(keybindKey,charFilter,keys) {
-            @Override
-            public IComponent getEnumComponent (IEnumSetting setting, Supplier<Animation> animation, IComponentAdder adder, ThemeTuple theme, int colorLevel, boolean isContainer) {
-                return new CycleSwitch(setting,theme.getCycleSwitchRenderer(isContainer));
-            }
-        };
-        // Use all the fancy widgets with text boxes
-        IComponentGenerator csgoGenerator=new ComponentGenerator(keybindKey,charFilter,keys) {
-            @Override
-            public IComponent getBooleanComponent (IBooleanSetting setting, Supplier<Animation> animation, IComponentAdder adder, ThemeTuple theme, int colorLevel, boolean isContainer) {
-                return new ToggleSwitch(setting,theme.getToggleSwitchRenderer(isContainer));
-            }
-
-            @Override
-            public IComponent getEnumComponent (IEnumSetting setting, Supplier<Animation> animation, IComponentAdder adder, ThemeTuple theme, int colorLevel, boolean isContainer) {
-                return new DropDownList(setting,theme,isContainer,false,keys,new IScrollSize(){},adder::addPopup) {
-                    @Override
-                    protected Animation getAnimation() {
-                        return animation.get();
-                    }
-
-                    @Override
-                    public boolean allowCharacter (char character) {
-                        return charFilter.test(character);
-                    }
-
-                    @Override
-                    protected boolean isUpKey (int key) {
-                        return key==GLFW.GLFW_KEY_UP;
-                    }
-
-                    @Override
-                    protected boolean isDownKey (int key) {
-                        return key==GLFW.GLFW_KEY_DOWN;
-                    }
-
-                    @Override
-                    protected boolean isEnterKey (int key) {
-                        return key==GLFW.GLFW_KEY_ENTER;
-                    }
-                };
-            }
-
-            @Override
-            public IComponent getNumberComponent (INumberSetting setting, Supplier<Animation> animation, IComponentAdder adder, ThemeTuple theme, int colorLevel, boolean isContainer) {
-                return new Spinner(setting,theme,isContainer,true,keys);
-            }
-
-            @Override
-            public IComponent getColorComponent (IColorSetting setting, Supplier<Animation> animation, IComponentAdder adder, ThemeTuple theme, int colorLevel, boolean isContainer) {
-                return new ColorPickerComponent(setting,new ThemeTuple(theme.theme,theme.logicalLevel,colorLevel));
-            }
-        };
 
         // Classic Panel
         IComponentAdder classicPanelAdder=new PanelAdder(gui,false,()->true, title->"classicPanel_"+title) {
