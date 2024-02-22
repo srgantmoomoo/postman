@@ -7,14 +7,10 @@ import me.srgantmoomoo.postman.module.ModuleManager;
 import me.srgantmoomoo.postman.module.setting.SettingManager;
 import net.fabricmc.api.ModInitializer;
 
-import java.util.logging.Logger;
-
 //ocnarf
 public class Main implements ModInitializer {
     int strong;
     int postman = strong;
-
-    private static Logger logger;
 
     public final String MODID = "postman";
     public final String NAME = "postman";
