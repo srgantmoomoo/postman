@@ -12,57 +12,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CommandManager {
-    public ArrayList<Command> commands = new ArrayList<Command>();
+    private ArrayList<Command> commands = new ArrayList<Command>();
     private String prefix = ",";
 
     public CommandManager() {
         commands.add(new Prefix());
         commands.add(new Bind());
+        commands.add(new Clear());
+        commands.add(new Help());
         commands.add(new ListModules());
         commands.add(new ListSettings());
-        commands.add(new Toggle());
         commands.add(new Setting());
-        commands.add(new Clear());
+        commands.add(new Toggle());
     }
 
-    // called in MixinClientConnection.
-    public void onClientChat(String input) {
-        if(!input.startsWith(prefix))
-            return;
-
-        input = input.substring(prefix.length());
-        if(input.split(" ").length > 0) {
-            //TODO fix this fucking shit.
-            boolean commandFound = false;
-            String commandName = input.split(" ")[0];
-            if(commandName.equals("") || commandName.equals("help")) {
-                sendClientChatMessage("\n" + Formatting.GRAY + Formatting.BOLD + "i love postman <3" + "\n" + Formatting.RESET, false);
-                for(Command c : commands) {
-                    String dividers = c.getSyntax().replace("|", Formatting.GRAY + "" + Formatting. ITALIC + "|" + Formatting.AQUA + "" + Formatting.ITALIC); // turns dividers grey for better look :)
-                    sendClientChatMessage(c.getName() + Formatting.WHITE + " - " + c.getDescription() + Formatting.AQUA + Formatting.ITALIC + " [" + dividers + "]" + Formatting.RESET + Formatting.GRAY + ".", false);
-                }
-                sendClientChatMessage("\n" + Formatting.RESET + Formatting.GRAY + Formatting.BOLD + "i hate postman." + "\n", false);
-            }else {
-                for(Command c : commands) {
-                    if(c.getAliases().contains(commandName) || c.getName().equalsIgnoreCase(commandName)) {
-                        c.onCommand(Arrays.copyOfRange(input.split(" "), 1, input.split(" ").length), input);
-                        commandFound = true;
-                        break;
-                    }
-                }
-                if(!commandFound)
-                    sendClientChatMessage(Formatting.DARK_RED + "command does not exist, use " + Formatting.ITALIC + Formatting.WHITE + prefix + "help " + Formatting.RESET + Formatting.DARK_RED + "for help.", true);
-            }
-        }
-    }
-
-    // opens chat when prefix is pressed, called in MixinKeyboard.
-    public void onKeyPress() {
-        if(InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), prefix.charAt(0))) {
-            if(prefix.length() == 1) {
-                MinecraftClient.getInstance().setScreen(new ChatScreen(""));
-            }
-        }
+    public ArrayList<Command> getCommands() {
+        return commands;
     }
 
     public String getPrefix() {
@@ -79,13 +44,50 @@ public class CommandManager {
         }
     }
 
+    // called in MixinClientConnection.
+    public void onClientChat(String input) {
+        if(!input.startsWith(prefix))
+            return;
+
+        input = input.substring(prefix.length());
+        if(input.split(" ").length > 0) {
+            boolean commandFound = false;
+            String commandName = input.split(" ")[0];
+            for(Command c : commands) {
+                if(c.getName().equalsIgnoreCase(commandName) || c.getAliases().contains(commandName)) {
+                    c.onCommand(Arrays.copyOfRange(input.split(" "), 1, input.split(" ").length), input);
+                    commandFound = true;
+                    break;
+                }
+            }
+            if(!commandFound)
+                sendClientChatMessage(Formatting.RED + "command does not exist, use " + Formatting.ITALIC +
+                        Formatting.WHITE + prefix + "help " + Formatting.RESET + Formatting.RED + "for help.", true);
+        }
+    }
+
+    // opens chat when prefix is pressed, called in MixinKeyboard.
+    public void onKeyPress() {
+        if(InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), prefix.charAt(0))) {
+            if(prefix.length() == 1) {
+                MinecraftClient.getInstance().setScreen(new ChatScreen(""));
+            }
+        }
+    }
+
     public void sendClientChatMessage(String message, boolean prefix) {
-        String messagePrefix = Formatting.GRAY + "" + Formatting.ITALIC + "@" + Main.INSTANCE.NAME + ": " + Formatting.RESET;
-        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal((prefix ? messagePrefix + Formatting.GRAY + message : Formatting.GRAY + message)));
+        String messagePrefix = Formatting.AQUA + "" + Formatting.ITALIC + "@" + Main.INSTANCE.NAME + ": " +
+                Formatting.RESET;
+        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal((prefix ? messagePrefix +
+                Formatting.GRAY + message : Formatting.GRAY + message)));
     }
 
     public void sendCorrectionMessage(Command command) {
-        String dividers = command.getSyntax().replace("|", Formatting.GRAY + "" + Formatting. ITALIC + "|" + Formatting.AQUA + "" + Formatting.ITALIC); // turns dividers grey for better look :)
-        sendClientChatMessage("correct usage of " + Formatting.WHITE + command.getName() + Formatting.GRAY + " command -> " + Formatting.AQUA + Formatting.ITALIC + prefix + dividers + Formatting.GRAY + ".", true);
+        String commWithDividers = command.getSyntax().replace("|", Formatting.WHITE + "" + Formatting. ITALIC + "|" +
+                Formatting.GRAY + "" + Formatting.ITALIC); // turns dividers grey for look better :)
+        sendClientChatMessage(Formatting.RED + "correct usage of " + Formatting.WHITE + command.getName() +
+                Formatting.RED + " command -> \n" +
+                Formatting.WHITE + "[" + Formatting.GRAY + Formatting.ITALIC + prefix + commWithDividers +
+                Formatting.WHITE + "]", true);
     }
 }

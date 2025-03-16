@@ -15,8 +15,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Module implements IModule {
-
+public abstract class Module {
     private final String name;
     private final String description;
     private final Category category;
@@ -42,11 +41,6 @@ public class Module implements IModule {
         return settings;
     }
 
-    @Override
-    public Stream<ISetting<?>> getSettings() {
-        return settings.stream().filter(setting->setting instanceof ISetting).sorted((a,b)->a.getName().compareTo(b.getName())).map(setting->(ISetting<?>)setting);
-    }
-
     public int getKey() {
         return key.getKey();
     }
@@ -59,12 +53,6 @@ public class Module implements IModule {
         return name;
     }
 
-    @Override
-    public String getDisplayName() {
-        return name;
-    }
-
-    @Override
     public String getDescription() {
         return description;
     }
@@ -77,25 +65,7 @@ public class Module implements IModule {
         return enabled;
     }
 
-    @Override
-    public IToggleable isEnabled() {
-        return new IToggleable() {
-            @Override
-            public boolean isOn() {
-                return enabled;
-            }
-
-            @Override
-            public void toggle() {
-                if(enabled)
-                    disable();
-                else
-                    enable();
-            }
-        };
-    }
-
-    public void setEnabled(boolean enabled) {
+    private void setEnabled(boolean enabled) {
         this.enabled = enabled;
         /*if(enabled)
             // subscribe
@@ -135,10 +105,4 @@ public class Module implements IModule {
         setEnabled(false);
         //un subscribe
     }
-
-    @Override
-    public IBoolean isVisible() {
-        return ()->true;
-    }
-
 }

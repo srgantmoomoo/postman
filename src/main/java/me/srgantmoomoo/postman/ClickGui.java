@@ -31,7 +31,7 @@ public class ClickGui extends MinecraftHUDGUI {
 
     public ClickGui() {
         clickGuiModule = (ClickGuiModule) Main.INSTANCE.moduleManager.getModule("clickGui");
-        IClient client = Category.getClient();
+        //IClient client = Category.getClient();
         inter = new GUIInterface(true) {
             @Override
             protected String getResourcePrefix() {
@@ -154,7 +154,7 @@ public class ClickGui extends MinecraftHUDGUI {
             }
         };
         ILayout classicPanelLayout=new PanelLayout(WIDTH,new Point(DISTANCE,DISTANCE),(WIDTH+DISTANCE)/2,HEIGHT+DISTANCE,animation, level->ChildMode.DOWN, level->ChildMode.DOWN,popupType);
-        classicPanelLayout.populateGUI(classicPanelAdder,generator,client,theme);
+        //classicPanelLayout.populateGUI(classicPanelAdder,generator,client,theme);
     }
 
     @Override
@@ -188,7 +188,8 @@ public class ClickGui extends MinecraftHUDGUI {
 
         @Override
         public Color getColor (String name) {
-            return clickGuiModule.getSettings().filter(s -> s.getDisplayName().equals(camelCase(name))).filter(s -> s instanceof ColorSetting).map(s -> (ColorSetting) s).findFirst().orElse(null).getValue();
+            //return clickGuiModule.getSettings().filter(s -> s.getDisplayName().equals(camelCase(name))).filter(s -> s instanceof ColorSetting).map(s -> (ColorSetting) s).findFirst().orElse(null).getValue();
+            return null;
         }
     }
 

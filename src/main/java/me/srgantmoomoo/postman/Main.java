@@ -25,7 +25,7 @@ public class Main implements ModInitializer {
     public ModuleManager moduleManager;
     public SettingManager settingManager;
     public CommandManager commandManager;
-    public ClickGui clickGui;
+    //public ClickGui clickGui;
     public Save save;
     public Load load;
 
@@ -34,7 +34,7 @@ public class Main implements ModInitializer {
         moduleManager = new ModuleManager();
         settingManager = new SettingManager();
         commandManager = new CommandManager();
-        clickGui = new ClickGui();
+        //clickGui = new ClickGui();
 
         load = new Load();
         save = new Save();

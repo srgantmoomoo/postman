@@ -25,17 +25,18 @@ public class ClickGuiModule extends Module {
     public void onEvent(Event e) {
         if(e instanceof EventGuiKeyPress) {
             if(InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_ESCAPE))
-                setEnabled(false);
+                return;
+                //setEnabled(false);
         }
     }
     
     @Override
     public void onEnable() {
-        Main.INSTANCE.clickGui.enterGUI();
+        //Main.INSTANCE.clickGui.enterGUI();
     }
 
     @Override
     public void onDisable() {
-        Main.INSTANCE.clickGui.exitGUI();
+        //Main.INSTANCE.clickGui.exitGUI();
     }
 }
