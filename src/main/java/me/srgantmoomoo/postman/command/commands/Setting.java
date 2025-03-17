@@ -53,7 +53,7 @@ public class Setting extends Command {
 
                                 ((NumberSetting) setting).setValue(value);
                                 Main.INSTANCE.commandManager.sendClientChatMessage("the setting " + Formatting.WHITE + setting.getName() + Formatting.GRAY + " of " + Formatting.WHITE
-                                        + module.getName() + Formatting.GRAY + " is now set to " + Formatting.GREEN + ((NumberSetting) setting).getNumber() + Formatting.GRAY + ".", true);
+                                        + module.getName() + Formatting.GRAY + " is now set to " + Formatting.GREEN + ((NumberSetting) setting).getValue() + Formatting.GRAY + ".", true);
                             }catch (NumberFormatException invalid) {
                                 Main.INSTANCE.commandManager.sendClientChatMessage("your input " + Formatting.RED + valueInput + Formatting.GRAY + " is not a valid number.", true);
                             }

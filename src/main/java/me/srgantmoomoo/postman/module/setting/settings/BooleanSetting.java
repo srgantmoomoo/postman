@@ -21,11 +21,7 @@ public class BooleanSetting extends Setting implements IBooleanSetting {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
 
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception ignored) {}
-        }
+        Main.INSTANCE.save();
     }
 
     @Override

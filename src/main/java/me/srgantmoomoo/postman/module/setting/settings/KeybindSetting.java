@@ -6,7 +6,7 @@ import me.srgantmoomoo.postman.module.setting.Setting;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.TranslatableTextContent;
 
-public class KeybindSetting extends Setting implements IKeybindSetting {
+public class KeybindSetting extends Setting {
     private int key;
 
     public KeybindSetting(int key) { // no parent.
@@ -14,23 +14,16 @@ public class KeybindSetting extends Setting implements IKeybindSetting {
         this.key = key;
     }
 
-    @Override
     public int getKey() {
         return key;
     }
 
-    @Override
     public void setKey (int key) {
         this.key = key;
 
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception ignored) {}
-        }
+        Main.INSTANCE.save();
     }
 
-    @Override
     public String getKeyName() {
         String translationKey= InputUtil.Type.KEYSYM.createFromCode(getKey()).getTranslationKey();
         String translation=new TranslatableTextContent(translationKey, null, TranslatableTextContent.EMPTY_ARGUMENTS).toString();

@@ -9,25 +9,15 @@ import me.srgantmoomoo.postman.module.setting.Setting;
 import java.util.Arrays;
 import java.util.List;
 
-public class ModeSetting extends Setting implements IEnumSetting {
+public class ModeSetting extends Setting {
     private int index;
     private List<String> modes;
-    private final ILabeled[] array;
 
     public ModeSetting(String name, Module parent, String defaultMode, String... modes) {
         setName(name);
         setParent(parent);
         this.modes = Arrays.asList(modes);
         this.index = this.modes.indexOf(defaultMode);
-
-        array=Arrays.stream(modes).map(v->{
-            return new ILabeled() {
-                @Override
-                public String getDisplayName() {
-                    return v.toString();
-                }
-            };
-        }).toArray(ILabeled[]::new);
     }
 
     public List<String> getModes() {
@@ -41,11 +31,7 @@ public class ModeSetting extends Setting implements IEnumSetting {
     public void setMode(String mode) {
         this.index = this.modes.indexOf(mode);
 
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception ignored) {}
-        }
+        Main.INSTANCE.save();
     }
 
     public boolean is(String mode) {
@@ -58,66 +44,6 @@ public class ModeSetting extends Setting implements IEnumSetting {
         else
             this.index = 0;
 
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception ignored) {}
-        }
-    }
-
-    @Override
-    public void increment() {
-        if (this.index < this.modes.size() - 1) {
-            this.index++;
-        }else {
-            this.index = 0;
-        }
-
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception ignored) {}
-        }
-    }
-
-    @Override
-    public void decrement() {
-        if (this.index > 0) {
-            this.index--;
-        }else {
-            this.index = this.modes.size() - 1;
-        }
-
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception ignored) {}
-        }
-    }
-
-    @Override
-    public String getValueName() {
-        return this.modes.get(this.index);
-    }
-
-    @Override
-    public int getValueIndex() {
-        return this.index;
-    }
-
-    @Override
-    public void setValueIndex(int index) {
-        this.index = index;
-
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.saveSettings();
-            } catch (Exception ignored) {}
-        }
-    }
-
-    @Override
-    public ILabeled[] getAllowedValues() {
-        return array;
+        Main.INSTANCE.save();
     }
 }

@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.clickgui.component;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.CategoryRect;
 import me.srgantmoomoo.postman.clickgui.component.settingcomponents.*;
@@ -123,7 +124,7 @@ public class ModuleComponent {
 
         // draw check mark if enabled
         if(this.getModule().isModuleEnabled()) {
-            //RenderSystem.setShaderTexture(0, check);
+            RenderSystem.setShaderTexture(0, check);
             context.drawTexture(check, getX() + this.getCategoryRect().getWidth() - 13, (this.getY() + 1),
                     10, 10, 0, 0, 10, 10, 10, 10);
         }

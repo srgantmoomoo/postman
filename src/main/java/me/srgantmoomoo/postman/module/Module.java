@@ -63,11 +63,7 @@ public abstract class Module {
     private void setEnabled(boolean enabled) {
         this.enabled = enabled;
 
-        if(Main.INSTANCE.save != null) {
-            try {
-                Main.INSTANCE.save.save();
-            } catch (Exception ignored) {}
-        }
+        Main.INSTANCE.save();
     }
 
     public void onEnable() {}

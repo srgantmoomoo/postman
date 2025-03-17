@@ -39,4 +39,12 @@ public class Main implements ModInitializer {
         load = new Load();
         save = new Save();
     }
+
+    public void save() {
+        if(this.save != null) {
+            try {
+                this.save.save();
+            } catch (Exception ignored) {}
+        }
+    }
 }
