@@ -1,9 +1,5 @@
 package me.srgantmoomoo.postman.module;
 
-import com.lukflug.panelstudio.base.IBoolean;
-import com.lukflug.panelstudio.base.IToggleable;
-import com.lukflug.panelstudio.setting.IModule;
-import com.lukflug.panelstudio.setting.ISetting;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.module.setting.Setting;
@@ -13,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 public abstract class Module {
     private final String name;
@@ -67,25 +62,12 @@ public abstract class Module {
 
     private void setEnabled(boolean enabled) {
         this.enabled = enabled;
-        /*if(enabled)
-            // subscribe
-            return;
-        else
-            // un subscribe
-            return;*/
 
         if(Main.INSTANCE.save != null) {
             try {
                 Main.INSTANCE.save.save();
             } catch (Exception ignored) {}
         }
-    }
-
-    public void toggle() {
-        if(enabled)
-            disable();
-        else
-            enable();
     }
 
     public void onEnable() {}
@@ -97,12 +79,17 @@ public abstract class Module {
     public void enable() {
         onEnable();
         setEnabled(true);
-        // subscribe
     }
 
     public void disable() {
         onDisable();
         setEnabled(false);
-        //un subscribe
+    }
+
+    public void toggle() {
+        if(enabled)
+            disable();
+        else
+            enable();
     }
 }
