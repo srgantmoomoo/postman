@@ -5,7 +5,7 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
-public class BooleanSetting extends Setting implements IBooleanSetting {
+public class BooleanSetting extends Setting {
     private boolean enabled;
 
     public BooleanSetting(String name, Module parent, boolean enabled) {
@@ -24,13 +24,7 @@ public class BooleanSetting extends Setting implements IBooleanSetting {
         Main.INSTANCE.save();
     }
 
-    @Override
     public void toggle() {
         setEnabled(!isEnabled());
-    }
-
-    @Override
-    public boolean isOn() {
-        return isEnabled();
     }
 }

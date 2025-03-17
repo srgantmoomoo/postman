@@ -63,7 +63,7 @@ public class Load {
                 String settingName = curLine.split(":")[1];
                 String value = curLine.split(":")[2];
 
-                Module module = Main.INSTANCE.moduleManager.getModule(moduleName);
+                Module module = Main.INSTANCE.moduleManager.getModuleByName(moduleName);
                 if(module != null) {
                     if (!settingName.equalsIgnoreCase("keybind")) {
                         Setting setting = Main.INSTANCE.settingManager.getSetting(module, settingName);

@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
-import com.lukflug.panelstudio.setting.IColorSetting;
 import com.lukflug.panelstudio.theme.ITheme;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
@@ -19,7 +18,7 @@ public class ColorSetting extends Setting {
         this.rainbow = rainbow;
     }
 
-    public long toInteger() {
+    public int toInteger() {
         return this.value.getRGB() & (0xFFFFFFFF);
     }
 

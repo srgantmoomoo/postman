@@ -4,6 +4,8 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.module.setting.Setting;
+import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 
@@ -16,19 +18,22 @@ public class CategoryRect {
     private int y;
     private int width;
     private int height;
+    private int color;
     private boolean open;
     private boolean dragging;
     private int dragX;
     private int dragY;
+    Setting moduleColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("moduleColor");
 
-    public CategoryRect(Category category, int x, int y, int width, int height,
-                        boolean open, boolean dragging, int dragX, int dragY) {
+    public CategoryRect(Category category, int x, int y, int width, int height, int color, boolean open,
+                        boolean dragging, int dragX, int dragY) {
         this.category = category;
         this.moduleComponents = new ArrayList<>();
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.color = color;
         this.open = open;
         this.dragging = dragging;
         this.dragX = dragX;
@@ -37,7 +42,8 @@ public class CategoryRect {
         // add module componenets to category
         int moduleYOffset = this.height;
         for(Module module : Main.INSTANCE.moduleManager.getModulesInCategory(category)) {
-            ModuleComponent moduleComponent = new ModuleComponent(module, this, this.x, this.y + moduleYOffset);
+            ModuleComponent moduleComponent = new ModuleComponent(module, this, this.x, this.y + moduleYOffset,
+                    ((ColorSetting) moduleColor).toInteger());
             this.moduleComponents.add(moduleComponent);
             moduleYOffset += this.height;
         }
@@ -75,6 +81,10 @@ public class CategoryRect {
         return height;
     }
 
+    public int getColor() {
+        return color;
+    }
+
     public boolean isOpen() {
         return open;
     }
@@ -92,7 +102,7 @@ public class CategoryRect {
     }
 
     public void draw(DrawContext context) {
-        context.fill(x, y, x + getWidth(), y + getHeight(), 0xffe6ab17);
+        context.fill(x, y, x + getWidth(), y + getHeight(), this.getColor());
 
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getCategory().getName(),
                 this.getX() + 2, this.getY() + this.getHeight() / 2 -

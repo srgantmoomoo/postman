@@ -55,7 +55,7 @@ public class Save {
             File file = new File(MainDirectory, "settings.txt");
             ArrayList<String> toSave = new ArrayList<>();
             for(Module module : Main.INSTANCE.moduleManager.getModules()) {
-                for(Setting setting : module.getModuleSettings()) {
+                for(Setting setting : module.getSettings()) {
                     if(setting instanceof BooleanSetting boo) {
                         toSave.add(module.getName() + ":" + setting.getName() + ":" + boo.isEnabled());
                     }

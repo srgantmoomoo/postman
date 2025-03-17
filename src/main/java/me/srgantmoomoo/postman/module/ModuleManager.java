@@ -2,7 +2,6 @@ package me.srgantmoomoo.postman.module;
 
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
-import me.srgantmoomoo.postman.module.modules.ClickGuiModule;
 import me.srgantmoomoo.postman.module.modules.Example;
 import me.srgantmoomoo.postman.module.modules.client.ClickGui;
 import me.srgantmoomoo.postman.module.modules.player.*;
@@ -45,7 +44,7 @@ public class ModuleManager {
         return modules;
     }
 
-    public Module getModule(String name) {
+    public Module getModuleByName(String name) {
         for(Module module : modules) {
             if(module.getName().equalsIgnoreCase(name))
                 return module;

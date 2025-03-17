@@ -32,7 +32,7 @@ public class Setting extends Command {
         for(Module module : Main.INSTANCE.moduleManager.getModules()) {
             if(module.getName().equalsIgnoreCase(moduleInput)) {
                 moduleFound = true;
-                for(me.srgantmoomoo.postman.module.setting.Setting setting : module.getModuleSettings()) {
+                for(me.srgantmoomoo.postman.module.setting.Setting setting : module.getSettings()) {
                     if(setting.getName().equalsIgnoreCase(settingInput)) {
                         settingFound = true;
                         if(setting instanceof BooleanSetting) {

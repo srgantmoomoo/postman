@@ -32,8 +32,17 @@ public abstract class Module {
         this.settings.sort(Comparator.comparingInt(s -> s == key ? 1 : 0));
     }
 
-    public List<Setting> getModuleSettings() {
+    public List<Setting> getSettings() {
         return settings;
+    }
+
+    public Setting getSettingByName(String name) {
+        for(Setting setting : this.getSettings()) {
+            if(setting.getName().equals(name)) {
+                return setting;
+            }
+        }
+        return null;
     }
 
     public int getKey() {

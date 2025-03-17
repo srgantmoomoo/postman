@@ -10,10 +10,8 @@ import com.lukflug.panelstudio.layout.*;
 import com.lukflug.panelstudio.mc20.MinecraftHUDGUI;
 import com.lukflug.panelstudio.mc20.MinecraftGUI;
 import com.lukflug.panelstudio.popup.*;
-import com.lukflug.panelstudio.setting.*;
 import com.lukflug.panelstudio.theme.*;
 import com.lukflug.panelstudio.widget.*;
-import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.modules.ClickGuiModule;
 import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import net.minecraft.util.Formatting;
@@ -30,7 +28,7 @@ public class ClickGui extends MinecraftHUDGUI {
     ClickGuiModule clickGuiModule;
 
     public ClickGui() {
-        clickGuiModule = (ClickGuiModule) Main.INSTANCE.moduleManager.getModule("clickGui");
+        clickGuiModule = (ClickGuiModule) Main.INSTANCE.moduleManager.getModuleByName("clickGui");
         //IClient client = Category.getClient();
         inter = new GUIInterface(true) {
             @Override

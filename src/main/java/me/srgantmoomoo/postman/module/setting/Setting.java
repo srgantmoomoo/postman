@@ -1,10 +1,8 @@
 package me.srgantmoomoo.postman.module.setting;
 
-import com.lukflug.panelstudio.base.IBoolean;
-import com.lukflug.panelstudio.setting.ILabeled;
 import me.srgantmoomoo.postman.module.Module;
 
-public class Setting implements ILabeled {
+public class Setting {
     private String name;
     private Module parent;
 
@@ -22,20 +20,5 @@ public class Setting implements ILabeled {
 
     public void setParent(Module parent) {
         this.parent = parent;
-    }
-
-    @Override
-    public String getDisplayName() {
-        return name;
-    }
-
-    @Override
-    public String getDescription() {
-        return null; //TODO null
-    }
-
-    @Override
-    public IBoolean isVisible() {
-        return ()->true;
     }
 }

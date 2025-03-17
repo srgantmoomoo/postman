@@ -29,7 +29,7 @@ public class ListSettings extends Command {
             if(module.getName().equalsIgnoreCase(userInput)) {
                 found = true;
                 Main.INSTANCE.commandManager.sendClientChatMessage(Formatting.BOLD + module.getName(), false);
-                for(Setting setting : module.getModuleSettings()) {
+                for(Setting setting : module.getSettings()) {
                     if(setting instanceof BooleanSetting)
                         Main.INSTANCE.commandManager.sendClientChatMessage(setting.getName() + (((BooleanSetting) setting).isEnabled() ?
                                 Formatting.GREEN + " enabled" : Formatting.RED + " disabled") + Formatting.GRAY + ".", false);

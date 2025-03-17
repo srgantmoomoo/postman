@@ -20,42 +20,44 @@ public class ModuleComponent {
     private ArrayList<SettingComponent> settingComponents;
     private int x;
     private int y;
+    private int color;
     private boolean open;
     private boolean hovered;
     private int mousex;
     private int mousey;
 
-    public ModuleComponent(Module module, CategoryRect categoryRect, int x, int y) {
+    public ModuleComponent(Module module, CategoryRect categoryRect, int x, int y, int color) {
         this.module = module;
         this.categoryRect = categoryRect;
         this.settingComponents = new ArrayList<>();
         this.x = x;
         this.y = y;
+        this.color = color;
         this.open = false;
 
         // add setting components to module
         int settingYOffset = this.categoryRect.getHeight(); // + 12??? idk why???
-        if(module.getModuleSettings() != null) {
-            for(Setting setting : module.getModuleSettings()) {
+        if(module.getSettings() != null) {
+            for(Setting setting : module.getSettings()) {
                 if(setting instanceof BooleanSetting) {
                     this.settingComponents.add(new BooleanComponent((BooleanSetting) setting, this, this.x,
                             this.y + settingYOffset));
-                    settingYOffset += 12;
+                    settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof NumberSetting) {
                     this.settingComponents.add(new NumberComponent((NumberSetting) setting, this, this.x,
                             this.y + settingYOffset));
-                    settingYOffset += 12;
+                    settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ModeSetting) {
                     this.settingComponents.add(new ModeComponent((ModeSetting) setting, this, this.x,
                             this.y + settingYOffset));
-                    settingYOffset += 12;
+                    settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ColorSetting) {
                     this.settingComponents.add(new ColorComponent((ColorSetting) setting, this, this.x,
                             this.y + settingYOffset));
-                    settingYOffset += 12;
+                    settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof KeybindSetting) {
                     this.settingComponents.add(new KeybindComponent((KeybindSetting) setting, this, this.x,
@@ -95,6 +97,10 @@ public class ModuleComponent {
         this.y = y;
     }
 
+    public int getColor() {
+        return this.color;
+    }
+
     public boolean isOpen() {
         return open;
     }
@@ -119,7 +125,7 @@ public class ModuleComponent {
     public void drawComponent(DrawContext context) {
         // module name and background
         context.fill(this.getX(), this.getY(), this.getX() + this.getCategoryRect().getWidth(),
-                this.getY() + this.getCategoryRect().getHeight(), 0x90000000);
+                this.getY() + this.getCategoryRect().getHeight(), this.getColor());
         this.drawModuleName(context);
 
         // draw check mark if enabled
