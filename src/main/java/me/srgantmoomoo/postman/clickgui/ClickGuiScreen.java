@@ -1,13 +1,19 @@
 package me.srgantmoomoo.postman.clickgui;
 
+import ladysnake.satin.api.managed.ManagedShaderEffect;
+import ladysnake.satin.api.managed.ShaderEffectManager;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.setting.Setting;
+import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
+import me.srgantmoomoo.postman.module.setting.settings.ModeSetting;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 
@@ -15,6 +21,8 @@ public class ClickGuiScreen extends Screen {
     private ArrayList<CategoryRect> categoryRects;
     private boolean mouseHeld = false;
     Setting categoryColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("categoryColor");
+    Setting background = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("background");
+    Setting pauseGame = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("pauseGame");
 
     public ClickGuiScreen() {
         super(Text.literal("clickGui"));
@@ -31,9 +39,21 @@ public class ClickGuiScreen extends Screen {
         }
     }
 
+    private final Identifier postmanLogo = new Identifier(Main.INSTANCE.MODID, "postman-logo-transparent.png");
+    private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/blur" + ".json"));
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context);
+        // background
+        if(((ModeSetting) background).is("blur"))
+            this.blur.render(1);
+        else if(((ModeSetting) background).is("dim"))
+            this.renderBackground(context);
+
+        // postman logo
+        context.drawTexture(postmanLogo, 0, MinecraftClient.getInstance().getWindow().getScaledHeight() - 80,
+                0, 0, 80, 80, 80, 80);
+
+        // categories & modules
         for(CategoryRect categoryRect : categoryRects) {
             categoryRect.updatePosition(mouseX, mouseY);
             categoryRect.draw(context);
@@ -83,6 +103,7 @@ public class ClickGuiScreen extends Screen {
         return false;
     }
 
+    /*
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         return false;
@@ -91,5 +112,11 @@ public class ClickGuiScreen extends Screen {
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
         return false;
+    }
+    */
+
+    @Override
+    public boolean shouldPause() {
+        return ((BooleanSetting)pauseGame).isEnabled();
     }
 }
