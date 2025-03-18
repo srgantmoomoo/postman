@@ -4,7 +4,6 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.event.Type;
 import me.srgantmoomoo.postman.event.events.EventGuiKeyPress;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
-import me.srgantmoomoo.postman.module.modules.ClickGuiModule;
 import net.minecraft.client.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

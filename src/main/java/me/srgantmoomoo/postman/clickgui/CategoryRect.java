@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.clickgui;
 
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
+import me.srgantmoomoo.postman.clickgui.component.SettingComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
@@ -21,12 +22,12 @@ public class CategoryRect {
     private int color;
     private boolean open;
     private boolean dragging;
-    private int dragX;
-    private int dragY;
+    private double dragX;
+    private double dragY;
     Setting moduleColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("moduleColor");
 
     public CategoryRect(Category category, int x, int y, int width, int height, int color, boolean open,
-                        boolean dragging, int dragX, int dragY) {
+                        boolean dragging, float dragX, float dragY) {
         this.category = category;
         this.moduleComponents = new ArrayList<>();
         this.x = x;
@@ -42,8 +43,8 @@ public class CategoryRect {
         // add module componenets to category
         int moduleYOffset = this.height;
         for(Module module : Main.INSTANCE.moduleManager.getModulesInCategory(category)) {
-            ModuleComponent moduleComponent = new ModuleComponent(module, this, this.x, this.y + moduleYOffset,
-                    ((ColorSetting) moduleColor).toInteger());
+            ModuleComponent moduleComponent = new ModuleComponent(module, this, moduleYOffset, this.x, this.y,
+                    ((ColorSetting) moduleColor).toInteger(), false, false);
             this.moduleComponents.add(moduleComponent);
             moduleYOffset += this.height;
         }
@@ -58,7 +59,7 @@ public class CategoryRect {
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(int newX) {
@@ -66,7 +67,7 @@ public class CategoryRect {
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setY(int newY) {
@@ -74,31 +75,47 @@ public class CategoryRect {
     }
 
     public int getWidth() {
-        return width;
+        return this.width;
     }
 
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     public int getColor() {
-        return color;
+        return this.color;
     }
 
     public boolean isOpen() {
-        return open;
+        return this.open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
     }
 
     public boolean isDragging() {
-        return dragging;
+        return this.dragging;
     }
 
-    public int getDragX() {
+    public void setDragging(boolean dragging) {
+        this.dragging = dragging;
+    }
+
+    public double getDragX() {
         return dragX;
     }
 
-    public int getDragY() {
+    public void setDragX(double dragX) {
+        this.dragX = dragX;
+    }
+
+    public double getDragY() {
         return dragY;
+    }
+
+    public void setDragY(double dragY) {
+        this.dragY = dragY;
     }
 
     public void draw(DrawContext context) {
@@ -115,15 +132,25 @@ public class CategoryRect {
         }
     }
 
-    public boolean isWithinHeader(int x, int y) {
+    public boolean isWithinRect(double x, double y) {
         return x >= this.getX() && x <= this.getX() + this.getWidth() && y >= this.getY() && y <= this.getY() +
                 this.getHeight();
     }
 
     public void updatePosition(int mouseX, int mouseY) {
         if (this.isDragging()) {
-            this.setX(mouseX - this.getDragX());
-            this.setY(mouseY - this.getDragY());
+            this.setX((int)(mouseX - this.getDragX()));
+            this.setY((int)(mouseY - this.getDragY()));
+            for(ModuleComponent compo : this.getModuleComponents()) {
+                compo.setX(this.getX());
+                compo.setY(this.getY() + compo.getYOffset());
+                if(compo.isOpen()) {
+                    for(SettingComponent setCompo : compo.getSettingComponents()) {
+                        return;
+                        //compo.updateComponent(mousex, mousey);
+                    }
+                }
+            }
         }
     }
 }

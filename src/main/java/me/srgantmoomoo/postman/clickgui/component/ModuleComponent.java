@@ -18,6 +18,7 @@ public class ModuleComponent {
     private Module module;
     private CategoryRect categoryRect;
     private ArrayList<SettingComponent> settingComponents;
+    private int yOffset;
     private int x;
     private int y;
     private int color;
@@ -26,14 +27,17 @@ public class ModuleComponent {
     private int mousex;
     private int mousey;
 
-    public ModuleComponent(Module module, CategoryRect categoryRect, int x, int y, int color) {
+    public ModuleComponent(Module module, CategoryRect categoryRect, int yOffset, int x, int y, int color, boolean open,
+                           boolean hovered) {
         this.module = module;
         this.categoryRect = categoryRect;
         this.settingComponents = new ArrayList<>();
+        this.yOffset = yOffset;
         this.x = x;
-        this.y = y;
+        this.y = y + yOffset;
         this.color = color;
-        this.open = false;
+        this.open = open;
+        this.hovered = hovered;
 
         // add setting components to module
         int settingYOffset = this.categoryRect.getHeight(); // + 12??? idk why???
@@ -65,7 +69,7 @@ public class ModuleComponent {
                 }
             }
         }
-        /*this.settingComponents.add(new KeybindComponent((KeybindSetting) setting, this, this.x,
+        /*this.settingComponents.add(new KeybindComponent(null, this, this.x,
                 this.y + settingYOffset));*/
     }
 
@@ -81,8 +85,12 @@ public class ModuleComponent {
         return settingComponents;
     }
 
+    public int getYOffset() {
+        return this.yOffset;
+    }
+
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(int x) {
@@ -90,7 +98,7 @@ public class ModuleComponent {
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setY(int y) {
@@ -102,7 +110,19 @@ public class ModuleComponent {
     }
 
     public boolean isOpen() {
-        return open;
+        return this.open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public boolean isHovered() {
+        return this.hovered;
+    }
+
+    public void setHovered(boolean hovered) {
+        this.hovered = hovered;
     }
 
     // using this method to draw module names with "..." AND some other things like hovering.
@@ -141,5 +161,15 @@ public class ModuleComponent {
                 compo.drawComponent(context);
             }
         }
+    }
+
+    private boolean isMouseWithinComponent(double mouseX, double mouseY) {
+        return mouseX > this.getX() && mouseX < this.getX() + this.getCategoryRect().getWidth() &&
+                mouseY > this.getY() && mouseY < this.getY() + this.getCategoryRect().getHeight();
+    }
+
+    public void updateComponent(double mouseX, double mouseY) {
+        this.setHovered(this.isMouseWithinComponent(mouseX, mouseY));
+        // changing module positions in here is obscenely slow.
     }
 }
