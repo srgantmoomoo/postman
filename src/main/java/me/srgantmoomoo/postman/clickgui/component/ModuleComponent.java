@@ -126,20 +126,17 @@ public class ModuleComponent {
         this.hovered = hovered;
     }
 
-    // using this method to draw module names with "..." AND some other things like hovering.
     private void drawModuleName(DrawContext context) {
-        String shortName = this.getModule().getName();
-
-        if(shortName.length() > 12) {
-            shortName = shortName.substring(0, 10) + Formatting.GRAY + " ...";
-        }
+        String moduleName;
+        if(this.isOpen()) moduleName = Formatting.GRAY + "... " + Formatting.RESET + this.module.getName();
+        else moduleName = this.module.getName();
 
         if(hovered) {
-            context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getModule().getName(),
-                    this.getX() + 2, (this.getY() + 1), 0xffffffff);
+            context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, moduleName, this.getX() + 2,
+                    (this.getY() + 1), 0xffffffff);
         }else
-            context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getModule().isModuleEnabled() ?
-                    shortName : this.getModule().getName(), this.getX() + 3, (this.getY() + 2), 0xffffffff);
+            context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, moduleName, this.getX() + 3,
+                    (this.getY() + 2), 0xffffffff);
     }
 
     private final Identifier check = new Identifier(Main.INSTANCE.MODID, "check.png");
@@ -179,8 +176,12 @@ public class ModuleComponent {
             if(button == 0) {
                 this.getModule().toggle();
             }else if(button == 1) {
-                ClickGuiScreen.closeAllSettingComponents();
-                this.setOpen(!this.isOpen());
+                if(!this.isOpen()) {
+                    ClickGuiScreen.closeAllSettingComponents();
+                    this.setOpen(true);
+                }else {
+                    this.setOpen(false);
+                }
             }
         }
 

@@ -4,7 +4,6 @@ import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
-import me.srgantmoomoo.postman.clickgui.component.SettingComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
@@ -30,7 +29,7 @@ public class ClickGuiScreen extends Screen {
         categoryRects = new ArrayList<>();
         int rectX = 10;
         int rectY = 15;
-        int rectWidth = 88; // 88, 12
+        int rectWidth = 100; // 88, 12
         int rectHeight = 12;
 
         for(Category category : Category.values()) {
