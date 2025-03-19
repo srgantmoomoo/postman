@@ -42,11 +42,11 @@ public abstract class SettingComponent {
 
     public void drawComponent(DrawContext context) {}
 
-    public void updateComponent(int mouseX, int mouseY) {}
+    public void updateComponent(double mouseX, double mouseY) {}
 
-    public void mouseClicked(int mouseX, int mouseY) {}
+    public void mouseClicked(double mouseX, double mouseY, int button) {}
 
-    public void mouseReleased(int mouseX, int mouseY) {}
+    public void mouseReleased(double mouseX, double mouseY, int button) {}
 
     public void keyTyped(int key) {}
 

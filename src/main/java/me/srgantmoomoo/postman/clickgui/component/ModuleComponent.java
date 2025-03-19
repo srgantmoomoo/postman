@@ -3,6 +3,7 @@ package me.srgantmoomoo.postman.clickgui.component;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.CategoryRect;
+import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
 import me.srgantmoomoo.postman.clickgui.component.settingcomponents.*;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
@@ -171,5 +172,22 @@ public class ModuleComponent {
     public void updateComponent(double mouseX, double mouseY) {
         this.setHovered(this.isMouseWithinComponent(mouseX, mouseY));
         // changing module positions in here is obscenely slow.
+    }
+
+    public void mouseClicked(double mouseX, double mouseY, int button) {
+        if(isMouseWithinComponent(mouseX, mouseY)) {
+            if(button == 0) {
+                this.getModule().toggle();
+            }else if(button == 1) {
+                ClickGuiScreen.closeAllSettingComponents();
+                this.setOpen(!this.isOpen());
+            }
+        }
+
+        if(this.isOpen()) {
+            for(SettingComponent compo : this.getSettingComponents()) {
+                compo.mouseClicked(mouseX, mouseY, button);
+            }
+        }
     }
 }

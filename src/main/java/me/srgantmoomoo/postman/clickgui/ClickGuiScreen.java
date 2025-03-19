@@ -4,6 +4,7 @@ import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
+import me.srgantmoomoo.postman.clickgui.component.SettingComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
@@ -18,7 +19,7 @@ import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 
 public class ClickGuiScreen extends Screen {
-    private ArrayList<CategoryRect> categoryRects;
+    private static ArrayList<CategoryRect> categoryRects;
     private boolean mouseHeld = false;
     Setting categoryColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("categoryColor");
     Setting background = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("background");
@@ -36,6 +37,14 @@ public class ClickGuiScreen extends Screen {
             categoryRects.add(new CategoryRect(category, rectX, rectY, rectWidth, rectHeight,
                     ((ColorSetting) categoryColor).toInteger(), true, false, 0, 0));
             rectX += rectWidth + 1;
+        }
+    }
+
+    public static void closeAllSettingComponents() {
+        for(CategoryRect categoryRect : categoryRects) {
+            for(ModuleComponent modCompo : categoryRect.getModuleComponents()) {
+                modCompo.setOpen(false);
+            }
         }
     }
 
@@ -78,11 +87,11 @@ public class ClickGuiScreen extends Screen {
                 }
             }*/
 
-            /*if(rect.isOpen()) {
+            if(rect.isOpen()) {
                 for(ModuleComponent compo : rect.getModuleComponents()) {
-                    // compo.mouseClicked
+                    compo.mouseClicked(mouseX, mouseY, button);
                 }
-            }*/
+            }
         }
         return false;
     }
