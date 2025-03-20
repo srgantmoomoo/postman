@@ -66,5 +66,8 @@ public abstract class SettingComponent {
 
     public void keyTyped(int key) {}
 
-    public void closeAllSub() {}
+    public boolean isMouseWithinComponent(double mouseX, double mouseY, int width, int height) {
+        return mouseX > this.getX() && mouseX < this.getX() + width &&
+                mouseY > this.getY() && mouseY < this.getY() + height;
+    }
 }

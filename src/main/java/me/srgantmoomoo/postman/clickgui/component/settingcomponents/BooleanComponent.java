@@ -34,4 +34,12 @@ public class BooleanComponent extends SettingComponent {
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getSetting().getName(),
                 this.getX() + 2, this.getY() + 2, -1);
     }
+
+    @Override
+    public void mouseClicked(double mouseX, double mouseY, int button) {
+        if(this.isMouseWithinComponent(mouseX, mouseY, this.getModuleComponent().getCategoryRect().getWidth(),
+                this.getModuleComponent().getCategoryRect().getHeight())) {
+            ((BooleanSetting) this.getSetting()).toggle();
+        }
+    }
 }
