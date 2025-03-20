@@ -41,37 +41,33 @@ public class ModuleComponent {
         this.hovered = hovered;
 
         // add setting components to module
-        int settingYOffset = this.categoryRect.getHeight(); // + 12??? idk why???
+        int settingYOffset = 0; // + 12??? idk why???
         if(module.getSettings() != null) {
             for(Setting setting : module.getSettings()) {
                 if(setting instanceof BooleanSetting) {
-                    this.settingComponents.add(new BooleanComponent((BooleanSetting) setting, this, this.x,
-                            this.y + settingYOffset));
+                    this.settingComponents.add(new BooleanComponent((BooleanSetting) setting, this, this.x + categoryRect.getWidth() + 2,
+                            this.y + settingYOffset, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof NumberSetting) {
-                    this.settingComponents.add(new NumberComponent((NumberSetting) setting, this, this.x,
-                            this.y + settingYOffset));
+                    this.settingComponents.add(new NumberComponent((NumberSetting) setting, this, this.x + categoryRect.getWidth() + 2,
+                            this.y + settingYOffset, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ModeSetting) {
-                    this.settingComponents.add(new ModeComponent((ModeSetting) setting, this, this.x,
-                            this.y + settingYOffset));
+                    this.settingComponents.add(new ModeComponent((ModeSetting) setting, this, this.x + categoryRect.getWidth() + 2,
+                            this.y + settingYOffset, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ColorSetting) {
-                    this.settingComponents.add(new ColorComponent((ColorSetting) setting, this, this.x,
-                            this.y + settingYOffset));
+                    this.settingComponents.add(new ColorComponent((ColorSetting) setting, this, this.x + categoryRect.getWidth() + 2,
+                            this.y + settingYOffset, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
-                if(setting instanceof KeybindSetting) {
-                    this.settingComponents.add(new KeybindComponent((KeybindSetting) setting, this, this.x,
-                            this.y + settingYOffset));
-                }
             }
+            this.settingComponents.add(new KeybindComponent(this.module.getKeybindSetting(), this, this.x + categoryRect.getWidth() + 2,
+                    this.y + settingYOffset, this.color));
         }
-        /*this.settingComponents.add(new KeybindComponent(null, this, this.x,
-                this.y + settingYOffset));*/
     }
 
     public Module getModule() {
@@ -154,7 +150,7 @@ public class ModuleComponent {
         }
 
         // draw setting components
-        if(this.isOpen() && !this.settingComponents.isEmpty()) {
+        if(this.isOpen()) {
             for (SettingComponent compo : this.getSettingComponents()) {
                 compo.drawComponent(context);
             }

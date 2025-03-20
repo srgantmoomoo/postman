@@ -8,24 +8,26 @@ public abstract class SettingComponent {
     private ModuleComponent moduleComponent;
     private int x;
     private int y;
+    private int color;
 
-    public SettingComponent(Setting setting, ModuleComponent moduleComponent, int x, int y) {
+    public SettingComponent(Setting setting, ModuleComponent moduleComponent, int x, int y, int color) {
         this.setting = setting;
         this.moduleComponent = moduleComponent;
         this.x = x;
         this.y = y;
+        this.color = color;
     }
 
     public Setting getSetting() {
-        return setting;
+        return this.setting;
     }
 
     public ModuleComponent getModuleComponent() {
-        return moduleComponent;
+        return this.moduleComponent;
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(int x) {
@@ -33,11 +35,19 @@ public abstract class SettingComponent {
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getColor() {
+        return this.color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public void drawComponent(DrawContext context) {}

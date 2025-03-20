@@ -45,6 +45,10 @@ public abstract class Module {
         return null;
     }
 
+    public KeybindSetting getKeybindSetting() {
+        return key;
+    }
+
     public int getKey() {
         return key.getKey();
     }

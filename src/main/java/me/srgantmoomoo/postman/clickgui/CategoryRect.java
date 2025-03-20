@@ -24,7 +24,7 @@ public class CategoryRect {
     private boolean dragging;
     private double dragX;
     private double dragY;
-    Setting moduleColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("moduleColor");
+    Setting componentColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("componentColor");
 
     public CategoryRect(Category category, int x, int y, int width, int height, int color, boolean open,
                         boolean dragging, float dragX, float dragY) {
@@ -44,7 +44,7 @@ public class CategoryRect {
         int moduleYOffset = this.height;
         for(Module module : Main.INSTANCE.moduleManager.getModulesInCategory(category)) {
             ModuleComponent moduleComponent = new ModuleComponent(module, this, moduleYOffset, this.x, this.y,
-                    ((ColorSetting) moduleColor).toInteger(), false, false);
+                    ((ColorSetting) componentColor).toInteger(), false, false);
             this.moduleComponents.add(moduleComponent);
             moduleYOffset += this.height;
         }

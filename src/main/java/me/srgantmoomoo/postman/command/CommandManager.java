@@ -16,14 +16,15 @@ public class CommandManager {
     private String prefix = ",";
 
     public CommandManager() {
+        // organized in a way to logically display in help command
+        commands.add(new Help());
         commands.add(new Prefix());
         commands.add(new Bind());
-        commands.add(new Clear());
-        commands.add(new Help());
         commands.add(new ListModules());
         commands.add(new ListSettings());
-        commands.add(new Setting());
         commands.add(new Toggle());
+        commands.add(new Setting());
+        commands.add(new Clear());
     }
 
     public ArrayList<Command> getCommands() {
