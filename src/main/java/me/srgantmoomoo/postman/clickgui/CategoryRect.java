@@ -146,7 +146,8 @@ public class CategoryRect {
                 compo.setY(this.getY() + compo.getYOffset());
                 if(compo.isOpen()) {
                     for(SettingComponent setCompo : compo.getSettingComponents()) {
-                        setCompo.updateComponent(mouseX, mouseY);
+                        setCompo.setX(this.getX() + this.getWidth() + 2);
+                        setCompo.setY(this.getY() + compo.getYOffset() + setCompo.getYOffset());
                     }
                 }
             }

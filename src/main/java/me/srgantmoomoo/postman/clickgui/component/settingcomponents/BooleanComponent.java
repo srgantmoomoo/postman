@@ -16,8 +16,8 @@ public class BooleanComponent extends SettingComponent {
     private int y;*/
     Setting settingColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("settingColor");
 
-    public BooleanComponent(BooleanSetting setting, ModuleComponent moduleComponent, int x, int y, int color) {
-        super(setting, moduleComponent, x, y, color);
+    public BooleanComponent(BooleanSetting setting, ModuleComponent moduleComponent, int yOffset, int x, int y, int color) {
+        super(setting, moduleComponent, yOffset, x, y, color);
     }
 
     @Override
@@ -33,10 +33,5 @@ public class BooleanComponent extends SettingComponent {
 
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getSetting().getName(),
                 this.getX() + 2, this.getY() + 2, -1);
-    }
-
-    @Override
-    public void updateComponent(double mouseX, double mouseY) {
-
     }
 }

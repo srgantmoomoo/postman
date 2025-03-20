@@ -45,28 +45,28 @@ public class ModuleComponent {
         if(module.getSettings() != null) {
             for(Setting setting : module.getSettings()) {
                 if(setting instanceof BooleanSetting) {
-                    this.settingComponents.add(new BooleanComponent((BooleanSetting) setting, this, this.x + categoryRect.getWidth() + 2,
-                            this.y + settingYOffset, this.color));
+                    this.settingComponents.add(new BooleanComponent((BooleanSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
+                            this.y, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof NumberSetting) {
-                    this.settingComponents.add(new NumberComponent((NumberSetting) setting, this, this.x + categoryRect.getWidth() + 2,
-                            this.y + settingYOffset, this.color));
+                    this.settingComponents.add(new NumberComponent((NumberSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
+                            this.y, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ModeSetting) {
-                    this.settingComponents.add(new ModeComponent((ModeSetting) setting, this, this.x + categoryRect.getWidth() + 2,
-                            this.y + settingYOffset, this.color));
+                    this.settingComponents.add(new ModeComponent((ModeSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
+                            this.y, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ColorSetting) {
-                    this.settingComponents.add(new ColorComponent((ColorSetting) setting, this, this.x + categoryRect.getWidth() + 2,
-                            this.y + settingYOffset, this.color));
+                    this.settingComponents.add(new ColorComponent((ColorSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
+                            this.y, this.color));
                     settingYOffset += this.categoryRect.getHeight();
                 }
             }
-            this.settingComponents.add(new KeybindComponent(this.module.getKeybindSetting(), this, this.x + categoryRect.getWidth() + 2,
-                    this.y + settingYOffset, this.color));
+            this.settingComponents.add(new KeybindComponent(this.module.getKeybindSetting(), this, settingYOffset, this.x + categoryRect.getWidth() + 2,
+                    this.y, this.color));
         }
     }
 

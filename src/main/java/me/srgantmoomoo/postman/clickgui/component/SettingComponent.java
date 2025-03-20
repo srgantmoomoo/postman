@@ -6,15 +6,17 @@ import net.minecraft.client.gui.DrawContext;
 public abstract class SettingComponent {
     private Setting setting;
     private ModuleComponent moduleComponent;
+    private int yOffset;
     private int x;
     private int y;
     private int color;
 
-    public SettingComponent(Setting setting, ModuleComponent moduleComponent, int x, int y, int color) {
+    public SettingComponent(Setting setting, ModuleComponent moduleComponent, int yOffset, int x, int y, int color) {
         this.setting = setting;
         this.moduleComponent = moduleComponent;
+        this.yOffset = yOffset;
         this.x = x;
-        this.y = y;
+        this.y = y + yOffset;
         this.color = color;
     }
 
@@ -24,6 +26,10 @@ public abstract class SettingComponent {
 
     public ModuleComponent getModuleComponent() {
         return this.moduleComponent;
+    }
+
+    public int getYOffset() {
+        return this.yOffset;
     }
 
     public int getX() {
@@ -52,7 +58,7 @@ public abstract class SettingComponent {
 
     public void drawComponent(DrawContext context) {}
 
-    public void updateComponent(double mouseX, double mouseY) {}
+    public void updateComponent(double mouseX, double mouseY) {} // i'll have to figure this out later, its too slow
 
     public void mouseClicked(double mouseX, double mouseY, int button) {}
 

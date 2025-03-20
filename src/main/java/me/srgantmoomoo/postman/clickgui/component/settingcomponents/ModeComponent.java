@@ -5,7 +5,7 @@ import me.srgantmoomoo.postman.clickgui.component.SettingComponent;
 import me.srgantmoomoo.postman.module.setting.Setting;
 
 public class ModeComponent extends SettingComponent {
-    public ModeComponent(Setting setting, ModuleComponent moduleComponent, int x, int y, int color) {
-        super(setting, moduleComponent, x, y, color);
+    public ModeComponent(Setting setting, ModuleComponent moduleComponent, int yOffset, int x, int y, int color) {
+        super(setting, moduleComponent, yOffset, x, y, color);
     }
 }
