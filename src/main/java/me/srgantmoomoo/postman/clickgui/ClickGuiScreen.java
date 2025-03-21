@@ -14,6 +14,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 
@@ -33,8 +34,7 @@ public class ClickGuiScreen extends Screen {
         int rectHeight = 12;
 
         for(Category category : Category.values()) {
-            categoryRects.add(new CategoryRect(category, rectX, rectY, rectWidth, rectHeight,
-                    ((ColorSetting) categoryColor).toInteger(), true, false, 0, 0));
+            categoryRects.add(new CategoryRect(category, rectX, rectY, rectWidth, rectHeight, true, false, 0, 0));
             rectX += rectWidth + 1;
         }
     }
@@ -65,7 +65,7 @@ public class ClickGuiScreen extends Screen {
         for(CategoryRect categoryRect : categoryRects) {
             categoryRect.updatePosition(mouseX, mouseY);
             categoryRect.draw(context);
-            for(ModuleComponent compo : categoryRect.getModuleComponents()) {
+            for(ModuleComponent compo : categoryRect.getModuleComponents()) { //TODO moving this into catRect would probably work better
                 compo.updateComponent(mouseX, mouseY);
             }
         }
@@ -102,21 +102,31 @@ public class ClickGuiScreen extends Screen {
                 rect.setDragging(false);
             }
 
-            /*if(rect.isOpen()) {
+            if(rect.isOpen()) {
                 for(ModuleComponent compo : rect.getModuleComponents()) {
-                    //compo.mouseReleased
+                    compo.mouseReleased(mouseX, mouseY, button);
                 }
-            }*/
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        for(CategoryRect rect : categoryRects) {
+            if(rect.isOpen()) {
+                rect.getModuleComponents().forEach(compo -> compo.keyPressed(keyCode, scanCode, modifiers));
+            }
+        }
+
+        if (keyCode == GLFW.GLFW_KEY_ESCAPE) { //TODO clickgui esc close option
+            this.close();
+            return true;
         }
         return false;
     }
 
     /*
-    @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        return false;
-    }
-
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
         return false;
@@ -125,6 +135,6 @@ public class ClickGuiScreen extends Screen {
 
     @Override
     public boolean shouldPause() {
-        return ((BooleanSetting)pauseGame).isEnabled();
+        return ((BooleanSetting) this.pauseGame).isEnabled();
     }
 }

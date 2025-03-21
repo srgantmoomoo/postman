@@ -1,6 +1,8 @@
 package me.srgantmoomoo.postman.clickgui.component;
 
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.setting.Setting;
+import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import net.minecraft.client.gui.DrawContext;
 
 public abstract class SettingComponent {
@@ -9,15 +11,13 @@ public abstract class SettingComponent {
     private int yOffset;
     private int x;
     private int y;
-    private int color;
 
-    public SettingComponent(Setting setting, ModuleComponent moduleComponent, int yOffset, int x, int y, int color) {
+    public SettingComponent(Setting setting, ModuleComponent moduleComponent, int yOffset, int x, int y) {
         this.setting = setting;
         this.moduleComponent = moduleComponent;
         this.yOffset = yOffset;
         this.x = x;
         this.y = y + yOffset;
-        this.color = color;
     }
 
     public Setting getSetting() {
@@ -48,12 +48,14 @@ public abstract class SettingComponent {
         this.y = y;
     }
 
-    public int getColor() {
-        return this.color;
+    public int getComponentColor() {
+        return ((ColorSetting) Main.INSTANCE.moduleManager.getModuleByName("clickGui")
+                .getSettingByName("componentColor")).getValue().getRGB();
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public int getSettingColor() {
+        return ((ColorSetting) Main.INSTANCE.moduleManager.getModuleByName("clickGui")
+                .getSettingByName("settingColor")).getValue().getRGB();
     }
 
     public void drawComponent(DrawContext context) {}
@@ -64,10 +66,10 @@ public abstract class SettingComponent {
 
     public void mouseReleased(double mouseX, double mouseY, int button) {}
 
-    public void keyTyped(int key) {}
+    public void keyPressed(int keyCode, int scanCode, int modifiers) {}
 
-    public boolean isMouseWithinComponent(double mouseX, double mouseY, int width, int height) {
-        return mouseX > this.getX() && mouseX < this.getX() + width &&
-                mouseY > this.getY() && mouseY < this.getY() + height;
+    public boolean isMouseWithinComponent(double mouseX, double mouseY) {
+        return mouseX > this.getX() && mouseX < this.getX() + this.getModuleComponent().getCategoryRect().getWidth() &&
+                mouseY > this.getY() && mouseY < this.getY() + this.getModuleComponent().getCategoryRect().getHeight();
     }
 }

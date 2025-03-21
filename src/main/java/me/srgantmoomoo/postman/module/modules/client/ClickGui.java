@@ -17,7 +17,7 @@ public class ClickGui extends Module {
     public ColorSetting categoryColor = new ColorSetting("categoryColor", this, new Color(121, 193, 255, 255), false);
     public ColorSetting componentColor = new ColorSetting("componentColor", this, new Color(0, 0, 0, 150), false);
     public ColorSetting settingColor = new ColorSetting("settingColor", this, new Color(0, 255, 0, 255), false);
-    public ModeSetting background = new ModeSetting("background", this, "blur", "blur", "dim");
+    public ModeSetting background = new ModeSetting("background", this, "blur", "blur", "dim", "none");
     public BooleanSetting pauseGame = new BooleanSetting("pauseGame", this, false);
 
     public ClickGui() {

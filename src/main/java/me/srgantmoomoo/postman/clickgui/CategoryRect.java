@@ -19,14 +19,12 @@ public class CategoryRect {
     private int y;
     private int width;
     private int height;
-    private int color;
     private boolean open;
     private boolean dragging;
     private double dragX;
-    private double dragY;
-    Setting componentColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("componentColor");
+    private double dragY;;
 
-    public CategoryRect(Category category, int x, int y, int width, int height, int color, boolean open,
+    public CategoryRect(Category category, int x, int y, int width, int height, boolean open,
                         boolean dragging, float dragX, float dragY) {
         this.category = category;
         this.moduleComponents = new ArrayList<>();
@@ -34,7 +32,6 @@ public class CategoryRect {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.color = color;
         this.open = open;
         this.dragging = dragging;
         this.dragX = dragX;
@@ -43,8 +40,7 @@ public class CategoryRect {
         // add module componenets to category
         int moduleYOffset = this.height;
         for(Module module : Main.INSTANCE.moduleManager.getModulesInCategory(category)) {
-            ModuleComponent moduleComponent = new ModuleComponent(module, this, moduleYOffset, this.x, this.y,
-                    ((ColorSetting) componentColor).toInteger(), false, false);
+            ModuleComponent moduleComponent = new ModuleComponent(module, this, moduleYOffset, this.x, this.y, false, false);
             this.moduleComponents.add(moduleComponent);
             moduleYOffset += this.height;
         }
@@ -82,10 +78,6 @@ public class CategoryRect {
         return this.height;
     }
 
-    public int getColor() {
-        return this.color;
-    }
-
     public boolean isOpen() {
         return this.open;
     }
@@ -118,8 +110,13 @@ public class CategoryRect {
         this.dragY = dragY;
     }
 
-    public void draw(DrawContext context) {
-        context.fill(x, y, x + getWidth(), y + getHeight(), this.getColor());
+    public int getCategoryColor() {
+        return ((ColorSetting) Main.INSTANCE.moduleManager.getModuleByName("clickGui")
+                .getSettingByName("categoryColor")).getValue().getRGB();
+    }
+
+    public void draw(DrawContext context) { //TODO fix all colors
+        context.fill(x, y, x + getWidth(), y + getHeight(), this.getCategoryColor());
 
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getCategory().getName(),
                 this.getX() + 2, this.getY() + this.getHeight() / 2 -

@@ -22,21 +22,20 @@ public class ModuleComponent {
     private int yOffset;
     private int x;
     private int y;
-    private int color;
     private boolean open;
     private boolean hovered;
     private int mousex;
     private int mousey;
+    private int color = ((ColorSetting)
+            Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("componentColor")).toInteger();
 
-    public ModuleComponent(Module module, CategoryRect categoryRect, int yOffset, int x, int y, int color, boolean open,
-                           boolean hovered) {
+    public ModuleComponent(Module module, CategoryRect categoryRect, int yOffset, int x, int y, boolean open, boolean hovered) {
         this.module = module;
         this.categoryRect = categoryRect;
         this.settingComponents = new ArrayList<>();
         this.yOffset = yOffset;
         this.x = x;
         this.y = y + yOffset;
-        this.color = color;
         this.open = open;
         this.hovered = hovered;
 
@@ -46,27 +45,27 @@ public class ModuleComponent {
             for(Setting setting : module.getSettings()) {
                 if(setting instanceof BooleanSetting) {
                     this.settingComponents.add(new BooleanComponent((BooleanSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
-                            this.y, this.color));
+                            this.y));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof NumberSetting) {
                     this.settingComponents.add(new NumberComponent((NumberSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
-                            this.y, this.color));
+                            this.y));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ModeSetting) {
                     this.settingComponents.add(new ModeComponent((ModeSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
-                            this.y, this.color));
+                            this.y));
                     settingYOffset += this.categoryRect.getHeight();
                 }
                 if(setting instanceof ColorSetting) {
                     this.settingComponents.add(new ColorComponent((ColorSetting) setting, this, settingYOffset, this.x + categoryRect.getWidth() + 2,
-                            this.y, this.color));
+                            this.y));
                     settingYOffset += this.categoryRect.getHeight();
                 }
             }
             this.settingComponents.add(new KeybindComponent(this.module.getKeybindSetting(), this, settingYOffset, this.x + categoryRect.getWidth() + 2,
-                    this.y, this.color));
+                    this.y));
         }
     }
 
@@ -102,10 +101,6 @@ public class ModuleComponent {
         this.y = y;
     }
 
-    public int getColor() {
-        return this.color;
-    }
-
     public boolean isOpen() {
         return this.open;
     }
@@ -120,6 +115,11 @@ public class ModuleComponent {
 
     public void setHovered(boolean hovered) {
         this.hovered = hovered;
+    }
+
+    public int getComponentColor() {
+        return ((ColorSetting) Main.INSTANCE.moduleManager.getModuleByName("clickGui")
+                .getSettingByName("componentColor")).getValue().getRGB();
     }
 
     private void drawModuleName(DrawContext context) {
@@ -139,7 +139,7 @@ public class ModuleComponent {
     public void drawComponent(DrawContext context) {
         // module name and background
         context.fill(this.getX(), this.getY(), this.getX() + this.getCategoryRect().getWidth(),
-                this.getY() + this.getCategoryRect().getHeight(), this.getColor());
+                this.getY() + this.getCategoryRect().getHeight(), this.getComponentColor());
         this.drawModuleName(context);
 
         // draw check mark if enabled
@@ -165,6 +165,10 @@ public class ModuleComponent {
     public void updateComponent(double mouseX, double mouseY) {
         this.setHovered(this.isMouseWithinComponent(mouseX, mouseY));
         // changing module positions in here is obscenely slow.
+
+        for(SettingComponent compo : this.getSettingComponents()) {
+            compo.updateComponent(mouseX, mouseY);
+        }
     }
 
     public void mouseClicked(double mouseX, double mouseY, int button) {
@@ -185,6 +189,20 @@ public class ModuleComponent {
             for(SettingComponent compo : this.getSettingComponents()) {
                 compo.mouseClicked(mouseX, mouseY, button);
             }
+        }
+    }
+
+    public void mouseReleased(double mouseX, double mouseY, int button) {
+        if(this.isOpen()) {
+            for(SettingComponent compo : this.getSettingComponents()) {
+                compo.mouseReleased(mouseX, mouseY, button);
+            }
+        }
+    }
+
+    public void keyPressed(int keyCode, int scanCode, int modifiers) {
+        if(this.isOpen()) {
+            this.getSettingComponents().forEach(compo -> compo.keyPressed(keyCode, scanCode, modifiers));
         }
     }
 }

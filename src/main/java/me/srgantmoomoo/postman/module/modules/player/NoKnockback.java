@@ -10,8 +10,8 @@ import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
 import net.minecraft.network.packet.s2c.play.ExplosionS2CPacket;
 
 public class NoKnockback extends Module {
-    public NumberSetting playerKnockback = new NumberSetting("playerKnockback", this, 0, 0, 100, 1);
-    public NumberSetting explosionKnockback = new NumberSetting("explosionKnockback", this, 0, 0, 100, 1);
+    public NumberSetting playerKnockback = new NumberSetting("player", this, 0, 0, 100, 1);
+    public NumberSetting explosionKnockback = new NumberSetting("explosion", this, 0, 0, 100, 1);
 
     public NoKnockback() {
         super("noKnockback", "take no knockback when taking damage.", Category.PLAYER, 0);

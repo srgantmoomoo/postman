@@ -10,25 +10,18 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 
 public class BooleanComponent extends SettingComponent {
-    /*private BooleanSetting setting;
-    private ModuleComponent moduleComponent;
-    private int x;
-    private int y;*/
-    Setting settingColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("settingColor");
-
-    public BooleanComponent(BooleanSetting setting, ModuleComponent moduleComponent, int yOffset, int x, int y, int color) {
-        super(setting, moduleComponent, yOffset, x, y, color);
+    public BooleanComponent(BooleanSetting setting, ModuleComponent moduleComponent, int yOffset, int x, int y) {
+        super(setting, moduleComponent, yOffset, x, y);
     }
 
     @Override
     public void drawComponent(DrawContext context) {
         if(((BooleanSetting) this.getSetting()).isEnabled()) {
             context.fill(this.getX(), this.getY(), this.getX() + this.getModuleComponent().getCategoryRect().getWidth(),
-                    this.getY() + this.getModuleComponent().getCategoryRect().getHeight(),
-                    ((ColorSetting) this.settingColor).toInteger());
+                    this.getY() + this.getModuleComponent().getCategoryRect().getHeight(), this.getSettingColor());
         }else {
             context.fill(this.getX(), this.getY(), this.getX() + this.getModuleComponent().getCategoryRect().getWidth(),
-                    this.getY() + this.getModuleComponent().getCategoryRect().getHeight(), this.getColor());
+                    this.getY() + this.getModuleComponent().getCategoryRect().getHeight(), this.getComponentColor());
         }
 
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getSetting().getName(),
@@ -37,8 +30,7 @@ public class BooleanComponent extends SettingComponent {
 
     @Override
     public void mouseClicked(double mouseX, double mouseY, int button) {
-        if(this.isMouseWithinComponent(mouseX, mouseY, this.getModuleComponent().getCategoryRect().getWidth(),
-                this.getModuleComponent().getCategoryRect().getHeight())) {
+        if(this.isMouseWithinComponent(mouseX, mouseY)) {
             ((BooleanSetting) this.getSetting()).toggle();
         }
     }
