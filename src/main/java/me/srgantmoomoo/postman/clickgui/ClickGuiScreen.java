@@ -7,7 +7,6 @@ import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
-import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import me.srgantmoomoo.postman.module.setting.settings.ModeSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -20,8 +19,6 @@ import java.util.ArrayList;
 
 public class ClickGuiScreen extends Screen {
     private static ArrayList<CategoryRect> categoryRects;
-    private boolean mouseHeld = false;
-    Setting categoryColor = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("categoryColor");
     Setting background = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("background");
     Setting pauseGame = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("pauseGame");
 
@@ -41,9 +38,7 @@ public class ClickGuiScreen extends Screen {
 
     public static void closeAllSettingComponents() {
         for(CategoryRect categoryRect : categoryRects) {
-            for(ModuleComponent modCompo : categoryRect.getModuleComponents()) {
-                modCompo.setOpen(false);
-            }
+            categoryRect.getModuleComponents().forEach(compo -> compo.setOpen(false));
         }
     }
 

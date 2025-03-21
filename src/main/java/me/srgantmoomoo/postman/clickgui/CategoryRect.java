@@ -5,7 +5,6 @@ import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
 import me.srgantmoomoo.postman.clickgui.component.SettingComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
-import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -115,7 +114,7 @@ public class CategoryRect {
                 .getSettingByName("categoryColor")).getValue().getRGB();
     }
 
-    public void draw(DrawContext context) { //TODO fix all colors
+    public void draw(DrawContext context) {
         context.fill(x, y, x + getWidth(), y + getHeight(), this.getCategoryColor());
 
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getCategory().getName(),

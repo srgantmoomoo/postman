@@ -24,10 +24,6 @@ public class ModuleComponent {
     private int y;
     private boolean open;
     private boolean hovered;
-    private int mousex;
-    private int mousey;
-    private int color = ((ColorSetting)
-            Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("componentColor")).toInteger();
 
     public ModuleComponent(Module module, CategoryRect categoryRect, int yOffset, int x, int y, boolean open, boolean hovered) {
         this.module = module;

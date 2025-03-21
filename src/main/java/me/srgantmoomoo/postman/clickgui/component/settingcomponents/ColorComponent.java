@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.clickgui.component.settingcomponents;
 
-import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.CategoryRect;
 import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
 import me.srgantmoomoo.postman.clickgui.component.SettingComponent;
@@ -10,6 +9,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Formatting;
 
+//TODO key pressing
 public class ColorComponent extends SettingComponent {
     private boolean hovered = false;
     private boolean typing = false;
