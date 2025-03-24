@@ -8,6 +8,9 @@ import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Formatting;
+import org.lwjgl.glfw.GLFW;
+
+import java.awt.*;
 
 //TODO key pressing
 public class ColorComponent extends SettingComponent {
@@ -33,7 +36,7 @@ public class ColorComponent extends SettingComponent {
                 context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer,
                         Formatting.GRAY + "rrr ggg bbb aaa ...", this.getX() + 2, this.getY() + 2, -1);
             }else if(input.length() >= 15) {
-                context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, input.substring(0, 16),
+                context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, input.substring(0, 15),
                         this.getX() + 2, this.getY() + 2, this.getSettingColor());
             }else {
                 context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, input + Formatting.GRAY + " ...",
@@ -71,6 +74,53 @@ public class ColorComponent extends SettingComponent {
             }
         }else {
             this.typing = false;
+        }
+    }
+
+    @Override
+    public void keyPressed(int keyCode, int scanCode, int modifiers) {
+        if(this.typing) {
+            if(keyCode == GLFW.GLFW_KEY_ENTER) {
+                if(input.length() >= 15) {
+                    int valR = Integer.parseInt(input.substring(0, 3));
+                    int valG = Integer.parseInt(input.substring(4, 7));
+                    int valB = Integer.parseInt(input.substring(8, 11));
+                    int valA = Integer.parseInt(input.substring(12, 15));
+
+                    if(valR > 255) valR = 255;
+                    if(valG > 255) valG = 255;
+                    if(valB > 255) valB = 255;
+                    if(valA > 255) valA = 255;
+
+                    try {
+                        this.setting.setValue(new Color(valR, valG, valB, valA));
+                        this.typing = false;
+                    } catch (Exception invalid) {
+                        //TODO notifications... invalid!
+                    }
+                    input = "";
+                    return;
+                }
+            }
+
+            String keyPressed = "";
+            if(keyCode == GLFW.GLFW_KEY_0 || keyCode == GLFW.GLFW_KEY_1 || keyCode == GLFW.GLFW_KEY_2 ||
+                    keyCode == GLFW.GLFW_KEY_3 || keyCode == GLFW.GLFW_KEY_4 || keyCode == GLFW.GLFW_KEY_5 ||
+                    keyCode == GLFW.GLFW_KEY_6 || keyCode == GLFW.GLFW_KEY_7 || keyCode == GLFW.GLFW_KEY_8 ||
+                    keyCode == GLFW.GLFW_KEY_9 || keyCode == GLFW.GLFW_KEY_SPACE || keyCode == GLFW.GLFW_KEY_BACKSPACE) {
+                // space
+                if(keyCode == GLFW.GLFW_KEY_SPACE) {
+                    keyPressed = " ";
+                }
+                // backspace
+                else if (keyCode == GLFW.GLFW_KEY_BACKSPACE) {
+                    if(!input.isEmpty())
+                        input = input.substring(0, input.length() - 1);
+                }
+                // number keys
+                else keyPressed = GLFW.glfwGetKeyName(keyCode, GLFW.glfwGetKeyScancode(keyCode));
+            }
+            this.input += keyPressed;
         }
     }
 }
