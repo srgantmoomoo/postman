@@ -12,7 +12,6 @@ import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
 
-//TODO key pressing
 public class ColorComponent extends SettingComponent {
     private boolean hovered = false;
     private boolean typing = false;
