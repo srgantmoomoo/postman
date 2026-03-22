@@ -161,7 +161,7 @@ public class ModuleComponent {
     public void updateComponent(double mouseX, double mouseY) {
         this.setHovered(this.isMouseWithinComponent(mouseX, mouseY));
         // changing module positions in here is obscenely slow.
-
+        //TODO if onwall; x = ...; y = ...;
         for(SettingComponent compo : this.getSettingComponents()) {
             compo.updateComponent(mouseX, mouseY);
         }
@@ -190,9 +190,7 @@ public class ModuleComponent {
 
     public void mouseReleased(double mouseX, double mouseY, int button) {
         if(this.isOpen()) {
-            for(SettingComponent compo : this.getSettingComponents()) {
-                compo.mouseReleased(mouseX, mouseY, button);
-            }
+            this.getSettingComponents().forEach(compo -> compo.mouseReleased(mouseX, mouseY, button));
         }
     }
 
