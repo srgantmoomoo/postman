@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
-import com.lukflug.panelstudio.setting.IKeybindSetting;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import net.minecraft.client.util.InputUtil;

@@ -1,6 +1,5 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
-import com.lukflug.panelstudio.theme.ITheme;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
@@ -29,7 +28,7 @@ public class ColorSetting extends Setting {
     public Color getValue() {
         if (rainbow) {
             int speed=10; //TODO speed
-            return ITheme.combineColors(Color.getHSBColor((System.currentTimeMillis()%(360*speed))/(float)(360*speed),1,1),value);
+            return Color.getHSBColor((System.currentTimeMillis()%(360*speed))/(float)(360*speed),1,1);
         }
         else return value;
     }

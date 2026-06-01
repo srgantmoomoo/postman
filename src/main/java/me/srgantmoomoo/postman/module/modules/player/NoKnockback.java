@@ -17,7 +17,7 @@ public class NoKnockback extends Module {
         super("noKnockback", "take no knockback when taking damage.", Category.PLAYER, 0);
         this.addSettings(playerKnockback, explosionKnockback);
     }
-
+/*
     @Override
     public void onEvent(Event e) {
         if(MinecraftClient.getInstance().player == null)
@@ -42,6 +42,6 @@ public class NoKnockback extends Module {
                 p1.playerVelocityZ = (float) (p1.getPlayerVelocityZ() * velocity);
             }
         }
-    }
+    }*/
 
 }

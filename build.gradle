@@ -11,37 +11,22 @@ buildscript {
 	}
 	dependencies {
 		classpath "net.fabricmc:fabric-loom:${loom_version}"
-		classpath "gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0"
 	}
 }
 
 apply plugin: "fabric-loom"
-apply plugin: "com.github.johnrengelman.shadow"
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
-configurations {
-	shadow
-	modImplementation.extendsFrom shadow
-}
-
 repositories {
 	maven {
-		name = "lukflug"
-		url = "https://lukflug.github.io/maven/"
-	}
-
-	maven {
 		name = 'Ladysnake Mods'
-		url = 'https://maven.ladysnake.org/releases' // ladysnake.jfrog.io/artifactory/mods
+		url = 'https://maven.ladysnake.org/releases'
 		content {
-			includeGroup 'io.github.ladysnake' // 1.20.1 is org.ladysnake ( same for dependencies below)
-			includeGroupByRegex 'io\\.github\\.onyxstudios.*'
+			includeGroup 'io.github.ladysnake'
+			includeGroup 'org.ladysnake'
+			includeGroupByRegex 'dev\\.onyxstudios.*'
 		}
 	}
 }
@@ -57,11 +42,9 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
-	modImplementation "io.github.ladysnake:satin:${satin_version}"
-	include "io.github.ladysnake:satin:${satin_version}"
-
-	shadow "com.lukflug:panelstudio:${panelstudio_version}"
-	shadow "com.lukflug:panelstudio-mc20:${panelstudio_versionmc}"
+	modImplementation "org.ladysnake:satin:${satin_version}"
+	// Include Satin as a Jar-in-Jar dependency (optional)
+	include "org.ladysnake:satin:${satin_version}"
 }
 
 processResources {
@@ -70,15 +53,4 @@ processResources {
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
 	}
-}
-
-shadowJar {
-	classifier = "dev"
-	configurations = [project.configurations.shadow]
-	relocate "com.lukflug.panelstudio","com.lukflug.panelstudio_0_2_4"
-}
-
-remapJar {
-	dependsOn shadowJar
-	inputFile = shadowJar.archiveFile
 }

@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.module.setting.settings;
 
-import com.lukflug.panelstudio.setting.IEnumSetting;
-import com.lukflug.panelstudio.setting.ILabeled;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
