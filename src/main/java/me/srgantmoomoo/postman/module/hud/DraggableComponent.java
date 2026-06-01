@@ -6,17 +6,13 @@ public class DraggableComponent {
     private HudModule hudModule;
     private int x;
     private int y;
-    private int width;
-    private int height;
     private int lastX;
     private int lastY;
 
     private boolean dragging = false;
 
-    public DraggableComponent(HudModule hudModule, int x, int y, int width, int height) {
+    public DraggableComponent(HudModule hudModule, int x, int y) {
         this.hudModule = hudModule;
-        this.width = width;
-        this.height = height;
         this.x = x;
         this.y = y;
     }
@@ -41,12 +37,12 @@ public class DraggableComponent {
         this.y = y;
     }
 
-    public int getHeight() {
-        return height;
+    public int getWidth() {
+        return hudModule.getWidth();
     }
 
-    public int getWidth() {
-        return width;
+    public int getHeight() {
+        return hudModule.getHeight();
     }
 
     public void draw(DrawContext context, int mouseX, int mouseY) { // on update

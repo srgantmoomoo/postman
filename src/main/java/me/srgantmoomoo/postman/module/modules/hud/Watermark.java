@@ -6,11 +6,13 @@ import me.srgantmoomoo.postman.module.hud.HudModule;
 import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.util.Formatting;
 
 import java.awt.*;
 
 public class Watermark extends HudModule {
     public ColorSetting watermarkColor = new ColorSetting("color", this, new Color(121, 193, 255, 255), false);
+    int width;
 
     public Watermark() {
         super("watermark", "does watermark stuff.", 2, 2, Category.HUD);
@@ -19,9 +21,10 @@ public class Watermark extends HudModule {
 
     @Override
     public void draw(DrawContext context) {
+        width = MinecraftClient.getInstance().textRenderer.getWidth("postman " + Main.INSTANCE.VERSION);
         Color watermarkColorRGB = watermarkColor.getValue();
-
-        context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, "postman", getX(), this.getY() , watermarkColorRGB.getRGB());
+        context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, Formatting.WHITE + "postman " + Formatting.RESET +
+                Main.INSTANCE.VERSION, getX(), this.getY() , watermarkColorRGB.getRGB());
 
         super.draw(context);
     }
@@ -36,7 +39,7 @@ public class Watermark extends HudModule {
 
     @Override
     public int getWidth() {
-        return 44;
+        return width + 2;
     }
 
     @Override

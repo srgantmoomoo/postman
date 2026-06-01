@@ -14,7 +14,7 @@ public class HudModule extends Module {
         this.name = name;
         this.x = x;
         this.y = y;
-        this.drag = new DraggableComponent(this, x, y, getWidth(), getHeight());
+        this.drag = new DraggableComponent(this, x, y);
     }
 
 
