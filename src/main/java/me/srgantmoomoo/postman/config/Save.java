@@ -4,6 +4,7 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.CategoryRect;
 import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
 import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.module.hud.HudModule;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.*;
 import net.minecraft.client.MinecraftClient;
@@ -28,6 +29,7 @@ public class Save {
         saveSettings();
         savePrefix();
         saveGui();
+        saveHud();
     }
 
     private void writeFile(ArrayList<String> toSave, File file) {
@@ -45,7 +47,7 @@ public class Save {
             File file = new File(MainDirectory, "modules.txt");
             ArrayList<String> toSave = new ArrayList<>();
             for(Module module : Main.INSTANCE.moduleManager.getModules()) {
-                if(module.isModuleEnabled() && !module.getName().equalsIgnoreCase("clickGui")) {
+                if(module.isModuleEnabled() && !module.getName().equalsIgnoreCase("clickGui") && !module.getName().equalsIgnoreCase("hudEditor")) {
                     toSave.add(module.getName());
                 }
             }
@@ -99,7 +101,19 @@ public class Save {
             }
 
             writeFile(toSave, file);
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
+    }
+
+    public void saveHud() {
+        try {
+            File file = new File(MainDirectory, "hud.txt");
+            ArrayList<String> toSave = new ArrayList<>();
+
+            for(HudModule hud : Main.INSTANCE.hudManager.hudModules) {
+                toSave.add(hud.getName() + ":" + hud.getX() + ":" + hud.getY());
+            }
+
+            writeFile(toSave, file);
+        } catch (Exception ignored) {}
     }
 }

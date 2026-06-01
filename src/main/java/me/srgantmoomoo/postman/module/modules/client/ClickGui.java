@@ -2,7 +2,6 @@ package me.srgantmoomoo.postman.module.modules.client;
 
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
-import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
@@ -35,9 +34,5 @@ public class ClickGui extends Module {
         Main.INSTANCE.save.saveGui();
         if(MinecraftClient.getInstance().currentScreen instanceof ClickGuiScreen)
             MinecraftClient.getInstance().setScreen(null);
-    }
-
-    @Override
-    public void onEvent(Event e) {
     }
 }

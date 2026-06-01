@@ -4,6 +4,7 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.CategoryRect;
 import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
 import me.srgantmoomoo.postman.module.Module;
+import me.srgantmoomoo.postman.module.hud.HudModule;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.*;
 import net.minecraft.client.MinecraftClient;
@@ -27,6 +28,7 @@ public class Load {
         loadSettings();
         loadPrefix();
         loadGui();
+        loadHud();
     }
 
     public void loadModules() {
@@ -145,7 +147,35 @@ public class Load {
             }
 
             br.close();
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
+    }
+
+    public void loadHud() {
+        try {
+            File file = new File(MainDirectory, "hud.txt");
+            FileInputStream fstream = new FileInputStream(file.getAbsolutePath());
+            DataInputStream in = new DataInputStream(fstream);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String curLine = line.trim();
+                String name = curLine.split(":")[0];
+                String x = curLine.split(":")[1];
+                String y = curLine.split(":")[2];
+
+                int x1 = Integer.parseInt(x);
+                int y1 = Integer.parseInt(y);
+
+                HudModule h = Main.INSTANCE.hudManager.getHudModule(name);
+                if(h != null) {
+                    h.setX(x1);
+                    h.setY(y1);
+                }
+            }
+
+            br.close();
+        } catch (Exception e) {}
     }
 }
