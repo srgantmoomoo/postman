@@ -5,13 +5,14 @@ import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
-import me.srgantmoomoo.postman.module.setting.settings.ModeSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.ladysnake.satin.api.managed.ManagedShaderEffect;
+import org.ladysnake.satin.api.managed.ShaderEffectManager;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
@@ -56,12 +57,12 @@ public class ClickGuiScreen extends Screen {
     }
 
     private final Identifier postmanLogo = Identifier.of(Main.INSTANCE.MODID, "postman-logo-transparent.png");
-    //private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/blur" + ".json"));
+    private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(Identifier.of("minecraft", "shaders/post/box_blur" + ".json"));
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         // background
-        //if(((ModeSetting) background).is("dim"))
-            //this.renderBackground(context);
+        if(((BooleanSetting) background).isEnabled())
+            this.renderBackground(context, mouseX, mouseY, delta);
 
         // postman logo
         context.drawTexture(RenderLayer::getGuiTextured, postmanLogo, 0, MinecraftClient.getInstance().getWindow().getScaledHeight() - 80,
@@ -126,7 +127,7 @@ public class ClickGuiScreen extends Screen {
         }
 
         if (keyCode == GLFW.GLFW_KEY_ESCAPE) { //TODO clickgui esc close option
-            this.close();
+            Main.INSTANCE.moduleManager.getModuleByName("clickGui").disable();
             return true;
         }
         return false;

@@ -86,17 +86,17 @@ public abstract class Module {
     public void onEvent(Event e) {}
 
     public void enable() {
-        onEnable();
+        this.onEnable();
         this.setEnabled(true);
     }
 
     public void disable() {
-        onDisable();
+        this.onDisable();
         this.setEnabled(false);
     }
 
     public void toggle() {
-        if(enabled)
+        if(this.isModuleEnabled())
             this.disable();
         else
             this.enable();

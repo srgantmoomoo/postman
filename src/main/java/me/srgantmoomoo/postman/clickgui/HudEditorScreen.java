@@ -1,17 +1,16 @@
 package me.srgantmoomoo.postman.clickgui;
 
 import me.srgantmoomoo.postman.Main;
-import me.srgantmoomoo.postman.module.hud.DraggableComponent;
 import me.srgantmoomoo.postman.module.hud.HudModule;
+import me.srgantmoomoo.postman.module.setting.Setting;
+import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-
-import java.util.ArrayList;
 
 public class HudEditorScreen extends Screen {
-    private static ArrayList<DraggableComponent> draggableComponents;
+    Setting background = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("background");
+    Setting pauseGame = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("pauseGame");
 
     public HudEditorScreen() {
         super(Text.literal("hudEditor"));
@@ -20,7 +19,8 @@ public class HudEditorScreen extends Screen {
     //private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/blur" + ".json"));
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        //this.blur.render(1);
+        if(((BooleanSetting) background).isEnabled())
+            this.renderBackground(context, mouseX, mouseY, delta);
 
         // pulls the rendering for each individual hud module
         for(HudModule m : Main.INSTANCE.hudManager.hudModules) {
@@ -31,8 +31,6 @@ public class HudEditorScreen extends Screen {
         for(HudModule m : Main.INSTANCE.hudManager.hudModules) {
             m.getDraggableComponent().draw(context, mouseX, mouseY);
         }
-
-        super.render(context, mouseX, mouseY, delta);
     }
 
     @Override
@@ -49,5 +47,10 @@ public class HudEditorScreen extends Screen {
             m.getDraggableComponent().mouseReleased(mouseX, mouseY, button);
         }
         return false;
+    }
+
+    @Override
+    public boolean shouldPause() {
+        return ((BooleanSetting) this.pauseGame).isEnabled();
     }
 }

@@ -23,7 +23,7 @@ public class HudModule extends Module {
 
     }
 
-    // this is called in HudScreen to draw each component while in the hud editor
+    // this is called in HudEditorScreen to draw each component while in the hud editor
     public void drawDraggable(DrawContext context, int mouseX, int mouseY) {
 
     }

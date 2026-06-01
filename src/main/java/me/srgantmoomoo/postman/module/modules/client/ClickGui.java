@@ -8,7 +8,6 @@ import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
 import me.srgantmoomoo.postman.module.setting.settings.ColorSetting;
-import me.srgantmoomoo.postman.module.setting.settings.ModeSetting;
 import net.minecraft.client.MinecraftClient;
 import org.lwjgl.glfw.GLFW;
 
@@ -18,7 +17,7 @@ public class ClickGui extends Module {
     public ColorSetting categoryColor = new ColorSetting("categoryColor", this, new Color(121, 193, 255, 255), false);
     public ColorSetting componentColor = new ColorSetting("componentColor", this, new Color(0, 0, 0, 150), false);
     public ColorSetting settingColor = new ColorSetting("settingColor", this, new Color(0, 255, 0, 255), false);
-    public ModeSetting background = new ModeSetting("background", this, "blur", "blur", "dim", "none");
+    public BooleanSetting background = new BooleanSetting("background", this, true);
     public BooleanSetting pauseGame = new BooleanSetting("pauseGame", this, false);
 
     public ClickGui() {
@@ -35,19 +34,11 @@ public class ClickGui extends Module {
     @Override
     public void onDisable() {
         Main.INSTANCE.save.saveGui();
+        if(MinecraftClient.getInstance().currentScreen instanceof ClickGuiScreen)
+            MinecraftClient.getInstance().setScreen(null);
     }
 
     @Override
     public void onEvent(Event e) {
-        if(e instanceof EventGuiKeyPress) {
-            if(((EventGuiKeyPress) e).getKey() == GLFW.GLFW_KEY_ESCAPE)
-                this.disable();
-            /* something like this
-            if(((EventGuiKeyPress) e)..getKey() == this.getKey()) {
-                //MinecraftClient.getInstance().setScreen(Screen);
-                MinecraftClient.getInstance().player.closeScreen();
-                this.disable();
-            }*/
-        }
     }
 }
