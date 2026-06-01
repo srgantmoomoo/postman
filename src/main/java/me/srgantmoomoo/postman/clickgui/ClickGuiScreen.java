@@ -144,14 +144,4 @@ public class ClickGuiScreen extends Screen {
     public boolean shouldPause() {
         return ((BooleanSetting) this.pauseGame).isEnabled();
     }
-
-    @Override
-    public void removed() {
-        super.removed();
-        System.out.println("ClickGuiScreen removed - stack trace:");
-        Thread.currentThread().getStackTrace();
-        for(StackTraceElement e : Thread.currentThread().getStackTrace()) {
-            System.out.println("  " + e);
-        }
-    }
 }
