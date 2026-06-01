@@ -137,13 +137,14 @@ public class CategoryRect {
         if (this.isDragging()) {
             this.setX((int)(mouseX - this.getDragX()));
             this.setY((int)(mouseY - this.getDragY()));
-            for(ModuleComponent compo : this.getModuleComponents()) {
-                compo.setX(this.getX());
-                compo.setY(this.getY() + compo.getYOffset());
-                for(SettingComponent setCompo : compo.getSettingComponents()) {
-                    setCompo.setX(this.getX() + this.getWidth() + 2);
-                    setCompo.setY(this.getY() + compo.getYOffset() + setCompo.getYOffset());
-                }
+        }
+        // pulling this out to fix my config lol
+        for(ModuleComponent compo : this.getModuleComponents()) {
+            compo.setX(this.getX());
+            compo.setY(this.getY() + compo.getYOffset());
+            for(SettingComponent setCompo : compo.getSettingComponents()) {
+                setCompo.setX(this.getX() + this.getWidth() + 2);
+                setCompo.setY(this.getY() + compo.getYOffset() + setCompo.getYOffset());
             }
         }
     }

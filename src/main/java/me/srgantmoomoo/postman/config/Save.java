@@ -1,6 +1,8 @@
 package me.srgantmoomoo.postman.config;
 
 import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.clickgui.CategoryRect;
+import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.*;
@@ -25,6 +27,7 @@ public class Save {
         saveModules();
         saveSettings();
         savePrefix();
+        saveGui();
     }
 
     private void writeFile(ArrayList<String> toSave, File file) {
@@ -84,5 +87,19 @@ public class Save {
             toSave.add(Main.INSTANCE.commandManager.getPrefix());
             writeFile(toSave, file);
         }catch (Exception ignored) {}
+    }
+
+    public void saveGui() {
+        try {
+            File file = new File(MainDirectory, "gui.txt");
+            ArrayList<String> toSave = new ArrayList<>();
+
+            for(CategoryRect rect : ClickGuiScreen.categoryRects) {
+                toSave.add(rect.getCategory().getName() + ":" + rect.getX() + ":" + rect.getY() + ":" + rect.isOpen());
+            }
+
+            writeFile(toSave, file);
+        } catch (Exception ignored) {
+        }
     }
 }

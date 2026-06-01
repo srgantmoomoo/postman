@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.module.modules.client;
 
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventGuiKeyPress;
@@ -28,12 +29,12 @@ public class ClickGui extends Module {
     @Override
     public void onEnable() {
         MinecraftClient.getInstance().setScreen(new ClickGuiScreen());
-        //Main.INSTANCE.load.loadGui(); // gui
+        Main.INSTANCE.load.loadGui();
     }
 
     @Override
     public void onDisable() {
-        //Main.INSTANCE.save.saveGui(); // gui
+        Main.INSTANCE.save.saveGui();
     }
 
     @Override

@@ -1,6 +1,8 @@
 package me.srgantmoomoo.postman.config;
 
 import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.clickgui.CategoryRect;
+import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.*;
@@ -24,6 +26,7 @@ public class Load {
         loadModules();
         loadSettings();
         loadPrefix();
+        loadGui();
     }
 
     public void loadModules() {
@@ -93,8 +96,7 @@ public class Load {
             }
 
             br.close();
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 
     public void loadPrefix() {
@@ -107,6 +109,39 @@ public class Load {
             String line;
             while ((line = br.readLine()) != null) {
                 Main.INSTANCE.commandManager.setPrefix(line);
+            }
+
+            br.close();
+        } catch (Exception e) {}
+    }
+
+    public void loadGui() {
+        try {
+            File file = new File(MainDirectory, "gui.txt");
+            FileInputStream fstream = new FileInputStream(file.getAbsolutePath());
+            DataInputStream in = new DataInputStream(fstream);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String curLine = line.trim();
+                String name = curLine.split(":")[0];
+                String x = curLine.split(":")[1];
+                String y = curLine.split(":")[2];
+                String open = curLine.split(":")[3];
+
+                int x1 = Integer.parseInt(x);
+                int y1 = Integer.parseInt(y);
+                boolean opened = Boolean.parseBoolean(open);
+
+                CategoryRect c = ClickGuiScreen.getCategoryRectByName(name);
+                if (c != null) {
+                    c.setX(x1);
+                    c.setY(y1);
+                    c.setOpen(opened);
+                    c.updatePosition(0, 0);
+                }
             }
 
             br.close();

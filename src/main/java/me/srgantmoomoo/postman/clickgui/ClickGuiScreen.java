@@ -18,7 +18,7 @@ import org.lwjgl.glfw.GLFW;
 import java.util.ArrayList;
 
 public class ClickGuiScreen extends Screen {
-    private static ArrayList<CategoryRect> categoryRects;
+    public static ArrayList<CategoryRect> categoryRects;
     Setting background = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("background");
     Setting pauseGame = Main.INSTANCE.moduleManager.getModuleByName("clickGui").getSettingByName("pauseGame");
 
@@ -34,6 +34,20 @@ public class ClickGuiScreen extends Screen {
             categoryRects.add(new CategoryRect(category, rectX, rectY, rectWidth, rectHeight, true, false, 0, 0));
             rectX += rectWidth + 1;
         }
+    }
+
+    public static ArrayList<CategoryRect> getCategoryRects() {
+        return categoryRects;
+    }
+
+    public static CategoryRect getCategoryRectByName(String name) {
+        CategoryRect cat = null;
+        for (CategoryRect c : getCategoryRects()) {
+            if (c.getCategory().getName().equalsIgnoreCase(name)) {
+                cat = c;
+            }
+        }
+        return cat;
     }
 
     public static void closeAllSettingComponents() {
