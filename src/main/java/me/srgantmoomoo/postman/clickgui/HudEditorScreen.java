@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.clickgui;
 
-import ladysnake.satin.api.managed.ManagedShaderEffect;
-import ladysnake.satin.api.managed.ShaderEffectManager;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.module.hud.DraggableComponent;
 import me.srgantmoomoo.postman.module.hud.HudModule;
@@ -19,10 +17,10 @@ public class HudEditorScreen extends Screen {
         super(Text.literal("hudEditor"));
     }
 
-    private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/blur" + ".json"));
+    //private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/blur" + ".json"));
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.blur.render(1);
+        //this.blur.render(1);
 
         // pulls the rendering for each individual hud module
         for(HudModule m : Main.INSTANCE.hudManager.hudModules) {

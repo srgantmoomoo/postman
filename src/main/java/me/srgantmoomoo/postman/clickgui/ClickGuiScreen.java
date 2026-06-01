@@ -1,7 +1,5 @@
 package me.srgantmoomoo.postman.clickgui;
 
-import ladysnake.satin.api.managed.ManagedShaderEffect;
-import ladysnake.satin.api.managed.ShaderEffectManager;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.component.ModuleComponent;
 import me.srgantmoomoo.postman.module.Category;
@@ -11,6 +9,7 @@ import me.srgantmoomoo.postman.module.setting.settings.ModeSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
@@ -56,18 +55,16 @@ public class ClickGuiScreen extends Screen {
         }
     }
 
-    private final Identifier postmanLogo = new Identifier(Main.INSTANCE.MODID, "postman-logo-transparent.png");
-    private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/blur" + ".json"));
+    private final Identifier postmanLogo = Identifier.of(Main.INSTANCE.MODID, "postman-logo-transparent.png");
+    //private final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier("minecraft", "shaders/post/blur" + ".json"));
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         // background
-        if(((ModeSetting) background).is("blur"))
-            this.blur.render(1);
-        else if(((ModeSetting) background).is("dim"))
-            this.renderBackground(context);
+        //if(((ModeSetting) background).is("dim"))
+            //this.renderBackground(context);
 
         // postman logo
-        context.drawTexture(postmanLogo, 0, MinecraftClient.getInstance().getWindow().getScaledHeight() - 80,
+        context.drawTexture(RenderLayer::getGuiTextured, postmanLogo, 0, MinecraftClient.getInstance().getWindow().getScaledHeight() - 80,
                 0, 0, 80, 80, 80, 80);
 
         // categories & modules

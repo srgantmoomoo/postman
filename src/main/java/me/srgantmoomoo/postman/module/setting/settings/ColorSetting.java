@@ -28,7 +28,8 @@ public class ColorSetting extends Setting {
     public Color getValue() {
         if (rainbow) {
             int speed=10; //TODO speed
-            return Color.getHSBColor((System.currentTimeMillis()%(360*speed))/(float)(360*speed),1,1);
+            Color color = Color.getHSBColor((System.currentTimeMillis()%(360*speed))/(float)(360*speed),1,1);
+            return new Color(color.getRed(), color.getGreen(), color.getBlue(), value.getAlpha());
         }
         else return value;
     }

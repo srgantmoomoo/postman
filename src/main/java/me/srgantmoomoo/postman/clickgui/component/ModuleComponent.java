@@ -10,6 +10,7 @@ import me.srgantmoomoo.postman.module.setting.Setting;
 import me.srgantmoomoo.postman.module.setting.settings.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
@@ -131,7 +132,7 @@ public class ModuleComponent {
                     (this.getY() + 2), 0xffffffff);
     }
 
-    private final Identifier check = new Identifier(Main.INSTANCE.MODID, "check.png");
+    private final Identifier check = Identifier.of(Main.INSTANCE.MODID, "check.png");
     public void drawComponent(DrawContext context) {
         // module name and background
         context.fill(this.getX(), this.getY(), this.getX() + this.getCategoryRect().getWidth(),
@@ -141,8 +142,8 @@ public class ModuleComponent {
         // draw check mark if enabled
         if(this.getModule().isModuleEnabled()) {
             RenderSystem.setShaderTexture(0, check);
-            context.drawTexture(check, getX() + this.getCategoryRect().getWidth() - 13, (this.getY() + 1),
-                    10, 10, 0, 0, 10, 10, 10, 10);
+            context.drawTexture(RenderLayer::getGuiTextured, check, this.getX() + this.getCategoryRect().getWidth() - 13, (this.getY() + 1),
+                    0, 0, 10, 10, 10, 10, 10, 10);
         }
 
         // draw setting components

@@ -14,11 +14,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(FluidState.class)
 public class MixinFluidState {
-    @Inject(method = "getVelocity", at = @At("HEAD"), cancellable = true)
+    /*@Inject(method = "getVelocity", at = @At("HEAD"), cancellable = true)
     public void getVelocity(BlockView world, BlockPos pos, CallbackInfoReturnable<Vec3d> infoReturnable) {
         EventFluidPush e = new EventFluidPush();
         e.setType(Type.PRE);
         Main.INSTANCE.moduleManager.onEvent(e);
         if(e.isCancelled()) infoReturnable.setReturnValue(Vec3d.ZERO);
-    }
+    }*/
 }

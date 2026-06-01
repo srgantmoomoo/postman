@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(BlockCollisionSpliterator.class)
 public class MixinBlockCollisionSpliterator {
-    @Redirect(method = "computeNext", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;"))
+    /*@Redirect(method = "computeNext", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;"))
     private VoxelShape onGetCollision(BlockState blockState, BlockView world, BlockPos pos, ShapeContext context) {
 
         EventCollisionShape e = new EventCollisionShape((BlockState) blockState, pos, blockState.getCollisionShape(world, pos, context));
@@ -24,5 +24,5 @@ public class MixinBlockCollisionSpliterator {
         Main.INSTANCE.moduleManager.onEvent(e);
         if(e.isCancelled()) return VoxelShapes.empty();
         return e.getShape();
-    }
+    }*/
 }
