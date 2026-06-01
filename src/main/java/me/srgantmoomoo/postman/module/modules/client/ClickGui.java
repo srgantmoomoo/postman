@@ -3,7 +3,6 @@ package me.srgantmoomoo.postman.module.modules.client;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
 import me.srgantmoomoo.postman.event.Event;
-import me.srgantmoomoo.postman.event.events.EventGuiKeyPress;
 import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
@@ -27,12 +26,15 @@ public class ClickGui extends Module {
 
     @Override
     public void onEnable() {
+        System.out.println("onEnable - current screen: " + MinecraftClient.getInstance().currentScreen);
         MinecraftClient.getInstance().setScreen(new ClickGuiScreen());
+        System.out.println("onEnable - screen set to: " + MinecraftClient.getInstance().currentScreen);
         Main.INSTANCE.load.loadGui();
     }
 
     @Override
     public void onDisable() {
+        System.out.println("onDisable called - current screen: " + MinecraftClient.getInstance().currentScreen);
         Main.INSTANCE.save.saveGui();
         if(MinecraftClient.getInstance().currentScreen instanceof ClickGuiScreen)
             MinecraftClient.getInstance().setScreen(null);

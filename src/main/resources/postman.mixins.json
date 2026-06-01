@@ -6,6 +6,7 @@
   ],
   "client": [
     "MixinBlockCollisionSpliterator",
+    "MixinChatScreen",
     "MixinClientConnection",
     "MixinClientWorld",
     "MixinEntity",

@@ -3,6 +3,8 @@ accessWidener v1 named
 # for quickthrow and quickplace modules
 accessible field net/minecraft/client/MinecraftClient itemUseCooldown I
 
+accessible field net/minecraft/client/gui/screen/ChatScreen chatField Lnet/minecraft/client/gui/widget/TextFieldWidget;
+
 # for noKnockback module
 #accessible field net/minecraft/network/packet/s2c/play/EntityVelocityUpdateS2CPacket velocityX I
 #mutable field net/minecraft/network/packet/s2c/play/EntityVelocityUpdateS2CPacket velocityX I
