@@ -12,6 +12,7 @@
     "MixinEntity",
     "MixinFluidState",
     "MixinGameRenderer",
+    "MixinInGameHud",
     "MixinKeyboard"
   ],
   "injectors": {

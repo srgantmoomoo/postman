@@ -93,7 +93,7 @@ public class ClickGuiScreen extends Screen {
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
         for(CategoryRect rect : categoryRects) {
-            if(rect.isWithinRect(mouseX, mouseY) && button == 0) {
+            if(rect.isWithinRect(mouseX, mouseY) && button == 0) { //TODO if we just get rid of the check to see if its within, it'll disable dragging no matter what, which is probably prefered.
                 rect.setDragging(false);
             }
 

@@ -1,9 +1,12 @@
 package me.srgantmoomoo.postman.module;
 
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
+import me.srgantmoomoo.postman.module.hud.HudModule;
 import me.srgantmoomoo.postman.module.modules.Example;
 import me.srgantmoomoo.postman.module.modules.client.ClickGui;
+import me.srgantmoomoo.postman.module.modules.client.HudEditor;
 import me.srgantmoomoo.postman.module.modules.player.*;
 import me.srgantmoomoo.postman.module.modules.render.*;
 
@@ -15,6 +18,7 @@ public class ModuleManager {
 
     public ModuleManager() {
         modules.add(new ClickGui());
+        modules.add(new HudEditor());
         modules.add(new Example());
         modules.add(new FullBright());
         modules.add(new Jesus());
@@ -23,6 +27,7 @@ public class ModuleManager {
         modules.add(new QuickPlace());
         modules.add(new QuickThrow());
         modules.add(new VibrantShader());
+        modules.addAll(Main.INSTANCE.hudManager.hudModules);
     }
 
     public void onEvent(Event e) {
