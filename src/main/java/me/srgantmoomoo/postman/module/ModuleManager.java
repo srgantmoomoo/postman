@@ -1,6 +1,8 @@
 package me.srgantmoomoo.postman.module;
 
 import me.srgantmoomoo.postman.Main;
+import me.srgantmoomoo.postman.clickgui.ClickGuiScreen;
+import me.srgantmoomoo.postman.clickgui.HudEditorScreen;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
 import me.srgantmoomoo.postman.module.modules.client.ClickGui;
@@ -46,7 +48,8 @@ public class ModuleManager {
         if(e instanceof EventKeyPress) {
             if(MinecraftClient.getInstance().currentScreen == null) {
                 modules.stream().filter(m -> m.getKey() == ((EventKeyPress) e).getKey()).forEach(Module::toggle);
-            }else if(!(MinecraftClient.getInstance().currentScreen instanceof ChatScreen)){
+            }else if(MinecraftClient.getInstance().currentScreen instanceof ClickGuiScreen ||
+                    MinecraftClient.getInstance().currentScreen instanceof HudEditorScreen) {
                 if (getModuleByName("clickGui").getKey() == ((EventKeyPress) e).getKey())
                     getModuleByName("clickGui").toggle();
                 if (getModuleByName("hudEditor").getKey() == ((EventKeyPress) e).getKey())
