@@ -1,9 +1,6 @@
 package me.srgantmoomoo.postman.module.hud;
 
-import me.srgantmoomoo.postman.module.modules.hud.ArrayListModule;
-import me.srgantmoomoo.postman.module.modules.hud.Coordinates;
-import me.srgantmoomoo.postman.module.modules.hud.Fps;
-import me.srgantmoomoo.postman.module.modules.hud.Watermark;
+import me.srgantmoomoo.postman.module.modules.hud.*;
 import net.minecraft.client.gui.DrawContext;
 
 import java.util.ArrayList;
@@ -16,6 +13,8 @@ public class HudManager {
         hudModules.add(new ArrayListModule());
         hudModules.add(new Coordinates());
         hudModules.add(new Fps());
+        hudModules.add(new Ping());
+        hudModules.add(new Tps());
     }
 
     public HudModule getHudModule(String name) {

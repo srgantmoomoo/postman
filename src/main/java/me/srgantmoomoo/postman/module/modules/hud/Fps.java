@@ -9,21 +9,32 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Formatting;
 
 public class Fps extends HudModule {
+    public BooleanSetting colorful = new BooleanSetting("colorful", this, false);
     int width;
 
     public Fps() {
         super("fps", "view your fps.", 2, 22, Category.HUD);
-        this.addSettings();
+        this.addSettings(colorful);
     }
 
     @Override
     public void draw(DrawContext context) {
-        String fpsString = Formatting.GRAY + "fps " + Formatting.RESET + MinecraftClient.getInstance().getCurrentFps();
-
-        width = MinecraftClient.getInstance().textRenderer.getWidth(fpsString);
+        String fpsString;
+        int fps = MinecraftClient.getInstance().getCurrentFps();
+        if(this.colorful.isEnabled()) {
+            if(fps >= 60)
+                fpsString = Formatting.GRAY + "fps " + Formatting.GREEN + fps;
+            else if(fps >= 40)
+                fpsString = Formatting.GRAY + "fps " + Formatting.WHITE + fps;
+            else if(fps >= 20)
+                fpsString = Formatting.GRAY + "fps " + Formatting.YELLOW + fps;
+            else
+                fpsString = Formatting.GRAY + "fps " + Formatting.RED + fps;
+        } else fpsString = Formatting.GRAY + "fps " + Formatting.WHITE + fps;
 
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, fpsString, getX(), getY(), 0xffffffff);
 
+        width = MinecraftClient.getInstance().textRenderer.getWidth(fpsString);
         super.draw(context);
     }
 
