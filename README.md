@@ -11,8 +11,6 @@ postman is a [**Minecraft**](https://minecraft.net) client intended for use on s
 <br>
 
 join the [**postman discord**](https://discord.gg/Jd8EmEuhb5) for frequent updates, support, and a strong community :) <br>
-check out the [**postman website**](https://techale.github.io/postman-website/) by techale! <br>
-check out the [**postman archive**](https://github.com/moomooooo/postman-archive) for pre-github releases of postman.
 
 thank you :),
 
@@ -42,11 +40,11 @@ thank you :),
 - esc to close the clickgui 0_0.
 
 **development**
-- jdk 17 required.
+- jdk 21 required.
 - make sure to run the genSources gradle command.
 
 # credits
-**really helpful people**
+**people who were pivotol to the original postman project**
 - lukflug, being cool person. making panelstudio. helping me with panelstudio.
 - techale, RECIOR, fluffery, theforecaster, and cattyngmd for being big postman legacy contributors and/or contributing to postman reborn. i will always be thankful for them :)<br>
 
@@ -58,6 +56,5 @@ thank you :),
 -->
 **base stuff**
 - [**modding api**](https://fabricmc.net/) - *Fabric*.
-- [**clickGui library**](https://github.com/lukflug/PanelStudio/tree/main) - *Lukflug, PanelStudio*.
 
 ... if anyone has an issue with crediting please let me know. srgantmoomoo#1052
