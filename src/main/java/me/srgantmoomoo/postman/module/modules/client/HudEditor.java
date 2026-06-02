@@ -13,7 +13,7 @@ public class HudEditor extends Module {
 
     public HudEditor() {
         super("hudEditor", "enable hud editing screen.", Category.CLIENT, 0);
-        this.addSettings();
+        this.addSettings(background, pauseGame);
     }
 
     @Override
