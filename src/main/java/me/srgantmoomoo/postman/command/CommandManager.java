@@ -71,9 +71,11 @@ public class CommandManager {
 
     // opens chat when prefix is pressed, called in MixinKeyboard.
     public void onKeyPress() {
-        if(InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), prefix.charAt(0))) {
-            if(prefix.length() == 1) {
-                MinecraftClient.getInstance().setScreen(new ChatScreen(""));
+        if(MinecraftClient.getInstance().currentScreen == null) {
+            if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), prefix.charAt(0))) {
+                if (prefix.length() == 1) {
+                    MinecraftClient.getInstance().setScreen(new ChatScreen(""));
+                }
             }
         }
     }
