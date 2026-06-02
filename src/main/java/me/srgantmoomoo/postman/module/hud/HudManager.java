@@ -10,6 +10,7 @@ public class HudManager {
 
     public HudManager() {
         hudModules.add(new Watermark());
+        hudModules.add(new PlayerName());
         hudModules.add(new ArrayListModule());
         hudModules.add(new Coordinates());
         hudModules.add(new Fps());
