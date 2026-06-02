@@ -38,9 +38,7 @@ public class Main implements ModInitializer {
         commandManager = new CommandManager();
 
         load = new Load();
-        System.out.println("postman load config."); // having weird issues not loading
         save = new Save();
-        System.out.println("postman save config.");
     }
 
     public void save() {

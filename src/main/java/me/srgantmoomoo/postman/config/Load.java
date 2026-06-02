@@ -45,7 +45,7 @@ public class Load {
                 while (var6.hasNext()) {
                     Module m = (Module) var6.next();
                     if (m.getName().equals(line)) {
-                        m.toggle();
+                        m.enable();
                     }
                 }
             }

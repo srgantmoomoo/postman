@@ -3,7 +3,6 @@ package me.srgantmoomoo.postman.module;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
-import me.srgantmoomoo.postman.module.modules.Example;
 import me.srgantmoomoo.postman.module.modules.client.ClickGui;
 import me.srgantmoomoo.postman.module.modules.client.HudEditor;
 import me.srgantmoomoo.postman.module.modules.player.*;
@@ -20,7 +19,7 @@ public class ModuleManager {
     public ModuleManager() {
         modules.add(new ClickGui());
         modules.add(new HudEditor());
-        modules.add(new Example());
+        //modules.add(new Example());
         modules.add(new FullBright());
         modules.add(new Jesus());
         modules.add(new NoKnockback());
@@ -29,6 +28,8 @@ public class ModuleManager {
         modules.add(new QuickThrow());
         modules.add(new VibrantShader());
         modules.add(new Freecam());
+        modules.add(new PlayerClone());
+        modules.add(new AutoDisconnect());
         modules.addAll(Main.INSTANCE.hudManager.hudModules);
     }
 

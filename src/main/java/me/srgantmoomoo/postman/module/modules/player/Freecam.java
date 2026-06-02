@@ -93,5 +93,4 @@ public class Freecam extends Module {
             mc.player.fallDistance = 0;
         }
     }
-
 }
