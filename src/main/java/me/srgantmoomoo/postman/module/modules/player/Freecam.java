@@ -22,7 +22,8 @@ public class Freecam extends Module {
     private float prevFlySpeed;
 
     public Freecam() {
-        super("freecam", "out of body experience.", Category.PLAYER, 0);
+        super("freecam", "out of body experience 0_0", Category.PLAYER, 0);
+        this.addSettings(speed);
     }
 
     @Override
