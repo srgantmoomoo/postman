@@ -4,10 +4,10 @@ import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.command.Command;
 import net.minecraft.client.MinecraftClient;
 
-public class Clear extends Command {
+public class ClearChat extends Command {
 
-    public Clear() {
-        super("clear", "clears the chat.", "clear", "c");
+    public ClearChat() {
+        super("clearChat", "clears the chat.", "clearChat", "c");
     }
 
     @Override

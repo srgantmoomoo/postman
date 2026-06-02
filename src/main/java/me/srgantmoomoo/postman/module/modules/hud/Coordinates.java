@@ -16,7 +16,7 @@ public class Coordinates extends HudModule {
     int width;
 
     public Coordinates() {
-        super("coordinates", "view your coordinates", 2, 2, Category.HUD);
+        super("coordinates", "view your coordinates.", 2, 12, Category.HUD);
         this.addSettings(overworld, nether);
     }
 

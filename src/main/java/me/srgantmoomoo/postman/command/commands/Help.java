@@ -26,8 +26,8 @@ public class Help extends Command {
         for(Command c : Main.INSTANCE.commandManager.getCommands()) {
             Main.INSTANCE.commandManager.sendClientChatMessage(Formatting.BLUE + c.getName() + Formatting.GRAY +
                     " - " + c.getDescription(), false); // display command name & description
-            Main.INSTANCE.commandManager.sendClientChatMessage(Formatting.WHITE + " [" +
-                    Main.INSTANCE.commandManager.getPrefix() + c.getSyntax() + "]", false);
+            Main.INSTANCE.commandManager.sendClientChatMessage(Formatting.GRAY + "" + Formatting.ITALIC + c.getAliases() + " "
+                    + Formatting.RESET + "" + Formatting.WHITE + "[" +  Main.INSTANCE.commandManager.getPrefix() + c.getSyntax() + "]", false);
         }
 
         Main.INSTANCE.commandManager.sendClientChatMessage("", false); // space

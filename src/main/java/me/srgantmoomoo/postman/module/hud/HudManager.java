@@ -2,6 +2,7 @@ package me.srgantmoomoo.postman.module.hud;
 
 import me.srgantmoomoo.postman.module.modules.hud.ArrayListModule;
 import me.srgantmoomoo.postman.module.modules.hud.Coordinates;
+import me.srgantmoomoo.postman.module.modules.hud.Fps;
 import me.srgantmoomoo.postman.module.modules.hud.Watermark;
 import net.minecraft.client.gui.DrawContext;
 
@@ -14,6 +15,7 @@ public class HudManager {
         hudModules.add(new Watermark());
         hudModules.add(new ArrayListModule());
         hudModules.add(new Coordinates());
+        hudModules.add(new Fps());
     }
 
     public HudModule getHudModule(String name) {
