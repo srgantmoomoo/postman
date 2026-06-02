@@ -3,12 +3,13 @@ package me.srgantmoomoo.postman.module;
 import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
-import me.srgantmoomoo.postman.module.hud.HudModule;
 import me.srgantmoomoo.postman.module.modules.Example;
 import me.srgantmoomoo.postman.module.modules.client.ClickGui;
 import me.srgantmoomoo.postman.module.modules.client.HudEditor;
 import me.srgantmoomoo.postman.module.modules.player.*;
 import me.srgantmoomoo.postman.module.modules.render.*;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.ChatScreen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class ModuleManager {
         modules.add(new QuickPlace());
         modules.add(new QuickThrow());
         modules.add(new VibrantShader());
+        modules.add(new Freecam());
         modules.addAll(Main.INSTANCE.hudManager.hudModules);
     }
 
@@ -41,7 +43,14 @@ public class ModuleManager {
     // for key binds, called in MixinKeyboard.
     public void onKeyPress(Event e, int key, int scanCode) {
         if(e instanceof EventKeyPress) {
-            modules.stream().filter(m -> m.getKey() == ((EventKeyPress) e).getKey()).forEach(Module::toggle);
+            if(MinecraftClient.getInstance().currentScreen == null) {
+                modules.stream().filter(m -> m.getKey() == ((EventKeyPress) e).getKey()).forEach(Module::toggle);
+            }else if(!(MinecraftClient.getInstance().currentScreen instanceof ChatScreen)){
+                if (getModuleByName("clickGui").getKey() == ((EventKeyPress) e).getKey())
+                    getModuleByName("clickGui").toggle();
+                if (getModuleByName("hudEditor").getKey() == ((EventKeyPress) e).getKey())
+                    getModuleByName("hudEditor").toggle();
+            }
         }
     }
 

@@ -22,10 +22,10 @@ public class PlayerName extends HudModule {
     @Override
     public void draw(DrawContext context) {
         width = MinecraftClient.getInstance().textRenderer.getWidth(Formatting.GRAY + "hello, " + Formatting.RESET +
-                MinecraftClient.getInstance().player.getDisplayName() + Formatting.GRAY + " :)");
+                MinecraftClient.getInstance().player.getName().getString() + Formatting.GRAY + " :)");
         Color nameColorRGB = nameColor.getValue();
         context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, Formatting.GRAY + "hello, " + Formatting.RESET +
-                MinecraftClient.getInstance().player.getName() + Formatting.GRAY + " :)", getX(), this.getY() , nameColorRGB.getRGB());
+                MinecraftClient.getInstance().player.getName().getString() + Formatting.GRAY + " :)", getX(), this.getY() , nameColorRGB.getRGB());
 
         super.draw(context);
     }
