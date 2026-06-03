@@ -10,7 +10,6 @@ import me.srgantmoomoo.postman.module.modules.client.HudEditor;
 import me.srgantmoomoo.postman.module.modules.player.*;
 import me.srgantmoomoo.postman.module.modules.render.*;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.ChatScreen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +18,37 @@ public class ModuleManager {
     private final ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
-        modules.add(new ClickGui());
-        modules.add(new HudEditor());
-        //modules.add(new Example());
-        modules.add(new FullBright());
+        // player
+        modules.add(new AutoDisconnect());
+        modules.add(new AutoReconnect());
+        modules.add(new AutoRespawn());
+        modules.add(new ChestStealer());
+        modules.add(new Freecam());
         modules.add(new Jesus());
         modules.add(new NoKnockback());
         modules.add(new NoPush());
+        modules.add(new PlayerClone());
         modules.add(new QuickPlace());
         modules.add(new QuickThrow());
-        modules.add(new VibrantShader());
-        modules.add(new Freecam());
-        modules.add(new PlayerClone());
-        modules.add(new AutoDisconnect());
-        modules.add(new AutoReconnect());
+
+        // movement
+
+        // pvp
+
+        // exploits
+
+        // render
+        modules.add(new FullBright());
+        //modules.add(new VibrantShader());
+
+        // client
+        modules.add(new ClickGui());
+        modules.add(new HudEditor());
+        //modules.add(new Example());
+
+        // bot
+
+        // hud
         modules.addAll(Main.INSTANCE.hudManager.hudModules);
     }
 
