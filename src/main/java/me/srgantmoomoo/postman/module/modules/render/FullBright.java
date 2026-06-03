@@ -43,6 +43,6 @@ public class FullBright extends Module {
     }
 
     private void setGamma(double value) {
-        MinecraftClient.getInstance().options.getGamma().value = value; // was hardcoded to 16.0
+        MinecraftClient.getInstance().options.getGamma().value = value;
     }
 }

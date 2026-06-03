@@ -26,6 +26,7 @@ public class ModuleManager {
         modules.add(new Freecam());
         modules.add(new GuiMove());
         modules.add(new Jesus());
+        modules.add(new NoFall());
         modules.add(new NoKnockback());
         modules.add(new NoPush());
         modules.add(new PlayerClone());

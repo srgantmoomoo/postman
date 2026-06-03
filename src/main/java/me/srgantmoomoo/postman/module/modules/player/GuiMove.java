@@ -23,7 +23,6 @@ public class GuiMove extends Module {
         if(mc.player == null || mc.currentScreen == null) return;
         if(mc.currentScreen instanceof ChatScreen || mc.currentScreen instanceof SignEditScreen || mc.currentScreen instanceof AnvilScreen) return;
 
-
         long handle = mc.getWindow().getHandle();
         if(InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_UP))
             mc.player.setPitch(Math.max(mc.player.getPitch() - 5, -90));
