@@ -6,7 +6,6 @@ import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.settings.NumberSetting;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.TitleScreen;
 
 public class AutoDisconnect extends Module {
     public NumberSetting health = new NumberSetting("health", this, 10, 1, 30, 1);
@@ -24,7 +23,7 @@ public class AutoDisconnect extends Module {
 
             if(mc.player.getHealth() <= health.getValue()) {
                 this.disable();
-                mc.disconnect(new TitleScreen());
+                mc.world.disconnect();
             }
         }
     }
