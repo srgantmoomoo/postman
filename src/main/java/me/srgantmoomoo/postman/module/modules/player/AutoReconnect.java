@@ -7,6 +7,7 @@ import me.srgantmoomoo.postman.module.setting.settings.NumberSetting;
 public class AutoReconnect extends Module {
     public NumberSetting delay = new NumberSetting("delay", this, 5, 1, 20, 1);
 
+    public static boolean isReconnecting = false;
     public static String lastIp;
     public static int lastPort;
 

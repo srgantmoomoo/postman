@@ -25,8 +25,10 @@ public class MixinMinecraftClient {
         if(autoReconnect == null || !autoReconnect.isModuleEnabled()) return;
         if(AutoReconnect.lastIp == null || AutoReconnect.lastPort <= 0) return;
         if(transferring) return;
+        if(AutoReconnect.isReconnecting) return;
 
         int delaySeconds = (int) ((NumberSetting) autoReconnect.getSettingByName("delay")).getValue();
+        AutoReconnect.isReconnecting = true;
 
         new Thread(() -> {
             try {
@@ -36,8 +38,11 @@ public class MixinMinecraftClient {
                             new ServerAddress(AutoReconnect.lastIp, AutoReconnect.lastPort),
                             new ServerInfo("", AutoReconnect.lastIp, ServerInfo.ServerType.OTHER),
                             false, null);
+                    AutoReconnect.isReconnecting = false;
                 });
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+                AutoReconnect.isReconnecting = false;
+            }
         }).start();
     }
 }
