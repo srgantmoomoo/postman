@@ -15,27 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public class MixinGameRenderer {
-    /*@Inject(method = "renderWorld", at = @At(value = "INVOKE_STRING", target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V", args = {"ldc=hand"}))
+    @Inject(method = "renderWorld", at = @At(value = "INVOKE_STRING", target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V", args = {"ldc=hand"}), cancellable = true)
     private void renderWorld(RenderTickCounter renderTickCounter, CallbackInfo ci) {
-        EventRender3d e = new EventRender3d(f, matrixStack);
+        EventRender3d e = new EventRender3d();
         e.setType(Type.PRE);
         Main.INSTANCE.moduleManager.onEvent(e);
         if (e.isCancelled()) ci.cancel();
     }
-
-    @Inject(method = "renderHand", at = @At("HEAD"), cancellable = true)
-    private void renderHand(Camera camera, float tickDelta, Matrix4f matrix4f, CallbackInfo ci) {
-        EventRender3d e = new EventRender3d(f, matrixStack);
-        e.setType(Type.PRE);
-        Main.INSTANCE.moduleManager.onEvent(e);
-        if (e.isCancelled()) info.cancel();
-    }
-
-    @Inject(method = "renderHand", at = @At("HEAD"), cancellable = true)
-    private void renderHand(MatrixStack matrixStack, Camera camera, float f, CallbackInfo info) {
-        EventRender3d e = new EventRender3d(f, matrixStack);
-        e.setType(Type.PRE);
-        Main.INSTANCE.moduleManager.onEvent(e);
-        if (e.isCancelled()) info.cancel();
-    }*/
 }
