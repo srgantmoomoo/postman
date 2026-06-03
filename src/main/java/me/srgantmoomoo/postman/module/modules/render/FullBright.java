@@ -6,7 +6,6 @@ import me.srgantmoomoo.postman.module.Category;
 import me.srgantmoomoo.postman.module.Module;
 import me.srgantmoomoo.postman.module.setting.settings.ModeSetting;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.SimpleOption;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 

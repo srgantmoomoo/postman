@@ -17,13 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftClient.class)
 public class MixinMinecraftClient {
-    @Inject(method = "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V", at = @At("TAIL"))
-    private void onDisconnect(Screen screen, CallbackInfo ci) {
+    @Inject(method = "disconnect(Lnet/minecraft/client/gui/screen/Screen;Z)V", at = @At("TAIL"))
+    private void onDisconnect(Screen screen, boolean transferring, CallbackInfo ci) {
         MinecraftClient mc = MinecraftClient.getInstance();
         Module autoReconnect = Main.INSTANCE.moduleManager.getModuleByName("autoReconnect");
 
         if(autoReconnect == null || !autoReconnect.isModuleEnabled()) return;
         if(AutoReconnect.lastIp == null || AutoReconnect.lastPort <= 0) return;
+        if(transferring) return;
 
         int delaySeconds = (int) ((NumberSetting) autoReconnect.getSettingByName("delay")).getValue();
 

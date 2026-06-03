@@ -20,6 +20,8 @@ public class Ping extends HudModule {
     @Override
     public void draw(DrawContext context) {
         String pingString;
+        if(MinecraftClient.getInstance().player == null || MinecraftClient.getInstance().getNetworkHandler() == null) return;
+
         int ping = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(MinecraftClient.getInstance().player.getUuid()).getLatency();
         if(this.colorful.isEnabled()) {
             if(ping <= 20)
