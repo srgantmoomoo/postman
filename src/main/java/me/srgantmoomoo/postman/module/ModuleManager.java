@@ -30,6 +30,7 @@ public class ModuleManager {
         modules.add(new NoKnockback());
         modules.add(new NoPush());
         modules.add(new PlayerClone());
+        modules.add(new Protester());
         modules.add(new QuickPlace());
         modules.add(new QuickThrow());
 

@@ -26,6 +26,7 @@ public class CommandManager {
         commands.add(new ListSettings());
         commands.add(new Toggle());
         commands.add(new Setting());
+        commands.add(new ProtesterMsg());
         commands.add(new ClearChat());
         commands.add(new GetChunkPos());
         commands.add(new GetBlockState());
