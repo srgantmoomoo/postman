@@ -24,6 +24,7 @@ public class ModuleManager {
         modules.add(new AutoRespawn());
         modules.add(new ChestStealer());
         modules.add(new Freecam());
+        modules.add(new GuiMove());
         modules.add(new Jesus());
         modules.add(new NoKnockback());
         modules.add(new NoPush());

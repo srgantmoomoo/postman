@@ -18,7 +18,7 @@ public class MixinChatScreen {
             if(input.startsWith(Main.INSTANCE.commandManager.getPrefix())) {
                 MinecraftClient.getInstance().setScreen(null);
                 Main.INSTANCE.commandManager.onClientChat(input);
-                cir.setReturnValue(true); // consume the event entirely
+                cir.setReturnValue(true);
                 cir.cancel();
             }
         }
