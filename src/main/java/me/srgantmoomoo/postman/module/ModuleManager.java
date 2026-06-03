@@ -32,6 +32,7 @@ public class ModuleManager {
         modules.add(new Freecam());
         modules.add(new PlayerClone());
         modules.add(new AutoDisconnect());
+        modules.add(new AutoReconnect());
         modules.addAll(Main.INSTANCE.hudManager.hudModules);
     }
 

@@ -37,19 +37,13 @@ public class FullBright extends Module {
 
     @Override
     public void onDisable() {
-        setGamma(lastGamma);
+        if(mode.is("gamma")) {
+            setGamma(lastGamma);
+        }
         MinecraftClient.getInstance().player.removeStatusEffect(StatusEffects.NIGHT_VISION);
     }
 
-    // reflections, this will break probably lol
     private void setGamma(double value) {
-        try {
-            SimpleOption<Double> gamma = MinecraftClient.getInstance().options.getGamma();
-            java.lang.reflect.Field field = SimpleOption.class.getDeclaredField("value");
-            field.setAccessible(true);
-            field.set(gamma, value);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        MinecraftClient.getInstance().options.getGamma().value = value; // was hardcoded to 16.0
     }
 }

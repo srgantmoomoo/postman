@@ -9,11 +9,13 @@
     "MixinChatScreen",
     "MixinClientConnection",
     "MixinClientWorld",
+    "MixinConnectScreen",
     "MixinEntity",
     "MixinFluidState",
     "MixinGameRenderer",
     "MixinInGameHud",
-    "MixinKeyboard"
+    "MixinKeyboard",
+    "MixinMinecraftClient"
   ],
   "injectors": {
     "defaultRequire": 1
