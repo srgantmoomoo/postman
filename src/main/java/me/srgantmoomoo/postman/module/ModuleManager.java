@@ -33,6 +33,7 @@ public class ModuleManager {
         modules.add(new Protester());
         modules.add(new QuickPlace());
         modules.add(new QuickThrow());
+        modules.add(new Refill());
 
         // movement
 
