@@ -20,6 +20,7 @@ public class ModuleManager {
     public ModuleManager() {
         // player
         modules.add(new AutoDisconnect());
+        modules.add(new AutoMine());
         modules.add(new AutoReconnect());
         modules.add(new AutoRespawn());
         modules.add(new ChestStealer());
