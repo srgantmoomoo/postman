@@ -7,7 +7,7 @@ import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
 import me.srgantmoomoo.postman.module.modules.client.ClickGui;
 import me.srgantmoomoo.postman.module.modules.client.HudEditor;
-import me.srgantmoomoo.postman.module.modules.movement.AutoWalk;
+import me.srgantmoomoo.postman.module.modules.movement.*;
 import me.srgantmoomoo.postman.module.modules.player.*;
 import me.srgantmoomoo.postman.module.modules.render.*;
 import net.minecraft.client.MinecraftClient;
@@ -39,6 +39,7 @@ public class ModuleManager {
 
         // movement
         modules.add(new AutoWalk());
+        modules.add(new Fly());
 
         // pvp
 
