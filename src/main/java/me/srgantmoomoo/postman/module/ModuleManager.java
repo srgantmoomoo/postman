@@ -42,6 +42,9 @@ public class ModuleManager {
         modules.add(new Fly());
         modules.add(new NoSlow());
         modules.add(new ReverseStep());
+        modules.add(new SafeWalk());
+        modules.add(new Sneak());
+        modules.add(new Sprint());
 
         // pvp
 
