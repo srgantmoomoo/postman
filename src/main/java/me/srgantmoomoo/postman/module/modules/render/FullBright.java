@@ -28,6 +28,8 @@ public class FullBright extends Module {
     private double lastGamma;
     @Override
     public void onEnable() {
+        if(MinecraftClient.getInstance().options == null) return;
+
         if(mode.is("gamma")) {
             lastGamma = MinecraftClient.getInstance().options.getGamma().getValue();
             setGamma(16.0);

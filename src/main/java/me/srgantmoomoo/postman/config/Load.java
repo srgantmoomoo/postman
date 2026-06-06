@@ -31,6 +31,7 @@ public class Load {
         loadHud();
     }
 
+
     public void loadModules() {
         try {
             File file = new File(MainDirectory, "modules.txt");
@@ -40,17 +41,20 @@ public class Load {
 
             String line;
             while ((line = br.readLine()) != null) {
-                Iterator var6 = Main.INSTANCE.moduleManager.getModules().iterator();
-
-                while (var6.hasNext()) {
-                    Module m = (Module) var6.next();
-                    if (m.getName().equals(line)) {
+                System.out.println("Current Module Line: " + line);
+                System.out.println("ALL MODULES:" + Main.INSTANCE.moduleManager.getModules());
+                for(Module m : Main.INSTANCE.moduleManager.getModules()) {
+                    System.out.println("Current Module: " + m.getName());
+                    if(m.getName().equalsIgnoreCase(line)) {
+                        if(m.getName().equalsIgnoreCase("clickGui") || m.getName().equalsIgnoreCase("hudEditor"))
+                            continue;
                         m.enable();
+                        System.out.println("Module Enabled: " + m.getName());
                     }
                 }
             }
             br.close();
-        }catch (Exception e) {}
+        }catch (Exception e) {e.printStackTrace();}
     }
 
     public void loadSettings() {
