@@ -7,6 +7,7 @@ import me.srgantmoomoo.postman.module.setting.settings.BooleanSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Formatting;
+import net.minecraft.world.World;
 
 import java.awt.*;
 
@@ -22,14 +23,32 @@ public class Coordinates extends HudModule {
 
     @Override
     public void draw(DrawContext context) {
-        String overworldCoords = Formatting.GRAY + "(x)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getX()) +
-                Formatting.GRAY + "(y)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getY()) +
-                Formatting.GRAY + "(z)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getZ());
-        String netherCoords = Formatting.RED + "(x)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getX() * 8f) +
-                Formatting.RED + "(y)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getY()) +
-                Formatting.RED + "(z)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getZ() * 8f);
+        String overworldCoords = "";
+        String netherCoords = "";
+        if(MinecraftClient.getInstance().world.getRegistryKey() == World.OVERWORLD) {
+            overworldCoords = Formatting.GRAY + "(x)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getX()) +
+                    Formatting.GRAY + "(y)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getY()) +
+                    Formatting.GRAY + "(z)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getZ());
+            netherCoords = Formatting.RED + "(x)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getX() * 0.125f) +
+                    Formatting.RED + "(y)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getY()) +
+                    Formatting.RED + "(z)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getZ() * 0.125f);
+        }else if(MinecraftClient.getInstance().world.getRegistryKey() == World.NETHER) {
+            overworldCoords = Formatting.GRAY + "(x)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getX() * 8f) +
+                    Formatting.GRAY + "(y)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getY()) +
+                    Formatting.GRAY + "(z)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getZ() * 8f);
+            netherCoords = Formatting.RED + "(x)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getX()) +
+                    Formatting.RED + "(y)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getY()) +
+                    Formatting.RED + "(z)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getZ());
+        }else if(MinecraftClient.getInstance().world.getRegistryKey() == World.END) {
+            overworldCoords = Formatting.GRAY + "(x)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getX()) +
+                    Formatting.GRAY + "(y)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getY()) +
+                    Formatting.GRAY + "(z)" + Formatting.WHITE + String.format("%.1f", MinecraftClient.getInstance().player.getPos().getZ());
+            netherCoords = Formatting.RED + "(x)" + Formatting.WHITE + 0 +
+                    Formatting.RED + "(y)" + Formatting.WHITE + 0 +
+                    Formatting.RED + "(z)" + Formatting.WHITE + 0;
+        }
 
-        width = MinecraftClient.getInstance().textRenderer.getWidth(netherCoords);
+        width = MinecraftClient.getInstance().textRenderer.getWidth(overworldCoords);
 
         if(this.overworld.isEnabled()) {
             context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, overworldCoords, getX(), getY(), 0xffffffff);
