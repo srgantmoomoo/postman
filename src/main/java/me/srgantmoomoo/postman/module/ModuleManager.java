@@ -40,6 +40,8 @@ public class ModuleManager {
         // movement
         modules.add(new AutoWalk());
         modules.add(new Fly());
+        modules.add(new NoSlow());
+        modules.add(new ReverseStep());
 
         // pvp
 
