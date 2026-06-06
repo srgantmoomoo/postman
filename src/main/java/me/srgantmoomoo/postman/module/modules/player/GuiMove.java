@@ -1,5 +1,6 @@
 package me.srgantmoomoo.postman.module.modules.player;
 
+import me.srgantmoomoo.postman.Main;
 import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventTick;
 import me.srgantmoomoo.postman.module.Category;
@@ -33,7 +34,8 @@ public class GuiMove extends Module {
         if(InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_LEFT))
             mc.player.setYaw(mc.player.getYaw() - 5);
 
-        mc.options.forwardKey.setPressed(InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_W));
+        mc.options.forwardKey.setPressed(InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_W) ||
+                Main.INSTANCE.moduleManager.getModuleByName("autoWalk").isModuleEnabled());
         mc.options.backKey.setPressed(InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_S));
         mc.options.leftKey.setPressed(InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_A));
         mc.options.rightKey.setPressed(InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_D));
