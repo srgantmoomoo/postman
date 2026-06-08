@@ -107,7 +107,7 @@ public class Speed extends Module {
     private double[] getDirection(MinecraftClient mc, double speed) {
         float yaw = (float) Math.toRadians(mc.player.getYaw());
         float forward = mc.player.input.movementForward;
-        float strafe = mc.player.input.movementSideways;
+        float strafe = -mc.player.input.movementSideways;
 
         double len = Math.sqrt(forward * forward + strafe * strafe);
         if(len > 1.0) {
