@@ -59,18 +59,26 @@ public class Fly extends Module {
             double motionX = 0, motionZ = 0, motionY = 0;
 
             boolean forward = mc.options.forwardKey.isPressed();
-            boolean back    = mc.options.backKey.isPressed();
-            boolean left    = mc.options.leftKey.isPressed();
-            boolean right   = mc.options.rightKey.isPressed();
-            boolean jump    = mc.options.jumpKey.isPressed();
-            boolean sneak   = mc.options.sneakKey.isPressed();
+            boolean back = mc.options.backKey.isPressed();
+            boolean left = mc.options.leftKey.isPressed();
+            boolean right = mc.options.rightKey.isPressed();
+            boolean jump = mc.options.jumpKey.isPressed();
+            boolean sneak = mc.options.sneakKey.isPressed();
 
-            if (forward) { motionX -= Math.sin(yaw) * spd; motionZ += Math.cos(yaw) * spd; }
-            if (back)    { motionX += Math.sin(yaw) * spd; motionZ -= Math.cos(yaw) * spd; }
-            if (left)    { motionX -= Math.cos(yaw) * spd; motionZ -= Math.sin(yaw) * spd; }
-            if (right)   { motionX += Math.cos(yaw) * spd; motionZ += Math.sin(yaw) * spd; }
-            if (jump)    motionY =  spd;
-            if (sneak)   motionY = -spd;
+            if (forward) {
+                motionX -= Math.sin(yaw) * spd; motionZ += Math.cos(yaw) * spd;
+            }
+            if (back) {
+                motionX += Math.sin(yaw) * spd; motionZ -= Math.cos(yaw) * spd;
+            }
+            if (left) {
+                motionX += Math.cos(yaw) * spd; motionZ += Math.sin(yaw) * spd;
+            }
+            if (right) {
+                motionX -= Math.cos(yaw) * spd; motionZ -= Math.sin(yaw) * spd;
+            }
+            if (jump) motionY = spd;
+            if (sneak) motionY = -spd;
 
             double newX = mc.player.getX() + motionX;
             double newY = mc.player.getY() + motionY;

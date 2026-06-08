@@ -9,7 +9,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 
 public class Sneak extends Module {
-
     public Sneak() {
         super("sneak", "pretends you're sneaking when you're not", Category.MOVEMENT, 0);
     }
@@ -18,9 +17,7 @@ public class Sneak extends Module {
     public void onDisable() {
         MinecraftClient mc = MinecraftClient.getInstance();
         if (mc.player == null) return;
-        mc.player.networkHandler.sendPacket(
-                new ClientCommandC2SPacket(mc.player, ClientCommandC2SPacket.Mode.RELEASE_SHIFT_KEY)
-        );
+        mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(mc.player, ClientCommandC2SPacket.Mode.RELEASE_SHIFT_KEY));
     }
 
     @Override
@@ -29,9 +26,7 @@ public class Sneak extends Module {
         if (mc.player == null) return;
 
         if (e instanceof EventTick) {
-            mc.player.networkHandler.sendPacket(
-                    new ClientCommandC2SPacket(mc.player, ClientCommandC2SPacket.Mode.PRESS_SHIFT_KEY)
-            );
+            mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(mc.player, ClientCommandC2SPacket.Mode.PRESS_SHIFT_KEY));
         }
     }
 }

@@ -21,3 +21,5 @@ accessible field net/minecraft/network/packet/s2c/play/EntityVelocityUpdateS2CPa
 mutable field net/minecraft/network/packet/s2c/play/EntityVelocityUpdateS2CPacket velocityZ I
 accessible field net/minecraft/network/packet/s2c/play/ExplosionS2CPacket playerKnockback Ljava/util/Optional;
 mutable field net/minecraft/network/packet/s2c/play/ExplosionS2CPacket playerKnockback Ljava/util/Optional;
+
+accessible method net/minecraft/client/network/ClientPlayerEntity shouldStopSprinting ()Z

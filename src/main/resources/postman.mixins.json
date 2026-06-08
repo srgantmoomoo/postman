@@ -3,14 +3,16 @@
   "package": "me.srgantmoomoo.postman.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "MixinEntity",
+    "MixinSlimeBlock"
   ],
   "client": [
     "MixinBlockCollisionSpliterator",
     "MixinChatScreen",
     "MixinClientConnection",
+    "MixinClientPlayerEntity",
     "MixinClientWorld",
     "MixinConnectScreen",
-    "MixinEntity",
     "MixinFluidState",
     "MixinGameRenderer",
     "MixinInGameHud",
