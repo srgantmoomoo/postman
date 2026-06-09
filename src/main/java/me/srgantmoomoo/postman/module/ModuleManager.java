@@ -7,6 +7,7 @@ import me.srgantmoomoo.postman.event.Event;
 import me.srgantmoomoo.postman.event.events.EventKeyPress;
 import me.srgantmoomoo.postman.module.modules.client.ClickGui;
 import me.srgantmoomoo.postman.module.modules.client.HudEditor;
+import me.srgantmoomoo.postman.module.modules.exploits.*;
 import me.srgantmoomoo.postman.module.modules.movement.*;
 import me.srgantmoomoo.postman.module.modules.player.*;
 import me.srgantmoomoo.postman.module.modules.render.*;
@@ -46,10 +47,16 @@ public class ModuleManager {
         modules.add(new Sneak());
         modules.add(new Speed());
         modules.add(new Sprint());
+        modules.add(new Step());
 
         // pvp
 
         // exploits
+        modules.add(new AntiHunger());
+        modules.add(new AntiSwing());
+        modules.add(new InventoryPlus());
+        modules.add(new PacketCancellor());
+        modules.add(new PortalGodMode());
 
         // render
         modules.add(new FullBright());
